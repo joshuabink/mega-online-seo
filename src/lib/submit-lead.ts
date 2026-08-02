@@ -25,13 +25,20 @@ import { createServerFn } from '@tanstack/react-start'
 const DEFAULT_ENDPOINT =
   'https://script.google.com/macros/s/AKfycbysHVGhN1DBp58AgD46qX3LtQwj3XstB-FEaRDTwKNRe1RnmrFlou2rxPDxsmkgUhL2/exec'
 
-/** Velden die we accepteren. Alles daarbuiten wordt genegeerd. */
-const ALLOWED = new Set([
-  'naam', 'bedrijf', 'email', 'telefoon', 'url', 'branche', 'onderwerp',
-  'bericht', 'kanaal', 'voorkeur', '_subject', '_pagina',
-])
+/**
+ * Tweede bestemming: e-mail naar zakelijk@joshuabink.nl via FormSubmit.
+ * Geen account of API-key nodig; FormSubmit stuurt álle meegegeven velden mee
+ * en gebruikt dezelfde `_subject`-conventie als het bestaande formulier.
+ * Let op: de eerste inzending moet éénmalig per mail bevestigd worden.
+ * Te overschrijven met `MO_LEAD_MAIL_ENDPOINT`.
+ */
+const DEFAULT_MAIL_ENDPOINT = 'https://formsubmit.co/zakelijk@joshuabink.nl'
+
+/** Velden die we bewust NIET doorsturen (techniek/spamval). */
+const BLOCKED = new Set(['website_hp'])
 
 const MAX_FIELD_LENGTH = 5000
+
 
 export type LeadResponse = { ok: true } | { ok: false; error: string }
 
@@ -52,15 +59,18 @@ export const submitLead = createServerFn({ method: 'POST' })
       return { ok: true }
     }
 
+    // Álle ingevulde velden gaan mee — alleen de spamval valt eruit. Zo mist
+    // geen enkel formulierveld meer in de mail of de Sheet.
     const params = new URLSearchParams()
     for (const [key, value] of incoming) {
-      if (!ALLOWED.has(key)) continue
+      if (BLOCKED.has(key)) continue
       const clean = value.trim().slice(0, MAX_FIELD_LENGTH)
       if (clean) params.append(key, clean)
     }
 
     // Minimale inhoudscheck: zonder contactgegevens is het geen lead.
-    if (!params.get('email') && !params.get('telefoon')) {
+    const phone = params.get('telefoon') ?? params.get('tel')
+    if (!params.get('email') && !phone) {
       return { ok: false, error: 'Vul een e-mailadres of telefoonnummer in.' }
     }
 
@@ -69,31 +79,48 @@ export const submitLead = createServerFn({ method: 'POST' })
     const env = (globalThis as { process?: { env?: Record<string, string | undefined> } })
       .process?.env
     const endpoint = env?.MO_LEAD_ENDPOINT ?? DEFAULT_ENDPOINT
+    const mailEndpoint = env?.MO_LEAD_MAIL_ENDPOINT ?? DEFAULT_MAIL_ENDPOINT
 
-    try {
-      const res = await fetch(endpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: params.toString(),
-        signal: AbortSignal.timeout(10_000),
-      })
+    // E-mailvariant: zelfde velden, plus FormSubmit-opties voor een leesbare
+    // tabel en het antwoordadres van de aanvrager.
+    const mailParams = new URLSearchParams(params)
+    mailParams.set('_template', 'table')
+    mailParams.set('_captcha', 'false')
+    if (params.get('email')) mailParams.set('_replyto', params.get('email')!)
 
-      // Apps Script antwoordt met een redirect naar script.googleusercontent.com;
-      // fetch volgt die en geeft 200. Alles in de 2xx/3xx-range is goed.
-      if (!res.ok && res.status >= 400) {
-        console.error('[lead] Apps Script gaf status', res.status)
-        return {
-          ok: false,
-          error: 'We konden je aanvraag niet verwerken. Probeer het nog eens of mail ons direct.',
+    async function post(url: string, body: string, label: string) {
+      try {
+        const res = await fetch(url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body,
+          signal: AbortSignal.timeout(10_000),
+        })
+        // Apps Script antwoordt met een redirect naar script.googleusercontent.com;
+        // fetch volgt die en geeft 200. Alles in de 2xx/3xx-range is goed.
+        if (!res.ok && res.status >= 400) {
+          console.error(`[lead] ${label} gaf status`, res.status)
+          return false
         }
+        return true
+      } catch (err) {
+        console.error(`[lead] ${label} verzenden mislukt:`, err)
+        return false
       }
+    }
 
-      return { ok: true }
-    } catch (err) {
-      console.error('[lead] verzenden mislukt:', err)
+    const [sheetOk, mailOk] = await Promise.all([
+      post(endpoint, params.toString(), 'Apps Script'),
+      post(mailEndpoint, mailParams.toString(), 'e-mail'),
+    ])
+
+    if (!sheetOk && !mailOk) {
       return {
         ok: false,
         error: 'We konden je aanvraag niet verwerken. Probeer het nog eens of mail ons direct.',
       }
     }
+
+    return { ok: true }
+
   })
