@@ -4,6 +4,7 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useRouterState,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
@@ -12,25 +13,62 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
+import { SiteHeader } from "@/components/SiteHeader";
+import { SiteFooter, FunnelFooter } from "@/components/SiteFooter";
+
+// MegaOnline design system uit de Claude Design-handoff. De volgorde is de
+// bron van waarheid: styles → concepts → conversie → over → funnel → megamenu.
+// Deze imports komen ná Tailwind (../styles.css wordt hierboven als <link>
+// geladen), zodat de huisstijl wint waar beide iets over hetzelfde zeggen.
+import "@/styles/styles.css";
+import "@/styles/concepts.css";
+import "@/styles/conversie.css";
+import "@/styles/over.css";
+import "@/styles/funnel.css";
+import "@/styles/megamenu.css";
+
+/** Per-route vlaggen die de layout aansturen. */
+export type RouteMeta = {
+  /** Header krijgt `nav--light` (pagina begint met een lichte sectie). */
+  lightNav?: boolean;
+  /** Compacte funnel-footer i.p.v. de volledige sitefooter. */
+  funnelFooter?: boolean;
+  /** Geen gedeelde chrome — voor de concept-pagina's met hun eigen stijl. */
+  bare?: boolean;
+};
+
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
-        </p>
-        <div className="mt-6">
-          <Link
-            to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+    <main id="top">
+      <section className="section" data-theme="dark">
+        <div className="wrap">
+          <div className="shead shead--center">
+            <span className="label">404</span>
+            <h1 className="display">Deze pagina bestaat niet meer.</h1>
+            <p className="lead">
+              Mogelijk is de link verouderd of verkeerd overgenomen. Vanaf hier kom je
+              wel verder.
+            </p>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              gap: 14,
+              flexWrap: "wrap",
+              justifyContent: "center",
+              marginTop: 34,
+            }}
           >
-            Go home
-          </Link>
+            <Link className="btn btn-primary" to="/">
+              Naar de homepage <span className="arr">→</span>
+            </Link>
+            <Link className="btn btn-outline" to="/gratis-websitescan">
+              Gratis websitescan <span className="arr">→</span>
+            </Link>
+          </div>
         </div>
-      </div>
-    </div>
+      </section>
+    </main>
   );
 }
 
@@ -42,33 +80,39 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   }, [error]);
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-xl font-semibold tracking-tight text-foreground">
-          This page didn't load
-        </h1>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Something went wrong on our end. You can try refreshing or head back home.
-        </p>
-        <div className="mt-6 flex flex-wrap justify-center gap-2">
-          <button
-            onClick={() => {
-              router.invalidate();
-              reset();
+    <main id="top">
+      <section className="section" data-theme="dark">
+        <div className="wrap">
+          <div className="shead shead--center">
+            <span className="label">Er ging iets mis</span>
+            <h1 className="h2">Deze pagina laadde niet.</h1>
+            <p className="lead">Probeer het opnieuw, of ga terug naar de homepage.</p>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              gap: 14,
+              flexWrap: "wrap",
+              justifyContent: "center",
+              marginTop: 34,
             }}
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
-            Try again
-          </button>
-          <a
-            href="/"
-            className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
-          >
-            Go home
-          </a>
+            <button
+              className="btn btn-primary"
+              onClick={() => {
+                router.invalidate();
+                reset();
+              }}
+            >
+              Opnieuw proberen
+            </button>
+            <a className="btn btn-outline" href="/">
+              Naar de homepage
+            </a>
+          </div>
         </div>
-      </div>
-    </div>
+      </section>
+    </main>
   );
 }
 
@@ -77,14 +121,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "MegaOnline.io — Websites die werken voor jouw bedrijf" },
+      {
+        name: "description",
+        content:
+          "MegaOnline bouwt websites die vertrouwen uitstralen en bezoekers richting aanvraag of boeking brengen.",
+      },
+      { name: "theme-color", content: "#1c2b23" },
+      { property: "og:site_name", content: "MegaOnline.io" },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { property: "og:locale", content: "nl_NL" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
@@ -92,8 +139,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap",
       },
+      { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
     ],
   }),
   shellComponent: RootShell,
@@ -104,11 +152,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="nl" data-accent="honey" data-display="geist">
       <head>
         <HeadContent />
       </head>
-      <body>
+      <body data-hero="split" data-accent="honey" data-display="geist">
         {children}
         <Scripts />
       </body>
@@ -118,11 +166,23 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const meta = useRouterState({
+    select: (s) => (s.matches.at(-1)?.staticData ?? {}) as RouteMeta,
+  });
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      {meta.bare ? (
+        // Concept-pagina's brengen hun eigen chrome en stijl mee.
+        <Outlet />
+      ) : (
+        <>
+          <SiteHeader light={meta.lightNav} />
+          {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+          <Outlet />
+          {meta.funnelFooter ? <FunnelFooter /> : <SiteFooter />}
+        </>
+      )}
     </QueryClientProvider>
   );
 }
