@@ -25,13 +25,20 @@ import { createServerFn } from '@tanstack/react-start'
 const DEFAULT_ENDPOINT =
   'https://script.google.com/macros/s/AKfycbysHVGhN1DBp58AgD46qX3LtQwj3XstB-FEaRDTwKNRe1RnmrFlou2rxPDxsmkgUhL2/exec'
 
-/** Velden die we accepteren. Alles daarbuiten wordt genegeerd. */
-const ALLOWED = new Set([
-  'naam', 'bedrijf', 'email', 'telefoon', 'url', 'branche', 'onderwerp',
-  'bericht', 'kanaal', 'voorkeur', '_subject', '_pagina',
-])
+/**
+ * Tweede bestemming: e-mail naar zakelijk@joshuabink.nl via FormSubmit.
+ * Geen account of API-key nodig; FormSubmit stuurt álle meegegeven velden mee
+ * en gebruikt dezelfde `_subject`-conventie als het bestaande formulier.
+ * Let op: de eerste inzending moet éénmalig per mail bevestigd worden.
+ * Te overschrijven met `MO_LEAD_MAIL_ENDPOINT`.
+ */
+const DEFAULT_MAIL_ENDPOINT = 'https://formsubmit.co/zakelijk@joshuabink.nl'
+
+/** Velden die we bewust NIET doorsturen (techniek/spamval). */
+const BLOCKED = new Set(['website_hp'])
 
 const MAX_FIELD_LENGTH = 5000
+
 
 export type LeadResponse = { ok: true } | { ok: false; error: string }
 
