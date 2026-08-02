@@ -1,0 +1,321 @@
+/* =========================================================================
+   MegaOnline.io — premium mega menu (Framer / Linear / Clay flavour)
+   Loaded after styles.css. Header stays dark/cream; panels use dark tokens.
+   ========================================================================= */
+
+/* ---------- Trigger row (replaces .nav__links spacing) ---------- */
+.mnav { display: flex; align-items: center; gap: 4px; }
+.mnav__item {
+  position: relative;
+  display: inline-flex; align-items: center; gap: 7px;
+  font-family: var(--sans); font-size: 0.92rem; font-weight: 500;
+  color: oklch(0.82 0.014 130);
+  padding: 9px 14px; border-radius: 9px;
+  transition: color .2s, background .2s;
+  white-space: nowrap;
+}
+.mnav__item:hover,
+.mnav__item[aria-expanded="true"] { color: oklch(0.97 0.010 95); background: rgba(255,255,255,.05); }
+.mnav__item .chev {
+  width: 14px; height: 14px; transition: transform .28s cubic-bezier(.2,.7,.3,1);
+  color: oklch(0.62 0.013 145);
+}
+.mnav__item[aria-expanded="true"] .chev { transform: rotate(180deg); color: var(--accent); }
+
+/* ---------- Scrim behind open menu ---------- */
+.mega-scrim {
+  position: fixed; inset: 0; z-index: 48;
+  background: color-mix(in oklab, oklch(0.16 0.018 158) 55%, transparent);
+  backdrop-filter: blur(2px);
+  opacity: 0; pointer-events: none; transition: opacity .3s ease;
+}
+.mega-scrim.show { opacity: 1; pointer-events: auto; }
+
+/* ---------- Mega dropdown shell ---------- */
+.mega {
+  position: fixed; left: 0; right: 0; top: var(--nav-h, 72px);
+  z-index: 55; pointer-events: none;
+  padding: 0 var(--gutter) 24px;
+  opacity: 0; transform: translateY(-10px) scale(.992);
+  transition: opacity .26s ease, transform .3s cubic-bezier(.2,.7,.3,1);
+}
+.mega.open { opacity: 1; transform: none; pointer-events: auto; }
+.mega__sheet {
+  max-width: var(--maxw); margin-inline: auto;
+  background: oklch(0.235 0.021 158);
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 18px;
+  box-shadow: 0 50px 90px -50px rgba(0,0,0,.85), 0 10px 30px -20px rgba(0,0,0,.6);
+  overflow: hidden;
+  height: 0; transition: height .34s cubic-bezier(.2,.7,.3,1);
+}
+.mega__panels { position: relative; }
+.mega__panel {
+  position: absolute; inset: 0 0 auto 0; width: 100%;
+  padding: clamp(22px, 2.4vw, 34px);
+  opacity: 0; transform: translateY(8px); pointer-events: none;
+  transition: opacity .26s ease, transform .3s cubic-bezier(.2,.7,.3,1);
+}
+.mega__panel.is-active { opacity: 1; transform: none; pointer-events: auto; }
+
+/* panel layout: link columns + optional featured rail */
+.mega__panel { display: grid; gap: clamp(20px, 2.4vw, 40px); }
+.mega__panel[data-cols="diensten"] { grid-template-columns: repeat(3, 1fr) 1.35fr; }
+.mega__panel[data-cols="two"]      { grid-template-columns: 1.1fr 1fr 0.92fr; }
+.mega__panel[data-cols="cases"]    { grid-template-columns: 1.3fr 0.86fr; }
+.mega__panel[data-cols="kennis"]   { grid-template-columns: 1fr 1fr 0.9fr; }
+.mega__panel[data-cols="contact"]  { grid-template-columns: repeat(3, 1fr); }
+
+/* ---------- Category column ---------- */
+.mcol { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.mcol__head {
+  font-family: var(--sans); font-size: 0.64rem; font-weight: 600;
+  letter-spacing: 0.13em; text-transform: uppercase;
+  color: oklch(0.60 0.013 145);
+  padding: 0 12px 8px; margin-bottom: 4px;
+  border-bottom: 1px solid rgba(255,255,255,.07);
+}
+
+/* ---------- Link rows ---------- */
+.mlink {
+  display: grid; grid-template-columns: 34px 1fr; align-items: center;
+  gap: 12px; padding: 9px 12px; border-radius: 11px;
+  transition: background .2s;
+}
+.mlink:hover { background: rgba(255,255,255,.055); }
+.mlink__ico {
+  width: 34px; height: 34px; border-radius: 9px;
+  display: grid; place-items: center;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.08);
+  color: oklch(0.82 0.014 130);
+  transition: color .2s, background .2s, border-color .2s;
+}
+.mlink:hover .mlink__ico { color: var(--accent); border-color: color-mix(in oklab, var(--accent) 40%, transparent); background: color-mix(in oklab, var(--accent) 12%, transparent); }
+.mlink__ico svg { width: 17px; height: 17px; }
+.mlink__txt { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+.mlink__name {
+  font-family: var(--sans); font-size: 0.92rem; font-weight: 600;
+  color: oklch(0.95 0.010 95); letter-spacing: -0.01em; line-height: 1.25;
+  display: flex; align-items: center; gap: 8px;
+}
+.mlink__sub { font-size: 0.76rem; color: oklch(0.66 0.013 145); line-height: 1.3; }
+.mtag {
+  font-family: var(--sans); font-size: 0.56rem; font-weight: 600; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--accent);
+  border: 1px solid color-mix(in oklab, var(--accent) 38%, transparent);
+  border-radius: 100px; padding: 2px 7px; line-height: 1;
+}
+.mtag--soon { color: oklch(0.62 0.012 145); border-color: color-mix(in oklab, currentColor 34%, transparent); }
+/* "Binnenkort" items: zichtbaar maar niet klikbaar (geen dode link) */
+.mlink--soon { cursor: default; opacity: 0.72; }
+.mlink--soon:hover .mlink__ico { color: oklch(0.82 0.014 130); background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.08); }
+/* featured/highlighted link variant */
+.mlink--star .mlink__ico { color: var(--accent-ink); background: var(--accent-strong); border-color: transparent; }
+.mlink--star:hover .mlink__ico { color: var(--accent-ink); background: var(--accent-strong); }
+
+/* ---------- Featured rail card ---------- */
+.mfeat {
+  display: flex; flex-direction: column;
+  background: linear-gradient(160deg, color-mix(in oklab, var(--accent) 16%, oklch(0.275 0.02 158)), oklch(0.255 0.02 158));
+  border: 1px solid color-mix(in oklab, var(--accent) 22%, rgba(255,255,255,.08));
+  border-radius: 14px; padding: 20px; gap: 12px;
+}
+.mfeat__eyebrow {
+  font-family: var(--sans); font-size: 0.62rem; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--accent);
+  display: inline-flex; align-items: center; gap: 7px;
+}
+.mfeat__eyebrow .gdot { width: 7px; height: 7px; border-radius: 50%; background: var(--dot); }
+.mfeat__media {
+  border-radius: 10px; overflow: hidden; aspect-ratio: 16/9;
+  background:
+    repeating-linear-gradient(135deg, rgba(255,255,255,.05) 0 2px, transparent 2px 11px),
+    oklch(0.30 0.02 158);
+  display: grid; place-items: center;
+  font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.06em;
+  color: oklch(0.62 0.013 145); text-align: center;
+}
+.mfeat__title { font-family: var(--display); font-weight: 600; font-size: 1.22rem; letter-spacing: -0.02em; color: oklch(0.97 0.010 95); line-height: 1.1; }
+.mfeat__desc { font-size: 0.86rem; color: oklch(0.78 0.013 130); line-height: 1.5; }
+.mfeat__cta {
+  margin-top: auto; display: inline-flex; align-items: center; gap: 8px; align-self: flex-start;
+  font-family: var(--sans); font-weight: 600; font-size: 0.9rem; color: oklch(0.97 0.010 95);
+  background: var(--accent-strong); color: var(--accent-ink);
+  padding: 0.7em 1.1em; border-radius: 8px;
+  transition: transform .25s cubic-bezier(.2,.7,.3,1), box-shadow .25s;
+}
+.mfeat__cta:hover { transform: translateY(-2px); box-shadow: 0 14px 30px -16px var(--accent-strong); }
+.mfeat__cta .arr { transition: transform .3s; }
+.mfeat__cta:hover .arr { transform: translateX(4px); }
+.mfeat__link {
+  display: inline-flex; align-items: center; gap: 7px; align-self: flex-start;
+  font-size: 0.84rem; font-weight: 600; color: var(--accent);
+}
+.mfeat__link .arr { transition: transform .3s; }
+.mfeat__link:hover .arr { transform: translateX(4px); }
+
+/* stacked groups within one column + supporting "via partners" treatment */
+.mstack { display: flex; flex-direction: column; gap: clamp(16px, 1.6vw, 24px); min-width: 0; }
+.mpartner { margin-top: 2px; padding-top: 12px; border-top: 1px dashed rgba(255,255,255,.10); }
+.mpartner .mcol__head { border-bottom: none; padding-bottom: 4px; color: oklch(0.56 0.012 145); }
+.mlink--mini { grid-template-columns: 22px 1fr; padding: 6px 12px; }
+.mlink--mini .mlink__ico { width: 22px; height: 22px; border-radius: 6px; background: transparent; border: none; color: oklch(0.62 0.013 145); }
+.mlink--mini .mlink__ico svg { width: 14px; height: 14px; }
+.mlink--mini .mlink__name { font-size: 0.84rem; font-weight: 500; color: oklch(0.80 0.013 130); }
+
+/* secondary / soft note card (cases, kennisbank) */
+.mfeat--soft {
+  background: oklch(0.265 0.02 158);
+  border-color: rgba(255,255,255,.09);
+}
+.mfeat--soft .mfeat__eyebrow { color: oklch(0.72 0.05 150); }
+.mfeat__foot { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.04em; color: oklch(0.6 0.013 145); }
+
+/* panel footer strip (optional) */
+.mega__foot {
+  grid-column: 1 / -1; margin-top: 4px; padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,.07);
+  display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap;
+  font-size: 0.82rem; color: oklch(0.7 0.013 145);
+}
+.mega__foot a { color: var(--accent); font-weight: 600; display: inline-flex; align-items: center; gap: 7px; }
+.mega__foot .arr { transition: transform .3s; }
+.mega__foot a:hover .arr { transform: translateX(4px); }
+
+/* ---------- Mobile drawer accordion ---------- */
+.macc { display: flex; flex-direction: column; }
+.macc__group { border-bottom: 1px solid rgba(255,255,255,.10); }
+.macc__btn {
+  width: 100%; display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 0; font-family: var(--display); font-weight: 600; font-size: 1.25rem;
+  letter-spacing: -0.02em; color: oklch(0.965 0.010 95);
+}
+.macc__btn .chev { width: 18px; height: 18px; color: oklch(0.62 0.013 145); transition: transform .3s; }
+.macc__group.open .macc__btn .chev { transform: rotate(180deg); color: var(--accent); }
+.macc__panel { overflow: hidden; height: 0; transition: height .32s cubic-bezier(.2,.7,.3,1); }
+.macc__inner { padding: 2px 0 16px; display: flex; flex-direction: column; gap: 2px; }
+.macc__link {
+  display: grid; grid-template-columns: 28px 1fr; align-items: center; gap: 11px;
+  padding: 9px 6px; border-radius: 9px; border-bottom: none !important;
+  font-family: var(--sans) !important; font-weight: 500 !important; font-size: 1rem !important;
+  color: oklch(0.82 0.014 130) !important; letter-spacing: 0 !important;
+}
+.macc__link:hover { background: rgba(255,255,255,.05); }
+/* link carries an inline tag (Kerndienst / prijs) — keep it beside the name */
+.macc__link:has(.macc__tag) { grid-template-columns: 28px auto 1fr; }
+.macc__link .macc__tag { margin-left: 0; }
+.macc__link .mlink__ico { width: 28px; height: 28px; border-radius: 8px; }
+.macc__link .mlink__ico svg { width: 15px; height: 15px; }
+.macc__sub {
+  font-family: var(--sans); font-size: 0.62rem; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; color: oklch(0.58 0.013 145); padding: 12px 6px 4px;
+}
+
+/* =========================================================================
+   FULLSCREEN MOBILE MENU (#drawer.mmenu) — deliberate mobile experience
+   ========================================================================= */
+.mmenu {
+  position: fixed; inset: 0; z-index: 70;
+  display: flex; flex-direction: column;
+  background:
+    radial-gradient(120% 60% at 100% 0%, color-mix(in oklab, var(--accent) 9%, transparent), transparent 60%),
+    linear-gradient(180deg, oklch(0.225 0.021 158), oklch(0.205 0.020 158));
+  color: oklch(0.965 0.010 95);
+  -webkit-tap-highlight-color: transparent;
+  opacity: 0; visibility: hidden; pointer-events: none;
+  transform: scale(.985) translateY(-6px);
+  transition: opacity .3s ease, transform .34s cubic-bezier(.2,.7,.3,1), visibility .3s;
+}
+.mmenu.open { opacity: 1; visibility: visible; pointer-events: auto; transform: none; }
+
+/* top bar */
+.mmenu__top {
+  flex: none; display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 20px 14px; border-bottom: 1px solid rgba(255,255,255,.08);
+}
+.mmenu__close {
+  width: 42px; height: 42px; border-radius: 12px; display: grid; place-items: center;
+  background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1);
+  color: oklch(0.92 0.012 130); transition: background .2s, color .2s;
+}
+.mmenu__close:hover { background: rgba(255,255,255,.09); color: #fff; }
+.mmenu__close svg { width: 20px; height: 20px; }
+
+/* positioning line — tells visitor what MegaOnline does within seconds */
+.mmenu__tagline {
+  flex: none; margin: 0; padding: 18px 22px 10px;
+  font-family: var(--display); font-weight: 500; font-size: 1.18rem;
+  line-height: 1.3; letter-spacing: -0.02em; color: oklch(0.90 0.012 130);
+  max-width: 30ch; text-wrap: pretty;
+}
+.mmenu__tagline b { color: var(--accent); font-weight: 600; }
+
+/* scroll region */
+.mmenu__scroll { flex: 1 1 auto; overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 6px 22px 24px; }
+.mmenu__scroll .macc__group:first-child { border-top: 1px solid rgba(255,255,255,.10); }
+.mmenu__scroll .macc__btn { padding: 17px 0; font-size: 1.3rem; }
+
+/* highlighted core service inside accordion */
+.macc__link--star .mlink__ico { color: var(--accent-ink) !important; background: var(--accent-strong) !important; border: none !important; }
+.macc__link--star .mlink__name { color: oklch(0.97 0.010 95) !important; font-weight: 600 !important; }
+.macc__tag {
+  font-family: var(--sans); font-size: 0.56rem; font-weight: 600; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--accent); margin-left: 8px;
+  border: 1px solid color-mix(in oklab, var(--accent) 38%, transparent);
+  border-radius: 100px; padding: 2px 7px; line-height: 1; white-space: nowrap;
+}
+.macc__partner { margin: 6px 0 4px; padding-top: 10px; border-top: 1px dashed rgba(255,255,255,.10); }
+
+/* simple nav rows (Cases, Over, Kennisbank, Contact) */
+.mmenu__rows { display: flex; flex-direction: column; margin-top: 6px; }
+.mmenu__row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 17px 0; border-bottom: 1px solid rgba(255,255,255,.10);
+  font-family: var(--display); font-weight: 600; font-size: 1.3rem; letter-spacing: -0.02em;
+  color: oklch(0.965 0.010 95); transition: color .2s;
+}
+.mmenu__row:first-child { border-top: 1px solid rgba(255,255,255,.10); }
+.mmenu__row .arr-ico { width: 18px; height: 18px; color: oklch(0.6 0.013 145); transition: transform .25s, color .2s; }
+.mmenu__row:hover { color: var(--accent); }
+.mmenu__row:hover .arr-ico { color: var(--accent); transform: translate(2px, -2px); }
+
+/* sticky CTA footer — always visible */
+.mmenu__cta {
+  flex: none; padding: 16px 22px calc(18px + env(safe-area-inset-bottom, 0px));
+  border-top: 1px solid rgba(255,255,255,.10);
+  background: oklch(0.24 0.022 158);
+  display: flex; flex-direction: column; gap: 12px;
+}
+.mmenu__cta-txt { display: flex; flex-direction: column; gap: 3px; }
+.mmenu__cta-title {
+  font-family: var(--display); font-weight: 600; font-size: 1.12rem; letter-spacing: -0.02em;
+  color: oklch(0.97 0.010 95); display: inline-flex; align-items: center; gap: 9px;
+}
+.mmenu__cta-title .gdot { width: 8px; height: 8px; border-radius: 50%; background: var(--dot); }
+.mmenu__cta-sub { font-size: 0.92rem; color: oklch(0.76 0.013 130); line-height: 1.4; }
+.mmenu__cta .btn-primary { justify-content: center; width: 100%; padding: 0.95em 1.2em; font-size: 1rem; }
+.mmenu__cta-secondary {
+  text-align: center; font-family: var(--sans); font-weight: 600; font-size: 0.95rem;
+  color: oklch(0.88 0.012 130); padding: 4px 0;
+}
+.mmenu__cta-secondary:hover { color: var(--accent); }
+
+@media (prefers-reduced-motion: reduce) { .mmenu { transition: none; transform: none; } }
+
+/* ---------- Responsive switches ---------- */
+@media (max-width: 1080px) {
+  .mega__panel[data-cols="diensten"] { grid-template-columns: repeat(2, 1fr); }
+  .mega__panel[data-cols="diensten"] .mfeat { grid-column: 1 / -1; }
+  .mega__panel[data-cols="kennis"]   { grid-template-columns: 1fr 1fr; }
+  .mega__panel[data-cols="kennis"] .mfeat { grid-column: 1 / -1; }
+  .mega__panel[data-cols="two"]      { grid-template-columns: 1fr 1fr; }
+  .mega__panel[data-cols="two"] .mfeat { grid-column: 1 / -1; }
+}
+@media (max-width: 980px) {
+  .mnav { display: none; }
+  .nav__menu-btn { display: inline-flex; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mega, .mega__sheet, .mega__panel, .macc__panel, .mnav__item .chev { transition: none; }
+}

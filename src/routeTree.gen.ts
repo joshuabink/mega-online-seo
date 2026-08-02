@@ -9,38 +9,645 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as VeelgesteldeVragenRouteImport } from './routes/veelgestelde-vragen'
+import { Route as PrivacyverklaringRouteImport } from './routes/privacyverklaring'
+import { Route as OverMegaonlineRouteImport } from './routes/over-megaonline'
+import { Route as GratisWebsitescanRouteImport } from './routes/gratis-websitescan'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as AlgemeneVoorwaardenRouteImport } from './routes/algemene-voorwaarden'
+import { Route as SplatRouteImport } from './routes/$'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DienstenWerkenBijWebsitesRouteImport } from './routes/diensten/werken-bij-websites'
+import { Route as DienstenWebsiteRedesignRouteImport } from './routes/diensten/website-redesign'
+import { Route as DienstenWebsiteOptimalisatieRouteImport } from './routes/diensten/website-optimalisatie'
+import { Route as DienstenStarterWebsiteRouteImport } from './routes/diensten/starter-website'
+import { Route as DienstenSeoRouteImport } from './routes/diensten/seo'
+import { Route as DienstenIntegratiesRouteImport } from './routes/diensten/integraties'
+import { Route as DienstenGroeiPartnershipRouteImport } from './routes/diensten/groei-partnership'
+import { Route as DienstenConversieWebsiteRouteImport } from './routes/diensten/conversie-website'
+import { Route as BranchesVerhuurbedrijvenRouteImport } from './routes/branches/verhuurbedrijven'
+import { Route as BranchesReserveringenRouteImport } from './routes/branches/reserveringen'
+import { Route as BranchesOfferteaanvragenRouteImport } from './routes/branches/offerteaanvragen'
+import { Route as BranchesNonProfitsRouteImport } from './routes/branches/non-profits'
+import { Route as BranchesDienstverlenersRouteImport } from './routes/branches/dienstverleners'
+import { Route as BranchesActiviteitenbedrijvenRouteImport } from './routes/branches/activiteitenbedrijven'
+import { Route as ConceptBranchesIndexRouteImport } from './routes/concept/branches/index'
+import { Route as ConceptDienstenWebsitesRouteImport } from './routes/concept/diensten/websites'
+import { Route as ConceptDienstenWebshopsRouteImport } from './routes/concept/diensten/webshops'
+import { Route as ConceptDienstenWebappsRouteImport } from './routes/concept/diensten/webapps'
+import { Route as ConceptDienstenSysteemkoppelingenRouteImport } from './routes/concept/diensten/systeemkoppelingen'
+import { Route as ConceptDienstenMobieleAppsRouteImport } from './routes/concept/diensten/mobiele-apps'
+import { Route as ConceptDienstenHuisstijlRouteImport } from './routes/concept/diensten/huisstijl'
+import { Route as ConceptDienstenContentRouteImport } from './routes/concept/diensten/content'
+import { Route as ConceptDienstenBedrijfssoftwareRouteImport } from './routes/concept/diensten/bedrijfssoftware'
+import { Route as ConceptDienstenAutomatiseringenRouteImport } from './routes/concept/diensten/automatiseringen'
+import { Route as ConceptDienstenAiChatbotRouteImport } from './routes/concept/diensten/ai-chatbot'
+import { Route as ConceptBranchesZonnepanelenRouteImport } from './routes/concept/branches/zonnepanelen'
+import { Route as ConceptBranchesSportscholenRouteImport } from './routes/concept/branches/sportscholen'
+import { Route as ConceptBranchesSchoonmaakbedrijvenRouteImport } from './routes/concept/branches/schoonmaakbedrijven'
+import { Route as ConceptBranchesLokaleDienstenRouteImport } from './routes/concept/branches/lokale-diensten'
+import { Route as ConceptBranchesInstallateursRouteImport } from './routes/concept/branches/installateurs'
+import { Route as ConceptBranchesDetailingWrapRouteImport } from './routes/concept/branches/detailing-wrap'
+import { Route as ConceptBranchesBootverhuurRouteImport } from './routes/concept/branches/bootverhuur'
+import { Route as ConceptBranchesAgenciesRouteImport } from './routes/concept/branches/agencies'
+import { Route as ConceptBranchesAannemersRouteImport } from './routes/concept/branches/aannemers'
 
+const VeelgesteldeVragenRoute = VeelgesteldeVragenRouteImport.update({
+  id: '/veelgestelde-vragen',
+  path: '/veelgestelde-vragen',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyverklaringRoute = PrivacyverklaringRouteImport.update({
+  id: '/privacyverklaring',
+  path: '/privacyverklaring',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OverMegaonlineRoute = OverMegaonlineRouteImport.update({
+  id: '/over-megaonline',
+  path: '/over-megaonline',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GratisWebsitescanRoute = GratisWebsitescanRouteImport.update({
+  id: '/gratis-websitescan',
+  path: '/gratis-websitescan',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AlgemeneVoorwaardenRoute = AlgemeneVoorwaardenRouteImport.update({
+  id: '/algemene-voorwaarden',
+  path: '/algemene-voorwaarden',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SplatRoute = SplatRouteImport.update({
+  id: '/$',
+  path: '/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DienstenWerkenBijWebsitesRoute =
+  DienstenWerkenBijWebsitesRouteImport.update({
+    id: '/diensten/werken-bij-websites',
+    path: '/diensten/werken-bij-websites',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const DienstenWebsiteRedesignRoute = DienstenWebsiteRedesignRouteImport.update({
+  id: '/diensten/website-redesign',
+  path: '/diensten/website-redesign',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DienstenWebsiteOptimalisatieRoute =
+  DienstenWebsiteOptimalisatieRouteImport.update({
+    id: '/diensten/website-optimalisatie',
+    path: '/diensten/website-optimalisatie',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const DienstenStarterWebsiteRoute = DienstenStarterWebsiteRouteImport.update({
+  id: '/diensten/starter-website',
+  path: '/diensten/starter-website',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DienstenSeoRoute = DienstenSeoRouteImport.update({
+  id: '/diensten/seo',
+  path: '/diensten/seo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DienstenIntegratiesRoute = DienstenIntegratiesRouteImport.update({
+  id: '/diensten/integraties',
+  path: '/diensten/integraties',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DienstenGroeiPartnershipRoute =
+  DienstenGroeiPartnershipRouteImport.update({
+    id: '/diensten/groei-partnership',
+    path: '/diensten/groei-partnership',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const DienstenConversieWebsiteRoute =
+  DienstenConversieWebsiteRouteImport.update({
+    id: '/diensten/conversie-website',
+    path: '/diensten/conversie-website',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const BranchesVerhuurbedrijvenRoute =
+  BranchesVerhuurbedrijvenRouteImport.update({
+    id: '/branches/verhuurbedrijven',
+    path: '/branches/verhuurbedrijven',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const BranchesReserveringenRoute = BranchesReserveringenRouteImport.update({
+  id: '/branches/reserveringen',
+  path: '/branches/reserveringen',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BranchesOfferteaanvragenRoute =
+  BranchesOfferteaanvragenRouteImport.update({
+    id: '/branches/offerteaanvragen',
+    path: '/branches/offerteaanvragen',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const BranchesNonProfitsRoute = BranchesNonProfitsRouteImport.update({
+  id: '/branches/non-profits',
+  path: '/branches/non-profits',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BranchesDienstverlenersRoute = BranchesDienstverlenersRouteImport.update({
+  id: '/branches/dienstverleners',
+  path: '/branches/dienstverleners',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BranchesActiviteitenbedrijvenRoute =
+  BranchesActiviteitenbedrijvenRouteImport.update({
+    id: '/branches/activiteitenbedrijven',
+    path: '/branches/activiteitenbedrijven',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ConceptBranchesIndexRoute = ConceptBranchesIndexRouteImport.update({
+  id: '/concept/branches/',
+  path: '/concept/branches/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConceptDienstenWebsitesRoute = ConceptDienstenWebsitesRouteImport.update({
+  id: '/concept/diensten/websites',
+  path: '/concept/diensten/websites',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConceptDienstenWebshopsRoute = ConceptDienstenWebshopsRouteImport.update({
+  id: '/concept/diensten/webshops',
+  path: '/concept/diensten/webshops',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConceptDienstenWebappsRoute = ConceptDienstenWebappsRouteImport.update({
+  id: '/concept/diensten/webapps',
+  path: '/concept/diensten/webapps',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConceptDienstenSysteemkoppelingenRoute =
+  ConceptDienstenSysteemkoppelingenRouteImport.update({
+    id: '/concept/diensten/systeemkoppelingen',
+    path: '/concept/diensten/systeemkoppelingen',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ConceptDienstenMobieleAppsRoute =
+  ConceptDienstenMobieleAppsRouteImport.update({
+    id: '/concept/diensten/mobiele-apps',
+    path: '/concept/diensten/mobiele-apps',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ConceptDienstenHuisstijlRoute =
+  ConceptDienstenHuisstijlRouteImport.update({
+    id: '/concept/diensten/huisstijl',
+    path: '/concept/diensten/huisstijl',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ConceptDienstenContentRoute = ConceptDienstenContentRouteImport.update({
+  id: '/concept/diensten/content',
+  path: '/concept/diensten/content',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConceptDienstenBedrijfssoftwareRoute =
+  ConceptDienstenBedrijfssoftwareRouteImport.update({
+    id: '/concept/diensten/bedrijfssoftware',
+    path: '/concept/diensten/bedrijfssoftware',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ConceptDienstenAutomatiseringenRoute =
+  ConceptDienstenAutomatiseringenRouteImport.update({
+    id: '/concept/diensten/automatiseringen',
+    path: '/concept/diensten/automatiseringen',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ConceptDienstenAiChatbotRoute =
+  ConceptDienstenAiChatbotRouteImport.update({
+    id: '/concept/diensten/ai-chatbot',
+    path: '/concept/diensten/ai-chatbot',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ConceptBranchesZonnepanelenRoute =
+  ConceptBranchesZonnepanelenRouteImport.update({
+    id: '/concept/branches/zonnepanelen',
+    path: '/concept/branches/zonnepanelen',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ConceptBranchesSportscholenRoute =
+  ConceptBranchesSportscholenRouteImport.update({
+    id: '/concept/branches/sportscholen',
+    path: '/concept/branches/sportscholen',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ConceptBranchesSchoonmaakbedrijvenRoute =
+  ConceptBranchesSchoonmaakbedrijvenRouteImport.update({
+    id: '/concept/branches/schoonmaakbedrijven',
+    path: '/concept/branches/schoonmaakbedrijven',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ConceptBranchesLokaleDienstenRoute =
+  ConceptBranchesLokaleDienstenRouteImport.update({
+    id: '/concept/branches/lokale-diensten',
+    path: '/concept/branches/lokale-diensten',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ConceptBranchesInstallateursRoute =
+  ConceptBranchesInstallateursRouteImport.update({
+    id: '/concept/branches/installateurs',
+    path: '/concept/branches/installateurs',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ConceptBranchesDetailingWrapRoute =
+  ConceptBranchesDetailingWrapRouteImport.update({
+    id: '/concept/branches/detailing-wrap',
+    path: '/concept/branches/detailing-wrap',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ConceptBranchesBootverhuurRoute =
+  ConceptBranchesBootverhuurRouteImport.update({
+    id: '/concept/branches/bootverhuur',
+    path: '/concept/branches/bootverhuur',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ConceptBranchesAgenciesRoute = ConceptBranchesAgenciesRouteImport.update({
+  id: '/concept/branches/agencies',
+  path: '/concept/branches/agencies',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConceptBranchesAannemersRoute =
+  ConceptBranchesAannemersRouteImport.update({
+    id: '/concept/branches/aannemers',
+    path: '/concept/branches/aannemers',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/$': typeof SplatRoute
+  '/algemene-voorwaarden': typeof AlgemeneVoorwaardenRoute
+  '/contact': typeof ContactRoute
+  '/gratis-websitescan': typeof GratisWebsitescanRoute
+  '/over-megaonline': typeof OverMegaonlineRoute
+  '/privacyverklaring': typeof PrivacyverklaringRoute
+  '/veelgestelde-vragen': typeof VeelgesteldeVragenRoute
+  '/branches/activiteitenbedrijven': typeof BranchesActiviteitenbedrijvenRoute
+  '/branches/dienstverleners': typeof BranchesDienstverlenersRoute
+  '/branches/non-profits': typeof BranchesNonProfitsRoute
+  '/branches/offerteaanvragen': typeof BranchesOfferteaanvragenRoute
+  '/branches/reserveringen': typeof BranchesReserveringenRoute
+  '/branches/verhuurbedrijven': typeof BranchesVerhuurbedrijvenRoute
+  '/diensten/conversie-website': typeof DienstenConversieWebsiteRoute
+  '/diensten/groei-partnership': typeof DienstenGroeiPartnershipRoute
+  '/diensten/integraties': typeof DienstenIntegratiesRoute
+  '/diensten/seo': typeof DienstenSeoRoute
+  '/diensten/starter-website': typeof DienstenStarterWebsiteRoute
+  '/diensten/website-optimalisatie': typeof DienstenWebsiteOptimalisatieRoute
+  '/diensten/website-redesign': typeof DienstenWebsiteRedesignRoute
+  '/diensten/werken-bij-websites': typeof DienstenWerkenBijWebsitesRoute
+  '/concept/branches/aannemers': typeof ConceptBranchesAannemersRoute
+  '/concept/branches/agencies': typeof ConceptBranchesAgenciesRoute
+  '/concept/branches/bootverhuur': typeof ConceptBranchesBootverhuurRoute
+  '/concept/branches/detailing-wrap': typeof ConceptBranchesDetailingWrapRoute
+  '/concept/branches/installateurs': typeof ConceptBranchesInstallateursRoute
+  '/concept/branches/lokale-diensten': typeof ConceptBranchesLokaleDienstenRoute
+  '/concept/branches/schoonmaakbedrijven': typeof ConceptBranchesSchoonmaakbedrijvenRoute
+  '/concept/branches/sportscholen': typeof ConceptBranchesSportscholenRoute
+  '/concept/branches/zonnepanelen': typeof ConceptBranchesZonnepanelenRoute
+  '/concept/diensten/ai-chatbot': typeof ConceptDienstenAiChatbotRoute
+  '/concept/diensten/automatiseringen': typeof ConceptDienstenAutomatiseringenRoute
+  '/concept/diensten/bedrijfssoftware': typeof ConceptDienstenBedrijfssoftwareRoute
+  '/concept/diensten/content': typeof ConceptDienstenContentRoute
+  '/concept/diensten/huisstijl': typeof ConceptDienstenHuisstijlRoute
+  '/concept/diensten/mobiele-apps': typeof ConceptDienstenMobieleAppsRoute
+  '/concept/diensten/systeemkoppelingen': typeof ConceptDienstenSysteemkoppelingenRoute
+  '/concept/diensten/webapps': typeof ConceptDienstenWebappsRoute
+  '/concept/diensten/webshops': typeof ConceptDienstenWebshopsRoute
+  '/concept/diensten/websites': typeof ConceptDienstenWebsitesRoute
+  '/concept/branches/': typeof ConceptBranchesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/$': typeof SplatRoute
+  '/algemene-voorwaarden': typeof AlgemeneVoorwaardenRoute
+  '/contact': typeof ContactRoute
+  '/gratis-websitescan': typeof GratisWebsitescanRoute
+  '/over-megaonline': typeof OverMegaonlineRoute
+  '/privacyverklaring': typeof PrivacyverklaringRoute
+  '/veelgestelde-vragen': typeof VeelgesteldeVragenRoute
+  '/branches/activiteitenbedrijven': typeof BranchesActiviteitenbedrijvenRoute
+  '/branches/dienstverleners': typeof BranchesDienstverlenersRoute
+  '/branches/non-profits': typeof BranchesNonProfitsRoute
+  '/branches/offerteaanvragen': typeof BranchesOfferteaanvragenRoute
+  '/branches/reserveringen': typeof BranchesReserveringenRoute
+  '/branches/verhuurbedrijven': typeof BranchesVerhuurbedrijvenRoute
+  '/diensten/conversie-website': typeof DienstenConversieWebsiteRoute
+  '/diensten/groei-partnership': typeof DienstenGroeiPartnershipRoute
+  '/diensten/integraties': typeof DienstenIntegratiesRoute
+  '/diensten/seo': typeof DienstenSeoRoute
+  '/diensten/starter-website': typeof DienstenStarterWebsiteRoute
+  '/diensten/website-optimalisatie': typeof DienstenWebsiteOptimalisatieRoute
+  '/diensten/website-redesign': typeof DienstenWebsiteRedesignRoute
+  '/diensten/werken-bij-websites': typeof DienstenWerkenBijWebsitesRoute
+  '/concept/branches/aannemers': typeof ConceptBranchesAannemersRoute
+  '/concept/branches/agencies': typeof ConceptBranchesAgenciesRoute
+  '/concept/branches/bootverhuur': typeof ConceptBranchesBootverhuurRoute
+  '/concept/branches/detailing-wrap': typeof ConceptBranchesDetailingWrapRoute
+  '/concept/branches/installateurs': typeof ConceptBranchesInstallateursRoute
+  '/concept/branches/lokale-diensten': typeof ConceptBranchesLokaleDienstenRoute
+  '/concept/branches/schoonmaakbedrijven': typeof ConceptBranchesSchoonmaakbedrijvenRoute
+  '/concept/branches/sportscholen': typeof ConceptBranchesSportscholenRoute
+  '/concept/branches/zonnepanelen': typeof ConceptBranchesZonnepanelenRoute
+  '/concept/diensten/ai-chatbot': typeof ConceptDienstenAiChatbotRoute
+  '/concept/diensten/automatiseringen': typeof ConceptDienstenAutomatiseringenRoute
+  '/concept/diensten/bedrijfssoftware': typeof ConceptDienstenBedrijfssoftwareRoute
+  '/concept/diensten/content': typeof ConceptDienstenContentRoute
+  '/concept/diensten/huisstijl': typeof ConceptDienstenHuisstijlRoute
+  '/concept/diensten/mobiele-apps': typeof ConceptDienstenMobieleAppsRoute
+  '/concept/diensten/systeemkoppelingen': typeof ConceptDienstenSysteemkoppelingenRoute
+  '/concept/diensten/webapps': typeof ConceptDienstenWebappsRoute
+  '/concept/diensten/webshops': typeof ConceptDienstenWebshopsRoute
+  '/concept/diensten/websites': typeof ConceptDienstenWebsitesRoute
+  '/concept/branches': typeof ConceptBranchesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/$': typeof SplatRoute
+  '/algemene-voorwaarden': typeof AlgemeneVoorwaardenRoute
+  '/contact': typeof ContactRoute
+  '/gratis-websitescan': typeof GratisWebsitescanRoute
+  '/over-megaonline': typeof OverMegaonlineRoute
+  '/privacyverklaring': typeof PrivacyverklaringRoute
+  '/veelgestelde-vragen': typeof VeelgesteldeVragenRoute
+  '/branches/activiteitenbedrijven': typeof BranchesActiviteitenbedrijvenRoute
+  '/branches/dienstverleners': typeof BranchesDienstverlenersRoute
+  '/branches/non-profits': typeof BranchesNonProfitsRoute
+  '/branches/offerteaanvragen': typeof BranchesOfferteaanvragenRoute
+  '/branches/reserveringen': typeof BranchesReserveringenRoute
+  '/branches/verhuurbedrijven': typeof BranchesVerhuurbedrijvenRoute
+  '/diensten/conversie-website': typeof DienstenConversieWebsiteRoute
+  '/diensten/groei-partnership': typeof DienstenGroeiPartnershipRoute
+  '/diensten/integraties': typeof DienstenIntegratiesRoute
+  '/diensten/seo': typeof DienstenSeoRoute
+  '/diensten/starter-website': typeof DienstenStarterWebsiteRoute
+  '/diensten/website-optimalisatie': typeof DienstenWebsiteOptimalisatieRoute
+  '/diensten/website-redesign': typeof DienstenWebsiteRedesignRoute
+  '/diensten/werken-bij-websites': typeof DienstenWerkenBijWebsitesRoute
+  '/concept/branches/aannemers': typeof ConceptBranchesAannemersRoute
+  '/concept/branches/agencies': typeof ConceptBranchesAgenciesRoute
+  '/concept/branches/bootverhuur': typeof ConceptBranchesBootverhuurRoute
+  '/concept/branches/detailing-wrap': typeof ConceptBranchesDetailingWrapRoute
+  '/concept/branches/installateurs': typeof ConceptBranchesInstallateursRoute
+  '/concept/branches/lokale-diensten': typeof ConceptBranchesLokaleDienstenRoute
+  '/concept/branches/schoonmaakbedrijven': typeof ConceptBranchesSchoonmaakbedrijvenRoute
+  '/concept/branches/sportscholen': typeof ConceptBranchesSportscholenRoute
+  '/concept/branches/zonnepanelen': typeof ConceptBranchesZonnepanelenRoute
+  '/concept/diensten/ai-chatbot': typeof ConceptDienstenAiChatbotRoute
+  '/concept/diensten/automatiseringen': typeof ConceptDienstenAutomatiseringenRoute
+  '/concept/diensten/bedrijfssoftware': typeof ConceptDienstenBedrijfssoftwareRoute
+  '/concept/diensten/content': typeof ConceptDienstenContentRoute
+  '/concept/diensten/huisstijl': typeof ConceptDienstenHuisstijlRoute
+  '/concept/diensten/mobiele-apps': typeof ConceptDienstenMobieleAppsRoute
+  '/concept/diensten/systeemkoppelingen': typeof ConceptDienstenSysteemkoppelingenRoute
+  '/concept/diensten/webapps': typeof ConceptDienstenWebappsRoute
+  '/concept/diensten/webshops': typeof ConceptDienstenWebshopsRoute
+  '/concept/diensten/websites': typeof ConceptDienstenWebsitesRoute
+  '/concept/branches/': typeof ConceptBranchesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/$'
+    | '/algemene-voorwaarden'
+    | '/contact'
+    | '/gratis-websitescan'
+    | '/over-megaonline'
+    | '/privacyverklaring'
+    | '/veelgestelde-vragen'
+    | '/branches/activiteitenbedrijven'
+    | '/branches/dienstverleners'
+    | '/branches/non-profits'
+    | '/branches/offerteaanvragen'
+    | '/branches/reserveringen'
+    | '/branches/verhuurbedrijven'
+    | '/diensten/conversie-website'
+    | '/diensten/groei-partnership'
+    | '/diensten/integraties'
+    | '/diensten/seo'
+    | '/diensten/starter-website'
+    | '/diensten/website-optimalisatie'
+    | '/diensten/website-redesign'
+    | '/diensten/werken-bij-websites'
+    | '/concept/branches/aannemers'
+    | '/concept/branches/agencies'
+    | '/concept/branches/bootverhuur'
+    | '/concept/branches/detailing-wrap'
+    | '/concept/branches/installateurs'
+    | '/concept/branches/lokale-diensten'
+    | '/concept/branches/schoonmaakbedrijven'
+    | '/concept/branches/sportscholen'
+    | '/concept/branches/zonnepanelen'
+    | '/concept/diensten/ai-chatbot'
+    | '/concept/diensten/automatiseringen'
+    | '/concept/diensten/bedrijfssoftware'
+    | '/concept/diensten/content'
+    | '/concept/diensten/huisstijl'
+    | '/concept/diensten/mobiele-apps'
+    | '/concept/diensten/systeemkoppelingen'
+    | '/concept/diensten/webapps'
+    | '/concept/diensten/webshops'
+    | '/concept/diensten/websites'
+    | '/concept/branches/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/$'
+    | '/algemene-voorwaarden'
+    | '/contact'
+    | '/gratis-websitescan'
+    | '/over-megaonline'
+    | '/privacyverklaring'
+    | '/veelgestelde-vragen'
+    | '/branches/activiteitenbedrijven'
+    | '/branches/dienstverleners'
+    | '/branches/non-profits'
+    | '/branches/offerteaanvragen'
+    | '/branches/reserveringen'
+    | '/branches/verhuurbedrijven'
+    | '/diensten/conversie-website'
+    | '/diensten/groei-partnership'
+    | '/diensten/integraties'
+    | '/diensten/seo'
+    | '/diensten/starter-website'
+    | '/diensten/website-optimalisatie'
+    | '/diensten/website-redesign'
+    | '/diensten/werken-bij-websites'
+    | '/concept/branches/aannemers'
+    | '/concept/branches/agencies'
+    | '/concept/branches/bootverhuur'
+    | '/concept/branches/detailing-wrap'
+    | '/concept/branches/installateurs'
+    | '/concept/branches/lokale-diensten'
+    | '/concept/branches/schoonmaakbedrijven'
+    | '/concept/branches/sportscholen'
+    | '/concept/branches/zonnepanelen'
+    | '/concept/diensten/ai-chatbot'
+    | '/concept/diensten/automatiseringen'
+    | '/concept/diensten/bedrijfssoftware'
+    | '/concept/diensten/content'
+    | '/concept/diensten/huisstijl'
+    | '/concept/diensten/mobiele-apps'
+    | '/concept/diensten/systeemkoppelingen'
+    | '/concept/diensten/webapps'
+    | '/concept/diensten/webshops'
+    | '/concept/diensten/websites'
+    | '/concept/branches'
+  id:
+    | '__root__'
+    | '/'
+    | '/$'
+    | '/algemene-voorwaarden'
+    | '/contact'
+    | '/gratis-websitescan'
+    | '/over-megaonline'
+    | '/privacyverklaring'
+    | '/veelgestelde-vragen'
+    | '/branches/activiteitenbedrijven'
+    | '/branches/dienstverleners'
+    | '/branches/non-profits'
+    | '/branches/offerteaanvragen'
+    | '/branches/reserveringen'
+    | '/branches/verhuurbedrijven'
+    | '/diensten/conversie-website'
+    | '/diensten/groei-partnership'
+    | '/diensten/integraties'
+    | '/diensten/seo'
+    | '/diensten/starter-website'
+    | '/diensten/website-optimalisatie'
+    | '/diensten/website-redesign'
+    | '/diensten/werken-bij-websites'
+    | '/concept/branches/aannemers'
+    | '/concept/branches/agencies'
+    | '/concept/branches/bootverhuur'
+    | '/concept/branches/detailing-wrap'
+    | '/concept/branches/installateurs'
+    | '/concept/branches/lokale-diensten'
+    | '/concept/branches/schoonmaakbedrijven'
+    | '/concept/branches/sportscholen'
+    | '/concept/branches/zonnepanelen'
+    | '/concept/diensten/ai-chatbot'
+    | '/concept/diensten/automatiseringen'
+    | '/concept/diensten/bedrijfssoftware'
+    | '/concept/diensten/content'
+    | '/concept/diensten/huisstijl'
+    | '/concept/diensten/mobiele-apps'
+    | '/concept/diensten/systeemkoppelingen'
+    | '/concept/diensten/webapps'
+    | '/concept/diensten/webshops'
+    | '/concept/diensten/websites'
+    | '/concept/branches/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  SplatRoute: typeof SplatRoute
+  AlgemeneVoorwaardenRoute: typeof AlgemeneVoorwaardenRoute
+  ContactRoute: typeof ContactRoute
+  GratisWebsitescanRoute: typeof GratisWebsitescanRoute
+  OverMegaonlineRoute: typeof OverMegaonlineRoute
+  PrivacyverklaringRoute: typeof PrivacyverklaringRoute
+  VeelgesteldeVragenRoute: typeof VeelgesteldeVragenRoute
+  BranchesActiviteitenbedrijvenRoute: typeof BranchesActiviteitenbedrijvenRoute
+  BranchesDienstverlenersRoute: typeof BranchesDienstverlenersRoute
+  BranchesNonProfitsRoute: typeof BranchesNonProfitsRoute
+  BranchesOfferteaanvragenRoute: typeof BranchesOfferteaanvragenRoute
+  BranchesReserveringenRoute: typeof BranchesReserveringenRoute
+  BranchesVerhuurbedrijvenRoute: typeof BranchesVerhuurbedrijvenRoute
+  DienstenConversieWebsiteRoute: typeof DienstenConversieWebsiteRoute
+  DienstenGroeiPartnershipRoute: typeof DienstenGroeiPartnershipRoute
+  DienstenIntegratiesRoute: typeof DienstenIntegratiesRoute
+  DienstenSeoRoute: typeof DienstenSeoRoute
+  DienstenStarterWebsiteRoute: typeof DienstenStarterWebsiteRoute
+  DienstenWebsiteOptimalisatieRoute: typeof DienstenWebsiteOptimalisatieRoute
+  DienstenWebsiteRedesignRoute: typeof DienstenWebsiteRedesignRoute
+  DienstenWerkenBijWebsitesRoute: typeof DienstenWerkenBijWebsitesRoute
+  ConceptBranchesAannemersRoute: typeof ConceptBranchesAannemersRoute
+  ConceptBranchesAgenciesRoute: typeof ConceptBranchesAgenciesRoute
+  ConceptBranchesBootverhuurRoute: typeof ConceptBranchesBootverhuurRoute
+  ConceptBranchesDetailingWrapRoute: typeof ConceptBranchesDetailingWrapRoute
+  ConceptBranchesInstallateursRoute: typeof ConceptBranchesInstallateursRoute
+  ConceptBranchesLokaleDienstenRoute: typeof ConceptBranchesLokaleDienstenRoute
+  ConceptBranchesSchoonmaakbedrijvenRoute: typeof ConceptBranchesSchoonmaakbedrijvenRoute
+  ConceptBranchesSportscholenRoute: typeof ConceptBranchesSportscholenRoute
+  ConceptBranchesZonnepanelenRoute: typeof ConceptBranchesZonnepanelenRoute
+  ConceptDienstenAiChatbotRoute: typeof ConceptDienstenAiChatbotRoute
+  ConceptDienstenAutomatiseringenRoute: typeof ConceptDienstenAutomatiseringenRoute
+  ConceptDienstenBedrijfssoftwareRoute: typeof ConceptDienstenBedrijfssoftwareRoute
+  ConceptDienstenContentRoute: typeof ConceptDienstenContentRoute
+  ConceptDienstenHuisstijlRoute: typeof ConceptDienstenHuisstijlRoute
+  ConceptDienstenMobieleAppsRoute: typeof ConceptDienstenMobieleAppsRoute
+  ConceptDienstenSysteemkoppelingenRoute: typeof ConceptDienstenSysteemkoppelingenRoute
+  ConceptDienstenWebappsRoute: typeof ConceptDienstenWebappsRoute
+  ConceptDienstenWebshopsRoute: typeof ConceptDienstenWebshopsRoute
+  ConceptDienstenWebsitesRoute: typeof ConceptDienstenWebsitesRoute
+  ConceptBranchesIndexRoute: typeof ConceptBranchesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/veelgestelde-vragen': {
+      id: '/veelgestelde-vragen'
+      path: '/veelgestelde-vragen'
+      fullPath: '/veelgestelde-vragen'
+      preLoaderRoute: typeof VeelgesteldeVragenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacyverklaring': {
+      id: '/privacyverklaring'
+      path: '/privacyverklaring'
+      fullPath: '/privacyverklaring'
+      preLoaderRoute: typeof PrivacyverklaringRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/over-megaonline': {
+      id: '/over-megaonline'
+      path: '/over-megaonline'
+      fullPath: '/over-megaonline'
+      preLoaderRoute: typeof OverMegaonlineRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gratis-websitescan': {
+      id: '/gratis-websitescan'
+      path: '/gratis-websitescan'
+      fullPath: '/gratis-websitescan'
+      preLoaderRoute: typeof GratisWebsitescanRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/algemene-voorwaarden': {
+      id: '/algemene-voorwaarden'
+      path: '/algemene-voorwaarden'
+      fullPath: '/algemene-voorwaarden'
+      preLoaderRoute: typeof AlgemeneVoorwaardenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/$': {
+      id: '/$'
+      path: '/$'
+      fullPath: '/$'
+      preLoaderRoute: typeof SplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,12 +655,303 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/diensten/werken-bij-websites': {
+      id: '/diensten/werken-bij-websites'
+      path: '/diensten/werken-bij-websites'
+      fullPath: '/diensten/werken-bij-websites'
+      preLoaderRoute: typeof DienstenWerkenBijWebsitesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/diensten/website-redesign': {
+      id: '/diensten/website-redesign'
+      path: '/diensten/website-redesign'
+      fullPath: '/diensten/website-redesign'
+      preLoaderRoute: typeof DienstenWebsiteRedesignRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/diensten/website-optimalisatie': {
+      id: '/diensten/website-optimalisatie'
+      path: '/diensten/website-optimalisatie'
+      fullPath: '/diensten/website-optimalisatie'
+      preLoaderRoute: typeof DienstenWebsiteOptimalisatieRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/diensten/starter-website': {
+      id: '/diensten/starter-website'
+      path: '/diensten/starter-website'
+      fullPath: '/diensten/starter-website'
+      preLoaderRoute: typeof DienstenStarterWebsiteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/diensten/seo': {
+      id: '/diensten/seo'
+      path: '/diensten/seo'
+      fullPath: '/diensten/seo'
+      preLoaderRoute: typeof DienstenSeoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/diensten/integraties': {
+      id: '/diensten/integraties'
+      path: '/diensten/integraties'
+      fullPath: '/diensten/integraties'
+      preLoaderRoute: typeof DienstenIntegratiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/diensten/groei-partnership': {
+      id: '/diensten/groei-partnership'
+      path: '/diensten/groei-partnership'
+      fullPath: '/diensten/groei-partnership'
+      preLoaderRoute: typeof DienstenGroeiPartnershipRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/diensten/conversie-website': {
+      id: '/diensten/conversie-website'
+      path: '/diensten/conversie-website'
+      fullPath: '/diensten/conversie-website'
+      preLoaderRoute: typeof DienstenConversieWebsiteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/branches/verhuurbedrijven': {
+      id: '/branches/verhuurbedrijven'
+      path: '/branches/verhuurbedrijven'
+      fullPath: '/branches/verhuurbedrijven'
+      preLoaderRoute: typeof BranchesVerhuurbedrijvenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/branches/reserveringen': {
+      id: '/branches/reserveringen'
+      path: '/branches/reserveringen'
+      fullPath: '/branches/reserveringen'
+      preLoaderRoute: typeof BranchesReserveringenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/branches/offerteaanvragen': {
+      id: '/branches/offerteaanvragen'
+      path: '/branches/offerteaanvragen'
+      fullPath: '/branches/offerteaanvragen'
+      preLoaderRoute: typeof BranchesOfferteaanvragenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/branches/non-profits': {
+      id: '/branches/non-profits'
+      path: '/branches/non-profits'
+      fullPath: '/branches/non-profits'
+      preLoaderRoute: typeof BranchesNonProfitsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/branches/dienstverleners': {
+      id: '/branches/dienstverleners'
+      path: '/branches/dienstverleners'
+      fullPath: '/branches/dienstverleners'
+      preLoaderRoute: typeof BranchesDienstverlenersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/branches/activiteitenbedrijven': {
+      id: '/branches/activiteitenbedrijven'
+      path: '/branches/activiteitenbedrijven'
+      fullPath: '/branches/activiteitenbedrijven'
+      preLoaderRoute: typeof BranchesActiviteitenbedrijvenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/concept/branches/': {
+      id: '/concept/branches/'
+      path: '/concept/branches'
+      fullPath: '/concept/branches/'
+      preLoaderRoute: typeof ConceptBranchesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/concept/diensten/websites': {
+      id: '/concept/diensten/websites'
+      path: '/concept/diensten/websites'
+      fullPath: '/concept/diensten/websites'
+      preLoaderRoute: typeof ConceptDienstenWebsitesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/concept/diensten/webshops': {
+      id: '/concept/diensten/webshops'
+      path: '/concept/diensten/webshops'
+      fullPath: '/concept/diensten/webshops'
+      preLoaderRoute: typeof ConceptDienstenWebshopsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/concept/diensten/webapps': {
+      id: '/concept/diensten/webapps'
+      path: '/concept/diensten/webapps'
+      fullPath: '/concept/diensten/webapps'
+      preLoaderRoute: typeof ConceptDienstenWebappsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/concept/diensten/systeemkoppelingen': {
+      id: '/concept/diensten/systeemkoppelingen'
+      path: '/concept/diensten/systeemkoppelingen'
+      fullPath: '/concept/diensten/systeemkoppelingen'
+      preLoaderRoute: typeof ConceptDienstenSysteemkoppelingenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/concept/diensten/mobiele-apps': {
+      id: '/concept/diensten/mobiele-apps'
+      path: '/concept/diensten/mobiele-apps'
+      fullPath: '/concept/diensten/mobiele-apps'
+      preLoaderRoute: typeof ConceptDienstenMobieleAppsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/concept/diensten/huisstijl': {
+      id: '/concept/diensten/huisstijl'
+      path: '/concept/diensten/huisstijl'
+      fullPath: '/concept/diensten/huisstijl'
+      preLoaderRoute: typeof ConceptDienstenHuisstijlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/concept/diensten/content': {
+      id: '/concept/diensten/content'
+      path: '/concept/diensten/content'
+      fullPath: '/concept/diensten/content'
+      preLoaderRoute: typeof ConceptDienstenContentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/concept/diensten/bedrijfssoftware': {
+      id: '/concept/diensten/bedrijfssoftware'
+      path: '/concept/diensten/bedrijfssoftware'
+      fullPath: '/concept/diensten/bedrijfssoftware'
+      preLoaderRoute: typeof ConceptDienstenBedrijfssoftwareRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/concept/diensten/automatiseringen': {
+      id: '/concept/diensten/automatiseringen'
+      path: '/concept/diensten/automatiseringen'
+      fullPath: '/concept/diensten/automatiseringen'
+      preLoaderRoute: typeof ConceptDienstenAutomatiseringenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/concept/diensten/ai-chatbot': {
+      id: '/concept/diensten/ai-chatbot'
+      path: '/concept/diensten/ai-chatbot'
+      fullPath: '/concept/diensten/ai-chatbot'
+      preLoaderRoute: typeof ConceptDienstenAiChatbotRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/concept/branches/zonnepanelen': {
+      id: '/concept/branches/zonnepanelen'
+      path: '/concept/branches/zonnepanelen'
+      fullPath: '/concept/branches/zonnepanelen'
+      preLoaderRoute: typeof ConceptBranchesZonnepanelenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/concept/branches/sportscholen': {
+      id: '/concept/branches/sportscholen'
+      path: '/concept/branches/sportscholen'
+      fullPath: '/concept/branches/sportscholen'
+      preLoaderRoute: typeof ConceptBranchesSportscholenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/concept/branches/schoonmaakbedrijven': {
+      id: '/concept/branches/schoonmaakbedrijven'
+      path: '/concept/branches/schoonmaakbedrijven'
+      fullPath: '/concept/branches/schoonmaakbedrijven'
+      preLoaderRoute: typeof ConceptBranchesSchoonmaakbedrijvenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/concept/branches/lokale-diensten': {
+      id: '/concept/branches/lokale-diensten'
+      path: '/concept/branches/lokale-diensten'
+      fullPath: '/concept/branches/lokale-diensten'
+      preLoaderRoute: typeof ConceptBranchesLokaleDienstenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/concept/branches/installateurs': {
+      id: '/concept/branches/installateurs'
+      path: '/concept/branches/installateurs'
+      fullPath: '/concept/branches/installateurs'
+      preLoaderRoute: typeof ConceptBranchesInstallateursRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/concept/branches/detailing-wrap': {
+      id: '/concept/branches/detailing-wrap'
+      path: '/concept/branches/detailing-wrap'
+      fullPath: '/concept/branches/detailing-wrap'
+      preLoaderRoute: typeof ConceptBranchesDetailingWrapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/concept/branches/bootverhuur': {
+      id: '/concept/branches/bootverhuur'
+      path: '/concept/branches/bootverhuur'
+      fullPath: '/concept/branches/bootverhuur'
+      preLoaderRoute: typeof ConceptBranchesBootverhuurRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/concept/branches/agencies': {
+      id: '/concept/branches/agencies'
+      path: '/concept/branches/agencies'
+      fullPath: '/concept/branches/agencies'
+      preLoaderRoute: typeof ConceptBranchesAgenciesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/concept/branches/aannemers': {
+      id: '/concept/branches/aannemers'
+      path: '/concept/branches/aannemers'
+      fullPath: '/concept/branches/aannemers'
+      preLoaderRoute: typeof ConceptBranchesAannemersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  SplatRoute: SplatRoute,
+  AlgemeneVoorwaardenRoute: AlgemeneVoorwaardenRoute,
+  ContactRoute: ContactRoute,
+  GratisWebsitescanRoute: GratisWebsitescanRoute,
+  OverMegaonlineRoute: OverMegaonlineRoute,
+  PrivacyverklaringRoute: PrivacyverklaringRoute,
+  VeelgesteldeVragenRoute: VeelgesteldeVragenRoute,
+  BranchesActiviteitenbedrijvenRoute: BranchesActiviteitenbedrijvenRoute,
+  BranchesDienstverlenersRoute: BranchesDienstverlenersRoute,
+  BranchesNonProfitsRoute: BranchesNonProfitsRoute,
+  BranchesOfferteaanvragenRoute: BranchesOfferteaanvragenRoute,
+  BranchesReserveringenRoute: BranchesReserveringenRoute,
+  BranchesVerhuurbedrijvenRoute: BranchesVerhuurbedrijvenRoute,
+  DienstenConversieWebsiteRoute: DienstenConversieWebsiteRoute,
+  DienstenGroeiPartnershipRoute: DienstenGroeiPartnershipRoute,
+  DienstenIntegratiesRoute: DienstenIntegratiesRoute,
+  DienstenSeoRoute: DienstenSeoRoute,
+  DienstenStarterWebsiteRoute: DienstenStarterWebsiteRoute,
+  DienstenWebsiteOptimalisatieRoute: DienstenWebsiteOptimalisatieRoute,
+  DienstenWebsiteRedesignRoute: DienstenWebsiteRedesignRoute,
+  DienstenWerkenBijWebsitesRoute: DienstenWerkenBijWebsitesRoute,
+  ConceptBranchesAannemersRoute: ConceptBranchesAannemersRoute,
+  ConceptBranchesAgenciesRoute: ConceptBranchesAgenciesRoute,
+  ConceptBranchesBootverhuurRoute: ConceptBranchesBootverhuurRoute,
+  ConceptBranchesDetailingWrapRoute: ConceptBranchesDetailingWrapRoute,
+  ConceptBranchesInstallateursRoute: ConceptBranchesInstallateursRoute,
+  ConceptBranchesLokaleDienstenRoute: ConceptBranchesLokaleDienstenRoute,
+  ConceptBranchesSchoonmaakbedrijvenRoute:
+    ConceptBranchesSchoonmaakbedrijvenRoute,
+  ConceptBranchesSportscholenRoute: ConceptBranchesSportscholenRoute,
+  ConceptBranchesZonnepanelenRoute: ConceptBranchesZonnepanelenRoute,
+  ConceptDienstenAiChatbotRoute: ConceptDienstenAiChatbotRoute,
+  ConceptDienstenAutomatiseringenRoute: ConceptDienstenAutomatiseringenRoute,
+  ConceptDienstenBedrijfssoftwareRoute: ConceptDienstenBedrijfssoftwareRoute,
+  ConceptDienstenContentRoute: ConceptDienstenContentRoute,
+  ConceptDienstenHuisstijlRoute: ConceptDienstenHuisstijlRoute,
+  ConceptDienstenMobieleAppsRoute: ConceptDienstenMobieleAppsRoute,
+  ConceptDienstenSysteemkoppelingenRoute:
+    ConceptDienstenSysteemkoppelingenRoute,
+  ConceptDienstenWebappsRoute: ConceptDienstenWebappsRoute,
+  ConceptDienstenWebshopsRoute: ConceptDienstenWebshopsRoute,
+  ConceptDienstenWebsitesRoute: ConceptDienstenWebsitesRoute,
+  ConceptBranchesIndexRoute: ConceptBranchesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

@@ -1,0 +1,5 @@
+/* Pagina-specifieke stijlen uit "MegaOnline Homepage.html". */
+
+[data-page="index"] .quote__logo { flex: none; }
+[data-page="index"] .quote__logo .mediaslot { width: 130px; height: 38px; display: block; }
+  

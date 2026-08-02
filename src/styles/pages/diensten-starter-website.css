@@ -1,0 +1,15 @@
+/* Pagina-specifieke stijlen uit "Starter Website.html". */
+
+[data-page="diensten-starter-website"] .price-wrap { display: grid; grid-template-columns: 1fr 0.92fr; gap: clamp(34px, 4.5vw, 68px); margin-top: clamp(38px, 4vw, 52px); align-items: start; }
+[data-page="diensten-starter-website"] .price-card { border: 1px solid color-mix(in oklab, var(--accent-text) 32%, var(--line)); border-radius: 18px; background: var(--card-2); box-shadow: var(--elev); padding: clamp(28px, 3vw, 44px); }
+[data-page="diensten-starter-website"] .price-card__tag { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent-text); }
+[data-page="diensten-starter-website"] .price-card__amount { display: flex; align-items: baseline; gap: 10px; margin-top: 14px; }
+[data-page="diensten-starter-website"] .price-card__from { font-family: var(--mono); font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--faint); }
+[data-page="diensten-starter-website"] .price-card__num { font-family: var(--display); font-weight: 700; font-size: clamp(2.6rem, 5vw, 3.8rem); letter-spacing: -0.03em; line-height: 1; }
+[data-page="diensten-starter-website"] .price-card__note { color: var(--muted); font-size: 0.95rem; line-height: 1.55; margin-top: 16px; }
+[data-page="diensten-starter-website"] .price-card__list { list-style: none; padding: 0; margin: 24px 0 0; display: grid; gap: 13px; border-top: 1px solid var(--line); padding-top: 24px; }
+[data-page="diensten-starter-website"] .price-card__list li { display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: start; color: var(--fg); font-size: 0.97rem; line-height: 1.45; }
+[data-page="diensten-starter-website"] .price-card__list li .ic { width: 22px; height: 22px; border-radius: 50%; flex: none; display: grid; place-items: center; font-size: 0.8rem; margin-top: 1px; background: var(--accent-strong); color: var(--accent-ink); font-weight: 700; }
+[data-page="diensten-starter-website"] .price-card .btn { margin-top: 26px; width: 100%; justify-content: center; }
+[data-page="diensten-starter-website"] .price-card__fine { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.04em; color: var(--faint); line-height: 1.6; margin-top: 16px; text-align: center; }
+  @media (max-width: 860px) {[data-page="diensten-starter-website"] .price-wrap { grid-template-columns: 1fr; gap: 32px; } }

@@ -1,0 +1,123 @@
+/* =========================================================================
+   MegaOnline.io — Gratis Websitescan funnel (landing page)
+   Reuses styles.css tokens + conversie.css (.iconbox/.featgrid/.feat/.pullnote)
+   + over.css (.process/.compare/.founder). Funnel-specific blocks below.
+   ========================================================================= */
+
+/* ---------- Minimal funnel nav ---------- */
+.fnav .nav__inner { justify-content: space-between; }
+.fnav__back {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--sans); font-size: 0.9rem; font-weight: 500;
+  color: oklch(0.78 0.014 130); padding: 9px 14px; border-radius: 9px;
+  transition: color .2s, background .2s;
+}
+.fnav__back:hover { color: oklch(0.97 0.010 95); background: rgba(255,255,255,.05); }
+
+/* trust strip under hero headline */
+.ftrust { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: clamp(22px, 2.6vw, 30px); }
+.ftrust span { display: inline-flex; align-items: center; gap: 9px; font-size: 0.94rem; color: var(--muted); }
+.ftrust span::before { content: "✓"; color: var(--accent-text); font-weight: 700; }
+
+/* ---------- Hero: copy+form left, preview right ---------- */
+.fhero { padding-top: clamp(120px, 16vh, 172px); padding-bottom: clamp(50px, 6vw, 84px); }
+.fhero__grid { display: grid; grid-template-columns: 1.04fr 0.96fr; gap: clamp(36px, 5vw, 76px); align-items: start; }
+.fhero h1.display { font-size: clamp(2.3rem, 4.6vw, 4rem); max-width: 16ch; }
+.fhero__sub { margin-top: clamp(18px, 2.4vw, 28px); max-width: 52ch; }
+.fhero__form { margin-top: clamp(26px, 3vw, 34px); }
+
+/* ---------- Form card (single step) ---------- */
+.scanform { border: 1px solid var(--line); border-radius: 18px; background: var(--card); box-shadow: var(--elev); padding: clamp(24px, 2.6vw, 34px); }
+.scanform .form__inner { display: block; }
+.scanform h3 { font-family: var(--display); font-weight: 600; font-size: clamp(1.3rem, 1.9vw, 1.7rem); letter-spacing: -0.02em; }
+.scanform > .form__inner > p { color: var(--muted); font-size: 0.96rem; margin: 8px 0 22px; line-height: 1.5; }
+.scanform .form__head-note { display: inline-flex; align-items: center; gap: 9px; font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent-text); margin-bottom: 14px; }
+.scanform .dotmini { width: 7px; height: 7px; border-radius: 50%; background: var(--accent-text); display: inline-block; }
+.scanform.sent .form__inner { display: none; }
+.scanform.sent .form__ok { display: block; }
+.scanform .form__ok { display: none; text-align: center; padding: 18px 6px; }
+.scanform .form__ok .ic { width: 52px; height: 52px; border-radius: 50%; background: var(--accent-strong); color: var(--accent-ink); display: grid; place-items: center; margin: 0 auto 16px; font-size: 1.4rem; }
+.scanform .form__ok h3 { font-size: 1.3rem; }
+.scanform .form__ok p { color: var(--muted); margin-top: 10px; line-height: 1.5; }
+
+/* ---------- Hero preview: example scorecard ---------- */
+.preview { border: 1px solid var(--line); border-radius: 18px; background: var(--card-2); box-shadow: var(--elev); overflow: hidden; }
+.preview__bar { display: flex; align-items: center; gap: 8px; padding: 14px 18px; border-bottom: 1px solid var(--line); }
+.preview__dots { display: flex; gap: 6px; }
+.preview__dots i { width: 10px; height: 10px; border-radius: 50%; background: color-mix(in oklab, var(--fg) 18%, transparent); }
+.preview__bar .tag { margin-left: auto; font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--faint); }
+.preview__body { padding: clamp(20px, 2.2vw, 28px); }
+.preview__title { font-family: var(--display); font-weight: 600; font-size: 1.05rem; letter-spacing: -0.02em; }
+.preview__sub { font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--faint); margin-top: 4px; }
+.scorerow { display: grid; grid-template-columns: 1.1fr 1.4fr auto; align-items: center; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+.scorerow:last-of-type { border-bottom: 0; }
+.scorerow__label { font-size: 0.92rem; font-weight: 500; }
+.meter { height: 7px; border-radius: 7px; background: color-mix(in oklab, var(--fg) 8%, transparent); overflow: hidden; }
+.meter i { display: block; height: 100%; border-radius: 7px; background: var(--accent-strong); }
+.meter.low i { background: oklch(0.62 0.16 28); }
+.meter.mid i { background: oklch(0.74 0.13 70); }
+.scorerow__val { font-family: var(--mono); font-size: 0.72rem; color: var(--muted); letter-spacing: 0.04em; }
+.preview__note { margin-top: 18px; display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; border-radius: 12px; background: color-mix(in oklab, var(--accent-text) 8%, transparent); border: 1px solid color-mix(in oklab, var(--accent-text) 24%, var(--line)); }
+.preview__note .q { width: 26px; height: 26px; border-radius: 50%; flex: none; display: grid; place-items: center; background: var(--accent-strong); color: var(--accent-ink); font-size: 0.85rem; }
+.preview__note p { font-size: 0.88rem; line-height: 1.45; color: var(--fg); }
+.preview__note b { color: var(--accent-text); }
+
+/* ---------- Section "wat we beoordelen" — check grid ---------- */
+.assess { display: grid; grid-template-columns: repeat(5, 1fr); gap: clamp(12px, 1.4vw, 16px); margin-top: clamp(38px, 4vw, 52px); }
+.acell { border: 1px solid var(--line); border-radius: 14px; background: var(--card); padding: clamp(16px, 1.7vw, 22px); display: flex; flex-direction: column; gap: 12px; transition: border-color .3s, transform .3s; }
+.acell:hover { transform: translateY(-3px); border-color: var(--line-strong); }
+.acell__ic { width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center; background: color-mix(in oklab, var(--accent-text) 12%, transparent); border: 1px solid color-mix(in oklab, var(--accent-text) 26%, var(--line)); }
+.acell__ic svg { width: 17px; height: 17px; stroke: var(--accent-text); stroke-width: 1.7; fill: none; }
+.acell h4 { font-family: var(--display); font-weight: 600; font-size: 0.98rem; letter-spacing: -0.02em; line-height: 1.15; }
+
+/* ---------- Section "voor wie" — audience cards ---------- */
+.audience { display: grid; grid-template-columns: repeat(5, 1fr); gap: clamp(12px, 1.4vw, 16px); margin-top: clamp(38px, 4vw, 52px); }
+.aud { border: 1px solid var(--line); border-radius: 16px; background: var(--card); padding: clamp(20px, 2vw, 26px); display: flex; flex-direction: column; gap: 14px; transition: border-color .3s, transform .3s; }
+.aud:hover { transform: translateY(-4px); border-color: var(--line-strong); }
+.aud__ic { width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center; background: color-mix(in oklab, var(--accent-text) 12%, transparent); border: 1px solid color-mix(in oklab, var(--accent-text) 26%, var(--line)); }
+.aud__ic svg { width: 22px; height: 22px; stroke: var(--accent-text); stroke-width: 1.6; fill: none; }
+.aud h4 { font-family: var(--display); font-weight: 600; font-size: 1.05rem; letter-spacing: -0.02em; line-height: 1.15; }
+.aud p { color: var(--muted); font-size: 0.85rem; line-height: 1.45; }
+
+/* ---------- Section "waarom gratis" ---------- */
+.whyfree { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(34px, 4.5vw, 68px); margin-top: clamp(38px, 4vw, 52px); align-items: center; }
+.whyfree__txt h3 { font-size: clamp(1.4rem, 2.1vw, 2rem); letter-spacing: -0.02em; line-height: 1.12; }
+.whyfree__txt p { color: var(--muted); line-height: 1.65; margin-top: 16px; }
+.whyfree__re { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+.whyfree__re span { display: inline-flex; align-items: center; gap: 9px; border: 1px solid var(--line); border-radius: 100px; background: var(--card); padding: 9px 16px; font-size: 0.9rem; font-weight: 500; }
+.whyfree__re svg { width: 15px; height: 15px; stroke: var(--accent-text); stroke-width: 1.8; fill: none; }
+.whyfree__card { border: 1px solid color-mix(in oklab, var(--accent-text) 26%, var(--line)); border-radius: 20px; background: var(--card-2); box-shadow: var(--elev); padding: clamp(28px, 3vw, 44px); }
+.whyfree__card .big { font-family: var(--display); font-weight: 600; font-size: clamp(2.4rem, 4vw, 3.4rem); letter-spacing: -0.03em; line-height: 0.95; color: var(--accent-text); }
+.whyfree__card .cap { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--faint); margin-top: 8px; }
+.whyfree__card p { color: var(--muted); line-height: 1.6; margin-top: 18px; }
+
+/* ---------- Final CTA: copy + form ---------- */
+.fendcta { display: grid; grid-template-columns: 1.02fr 0.98fr; gap: clamp(40px, 6vw, 84px); align-items: center; }
+.fendcta__copy h2.display { font-size: clamp(2.1rem, 4.2vw, 3.6rem); max-width: 16ch; }
+.fendcta__copy .lead { margin-top: 20px; max-width: 46ch; }
+.fendcta__copy .ftrust { margin-top: 26px; }
+
+/* ---------- Slim funnel footer ---------- */
+.ffooter { border-top: 1px solid var(--line); padding: clamp(28px, 3vw, 40px) 0; }
+.ffooter .wrap { display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap; }
+.ffooter__copy { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.04em; color: var(--faint); }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1080px) {
+  .fhero__grid { grid-template-columns: 1fr; }
+  .fhero__preview { max-width: 560px; }
+  .assess { grid-template-columns: repeat(3, 1fr); }
+  .audience { grid-template-columns: repeat(3, 1fr); }
+  .whyfree { grid-template-columns: 1fr; gap: 28px; }
+  .fendcta { grid-template-columns: 1fr; }
+}
+@media (max-width: 680px) {
+  .assess { grid-template-columns: 1fr 1fr; }
+  .audience { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 460px) {
+  .assess { grid-template-columns: 1fr; }
+  .audience { grid-template-columns: 1fr; }
+  .scorerow { grid-template-columns: 1fr auto; }
+  .scorerow .meter { display: none; }
+}

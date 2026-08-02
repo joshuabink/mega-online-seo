@@ -1,0 +1,139 @@
+/* =========================================================================
+   MegaOnline.io — "Over MegaOnline" page
+   Page-specific premium blocks. Reuses styles.css tokens, concepts.css,
+   and conversie.css helpers (.shead, .iconbox, .pullnote, .featgrid,
+   .feat, .svc-hero, .hvis, .cases, .flaw ...). Everything theme-aware.
+   ========================================================================= */
+
+/* ---------- Section 2 — Ethos statement (big belief card) ---------- */
+.ethos { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: clamp(20px, 2.4vw, 30px); margin-top: clamp(38px, 4vw, 52px); align-items: stretch; }
+.ethos__card {
+  border: 1px solid color-mix(in oklab, var(--accent-text) 26%, var(--line));
+  border-radius: 20px; background: var(--card-2); box-shadow: var(--elev);
+  padding: clamp(30px, 3.2vw, 48px); display: flex; flex-direction: column; gap: 20px;
+}
+.ethos__mark { font-family: var(--display); font-weight: 600; font-size: 3.4rem; line-height: 0.7; color: var(--accent-text); height: 28px; }
+.ethos__card h3 { font-size: clamp(1.55rem, 2.5vw, 2.35rem); letter-spacing: -0.02em; line-height: 1.12; }
+.ethos__card p { color: var(--muted); line-height: 1.65; font-size: 1.02rem; max-width: 46ch; }
+.ethos__pull {
+  margin-top: auto; font-family: var(--display); font-weight: 600; letter-spacing: -0.02em;
+  font-size: clamp(1.05rem, 1.5vw, 1.28rem); line-height: 1.3;
+}
+.ethos__pull em { font-style: normal; color: var(--accent-text); }
+.ethos__mini { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(12px, 1.4vw, 16px); }
+.ethos__mini .emini {
+  border: 1px solid var(--line); border-radius: 14px; background: var(--card);
+  padding: clamp(16px, 1.7vw, 22px); display: flex; flex-direction: column; gap: 10px;
+  transition: border-color .3s, transform .3s;
+}
+.ethos__mini .emini:hover { transform: translateY(-3px); border-color: var(--line-strong); }
+.emini .iconbox--sm { background: transparent; border-color: var(--line-strong); }
+.emini h4 { font-family: var(--display); font-weight: 600; font-size: 1rem; letter-spacing: -0.02em; line-height: 1.15; }
+.emini p { color: var(--muted); font-size: 0.86rem; line-height: 1.45; }
+
+/* ---------- Section 3 — Process (4 connected steps) ---------- */
+.process { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(14px, 1.6vw, 20px); margin-top: clamp(38px, 4vw, 52px); position: relative; }
+.pstep {
+  border: 1px solid var(--line); border-radius: 16px; background: var(--card); box-shadow: var(--elev);
+  padding: clamp(22px, 2.2vw, 30px); display: flex; flex-direction: column; gap: 14px;
+  position: relative; transition: border-color .3s, transform .3s;
+}
+.pstep:hover { transform: translateY(-4px); border-color: var(--line-strong); }
+.pstep__no { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent-text); }
+.pstep h3 { font-family: var(--display); font-weight: 600; font-size: clamp(1.2rem, 1.7vw, 1.5rem); letter-spacing: -0.02em; line-height: 1.1; }
+.pstep p { color: var(--muted); font-size: 0.92rem; line-height: 1.55; }
+.pstep__arrow { position: absolute; right: -13px; top: 50%; transform: translateY(-50%); z-index: 2; color: var(--accent-text); font-size: 1.1rem; background: var(--bg); width: 26px; height: 26px; display: grid; place-items: center; border-radius: 50%; }
+.pstep:last-child .pstep__arrow { display: none; }
+.process__note { margin-top: clamp(22px, 2.4vw, 30px); }
+
+/* ---------- Section 5 — Compare (standaard vs MegaOnline) ---------- */
+.compare { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(18px, 2.2vw, 28px); margin-top: clamp(38px, 4vw, 52px); align-items: stretch; }
+.cmp { border: 1px solid var(--line); border-radius: 18px; padding: clamp(26px, 2.8vw, 40px); display: flex; flex-direction: column; gap: 18px; background: var(--card); }
+.cmp__tag { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--faint); }
+.cmp h3 { font-family: var(--display); font-weight: 600; font-size: clamp(1.25rem, 1.9vw, 1.6rem); letter-spacing: -0.02em; line-height: 1.1; }
+.cmp__list { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+.cmp__list li { display: grid; grid-template-columns: auto 1fr; gap: 13px; align-items: start; color: var(--muted); font-size: 0.98rem; line-height: 1.45; }
+.cmp__list li .ic { width: 22px; height: 22px; border-radius: 50%; flex: none; display: grid; place-items: center; font-size: 0.8rem; margin-top: 1px; }
+.cmp--plain { background: var(--card); }
+.cmp--plain .cmp__list li .ic { background: color-mix(in oklab, var(--fg) 8%, transparent); color: var(--faint); border: 1px solid var(--line); }
+.cmp--us { background: var(--card-2); border-color: color-mix(in oklab, var(--accent-text) 32%, var(--line)); position: relative; box-shadow: var(--elev); }
+.cmp--us .cmp__tag { color: var(--accent-text); }
+.cmp--us .cmp__list li { color: var(--fg); }
+.cmp--us .cmp__list li .ic { background: var(--accent-strong); color: var(--accent-ink); }
+.cmp__badge { position: absolute; top: clamp(22px,2.4vw,30px); right: clamp(22px,2.4vw,30px); font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent-text); border: 1px solid color-mix(in oklab, var(--accent-text) 40%, transparent); border-radius: 100px; padding: 5px 11px; }
+
+/* ---------- Section 6 — Vision (honest roadmap) ---------- */
+/* Scoped to the Over-variant (which always contains .vision__txt) so it cannot
+   override the styles.css .vision used on de homepage / Groei Partnership,
+   waar over.css vroeger niet werd ingeladen. */
+.vision:has(.vision__txt) { display: grid; grid-template-columns: 0.82fr 1.18fr; gap: clamp(34px, 4.5vw, 68px); margin-top: clamp(38px, 4vw, 52px); align-items: center; }
+.vision__txt h3 { font-size: clamp(1.4rem, 2.1vw, 2rem); letter-spacing: -0.02em; line-height: 1.12; }
+.vision__txt p { color: var(--muted); line-height: 1.65; margin-top: 16px; }
+.vision__txt .honest { margin-top: 20px; font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.04em; color: var(--faint); line-height: 1.6; border-left: 2px solid color-mix(in oklab, var(--accent-text) 50%, var(--line)); padding-left: 16px; }
+.vtrack { display: flex; flex-direction: column; gap: 12px; }
+.vrow { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 18px; border: 1px solid var(--line); border-radius: 14px; background: var(--card); padding: 16px 20px; transition: border-color .3s, transform .3s; }
+.vrow:hover { transform: translateX(4px); border-color: var(--line-strong); }
+.vrow__ico { width: 42px; height: 42px; border-radius: 11px; flex: none; display: grid; place-items: center; background: color-mix(in oklab, var(--accent-text) 12%, transparent); border: 1px solid color-mix(in oklab, var(--accent-text) 26%, var(--line)); }
+.vrow__ico svg { width: 20px; height: 20px; stroke: var(--accent-text); stroke-width: 1.6; fill: none; }
+.vrow__txt h4 { font-family: var(--display); font-weight: 600; font-size: 1.08rem; letter-spacing: -0.02em; }
+.vrow__txt p { color: var(--muted); font-size: 0.88rem; line-height: 1.4; margin-top: 3px; }
+.vrow__when { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 11px; border-radius: 100px; white-space: nowrap; }
+.vrow__when.nu { background: var(--accent-strong); color: var(--accent-ink); }
+.vrow__when.next { background: transparent; border: 1px solid var(--line-strong); color: var(--faint); }
+
+/* ---------- Section 7 — Founder ---------- */
+.founder { display: grid; grid-template-columns: 0.82fr 1.18fr; gap: clamp(34px, 4.5vw, 64px); margin-top: clamp(38px, 4vw, 52px); align-items: center; }
+.founder__media { position: relative; }
+.founder__portrait { aspect-ratio: 4 / 5; border-radius: 20px; overflow: hidden; border: 1px solid var(--line); background: var(--card-2); box-shadow: var(--elev); }
+.founder__sig { position: absolute; right: -14px; bottom: -14px; background: var(--card-2); border: 1px solid var(--line-strong); border-radius: 14px; padding: 14px 18px; box-shadow: 0 24px 50px -22px rgba(0,0,0,.55); }
+.founder__sig .nm { font-family: var(--display); font-weight: 600; font-size: 1.05rem; letter-spacing: -0.01em; }
+.founder__sig .rl { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--faint); margin-top: 3px; }
+.founder__body h3 { font-size: clamp(1.5rem, 2.3vw, 2.2rem); letter-spacing: -0.02em; line-height: 1.12; }
+.founder__body p { color: var(--muted); line-height: 1.65; margin-top: 16px; max-width: 52ch; }
+.founder__body p em { font-style: normal; color: var(--fg); font-weight: 500; }
+.traits { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+.trait { display: inline-flex; align-items: center; gap: 9px; border: 1px solid var(--line); border-radius: 100px; background: var(--card); padding: 9px 15px; font-size: 0.9rem; font-weight: 500; }
+.trait svg { width: 15px; height: 15px; stroke: var(--accent-text); stroke-width: 1.8; fill: none; }
+
+/* ---------- Section 8 — Journey flow ---------- */
+.journey { display: grid; grid-template-columns: repeat(5, 1fr); gap: clamp(10px, 1.2vw, 14px); margin-top: clamp(38px, 4vw, 52px); }
+.jnode { border: 1px solid var(--line); border-radius: 14px; background: var(--card); padding: clamp(18px, 1.8vw, 24px) clamp(14px, 1.4vw, 18px); display: flex; flex-direction: column; gap: 11px; position: relative; transition: border-color .3s, transform .3s; }
+.jnode:hover { transform: translateY(-3px); border-color: var(--line-strong); }
+.jnode__ico { width: 40px; height: 40px; border-radius: 11px; display: grid; place-items: center; background: color-mix(in oklab, var(--accent-text) 12%, transparent); border: 1px solid color-mix(in oklab, var(--accent-text) 26%, var(--line)); }
+.jnode__ico svg { width: 19px; height: 19px; stroke: var(--accent-text); stroke-width: 1.6; fill: none; }
+.jnode__step { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--faint); }
+.jnode h4 { font-family: var(--display); font-weight: 600; font-size: 1.05rem; letter-spacing: -0.02em; line-height: 1.1; }
+.jnode p { color: var(--muted); font-size: 0.82rem; line-height: 1.45; }
+.jnode--last { background: var(--card-2); border-color: color-mix(in oklab, var(--accent-text) 32%, var(--line)); }
+.jnode__arrow { position: absolute; right: -10px; top: 38px; z-index: 2; color: var(--accent-text); font-size: 0.95rem; background: var(--bg); width: 22px; height: 22px; display: grid; place-items: center; border-radius: 50%; }
+.jnode:last-child .jnode__arrow { display: none; }
+.journey__note { margin-top: clamp(22px, 2.4vw, 30px); display: flex; align-items: center; gap: 14px; color: var(--muted); font-size: 0.96rem; line-height: 1.5; }
+.journey__note .iconbox--sm { background: transparent; border-color: var(--line-strong); }
+
+/* ---------- Section 10 — Final CTA (centered card) ---------- */
+.overcta { max-width: 920px; margin: 0 auto; text-align: center; border: 1px solid var(--line); border-radius: 24px; background: var(--card-2); box-shadow: var(--elev); padding: clamp(40px, 5vw, 72px) clamp(28px, 4vw, 64px); }
+.overcta h2.display { font-size: clamp(2rem, 4vw, 3.4rem); max-width: 18ch; margin: 0 auto; }
+.overcta .lead { margin: 20px auto 0; max-width: 46ch; }
+.overcta__ctas { margin-top: clamp(28px, 3.2vw, 38px); display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+.overcta__trust { margin-top: 26px; display: flex; flex-wrap: wrap; gap: 10px 22px; justify-content: center; }
+.overcta__trust span { display: inline-flex; align-items: center; gap: 9px; font-size: 0.92rem; color: var(--muted); }
+.overcta__trust span::before { content: "✓"; color: var(--accent-text); font-weight: 700; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1080px) {
+  .ethos { grid-template-columns: 1fr; }
+  .process { grid-template-columns: 1fr 1fr; }
+  .pstep__arrow { display: none; }
+  .compare { grid-template-columns: 1fr; }
+  .vision:has(.vision__txt) { grid-template-columns: 1fr; gap: 28px; }
+  .founder { grid-template-columns: 1fr; gap: 28px; }
+  .founder__media { max-width: 420px; }
+  .journey { grid-template-columns: 1fr 1fr 1fr; }
+  .jnode__arrow { display: none; }
+}
+@media (max-width: 620px) {
+  .ethos__mini { grid-template-columns: 1fr; }
+  .process { grid-template-columns: 1fr; }
+  .journey { grid-template-columns: 1fr; }
+  .traits { gap: 8px; }
+}
