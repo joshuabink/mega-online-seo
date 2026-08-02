@@ -1,0 +1,12 @@
+/* Wrapper voor de legacy concept-pagina's.
+
+   Deze pagina's komen uit de eerdere ontwerprichting (Caveat + DM Sans, vlak
+   groen op crème) en staan los van het huidige design system. Hun volledige
+   stylesheet is bij het genereren onder `.legacy-concept` gescoped, zodat de
+   twee systemen elkaar niet raken. Deze regels geven de wrapper de rol die
+   `body` in het origineel had. */
+.legacy-concept {
+  min-height: 100vh;
+  position: relative;
+  isolation: isolate;
+}

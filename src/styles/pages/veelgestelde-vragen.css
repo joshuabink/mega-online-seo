@@ -1,0 +1,15 @@
+/* Pagina-specifieke stijlen uit "Veelgestelde Vragen.html". */
+[data-page="veelgestelde-vragen"] .faqp { padding-top: clamp(116px, 13vh, 168px); }
+[data-page="veelgestelde-vragen"] .faqp__head { max-width: 760px; }
+[data-page="veelgestelde-vragen"] .faqp__head h1 { font-family: var(--display); font-weight: 700; font-size: clamp(2.3rem, 5vw, 3.6rem); letter-spacing: -0.03em; line-height: 1.03; }
+[data-page="veelgestelde-vragen"] .faqp__lead { color: var(--muted); font-size: 1.1rem; line-height: 1.6; margin-top: 18px; max-width: 60ch; }
+[data-page="veelgestelde-vragen"] .faqp__nav { display: flex; flex-wrap: wrap; gap: 10px; margin-top: clamp(30px, 3.5vw, 44px); }
+[data-page="veelgestelde-vragen"] .faqp__chip { display: inline-flex; align-items: center; gap: 8px; padding: 9px 15px; border-radius: 100px; border: 1px solid var(--line-strong); color: var(--fg); font-size: 0.9rem; font-weight: 500; text-decoration: none; transition: border-color .25s, background .25s, color .25s; }
+[data-page="veelgestelde-vragen"] .faqp__chip:hover { border-color: var(--accent-strong); color: var(--accent-text); }
+[data-page="veelgestelde-vragen"] .faqp__chip i { width: 16px; height: 16px; }
+[data-page="veelgestelde-vragen"] .faqp__cat { margin-top: clamp(48px, 6vw, 80px); scroll-margin-top: 96px; }
+[data-page="veelgestelde-vragen"] .faqp__cat-head { display: flex; align-items: center; gap: 14px; margin-bottom: clamp(18px, 2vw, 26px); }
+[data-page="veelgestelde-vragen"] .faqp__cat-head .iconbox { flex: none; }
+[data-page="veelgestelde-vragen"] .faqp__cat-head h2 { font-family: var(--display); font-weight: 600; font-size: clamp(1.5rem, 2.6vw, 2rem); letter-spacing: -0.02em; }
+[data-page="veelgestelde-vragen"] .faqp .faq { max-width: 860px; }
+[data-page="veelgestelde-vragen"] .faqp__cta { margin-top: clamp(56px, 7vw, 92px); }

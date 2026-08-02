@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Concept-pagina's uit een eerdere ontwerprichting: niet in de navigatie,
+# niet bedoeld voor zoekresultaten.
+Disallow: /concept/
+
+Sitemap: https://megaonline.io/sitemap.xml

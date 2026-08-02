@@ -1,0 +1,17 @@
+/* Pagina-specifieke stijlen uit "Contact.html". */
+
+[data-page="contact"] .ccards { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(14px, 1.6vw, 20px); margin-top: clamp(38px, 4vw, 52px); }
+[data-page="contact"] .ccard { display: flex; flex-direction: column; gap: 10px; border: 1px solid var(--line); border-radius: 16px; background: var(--card); box-shadow: var(--elev); padding: clamp(22px, 2.2vw, 30px); transition: border-color .3s, transform .3s; }
+[data-page="contact"] .ccard:hover { transform: translateY(-3px); border-color: var(--line-strong); }
+[data-page="contact"] .ccard h3 { font-family: var(--display); font-weight: 600; font-size: 1.14rem; letter-spacing: -0.02em; }
+[data-page="contact"] .ccard p { color: var(--muted); font-size: 0.92rem; line-height: 1.5; }
+[data-page="contact"] .ccard a.ccard__val { font-family: var(--mono); font-size: 0.92rem; color: var(--accent-text); text-decoration: none; margin-top: auto; display: inline-flex; align-items: center; gap: 8px; }
+[data-page="contact"] .ccard a.ccard__val:hover { text-decoration: underline; }
+[data-page="contact"] .expect { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(16px, 2vw, 26px); margin-top: clamp(38px, 4vw, 52px); }
+[data-page="contact"] .estep { display: flex; flex-direction: column; gap: 10px; }
+[data-page="contact"] .estep .en { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.12em; color: var(--accent-text); }
+[data-page="contact"] .estep h3 { font-family: var(--display); font-weight: 600; font-size: 1.22rem; letter-spacing: -0.02em; line-height: 1.12; }
+[data-page="contact"] .estep p { color: var(--muted); line-height: 1.55; }
+[data-page="contact"] .scanform .field + .field, [data-page="contact"] .scanform .field-row + .field, [data-page="contact"] .scanform .field + .field-row { margin-top: 14px; }
+[data-page="contact"] .scanform textarea { width: 100%; resize: vertical; min-height: 92px; }
+  @media (max-width: 880px) {[data-page="contact"] .ccards { grid-template-columns: 1fr; }[data-page="contact"] .expect { grid-template-columns: 1fr; } }

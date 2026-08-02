@@ -1,0 +1,18 @@
+/* Pagina-specifieke stijlen uit "Groei Partnership.html". */
+
+[data-page="diensten-groei-partnership"] .cycle { display: grid; grid-template-columns: repeat(5, 1fr); gap: clamp(12px, 1.4vw, 18px); margin-top: clamp(38px, 4vw, 52px); }
+[data-page="diensten-groei-partnership"] .cyclestep { position: relative; border: 1px solid var(--line); border-radius: 16px; background: var(--card); box-shadow: var(--elev); padding: clamp(20px, 2vw, 28px); display: flex; flex-direction: column; gap: 12px; transition: border-color .3s, transform .3s; }
+[data-page="diensten-groei-partnership"] .cyclestep:hover { transform: translateY(-3px); border-color: var(--line-strong); }
+[data-page="diensten-groei-partnership"] .cyclestep .cn { width: 40px; height: 40px; border-radius: 11px; display: grid; place-items: center; font-family: var(--mono); font-size: 0.82rem; font-weight: 600; color: var(--accent-text); background: color-mix(in oklab, var(--accent-text) 12%, transparent); border: 1px solid color-mix(in oklab, var(--accent-text) 26%, var(--line)); }
+[data-page="diensten-groei-partnership"] .cyclestep h4 { font-family: var(--display); font-weight: 600; font-size: clamp(1.05rem, 1.5vw, 1.25rem); letter-spacing: -0.02em; }
+[data-page="diensten-groei-partnership"] .cyclestep p { color: var(--muted); font-size: 0.88rem; line-height: 1.45; }
+[data-page="diensten-groei-partnership"] .cyclestep--rec { border-color: color-mix(in oklab, var(--accent) 50%, var(--line)); background: var(--card-2); }
+[data-page="diensten-groei-partnership"] .cyclestep__arr { position: absolute; right: -13px; top: 50%; transform: translateY(-50%); z-index: 2; color: var(--accent-text); width: 22px; height: 22px; display: grid; place-items: center; background: var(--bg); border-radius: 50%; }
+[data-page="diensten-groei-partnership"] .cyclestep:last-child .cyclestep__arr { display: none; }
+[data-page="diensten-groei-partnership"] .cycle__return { margin-top: 16px; display: flex; align-items: center; justify-content: center; gap: 12px; padding: 15px 22px; border: 1px dashed color-mix(in oklab, var(--accent-text) 40%, var(--line)); border-radius: 100px; background: color-mix(in oklab, var(--accent-text) 7%, transparent); font-family: var(--mono); font-size: 0.74rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-text); }
+[data-page="diensten-groei-partnership"] .cycle__return svg { width: 17px; height: 17px; stroke: var(--accent-text); }
+  @media (max-width: 860px) {
+[data-page="diensten-groei-partnership"] .cycle { grid-template-columns: 1fr 1fr; }
+[data-page="diensten-groei-partnership"] .cyclestep__arr { display: none; }
+  }
+  @media (max-width: 520px) {[data-page="diensten-groei-partnership"] .cycle { grid-template-columns: 1fr; } }
