@@ -150,11 +150,31 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   errorComponent: ErrorComponent,
 });
 
+/**
+ * Fallback voor bezoekers zonder JavaScript.
+ *
+ * De scroll-reveals uit het ontwerp starten op `opacity: 0` en worden pas
+ * zichtbaar gemaakt door script. Zonder JS zou de pagina daardoor blanco zijn,
+ * terwijl alle tekst wél in de server-gerenderde HTML staat. Hetzelfde geldt
+ * voor de FAQ-antwoorden, die dichtgeklapt op `height: 0` staan.
+ *
+ * `<noscript>` geldt alleen als JS uit staat, dus dit kost niets voor de
+ * gewone bezoeker en geeft geen flits of hydration-conflict.
+ */
+const NO_JS_FALLBACK = `
+  .reveal { opacity: 1 !important; transform: none !important; }
+  .qa__a { height: auto !important; }
+  .qa__q .pm { display: none; }
+`;
+
 function RootShell({ children }: { children: ReactNode }) {
   return (
     <html lang="nl" data-accent="honey" data-display="geist">
       <head>
         <HeadContent />
+        <noscript>
+          <style dangerouslySetInnerHTML={{ __html: NO_JS_FALLBACK }} />
+        </noscript>
       </head>
       <body data-hero="split" data-accent="honey" data-display="geist">
         {children}
