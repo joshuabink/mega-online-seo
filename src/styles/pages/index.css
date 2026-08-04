@@ -1,6 +1,5 @@
 /* Pagina-specifieke stijlen uit "MegaOnline Homepage.html". */
 
 [data-page="index"] .quote__logo { flex: none; }
-[data-page="index"] .quote__logo .mediaslot { width: 130px; height: 38px; display: block; }
-[data-page="index"] .quote__logo .mediaslot img { object-position: left center; }
-  
+[data-page="index"] .quote__logo .mediaslot { width: fit-content; max-width: 130px; height: 38px; display: block; }
+[data-page="index"] .quote__logo .mediaslot img { width: auto; max-width: 130px; height: 100%; object-position: left center; }
