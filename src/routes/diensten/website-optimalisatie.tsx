@@ -638,7 +638,7 @@ function WebsiteOptimalisatie() {
           <div className="cases">
             <Reveal as="article" className="case reveal">
               <div className="case__media">
-                <Media id="wo-case-1" fit="cover" placeholder="[ Q-Team Solutions ]" alt="Q-Team Solutions" />
+                <Media id="case-qteam" fit="cover" placeholder="[ Q-Team Solutions ]" alt="Website van Q-Team Solutions" />
               </div>
               {' '}
               <div className="case__body">
@@ -683,7 +683,7 @@ function WebsiteOptimalisatie() {
             {' '}
             <Reveal as="article" className="case reveal" data-d="1">
               <div className="case__media">
-                <Media id="wo-case-2" fit="cover" placeholder="[ GuestRoomUtrecht ]" alt="GuestRoomUtrecht" />
+                <Media id="case-guestroom" fit="cover" placeholder="[ GuestRoomUtrecht ]" alt="Website van GuestRoomUtrecht" />
               </div>
               {' '}
               <div className="case__body">
