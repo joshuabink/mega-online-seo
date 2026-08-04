@@ -608,7 +608,7 @@ function GratisWebsitescan() {
           <div className="founder">
             <Reveal as="div" className="founder__media reveal">
               <div className="founder__portrait">
-                <Media id="funnel-founder" fit="cover" placeholder="[ PORTRET — JOSHUA ]" alt="PORTRET — JOSHUA" />
+                <Media id="founder-portret" fit="cover" placeholder="[ PORTRET — JOSHUA ]" alt="Joshua Bink, oprichter van MegaOnline" />
               </div>
               {' '}
               <div className="founder__sig">
