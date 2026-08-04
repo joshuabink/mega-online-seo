@@ -31,26 +31,6 @@ import { Route as DienstenStarterWebsiteRouteImport } from './routes/diensten/st
 import { Route as DienstenWebsiteOptimalisatieRouteImport } from './routes/diensten/website-optimalisatie'
 import { Route as DienstenWebsiteRedesignRouteImport } from './routes/diensten/website-redesign'
 import { Route as DienstenWerkenBijWebsitesRouteImport } from './routes/diensten/werken-bij-websites'
-import { Route as ConceptBranchesIndexRouteImport } from './routes/concept/branches/index'
-import { Route as ConceptBranchesAannemersRouteImport } from './routes/concept/branches/aannemers'
-import { Route as ConceptBranchesAgenciesRouteImport } from './routes/concept/branches/agencies'
-import { Route as ConceptBranchesBootverhuurRouteImport } from './routes/concept/branches/bootverhuur'
-import { Route as ConceptBranchesDetailingWrapRouteImport } from './routes/concept/branches/detailing-wrap'
-import { Route as ConceptBranchesInstallateursRouteImport } from './routes/concept/branches/installateurs'
-import { Route as ConceptBranchesLokaleDienstenRouteImport } from './routes/concept/branches/lokale-diensten'
-import { Route as ConceptBranchesSchoonmaakbedrijvenRouteImport } from './routes/concept/branches/schoonmaakbedrijven'
-import { Route as ConceptBranchesSportscholenRouteImport } from './routes/concept/branches/sportscholen'
-import { Route as ConceptBranchesZonnepanelenRouteImport } from './routes/concept/branches/zonnepanelen'
-import { Route as ConceptDienstenAiChatbotRouteImport } from './routes/concept/diensten/ai-chatbot'
-import { Route as ConceptDienstenAutomatiseringenRouteImport } from './routes/concept/diensten/automatiseringen'
-import { Route as ConceptDienstenBedrijfssoftwareRouteImport } from './routes/concept/diensten/bedrijfssoftware'
-import { Route as ConceptDienstenContentRouteImport } from './routes/concept/diensten/content'
-import { Route as ConceptDienstenHuisstijlRouteImport } from './routes/concept/diensten/huisstijl'
-import { Route as ConceptDienstenMobieleAppsRouteImport } from './routes/concept/diensten/mobiele-apps'
-import { Route as ConceptDienstenSysteemkoppelingenRouteImport } from './routes/concept/diensten/systeemkoppelingen'
-import { Route as ConceptDienstenWebappsRouteImport } from './routes/concept/diensten/webapps'
-import { Route as ConceptDienstenWebshopsRouteImport } from './routes/concept/diensten/webshops'
-import { Route as ConceptDienstenWebsitesRouteImport } from './routes/concept/diensten/websites'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -169,120 +149,6 @@ const DienstenWerkenBijWebsitesRoute =
     path: '/diensten/werken-bij-websites',
     getParentRoute: () => rootRouteImport,
   } as any)
-const ConceptBranchesIndexRoute = ConceptBranchesIndexRouteImport.update({
-  id: '/concept/branches/',
-  path: '/concept/branches/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ConceptBranchesAannemersRoute =
-  ConceptBranchesAannemersRouteImport.update({
-    id: '/concept/branches/aannemers',
-    path: '/concept/branches/aannemers',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const ConceptBranchesAgenciesRoute = ConceptBranchesAgenciesRouteImport.update({
-  id: '/concept/branches/agencies',
-  path: '/concept/branches/agencies',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ConceptBranchesBootverhuurRoute =
-  ConceptBranchesBootverhuurRouteImport.update({
-    id: '/concept/branches/bootverhuur',
-    path: '/concept/branches/bootverhuur',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const ConceptBranchesDetailingWrapRoute =
-  ConceptBranchesDetailingWrapRouteImport.update({
-    id: '/concept/branches/detailing-wrap',
-    path: '/concept/branches/detailing-wrap',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const ConceptBranchesInstallateursRoute =
-  ConceptBranchesInstallateursRouteImport.update({
-    id: '/concept/branches/installateurs',
-    path: '/concept/branches/installateurs',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const ConceptBranchesLokaleDienstenRoute =
-  ConceptBranchesLokaleDienstenRouteImport.update({
-    id: '/concept/branches/lokale-diensten',
-    path: '/concept/branches/lokale-diensten',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const ConceptBranchesSchoonmaakbedrijvenRoute =
-  ConceptBranchesSchoonmaakbedrijvenRouteImport.update({
-    id: '/concept/branches/schoonmaakbedrijven',
-    path: '/concept/branches/schoonmaakbedrijven',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const ConceptBranchesSportscholenRoute =
-  ConceptBranchesSportscholenRouteImport.update({
-    id: '/concept/branches/sportscholen',
-    path: '/concept/branches/sportscholen',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const ConceptBranchesZonnepanelenRoute =
-  ConceptBranchesZonnepanelenRouteImport.update({
-    id: '/concept/branches/zonnepanelen',
-    path: '/concept/branches/zonnepanelen',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const ConceptDienstenAiChatbotRoute =
-  ConceptDienstenAiChatbotRouteImport.update({
-    id: '/concept/diensten/ai-chatbot',
-    path: '/concept/diensten/ai-chatbot',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const ConceptDienstenAutomatiseringenRoute =
-  ConceptDienstenAutomatiseringenRouteImport.update({
-    id: '/concept/diensten/automatiseringen',
-    path: '/concept/diensten/automatiseringen',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const ConceptDienstenBedrijfssoftwareRoute =
-  ConceptDienstenBedrijfssoftwareRouteImport.update({
-    id: '/concept/diensten/bedrijfssoftware',
-    path: '/concept/diensten/bedrijfssoftware',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const ConceptDienstenContentRoute = ConceptDienstenContentRouteImport.update({
-  id: '/concept/diensten/content',
-  path: '/concept/diensten/content',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ConceptDienstenHuisstijlRoute =
-  ConceptDienstenHuisstijlRouteImport.update({
-    id: '/concept/diensten/huisstijl',
-    path: '/concept/diensten/huisstijl',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const ConceptDienstenMobieleAppsRoute =
-  ConceptDienstenMobieleAppsRouteImport.update({
-    id: '/concept/diensten/mobiele-apps',
-    path: '/concept/diensten/mobiele-apps',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const ConceptDienstenSysteemkoppelingenRoute =
-  ConceptDienstenSysteemkoppelingenRouteImport.update({
-    id: '/concept/diensten/systeemkoppelingen',
-    path: '/concept/diensten/systeemkoppelingen',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const ConceptDienstenWebappsRoute = ConceptDienstenWebappsRouteImport.update({
-  id: '/concept/diensten/webapps',
-  path: '/concept/diensten/webapps',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ConceptDienstenWebshopsRoute = ConceptDienstenWebshopsRouteImport.update({
-  id: '/concept/diensten/webshops',
-  path: '/concept/diensten/webshops',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ConceptDienstenWebsitesRoute = ConceptDienstenWebsitesRouteImport.update({
-  id: '/concept/diensten/websites',
-  path: '/concept/diensten/websites',
-  getParentRoute: () => rootRouteImport,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -307,26 +173,6 @@ export interface FileRoutesByFullPath {
   '/diensten/website-optimalisatie': typeof DienstenWebsiteOptimalisatieRoute
   '/diensten/website-redesign': typeof DienstenWebsiteRedesignRoute
   '/diensten/werken-bij-websites': typeof DienstenWerkenBijWebsitesRoute
-  '/concept/branches/aannemers': typeof ConceptBranchesAannemersRoute
-  '/concept/branches/agencies': typeof ConceptBranchesAgenciesRoute
-  '/concept/branches/bootverhuur': typeof ConceptBranchesBootverhuurRoute
-  '/concept/branches/detailing-wrap': typeof ConceptBranchesDetailingWrapRoute
-  '/concept/branches/installateurs': typeof ConceptBranchesInstallateursRoute
-  '/concept/branches/lokale-diensten': typeof ConceptBranchesLokaleDienstenRoute
-  '/concept/branches/schoonmaakbedrijven': typeof ConceptBranchesSchoonmaakbedrijvenRoute
-  '/concept/branches/sportscholen': typeof ConceptBranchesSportscholenRoute
-  '/concept/branches/zonnepanelen': typeof ConceptBranchesZonnepanelenRoute
-  '/concept/diensten/ai-chatbot': typeof ConceptDienstenAiChatbotRoute
-  '/concept/diensten/automatiseringen': typeof ConceptDienstenAutomatiseringenRoute
-  '/concept/diensten/bedrijfssoftware': typeof ConceptDienstenBedrijfssoftwareRoute
-  '/concept/diensten/content': typeof ConceptDienstenContentRoute
-  '/concept/diensten/huisstijl': typeof ConceptDienstenHuisstijlRoute
-  '/concept/diensten/mobiele-apps': typeof ConceptDienstenMobieleAppsRoute
-  '/concept/diensten/systeemkoppelingen': typeof ConceptDienstenSysteemkoppelingenRoute
-  '/concept/diensten/webapps': typeof ConceptDienstenWebappsRoute
-  '/concept/diensten/webshops': typeof ConceptDienstenWebshopsRoute
-  '/concept/diensten/websites': typeof ConceptDienstenWebsitesRoute
-  '/concept/branches/': typeof ConceptBranchesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -351,26 +197,6 @@ export interface FileRoutesByTo {
   '/diensten/website-optimalisatie': typeof DienstenWebsiteOptimalisatieRoute
   '/diensten/website-redesign': typeof DienstenWebsiteRedesignRoute
   '/diensten/werken-bij-websites': typeof DienstenWerkenBijWebsitesRoute
-  '/concept/branches/aannemers': typeof ConceptBranchesAannemersRoute
-  '/concept/branches/agencies': typeof ConceptBranchesAgenciesRoute
-  '/concept/branches/bootverhuur': typeof ConceptBranchesBootverhuurRoute
-  '/concept/branches/detailing-wrap': typeof ConceptBranchesDetailingWrapRoute
-  '/concept/branches/installateurs': typeof ConceptBranchesInstallateursRoute
-  '/concept/branches/lokale-diensten': typeof ConceptBranchesLokaleDienstenRoute
-  '/concept/branches/schoonmaakbedrijven': typeof ConceptBranchesSchoonmaakbedrijvenRoute
-  '/concept/branches/sportscholen': typeof ConceptBranchesSportscholenRoute
-  '/concept/branches/zonnepanelen': typeof ConceptBranchesZonnepanelenRoute
-  '/concept/diensten/ai-chatbot': typeof ConceptDienstenAiChatbotRoute
-  '/concept/diensten/automatiseringen': typeof ConceptDienstenAutomatiseringenRoute
-  '/concept/diensten/bedrijfssoftware': typeof ConceptDienstenBedrijfssoftwareRoute
-  '/concept/diensten/content': typeof ConceptDienstenContentRoute
-  '/concept/diensten/huisstijl': typeof ConceptDienstenHuisstijlRoute
-  '/concept/diensten/mobiele-apps': typeof ConceptDienstenMobieleAppsRoute
-  '/concept/diensten/systeemkoppelingen': typeof ConceptDienstenSysteemkoppelingenRoute
-  '/concept/diensten/webapps': typeof ConceptDienstenWebappsRoute
-  '/concept/diensten/webshops': typeof ConceptDienstenWebshopsRoute
-  '/concept/diensten/websites': typeof ConceptDienstenWebsitesRoute
-  '/concept/branches': typeof ConceptBranchesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -396,26 +222,6 @@ export interface FileRoutesById {
   '/diensten/website-optimalisatie': typeof DienstenWebsiteOptimalisatieRoute
   '/diensten/website-redesign': typeof DienstenWebsiteRedesignRoute
   '/diensten/werken-bij-websites': typeof DienstenWerkenBijWebsitesRoute
-  '/concept/branches/aannemers': typeof ConceptBranchesAannemersRoute
-  '/concept/branches/agencies': typeof ConceptBranchesAgenciesRoute
-  '/concept/branches/bootverhuur': typeof ConceptBranchesBootverhuurRoute
-  '/concept/branches/detailing-wrap': typeof ConceptBranchesDetailingWrapRoute
-  '/concept/branches/installateurs': typeof ConceptBranchesInstallateursRoute
-  '/concept/branches/lokale-diensten': typeof ConceptBranchesLokaleDienstenRoute
-  '/concept/branches/schoonmaakbedrijven': typeof ConceptBranchesSchoonmaakbedrijvenRoute
-  '/concept/branches/sportscholen': typeof ConceptBranchesSportscholenRoute
-  '/concept/branches/zonnepanelen': typeof ConceptBranchesZonnepanelenRoute
-  '/concept/diensten/ai-chatbot': typeof ConceptDienstenAiChatbotRoute
-  '/concept/diensten/automatiseringen': typeof ConceptDienstenAutomatiseringenRoute
-  '/concept/diensten/bedrijfssoftware': typeof ConceptDienstenBedrijfssoftwareRoute
-  '/concept/diensten/content': typeof ConceptDienstenContentRoute
-  '/concept/diensten/huisstijl': typeof ConceptDienstenHuisstijlRoute
-  '/concept/diensten/mobiele-apps': typeof ConceptDienstenMobieleAppsRoute
-  '/concept/diensten/systeemkoppelingen': typeof ConceptDienstenSysteemkoppelingenRoute
-  '/concept/diensten/webapps': typeof ConceptDienstenWebappsRoute
-  '/concept/diensten/webshops': typeof ConceptDienstenWebshopsRoute
-  '/concept/diensten/websites': typeof ConceptDienstenWebsitesRoute
-  '/concept/branches/': typeof ConceptBranchesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -442,26 +248,6 @@ export interface FileRouteTypes {
     | '/diensten/website-optimalisatie'
     | '/diensten/website-redesign'
     | '/diensten/werken-bij-websites'
-    | '/concept/branches/aannemers'
-    | '/concept/branches/agencies'
-    | '/concept/branches/bootverhuur'
-    | '/concept/branches/detailing-wrap'
-    | '/concept/branches/installateurs'
-    | '/concept/branches/lokale-diensten'
-    | '/concept/branches/schoonmaakbedrijven'
-    | '/concept/branches/sportscholen'
-    | '/concept/branches/zonnepanelen'
-    | '/concept/diensten/ai-chatbot'
-    | '/concept/diensten/automatiseringen'
-    | '/concept/diensten/bedrijfssoftware'
-    | '/concept/diensten/content'
-    | '/concept/diensten/huisstijl'
-    | '/concept/diensten/mobiele-apps'
-    | '/concept/diensten/systeemkoppelingen'
-    | '/concept/diensten/webapps'
-    | '/concept/diensten/webshops'
-    | '/concept/diensten/websites'
-    | '/concept/branches/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -486,26 +272,6 @@ export interface FileRouteTypes {
     | '/diensten/website-optimalisatie'
     | '/diensten/website-redesign'
     | '/diensten/werken-bij-websites'
-    | '/concept/branches/aannemers'
-    | '/concept/branches/agencies'
-    | '/concept/branches/bootverhuur'
-    | '/concept/branches/detailing-wrap'
-    | '/concept/branches/installateurs'
-    | '/concept/branches/lokale-diensten'
-    | '/concept/branches/schoonmaakbedrijven'
-    | '/concept/branches/sportscholen'
-    | '/concept/branches/zonnepanelen'
-    | '/concept/diensten/ai-chatbot'
-    | '/concept/diensten/automatiseringen'
-    | '/concept/diensten/bedrijfssoftware'
-    | '/concept/diensten/content'
-    | '/concept/diensten/huisstijl'
-    | '/concept/diensten/mobiele-apps'
-    | '/concept/diensten/systeemkoppelingen'
-    | '/concept/diensten/webapps'
-    | '/concept/diensten/webshops'
-    | '/concept/diensten/websites'
-    | '/concept/branches'
   id:
     | '__root__'
     | '/'
@@ -530,26 +296,6 @@ export interface FileRouteTypes {
     | '/diensten/website-optimalisatie'
     | '/diensten/website-redesign'
     | '/diensten/werken-bij-websites'
-    | '/concept/branches/aannemers'
-    | '/concept/branches/agencies'
-    | '/concept/branches/bootverhuur'
-    | '/concept/branches/detailing-wrap'
-    | '/concept/branches/installateurs'
-    | '/concept/branches/lokale-diensten'
-    | '/concept/branches/schoonmaakbedrijven'
-    | '/concept/branches/sportscholen'
-    | '/concept/branches/zonnepanelen'
-    | '/concept/diensten/ai-chatbot'
-    | '/concept/diensten/automatiseringen'
-    | '/concept/diensten/bedrijfssoftware'
-    | '/concept/diensten/content'
-    | '/concept/diensten/huisstijl'
-    | '/concept/diensten/mobiele-apps'
-    | '/concept/diensten/systeemkoppelingen'
-    | '/concept/diensten/webapps'
-    | '/concept/diensten/webshops'
-    | '/concept/diensten/websites'
-    | '/concept/branches/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -575,26 +321,6 @@ export interface RootRouteChildren {
   DienstenWebsiteOptimalisatieRoute: typeof DienstenWebsiteOptimalisatieRoute
   DienstenWebsiteRedesignRoute: typeof DienstenWebsiteRedesignRoute
   DienstenWerkenBijWebsitesRoute: typeof DienstenWerkenBijWebsitesRoute
-  ConceptBranchesAannemersRoute: typeof ConceptBranchesAannemersRoute
-  ConceptBranchesAgenciesRoute: typeof ConceptBranchesAgenciesRoute
-  ConceptBranchesBootverhuurRoute: typeof ConceptBranchesBootverhuurRoute
-  ConceptBranchesDetailingWrapRoute: typeof ConceptBranchesDetailingWrapRoute
-  ConceptBranchesInstallateursRoute: typeof ConceptBranchesInstallateursRoute
-  ConceptBranchesLokaleDienstenRoute: typeof ConceptBranchesLokaleDienstenRoute
-  ConceptBranchesSchoonmaakbedrijvenRoute: typeof ConceptBranchesSchoonmaakbedrijvenRoute
-  ConceptBranchesSportscholenRoute: typeof ConceptBranchesSportscholenRoute
-  ConceptBranchesZonnepanelenRoute: typeof ConceptBranchesZonnepanelenRoute
-  ConceptDienstenAiChatbotRoute: typeof ConceptDienstenAiChatbotRoute
-  ConceptDienstenAutomatiseringenRoute: typeof ConceptDienstenAutomatiseringenRoute
-  ConceptDienstenBedrijfssoftwareRoute: typeof ConceptDienstenBedrijfssoftwareRoute
-  ConceptDienstenContentRoute: typeof ConceptDienstenContentRoute
-  ConceptDienstenHuisstijlRoute: typeof ConceptDienstenHuisstijlRoute
-  ConceptDienstenMobieleAppsRoute: typeof ConceptDienstenMobieleAppsRoute
-  ConceptDienstenSysteemkoppelingenRoute: typeof ConceptDienstenSysteemkoppelingenRoute
-  ConceptDienstenWebappsRoute: typeof ConceptDienstenWebappsRoute
-  ConceptDienstenWebshopsRoute: typeof ConceptDienstenWebshopsRoute
-  ConceptDienstenWebsitesRoute: typeof ConceptDienstenWebsitesRoute
-  ConceptBranchesIndexRoute: typeof ConceptBranchesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -753,146 +479,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DienstenWerkenBijWebsitesRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/concept/branches/': {
-      id: '/concept/branches/'
-      path: '/concept/branches'
-      fullPath: '/concept/branches/'
-      preLoaderRoute: typeof ConceptBranchesIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/concept/branches/aannemers': {
-      id: '/concept/branches/aannemers'
-      path: '/concept/branches/aannemers'
-      fullPath: '/concept/branches/aannemers'
-      preLoaderRoute: typeof ConceptBranchesAannemersRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/concept/branches/agencies': {
-      id: '/concept/branches/agencies'
-      path: '/concept/branches/agencies'
-      fullPath: '/concept/branches/agencies'
-      preLoaderRoute: typeof ConceptBranchesAgenciesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/concept/branches/bootverhuur': {
-      id: '/concept/branches/bootverhuur'
-      path: '/concept/branches/bootverhuur'
-      fullPath: '/concept/branches/bootverhuur'
-      preLoaderRoute: typeof ConceptBranchesBootverhuurRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/concept/branches/detailing-wrap': {
-      id: '/concept/branches/detailing-wrap'
-      path: '/concept/branches/detailing-wrap'
-      fullPath: '/concept/branches/detailing-wrap'
-      preLoaderRoute: typeof ConceptBranchesDetailingWrapRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/concept/branches/installateurs': {
-      id: '/concept/branches/installateurs'
-      path: '/concept/branches/installateurs'
-      fullPath: '/concept/branches/installateurs'
-      preLoaderRoute: typeof ConceptBranchesInstallateursRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/concept/branches/lokale-diensten': {
-      id: '/concept/branches/lokale-diensten'
-      path: '/concept/branches/lokale-diensten'
-      fullPath: '/concept/branches/lokale-diensten'
-      preLoaderRoute: typeof ConceptBranchesLokaleDienstenRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/concept/branches/schoonmaakbedrijven': {
-      id: '/concept/branches/schoonmaakbedrijven'
-      path: '/concept/branches/schoonmaakbedrijven'
-      fullPath: '/concept/branches/schoonmaakbedrijven'
-      preLoaderRoute: typeof ConceptBranchesSchoonmaakbedrijvenRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/concept/branches/sportscholen': {
-      id: '/concept/branches/sportscholen'
-      path: '/concept/branches/sportscholen'
-      fullPath: '/concept/branches/sportscholen'
-      preLoaderRoute: typeof ConceptBranchesSportscholenRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/concept/branches/zonnepanelen': {
-      id: '/concept/branches/zonnepanelen'
-      path: '/concept/branches/zonnepanelen'
-      fullPath: '/concept/branches/zonnepanelen'
-      preLoaderRoute: typeof ConceptBranchesZonnepanelenRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/concept/diensten/ai-chatbot': {
-      id: '/concept/diensten/ai-chatbot'
-      path: '/concept/diensten/ai-chatbot'
-      fullPath: '/concept/diensten/ai-chatbot'
-      preLoaderRoute: typeof ConceptDienstenAiChatbotRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/concept/diensten/automatiseringen': {
-      id: '/concept/diensten/automatiseringen'
-      path: '/concept/diensten/automatiseringen'
-      fullPath: '/concept/diensten/automatiseringen'
-      preLoaderRoute: typeof ConceptDienstenAutomatiseringenRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/concept/diensten/bedrijfssoftware': {
-      id: '/concept/diensten/bedrijfssoftware'
-      path: '/concept/diensten/bedrijfssoftware'
-      fullPath: '/concept/diensten/bedrijfssoftware'
-      preLoaderRoute: typeof ConceptDienstenBedrijfssoftwareRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/concept/diensten/content': {
-      id: '/concept/diensten/content'
-      path: '/concept/diensten/content'
-      fullPath: '/concept/diensten/content'
-      preLoaderRoute: typeof ConceptDienstenContentRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/concept/diensten/huisstijl': {
-      id: '/concept/diensten/huisstijl'
-      path: '/concept/diensten/huisstijl'
-      fullPath: '/concept/diensten/huisstijl'
-      preLoaderRoute: typeof ConceptDienstenHuisstijlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/concept/diensten/mobiele-apps': {
-      id: '/concept/diensten/mobiele-apps'
-      path: '/concept/diensten/mobiele-apps'
-      fullPath: '/concept/diensten/mobiele-apps'
-      preLoaderRoute: typeof ConceptDienstenMobieleAppsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/concept/diensten/systeemkoppelingen': {
-      id: '/concept/diensten/systeemkoppelingen'
-      path: '/concept/diensten/systeemkoppelingen'
-      fullPath: '/concept/diensten/systeemkoppelingen'
-      preLoaderRoute: typeof ConceptDienstenSysteemkoppelingenRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/concept/diensten/webapps': {
-      id: '/concept/diensten/webapps'
-      path: '/concept/diensten/webapps'
-      fullPath: '/concept/diensten/webapps'
-      preLoaderRoute: typeof ConceptDienstenWebappsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/concept/diensten/webshops': {
-      id: '/concept/diensten/webshops'
-      path: '/concept/diensten/webshops'
-      fullPath: '/concept/diensten/webshops'
-      preLoaderRoute: typeof ConceptDienstenWebshopsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/concept/diensten/websites': {
-      id: '/concept/diensten/websites'
-      path: '/concept/diensten/websites'
-      fullPath: '/concept/diensten/websites'
-      preLoaderRoute: typeof ConceptDienstenWebsitesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
   }
 }
 
@@ -919,28 +505,6 @@ const rootRouteChildren: RootRouteChildren = {
   DienstenWebsiteOptimalisatieRoute: DienstenWebsiteOptimalisatieRoute,
   DienstenWebsiteRedesignRoute: DienstenWebsiteRedesignRoute,
   DienstenWerkenBijWebsitesRoute: DienstenWerkenBijWebsitesRoute,
-  ConceptBranchesAannemersRoute: ConceptBranchesAannemersRoute,
-  ConceptBranchesAgenciesRoute: ConceptBranchesAgenciesRoute,
-  ConceptBranchesBootverhuurRoute: ConceptBranchesBootverhuurRoute,
-  ConceptBranchesDetailingWrapRoute: ConceptBranchesDetailingWrapRoute,
-  ConceptBranchesInstallateursRoute: ConceptBranchesInstallateursRoute,
-  ConceptBranchesLokaleDienstenRoute: ConceptBranchesLokaleDienstenRoute,
-  ConceptBranchesSchoonmaakbedrijvenRoute:
-    ConceptBranchesSchoonmaakbedrijvenRoute,
-  ConceptBranchesSportscholenRoute: ConceptBranchesSportscholenRoute,
-  ConceptBranchesZonnepanelenRoute: ConceptBranchesZonnepanelenRoute,
-  ConceptDienstenAiChatbotRoute: ConceptDienstenAiChatbotRoute,
-  ConceptDienstenAutomatiseringenRoute: ConceptDienstenAutomatiseringenRoute,
-  ConceptDienstenBedrijfssoftwareRoute: ConceptDienstenBedrijfssoftwareRoute,
-  ConceptDienstenContentRoute: ConceptDienstenContentRoute,
-  ConceptDienstenHuisstijlRoute: ConceptDienstenHuisstijlRoute,
-  ConceptDienstenMobieleAppsRoute: ConceptDienstenMobieleAppsRoute,
-  ConceptDienstenSysteemkoppelingenRoute:
-    ConceptDienstenSysteemkoppelingenRoute,
-  ConceptDienstenWebappsRoute: ConceptDienstenWebappsRoute,
-  ConceptDienstenWebshopsRoute: ConceptDienstenWebshopsRoute,
-  ConceptDienstenWebsitesRoute: ConceptDienstenWebsitesRoute,
-  ConceptBranchesIndexRoute: ConceptBranchesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

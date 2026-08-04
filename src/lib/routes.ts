@@ -39,29 +39,33 @@ export const PAGE_ROUTES: Record<string, string> = {
   'Privacyverklaring.html': '/privacyverklaring',
 }
 
-/** Legacy concept-pagina's uit de oude Caveat/DM Sans-richting. */
+/**
+ * Oude concept-pagina's uit de vorige ontwerprichting. Die pagina's zijn
+ * verwijderd; deze tabel stuurt de oude URL's door naar de dichtstbijzijnde
+ * bestaande pagina zodat er geen 404 ontstaat.
+ */
 export const LEGACY_ROUTES: Record<string, string> = {
-  'branches/index.html': '/concept/branches',
-  'branches/aannemers.html': '/concept/branches/aannemers',
-  'branches/agencies.html': '/concept/branches/agencies',
-  'branches/bootverhuur.html': '/concept/branches/bootverhuur',
-  'branches/detailing-wrap.html': '/concept/branches/detailing-wrap',
-  'branches/installateurs.html': '/concept/branches/installateurs',
-  'branches/lokale-diensten.html': '/concept/branches/lokale-diensten',
-  'branches/schoonmaakbedrijven.html': '/concept/branches/schoonmaakbedrijven',
-  'branches/sportscholen.html': '/concept/branches/sportscholen',
-  'branches/zonnepanelen.html': '/concept/branches/zonnepanelen',
+  'branches/index.html': '/',
+  'branches/aannemers.html': '/branches/offerteaanvragen',
+  'branches/installateurs.html': '/branches/offerteaanvragen',
+  'branches/schoonmaakbedrijven.html': '/branches/offerteaanvragen',
+  'branches/zonnepanelen.html': '/branches/offerteaanvragen',
+  'branches/agencies.html': '/branches/dienstverleners',
+  'branches/lokale-diensten.html': '/branches/dienstverleners',
+  'branches/detailing-wrap.html': '/branches/dienstverleners',
+  'branches/sportscholen.html': '/branches/reserveringen',
+  'branches/bootverhuur.html': '/branches/verhuurbedrijven',
 
-  'diensten/websites.html': '/concept/diensten/websites',
-  'diensten/webshops.html': '/concept/diensten/webshops',
-  'diensten/webapps.html': '/concept/diensten/webapps',
-  'diensten/mobiele-apps.html': '/concept/diensten/mobiele-apps',
-  'diensten/huisstijl.html': '/concept/diensten/huisstijl',
-  'diensten/systeemkoppelingen.html': '/concept/diensten/systeemkoppelingen',
-  'diensten/automatiseringen.html': '/concept/diensten/automatiseringen',
-  'diensten/ai-chatbot.html': '/concept/diensten/ai-chatbot',
-  'diensten/bedrijfssoftware.html': '/concept/diensten/bedrijfssoftware',
-  'diensten/content.html': '/concept/diensten/content',
+  'diensten/websites.html': '/diensten/conversie-website',
+  'diensten/huisstijl.html': '/diensten/conversie-website',
+  'diensten/content.html': '/diensten/conversie-website',
+  'diensten/systeemkoppelingen.html': '/diensten/integraties',
+  'diensten/automatiseringen.html': '/diensten/integraties',
+  'diensten/webshops.html': '/',
+  'diensten/webapps.html': '/',
+  'diensten/mobiele-apps.html': '/',
+  'diensten/bedrijfssoftware.html': '/',
+  'diensten/ai-chatbot.html': '/',
 }
 
 /**
