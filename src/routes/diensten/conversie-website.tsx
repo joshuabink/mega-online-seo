@@ -75,7 +75,7 @@ function ConversieWebsite() {
             {' '}
             <Reveal as="div" className="hvis reveal" data-d="2">
               <div className="hvis__frame">
-                <Media id="cw-hero" fit="cover" placeholder="[ WEBSITE MOCKUP ]" alt="WEBSITE MOCKUP" />
+                <Media id="cw-hero" fit="cover" placeholder="[ WEBSITE MOCKUP ]" alt="Ontwerpvoorbeeld van een conversiegerichte website" />
               </div>
               {' '}
               <div className="hvis__card hvis__toast">
@@ -596,19 +596,19 @@ function ConversieWebsite() {
           <div className="media">
             <Reveal as="div" className="mediagal reveal">
               <div className="mslot">
-                <Media id="cw-media-1" fit="cover" placeholder="[ WEBSITE ]" alt="WEBSITE" />
+                <Media id="cw-media-1" fit="cover" placeholder="[ WEBSITE ]" alt="Voorbeeld van een website die wij bouwden" />
               </div>
               {' '}
               <div className="mslot">
-                <Media id="cw-media-2" fit="cover" placeholder="[ WEBSITE ]" alt="WEBSITE" />
+                <Media id="cw-media-2" fit="cover" placeholder="[ WEBSITE ]" alt="Voorbeeld van een website die wij bouwden" />
               </div>
               {' '}
               <div className="mslot">
-                <Media id="cw-media-3" fit="cover" placeholder="[ WEBSITE ]" alt="WEBSITE" />
+                <Media id="cw-media-3" fit="cover" placeholder="[ WEBSITE ]" alt="Voorbeeld van een website die wij bouwden" />
               </div>
               {' '}
               <div className="mslot">
-                <Media id="cw-media-4" fit="cover" placeholder="[ WEBSITE ]" alt="WEBSITE" />
+                <Media id="cw-media-4" fit="cover" placeholder="[ WEBSITE ]" alt="Voorbeeld van een website die wij bouwden" />
               </div>
             </Reveal>
             {' '}
@@ -762,7 +762,7 @@ function ConversieWebsite() {
                 <span className="ck">Brandbook</span>
                 {' '}
                 <div className="logobox" style={{ aspectRatio: "16/10" }}>
-                  <Media id="cw-brandbook" fit="cover" placeholder="[ BRANDBOOK ]" alt="BRANDBOOK" />
+                  <Media id="cw-brandbook" fit="cover" placeholder="[ BRANDBOOK ]" alt="Pagina uit een merkrichtlijn" />
                 </div>
               </div>
             </Reveal>

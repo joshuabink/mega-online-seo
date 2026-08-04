@@ -8,9 +8,9 @@ export const Route = createFileRoute('/diensten/seo')({
   head: () => ({
     meta: [
       { title: "SEO: beter gevonden worden | MegaOnline.io" },
-      { name: 'description', content: "SEO die zorgt dat de juiste klanten je vinden. Lokale vindbaarheid, sterke landingspagina's en een gezonde technische basis, gericht op aanvragen, niet op ijdele cijfers." },
+      { name: 'description', content: "SEO die zorgt dat de juiste klanten je vinden. Lokale vindbaarheid, sterke landingspagina's en een gezonde technische basis, gericht op meer aanvragen." },
       { property: 'og:title', content: "SEO: beter gevonden worden | MegaOnline.io" },
-      { property: 'og:description', content: "SEO die zorgt dat de juiste klanten je vinden. Lokale vindbaarheid, sterke landingspagina's en een gezonde technische basis, gericht op aanvragen, niet op ijdele cijfers." },
+      { property: 'og:description', content: "SEO die zorgt dat de juiste klanten je vinden. Lokale vindbaarheid, sterke landingspagina's en een gezonde technische basis, gericht op meer aanvragen." },
       { property: 'og:url', content: "https://megaonline.io/diensten/seo" },
     ],
     links: [

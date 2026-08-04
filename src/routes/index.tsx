@@ -746,9 +746,9 @@ function Home() {
                 </p>
               </blockquote>
               {' '}
-              <figcaption className="quote__by" data-comment-anchor="e945659edf-figcaption">
+              <figcaption className="quote__by">
                 <span className="quote__logo">
-                  <Media id="t1-logo" fit="contain" placeholder="LOGO" alt="LOGO" />
+                  <Media id="t1-logo" fit="contain" placeholder="LOGO" alt="Logo van de klant" />
                 </span>
                 {' '}
                 <span>
@@ -769,7 +769,7 @@ function Home() {
               {' '}
               <figcaption className="quote__by">
                 <span className="quote__logo">
-                  <Media id="t2-logo" fit="contain" placeholder="LOGO" alt="LOGO" />
+                  <Media id="t2-logo" fit="contain" placeholder="LOGO" alt="Logo van de klant" />
                 </span>
                 {' '}
                 <span>
@@ -815,7 +815,7 @@ function Home() {
               {' '}
               <div className="vision__sign">
                 <span className="quote__av" style={{ width: "48px", height: "48px" }}>
-                  <Media id="founder-av" fit="cover" shape="circle" placeholder="FOTO" alt="FOTO" />
+                  <Media id="founder-av" fit="cover" shape="circle" placeholder="FOTO" alt="Joshua Bink, oprichter van MegaOnline" />
                 </span>
                 {' '}
                 <span>

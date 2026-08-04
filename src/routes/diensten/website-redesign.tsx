@@ -10,9 +10,9 @@ export const Route = createFileRoute('/diensten/website-redesign')({
   head: () => ({
     meta: [
       { title: "Website Redesign | MegaOnline.io" },
-      { name: 'description', content: "Je bedrijf is gegroeid, maar je website niet. Wij stemmen je online uitstraling opnieuw af op waar je vandaag staat en waar je naartoe wilt. Een redesign is meer dan een nieuw jasje." },
+      { name: 'description', content: "Je bedrijf is gegroeid, je website niet. Wij stemmen je online uitstraling opnieuw af op waar je vandaag staat en waar je naartoe wilt." },
       { property: 'og:title', content: "Website Redesign | MegaOnline.io" },
-      { property: 'og:description', content: "Je bedrijf is gegroeid, maar je website niet. Wij stemmen je online uitstraling opnieuw af op waar je vandaag staat en waar je naartoe wilt. Een redesign is meer dan een nieuw jasje." },
+      { property: 'og:description', content: "Je bedrijf is gegroeid, je website niet. Wij stemmen je online uitstraling opnieuw af op waar je vandaag staat en waar je naartoe wilt." },
       { property: 'og:url', content: "https://megaonline.io/diensten/website-redesign" },
     ],
     links: [
@@ -73,7 +73,7 @@ function WebsiteRedesign() {
             {' '}
             <Reveal as="div" className="hvis reveal" data-d="2">
               <div className="hvis__frame">
-                <Media id="rd-hero" fit="cover" placeholder="[ VOOR → NA ]" alt="VOOR → NA" />
+                <Media id="rd-hero" fit="cover" placeholder="[ VOOR → NA ]" alt="Website voor en na het redesign" />
               </div>
               {' '}
               <div className="hvis__card hvis__toast">
@@ -632,7 +632,7 @@ function WebsiteRedesign() {
           <div className="cases">
             <Reveal as="article" className="case reveal">
               <div className="case__media">
-                <Media id="rd-case-1" fit="cover" placeholder="[ VOOR → NA ]" alt="VOOR → NA" />
+                <Media id="rd-case-1" fit="cover" placeholder="[ VOOR → NA ]" alt="Website voor en na het redesign" />
               </div>
               {' '}
               <div className="case__body">
@@ -680,7 +680,7 @@ function WebsiteRedesign() {
             {' '}
             <Reveal as="article" className="case reveal" data-d="1">
               <div className="case__media">
-                <Media id="rd-case-2" fit="cover" placeholder="[ VOOR → NA ]" alt="VOOR → NA" />
+                <Media id="rd-case-2" fit="cover" placeholder="[ VOOR → NA ]" alt="Website voor en na het redesign" />
               </div>
               {' '}
               <div className="case__body">

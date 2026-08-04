@@ -10,9 +10,9 @@ export const Route = createFileRoute('/diensten/website-optimalisatie')({
   head: () => ({
     meta: [
       { title: "Website Optimalisatie | MegaOnline.io" },
-      { name: 'description', content: "Je website staat online, maar haalt er nog niet alles uit. Ontdek waar bezoekers afhaken en hoe kleine verbeteringen leiden tot meer aanvragen en boekingen. Soms is verbeteren slimmer dan vervangen." },
+      { name: 'description', content: "Je website staat online, maar haalt er nog niet alles uit. Ontdek waar bezoekers afhaken en welke verbeteringen meer aanvragen opleveren." },
       { property: 'og:title', content: "Website Optimalisatie | MegaOnline.io" },
-      { property: 'og:description', content: "Je website staat online, maar haalt er nog niet alles uit. Ontdek waar bezoekers afhaken en hoe kleine verbeteringen leiden tot meer aanvragen en boekingen. Soms is verbeteren slimmer dan vervangen." },
+      { property: 'og:description', content: "Je website staat online, maar haalt er nog niet alles uit. Ontdek waar bezoekers afhaken en welke verbeteringen meer aanvragen opleveren." },
       { property: 'og:url', content: "https://megaonline.io/diensten/website-optimalisatie" },
     ],
     links: [
@@ -73,7 +73,7 @@ function WebsiteOptimalisatie() {
             {' '}
             <Reveal as="div" className="hvis reveal" data-d="2">
               <div className="hvis__frame">
-                <Media id="wo-hero" fit="cover" placeholder="[ JE HUIDIGE WEBSITE ]" alt="JE HUIDIGE WEBSITE" />
+                <Media id="wo-hero" fit="cover" placeholder="[ JE HUIDIGE WEBSITE ]" alt="Voorbeeld van een bestaande website" />
               </div>
               {' '}
               <div className="hvis__card hvis__toast">
@@ -377,19 +377,19 @@ function WebsiteOptimalisatie() {
           <div className="media">
             <Reveal as="div" className="mediagal reveal">
               <div className="mslot mslot--tall">
-                <Media id="wo-prob-1" fit="cover" placeholder="[ ONDUIDELIJKE HOMEPAGE ]" alt="ONDUIDELIJKE HOMEPAGE" />
+                <Media id="wo-prob-1" fit="cover" placeholder="[ ONDUIDELIJKE HOMEPAGE ]" alt="Homepage zonder duidelijke boodschap" />
               </div>
               {' '}
               <div className="mslot mslot--sq">
-                <Media id="wo-prob-2" fit="cover" placeholder="[ VERSTOPT CONTACT ]" alt="VERSTOPT CONTACT" />
+                <Media id="wo-prob-2" fit="cover" placeholder="[ VERSTOPT CONTACT ]" alt="Contactgegevens die moeilijk te vinden zijn" />
               </div>
               {' '}
               <div className="mslot mslot--sq">
-                <Media id="wo-prob-3" fit="cover" placeholder="[ MOBIEL ]" alt="MOBIEL" />
+                <Media id="wo-prob-3" fit="cover" placeholder="[ MOBIEL ]" alt="Website op een mobiel scherm" />
               </div>
               {' '}
               <div className="mslot mslot--wide">
-                <Media id="wo-prob-4" fit="cover" placeholder="[ TE VEEL INFORMATIE ]" alt="TE VEEL INFORMATIE" />
+                <Media id="wo-prob-4" fit="cover" placeholder="[ TE VEEL INFORMATIE ]" alt="Pagina met te veel informatie tegelijk" />
               </div>
             </Reveal>
             {' '}

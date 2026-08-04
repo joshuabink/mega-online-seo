@@ -76,7 +76,7 @@ function StarterWebsite() {
             {' '}
             <Reveal as="div" className="hvis reveal" data-d="2">
               <div className="hvis__frame">
-                <Media id="st-hero" fit="cover" placeholder="[ STARTERSWEBSITE ]" alt="STARTERSWEBSITE" />
+                <Media id="st-hero" fit="cover" placeholder="[ STARTERSWEBSITE ]" alt="Voorbeeld van een starterswebsite" />
               </div>
               {' '}
               <div className="hvis__card hvis__toast">

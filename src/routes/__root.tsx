@@ -132,6 +132,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "nl_NL" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:image", content: "https://megaonline.io/og-image.png" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { property: "og:image:alt", content: "MegaOnline.io, websites die aanvragen en boekingen opleveren" },
+      { name: "twitter:image", content: "https://megaonline.io/og-image.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },

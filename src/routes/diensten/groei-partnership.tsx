@@ -11,9 +11,9 @@ export const Route = createFileRoute('/diensten/groei-partnership')({
   head: () => ({
     meta: [
       { title: "Groei Partnership | MegaOnline.io" },
-      { name: 'description', content: "Een website is geen eindpunt, maar een beginpunt. Een doorlopende samenwerking voor bedrijven die na livegang blijven meten, leren en verbeteren. Geen onderhoudsabonnement: een groeipartner." },
+      { name: 'description', content: "Een website is geen eindpunt maar een beginpunt. Na livegang blijven meten, leren en verbeteren. Geen onderhoudsabonnement, wel een groeipartner." },
       { property: 'og:title', content: "Groei Partnership | MegaOnline.io" },
-      { property: 'og:description', content: "Een website is geen eindpunt, maar een beginpunt. Een doorlopende samenwerking voor bedrijven die na livegang blijven meten, leren en verbeteren. Geen onderhoudsabonnement: een groeipartner." },
+      { property: 'og:description', content: "Een website is geen eindpunt maar een beginpunt. Na livegang blijven meten, leren en verbeteren. Geen onderhoudsabonnement, wel een groeipartner." },
       { property: 'og:url', content: "https://megaonline.io/diensten/groei-partnership" },
     ],
     links: [
@@ -74,7 +74,7 @@ function GroeiPartnership() {
             {' '}
             <Reveal as="div" className="hvis reveal" data-d="2">
               <div className="hvis__frame">
-                <Media id="gp-hero" fit="cover" placeholder="[ MAANDELIJKSE ANALYSE ]" alt="MAANDELIJKSE ANALYSE" />
+                <Media id="gp-hero" fit="cover" placeholder="[ MAANDELIJKSE ANALYSE ]" alt="Voorbeeld van een maandelijkse analyse" />
               </div>
               {' '}
               <div className="hvis__card hvis__toast">

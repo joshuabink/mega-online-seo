@@ -73,7 +73,7 @@ function WerkenBijWebsites() {
             {' '}
             <Reveal as="div" className="hvis reveal" data-d="2">
               <div className="hvis__frame">
-                <Media id="wb-hero" fit="cover" placeholder="[ TEAMFOTO OP DE WERKVLOER ]" alt="TEAMFOTO OP DE WERKVLOER" />
+                <Media id="wb-hero" fit="cover" placeholder="[ TEAMFOTO OP DE WERKVLOER ]" alt="Team aan het werk op de werkvloer" />
               </div>
               {' '}
               <div className="hvis__card hvis__toast">
@@ -747,7 +747,7 @@ function WerkenBijWebsites() {
           <div className="cases">
             <Reveal as="article" className="case reveal">
               <div className="case__media">
-                <Media id="wb-case-1" fit="cover" placeholder="[ INSTALLATIEBEDRIJF ]" alt="INSTALLATIEBEDRIJF" />
+                <Media id="wb-case-1" fit="cover" placeholder="[ INSTALLATIEBEDRIJF ]" alt="Werken-bij pagina van een installatiebedrijf" />
               </div>
               {' '}
               <div className="case__body">
@@ -790,7 +790,7 @@ function WerkenBijWebsites() {
             {' '}
             <Reveal as="article" className="case reveal" data-d="1">
               <div className="case__media">
-                <Media id="wb-case-2" fit="cover" placeholder="[ BOUWBEDRIJF ]" alt="BOUWBEDRIJF" />
+                <Media id="wb-case-2" fit="cover" placeholder="[ BOUWBEDRIJF ]" alt="Werken-bij pagina van een bouwbedrijf" />
               </div>
               {' '}
               <div className="case__body">
