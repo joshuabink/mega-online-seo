@@ -767,7 +767,7 @@ function Home() {
                 </p>
               </blockquote>
               {' '}
-              <figcaption className="quote__by" style={{ gap: "30px" }}>
+              <figcaption className="quote__by">
                 <span className="quote__logo">
                   <Media id="t2-logo" fit="contain" placeholder="LOGO" alt="LOGO" />
                 </span>
