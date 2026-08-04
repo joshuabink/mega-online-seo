@@ -2,4 +2,5 @@
 
 [data-page="index"] .quote__logo { flex: none; }
 [data-page="index"] .quote__logo .mediaslot { width: 130px; height: 38px; display: block; }
+[data-page="index"] .quote__logo .mediaslot img { object-position: left center; }
   
