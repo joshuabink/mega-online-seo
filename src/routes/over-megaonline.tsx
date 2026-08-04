@@ -621,7 +621,7 @@ function OverMegaonline() {
           <div className="cases">
             <Reveal as="article" className="case reveal">
               <div className="case__media">
-                <Media id="over-case-qteam" fit="cover" placeholder="[ Q-Team Solutions ]" alt="Q-Team Solutions" />
+                <Media id="case-qteam" fit="cover" placeholder="[ Q-Team Solutions ]" alt="Q-Team Solutions" />
               </div>
               {' '}
               <div className="case__body">
@@ -664,7 +664,7 @@ function OverMegaonline() {
             {' '}
             <Reveal as="article" className="case reveal" data-d="1">
               <div className="case__media">
-                <Media id="over-case-guestroom" fit="cover" placeholder="[ GuestRoomUtrecht ]" alt="GuestRoomUtrecht" />
+                <Media id="case-guestroom" fit="cover" placeholder="[ GuestRoomUtrecht ]" alt="GuestRoomUtrecht" />
               </div>
               {' '}
               <div className="case__body">
@@ -705,7 +705,7 @@ function OverMegaonline() {
             {' '}
             <Reveal as="article" className="case reveal">
               <div className="case__media">
-                <Media id="over-case-kerk" fit="cover" placeholder="[ Ontmoetingskerk ]" alt="Ontmoetingskerk" />
+                <Media id="case-kerk" fit="cover" placeholder="[ Ontmoetingskerk ]" alt="Ontmoetingskerk" />
               </div>
               {' '}
               <div className="case__body">
@@ -746,7 +746,7 @@ function OverMegaonline() {
             {' '}
             <Reveal as="article" className="case reveal" data-d="1">
               <div className="case__media">
-                <Media id="over-case-africa" fit="cover" placeholder="[ LoveForAfrica ]" alt="LoveForAfrica" />
+                <Media id="case-africa" fit="cover" placeholder="[ LoveForAfrica ]" alt="LoveForAfrica" />
               </div>
               {' '}
               <div className="case__body">
