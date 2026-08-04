@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <rect width="100" height="100" rx="18" fill="#1c2b23"/>
-  <text x="50" y="70" font-family="Geist, system-ui, sans-serif" font-size="62"
-        font-weight="700" fill="#f0b429" text-anchor="middle">M</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="MegaOnline">
+  <rect width="100" height="100" rx="22" fill="#1c2b23"/>
+  <path d="M26 73 V35 L50 61 L74 35 V73" fill="none" stroke="#ecb166" stroke-width="15"
+        stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
