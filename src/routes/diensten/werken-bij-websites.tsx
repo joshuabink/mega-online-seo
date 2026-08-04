@@ -352,19 +352,19 @@ function WerkenBijWebsites() {
           <div className="media">
             <Reveal as="div" className="mediagal reveal">
               <div className="mslot mslot--tall">
-                <Media id="wb-media-1" fit="cover" placeholder="[ TEAMFOTO ]" alt="TEAMFOTO" />
+                <Media id="cw-media-1" fit="cover" placeholder="[ TEAMFOTO ]" alt="Collega's samen aan het werk op kantoor" />
               </div>
               {' '}
               <div className="mslot mslot--sq">
-                <Media id="wb-media-2" fit="cover" placeholder="[ WERKDAG ]" alt="WERKDAG" />
+                <Media id="cw-media-2" fit="cover" placeholder="[ WERKDAG ]" alt="Monteur aan het werk op locatie" />
               </div>
               {' '}
               <div className="mslot mslot--sq">
-                <Media id="wb-media-3" fit="cover" placeholder="[ INTERVIEW ]" alt="INTERVIEW" />
+                <Media id="cw-media-3" fit="cover" placeholder="[ INTERVIEW ]" alt="Gesprek tussen twee collega's" />
               </div>
               {' '}
               <div className="mslot mslot--wide">
-                <Media id="wb-media-4" fit="cover" placeholder="[ VIDEO / SFEER ]" alt="VIDEO / SFEER" />
+                <Media id="cw-media-4" fit="cover" placeholder="[ VIDEO / SFEER ]" alt="Medewerker in het magazijn" />
               </div>
             </Reveal>
             {' '}
