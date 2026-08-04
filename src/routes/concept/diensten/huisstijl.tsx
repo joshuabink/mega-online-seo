@@ -317,7 +317,7 @@ function Huisstijl() {
                 <h3>Logo & varianten</h3>
                 {' '}
                 <p>
-                  Primair logo, submark en favicon — klaar voor elk formaat en gebruik.
+                  Primair logo, submark en favicon, klaar voor elk formaat en gebruik.
                 </p>
               </Reveal>
               {' '}
@@ -377,7 +377,7 @@ function Huisstijl() {
                 <h3>Digitaal & print</h3>
                 {' '}
                 <p>
-                  Visitekaartjes, briefpapier, social templates — alles klaar voor gebruik.
+                  Visitekaartjes, briefpapier, social templates: alles klaar voor gebruik.
                 </p>
               </Reveal>
             </div>
@@ -456,7 +456,7 @@ function Huisstijl() {
                 {' '}
                 <div className="faq-a">
                   <div className="faq-a-inner">
-                    Ja — AI, EPS, SVG, PNG en PDF. Klaar voor drukwerk, web en social media.
+                    Ja: AI, EPS, SVG, PNG en PDF. Klaar voor drukwerk, web en social media.
                   </div>
                 </div>
               </div>
@@ -484,7 +484,7 @@ function Huisstijl() {
                 {' '}
                 <div className="faq-a">
                   <div className="faq-a-inner">
-                    Dat doen we graag als één traject — naadloze aansluiting tussen merk en website.
+                    Dat doen we graag als één traject, naadloze aansluiting tussen merk en website.
                   </div>
                 </div>
               </div>
@@ -501,7 +501,7 @@ function Huisstijl() {
               <h2>Tijd voor een sterk merk?</h2>
               {' '}
               <p>
-                Plan een groei-call — we bespreken waar je nu staat en waar je naartoe wilt.
+                Plan een groei-call: we bespreken waar je nu staat en waar je naartoe wilt.
               </p>
               {' '}
               <a href="../MegaOnline Landing Page.html#contact" className="btn btn-white btn-lg">Plan een groei-call →</a>

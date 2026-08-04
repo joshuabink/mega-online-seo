@@ -278,7 +278,7 @@ function Agencies() {
                 <Reveal as="h1" className="reveal reveal-delay-1">Schaalbare lead-flow voor je agency</Reveal>
                 {' '}
                 <Reveal as="p" className="lead reveal reveal-delay-2">
-                  Een authority-driven website, content-funnels en CRM-automatisering. Wij bouwen waar jij geen tijd voor hebt — zodat jouw eigen marketing eindelijk niet meer "volgende maand" is.
+                  Een authority-driven website, content-funnels en CRM-automatisering. Wij bouwen waar jij geen tijd voor hebt, zodat jouw eigen marketing eindelijk niet meer "volgende maand" is.
                 </Reveal>
                 {' '}
                 <Reveal as="div" className="hero-ctas reveal reveal-delay-3">
@@ -389,7 +389,7 @@ function Agencies() {
                   <h3>Content-funnels</h3>
                   {' '}
                   <p>
-                    Lead-magneten, e-mailflows en retargeting die warme leads opleveren — terwijl jij werkt.
+                    Lead-magneten, e-mailflows en retargeting die warme leads opleveren, terwijl jij werkt.
                   </p>
                 </div>
               </Reveal>
@@ -454,20 +454,20 @@ function Agencies() {
             <div style={{ textAlign: "center", marginBottom: "40px" }}>
               <Reveal as="div" className="label reveal">Veelgestelde vragen</Reveal>
               {' '}
-              <Reveal as="h2" className="reveal reveal-delay-1" style={{ marginTop: "8px" }}>FAQ — Agencies</Reveal>
+              <Reveal as="h2" className="reveal reveal-delay-1" style={{ marginTop: "8px" }}>FAQ: Agencies</Reveal>
             </div>
             {' '}
             <Reveal as="div" className="faq-list reveal reveal-delay-2">
               <div className="faq-item">
                 <div className="faq-q">
-                  Wij maken zelf ook websites — waarom uitbesteden?
+                  Wij maken zelf ook websites: waarom uitbesteden?
                   {' '}
                   <span className="faq-icon">+</span>
                 </div>
                 {' '}
                 <div className="faq-a">
                   <div className="faq-a-inner">
-                    Precies daarom. De cobbler’s kids. Wij bouwen wat jij voor klanten zou bouwen, in jouw stijl — terwijl jij blijft factureren.
+                    Precies daarom. De cobbler’s kids. Wij bouwen wat jij voor klanten zou bouwen, in jouw stijl, terwijl jij blijft factureren.
                   </div>
                 </div>
               </div>

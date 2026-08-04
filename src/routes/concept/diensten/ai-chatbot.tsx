@@ -278,7 +278,7 @@ function AiChatbot() {
                 <Reveal as="h1" className="reveal reveal-delay-1">AI Chatbot</Reveal>
                 {' '}
                 <Reveal as="p" className="lead reveal reveal-delay-2">
-                  Een slimme AI chatbot op je website die vragen beantwoordt, leads kwalificeert en afspraken inplant — altijd beschikbaar, nooit ziek, volledig op maat getraind voor jouw bedrijf.
+                  Een slimme AI chatbot op je website die vragen beantwoordt, leads kwalificeert en afspraken inplant, altijd beschikbaar, nooit ziek, volledig op maat getraind voor jouw bedrijf.
                 </Reveal>
                 {' '}
                 <Reveal as="div" className="hero-ctas reveal reveal-delay-3">
@@ -350,7 +350,7 @@ function AiChatbot() {
                 {' '}
                 <h3>Afspraken inplannen</h3>
                 {' '}
-                <p>Directe integratie met je agenda — bezoekers boeken zelf.</p>
+                <p>Directe integratie met je agenda, bezoekers boeken zelf.</p>
               </Reveal>
               {' '}
               <Reveal as="div" className="feature-card reveal reveal-delay-2">
@@ -360,7 +360,7 @@ function AiChatbot() {
                 {' '}
                 <h3>Meertalig</h3>
                 {' '}
-                <p>Nederlands, Engels en meer — automatische taaldetectie.</p>
+                <p>Nederlands, Engels en meer, automatische taaldetectie.</p>
               </Reveal>
               {' '}
               <Reveal as="div" className="feature-card reveal reveal-delay-3">
@@ -493,7 +493,7 @@ function AiChatbot() {
               <h2>Klaar voor 24/7 klantenservice?</h2>
               {' '}
               <p>
-                Vraag een gratis demo aan — wij laten zien wat een chatbot voor jouw website kan doen.
+                Vraag een gratis demo aan, wij laten zien wat een chatbot voor jouw website kan doen.
               </p>
               {' '}
               <a href="../MegaOnline Landing Page.html#contact" className="btn btn-white btn-lg">Plan een groei-call →</a>

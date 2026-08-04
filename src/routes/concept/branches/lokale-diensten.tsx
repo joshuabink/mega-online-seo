@@ -278,7 +278,7 @@ function LokaleDiensten() {
                 <Reveal as="h1" className="reveal reveal-delay-1">Lokaal vindbaar, makkelijk te boeken</Reveal>
                 {' '}
                 <Reveal as="p" className="lead reveal reveal-delay-2">
-                  Voor de glashandelaren, hoveniers, kappers en kleine specialisten. Een site die in jouw regio top-of-mind staat — gekoppeld aan een agenda die zichzelf vult.
+                  Voor de glashandelaren, hoveniers, kappers en kleine specialisten. Een site die in jouw regio top-of-mind staat, gekoppeld aan een agenda die zichzelf vult.
                 </Reveal>
                 {' '}
                 <Reveal as="div" className="hero-ctas reveal reveal-delay-3">
@@ -389,7 +389,7 @@ function LokaleDiensten() {
                   <h3>Online boeking</h3>
                   {' '}
                   <p>
-                    Klanten boeken hun afspraak of vragen een offerte aan — direct in je agenda.
+                    Klanten boeken hun afspraak of vragen een offerte aan, direct in je agenda.
                   </p>
                 </div>
               </Reveal>
@@ -441,7 +441,7 @@ function LokaleDiensten() {
                 <h2>Lokaal top-of-mind</h2>
                 {' '}
                 <p>
-                  Lokale SEO-website, automatische reviews en online boeking. Een vakman is binnen 4 maanden top-3 voor de belangrijkste lokale zoektermen — zonder dure Ads.
+                  Lokale SEO-website, automatische reviews en online boeking. Een vakman is binnen 4 maanden top-3 voor de belangrijkste lokale zoektermen, zonder dure Ads.
                 </p>
               </Reveal>
             </div>
@@ -454,7 +454,7 @@ function LokaleDiensten() {
             <div style={{ textAlign: "center", marginBottom: "40px" }}>
               <Reveal as="div" className="label reveal">Veelgestelde vragen</Reveal>
               {' '}
-              <Reveal as="h2" className="reveal reveal-delay-1" style={{ marginTop: "8px" }}>FAQ — Lokale servicebedrijven</Reveal>
+              <Reveal as="h2" className="reveal reveal-delay-1" style={{ marginTop: "8px" }}>FAQ: Lokale servicebedrijven</Reveal>
             </div>
             {' '}
             <Reveal as="div" className="faq-list reveal reveal-delay-2">

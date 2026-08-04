@@ -7,9 +7,9 @@ import { Reveal } from '@/components/Reveal'
 export const Route = createFileRoute('/over-megaonline')({
   head: () => ({
     meta: [
-      { title: "Over MegaOnline — Websites die bijdragen aan groei" },
+      { title: "Over MegaOnline | Websites die bijdragen aan groei" },
       { name: 'description', content: "Achter iedere website zit een bedrijf met een verhaal. Ontdek waarom MegaOnline bestaat, hoe wij naar websites kijken en waarom klanten met ons samenwerken." },
-      { property: 'og:title', content: "Over MegaOnline — Websites die bijdragen aan groei" },
+      { property: 'og:title', content: "Over MegaOnline | Websites die bijdragen aan groei" },
       { property: 'og:description', content: "Achter iedere website zit een bedrijf met een verhaal. Ontdek waarom MegaOnline bestaat, hoe wij naar websites kijken en waarom klanten met ons samenwerken." },
       { property: 'og:url', content: "https://megaonline.io/over-megaonline" },
     ],
@@ -464,7 +464,7 @@ function OverMegaonline() {
           <div className="founder">
             <Reveal as="div" className="founder__media reveal">
               <div className="founder__portrait">
-                <Media id="founder-portret" fit="cover" placeholder="[ PORTRET — JOSHUA ]" alt="Joshua Bink, oprichter van MegaOnline" />
+                <Media id="founder-portret" fit="cover" placeholder="[ PORTRET JOSHUA ]" alt="Joshua Bink, oprichter van MegaOnline" />
               </div>
               {' '}
               <div className="founder__sig">

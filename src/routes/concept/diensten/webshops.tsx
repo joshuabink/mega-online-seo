@@ -278,7 +278,7 @@ function Webshops() {
                 <Reveal as="h1" className="reveal reveal-delay-1">Webshops</Reveal>
                 {' '}
                 <Reveal as="p" className="lead reveal reveal-delay-2">
-                  Van WooCommerce tot Shopify Plus — wij bouwen webshops die echt verkopen. Met slimme koppelingen naar je logistiek, voorraadbeheer en boekhouding.
+                  Van WooCommerce tot Shopify Plus: wij bouwen webshops die echt verkopen. Met slimme koppelingen naar je logistiek, voorraadbeheer en boekhouding.
                 </Reveal>
                 {' '}
                 <Reveal as="div" className="hero-ctas reveal reveal-delay-3">
@@ -340,7 +340,7 @@ function Webshops() {
                 {' '}
                 <h3>Betaaloplossingen</h3>
                 {' '}
-                <p>Mollie, Stripe, iDEAL — alles wat jouw klant wil gebruiken.</p>
+                <p>Mollie, Stripe, iDEAL: alles wat jouw klant wil gebruiken.</p>
               </Reveal>
               {' '}
               <Reveal as="div" className="feature-card reveal reveal-delay-1">

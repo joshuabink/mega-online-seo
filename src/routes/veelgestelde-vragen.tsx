@@ -8,9 +8,9 @@ import '@/styles/pages/veelgestelde-vragen.css'
 export const Route = createFileRoute('/veelgestelde-vragen')({
   head: () => ({
     meta: [
-      { title: "Veelgestelde vragen — MegaOnline.io" },
+      { title: "Veelgestelde vragen | MegaOnline.io" },
       { name: 'description', content: "Antwoord op de meestgestelde vragen over websites bij MegaOnline: wat het kost, hoe lang een project duurt, hoe je meer aanvragen krijgt, techniek en beheer." },
-      { property: 'og:title', content: "Veelgestelde vragen — MegaOnline.io" },
+      { property: 'og:title', content: "Veelgestelde vragen | MegaOnline.io" },
       { property: 'og:description', content: "Antwoord op de meestgestelde vragen over websites bij MegaOnline: wat het kost, hoe lang een project duurt, hoe je meer aanvragen krijgt, techniek en beheer." },
       { property: 'og:url', content: "https://megaonline.io/veelgestelde-vragen" },
     ],
@@ -43,7 +43,7 @@ function VeelgesteldeVragen() {
               {' '}
               <Link to="/contact" style={{ color: "var(--accent-text)" }}>contact</Link>
               {' '}
-              op — je krijgt altijd eerlijk antwoord.
+              op, je krijgt altijd eerlijk antwoord.
             </Reveal>
             {' '}
             <Reveal as="nav" className="faqp__nav reveal" data-d="2" aria-label="Categorieën">
@@ -85,11 +85,11 @@ function VeelgesteldeVragen() {
             {' '}
             <div className="faq">
               <Qa question="Voor wie werken jullie?" className="reveal">
-                  We werken vooral voor bedrijven die afhankelijk zijn van aanvragen, reserveringen en boekingen — van activiteitenbedrijven en verhuurders tot dienstverleners, horeca en non-profits. Wat ze gemeen hebben: hun website mag niet alleen mooi zijn, hij moet werk verzetten.
+                  We werken vooral voor bedrijven die afhankelijk zijn van aanvragen, reserveringen en boekingen, van activiteitenbedrijven en verhuurders tot dienstverleners, horeca en non-profits. Wat ze gemeen hebben: hun website mag niet alleen mooi zijn, hij moet werk verzetten.
               </Qa>
               {' '}
               <Qa question="Wat maakt MegaOnline anders?" className="reveal">
-                  We bouwen geen websites om het bouwen, maar om het resultaat. Je werkt direct met de mensen die de strategie bepalen én je site bouwen — geen tussenlagen, geen accountmanagers. We denken mee over je bedrijf, niet alleen over je pagina’s.
+                  We bouwen geen websites om het bouwen, maar om het resultaat. Je werkt direct met de mensen die de strategie bepalen én je site bouwen, geen tussenlagen, geen accountmanagers. We denken mee over je bedrijf, niet alleen over je pagina’s.
               </Qa>
               {' '}
               <Qa question="Werken jullie ook landelijk?" className="reveal">
@@ -113,7 +113,7 @@ function VeelgesteldeVragen() {
               </Qa>
               {' '}
               <Qa question="Waarom is de Starter Website goedkoper?" className="reveal">
-                  Omdat we daarbij werken met beproefde, herbruikbare bouwblokken en een vaste opzet. Dat scheelt veel ontwerp- en bouwuren, en dat voordeel geven we door. De kwaliteit van de basis blijft hetzelfde — alleen het proces is sneller.
+                  Omdat we daarbij werken met beproefde, herbruikbare bouwblokken en een vaste opzet. Dat scheelt veel ontwerp- en bouwuren, en dat voordeel geven we door. De kwaliteit van de basis blijft hetzelfde, alleen het proces is sneller.
               </Qa>
               {' '}
               <Qa question="Krijg ik vooraf een duidelijke prijs?" className="reveal">
@@ -169,7 +169,7 @@ function VeelgesteldeVragen() {
               </Qa>
               {' '}
               <Qa question="Doen jullie ook SEO?" className="reveal">
-                  Ja. We zorgen voor een gezonde SEO-basis en kunnen verder gaan met lokale vindbaarheid, sterke landingspagina’s en techniek. We sturen daarbij op de juiste bezoekers — mensen die actief zoeken naar wat jij biedt — in plaats van op ijdele bezoekersaantallen.
+                  Ja. We zorgen voor een gezonde SEO-basis en kunnen verder gaan met lokale vindbaarheid, sterke landingspagina’s en techniek. We sturen daarbij op de juiste bezoekers, mensen die actief zoeken naar wat jij biedt, in plaats van op ijdele bezoekersaantallen.
               </Qa>
               {' '}
               <Qa question="Hoe snel zie ik resultaat?" className="reveal">
@@ -177,7 +177,7 @@ function VeelgesteldeVragen() {
               </Qa>
               {' '}
               <Qa question="Kunnen jullie mijn bestaande website verbeteren?" className="reveal">
-                  Vaak wel. Met onze Website Optimalisatie verbeteren we structuur, snelheid, formulieren, de mobiele ervaring en de SEO-basis — zonder dat je site helemaal opnieuw gebouwd hoeft te worden.
+                  Vaak wel. Met onze Website Optimalisatie verbeteren we structuur, snelheid, formulieren, de mobiele ervaring en de SEO-basis, zonder dat je site helemaal opnieuw gebouwd hoeft te worden.
               </Qa>
             </div>
           </div>
@@ -197,7 +197,7 @@ function VeelgesteldeVragen() {
               </Qa>
               {' '}
               <Qa question="Is mijn website veilig en snel?" className="reveal">
-                  Daar zorgen we voor. Je website wordt snel, veilig en stabiel opgeleverd, en is volledig mobielvriendelijk — want de meeste bezoekers komen via hun telefoon.
+                  Daar zorgen we voor. Je website wordt snel, veilig en stabiel opgeleverd, en is volledig mobielvriendelijk, want de meeste bezoekers komen via hun telefoon.
               </Qa>
               {' '}
               <Qa question="Kunnen jullie koppelen met mijn systemen?" className="reveal">

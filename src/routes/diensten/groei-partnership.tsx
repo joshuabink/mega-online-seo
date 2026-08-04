@@ -10,10 +10,10 @@ import '@/styles/pages/diensten-groei-partnership.css'
 export const Route = createFileRoute('/diensten/groei-partnership')({
   head: () => ({
     meta: [
-      { title: "Groei Partnership — MegaOnline.io" },
-      { name: 'description', content: "Een website is geen eindpunt, maar een beginpunt. Een doorlopende samenwerking voor bedrijven die na livegang blijven meten, leren en verbeteren. Geen onderhoudsabonnement — een groeipartner." },
-      { property: 'og:title', content: "Groei Partnership — MegaOnline.io" },
-      { property: 'og:description', content: "Een website is geen eindpunt, maar een beginpunt. Een doorlopende samenwerking voor bedrijven die na livegang blijven meten, leren en verbeteren. Geen onderhoudsabonnement — een groeipartner." },
+      { title: "Groei Partnership | MegaOnline.io" },
+      { name: 'description', content: "Een website is geen eindpunt, maar een beginpunt. Een doorlopende samenwerking voor bedrijven die na livegang blijven meten, leren en verbeteren. Geen onderhoudsabonnement: een groeipartner." },
+      { property: 'og:title', content: "Groei Partnership | MegaOnline.io" },
+      { property: 'og:description', content: "Een website is geen eindpunt, maar een beginpunt. Een doorlopende samenwerking voor bedrijven die na livegang blijven meten, leren en verbeteren. Geen onderhoudsabonnement: een groeipartner." },
       { property: 'og:url', content: "https://megaonline.io/diensten/groei-partnership" },
     ],
     links: [
@@ -344,28 +344,28 @@ function GroeiPartnership() {
               <span className="iconbox iconbox--sm">
                 <Icon name="bar-chart-3" />
               </span>
-              Data — de cijfers achter je website
+              Data: de cijfers achter je website
             </div>
             {' '}
             <div className="exchip" style={{ flexDirection: "column", alignItems: "flex-start", gap: "14px" }}>
               <span className="iconbox iconbox--sm">
                 <Icon name="activity" />
               </span>
-              Gedrag — wat bezoekers echt doen
+              Gedrag: wat bezoekers echt doen
             </div>
             {' '}
             <div className="exchip" style={{ flexDirection: "column", alignItems: "flex-start", gap: "14px" }}>
               <span className="iconbox iconbox--sm">
                 <Icon name="message-square-text" />
               </span>
-              Feedback — wat mensen je vertellen
+              Feedback: wat mensen je vertellen
             </div>
             {' '}
             <div className="exchip" style={{ flexDirection: "column", alignItems: "flex-start", gap: "14px" }}>
               <span className="iconbox iconbox--sm">
                 <Icon name="lightbulb" />
               </span>
-              Inzichten — de conclusies die we trekken
+              Inzichten: de conclusies die we trekken
             </div>
           </Reveal>
         </div>
@@ -753,7 +753,7 @@ function GroeiPartnership() {
             {' '}
             <SteppedLeadForm
               className="reveal"
-              subject="Nieuwe websitescan-aanvraag — MegaOnline.io"
+              subject="Nieuwe websitescan-aanvraag - MegaOnline.io"
               head={
                 <>
                   <span className="form__head-note">

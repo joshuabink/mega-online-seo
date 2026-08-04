@@ -328,7 +328,7 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
 
               <div className="mega__foot">
                 <span>
-                  Websites zijn onze kern — SEO, content en integraties versterken het
+                  Websites zijn onze kern: SEO, content en integraties versterken het
                   resultaat.
                 </span>
                 <Link to="/gratis-websitescan">

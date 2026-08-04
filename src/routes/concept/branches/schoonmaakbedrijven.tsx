@@ -278,7 +278,7 @@ function Schoonmaakbedrijven() {
                 <Reveal as="h1" className="reveal reveal-delay-1">Aanvragen binnen, offerte er meteen uit</Reveal>
                 {' '}
                 <Reveal as="p" className="lead reveal reveal-delay-2">
-                  Wie het eerst reageert, krijgt vaak de opdracht. Met een slim aanvraagformulier verstuur je binnen 5 minuten een eerste prijsindicatie — automatisch, in jouw stijl.
+                  Wie het eerst reageert, krijgt vaak de opdracht. Met een slim aanvraagformulier verstuur je binnen 5 minuten een eerste prijsindicatie, automatisch, in jouw stijl.
                 </Reveal>
                 {' '}
                 <Reveal as="div" className="hero-ctas reveal reveal-delay-3">
@@ -417,7 +417,7 @@ function Schoonmaakbedrijven() {
                   <h3>App voor schoonmakers</h3>
                   {' '}
                   <p>
-                    Adressen, instructies, foto’s en uren — vanaf de telefoon, ook offline.
+                    Adressen, instructies, foto’s en uren: vanaf de telefoon, ook offline.
                   </p>
                 </div>
               </Reveal>
@@ -441,7 +441,7 @@ function Schoonmaakbedrijven() {
                 <h2>ZuiverPro</h2>
                 {' '}
                 <p>
-                  Slim aanvraagformulier met automatische prijsindicatie. Klanten krijgen een eerste offerte binnen 5 minuten — zonder dat iemand het opvolgt. Win-rate op nieuwe leads ging met 40% omhoog.
+                  Slim aanvraagformulier met automatische prijsindicatie. Klanten krijgen een eerste offerte binnen 5 minuten, zonder dat iemand het opvolgt. Win-rate op nieuwe leads ging met 40% omhoog.
                 </p>
               </Reveal>
             </div>
@@ -454,7 +454,7 @@ function Schoonmaakbedrijven() {
             <div style={{ textAlign: "center", marginBottom: "40px" }}>
               <Reveal as="div" className="label reveal">Veelgestelde vragen</Reveal>
               {' '}
-              <Reveal as="h2" className="reveal reveal-delay-1" style={{ marginTop: "8px" }}>FAQ — Schoonmaakbedrijven</Reveal>
+              <Reveal as="h2" className="reveal reveal-delay-1" style={{ marginTop: "8px" }}>FAQ: Schoonmaakbedrijven</Reveal>
             </div>
             {' '}
             <Reveal as="div" className="faq-list reveal reveal-delay-2">
@@ -467,7 +467,7 @@ function Schoonmaakbedrijven() {
                 {' '}
                 <div className="faq-a">
                   <div className="faq-a-inner">
-                    Voor standaardwerk geven we direct een prijs. Voor maatwerk vragen we de juiste extra info en sturen we een snelle indicatie binnen 1 uur — handmatig of door jou bevestigd.
+                    Voor standaardwerk geven we direct een prijs. Voor maatwerk vragen we de juiste extra info en sturen we een snelle indicatie binnen 1 uur, handmatig of door jou bevestigd.
                   </div>
                 </div>
               </div>

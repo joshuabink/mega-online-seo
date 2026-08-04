@@ -9,9 +9,9 @@ import { SteppedLeadForm } from '@/components/LeadForm'
 export const Route = createFileRoute('/diensten/website-redesign')({
   head: () => ({
     meta: [
-      { title: "Website Redesign — MegaOnline.io" },
+      { title: "Website Redesign | MegaOnline.io" },
       { name: 'description', content: "Je bedrijf is gegroeid, maar je website niet. Wij stemmen je online uitstraling opnieuw af op waar je vandaag staat en waar je naartoe wilt. Een redesign is meer dan een nieuw jasje." },
-      { property: 'og:title', content: "Website Redesign — MegaOnline.io" },
+      { property: 'og:title', content: "Website Redesign | MegaOnline.io" },
       { property: 'og:description', content: "Je bedrijf is gegroeid, maar je website niet. Wij stemmen je online uitstraling opnieuw af op waar je vandaag staat en waar je naartoe wilt. Een redesign is meer dan een nieuw jasje." },
       { property: 'og:url', content: "https://megaonline.io/diensten/website-redesign" },
     ],
@@ -887,7 +887,7 @@ function WebsiteRedesign() {
             {' '}
             <SteppedLeadForm
               className="reveal"
-              subject="Nieuwe websitescan-aanvraag — MegaOnline.io"
+              subject="Nieuwe websitescan-aanvraag - MegaOnline.io"
               head={
                 <>
                   <span className="form__head-note">
@@ -989,7 +989,7 @@ function WebsiteRedesign() {
                     {' '}
                     <option value="Mijn website sluit niet meer aan">Mijn website sluit niet meer aan</option>
                     {' '}
-                    <option value="Weet ik nog niet — adviseer mij">Weet ik nog niet — adviseer mij</option>
+                    <option value="Weet ik nog niet, adviseer mij">Weet ik nog niet, adviseer mij</option>
                   </select>
                 </div>
                 {' '}

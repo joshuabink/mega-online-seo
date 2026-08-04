@@ -278,7 +278,7 @@ function Installateurs() {
                 <Reveal as="h1" className="reveal reveal-delay-1">Lead-systemen voor installateurs</Reveal>
                 {' '}
                 <Reveal as="p" className="lead reveal reveal-delay-2">
-                  Storingen en service-aanvragen wachten niet. Met een lead-website en slimme intake komen aanvragen direct in jouw planning — zonder dat iemand de hele dag bij de telefoon hoeft te zitten.
+                  Storingen en service-aanvragen wachten niet. Met een lead-website en slimme intake komen aanvragen direct in jouw planning, zonder dat iemand de hele dag bij de telefoon hoeft te zitten.
                 </Reveal>
                 {' '}
                 <Reveal as="div" className="hero-ctas reveal reveal-delay-3">
@@ -337,7 +337,7 @@ function Installateurs() {
                 <h3>Versnipperde planning</h3>
                 {' '}
                 <p>
-                  WhatsApp en spreadsheets als planning — niemand weet wie waar staat.
+                  WhatsApp en spreadsheets als planning, niemand weet wie waar staat.
                 </p>
               </Reveal>
               {' '}
@@ -454,7 +454,7 @@ function Installateurs() {
             <div style={{ textAlign: "center", marginBottom: "40px" }}>
               <Reveal as="div" className="label reveal">Veelgestelde vragen</Reveal>
               {' '}
-              <Reveal as="h2" className="reveal reveal-delay-1" style={{ marginTop: "8px" }}>FAQ — Installateurs</Reveal>
+              <Reveal as="h2" className="reveal reveal-delay-1" style={{ marginTop: "8px" }}>FAQ: Installateurs</Reveal>
             </div>
             {' '}
             <Reveal as="div" className="faq-list reveal reveal-delay-2">

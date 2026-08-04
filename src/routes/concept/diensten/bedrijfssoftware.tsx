@@ -278,7 +278,7 @@ function Bedrijfssoftware() {
                 <Reveal as="h1" className="reveal reveal-delay-1">Bedrijfssoftware</Reveal>
                 {' '}
                 <Reveal as="p" className="lead reveal reveal-delay-2">
-                  Standaardsoftware past niet altijd. Wij bouwen bedrijfssoftware op maat — van planning- en facturatiesystemen tot complexe administratieve platformen.
+                  Standaardsoftware past niet altijd. Wij bouwen bedrijfssoftware op maat, van planning- en facturatiesystemen tot complexe administratieve platformen.
                 </Reveal>
                 {' '}
                 <Reveal as="div" className="hero-ctas reveal reveal-delay-3">
@@ -460,7 +460,7 @@ function Bedrijfssoftware() {
                 {' '}
                 <div className="faq-a">
                   <div className="faq-a-inner">
-                    Ja — we koppelen met Exact, AFAS, Salesforce, Google Workspace en meer via API.
+                    Ja, we koppelen met Exact, AFAS, Salesforce, Google Workspace en meer via API.
                   </div>
                 </div>
               </div>
@@ -491,7 +491,7 @@ function Bedrijfssoftware() {
               <h2>Software die werkt voor jouw organisatie?</h2>
               {' '}
               <p>
-                Plan een groei-call — we brengen jouw processen in kaart en denken mee over de beste oplossing.
+                Plan een groei-call: we brengen jouw processen in kaart en denken mee over de beste oplossing.
               </p>
               {' '}
               <a href="../MegaOnline Landing Page.html#contact" className="btn btn-white btn-lg">Plan een groei-call →</a>

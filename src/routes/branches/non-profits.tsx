@@ -7,9 +7,9 @@ import { Reveal } from '@/components/Reveal'
 export const Route = createFileRoute('/branches/non-profits')({
   head: () => ({
     meta: [
-      { title: "Websites voor non-profits — MegaOnline.io" },
+      { title: "Websites voor non-profits | MegaOnline.io" },
       { name: 'description', content: "Een website voor non-profits die je verhaal vertelt én tot actie aanzet: meer donaties, vrijwilligers en betrokkenheid, ook met een beperkt budget." },
-      { property: 'og:title', content: "Websites voor non-profits — MegaOnline.io" },
+      { property: 'og:title', content: "Websites voor non-profits | MegaOnline.io" },
       { property: 'og:description', content: "Een website voor non-profits die je verhaal vertelt én tot actie aanzet: meer donaties, vrijwilligers en betrokkenheid, ook met een beperkt budget." },
       { property: 'og:url', content: "https://megaonline.io/branches/non-profits" },
     ],
@@ -85,7 +85,7 @@ function NonProfits() {
             </h2>
             {' '}
             <p className="lead">
-              We werken voor organisaties met een maatschappelijk doel. Die wereld heeft eigen uitdagingen — en daar bouwen we de website omheen.
+              We werken voor organisaties met een maatschappelijk doel. Die wereld heeft eigen uitdagingen, en daar bouwen we de website omheen.
             </p>
           </Reveal>
           {' '}
@@ -258,7 +258,7 @@ function NonProfits() {
             </h2>
             {' '}
             <p className="lead">
-              Gericht op vertrouwen, betrokkenheid en steun — zonder onnodige kosten.
+              Gericht op vertrouwen, betrokkenheid en steun, zonder onnodige kosten.
             </p>
           </Reveal>
           {' '}

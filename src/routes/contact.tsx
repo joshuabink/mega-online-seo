@@ -9,9 +9,9 @@ import '@/styles/pages/contact.css'
 export const Route = createFileRoute('/contact')({
   head: () => ({
     meta: [
-      { title: "Contact & kennismaking — MegaOnline.io" },
+      { title: "Contact & kennismaking | MegaOnline.io" },
       { name: 'description', content: "Even kennismaken of een vraag stellen? Plan een vrijblijvende kennismaking met MegaOnline of neem direct contact op. Geen verplichtingen, eerlijk advies." },
-      { property: 'og:title', content: "Contact & kennismaking — MegaOnline.io" },
+      { property: 'og:title', content: "Contact & kennismaking | MegaOnline.io" },
       { property: 'og:description', content: "Even kennismaken of een vraag stellen? Plan een vrijblijvende kennismaking met MegaOnline of neem direct contact op. Geen verplichtingen, eerlijk advies." },
       { property: 'og:url', content: "https://megaonline.io/contact" },
     ],
@@ -52,7 +52,7 @@ function Contact() {
               </Reveal>
               {' '}
               <Reveal as="p" className="lead fhero__sub reveal" data-d="2">
-                Of je nu een concrete vraag hebt of gewoon wilt sparren over je website — we denken graag mee. Je krijgt eerlijk advies, ook als dat betekent dat je ons (nog) niet nodig hebt.
+                Of je nu een concrete vraag hebt of gewoon wilt sparren over je website, we denken graag mee. Je krijgt eerlijk advies, ook als dat betekent dat je ons (nog) niet nodig hebt.
               </Reveal>
               {' '}
               <Reveal as="div" className="hero__ticks reveal" data-d="2" style={{ display: "flex", flexWrap: "wrap", gap: "10px 22px", marginTop: "26px" }}>
@@ -75,7 +75,7 @@ function Contact() {
             {' '}
             <SingleLeadForm
               className="fhero__form reveal"
-              subject="Nieuw contactverzoek — MegaOnline.io"
+              subject="Nieuw contactverzoek - MegaOnline.io"
               head={
                 <>
                   <span className="form__head-note">

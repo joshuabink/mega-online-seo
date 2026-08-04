@@ -7,9 +7,9 @@ import { Reveal } from '@/components/Reveal'
 export const Route = createFileRoute('/branches/activiteitenbedrijven')({
   head: () => ({
     meta: [
-      { title: "Websites voor activiteitenbedrijven — MegaOnline.io" },
+      { title: "Websites voor activiteitenbedrijven | MegaOnline.io" },
       { name: 'description', content: "Een website voor activiteitenbedrijven die ook op rustige dagen vol boekt: online reserveren, arrangementen, groepen en cadeaubonnen die verkopen." },
-      { property: 'og:title', content: "Websites voor activiteitenbedrijven — MegaOnline.io" },
+      { property: 'og:title', content: "Websites voor activiteitenbedrijven | MegaOnline.io" },
       { property: 'og:description', content: "Een website voor activiteitenbedrijven die ook op rustige dagen vol boekt: online reserveren, arrangementen, groepen en cadeaubonnen die verkopen." },
       { property: 'og:url', content: "https://megaonline.io/branches/activiteitenbedrijven" },
     ],
@@ -86,7 +86,7 @@ function Activiteitenbedrijven() {
             </h2>
             {' '}
             <p className="lead">
-              We werken voor bedrijven waar mensen komen voor een ervaring. Die markt kent z'n eigen ritme — en daar bouwen we omheen.
+              We werken voor bedrijven waar mensen komen voor een ervaring. Die markt kent z'n eigen ritme, en daar bouwen we omheen.
             </p>
           </Reveal>
           {' '}
@@ -182,7 +182,7 @@ function Activiteitenbedrijven() {
                 {' '}
                 <em>meer</em>
                 {' '}
-                boekingen — ook als jij dicht bent.
+                boekingen, ook als jij dicht bent.
               </div>
             </Reveal>
             {' '}

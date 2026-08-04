@@ -278,7 +278,7 @@ function Bootverhuur() {
                 <Reveal as="h1" className="reveal reveal-delay-1">24/7 boekingen voor je bootverhuur</Reveal>
                 {' '}
                 <Reveal as="p" className="lead reveal reveal-delay-2">
-                  Geen telefoon meer op zondagavond. Een boekingssysteem met live beschikbaarheid en directe betaling — zodat klanten reserveren wanneer het hen uitkomt, niet wanneer jij aan tafel zit.
+                  Geen telefoon meer op zondagavond. Een boekingssysteem met live beschikbaarheid en directe betaling, zodat klanten reserveren wanneer het hen uitkomt, niet wanneer jij aan tafel zit.
                 </Reveal>
                 {' '}
                 <Reveal as="div" className="hero-ctas reveal reveal-delay-3">
@@ -389,7 +389,7 @@ function Bootverhuur() {
                   <h3>Online betalingen</h3>
                   {' '}
                   <p>
-                    Aanbetaling, borgsom en restbetaling automatisch — geen openstaande nota’s meer.
+                    Aanbetaling, borgsom en restbetaling automatisch, geen openstaande nota’s meer.
                   </p>
                 </div>
               </Reveal>
@@ -417,7 +417,7 @@ function Bootverhuur() {
                   <h3>Klantcommunicatie</h3>
                   {' '}
                   <p>
-                    Automatische bevestigingen, vaarinstructies en check-out — in jouw tone-of-voice.
+                    Automatische bevestigingen, vaarinstructies en check-out, in jouw tone-of-voice.
                   </p>
                 </div>
               </Reveal>
@@ -454,7 +454,7 @@ function Bootverhuur() {
             <div style={{ textAlign: "center", marginBottom: "40px" }}>
               <Reveal as="div" className="label reveal">Veelgestelde vragen</Reveal>
               {' '}
-              <Reveal as="h2" className="reveal reveal-delay-1" style={{ marginTop: "8px" }}>FAQ — Bootverhuur</Reveal>
+              <Reveal as="h2" className="reveal reveal-delay-1" style={{ marginTop: "8px" }}>FAQ: Bootverhuur</Reveal>
             </div>
             {' '}
             <Reveal as="div" className="faq-list reveal reveal-delay-2">
@@ -481,7 +481,7 @@ function Bootverhuur() {
                 {' '}
                 <div className="faq-a">
                   <div className="faq-a-inner">
-                    Zeker. Multi-locatie en sub-verhuurders zijn ingebakken — elke locatie heeft eigen vloot, prijzen en beschikbaarheid.
+                    Zeker. Multi-locatie en sub-verhuurders zijn ingebakken, elke locatie heeft eigen vloot, prijzen en beschikbaarheid.
                   </div>
                 </div>
               </div>

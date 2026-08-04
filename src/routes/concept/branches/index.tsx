@@ -389,7 +389,7 @@ function Index() {
             <div className="branche-cta-inner">
               <div className="label" style={{ color: "rgba(255,255,255,.45)", marginBottom: "12px" }}>Past jouw branche er niet bij?</div>
               {' '}
-              <h2>Geen probleem — plan een groei-call</h2>
+              <h2>Geen probleem: plan een groei-call</h2>
               {' '}
               <p>
                 We werken met meer dan 50 servicebedrijven in uiteenlopende branches. Vertel ons over jouw situatie en we kijken samen wat haalbaar is.

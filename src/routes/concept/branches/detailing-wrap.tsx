@@ -278,7 +278,7 @@ function DetailingWrap() {
                 <Reveal as="h1" className="reveal reveal-delay-1">Een site die je vakmanschap verkoopt</Reveal>
                 {' '}
                 <Reveal as="p" className="lead reveal reveal-delay-2">
-                  In jouw vak verkoopt visueel werk zichzelf. Een sterke portfolio + AI-assistent die afspraken kwalificeert en inboekt — zodat je agenda zich vult met de juiste klussen, niet met oriëntatie-vragen.
+                  In jouw vak verkoopt visueel werk zichzelf. Een sterke portfolio + AI-assistent die afspraken kwalificeert en inboekt, zodat je agenda zich vult met de juiste klussen, niet met oriëntatie-vragen.
                 </Reveal>
                 {' '}
                 <Reveal as="div" className="hero-ctas reveal reveal-delay-3">
@@ -387,7 +387,7 @@ function DetailingWrap() {
                   <h3>AI-chatassistent</h3>
                   {' '}
                   <p>
-                    Beantwoordt eerste vragen, kwalificeert leads en boekt afspraken — in jouw tone-of-voice.
+                    Beantwoordt eerste vragen, kwalificeert leads en boekt afspraken, in jouw tone-of-voice.
                   </p>
                 </div>
               </Reveal>
@@ -452,7 +452,7 @@ function DetailingWrap() {
             <div style={{ textAlign: "center", marginBottom: "40px" }}>
               <Reveal as="div" className="label reveal">Veelgestelde vragen</Reveal>
               {' '}
-              <Reveal as="h2" className="reveal reveal-delay-1" style={{ marginTop: "8px" }}>FAQ — Detailing & Wrap</Reveal>
+              <Reveal as="h2" className="reveal reveal-delay-1" style={{ marginTop: "8px" }}>FAQ: Detailing & Wrap</Reveal>
             </div>
             {' '}
             <Reveal as="div" className="faq-list reveal reveal-delay-2">
@@ -465,7 +465,7 @@ function DetailingWrap() {
                 {' '}
                 <div className="faq-a">
                   <div className="faq-a-inner">
-                    Ja. We trainen ’m op je bestaande communicatie, prijzen en stijl — zodat klanten niet doorhebben dat ze met een assistent praten.
+                    Ja. We trainen ’m op je bestaande communicatie, prijzen en stijl, zodat klanten niet doorhebben dat ze met een assistent praten.
                   </div>
                 </div>
               </div>
@@ -479,7 +479,7 @@ function DetailingWrap() {
                 {' '}
                 <div className="faq-a">
                   <div className="faq-a-inner">
-                    Zeker. Aanbetaling, voorlopige boeking en automatische reminders — minder no-shows, betere planning.
+                    Zeker. Aanbetaling, voorlopige boeking en automatische reminders, minder no-shows, betere planning.
                   </div>
                 </div>
               </div>

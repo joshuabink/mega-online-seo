@@ -6,9 +6,9 @@ import '@/styles/pages/privacyverklaring.css'
 export const Route = createFileRoute('/privacyverklaring')({
   head: () => ({
     meta: [
-      { title: "Privacyverklaring — MegaOnline.io" },
+      { title: "Privacyverklaring | MegaOnline.io" },
       { name: 'description', content: "De privacyverklaring van MegaOnline.io: welke persoonsgegevens we verwerken, waarom, en welke rechten je hebt." },
-      { property: 'og:title', content: "Privacyverklaring — MegaOnline.io" },
+      { property: 'og:title', content: "Privacyverklaring | MegaOnline.io" },
       { property: 'og:description', content: "De privacyverklaring van MegaOnline.io: welke persoonsgegevens we verwerken, waarom, en welke rechten je hebt." },
       { property: 'og:url', content: "https://megaonline.io/privacyverklaring" },
     ],

@@ -417,7 +417,7 @@ function Zonnepanelen() {
                   <h3>AI-assistent</h3>
                   {' '}
                   <p>
-                    Beantwoordt vragen ’s avonds en in het weekend — geen gemiste lead meer.
+                    Beantwoordt vragen ’s avonds en in het weekend, geen gemiste lead meer.
                   </p>
                 </div>
               </Reveal>
@@ -454,7 +454,7 @@ function Zonnepanelen() {
             <div style={{ textAlign: "center", marginBottom: "40px" }}>
               <Reveal as="div" className="label reveal">Veelgestelde vragen</Reveal>
               {' '}
-              <Reveal as="h2" className="reveal reveal-delay-1" style={{ marginTop: "8px" }}>FAQ — Zonnepanelen</Reveal>
+              <Reveal as="h2" className="reveal reveal-delay-1" style={{ marginTop: "8px" }}>FAQ: Zonnepanelen</Reveal>
             </div>
             {' '}
             <Reveal as="div" className="faq-list reveal reveal-delay-2">

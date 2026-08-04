@@ -278,7 +278,7 @@ function Aannemers() {
                 <Reveal as="h1" className="reveal reveal-delay-1">Lead-websites voor aannemers en klusbedrijven</Reveal>
                 {' '}
                 <Reveal as="p" className="lead reveal reveal-delay-2">
-                  Vertrouwen wint hier. Een sterke site, duidelijke cases en slimme opvolging zorgen dat de juiste klanten — met de juiste budgetten — voor jou kiezen.
+                  Vertrouwen wint hier. Een sterke site, duidelijke cases en slimme opvolging zorgen dat de juiste klanten, met de juiste budgetten: voor jou kiezen.
                 </Reveal>
                 {' '}
                 <Reveal as="div" className="hero-ctas reveal reveal-delay-3">
@@ -454,7 +454,7 @@ function Aannemers() {
             <div style={{ textAlign: "center", marginBottom: "40px" }}>
               <Reveal as="div" className="label reveal">Veelgestelde vragen</Reveal>
               {' '}
-              <Reveal as="h2" className="reveal reveal-delay-1" style={{ marginTop: "8px" }}>FAQ — Aannemers & klusbedrijven</Reveal>
+              <Reveal as="h2" className="reveal reveal-delay-1" style={{ marginTop: "8px" }}>FAQ: Aannemers & klusbedrijven</Reveal>
             </div>
             {' '}
             <Reveal as="div" className="faq-list reveal reveal-delay-2">
@@ -467,7 +467,7 @@ function Aannemers() {
                 {' '}
                 <div className="faq-a">
                   <div className="faq-a-inner">
-                    Ja. We segmenteren de website per doelgroep (particulier vs zakelijk) zodat elke klant direct de juiste route ziet — met passende cases en bewijs.
+                    Ja. We segmenteren de website per doelgroep (particulier vs zakelijk) zodat elke klant direct de juiste route ziet, met passende cases en bewijs.
                   </div>
                 </div>
               </div>

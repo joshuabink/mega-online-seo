@@ -9,9 +9,9 @@ import { SteppedLeadForm } from '@/components/LeadForm'
 export const Route = createFileRoute('/diensten/website-optimalisatie')({
   head: () => ({
     meta: [
-      { title: "Website Optimalisatie — MegaOnline.io" },
+      { title: "Website Optimalisatie | MegaOnline.io" },
       { name: 'description', content: "Je website staat online, maar haalt er nog niet alles uit. Ontdek waar bezoekers afhaken en hoe kleine verbeteringen leiden tot meer aanvragen en boekingen. Soms is verbeteren slimmer dan vervangen." },
-      { property: 'og:title', content: "Website Optimalisatie — MegaOnline.io" },
+      { property: 'og:title', content: "Website Optimalisatie | MegaOnline.io" },
       { property: 'og:description', content: "Je website staat online, maar haalt er nog niet alles uit. Ontdek waar bezoekers afhaken en hoe kleine verbeteringen leiden tot meer aanvragen en boekingen. Soms is verbeteren slimmer dan vervangen." },
       { property: 'og:url', content: "https://megaonline.io/diensten/website-optimalisatie" },
     ],
@@ -313,28 +313,28 @@ function WebsiteOptimalisatie() {
                 <span className="iconbox iconbox--sm">
                   <Icon name="activity" />
                 </span>
-                Gedrag — wat doen bezoekers echt?
+                Gedrag: wat doen bezoekers echt?
               </div>
               {' '}
               <div className="exchip" style={{ flexDirection: "column", alignItems: "flex-start", gap: "14px" }}>
                 <span className="iconbox iconbox--sm">
                   <Icon name="alert-triangle" />
                 </span>
-                Knelpunten — waar haken ze af?
+                Knelpunten: waar haken ze af?
               </div>
               {' '}
               <div className="exchip" style={{ flexDirection: "column", alignItems: "flex-start", gap: "14px" }}>
                 <span className="iconbox iconbox--sm">
                   <Icon name="lightbulb" />
                 </span>
-                Kansen — wat blijft er liggen?
+                Kansen: wat blijft er liggen?
               </div>
               {' '}
               <div className="exchip" style={{ flexDirection: "column", alignItems: "flex-start", gap: "14px" }}>
                 <span className="iconbox iconbox--sm">
                   <Icon name="hand-heart" />
                 </span>
-                Gebruikerservaring — voelt het soepel?
+                Gebruikerservaring: voelt het soepel?
               </div>
             </Reveal>
             {' '}
@@ -782,7 +782,7 @@ function WebsiteOptimalisatie() {
             {' '}
             <SteppedLeadForm
               className="reveal"
-              subject="Nieuwe websitescan-aanvraag — MegaOnline.io"
+              subject="Nieuwe websitescan-aanvraag - MegaOnline.io"
               head={
                 <>
                   <span className="form__head-note">
@@ -886,7 +886,7 @@ function WebsiteOptimalisatie() {
                     {' '}
                     <option value="Beter vindbaar (SEO)">Beter vindbaar (SEO)</option>
                     {' '}
-                    <option value="Weet ik nog niet — adviseer mij">Weet ik nog niet — adviseer mij</option>
+                    <option value="Weet ik nog niet, adviseer mij">Weet ik nog niet, adviseer mij</option>
                   </select>
                 </div>
                 {' '}

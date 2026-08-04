@@ -278,7 +278,7 @@ function Webapps() {
                 <Reveal as="h1" className="reveal reveal-delay-1">Webapps</Reveal>
                 {' '}
                 <Reveal as="p" className="lead reveal reveal-delay-2">
-                  Standaardsoftware past niet altijd. Wij bouwen webapplicaties op maat voor jouw specifieke werkproces — schaalbaar, veilig en prettig in gebruik.
+                  Standaardsoftware past niet altijd. Wij bouwen webapplicaties op maat voor jouw specifieke werkproces, schaalbaar, veilig en prettig in gebruik.
                 </Reveal>
                 {' '}
                 <Reveal as="div" className="hero-ctas reveal reveal-delay-3">
@@ -316,7 +316,7 @@ function Webapps() {
                 {' '}
                 <h3>Volledig op maat</h3>
                 {' '}
-                <p>Geen compromis — de app werkt precies zoals jij dat wilt.</p>
+                <p>Geen compromis: de app werkt precies zoals jij dat wilt.</p>
               </Reveal>
               {' '}
               <Reveal as="div" className="feature-card reveal reveal-delay-2">
@@ -338,7 +338,7 @@ function Webapps() {
                 {' '}
                 <h3>API-koppelingen</h3>
                 {' '}
-                <p>Verbind met je bestaande systemen — CRM, ERP, boekhouding.</p>
+                <p>Verbind met je bestaande systemen: CRM, ERP, boekhouding.</p>
               </Reveal>
               {' '}
               <Reveal as="div" className="feature-card reveal reveal-delay-1">
@@ -446,7 +446,7 @@ function Webapps() {
                 {' '}
                 <div className="faq-a">
                   <div className="faq-a-inner">
-                    Van ZZP'er tot MKB — als je een specifiek werkproces wil automatiseren of een product wil bouwen.
+                    Van ZZP'er tot MKB, als je een specifiek werkproces wil automatiseren of een product wil bouwen.
                   </div>
                 </div>
               </div>
@@ -490,7 +490,7 @@ function Webapps() {
               {' '}
               <h2>Een webapp die jouw werkproces versnelt?</h2>
               {' '}
-              <p>Vertel ons het probleem — wij bedenken de oplossing.</p>
+              <p>Vertel ons het probleem, wij bedenken de oplossing.</p>
               {' '}
               <a href="../MegaOnline Landing Page.html#contact" className="btn btn-white btn-lg">Plan een groei-call →</a>
             </div>

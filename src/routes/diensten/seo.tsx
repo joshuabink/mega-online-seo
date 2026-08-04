@@ -7,10 +7,10 @@ import { Reveal } from '@/components/Reveal'
 export const Route = createFileRoute('/diensten/seo')({
   head: () => ({
     meta: [
-      { title: "SEO — beter gevonden worden — MegaOnline.io" },
-      { name: 'description', content: "SEO die zorgt dat de juiste klanten je vinden. Lokale vindbaarheid, sterke landingspagina's en een gezonde technische basis — gericht op aanvragen, niet op ijdele cijfers." },
-      { property: 'og:title', content: "SEO — beter gevonden worden — MegaOnline.io" },
-      { property: 'og:description', content: "SEO die zorgt dat de juiste klanten je vinden. Lokale vindbaarheid, sterke landingspagina's en een gezonde technische basis — gericht op aanvragen, niet op ijdele cijfers." },
+      { title: "SEO: beter gevonden worden | MegaOnline.io" },
+      { name: 'description', content: "SEO die zorgt dat de juiste klanten je vinden. Lokale vindbaarheid, sterke landingspagina's en een gezonde technische basis, gericht op aanvragen, niet op ijdele cijfers." },
+      { property: 'og:title', content: "SEO: beter gevonden worden | MegaOnline.io" },
+      { property: 'og:description', content: "SEO die zorgt dat de juiste klanten je vinden. Lokale vindbaarheid, sterke landingspagina's en een gezonde technische basis, gericht op aanvragen, niet op ijdele cijfers." },
       { property: 'og:url', content: "https://megaonline.io/diensten/seo" },
     ],
     links: [
@@ -51,7 +51,7 @@ function Seo() {
               </Reveal>
               {' '}
               <Reveal as="p" className="lead svc-hero__sub reveal" data-d="2">
-                Een mooie website heeft pas waarde als de juiste mensen ‘m vinden. Wij zorgen dat je verschijnt op het moment dat iemand zoekt naar wat jij biedt — en dat die bezoeker ook echt klant wordt.
+                Een mooie website heeft pas waarde als de juiste mensen ‘m vinden. Wij zorgen dat je verschijnt op het moment dat iemand zoekt naar wat jij biedt, en dat die bezoeker ook echt klant wordt.
               </Reveal>
               {' '}
               <Reveal as="div" className="svc-hero__ctas reveal" data-d="2">
@@ -335,7 +335,7 @@ function Seo() {
             <h2 className="display">Klaar om beter gevonden te worden?</h2>
             {' '}
             <p className="lead">
-              Vraag een gratis websitescan aan. We laten zien waar je nu vindbaarheid — en dus aanvragen — misloopt.
+              Vraag een gratis websitescan aan. We laten zien waar je nu vindbaarheid, en dus aanvragen, misloopt.
             </p>
             {' '}
             <Reveal as="div" className="svc-hero__ctas reveal" data-d="1" style={{ justifyContent: "center", marginTop: "28px" }}>

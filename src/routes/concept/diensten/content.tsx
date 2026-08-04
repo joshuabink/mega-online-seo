@@ -332,7 +332,7 @@ function Content() {
               <Reveal as="h2" className="reveal reveal-delay-1" style={{ marginTop: "8px" }}>Content voor elk kanaal</Reveal>
               {' '}
               <Reveal as="p" className="reveal reveal-delay-2" style={{ fontSize: "15px", marginTop: "10px", maxWidth: "520px" }}>
-                Je krijgt geen losse bestanden — maar een complete content-bibliotheek, klaar voor je website, social media en advertenties.
+                Je krijgt geen losse bestanden, maar een complete content-bibliotheek, klaar voor je website, social media en advertenties.
               </Reveal>
             </div>
             {' '}
@@ -445,7 +445,7 @@ function Content() {
               <Reveal as="h2" className="reveal reveal-delay-1" style={{ marginTop: "8px" }}>Eenmalig of doorlopend</Reveal>
               {' '}
               <Reveal as="p" className="reveal reveal-delay-2" style={{ fontSize: "15px", marginTop: "10px", maxWidth: "520px", marginLeft: "auto", marginRight: "auto" }}>
-                Drie manieren om met ons te werken. Elk pakket is een vertrekpunt — we passen aan op jouw situatie en doelen.
+                Drie manieren om met ons te werken. Elk pakket is een vertrekpunt, we passen aan op jouw situatie en doelen.
               </Reveal>
             </div>
             {' '}
@@ -534,7 +534,7 @@ function Content() {
                 <h3 className="pkg-name">Productie op maat</h3>
                 {' '}
                 <p style={{ fontSize: "14px" }}>
-                  Grote bedrijfsvideo, campagne-content of meerdaagse productie. We schalen mee — van concept tot aflevering.
+                  Grote bedrijfsvideo, campagne-content of meerdaagse productie. We schalen mee: van concept tot aflevering.
                 </p>
                 {' '}
                 <ul className="pkg-list">
@@ -637,7 +637,7 @@ function Content() {
                 {' '}
                 <div className="faq-a">
                   <div className="faq-a-inner">
-                    Geen probleem. We stellen elk pakket op maat samen. Alleen foto’s is goedkoper — vraag een aangepaste offerte aan.
+                    Geen probleem. We stellen elk pakket op maat samen. Alleen foto’s is goedkoper, vraag een aangepaste offerte aan.
                   </div>
                 </div>
               </div>
@@ -693,7 +693,7 @@ function Content() {
                 {' '}
                 <div className="faq-a">
                   <div className="faq-a-inner">
-                    Sterker nog: dat raden we aan. Bij een nieuw lead-site traject plannen we vaak een launch-shoot in week 2 of 3 zodat we direct met jouw eigen beeld kunnen ontwerpen — geen stockfoto’s.
+                    Sterker nog: dat raden we aan. Bij een nieuw lead-site traject plannen we vaak een launch-shoot in week 2 of 3 zodat we direct met jouw eigen beeld kunnen ontwerpen, geen stockfoto’s.
                   </div>
                 </div>
               </div>
@@ -710,7 +710,7 @@ function Content() {
               <h2>Klaar om jouw verhaal in beeld te zetten?</h2>
               {' '}
               <p>
-                Plan een gesprek van 20 minuten. We kijken naar je site, kanalen en doelen — en stellen het juiste pakket voor.
+                Plan een gesprek van 20 minuten. We kijken naar je site, kanalen en doelen, en stellen het juiste pakket voor.
               </p>
               {' '}
               <a href="../MegaOnline Landing Page.html#contact" className="btn btn-white btn-lg">Plan een groei-call →</a>

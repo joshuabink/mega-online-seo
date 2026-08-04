@@ -278,7 +278,7 @@ function Automatiseringen() {
                 <Reveal as="h1" className="reveal reveal-delay-1">Automatiseringen</Reveal>
                 {' '}
                 <Reveal as="p" className="lead reveal reveal-delay-2">
-                  Repetitieve taken, handmatige invoer, langzame processen — wij automatiseren ze zodat jij en je team tijd overhouden voor wat er écht toe doet.
+                  Repetitieve taken, handmatige invoer, langzame processen: wij automatiseren ze zodat jij en je team tijd overhouden voor wat er écht toe doet.
                 </Reveal>
                 {' '}
                 <Reveal as="div" className="hero-ctas reveal reveal-delay-3">
@@ -317,7 +317,7 @@ function Automatiseringen() {
                 <h3>Werkstromen</h3>
                 {' '}
                 <p>
-                  Offertes, facturen, rapporten — automatisch aangemaakt en verstuurd.
+                  Offertes, facturen, rapporten: automatisch aangemaakt en verstuurd.
                 </p>
               </Reveal>
               {' '}
@@ -341,7 +341,7 @@ function Automatiseringen() {
                 <h3>Data verwerking</h3>
                 {' '}
                 <p>
-                  Importeren, exporteren, transformeren — zonder handmatig tussenkomst.
+                  Importeren, exporteren, transformeren, zonder handmatig tussenkomst.
                 </p>
               </Reveal>
               {' '}
@@ -362,7 +362,7 @@ function Automatiseringen() {
                 {' '}
                 <h3>Terugkerende taken</h3>
                 {' '}
-                <p>Plannen, rapporten, back-ups — draaien vanzelf op schema.</p>
+                <p>Plannen, rapporten, back-ups: draaien vanzelf op schema.</p>
               </Reveal>
               {' '}
               <Reveal as="div" className="feature-card reveal reveal-delay-3">
@@ -404,7 +404,7 @@ function Automatiseringen() {
                 <div>
                   <h3>Prioriteit</h3>
                   {' '}
-                  <p>ROI berekenen — wat levert het meest op?</p>
+                  <p>ROI berekenen: wat levert het meest op?</p>
                 </div>
               </Reveal>
               {' '}
@@ -450,7 +450,7 @@ function Automatiseringen() {
                 {' '}
                 <div className="faq-a">
                   <div className="faq-a-inner">
-                    Make (Integromat), Zapier, n8n of maatwerk Python/Node scripts — afhankelijk van wat het meest efficiënt is.
+                    Make (Integromat), Zapier, n8n of maatwerk Python/Node scripts: afhankelijk van wat het meest efficiënt is.
                   </div>
                 </div>
               </div>
@@ -495,7 +495,7 @@ function Automatiseringen() {
               <h2>Hoeveel uur verlies jij aan handmatig werk?</h2>
               {' '}
               <p>
-                Plan een groei-call — we laten zien wat we in jouw situatie kunnen automatiseren.
+                Plan een groei-call: we laten zien wat we in jouw situatie kunnen automatiseren.
               </p>
               {' '}
               <a href="../MegaOnline Landing Page.html#contact" className="btn btn-white btn-lg">Plan een groei-call →</a>

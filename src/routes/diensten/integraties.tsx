@@ -7,9 +7,9 @@ import { Reveal } from '@/components/Reveal'
 export const Route = createFileRoute('/diensten/integraties')({
   head: () => ({
     meta: [
-      { title: "Integraties & koppelingen — MegaOnline.io" },
+      { title: "Integraties & koppelingen | MegaOnline.io" },
       { name: 'description', content: "Koppel je website aan je CRM, boekingssysteem, agenda en WhatsApp. Minder overtypen, geen gemiste aanvragen en alles automatisch op de juiste plek." },
-      { property: 'og:title', content: "Integraties & koppelingen — MegaOnline.io" },
+      { property: 'og:title', content: "Integraties & koppelingen | MegaOnline.io" },
       { property: 'og:description', content: "Koppel je website aan je CRM, boekingssysteem, agenda en WhatsApp. Minder overtypen, geen gemiste aanvragen en alles automatisch op de juiste plek." },
       { property: 'og:url', content: "https://megaonline.io/diensten/integraties" },
     ],
@@ -251,7 +251,7 @@ function Integraties() {
             </h2>
             {' '}
             <p className="lead">
-              We sluiten aan op de tools die je al gebruikt — of adviseren wat het beste past.
+              We sluiten aan op de tools die je al gebruikt, of adviseren wat het beste past.
             </p>
           </Reveal>
           {' '}

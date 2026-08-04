@@ -278,7 +278,7 @@ function Systeemkoppelingen() {
                 <Reveal as="h1" className="reveal reveal-delay-1">Systeemkoppelingen</Reveal>
                 {' '}
                 <Reveal as="p" className="lead reveal reveal-delay-2">
-                  CRM, ERP, webshop, boekhouding, planning — wij laten je systemen met elkaar praten via slimme API-koppelingen en data-integraties. Minder handmatig werk, minder fouten.
+                  CRM, ERP, webshop, boekhouding, planning: wij laten je systemen met elkaar praten via slimme API-koppelingen en data-integraties. Minder handmatig werk, minder fouten.
                 </Reveal>
                 {' '}
                 <Reveal as="div" className="hero-ctas reveal reveal-delay-3">
@@ -489,7 +489,7 @@ function Systeemkoppelingen() {
               <h2>Klaar om je systemen te verbinden?</h2>
               {' '}
               <p>
-                Vertel ons welke systemen je gebruikt — wij kijken wat mogelijk is.
+                Vertel ons welke systemen je gebruikt, wij kijken wat mogelijk is.
               </p>
               {' '}
               <a href="../MegaOnline Landing Page.html#contact" className="btn btn-white btn-lg">Plan een groei-call →</a>

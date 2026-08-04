@@ -9,9 +9,9 @@ import '@/styles/pages/index.css'
 export const Route = createFileRoute('/')({
   head: () => ({
     meta: [
-      { title: "MegaOnline.io — Websites die werken voor jouw bedrijf" },
+      { title: "MegaOnline.io | Websites die werken voor jouw bedrijf" },
       { name: 'description', content: "MegaOnline bouwt websites die vertrouwen uitstralen en bezoekers richting aanvraag of boeking brengen. Vraag een gratis websitescan aan." },
-      { property: 'og:title', content: "MegaOnline.io — Websites die werken voor jouw bedrijf" },
+      { property: 'og:title', content: "MegaOnline.io | Websites die werken voor jouw bedrijf" },
       { property: 'og:description', content: "MegaOnline bouwt websites die vertrouwen uitstralen en bezoekers richting aanvraag of boeking brengen. Vraag een gratis websitescan aan." },
       { property: 'og:url', content: "https://megaonline.io/" },
     ],
@@ -51,7 +51,7 @@ function Home() {
             {' '}
             <SteppedLeadForm
               className="hero__form reveal"
-              subject="Nieuwe websitescan-aanvraag — MegaOnline.io"
+              subject="Nieuwe websitescan-aanvraag - MegaOnline.io"
               head={
                 <>
                   <span className="form__head-note">

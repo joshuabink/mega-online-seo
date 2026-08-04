@@ -7,9 +7,9 @@ import { Reveal } from '@/components/Reveal'
 export const Route = createFileRoute('/branches/offerteaanvragen')({
   head: () => ({
     meta: [
-      { title: "Websites voor bedrijven met offerteaanvragen — MegaOnline.io" },
+      { title: "Websites voor bedrijven met offerteaanvragen | MegaOnline.io" },
       { name: 'description', content: "Een website voor bedrijven met offerteaanvragen die betere leads oplevert: een slim aanvraagformulier dat kwalificeert, vertrouwen opbouwt en tijd bespaart." },
-      { property: 'og:title', content: "Websites voor bedrijven met offerteaanvragen — MegaOnline.io" },
+      { property: 'og:title', content: "Websites voor bedrijven met offerteaanvragen | MegaOnline.io" },
       { property: 'og:description', content: "Een website voor bedrijven met offerteaanvragen die betere leads oplevert: een slim aanvraagformulier dat kwalificeert, vertrouwen opbouwt en tijd bespaart." },
       { property: 'og:url', content: "https://megaonline.io/branches/offerteaanvragen" },
     ],
@@ -86,7 +86,7 @@ function Offerteaanvragen() {
             </h2>
             {' '}
             <p className="lead">
-              We werken voor bedrijven die op offertebasis verkopen. Die markt heeft een terugkerend probleem — en daar lossen we de website omheen op.
+              We werken voor bedrijven die op offertebasis verkopen. Die markt heeft een terugkerend probleem, en daar lossen we de website omheen op.
             </p>
           </Reveal>
           {' '}
@@ -180,7 +180,7 @@ function Offerteaanvragen() {
               </div>
               {' '}
               <div className="pullnote" style={{ marginTop: "24px" }}>
-                Alleen serieuze, complete aanvragen —
+                Alleen serieuze, complete aanvragen,
                 {' '}
                 <em>klaar</em>
                 {' '}

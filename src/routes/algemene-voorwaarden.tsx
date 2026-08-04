@@ -6,9 +6,9 @@ import '@/styles/pages/algemene-voorwaarden.css'
 export const Route = createFileRoute('/algemene-voorwaarden')({
   head: () => ({
     meta: [
-      { title: "Algemene Voorwaarden — MegaOnline.io" },
+      { title: "Algemene Voorwaarden | MegaOnline.io" },
       { name: 'description', content: "De algemene voorwaarden van MegaOnline.io, van toepassing op alle offertes, overeenkomsten en diensten." },
-      { property: 'og:title', content: "Algemene Voorwaarden — MegaOnline.io" },
+      { property: 'og:title', content: "Algemene Voorwaarden | MegaOnline.io" },
       { property: 'og:description', content: "De algemene voorwaarden van MegaOnline.io, van toepassing op alle offertes, overeenkomsten en diensten." },
       { property: 'og:url', content: "https://megaonline.io/algemene-voorwaarden" },
     ],

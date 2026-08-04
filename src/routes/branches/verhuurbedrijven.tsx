@@ -7,9 +7,9 @@ import { Reveal } from '@/components/Reveal'
 export const Route = createFileRoute('/branches/verhuurbedrijven')({
   head: () => ({
     meta: [
-      { title: "Websites voor verhuurbedrijven — MegaOnline.io" },
+      { title: "Websites voor verhuurbedrijven | MegaOnline.io" },
       { name: 'description', content: "Een website voor verhuurbedrijven die het bel- en mailverkeer vermindert: beschikbaarheid, periodes en voorwaarden helder, en snellere bevestigde verhuur." },
-      { property: 'og:title', content: "Websites voor verhuurbedrijven — MegaOnline.io" },
+      { property: 'og:title', content: "Websites voor verhuurbedrijven | MegaOnline.io" },
       { property: 'og:description', content: "Een website voor verhuurbedrijven die het bel- en mailverkeer vermindert: beschikbaarheid, periodes en voorwaarden helder, en snellere bevestigde verhuur." },
       { property: 'og:url', content: "https://megaonline.io/branches/verhuurbedrijven" },
     ],
@@ -86,7 +86,7 @@ function Verhuurbedrijven() {
             </h2>
             {' '}
             <p className="lead">
-              We werken voor bedrijven die spullen per periode verhuren. Die markt heeft eigen knelpunten — en die kennen we.
+              We werken voor bedrijven die spullen per periode verhuren. Die markt heeft eigen knelpunten, en die kennen we.
             </p>
           </Reveal>
           {' '}

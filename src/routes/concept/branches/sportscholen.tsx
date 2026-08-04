@@ -349,7 +349,7 @@ function Sportscholen() {
                 <h3>Stille opzeggingen</h3>
                 {' '}
                 <p>
-                  Leden die wegglippen zonder dat iemand het doorhad — totdat het te laat is.
+                  Leden die wegglippen zonder dat iemand het doorhad, totdat het te laat is.
                 </p>
               </Reveal>
             </div>
@@ -403,7 +403,7 @@ function Sportscholen() {
                   <h3>Boekingssysteem</h3>
                   {' '}
                   <p>
-                    Lessen, PT-sessies en faciliteiten boeken — met wachtlijsten en automatische bevestiging.
+                    Lessen, PT-sessies en faciliteiten boeken, met wachtlijsten en automatische bevestiging.
                   </p>
                 </div>
               </Reveal>
@@ -454,7 +454,7 @@ function Sportscholen() {
             <div style={{ textAlign: "center", marginBottom: "40px" }}>
               <Reveal as="div" className="label reveal">Veelgestelde vragen</Reveal>
               {' '}
-              <Reveal as="h2" className="reveal reveal-delay-1" style={{ marginTop: "8px" }}>FAQ — Sportscholen</Reveal>
+              <Reveal as="h2" className="reveal reveal-delay-1" style={{ marginTop: "8px" }}>FAQ: Sportscholen</Reveal>
             </div>
             {' '}
             <Reveal as="div" className="faq-list reveal reveal-delay-2">
@@ -481,7 +481,7 @@ function Sportscholen() {
                 {' '}
                 <div className="faq-a">
                   <div className="faq-a-inner">
-                    Zeker. Voor kleinere studios bouwen we vaak een lichtere oplossing — boekingssysteem + simpel ledenportaal — zonder corporate gym-software.
+                    Zeker. Voor kleinere studios bouwen we vaak een lichtere oplossing, boekingssysteem + simpel ledenportaal, zonder corporate gym-software.
                   </div>
                 </div>
               </div>

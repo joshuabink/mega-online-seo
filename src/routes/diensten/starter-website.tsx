@@ -10,9 +10,9 @@ import '@/styles/pages/diensten-starter-website.css'
 export const Route = createFileRoute('/diensten/starter-website')({
   head: () => ({
     meta: [
-      { title: "Starter Website — MegaOnline.io" },
+      { title: "Starter Website | MegaOnline.io" },
       { name: 'description', content: "Een professionele website voor starters. Sneller gebouwd en voordeliger, dankzij beproefde, herbruikbare bouwblokken. Een eerlijke instapoptie vanaf €1.500." },
-      { property: 'og:title', content: "Starter Website — MegaOnline.io" },
+      { property: 'og:title', content: "Starter Website | MegaOnline.io" },
       { property: 'og:description', content: "Een professionele website voor starters. Sneller gebouwd en voordeliger, dankzij beproefde, herbruikbare bouwblokken. Een eerlijke instapoptie vanaf €1.500." },
       { property: 'og:url', content: "https://megaonline.io/diensten/starter-website" },
     ],
@@ -763,7 +763,7 @@ function StarterWebsite() {
             {' '}
             <SteppedLeadForm
               className="reveal"
-              subject="Nieuwe offerteaanvraag — Starter Website"
+              subject="Nieuwe offerteaanvraag - Starter Website"
               head={
                 <>
                   <span className="form__head-note">
@@ -855,7 +855,7 @@ function StarterWebsite() {
                     {' '}
                     <option value="4 tot 5 pagina's">4 tot 5 pagina's</option>
                     {' '}
-                    <option value="Weet ik nog niet — adviseer mij">Weet ik nog niet — adviseer mij</option>
+                    <option value="Weet ik nog niet, adviseer mij">Weet ik nog niet, adviseer mij</option>
                   </select>
                 </div>
                 {' '}

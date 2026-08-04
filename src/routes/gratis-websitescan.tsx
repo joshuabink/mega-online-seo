@@ -8,9 +8,9 @@ import { SingleLeadForm } from '@/components/LeadForm'
 export const Route = createFileRoute('/gratis-websitescan')({
   head: () => ({
     meta: [
-      { title: "Gratis Websitescan — MegaOnline.io" },
+      { title: "Gratis Websitescan | MegaOnline.io" },
       { name: 'description', content: "Ontvang een gratis, persoonlijke websitescan en ontdek waar bezoekers afhaken, waarom aanvragen uitblijven en welke verbeteringen de meeste impact hebben." },
-      { property: 'og:title', content: "Gratis Websitescan — MegaOnline.io" },
+      { property: 'og:title', content: "Gratis Websitescan | MegaOnline.io" },
       { property: 'og:description', content: "Ontvang een gratis, persoonlijke websitescan en ontdek waar bezoekers afhaken, waarom aanvragen uitblijven en welke verbeteringen de meeste impact hebben." },
       { property: 'og:url', content: "https://megaonline.io/gratis-websitescan" },
     ],
@@ -56,7 +56,7 @@ function GratisWebsitescan() {
               {' '}
               <SingleLeadForm
                 className="fhero__form reveal"
-                subject="Nieuwe aanvraag — Gratis websitescan"
+                subject="Nieuwe aanvraag - Gratis websitescan"
                 head={
                   <>
                     <span className="form__head-note">
@@ -128,7 +128,7 @@ function GratisWebsitescan() {
                 </div>
                 {' '}
                 <div className="preview__body">
-                  <div className="preview__title">Websitescan — voorbeeldbedrijf.nl</div>
+                  <div className="preview__title">Websitescan: voorbeeldbedrijf.nl</div>
                   {' '}
                   <div className="preview__sub">Persoonlijke beoordeling · 4 hoofdpunten</div>
                   {' '}
@@ -608,7 +608,7 @@ function GratisWebsitescan() {
           <div className="founder">
             <Reveal as="div" className="founder__media reveal">
               <div className="founder__portrait">
-                <Media id="founder-portret" fit="cover" placeholder="[ PORTRET — JOSHUA ]" alt="Joshua Bink, oprichter van MegaOnline" />
+                <Media id="founder-portret" fit="cover" placeholder="[ PORTRET JOSHUA ]" alt="Joshua Bink, oprichter van MegaOnline" />
               </div>
               {' '}
               <div className="founder__sig">
@@ -720,7 +720,7 @@ function GratisWebsitescan() {
             {' '}
             <SingleLeadForm
               className="reveal"
-              subject="Nieuwe aanvraag — Gratis websitescan"
+              subject="Nieuwe aanvraag - Gratis websitescan"
               head={
                 <>
                   <span className="form__head-note">

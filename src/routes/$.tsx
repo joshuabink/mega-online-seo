@@ -20,7 +20,7 @@ export const Route = createFileRoute('/$')({
   },
   head: () => ({
     meta: [
-      { title: 'Pagina niet gevonden — MegaOnline.io' },
+      { title: 'Pagina niet gevonden | MegaOnline.io' },
       { name: 'robots', content: 'noindex' },
     ],
   }),

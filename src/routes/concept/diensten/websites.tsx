@@ -317,7 +317,7 @@ function Websites() {
                 <h3>Razendsnel</h3>
                 {' '}
                 <p>
-                  Geoptimaliseerd voor Core Web Vitals — hogere conversie, betere SEO.
+                  Geoptimaliseerd voor Core Web Vitals, hogere conversie, betere SEO.
                 </p>
               </Reveal>
               {' '}
@@ -353,7 +353,7 @@ function Websites() {
                 <h3>Volledig responsive</h3>
                 {' '}
                 <p>
-                  Perfect op elk scherm — van mobiel tot groot desktop formaat.
+                  Perfect op elk scherm, van mobiel tot groot desktop formaat.
                 </p>
               </Reveal>
               {' '}
@@ -456,7 +456,7 @@ function Websites() {
                 {' '}
                 <div className="faq-a">
                   <div className="faq-a-inner">
-                    Een eenvoudige website begint bij €1.500. Op maat projecten zijn maatwerk — we maken altijd een vrijblijvend voorstel.
+                    Een eenvoudige website begint bij €1.500. Op maat projecten zijn maatwerk, we maken altijd een vrijblijvend voorstel.
                   </div>
                 </div>
               </div>

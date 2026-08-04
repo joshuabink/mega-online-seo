@@ -9,9 +9,9 @@ import { SteppedLeadForm } from '@/components/LeadForm'
 export const Route = createFileRoute('/diensten/conversie-website')({
   head: () => ({
     meta: [
-      { title: "Conversie Website — MegaOnline.io" },
+      { title: "Conversie Website | MegaOnline.io" },
       { name: 'description', content: "Een website die niet alleen mooi is, maar ook zijn werk doet. Voor bedrijven die afhankelijk zijn van aanvragen, reserveringen en boekingen." },
-      { property: 'og:title', content: "Conversie Website — MegaOnline.io" },
+      { property: 'og:title', content: "Conversie Website | MegaOnline.io" },
       { property: 'og:description', content: "Een website die niet alleen mooi is, maar ook zijn werk doet. Voor bedrijven die afhankelijk zijn van aanvragen, reserveringen en boekingen." },
       { property: 'og:url', content: "https://megaonline.io/diensten/conversie-website" },
     ],
@@ -1063,7 +1063,7 @@ function ConversieWebsite() {
             {' '}
             <SteppedLeadForm
               className="reveal"
-              subject="Nieuwe websitescan-aanvraag — MegaOnline.io"
+              subject="Nieuwe websitescan-aanvraag - MegaOnline.io"
               head={
                 <>
                   <span className="form__head-note">

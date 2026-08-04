@@ -317,7 +317,7 @@ function MobieleApps() {
                 <h3>iOS & Android</h3>
                 {' '}
                 <p>
-                  Native of cross-platform — wij kiezen de aanpak die past bij jouw budget en doelen.
+                  Native of cross-platform: wij kiezen de aanpak die past bij jouw budget en doelen.
                 </p>
               </Reveal>
               {' '}
@@ -329,7 +329,7 @@ function MobieleApps() {
                 <h3>UX/UI Design</h3>
                 {' '}
                 <p>
-                  Intuïtief en schermvullend — apps die gebruikers blijven openen.
+                  Intuïtief en schermvullend: apps die gebruikers blijven openen.
                 </p>
               </Reveal>
               {' '}
@@ -404,7 +404,7 @@ function MobieleApps() {
                 <div>
                   <h3>Prototype</h3>
                   {' '}
-                  <p>Clickable prototype — jij test voor we bouwen</p>
+                  <p>Clickable prototype: jij test voor we bouwen</p>
                 </div>
               </Reveal>
               {' '}
@@ -424,7 +424,7 @@ function MobieleApps() {
                 <div>
                   <h3>Store launch</h3>
                   {' '}
-                  <p>App Store & Play Store — live!</p>
+                  <p>App Store & Play Store: live!</p>
                 </div>
               </Reveal>
             </div>
@@ -457,7 +457,7 @@ function MobieleApps() {
               {' '}
               <div className="faq-item">
                 <div className="faq-q">
-                  Native of cross-platform — wat is beter?
+                  Native of cross-platform: wat is beter?
                   {' '}
                   <span className="faq-icon">+</span>
                 </div>
@@ -495,7 +495,7 @@ function MobieleApps() {
               <h2>Jouw idee als app?</h2>
               {' '}
               <p>
-                Plan een groei-call — we helpen je inschatten wat haalbaar is en wat het kost.
+                Plan een groei-call: we helpen je inschatten wat haalbaar is en wat het kost.
               </p>
               {' '}
               <a href="../MegaOnline Landing Page.html#contact" className="btn btn-white btn-lg">Plan een groei-call →</a>

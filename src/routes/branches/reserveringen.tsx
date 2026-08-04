@@ -7,9 +7,9 @@ import { Reveal } from '@/components/Reveal'
 export const Route = createFileRoute('/branches/reserveringen')({
   head: () => ({
     meta: [
-      { title: "Websites voor bedrijven met reserveringen — MegaOnline.io" },
+      { title: "Websites voor bedrijven met reserveringen | MegaOnline.io" },
       { name: 'description', content: "Een website voor bedrijven met reserveringen die gasten 24/7 laat boeken: realtime beschikbaarheid, bevestigingen, minder no-shows en minder telefoon." },
-      { property: 'og:title', content: "Websites voor bedrijven met reserveringen — MegaOnline.io" },
+      { property: 'og:title', content: "Websites voor bedrijven met reserveringen | MegaOnline.io" },
       { property: 'og:description', content: "Een website voor bedrijven met reserveringen die gasten 24/7 laat boeken: realtime beschikbaarheid, bevestigingen, minder no-shows en minder telefoon." },
       { property: 'og:url', content: "https://megaonline.io/branches/reserveringen" },
     ],
@@ -53,7 +53,7 @@ function Reserveringen() {
               </Reveal>
               {' '}
               <Reveal as="p" className="lead svc-hero__sub reveal" data-d="2">
-                Restaurant, B&B, salon of praktijk: je gasten willen boeken op het moment dat ze eraan denken — vaak 's avonds op de bank. Wij bouwen een website die dat moeiteloos opvangt, dag en nacht.
+                Restaurant, B&B, salon of praktijk: je gasten willen boeken op het moment dat ze eraan denken, vaak 's avonds op de bank. Wij bouwen een website die dat moeiteloos opvangt, dag en nacht.
               </Reveal>
               {' '}
               <Reveal as="div" className="svc-hero__ctas reveal" data-d="2">
@@ -88,7 +88,7 @@ function Reserveringen() {
             </h2>
             {' '}
             <p className="lead">
-              We werken voor bedrijven waar een plek of moment gereserveerd wordt. Die markt heeft eigen knelpunten — en daar bouwen we de oplossing omheen.
+              We werken voor bedrijven waar een plek of moment gereserveerd wordt. Die markt heeft eigen knelpunten, en daar bouwen we de oplossing omheen.
             </p>
           </Reveal>
           {' '}
@@ -155,8 +155,8 @@ function Reserveringen() {
               We maken reserveren
               {' '}
               <em>moeiteloos</em>
-              {' '}
-              — voor je gast én voor jou.
+              {' '},
+              voor je gast én voor jou.
             </h2>
             {' '}
             <p className="lead">
@@ -182,7 +182,7 @@ function Reserveringen() {
               </div>
               {' '}
               <div className="pullnote" style={{ marginTop: "24px" }}>
-                Boekingen binnen, dag en nacht —
+                Boekingen binnen, dag en nacht,
                 {' '}
                 <em>zonder</em>
                 {' '}
