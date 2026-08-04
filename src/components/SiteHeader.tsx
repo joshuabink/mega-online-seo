@@ -312,7 +312,6 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
                   <span className="gdot" />
                   Onze kerndienst
                 </span>
-                <div className="mfeat__media">[ CONVERSIE WEBSITE ]</div>
                 <h4 className="mfeat__title">Conversie Website</h4>
                 <p className="mfeat__desc">
                   Voor bedrijven die meer aanvragen, reserveringen en boekingen uit hun

@@ -127,15 +127,6 @@
   display: inline-flex; align-items: center; gap: 7px;
 }
 .mfeat__eyebrow .gdot { width: 7px; height: 7px; border-radius: 50%; background: var(--dot); }
-.mfeat__media {
-  border-radius: 10px; overflow: hidden; aspect-ratio: 16/9;
-  background:
-    repeating-linear-gradient(135deg, rgba(255,255,255,.05) 0 2px, transparent 2px 11px),
-    oklch(0.30 0.02 158);
-  display: grid; place-items: center;
-  font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.06em;
-  color: oklch(0.62 0.013 145); text-align: center;
-}
 .mfeat__title { font-family: var(--display); font-weight: 600; font-size: 1.22rem; letter-spacing: -0.02em; color: oklch(0.97 0.010 95); line-height: 1.1; }
 .mfeat__desc { font-size: 0.86rem; color: oklch(0.78 0.013 130); line-height: 1.5; }
 .mfeat__cta {
