@@ -787,7 +787,7 @@ function Home() {
         <div className="wrap">
           <div className="vision">
             <Reveal as="div" className="vision__media reveal">
-              <Media id="team-photo" fit="cover" placeholder="[ TEAM / PORTRET ]" alt="TEAM / PORTRET" />
+              <Media id="team-photo" fit="cover" placeholder="[ TEAM / PORTRET ]" alt="Twee collega's van MegaOnline samen achter een scherm" />
             </Reveal>
             {' '}
             <Reveal as="div" className="vision__body reveal" data-d="1">
