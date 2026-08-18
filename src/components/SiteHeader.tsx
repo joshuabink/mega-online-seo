@@ -646,11 +646,6 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
           <Icon name="x" />
         </button>
       </div>
-      <p className="mmenu__tagline">
-        Websites die zorgen voor meer{' '}
-        <b>aanvragen, reserveringen en boekingen</b>.
-      </p>
-
       <div className="mmenu__scroll">
         <div className="macc">
           <MobileAccordion label="Diensten">
@@ -707,52 +702,30 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
               </span>
               Groei Partnership
             </Link>
+            <Link className="macc__link" to="/diensten/seo" onClick={onClose}>
+              <span className="mlink__ico">
+                <Icon name="search" />
+              </span>
+              SEO
+            </Link>
+            <Link className="macc__link" to="/diensten/integraties" onClick={onClose}>
+              <span className="mlink__ico">
+                <Icon name="plug" />
+              </span>
+              Integraties
+            </Link>
           </MobileAccordion>
 
-          <MobileAccordion label="Oplossingen">
+          <MobileAccordion label="Voor wie">
             {[
               ['/branches/activiteitenbedrijven', 'ticket', 'Voor activiteitenbedrijven'],
               ['/branches/verhuurbedrijven', 'package', 'Voor verhuurbedrijven'],
               ['/branches/dienstverleners', 'briefcase', 'Voor dienstverleners'],
               ['/branches/reserveringen', 'calendar-check', 'Voor bedrijven met reserveringen'],
               ['/branches/offerteaanvragen', 'file-text', 'Voor bedrijven met offerteaanvragen'],
+              ['/branches/non-profits', 'heart-handshake', 'Voor non-profits'],
             ].map(([to, icon, label]) => (
               <Link className="macc__link" to={to} key={to} onClick={onClose}>
-                <span className="mlink__ico">
-                  <Icon name={icon} />
-                </span>
-                {label}
-              </Link>
-            ))}
-          </MobileAccordion>
-
-          <MobileAccordion label="SEO">
-            {[
-              ['search', 'SEO Optimalisatie'],
-              ['map-pin', 'Lokale SEO'],
-              ['layout-template', 'Landingpagina Optimalisatie'],
-            ].map(([icon, label]) => (
-              <Link className="macc__link" to="/diensten/seo" key={label} onClick={onClose}>
-                <span className="mlink__ico">
-                  <Icon name={icon} />
-                </span>
-                {label}
-              </Link>
-            ))}
-          </MobileAccordion>
-
-          <MobileAccordion label="Integraties">
-            {[
-              ['users', 'CRM Koppelingen'],
-              ['calendar-clock', 'Boekingssystemen'],
-              ['message-circle', 'WhatsApp Integraties'],
-            ].map(([icon, label]) => (
-              <Link
-                className="macc__link"
-                to="/diensten/integraties"
-                key={label}
-                onClick={onClose}
-              >
                 <span className="mlink__ico">
                   <Icon name={icon} />
                 </span>
