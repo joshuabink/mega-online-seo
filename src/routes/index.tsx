@@ -270,11 +270,7 @@ function Home() {
           <Reveal as="div" className="shead reveal">
             <span className="label">Het probleem</span>
             {' '}
-            <h2 className="h2">
-              Je website bestaat. Maar doet hij ook
-              {' '}
-              <em>wat hij moet doen?</em>
-            </h2>
+            <h2 className="h2">Vier plekken waar bezoekers afhaken.</h2>
             {' '}
             <p className="lead">
               Veel bedrijven hebben een website die online staat maar niet actief bijdraagt aan groei. Bezoekers haken af. Ze twijfelen of nemen geen contact op. Daardoor blijven aanvragen en boekingen liggen.
@@ -475,13 +471,7 @@ function Home() {
             <div className="shead">
               <span className="label">ONS WERK</span>
               {' '}
-              <h2 className="h2">
-                Echte uitdagingen.
-                {' '}
-                <em>Echt</em>
-                {' '}
-                opgelost.
-              </h2>
+              <h2 className="h2">Wat we voor deze bedrijven oplosten.</h2>
             </div>
             {' '}
             <Link className="tlink" to="/gratis-websitescan" style={{ paddingBottom: "6px" }}>
@@ -768,6 +758,19 @@ function Home() {
             </div>
           </Reveal>
           {' '}
+          <Reveal as="div" className="maint reveal">
+            <div className="maint__txt">
+              <b>Kleiner beginnen?</b>
+              {' '}
+              Voor starters en kleinere bedrijven bouwen we een compactere website, met
+              dezelfde aandacht voor vertrouwen en een makkelijke aanvraag.
+              {' '}
+              <Link className="flow-cta" to="/diensten/starter-website">Bekijk de Starter Website →</Link>
+            </div>
+            {' '}
+            <div className="maint__price">Starter Website · vanaf € 1.500</div>
+          </Reveal>
+          {' '}
           <Reveal as="div" className="maint reveal" data-d="1">
             <div className="maint__txt">
               <b>Niet op zoek naar actieve optimalisatie?</b>
@@ -784,13 +787,9 @@ function Home() {
       <section className="section section--tight" data-theme="paper" data-screen-label="Testimonials">
         <div className="wrap">
           <Reveal as="div" className="shead reveal">
-            <span className="label">Wat klanten zeggen</span>
+            <span className="label">Referenties</span>
             {' '}
-            <h2 className="h2">
-              Mensen. Geen
-              {' '}
-              <em>logo's.</em>
-            </h2>
+            <h2 className="h2">Wat klanten ervan merkten.</h2>
           </Reveal>
           {' '}
           <div className="quotes">
