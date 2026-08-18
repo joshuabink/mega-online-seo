@@ -144,7 +144,8 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
           </nav>
           <div className="nav__cta">
             <Link className="btn btn-primary" to="/gratis-websitescan">
-              Gratis websitescan <span className="arr">→</span>
+              <span className="nav__scan-long">Vraag je gratis scan aan</span>
+              <span className="nav__scan-short">Gratis scan</span>
             </Link>
             <button
               className="btn btn-outline nav__menu-btn"
@@ -155,7 +156,7 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
               onClick={() => setMobileOpen(true)}
             >
               <Icon name="menu" />
-              Menu
+              <span className="nav__menu-txt">Menu</span>
             </button>
           </div>
         </div>
@@ -321,7 +322,7 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
                   Bekijk de dienst <span className="arr">→</span>
                 </Link>
                 <Link className="mfeat__link" to="/gratis-websitescan">
-                  Vraag een gratis websitescan aan <span className="arr">→</span>
+                  Vraag je gratis scan aan <span className="arr">→</span>
                 </Link>
               </aside>
 
@@ -331,7 +332,7 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
                   resultaat.
                 </span>
                 <Link to="/gratis-websitescan">
-                  Niet zeker welke oplossing past? Vraag een gratis websitescan aan{' '}
+                  Niet zeker welke oplossing past? Vraag je gratis scan aan{' '}
                   <span className="arr">→</span>
                 </Link>
               </div>
@@ -546,7 +547,7 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
                     <Icon name="calendar" />
                   </span>
                   <span className="mlink__txt">
-                    <span className="mlink__name">Plan Kennismaking</span>
+                    <span className="mlink__name">Plan een kennismaking</span>
                   </span>
                 </Link>
               </div>
@@ -561,7 +562,7 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
                   gemiddeld binnen 2 werkdagen een reactie.
                 </p>
                 <Link className="mfeat__cta" to="/gratis-websitescan">
-                  Vraag je scan aan <span className="arr">→</span>
+                  Vraag je gratis scan aan <span className="arr">→</span>
                 </Link>
               </aside>
             </div>
@@ -788,7 +789,7 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
           </span>
         </div>
         <Link className="btn btn-primary" to="/gratis-websitescan" onClick={onClose}>
-          Vraag een gratis websitescan aan <span className="arr">→</span>
+          Vraag je gratis scan aan
         </Link>
         <Link className="mmenu__cta-secondary" to="/contact" onClick={onClose}>
           Plan een kennismaking

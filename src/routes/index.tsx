@@ -22,6 +22,63 @@ export const Route = createFileRoute('/')({
   component: Home,
 })
 
+/**
+ * Bron voor zowel de zichtbare FAQ als de FAQPage-structured data. Eén lijst,
+ * zodat de vragen op de pagina en het schema niet uit elkaar kunnen lopen.
+ */
+const FAQ_ITEMS: { q: string; a: string }[] = [
+  {
+    q: "Wat kost een website bij MegaOnline?",
+    a: "Een Conversie Website begint vanaf € 2.500. De uiteindelijke prijs hangt af van het aantal pagina's en de complexiteit. En van welke extra functionaliteiten je nodig hebt. In de gratis websitescan geven we je een eerlijke indicatie op basis van jouw situatie.",
+  },
+  {
+    q: "Waarom niet kiezen voor een goedkope webbouwer?",
+    a: "Een website bouwen is meer dan pagina's online zetten. Wij kijken naar vertrouwen gebruiksgemak en hoe bezoekers daadwerkelijk actie ondernemen.",
+  },
+  {
+    q: "Wat gebeurt er na livegang?",
+    a: "Na livegang kunnen we blijven helpen met onderhoud verbeteringen en het optimaliseren van de website.",
+  },
+  {
+    q: "Hoe weten jullie of een website beter presteert?",
+    a: "Door analytics en bezoekersgedrag te meten krijgen we inzicht in wat werkt en waar kansen liggen.",
+  },
+  {
+    q: "Kan ik mijn website straks zelf beheren?",
+    a: "Ja. We bouwen je website zo op dat je teksten en foto’s eenvoudig zelf kunt aanpassen, zonder technische kennis.",
+  },
+  {
+    q: "Hoe lang duurt het bouwen van een website?",
+    a: "Een gemiddeld websiteproject duurt 4 tot 8 weken. Dit hangt af van hoe snel we samen de intake kunnen afronden en hoe snel aangeleverde teksten en foto's beschikbaar zijn. We werken altijd met een duidelijke planning.",
+  },
+  {
+    q: "Wij hebben al een website. Kunnen jullie die verbeteren?",
+    a: "Ja. In sommige gevallen is een volledig nieuwe website de beste keuze. In andere gevallen kunnen gerichte verbeteringen al veel effect hebben. De websitescan helpt ons om te bepalen wat voor jou de slimste aanpak is.",
+  },
+  {
+    q: "Wat als ik na livegang iets wil aanpassen?",
+    a: "Kleine aanpassingen vallen vaak binnen het standaard beheer. Grotere uitbreidingen worden apart besproken en geprijsd. Met een Groei Partnership heb je sowieso een vaste maandelijkse capaciteit voor verbeteringen.",
+  },
+  {
+    q: "Is het Groei Partnership verplicht na een nieuwe website?",
+    a: "Nee. Sommige klanten kiezen voor een eenmalige website en regelen het beheer zelf of via een andere partij. We raden het Partnership wel aan omdat websites die regelmatig verbeterd worden structureel beter presteren.",
+  },
+  {
+    q: "Voor welke bedrijven werkt MegaOnline?",
+    a: "We werken het liefst voor groeiende bedrijven waarbij de website een directe rol speelt in het binnenhalen van aanvragen reserveringen of boekingen. Denk aan activiteitenbedrijven verhuurders zakelijke dienstverleners rijscholen en transportbedrijven. De branche is minder belangrijk dan het bedrijfsmodel.",
+  },
+]
+
+const FAQ_SCHEMA = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: FAQ_ITEMS.map(({ q, a }) => ({
+    '@type': 'Question',
+    name: q,
+    acceptedAnswer: { '@type': 'Answer', text: a },
+  })),
+}
+
 function Home() {
   return (
     <main id="top" data-page="index">
@@ -437,7 +494,7 @@ function Home() {
           <div className="cases">
             <Reveal as="article" className="case reveal">
               <div className="case__media">
-                <Media id="case-qteam" fit="cover" placeholder="[ Q-Team Solutions ]" alt="Q-Team Solutions" />
+                <Media id="case-qteam" fit="cover" placeholder="[ Q-Team Solutions ]" alt="Screenshot van de website die we voor Q-Team Solutions bouwden" />
               </div>
               {' '}
               <div className="case__body">
@@ -482,7 +539,7 @@ function Home() {
             {' '}
             <Reveal as="article" className="case reveal" data-d="1">
               <div className="case__media">
-                <Media id="case-guestroom" fit="cover" placeholder="[ GuestRoomUtrecht ]" alt="GuestRoomUtrecht" />
+                <Media id="case-guestroom" fit="cover" placeholder="[ GuestRoomUtrecht ]" alt="Screenshot van de website die we voor GuestRoomUtrecht bouwden" />
               </div>
               {' '}
               <div className="case__body">
@@ -525,7 +582,7 @@ function Home() {
             {' '}
             <Reveal as="article" className="case reveal">
               <div className="case__media">
-                <Media id="case-kerk" fit="cover" placeholder="[ Ontmoetingskerk ]" alt="Ontmoetingskerk" />
+                <Media id="case-kerk" fit="cover" placeholder="[ Ontmoetingskerk ]" alt="Screenshot van de website die we voor Ontmoetingskerk bouwden" />
               </div>
               {' '}
               <div className="case__body">
@@ -568,7 +625,7 @@ function Home() {
             {' '}
             <Reveal as="article" className="case reveal" data-d="1">
               <div className="case__media">
-                <Media id="case-africa" fit="cover" placeholder="[ LoveForAfrica ]" alt="LoveForAfrica" />
+                <Media id="case-africa" fit="cover" placeholder="[ LoveForAfrica ]" alt="Screenshot van de website die we voor LoveForAfrica bouwden" />
               </div>
               {' '}
               <div className="case__body">
@@ -656,7 +713,7 @@ function Home() {
               <div className="rm__foot">
                 <span className="svcprice">Vanaf € 2.500</span>
                 {' '}
-                <Link className="flow-cta" to="/gratis-websitescan">Vraag een gratis scan aan →</Link>
+                <Link className="flow-cta" to="/gratis-websitescan">Vraag je gratis scan aan →</Link>
               </div>
             </div>
             {' '}
@@ -748,7 +805,7 @@ function Home() {
               {' '}
               <figcaption className="quote__by">
                 <span className="quote__logo">
-                  <Media id="t1-logo" fit="contain" placeholder="LOGO" alt="Logo van de klant" />
+                  <Media id="t1-logo" fit="contain" placeholder="LOGO" alt="" />
                 </span>
                 {' '}
                 <span>
@@ -769,7 +826,7 @@ function Home() {
               {' '}
               <figcaption className="quote__by">
                 <span className="quote__logo">
-                  <Media id="t2-logo" fit="contain" placeholder="LOGO" alt="Logo van de klant" />
+                  <Media id="t2-logo" fit="contain" placeholder="LOGO" alt="" />
                 </span>
                 {' '}
                 <span>
@@ -839,46 +896,17 @@ function Home() {
           </Reveal>
           {' '}
           <div className="faq">
-            <Qa question="Wat kost een website bij MegaOnline?" className="reveal">
-                Een Conversie Website begint vanaf € 2.500. De uiteindelijke prijs hangt af van het aantal pagina's en de complexiteit. En van welke extra functionaliteiten je nodig hebt. In de gratis websitescan geven we je een eerlijke indicatie op basis van jouw situatie.
-            </Qa>
-            {' '}
-            <Qa question="Waarom niet kiezen voor een goedkope webbouwer?" className="reveal">
-                Een website bouwen is meer dan pagina's online zetten. Wij kijken naar vertrouwen gebruiksgemak en hoe bezoekers daadwerkelijk actie ondernemen.
-            </Qa>
-            {' '}
-            <Qa question="Wat gebeurt er na livegang?" className="reveal">
-                Na livegang kunnen we blijven helpen met onderhoud verbeteringen en het optimaliseren van de website.
-            </Qa>
-            {' '}
-            <Qa question="Hoe weten jullie of een website beter presteert?" className="reveal">
-                Door analytics en bezoekersgedrag te meten krijgen we inzicht in wat werkt en waar kansen liggen.
-            </Qa>
-            {' '}
-            <Qa question="Kan ik mijn website straks zelf beheren?" className="reveal">
-                Ja. We bouwen je website zo op dat je teksten en foto’s eenvoudig zelf kunt aanpassen, zonder technische kennis.
-            </Qa>
-            {' '}
-            <Qa question="Hoe lang duurt het bouwen van een website?" className="reveal">
-                Een gemiddeld websiteproject duurt 4 tot 8 weken. Dit hangt af van hoe snel we samen de intake kunnen afronden en hoe snel aangeleverde teksten en foto's beschikbaar zijn. We werken altijd met een duidelijke planning.
-            </Qa>
-            {' '}
-            <Qa question="Wij hebben al een website. Kunnen jullie die verbeteren?" className="reveal">
-                Ja. In sommige gevallen is een volledig nieuwe website de beste keuze. In andere gevallen kunnen gerichte verbeteringen al veel effect hebben. De websitescan helpt ons om te bepalen wat voor jou de slimste aanpak is.
-            </Qa>
-            {' '}
-            <Qa question="Wat als ik na livegang iets wil aanpassen?" className="reveal">
-                Kleine aanpassingen vallen vaak binnen het standaard beheer. Grotere uitbreidingen worden apart besproken en geprijsd. Met een Groei Partnership heb je sowieso een vaste maandelijkse capaciteit voor verbeteringen.
-            </Qa>
-            {' '}
-            <Qa question="Is het Groei Partnership verplicht na een nieuwe website?" className="reveal">
-                Nee. Sommige klanten kiezen voor een eenmalige website en regelen het beheer zelf of via een andere partij. We raden het Partnership wel aan omdat websites die regelmatig verbeterd worden structureel beter presteren.
-            </Qa>
-            {' '}
-            <Qa question="Voor welke bedrijven werkt MegaOnline?" className="reveal">
-                We werken het liefst voor groeiende bedrijven waarbij de website een directe rol speelt in het binnenhalen van aanvragen reserveringen of boekingen. Denk aan activiteitenbedrijven verhuurders zakelijke dienstverleners rijscholen en transportbedrijven. De branche is minder belangrijk dan het bedrijfsmodel.
-            </Qa>
+            {FAQ_ITEMS.map(({ q, a }) => (
+              <Qa key={q} question={q} className="reveal">
+                {a}
+              </Qa>
+            ))}
           </div>
+          {/* FAQPage-schema uit dezelfde bron als de zichtbare vragen. */}
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_SCHEMA) }}
+          />
         </div>
       </section>
       {' '}
@@ -892,9 +920,7 @@ function Home() {
           </Reveal>
           {' '}
           <Link className="btn btn-primary reveal" data-d="2" to="/gratis-websitescan">
-            Vraag mijn gratis scan aan
-            {' '}
-            <span className="arr">→</span>
+            Vraag je gratis scan aan
           </Link>
         </div>
       </section>

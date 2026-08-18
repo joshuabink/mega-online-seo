@@ -37,6 +37,48 @@ export type RouteMeta = {
   bare?: boolean;
 };
 
+/**
+ * Organisatie-schema. Staat op elke pagina met de shared chrome, zodat
+ * zoekmachines naam, dienst en prijsindicatie gestructureerd binnenkrijgen.
+ */
+const ORG_SCHEMA = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  '@id': 'https://megaonline.io/#organization',
+  name: 'MegaOnline.io',
+  url: 'https://megaonline.io/',
+  image: 'https://megaonline.io/og-image.png',
+  logo: 'https://megaonline.io/og-image.png',
+  description:
+    'MegaOnline bouwt websites die vertrouwen uitstralen en bezoekers richting aanvraag of boeking brengen.',
+  inLanguage: 'nl-NL',
+  areaServed: { '@type': 'Country', name: 'Nederland' },
+  founder: { '@type': 'Person', name: 'Joshua Bink', jobTitle: 'Oprichter' },
+  makesOffer: [
+    {
+      '@type': 'Offer',
+      name: 'Conversie Website',
+      url: 'https://megaonline.io/diensten/conversie-website',
+      priceSpecification: {
+        '@type': 'PriceSpecification',
+        minPrice: 2500,
+        priceCurrency: 'EUR',
+      },
+    },
+    {
+      '@type': 'Offer',
+      name: 'Groei Partnership',
+      url: 'https://megaonline.io/diensten/groei-partnership',
+      priceSpecification: {
+        '@type': 'UnitPriceSpecification',
+        minPrice: 150,
+        priceCurrency: 'EUR',
+        unitCode: 'MON',
+      },
+    },
+  ],
+}
+
 function NotFoundComponent() {
   return (
     <main id="top">
@@ -60,10 +102,10 @@ function NotFoundComponent() {
             }}
           >
             <Link className="btn btn-primary" to="/">
-              Naar de homepage <span className="arr">→</span>
+              Naar de homepage
             </Link>
             <Link className="btn btn-outline" to="/gratis-websitescan">
-              Gratis websitescan <span className="arr">→</span>
+              Vraag je gratis scan aan
             </Link>
           </div>
         </div>
@@ -206,6 +248,10 @@ function RootComponent() {
         <Outlet />
       ) : (
         <>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(ORG_SCHEMA) }}
+          />
           <SiteHeader light={meta.lightNav} />
           {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
           <Outlet />

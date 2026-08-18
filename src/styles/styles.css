@@ -170,6 +170,8 @@ h1, h2, h3 { font-family: var(--display); font-weight: 600; line-height: 1.04; l
 .nav__links a.navlink { font-size: 0.92rem; color: oklch(0.80 0.014 130); font-weight: 500; transition: color .25s; }
 .nav__links a.navlink:hover { color: oklch(0.965 0.010 95); }
 .nav__cta { display: flex; align-items: center; gap: 18px; }
+/* Het korte CTA-label is alleen zichtbaar op smalle schermen (zie 600px). */
+.nav__scan-short { display: none; }
 .nav__menu-btn { display: none; color: oklch(0.965 0.010 95); border-color: rgba(255,255,255,.2); }
 .nav__menu-btn svg { width: 18px; height: 18px; }
 
@@ -250,6 +252,34 @@ body[data-hero="stack"] .hero__form { width: min(560px, 100%); margin-top: 8px; 
   border: 1px solid color-mix(in oklab, oklch(0.62 0.19 25) 34%, transparent);
 }
 form[aria-busy="true"] .btn-primary { opacity: .65; pointer-events: none; }
+
+/* Hero-formulier als lichte kaart ------------------------------------------
+   Het formulier is het enige conversie-element boven de vouw. Als donkere
+   kaart (--card-2, L 0.285) op de donkere hero (--bg, L 0.205) was het
+   verschil te klein om als eigen vlak te lezen. Hier krijgt alleen dit
+   element de lichte tokenset; de rest van de hero blijft ongemoeid. */
+.hero__form {
+  --fg:          oklch(0.255 0.020 158);
+  --muted:       oklch(0.44 0.018 158);
+  --faint:       oklch(0.42 0.015 158);
+  --card:        #F9FAFB;
+  --card-2:      #ffffff;
+  --field-bg:    #ffffff;
+  --accent-text: var(--accent-deep);
+  --line:        color-mix(in oklab, var(--fg) 14%, transparent);
+  --line-soft:   color-mix(in oklab, var(--fg) 8%, transparent);
+  --line-strong: color-mix(in oklab, var(--fg) 26%, transparent);
+  color: var(--fg);
+  box-shadow: 0 40px 80px -45px rgba(0,0,0,.9);
+}
+/* Placeholder mag niet zo donker worden als een ingevulde waarde. */
+.hero__form .field input::placeholder { color: oklch(0.60 0.012 158); }
+/* Foutmelding was op rood-op-donker afgestemd; op wit moet hij dieper. */
+.hero__form .form__error {
+  color: oklch(0.46 0.170 25);
+  background: color-mix(in oklab, oklch(0.62 0.19 25) 9%, transparent);
+  border-color: color-mix(in oklab, oklch(0.62 0.19 25) 30%, transparent);
+}
 
 /* ---------- Beeld & placeholders ----------
    .mediaslot vervangt het prototype-only <image-slot> web component. Gevulde
@@ -474,11 +504,16 @@ form[aria-busy="true"] .btn-primary { opacity: .65; pointer-events: none; }
   .hero__ticks { grid-template-columns: 1fr; }
 }
 @media (max-width: 600px) {
-  /* Header heeft op smalle schermen alleen ruimte voor logo + Menu;
-     de scan-CTA staat in het mobiele menu en in het hero-formulier. */
+  /* Het grootste deel van het verkeer is mobiel, dus de scan-CTA blijft
+     staan. Om logo + CTA + menu op 360px te laten passen krijgt de knop een
+     kort label en houdt het menu alleen zijn icoon (aria-label blijft). */
   .nav__inner { gap: 14px; }
-  .nav__cta { gap: 12px; }
-  .nav__cta .btn-primary { display: none; }
+  .nav__cta { gap: 10px; }
+  .nav__cta .btn-primary { --pad-y: 0.78em; padding-inline: 1.05em; font-size: 0.88rem; }
+  .nav__scan-long { display: none; }
+  .nav__scan-short { display: inline; }
+  .nav__menu-btn { --pad-y: 0.78em; padding-inline: 0.95em; }
+  .nav__menu-txt { display: none; }
 }
 @media (max-width: 560px) {
   :root { --gutter: 20px; }
