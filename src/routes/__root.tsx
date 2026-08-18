@@ -57,6 +57,7 @@ const ORG_SCHEMA = {
   address: {
     '@type': 'PostalAddress',
     streetAddress: 'Boelekade 106',
+    postalCode: '2806 AM',
     addressLocality: 'Gouda',
     addressCountry: 'NL',
   },

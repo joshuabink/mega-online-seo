@@ -72,7 +72,7 @@ export function SiteFooter() {
 
         <div className="footer__bottom">
           <span className="footer__copy">
-            © 2026 MegaOnline.io · Boelekade 106, Gouda · KvK 78580099
+            © 2026 MegaOnline.io · Boelekade 106, 2806 AM Gouda · KvK 78580099
           </span>
           <nav className="footer__legal" aria-label="Juridisch">
             <Link to="/algemene-voorwaarden">Algemene voorwaarden</Link>
