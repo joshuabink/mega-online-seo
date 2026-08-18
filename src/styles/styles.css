@@ -304,7 +304,6 @@ form[aria-busy="true"] .btn-primary { opacity: .65; pointer-events: none; }
 .proof__grid { display: grid; grid-template-columns: repeat(4, 1fr); }
 .proof__item { padding: clamp(24px, 2.6vw, 34px) clamp(16px, 2vw, 30px); border-left: 1px solid var(--line-soft); display: flex; gap: 14px; align-items: flex-start; }
 .proof__item:first-child { border-left: 0; padding-left: 0; }
-.proof__item .mk { color: var(--accent-text); font-family: var(--mono); font-size: 0.85rem; margin-top: 2px; }
 .proof__item p { font-size: 0.96rem; color: var(--muted); line-height: 1.45; }
 
 /* ---------- Section headers ---------- */

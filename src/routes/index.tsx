@@ -242,22 +242,18 @@ function Home() {
         <div className="wrap">
           <div className="proof__grid">
             <Reveal as="div" className="proof__item reveal">
-              <span className="mk">/01</span>
               <p>Meer vertrouwen bij bezoekers</p>
             </Reveal>
             {' '}
             <Reveal as="div" className="proof__item reveal" data-d="1">
-              <span className="mk">/02</span>
               <p>Makkelijker aanvragen en boekingen</p>
             </Reveal>
             {' '}
             <Reveal as="div" className="proof__item reveal" data-d="2">
-              <span className="mk">/03</span>
               <p>Een website die past bij je bedrijf</p>
             </Reveal>
             {' '}
             <Reveal as="div" className="proof__item reveal" data-d="3">
-              <span className="mk">/04</span>
               <p>Betrokken partner na livegang</p>
             </Reveal>
           </div>
