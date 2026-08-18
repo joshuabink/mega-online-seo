@@ -336,10 +336,7 @@ function Home() {
           {' '}
           <div className="steps">
             <Reveal as="div" className="step reveal">
-              <span className="step__no">
-                01
-                <small>Stap 1</small>
-              </span>
+              <span className="step__no">Stap 1</span>
               {' '}
               <div className="step__body">
                 <h3>Begrijpen</h3>
@@ -350,10 +347,7 @@ function Home() {
             </Reveal>
             {' '}
             <Reveal as="div" className="step reveal" data-d="1">
-              <span className="step__no">
-                02
-                <small>Stap 2</small>
-              </span>
+              <span className="step__no">Stap 2</span>
               {' '}
               <div className="step__body">
                 <h3>Bouwen</h3>
@@ -364,10 +358,7 @@ function Home() {
             </Reveal>
             {' '}
             <Reveal as="div" className="step reveal" data-d="2">
-              <span className="step__no">
-                03
-                <small>Stap 3</small>
-              </span>
+              <span className="step__no">Stap 3</span>
               {' '}
               <div className="step__body">
                 <h3>Verbeteren</h3>

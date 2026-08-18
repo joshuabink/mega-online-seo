@@ -356,8 +356,7 @@ form[aria-busy="true"] .btn-primary { opacity: .65; pointer-events: none; }
 .step { display: block; padding: clamp(28px, 3vw, 42px) clamp(22px, 2.4vw, 38px); border-right: 1px solid var(--line); }
 .step:first-child { padding-left: 0; }
 .step:last-child { padding-right: 0; border-right: 0; }
-.step__no { font-family: var(--display); font-weight: 600; font-size: clamp(2rem, 3vw, 2.9rem); line-height: 0.9; color: var(--accent-text); letter-spacing: -0.04em; display: block; }
-.step__no small { display: block; font-family: var(--mono); font-weight: 400; font-size: 0.68rem; letter-spacing: 0.2em; color: var(--faint); margin-top: 10px; text-transform: uppercase; }
+.step__no { font-family: var(--display); font-weight: 600; font-size: clamp(2rem, 3vw, 2.9rem); line-height: 0.9; color: var(--accent-text); letter-spacing: -0.025em; display: block; }
 .step__body { margin-top: 22px; }
 .step__body h3 { font-size: clamp(1.28rem, 1.9vw, 1.6rem); margin-bottom: 12px; }
 .step__body p { color: var(--muted); line-height: 1.6; }
