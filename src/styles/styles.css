@@ -55,7 +55,9 @@
   --bg-grad:   #ffffff;
   --fg:        oklch(0.255 0.020 158);
   --muted:     oklch(0.46 0.018 158);
-  --faint:     oklch(0.58 0.012 158);
+  /* 0.58 gaf 4.26:1 op wit — onder AA voor de 10-12px labels die dit token
+     gebruiken (.eyebrow, .case__chips .k, .quote__by .rl). 0.545 = 4.93:1. */
+  --faint:     oklch(0.545 0.012 158);
   --card:      #F9FAFB;
   --card-2:    #ffffff;
   --field-bg:  #ffffff;
@@ -70,7 +72,8 @@
   --bg-grad:   #F9FAFB;
   --fg:        oklch(0.255 0.020 158);
   --muted:     oklch(0.46 0.018 158);
-  --faint:     oklch(0.58 0.012 158);
+  /* Zelfde correctie als bij light; op #F9FAFB is 0.545 goed voor 4.71:1. */
+  --faint:     oklch(0.545 0.012 158);
   --card:      #ffffff;
   --card-2:    #ffffff;
   --field-bg:  #ffffff;
@@ -273,7 +276,7 @@ form[aria-busy="true"] .btn-primary { opacity: .65; pointer-events: none; }
   box-shadow: 0 40px 80px -45px rgba(0,0,0,.9);
 }
 /* Placeholder mag niet zo donker worden als een ingevulde waarde. */
-.hero__form .field input::placeholder { color: oklch(0.60 0.012 158); }
+.hero__form .field input::placeholder { color: oklch(0.555 0.012 158); }
 /* Foutmelding was op rood-op-donker afgestemd; op wit moet hij dieper. */
 .hero__form .form__error {
   color: oklch(0.46 0.170 25);
