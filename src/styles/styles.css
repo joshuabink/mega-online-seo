@@ -302,9 +302,18 @@ form[aria-busy="true"] .btn-primary { opacity: .65; pointer-events: none; }
 /* ---------- Proof bar ---------- */
 .proof-band { background: var(--bg); color: var(--fg); }
 .proof__grid { display: grid; grid-template-columns: repeat(4, 1fr); }
-.proof__item { padding: clamp(24px, 2.6vw, 34px) clamp(16px, 2vw, 30px); border-left: 1px solid var(--line-soft); display: flex; gap: 14px; align-items: flex-start; }
+.proof__item { padding: clamp(24px, 2.6vw, 34px) clamp(16px, 2vw, 30px); border-left: 1px solid var(--line-soft); display: flex; gap: 14px; align-items: center; }
 .proof__item:first-child { border-left: 0; padding-left: 0; }
-.proof__item p { font-size: 0.96rem; color: var(--muted); line-height: 1.45; }
+.proof__item p { font-size: 0.96rem; font-weight: 500; color: var(--muted); line-height: 1.45; }
+/* Zelfde vorm als de icoontegels in het megamenu, maar met tokens zodat hij
+   ook op de lichte band klopt. Accent blijft een tint, geen vlak. */
+.proof__item .proof__ico {
+  width: 36px; height: 36px; border-radius: 10px; flex: none;
+  display: grid; place-items: center; color: var(--accent-text);
+  background: color-mix(in oklab, var(--accent-text) 9%, transparent);
+  border: 1px solid color-mix(in oklab, var(--accent-text) 20%, var(--line));
+}
+.proof__item .proof__ico svg { width: 18px; height: 18px; }
 
 /* ---------- Section headers ---------- */
 .shead { display: grid; gap: 20px; max-width: 760px; }

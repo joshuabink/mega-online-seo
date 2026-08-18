@@ -1,5 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { Link } from '@tanstack/react-router'
+import { Icon } from '@/components/Icon'
 import { Media } from '@/components/Media'
 import { Qa } from '@/components/Qa'
 import { Reveal } from '@/components/Reveal'
@@ -242,18 +243,34 @@ function Home() {
         <div className="wrap">
           <div className="proof__grid">
             <Reveal as="div" className="proof__item reveal">
+              <span className="proof__ico">
+                <Icon name="shield-check" />
+              </span>
+              {' '}
               <p>Meer vertrouwen bij bezoekers</p>
             </Reveal>
             {' '}
             <Reveal as="div" className="proof__item reveal" data-d="1">
+              <span className="proof__ico">
+                <Icon name="calendar-check" />
+              </span>
+              {' '}
               <p>Makkelijker aanvragen en boekingen</p>
             </Reveal>
             {' '}
             <Reveal as="div" className="proof__item reveal" data-d="2">
+              <span className="proof__ico">
+                <Icon name="target" />
+              </span>
+              {' '}
               <p>Een website die past bij je bedrijf</p>
             </Reveal>
             {' '}
             <Reveal as="div" className="proof__item reveal" data-d="3">
+              <span className="proof__ico">
+                <Icon name="handshake" />
+              </span>
+              {' '}
               <p>Betrokken partner na livegang</p>
             </Reveal>
           </div>
