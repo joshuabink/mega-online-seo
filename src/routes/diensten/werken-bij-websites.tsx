@@ -64,7 +64,7 @@ function WerkenBijWebsites() {
                 </Link>
                 {' '}
                 <Link className="tlink" to="/gratis-websitescan">
-                  Vraag een gratis websitescan aan
+                  Vraag je gratis scan aan
                   {' '}
                   <span className="arr">→</span>
                 </Link>

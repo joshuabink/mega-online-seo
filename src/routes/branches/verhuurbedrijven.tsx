@@ -56,9 +56,7 @@ function Verhuurbedrijven() {
               {' '}
               <Reveal as="div" className="svc-hero__ctas reveal" data-d="2">
                 <Link className="btn btn-primary" to="/gratis-websitescan">
-                  Vraag een gratis websitescan aan
-                  {' '}
-                  <span className="arr">→</span>
+                  Vraag je gratis scan aan
                 </Link>
                 {' '}
                 <Link className="tlink" to="/contact">
@@ -358,9 +356,7 @@ function Verhuurbedrijven() {
             {' '}
             <Reveal as="div" className="svc-hero__ctas reveal" data-d="1" style={{ justifyContent: "center", marginTop: "28px" }}>
               <Link className="btn btn-primary" to="/gratis-websitescan">
-                Vraag een gratis websitescan aan
-                {' '}
-                <span className="arr">→</span>
+                Vraag je gratis scan aan
               </Link>
               {' '}
               <Link className="tlink" to="/contact">

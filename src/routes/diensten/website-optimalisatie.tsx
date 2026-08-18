@@ -58,9 +58,7 @@ function WebsiteOptimalisatie() {
               {' '}
               <Reveal as="div" className="svc-hero__ctas reveal" data-d="2">
                 <Link className="btn btn-primary" to="/gratis-websitescan">
-                  Vraag een gratis websitescan aan
-                  {' '}
-                  <span className="arr">→</span>
+                  Vraag je gratis scan aan
                 </Link>
                 {' '}
                 <Link className="tlink" to="/contact">

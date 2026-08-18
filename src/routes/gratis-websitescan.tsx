@@ -61,7 +61,7 @@ function GratisWebsitescan() {
                   <>
                     <span className="form__head-note">
                       <span className="dotmini" />
-                      Vraag je scan aan
+                      Gratis websitescan
                     </span>
                     {' '}
                     <h3>Stuur je website in</h3>
@@ -104,7 +104,7 @@ function GratisWebsitescan() {
                 </div>
                 {' '}
                 <button className="btn btn-primary" type="submit">
-                  Vraag gratis websitescan aan
+                  Stuur mijn gratis scan
                   {' '}
                   <span className="arr">→</span>
                 </button>
@@ -725,7 +725,7 @@ function GratisWebsitescan() {
                 <>
                   <span className="form__head-note">
                     <span className="dotmini" />
-                    Vraag je scan aan
+                    Gratis websitescan
                   </span>
                   {' '}
                   <h3>Stuur je website in</h3>
@@ -768,7 +768,7 @@ function GratisWebsitescan() {
               </div>
               {' '}
               <button className="btn btn-primary" type="submit">
-                Vraag gratis websitescan aan
+                Stuur mijn gratis scan
                 {' '}
                 <span className="arr">→</span>
               </button>

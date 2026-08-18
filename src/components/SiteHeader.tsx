@@ -529,7 +529,7 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
                   </span>
                   <span className="mlink__txt">
                     <span className="mlink__name">
-                      Gratis Websitescan <span className="mtag">Gratis</span>
+                      Gratis websitescan <span className="mtag">Gratis</span>
                     </span>
                     <span className="mlink__sub">Onze belangrijkste eerste stap</span>
                   </span>
@@ -782,7 +782,7 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
         <div className="mmenu__cta-txt">
           <span className="mmenu__cta-title">
             <span className="gdot" />
-            Gratis Websitescan
+            Gratis websitescan
           </span>
           <span className="mmenu__cta-sub">
             Ontdek waar jouw website kansen laat liggen.

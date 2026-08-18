@@ -59,7 +59,7 @@ function OverMegaonline() {
                 </Link>
                 {' '}
                 <Link className="tlink" to="/gratis-websitescan">
-                  Vraag een gratis websitescan aan
+                  Vraag je gratis scan aan
                   {' '}
                   <span className="arr">→</span>
                 </Link>
@@ -800,9 +800,7 @@ function OverMegaonline() {
             {' '}
             <div className="overcta__ctas">
               <Link className="btn btn-primary" to="/gratis-websitescan">
-                Vraag een gratis websitescan aan
-                {' '}
-                <span className="arr">→</span>
+                Vraag je gratis scan aan
               </Link>
               {' '}
               <Link className="btn btn-outline" to="/contact">Plan een kennismaking</Link>

@@ -55,7 +55,7 @@ function NotFound() {
               Naar de homepage <span className="arr">→</span>
             </Link>
             <Link className="btn btn-outline" to="/gratis-websitescan">
-              Gratis websitescan <span className="arr">→</span>
+              Vraag je gratis scan aan
             </Link>
             <Link className="btn btn-ghost" to="/contact">
               Contact
