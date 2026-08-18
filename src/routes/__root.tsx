@@ -52,6 +52,19 @@ const ORG_SCHEMA = {
   description:
     'MegaOnline bouwt websites die vertrouwen uitstralen en bezoekers richting aanvraag of boeking brengen.',
   inLanguage: 'nl-NL',
+  email: 'hallo@megaonline.io',
+  telephone: '+31634388938',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Boelekade 106',
+    addressLocality: 'Gouda',
+    addressCountry: 'NL',
+  },
+  identifier: {
+    '@type': 'PropertyValue',
+    name: 'KvK',
+    value: '78580099',
+  },
   areaServed: { '@type': 'Country', name: 'Nederland' },
   founder: { '@type': 'Person', name: 'Joshua Bink', jobTitle: 'Oprichter' },
   makesOffer: [

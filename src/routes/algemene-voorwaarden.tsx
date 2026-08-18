@@ -71,7 +71,7 @@ function AlgemeneVoorwaarden() {
                 <h2>1. Definities</h2>
                 {' '}
                 <p>
-                  In deze algemene voorwaarden wordt verstaan onder ‘MegaOnline’: MegaOnline.io, de gebruiker van deze voorwaarden. Onder ‘opdrachtgever’ wordt verstaan: de partij die met MegaOnline een overeenkomst aangaat of daartoe een aanvraag doet.
+                  In deze algemene voorwaarden wordt verstaan onder ‘MegaOnline’: MegaOnline.io, gevestigd aan de Boelekade 106 te Gouda, ingeschreven bij de Kamer van Koophandel onder nummer 78580099, de gebruiker van deze voorwaarden. Onder ‘opdrachtgever’ wordt verstaan: de partij die met MegaOnline een overeenkomst aangaat of daartoe een aanvraag doet.
                 </p>
                 {' '}
                 <p>
