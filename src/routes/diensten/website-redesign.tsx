@@ -630,97 +630,92 @@ function WebsiteRedesign() {
           <div className="cases">
             <Reveal as="article" className="case reveal">
               <div className="case__media">
-                <Media id="rd-case-1" fit="cover" placeholder="[ VOOR → NA ]" alt="Website voor en na het redesign" />
+                <Media id="case-qteam" fit="cover" placeholder="[ VOOR - NA ]" alt="De vernieuwde website van Q-Team Solutions" />
               </div>
-              {' '}
+                            {' '}
               <div className="case__body">
                 <span className="case__no">CASE 01</span>
                 {' '}
-                <h3 className="case__name">Binnenkort</h3>
+                <h3 className="case__name">Q-Team Solutions</h3>
                 {' '}
                 <div className="case__meta">
                   <span className="tag">Redesign</span>
-                  <span className="tag">Dienstverlening</span>
+                  <span className="tag">B2B software</span>
                 </div>
                 {' '}
-                <p className="case__context">
-                  Een bedrijf dat flink gegroeid was, met een website van jaren terug.
-                </p>
+                <p className="case__context">Een bedrijf dat eigen apps ontwikkelt voor zakelijke klanten.</p>
                 {' '}
                 <div className="case__steps">
                   <div className="case__step">
                     <span className="k">Situatie</span>
-                    <p>Een groeiend bedrijf met een verouderde, drukke website.</p>
+                    <p>Een softwarebedrijf waarvan de website niet was meegegroeid met het aanbod.</p>
                   </div>
-                  {' '}
+                {' '}
                   <div className="case__step">
                     <span className="k">Wat was verouderd</span>
-                    <p>
-                      De uitstraling en structuur pasten niet meer bij het huidige aanbod.
-                    </p>
+                    <p>De site liet onvoldoende zien welke apps het bedrijf ontwikkelt en welke waarde die bieden aan klanten.</p>
                   </div>
-                  {' '}
+                {' '}
                   <div className="case__step">
                     <span className="k">Wat we veranderden</span>
-                    <p>We tonen hier binnenkort het volledige voor/na-voorbeeld.</p>
+                    <p>We brachten de propositie terug naar een duidelijke boodschap en bouwden een structuur die bezoekers sneller naar de juiste informatie leidt.</p>
                   </div>
                 </div>
                 {' '}
                 <div className="case__chips">
                   <span className="k">Resultaat</span>
-                  {' '}
-                  <span className="chip">Strakkere uitstraling</span>
-                  {' '}
-                  <span className="chip">Volgt</span>
+                {' '}
+                  <span className="chip">Duidelijkere propositie</span>
+                {' '}
+                  <span className="chip">Professionelere uitstraling</span>
                 </div>
               </div>
             </Reveal>
             {' '}
             <Reveal as="article" className="case reveal" data-d="1">
               <div className="case__media">
-                <Media id="rd-case-2" fit="cover" placeholder="[ VOOR → NA ]" alt="Website voor en na het redesign" />
+                <Media id="case-guestroom" fit="cover" placeholder="[ VOOR - NA ]" alt="De vernieuwde website van GuestRoomUtrecht" />
               </div>
-              {' '}
+                            {' '}
               <div className="case__body">
                 <span className="case__no">CASE 02</span>
                 {' '}
-                <h3 className="case__name">Binnenkort</h3>
+                <h3 className="case__name">GuestRoomUtrecht</h3>
                 {' '}
                 <div className="case__meta">
                   <span className="tag">Redesign</span>
-                  <span className="tag">Uitstraling</span>
+                  <span className="tag">Bed &amp; Breakfast</span>
                 </div>
                 {' '}
-                <p className="case__context">Een bedrijf dat online achterliep op zijn concurrenten.</p>
+                <p className="case__context">Een verblijf dat draait op sfeer en de ervaring van gasten.</p>
                 {' '}
                 <div className="case__steps">
                   <div className="case__step">
                     <span className="k">Situatie</span>
-                    <p>De website oogde minder professioneel dan de concurrentie.</p>
+                    <p>Een bed &amp; breakfast waarvan de website de beleving niet overbracht.</p>
                   </div>
-                  {' '}
+                {' '}
                   <div className="case__step">
                     <span className="k">Wat was verouderd</span>
-                    <p>Stijl, beeldgebruik en mobiele weergave liepen achter.</p>
+                    <p>De sfeer van het verblijf kwam onvoldoende over en de route naar een boeking was onduidelijk.</p>
                   </div>
-                  {' '}
+                {' '}
                   <div className="case__step">
                     <span className="k">Wat we veranderden</span>
-                    <p>We tonen hier binnenkort het volledige voor/na-voorbeeld.</p>
+                    <p>We ontwikkelden een visuele website met een duidelijke boekingsroute en focus op beleving.</p>
                   </div>
                 </div>
                 {' '}
                 <div className="case__chips">
                   <span className="k">Resultaat</span>
-                  {' '}
-                  <span className="chip">Meer vertrouwen</span>
-                  {' '}
-                  <span className="chip">Volgt</span>
+                {' '}
+                  <span className="chip">Sterker verhaal</span>
+                {' '}
+                  <span className="chip">Betere gebruikerservaring</span>
                 </div>
               </div>
             </Reveal>
-          </div>
-        </div>
+          </div>        </div>
       </section>
       {' '}
       {' '}
