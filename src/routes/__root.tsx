@@ -68,6 +68,17 @@ const ORG_SCHEMA = {
   },
   areaServed: { '@type': 'Country', name: 'Nederland' },
   founder: { '@type': 'Person', name: 'Joshua Bink', jobTitle: 'Oprichter' },
+  // KerkOnline is ons merk voor kerken en draait op dezelfde rechtspersoon.
+  // Het @id verwijst naar de organisatie-node op kerkonline.io zelf, zodat de
+  // twee schema's één graaf vormen in plaats van twee losse bedrijven.
+  subOrganization: {
+    '@type': 'Organization',
+    '@id': 'https://kerkonline.io/#organisatie',
+    name: 'KerkOnline',
+    url: 'https://kerkonline.io/',
+    description:
+      'Websiteplatform en digitale partner voor kerken: professionele kerkwebsites, modules, fotografie en onderhoud.',
+  },
   makesOffer: [
     {
       '@type': 'Offer',
