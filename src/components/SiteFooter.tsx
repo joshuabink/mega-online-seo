@@ -67,6 +67,13 @@ export function SiteFooter() {
                 {label}
               </Link>
             ))}
+            {/* Bewust met "KerkOnline" als linktekst en zonder rel="nofollow":
+                dit is ons eigen merk, en de merknaam in de ankertekst is wat
+                zoekmachines leert dat KerkOnline een eigen bedrijf is en geen
+                verschrijving van een bekender merk. */}
+            <a href="https://kerkonline.io/" target="_blank" rel="noreferrer">
+              KerkOnline — websites voor kerken
+            </a>
           </div>
         </div>
 
