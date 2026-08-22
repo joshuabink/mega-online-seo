@@ -38,8 +38,7 @@ export function SiteFooter() {
               jouw bedrijf.
             </p>
             <Link className="footer__scan" to="/gratis-websitescan">
-              Vraag je gratis scan aan <span className="arr">→</span>
-            </Link>
+              Vraag je gratis scan aan            </Link>
           </div>
 
           <div className="footer__col">

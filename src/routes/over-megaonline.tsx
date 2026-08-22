@@ -55,13 +55,11 @@ function OverMegaonline() {
                 <Link className="btn btn-primary" to="/contact">
                   Plan een kennismaking
                   {' '}
-                  <span className="arr">→</span>
                 </Link>
                 {' '}
                 <Link className="tlink" to="/gratis-websitescan">
                   Vraag je gratis scan aan
                   {' '}
-                  <span className="arr">→</span>
                 </Link>
               </Reveal>
             </div>
@@ -620,7 +618,6 @@ function OverMegaonline() {
             <Link className="tlink" to="/gratis-websitescan" style={{ paddingBottom: "6px" }}>
               Start jouw project
               {' '}
-              <span className="arr">→</span>
             </Link>
           </Reveal>
           {' '}

@@ -60,13 +60,11 @@ function WerkenBijWebsites() {
                 <Link className="btn btn-primary" to="/contact">
                   Plan een kennismaking
                   {' '}
-                  <span className="arr">→</span>
                 </Link>
                 {' '}
                 <Link className="tlink" to="/gratis-websitescan">
                   Vraag je gratis scan aan
                   {' '}
-                  <span className="arr">→</span>
                 </Link>
               </Reveal>
             </div>
@@ -759,7 +757,6 @@ function WerkenBijWebsites() {
                 <Link className="btn btn-primary" to="/contact">
                   Plan een kennismaking
                   {' '}
-                  <span className="arr">→</span>
                 </Link>
               </Reveal>
               {' '}
@@ -888,7 +885,6 @@ function WerkenBijWebsites() {
                   <button className="btn btn-primary" type="submit">
                     Stuur mijn gratis scan
                     {' '}
-                    <span className="arr">→</span>
                   </button>
                 </div>
                 {' '}

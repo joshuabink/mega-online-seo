@@ -63,13 +63,11 @@ function StarterWebsite() {
                 <a className="btn btn-primary" href="#prijs">
                   Bekijk wat het kost
                   {' '}
-                  <span className="arr">→</span>
                 </a>
                 {' '}
                 <Link className="tlink" to="/contact">
                   Plan een kennismaking
                   {' '}
-                  <span className="arr">→</span>
                 </Link>
               </Reveal>
             </div>
@@ -675,7 +673,6 @@ function StarterWebsite() {
               <Link className="btn btn-primary" to="/gratis-websitescan">
                 Vraag een vrijblijvende offerte aan
                 {' '}
-                <span className="arr">→</span>
               </Link>
               {' '}
               <p className="price-card__fine">Vrijblijvend · Reactie binnen 2 werkdagen</p>
@@ -736,13 +733,11 @@ function StarterWebsite() {
                 <Link className="btn btn-primary" to="/gratis-websitescan">
                   Vraag een vrijblijvende offerte aan
                   {' '}
-                  <span className="arr">→</span>
                 </Link>
                 {' '}
                 <Link className="tlink" to="/contact">
                   Plan een kennismaking
                   {' '}
-                  <span className="arr">→</span>
                 </Link>
               </Reveal>
               {' '}
@@ -865,7 +860,6 @@ function StarterWebsite() {
                   <button className="btn btn-primary" type="submit">
                     Stuur mijn aanvraag
                     {' '}
-                    <span className="arr">→</span>
                   </button>
                 </div>
                 {' '}

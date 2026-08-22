@@ -52,8 +52,7 @@ function NotFound() {
             }}
           >
             <Link className="btn btn-primary" to="/">
-              Naar de homepage <span className="arr">→</span>
-            </Link>
+              Naar de homepage            </Link>
             <Link className="btn btn-outline" to="/gratis-websitescan">
               Vraag je gratis scan aan
             </Link>
