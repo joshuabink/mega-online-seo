@@ -110,7 +110,7 @@ function GratisWebsitescan() {
                 </button>
                 {' '}
                 <p className="form__disc">
-                  Geen spam. Geen verplichtingen. Gemiddeld binnen 2 werkdagen een reactie.
+                  Binnen twee werkdagen kijkt iemand van ons je website door. Geen automatisch rapport.
                 </p>
               </SingleLeadForm>
             </div>
@@ -703,7 +703,7 @@ function GratisWebsitescan() {
         <div className="wrap">
           <div className="fendcta">
             <div className="fendcta__copy">
-              <Reveal as="h2" className="display reveal">Klaar om te ontdekken waar jouw website kansen laat liggen?</Reveal>
+              <Reveal as="h2" className="display reveal">Benieuwd wat er beter kan?</Reveal>
               {' '}
               <Reveal as="p" className="lead reveal" data-d="1">
                 Vraag een gratis websitescan aan en ontvang concrete verbeterpunten voor jouw website.
@@ -774,7 +774,7 @@ function GratisWebsitescan() {
               </button>
               {' '}
               <p className="form__disc">
-                Geen spam. Geen verplichtingen. Gemiddeld binnen 2 werkdagen een reactie.
+                Binnen twee werkdagen kijkt iemand van ons je website door. Geen automatisch rapport.
               </p>
             </SingleLeadForm>
           </div>

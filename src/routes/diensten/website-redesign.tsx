@@ -253,7 +253,7 @@ function WebsiteRedesign() {
               <span className="iconbox">
                 <Icon name="rocket" />
               </span>
-              <h4>Klaar voor groei</h4>
+              <h4>Groeit met je mee</h4>
               <p>Een fundament dat meebeweegt met waar je naartoe wilt.</p>
             </Reveal>
           </div>
@@ -798,7 +798,7 @@ function WebsiteRedesign() {
               <span className="iconbox">
                 <Icon name="rocket" />
               </span>
-              <h4>Klaar voor groei</h4>
+              <h4>Groeit met je mee</h4>
               <p>Een fundament dat meebeweegt met je volgende stappen.</p>
             </Reveal>
           </div>
@@ -995,7 +995,7 @@ function WebsiteRedesign() {
                 </div>
                 {' '}
                 <p className="form__disc">
-                  Geen spam. Geen verplichtingen. Gemiddeld binnen 2 werkdagen een reactie.
+                  Binnen twee werkdagen hoor je van ons wat we in je huidige site zien zitten.
                 </p>
               </div>
             </SteppedLeadForm>

@@ -216,7 +216,7 @@ function OverMegaonline() {
             </h2>
             {' '}
             <p className="lead">
-              Waar wij ons op richten, vertaalt zich niet in features maar in wat het jouw bedrijf oplevert.
+              Waar wij ons op richten, vertaalt zich niet in features, maar in wat het jouw bedrijf oplevert.
             </p>
           </Reveal>
           {' '}
@@ -792,7 +792,7 @@ function OverMegaonline() {
       <section className="section" id="contact" data-theme="dark" data-screen-label="Eind-CTA">
         <div className="wrap">
           <Reveal as="div" className="overcta reveal">
-            <h2 className="display">Klaar om meer uit je website te halen?</h2>
+            <h2 className="display">Laten we een keer kennismaken.</h2>
             {' '}
             <p className="lead">
               Laten we kijken waar jouw grootste online kansen liggen. Zonder verplichtingen.

@@ -34,15 +34,15 @@ const FAQ_ITEMS: { q: string; a: string }[] = [
   },
   {
     q: "Waarom niet kiezen voor een goedkope webbouwer?",
-    a: "Een website bouwen is meer dan pagina's online zetten. Wij kijken naar vertrouwen gebruiksgemak en hoe bezoekers daadwerkelijk actie ondernemen.",
+    a: "Een website bouwen is meer dan pagina's online zetten. Wij kijken naar vertrouwen, gebruiksgemak en hoe bezoekers daadwerkelijk actie ondernemen.",
   },
   {
     q: "Wat gebeurt er na livegang?",
-    a: "Na livegang kunnen we blijven helpen met onderhoud verbeteringen en het optimaliseren van de website.",
+    a: "Na livegang kunnen we blijven helpen met onderhoud, verbeteringen en het optimaliseren van de website.",
   },
   {
     q: "Hoe weten jullie of een website beter presteert?",
-    a: "Door analytics en bezoekersgedrag te meten krijgen we inzicht in wat werkt en waar kansen liggen.",
+    a: "Door analytics en bezoekersgedrag te meten, krijgen we inzicht in wat werkt en waar kansen liggen.",
   },
   {
     q: "Kan ik mijn website straks zelf beheren?",
@@ -50,7 +50,7 @@ const FAQ_ITEMS: { q: string; a: string }[] = [
   },
   {
     q: "Hoe lang duurt het bouwen van een website?",
-    a: "Een gemiddeld websiteproject duurt 4 tot 8 weken. Dit hangt af van hoe snel we samen de intake kunnen afronden en hoe snel aangeleverde teksten en foto's beschikbaar zijn. We werken altijd met een duidelijke planning.",
+    a: "Een gemiddeld websiteproject duurt 4 tot 8 weken. Dit hangt af van hoe snel we samen de intake kunnen afronden, en van hoe snel de teksten en foto's beschikbaar zijn. We werken altijd met een duidelijke planning.",
   },
   {
     q: "Wij hebben al een website. Kunnen jullie die verbeteren?",
@@ -62,11 +62,11 @@ const FAQ_ITEMS: { q: string; a: string }[] = [
   },
   {
     q: "Is het Groei Partnership verplicht na een nieuwe website?",
-    a: "Nee. Sommige klanten kiezen voor een eenmalige website en regelen het beheer zelf of via een andere partij. We raden het Partnership wel aan omdat websites die regelmatig verbeterd worden structureel beter presteren.",
+    a: "Nee. Sommige klanten kiezen voor een eenmalige website en regelen het beheer zelf of via een andere partij. We raden het Partnership wel aan, omdat websites die regelmatig verbeterd worden structureel beter presteren.",
   },
   {
     q: "Voor welke bedrijven werkt MegaOnline?",
-    a: "We werken het liefst voor groeiende bedrijven waarbij de website een directe rol speelt in het binnenhalen van aanvragen reserveringen of boekingen. Denk aan activiteitenbedrijven verhuurders zakelijke dienstverleners rijscholen en transportbedrijven. De branche is minder belangrijk dan het bedrijfsmodel.",
+    a: "We werken het liefst voor groeiende bedrijven, waarbij de website een directe rol speelt in het binnenhalen van aanvragen, reserveringen of boekingen. Denk aan activiteitenbedrijven, verhuurders, zakelijke dienstverleners, rijscholen en transportbedrijven. De branche is minder belangrijk dan het bedrijfsmodel.",
   },
 ]
 
@@ -103,7 +103,7 @@ function Home() {
               </Reveal>
               {' '}
               <Reveal as="p" className="lead hero__sub reveal" data-d="2">
-                Veel websites zien er prima uit maar helpen bezoekers niet om actie te ondernemen. MegaOnline bouwt websites die vertrouwen uitstralen en bezoekers gericht naar meer aanvragen en boekingen begeleiden.
+                Veel websites zien er prima uit, maar helpen bezoekers niet om actie te ondernemen. MegaOnline bouwt websites die vertrouwen uitstralen en bezoekers gericht naar meer aanvragen en boekingen begeleiden.
               </Reveal>
             </div>
             {' '}
@@ -230,7 +230,7 @@ function Home() {
                 </div>
                 {' '}
                 <p className="form__disc">
-                  Geen spam. Geen verplichtingen. Gemiddeld binnen 2 werkdagen een reactie.
+                  Je hoort binnen twee werkdagen van ons. We zetten je niet op een mailinglijst.
                 </p>
               </div>
             </SteppedLeadForm>
@@ -286,7 +286,7 @@ function Home() {
             <h2 className="h2">Waarom je bezoekers afhaken.</h2>
             {' '}
             <p className="lead">
-              Veel bedrijven hebben een website die online staat maar niet actief bijdraagt aan groei. Bezoekers haken af. Ze twijfelen of nemen geen contact op. Daardoor blijven aanvragen en boekingen liggen.
+              Veel bedrijven hebben een website die online staat, maar niet actief bijdraagt aan groei. Bezoekers haken af. Ze twijfelen of nemen geen contact op. Daardoor blijven aanvragen en boekingen liggen.
             </p>
           </Reveal>
           {' '}
@@ -297,7 +297,7 @@ function Home() {
               <h3>Bezoekers begrijpen niet wat je doet</h3>
               {' '}
               <p>
-                Als bezoekers binnen enkele seconden niet begrijpen wat je aanbiedt haken ze af voordat ze contact opnemen.
+                Als bezoekers binnen enkele seconden niet begrijpen wat je aanbiedt, haken ze af voordat ze contact opnemen.
               </p>
             </Reveal>
             {' '}
@@ -317,7 +317,7 @@ function Home() {
               <h3>De mobiele ervaring werkt tegen je</h3>
               {' '}
               <p>
-                Het grootste deel van je bezoekers komt mobiel binnen. Als de ervaring niet soepel is verlies je kansen.
+                Het grootste deel van je bezoekers komt mobiel binnen. Als de ervaring niet soepel is, verlies je kansen.
               </p>
             </Reveal>
             {' '}
@@ -327,7 +327,7 @@ function Home() {
               <h3>Aanvragen zijn te moeilijk gemaakt</h3>
               {' '}
               <p>
-                Hoe meer stappen hoe meer afhakers. Een website moet bezoekers helpen om eenvoudig actie te ondernemen.
+                Hoe meer stappen, hoe meer afhakers. Een website moet bezoekers helpen om eenvoudig actie te ondernemen.
               </p>
             </Reveal>
           </div>
@@ -354,7 +354,7 @@ function Home() {
               <div className="step__body">
                 <h3>Begrijpen</h3>
                 <p>
-                  We leren jouw bedrijf klanten en doelen kennen. Alleen zo kunnen we een website bouwen die aansluit bij wat bezoekers nodig hebben.
+                  We leren jouw bedrijf, klanten en doelen kennen. Alleen zo kunnen we een website bouwen die aansluit bij wat bezoekers nodig hebben.
                 </p>
               </div>
             </Reveal>
@@ -365,7 +365,7 @@ function Home() {
               <div className="step__body">
                 <h3>Bouwen</h3>
                 <p>
-                  We ontwerpen en ontwikkelen een website die vertrouwen opbouwt en bezoekers makkelijker richting contact aanvraag of boeking stuurt.
+                  We ontwerpen en ontwikkelen een website die vertrouwen opbouwt en bezoekers makkelijker richting contact, aanvraag of boeking stuurt.
                 </p>
               </div>
             </Reveal>
@@ -762,7 +762,8 @@ function Home() {
             </div>
           </Reveal>
           {' '}
-          <Reveal as="div" className="maint reveal">
+          <div className="maints">
+            <Reveal as="div" className="maint reveal">
             <div className="maint__txt">
               <b>Kleiner beginnen?</b>
               {' '}
@@ -783,7 +784,8 @@ function Home() {
             </div>
             {' '}
             <div className="maint__price">Onderhoud & Support · vanaf € 49 / mnd</div>
-          </Reveal>
+            </Reveal>
+          </div>
         </div>
       </section>
       {' '}
@@ -870,7 +872,7 @@ function Home() {
               </p>
               {' '}
               <p>
-                Wij geloven dat de beste websites ontstaan wanneer je een bedrijf echt begrijpt. Daarom werken we niet als een anoniem bureau maar als een betrokken partner die meedenkt over de lange termijn.
+                Wij geloven dat de beste websites ontstaan wanneer je een bedrijf echt begrijpt. Daarom werken we niet als een anoniem bureau, maar als een betrokken partner die meedenkt over de lange termijn.
               </p>
               {' '}
               <div className="vision__sign">
@@ -916,7 +918,7 @@ function Home() {
       {' '}
       <section className="section final" data-theme="dark" data-screen-label="Afsluitende CTA">
         <div className="wrap">
-          <Reveal as="h2" className="display reveal">Klaar om meer uit je website te halen?</Reveal>
+          <Reveal as="h2" className="display reveal">Zullen we eens naar je website kijken?</Reveal>
           {' '}
           <Reveal as="p" className="lead reveal" data-d="1">
             Vraag een gratis websitescan aan en ontdek wat er beter kan. Zonder verplichtingen.

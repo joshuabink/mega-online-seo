@@ -722,7 +722,7 @@ function GroeiPartnership() {
         <div className="wrap">
           <div className="endcta__grid">
             <div className="endcta__copy">
-              <Reveal as="h2" className="display reveal">Klaar om meer uit je website te halen?</Reveal>
+              <Reveal as="h2" className="display reveal">Een website is nooit af. Dat is juist het punt.</Reveal>
               {' '}
               <Reveal as="p" className="lead reveal" data-d="1">
                 Een betere website ontstaat niet in één dag. Die ontstaat door continu te meten, leren en verbeteren.
@@ -870,7 +870,7 @@ function GroeiPartnership() {
                 </div>
                 {' '}
                 <p className="form__disc">
-                  Geen spam. Geen verplichtingen. Gemiddeld binnen 2 werkdagen een reactie.
+                  We nemen binnen twee werkdagen contact op om te kijken of het past. Zonder verkooppraatje.
                 </p>
               </div>
             </SteppedLeadForm>

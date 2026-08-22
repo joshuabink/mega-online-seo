@@ -899,7 +899,7 @@ function WebsiteOptimalisatie() {
                 </div>
                 {' '}
                 <p className="form__disc">
-                  Geen spam. Geen verplichtingen. Gemiddeld binnen 2 werkdagen een reactie.
+                  Binnen twee werkdagen laten we weten wat we zouden aanpakken, en in welke volgorde.
                 </p>
               </div>
             </SteppedLeadForm>

@@ -905,7 +905,7 @@ function WerkenBijWebsites() {
                 </div>
                 {' '}
                 <p className="form__disc">
-                  Geen spam. Geen verplichtingen. Gemiddeld binnen 2 werkdagen een reactie.
+                  Binnen twee werkdagen een reactie. We bellen je niet ongevraagd na.
                 </p>
               </div>
             </SteppedLeadForm>

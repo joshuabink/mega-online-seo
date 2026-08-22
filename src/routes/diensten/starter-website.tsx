@@ -732,7 +732,7 @@ function StarterWebsite() {
         <div className="wrap">
           <div className="endcta__grid">
             <div className="endcta__copy">
-              <Reveal as="h2" className="display reveal">Klaar om als starter professioneel online te staan?</Reveal>
+              <Reveal as="h2" className="display reveal">Je eerste website hoeft geen gok te zijn.</Reveal>
               {' '}
               <Reveal as="p" className="lead reveal" data-d="1">
                 Vraag een vrijblijvende offerte aan of plan een korte kennismaking. We kijken samen of de Starter Website bij je past, of dat een andere optie slimmer is.
@@ -876,7 +876,7 @@ function StarterWebsite() {
                 </div>
                 {' '}
                 <p className="form__disc">
-                  Geen spam. Geen verplichtingen. Gemiddeld binnen 2 werkdagen een reactie.
+                  Binnen twee werkdagen een reactie, en een eerlijk antwoord als je beter af bent met iets anders.
                 </p>
               </div>
             </SteppedLeadForm>

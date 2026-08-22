@@ -366,7 +366,7 @@ function ConversieWebsite() {
               <span className="iconbox">
                 <Icon name="plug" />
               </span>
-              <h4>Klaar voor koppelingen</h4>
+              <h4>Koppelt met je systemen</h4>
               <p>Eenvoudig te verbinden met de systemen waarmee je al werkt.</p>
             </Reveal>
             {' '}
@@ -1043,7 +1043,7 @@ function ConversieWebsite() {
           <div className="endcta__grid">
             <div className="endcta__copy">
               <Reveal as="h2" className="display reveal">
-                Klaar voor een website die meer doet dan alleen online staan?
+                Online staan is niet hetzelfde als werken.
               </Reveal>
               {' '}
               <Reveal as="p" className="lead reveal" data-d="1">
@@ -1182,7 +1182,7 @@ function ConversieWebsite() {
                 </div>
                 {' '}
                 <p className="form__disc">
-                  Geen spam. Geen verplichtingen. Gemiddeld binnen 2 werkdagen een reactie.
+                  Je krijgt binnen twee werkdagen antwoord van de mensen die de site ook zouden bouwen.
                 </p>
               </div>
             </SteppedLeadForm>
