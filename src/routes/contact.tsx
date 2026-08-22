@@ -2,6 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { Link } from '@tanstack/react-router'
 import { Icon } from '@/components/Icon'
 import { Qa } from '@/components/Qa'
+import { Media } from '@/components/Media'
 import { Reveal } from '@/components/Reveal'
 import { SingleLeadForm } from '@/components/LeadForm'
 import '@/styles/pages/contact.css'
@@ -88,6 +89,13 @@ function Contact() {
                   <p>
                     We nemen contact op om een kort, vrijblijvend gesprek in te plannen op een moment dat jou uitkomt.
                   </p>
+                  {' '}
+                  <span className="form__person">
+                    <span className="form__person-av">
+                      <Media id="founder-av" fit="cover" shape="circle" alt="Joshua Bink, oprichter van MegaOnline" />
+                    </span>
+                    <span>Je spreekt direct met Joshua, oprichter van MegaOnline.</span>
+                  </span>
                 </>
               }
               ok={

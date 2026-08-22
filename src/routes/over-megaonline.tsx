@@ -200,6 +200,10 @@ function OverMegaonline() {
               Wij kijken verder dan design. We bouwen pas als helder is wat een bezoeker écht nodig heeft.
             </div>
           </Reveal>
+          {' '}
+          <Reveal as="figure" className="procband reveal">
+            <Media id="sfeer-overleg" fit="cover" alt="Kort overleg tijdens het werken aan een website" />
+          </Reveal>
         </div>
       </section>
       {' '}
@@ -592,6 +596,16 @@ function OverMegaonline() {
             </span>
             De echte winst zit in wat er ná livegang gebeurt. Daar blijven we aan werken.
           </Reveal>
+          {' '}
+          <div className="photoduo">
+            <Reveal as="figure" className="reveal">
+              <Media id="over-klantgesprek" fit="cover" alt="Gesprek aan tafel over een websiteproject" />
+            </Reveal>
+            {' '}
+            <Reveal as="figure" className="reveal" data-d="1">
+              <Media id="over-werkplek" fit="cover" alt="Werkplek met schermen waarop aan een website wordt gewerkt" />
+            </Reveal>
+          </div>
         </div>
       </section>
       {' '}
