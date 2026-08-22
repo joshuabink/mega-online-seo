@@ -56,6 +56,10 @@ export function SteppedLeadForm({
       el.hidden = i !== step
     })
 
+    // Een foutmelding hoort bij de stap waarop hij ontstond. Bleef hij staan,
+    // dan las een bezoeker op stap 1 een klacht over stap 3.
+    setError(null)
+
     const bar = formRef.current?.querySelector<HTMLElement>('.form__bar i')
     if (bar) bar.style.width = `${((step + 1) / all.length) * 100}%`
 
@@ -97,6 +101,21 @@ export function SteppedLeadForm({
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     if (!formRef.current || !validStep(step)) return
+
+    /* Enter in een invoerveld verstuurt een formulier impliciet, ook als de
+       bezoeker nog op stap 1 staat: de browser activeert dan de submitknop
+       die verderop in het formulier staat. De inzending vertrok daardoor
+       zonder e-mailadres en de bezoeker kreeg op stap 1 de melding "Vul een
+       e-mailadres of telefoonnummer in" te zien, met geen enkele manier om
+       dat op te lossen.
+
+       Enter betekent hier dus "volgende stap", en pas op de laatste stap
+       "versturen". Dat is ook wat een bezoeker verwacht. */
+    const laatste = stepEls().length - 1
+    if (step < laatste) {
+      setStep((s) => Math.min(s + 1, laatste))
+      return
+    }
 
     setStatus('sending')
     setError(null)
