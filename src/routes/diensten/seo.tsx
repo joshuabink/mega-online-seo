@@ -330,7 +330,7 @@ function Seo() {
           <Reveal as="div" className="shead shead--center reveal">
             <span className="label">Aan de slag</span>
             {' '}
-            <h2 className="display">Klaar om beter gevonden te worden?</h2>
+            <h2 className="display">Wie jou niet vindt, zoekt gewoon verder.</h2>
             {' '}
             <p className="lead">
               Vraag een gratis websitescan aan. We laten zien waar je nu vindbaarheid, en dus aanvragen, misloopt.
