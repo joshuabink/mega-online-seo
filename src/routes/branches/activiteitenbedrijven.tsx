@@ -354,7 +354,7 @@ function Activiteitenbedrijven() {
           <Reveal as="div" className="shead shead--center reveal">
             <span className="label">Aan de slag</span>
             {' '}
-            <h2 className="display">Klaar om ook de stille dagen te vullen?</h2>
+            <h2 className="display">De drukke dagen lopen vanzelf. De stille niet.</h2>
             {' '}
             <p className="lead">
               Vraag een gratis websitescan aan. We laten zien waar je nu boekingen misloopt en hoe je dat omdraait.
