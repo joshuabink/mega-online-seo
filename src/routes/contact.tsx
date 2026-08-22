@@ -205,8 +205,8 @@ function Contact() {
                 Voor vragen, ideeën of een offerteaanvraag. We reageren doorgaans binnen 2 werkdagen.
               </p>
               {' '}
-              <a className="ccard__val" href="mailto:hallo@megaonline.io">
-                hallo@megaonline.io
+              <a className="ccard__val" href="mailto:info@megaonline.io">
+                info@megaonline.io
                 {' '}
                 <span className="arr">→</span>
               </a>
