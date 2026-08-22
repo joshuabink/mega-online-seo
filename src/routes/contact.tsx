@@ -173,7 +173,7 @@ function Contact() {
               </button>
               {' '}
               <p className="form__disc">
-                Geen spam. Geen verplichtingen. Gemiddeld binnen 2 werkdagen een reactie.
+                We reageren doorgaans binnen twee werkdagen, en altijd persoonlijk.
               </p>
             </SingleLeadForm>
           </div>

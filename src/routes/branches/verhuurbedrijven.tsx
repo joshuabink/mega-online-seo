@@ -348,7 +348,7 @@ function Verhuurbedrijven() {
           <Reveal as="div" className="shead shead--center reveal">
             <span className="label">Aan de slag</span>
             {' '}
-            <h2 className="display">Klaar om de telefoon wat rust te gunnen?</h2>
+            <h2 className="display">Laat je website de beschikbaarheid uitleggen.</h2>
             {' '}
             <p className="lead">
               Vraag een gratis websitescan aan. We laten zien hoeveel handwerk je website kan overnemen.
