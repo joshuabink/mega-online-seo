@@ -345,7 +345,7 @@ function NonProfits() {
           <Reveal as="div" className="shead shead--center reveal">
             <span className="label">Aan de slag</span>
             {' '}
-            <h2 className="display">Klaar om meer steun online te krijgen?</h2>
+            <h2 className="display">Mensen willen best helpen. Maak het ze makkelijk.</h2>
             {' '}
             <p className="lead">
               Vraag een gratis websitescan aan. We laten zien hoe je website meer donaties, vrijwilligers en betrokkenheid kan opleveren.
