@@ -27,6 +27,8 @@ import "@/styles/conversie.css";
 import "@/styles/over.css";
 import "@/styles/funnel.css";
 import "@/styles/megamenu.css";
+// Visuele refresh (golf 1) — review-laag, hoort bij akkoord in styles.css.
+import "@/styles/refresh.css";
 
 /** Per-route vlaggen die de layout aansturen. */
 export type RouteMeta = {
@@ -145,7 +147,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap",
       },
       { rel: "manifest", href: "/site.webmanifest" },
       { rel: "icon", href: "/favicon.ico", sizes: "48x48" },
@@ -179,14 +181,14 @@ const NO_JS_FALLBACK = `
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="nl" data-accent="honey" data-display="geist">
+    <html lang="nl" data-accent="honey" data-display="archivo">
       <head>
         <HeadContent />
         <noscript>
           <style dangerouslySetInnerHTML={{ __html: NO_JS_FALLBACK }} />
         </noscript>
       </head>
-      <body data-hero="split" data-accent="honey" data-display="geist">
+      <body data-hero="split" data-accent="honey" data-display="archivo">
         {children}
         <Scripts />
       </body>
