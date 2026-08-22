@@ -1,4 +1,3 @@
-import { ICONS } from './icons'
 import { MARKS } from './marks'
 
 /**
@@ -6,22 +5,21 @@ import { MARKS } from './marks'
  * De iconen zijn nu gebundeld, dus geen extra request en geen DOM-scan na
  * page load — het icoon staat meteen in de server-rendered HTML.
  *
- * `MARKS` gaat vóór op `ICONS`: staat een naam in de eigen set, dan wint die
- * tekening. Zo hoeven de pagina's niet aangepast te worden om van icoon te
- * wisselen.
+ * Sinds de eigen set compleet is haalt deze component niets meer uit Lucide.
+ * `MARKS` kent elke naam die de site ooit gebruikte, dus `lucide-react` zit
+ * niet langer in de bundel. De namen bleven staan zoals ze waren, zodat de
+ * pagina's niet aangepast hoefden te worden om van tekening te wisselen.
  *
  * Grootte, lijndikte en kleur komen uit de bestaande CSS
  * (`.mlink__ico svg { width: …; stroke: … }`), precies zoals bij de
  * CDN-versie. Daarom zetten we hier bewust geen size/strokeWidth.
  */
 export function Icon({ name, className }: { name: string; className?: string }) {
-  const Cmp = MARKS[name] ?? ICONS[name]
+  const Cmp = MARKS[name]
 
   if (!Cmp) {
     if (import.meta.env.DEV) {
-      console.warn(
-        `[Icon] onbekend icoon "${name}" — draai \`node scripts/build-icons.mjs\``,
-      )
+      console.warn(`[Icon] onbekend icoon "${name}" — voeg het toe aan marks.tsx`)
     }
     return null
   }
