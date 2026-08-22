@@ -91,7 +91,6 @@ function Verhuurbedrijven() {
           <div className="flaw">
             <div className="flaw__mini" style={{ marginTop: "clamp(28px,3vw,40px)" }}>
               <Reveal as="div" className="miniprob reveal">
-                <span className="mn">01</span>
                 <h4>'Is het vrij op die datum?'</h4>
                 <p>
                   De vraag die je het vaakst krijgt, en die het meeste tijd kost om te beantwoorden.
@@ -99,7 +98,6 @@ function Verhuurbedrijven() {
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal" data-d="1">
-                <span className="mn">02</span>
                 <h4>Veel handwerk</h4>
                 <p>
                   Offertes, mails en telefoontjes over prijzen en periodes lopen de hele dag door.
@@ -107,7 +105,6 @@ function Verhuurbedrijven() {
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal">
-                <span className="mn">03</span>
                 <h4>Borg en voorwaarden</h4>
                 <p>
                   Onduidelijkheid vooraf leidt tot vragen, discussie en soms gedoe achteraf.
@@ -115,7 +112,6 @@ function Verhuurbedrijven() {
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal" data-d="1">
-                <span className="mn">04</span>
                 <h4>Piekmomenten</h4>
                 <p>
                   Weekenden, evenementen en seizoen zorgen voor drukte op vaste momenten.
@@ -123,7 +119,6 @@ function Verhuurbedrijven() {
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal">
-                <span className="mn">05</span>
                 <h4>Breed assortiment</h4>
                 <p>
                   Veel verschillende artikelen overzichtelijk en vindbaar houden is lastig.
@@ -131,7 +126,6 @@ function Verhuurbedrijven() {
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal" data-d="1">
-                <span className="mn">06</span>
                 <h4>Herhaalklanten</h4>
                 <p>
                   Bedrijven die vaker huren wil je het zo makkelijk mogelijk maken.

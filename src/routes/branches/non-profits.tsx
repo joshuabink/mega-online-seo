@@ -90,7 +90,6 @@ function NonProfits() {
           <div className="flaw">
             <div className="flaw__mini" style={{ marginTop: "clamp(28px,3vw,40px)" }}>
               <Reveal as="div" className="miniprob reveal">
-                <span className="mn">01</span>
                 <h4>Beperkt budget</h4>
                 <p>
                   Elke euro telt. Een website mag niet ten koste gaan van je doel.
@@ -98,7 +97,6 @@ function NonProfits() {
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal" data-d="1">
-                <span className="mn">02</span>
                 <h4>Vertrouwen eerst</h4>
                 <p>
                   Mensen geven en doen mee als ze zien dat hun steun goed terechtkomt.
@@ -106,7 +104,6 @@ function NonProfits() {
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal">
-                <span className="mn">03</span>
                 <h4>Vrijwilligers & leden</h4>
                 <p>
                   Nieuwe mensen werven én betrokken houden is een doorlopende uitdaging.
@@ -114,7 +111,6 @@ function NonProfits() {
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal" data-d="1">
-                <span className="mn">04</span>
                 <h4>Je verhaal & impact</h4>
                 <p>
                   Wat je teweegbrengt is je sterkste argument, maar vaak slecht zichtbaar.
@@ -122,7 +118,6 @@ function NonProfits() {
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal">
-                <span className="mn">05</span>
                 <h4>Meerdere doelgroepen</h4>
                 <p>
                   Donateurs, vrijwilligers, deelnemers en pers willen elk iets anders.
@@ -130,7 +125,6 @@ function NonProfits() {
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal" data-d="1">
-                <span className="mn">06</span>
                 <h4>Beheer door vrijwilligers</h4>
                 <p>De site moet bij te houden zijn zonder technische kennis.</p>
               </Reveal>

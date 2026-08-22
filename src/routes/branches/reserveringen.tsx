@@ -93,7 +93,6 @@ function Reserveringen() {
           <div className="flaw">
             <div className="flaw__mini" style={{ marginTop: "clamp(28px,3vw,40px)" }}>
               <Reveal as="div" className="miniprob reveal">
-                <span className="mn">01</span>
                 <h4>Buiten openingstijden</h4>
                 <p>
                   Mensen boeken 's avonds laat, juist als jij dicht bent en niet opneemt.
@@ -101,7 +100,6 @@ function Reserveringen() {
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal" data-d="1">
-                <span className="mn">02</span>
                 <h4>Telefoon overbelast</h4>
                 <p>
                   Elke reservering via de telefoon kost je personeel kostbare tijd.
@@ -109,7 +107,6 @@ function Reserveringen() {
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal">
-                <span className="mn">03</span>
                 <h4>No-shows</h4>
                 <p>
                   Onbevestigde boekingen leiden tot lege tafels, kamers of plekken.
@@ -117,7 +114,6 @@ function Reserveringen() {
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal" data-d="1">
-                <span className="mn">04</span>
                 <h4>Capaciteit bewaken</h4>
                 <p>
                   Dubbele boekingen en overboekingen wil je koste wat kost voorkomen.
@@ -125,7 +121,6 @@ function Reserveringen() {
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal">
-                <span className="mn">05</span>
                 <h4>Beleving verkoopt</h4>
                 <p>
                   Sfeer en foto's bepalen vaak of iemand bij jou of de buurman boekt.
@@ -133,7 +128,6 @@ function Reserveringen() {
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal" data-d="1">
-                <span className="mn">06</span>
                 <h4>Vaste gasten</h4>
                 <p>
                   Terugkerend bezoek is goud waard. Dat wil je makkelijk maken.

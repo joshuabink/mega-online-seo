@@ -128,7 +128,6 @@ function WebsiteOptimalisatie() {
             {' '}
             <div className="flaw__mini">
               <Reveal as="div" className="miniprob reveal">
-                <span className="mn">01</span>
                 <h4>Je website ziet er nog goed uit</h4>
                 <p>
                   De uitstraling is prima, dus volledig vervangen voelt onnodig en zonde.
@@ -136,7 +135,6 @@ function WebsiteOptimalisatie() {
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal" data-d="1">
-                <span className="mn">02</span>
                 <h4>Bezoekers, maar weinig aanvragen</h4>
                 <p>
                   Het verkeer is er wel, maar het zet niet om in contact of een boeking.
@@ -144,7 +142,6 @@ function WebsiteOptimalisatie() {
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal">
-                <span className="mn">03</span>
                 <h4>De structuur voelt onduidelijk</h4>
                 <p>
                   Bezoekers moeten zoeken naar wat ze nodig hebben en haken daardoor af.
@@ -152,7 +149,6 @@ function WebsiteOptimalisatie() {
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal" data-d="1">
-                <span className="mn">04</span>
                 <h4>Formulieren worden weinig ingevuld</h4>
                 <p>
                   Mensen komen tot het formulier, maar maken de laatste stap niet af.
@@ -160,7 +156,6 @@ function WebsiteOptimalisatie() {
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal">
-                <span className="mn">05</span>
                 <h4>Bezoekers verlaten de site snel</h4>
                 <p>
                   Een hoge uitstroom wijst op twijfel of een onduidelijke volgende stap.
@@ -168,7 +163,6 @@ function WebsiteOptimalisatie() {
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal" data-d="1">
-                <span className="mn">06</span>
                 <h4>Je weet niet wat bezoekers doen</h4>
                 <p>
                   Zonder inzicht in gedrag blijft verbeteren gokken in plaats van weten.
@@ -445,7 +439,7 @@ function WebsiteOptimalisatie() {
             <Reveal as="div" className="bcell bcell--big reveal">
               <div>
                 <div className="bcell__top">
-                  <span className="bcell__no">Stap 01</span>
+                  <span className="bcell__no">Stap 1</span>
                   {' '}
                   <span className="iconbox">
                     <Icon name="search" />
@@ -470,7 +464,7 @@ function WebsiteOptimalisatie() {
             {' '}
             <Reveal as="div" className="bcell reveal" data-d="1">
               <div className="bcell__top">
-                <span className="bcell__no">Stap 02</span>
+                <span className="bcell__no">Stap 2</span>
                 <span className="iconbox iconbox--sm">
                   <Icon name="clipboard-list" />
                 </span>
@@ -485,7 +479,7 @@ function WebsiteOptimalisatie() {
             {' '}
             <Reveal as="div" className="bcell reveal" data-d="2">
               <div className="bcell__top">
-                <span className="bcell__no">Stap 03</span>
+                <span className="bcell__no">Stap 3</span>
                 <span className="iconbox iconbox--sm">
                   <Icon name="list-ordered" />
                 </span>
@@ -500,7 +494,7 @@ function WebsiteOptimalisatie() {
             {' '}
             <Reveal as="div" className="bcell reveal" data-d="1">
               <div className="bcell__top">
-                <span className="bcell__no">Stap 04</span>
+                <span className="bcell__no">Stap 4</span>
                 <span className="iconbox iconbox--sm">
                   <Icon name="sliders-horizontal" />
                 </span>
@@ -515,7 +509,7 @@ function WebsiteOptimalisatie() {
             {' '}
             <Reveal as="div" className="bcell reveal" data-d="2">
               <div className="bcell__top">
-                <span className="bcell__no">Stap 05</span>
+                <span className="bcell__no">Stap 5</span>
                 <span className="iconbox iconbox--sm">
                   <Icon name="line-chart" />
                 </span>
@@ -559,7 +553,6 @@ function WebsiteOptimalisatie() {
             {' '}
             <Reveal as="ul" className="wplist reveal" data-d="1">
               <li>
-                <span className="wn">01</span>
                 <h4>Verouderde techniek</h4>
                 <p>
                   De website draait op een fundament dat niet meer veilig of houdbaar is.
@@ -567,7 +560,6 @@ function WebsiteOptimalisatie() {
               </li>
               {' '}
               <li>
-                <span className="wn">02</span>
                 <h4>Niet schaalbaar</h4>
                 <p>
                   Je bedrijf is gegroeid, maar de website kan simpelweg niet meegroeien.
@@ -575,7 +567,6 @@ function WebsiteOptimalisatie() {
               </li>
               {' '}
               <li>
-                <span className="wn">03</span>
                 <h4>Verkeerde basis</h4>
                 <p>
                   De structuur klopt fundamenteel niet, los verbeteren heeft weinig zin.
@@ -583,7 +574,6 @@ function WebsiteOptimalisatie() {
               </li>
               {' '}
               <li>
-                <span className="wn">04</span>
                 <h4>Onbeheersbaar</h4>
                 <p>
                   Aanpassen kost steeds meer moeite en kan eigenlijk niet zonder gedoe.
@@ -591,7 +581,6 @@ function WebsiteOptimalisatie() {
               </li>
               {' '}
               <li>
-                <span className="wn">05</span>
                 <h4>Strategisch verouderd</h4>
                 <p>
                   De website past niet meer bij wie je nu bent en wat je nu aanbiedt.
@@ -599,7 +588,6 @@ function WebsiteOptimalisatie() {
               </li>
               {' '}
               <li>
-                <span className="wn">06</span>
                 <h4>Te veel losse pleisters</h4>
                 <p>
                   Er is al zo vaak bijgewerkt dat opnieuw beginnen rustiger en goedkoper is.
@@ -640,8 +628,6 @@ function WebsiteOptimalisatie() {
               </div>
               {' '}
               <div className="case__body">
-                <span className="case__no">CASE 01</span>
-                {' '}
                 <h3 className="case__name">Q-Team Solutions</h3>
                 {' '}
                 <div className="case__meta">
@@ -685,8 +671,6 @@ function WebsiteOptimalisatie() {
               </div>
               {' '}
               <div className="case__body">
-                <span className="case__no">CASE 02</span>
-                {' '}
                 <h3 className="case__name">GuestRoomUtrecht</h3>
                 {' '}
                 <div className="case__meta">

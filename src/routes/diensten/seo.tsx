@@ -89,31 +89,26 @@ function Seo() {
           <div className="flaw">
             <div className="flaw__mini" style={{ marginTop: "clamp(28px,3vw,40px)" }}>
               <Reveal as="div" className="miniprob reveal">
-                <span className="mn">01</span>
                 <h4>Onvindbaar in je regio</h4>
                 <p>Klanten zoeken lokaal, maar je concurrent staat bovenaan.</p>
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal" data-d="1">
-                <span className="mn">02</span>
                 <h4>Verkeer zonder aanvragen</h4>
                 <p>Bezoekers komen binnen, maar nemen geen contact op.</p>
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal">
-                <span className="mn">03</span>
                 <h4>Verkeerde zoekwoorden</h4>
                 <p>Je scoort op termen waar je klant niet op zoekt.</p>
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal" data-d="1">
-                <span className="mn">04</span>
                 <h4>Trage, zwakke basis</h4>
                 <p>Snelheid en techniek drukken je posities omlaag.</p>
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal">
-                <span className="mn">05</span>
                 <h4>Dunne pagina's</h4>
                 <p>
                   Te weinig inhoud om Google te overtuigen dat je relevant bent.
@@ -121,7 +116,6 @@ function Seo() {
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal" data-d="1">
-                <span className="mn">06</span>
                 <h4>Geen overzicht</h4>
                 <p>Je weet niet waar je staat of wat een verbetering oplevert.</p>
               </Reveal>

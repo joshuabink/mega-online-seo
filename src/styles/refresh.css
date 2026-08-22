@@ -122,3 +122,21 @@ h1, h2, h3 { line-height: 1.06; letter-spacing: -0.018em; }
    aanhalingstekens in de tekst doen het werk al. De rest van de glyphs
    (vinkjes, pijlen) blijft staan, in de nieuwe accentkleur. */
 .quote__mark { display: none; }
+
+/* ---------------------------------------------------------------------------
+   Golf 2 — decoratieve nummering weg
+
+   De 01–06-badges bij problemen, redenen en cases zeiden niets: het waren geen
+   stappen, alleen versiering. Waar de volgorde wél informatie is (Stap 1–5,
+   Fase 1–2) blijft de nummering staan, nu zonder voorloopnul.
+--------------------------------------------------------------------------- */
+
+/* .whyitem was een tweekolomsraster met het nummer in de eerste kolom. */
+.whyitem { grid-template-columns: 1fr; gap: 0; }
+
+/* De tijdlijnstip droeg hetzelfde nummer als het label ernaast. Nu een stip. */
+.tl__dot {
+  left: -36px; top: 19px; width: 12px; height: 12px;
+  border: 0; background: var(--line-strong);
+}
+.tl__row--rec .tl__dot { background: var(--accent-strong); }

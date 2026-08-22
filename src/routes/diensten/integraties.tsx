@@ -91,7 +91,6 @@ function Integraties() {
           <div className="flaw">
             <div className="flaw__mini" style={{ marginTop: "clamp(28px,3vw,40px)" }}>
               <Reveal as="div" className="miniprob reveal">
-                <span className="mn">01</span>
                 <h4>Overtypen van gegevens</h4>
                 <p>
                   Aanvragen handmatig in je CRM zetten kost tijd en geeft fouten.
@@ -99,19 +98,16 @@ function Integraties() {
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal" data-d="1">
-                <span className="mn">02</span>
                 <h4>Gemiste aanvragen</h4>
                 <p>Een formulier in een mailbox raakt zoek of blijft liggen.</p>
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal">
-                <span className="mn">03</span>
                 <h4>Dubbele boekingen</h4>
                 <p>Losse agenda’s die niet syncen leiden tot overlap.</p>
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal" data-d="1">
-                <span className="mn">04</span>
                 <h4>Trage opvolging</h4>
                 <p>
                   Hoe later je reageert, hoe groter de kans dat de klant afhaakt.
@@ -119,13 +115,11 @@ function Integraties() {
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal">
-                <span className="mn">05</span>
                 <h4>Versnipperd overzicht</h4>
                 <p>Klantinfo verspreid over mail, agenda en losse lijstjes.</p>
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal" data-d="1">
-                <span className="mn">06</span>
                 <h4>Handwerk dat blijft groeien</h4>
                 <p>
                   Hoe drukker het wordt, hoe meer tijd je kwijt bent aan administratie.

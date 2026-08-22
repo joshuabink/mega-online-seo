@@ -131,7 +131,6 @@ function GroeiPartnership() {
             {' '}
             <div className="flaw__mini">
               <Reveal as="div" className="miniprob reveal">
-                <span className="mn">01</span>
                 <h4>Doelgroepen veranderen</h4>
                 <p>
                   Wat mensen verwachten van een website verschuift voortdurend.
@@ -139,7 +138,6 @@ function GroeiPartnership() {
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal" data-d="1">
-                <span className="mn">02</span>
                 <h4>Concurrenten verbeteren</h4>
                 <p>
                   Stilstaan betekent ingehaald worden door wie wél doorontwikkelt.
@@ -147,7 +145,6 @@ function GroeiPartnership() {
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal">
-                <span className="mn">03</span>
                 <h4>Bezoekers gedragen zich anders</h4>
                 <p>
                   Hoe mensen klikken en zoeken verandert sneller dan je denkt.
@@ -155,19 +152,16 @@ function GroeiPartnership() {
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal" data-d="1">
-                <span className="mn">04</span>
                 <h4>Nieuwe kansen ontstaan</h4>
                 <p>Er komen continu mogelijkheden bij die nog onbenut blijven.</p>
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal">
-                <span className="mn">05</span>
                 <h4>Bedrijven groeien</h4>
                 <p>Je aanbod en ambitie veranderen, je website meestal niet.</p>
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal" data-d="1">
-                <span className="mn">06</span>
                 <h4>Websites blijven hetzelfde</h4>
                 <p>En precies daar loopt het langzaam scheef met de rest.</p>
               </Reveal>
@@ -390,8 +384,6 @@ function GroeiPartnership() {
           {' '}
           <Reveal as="div" className="cycle reveal">
             <div className="cyclestep cyclestep--rec">
-              <span className="cn">01</span>
-              {' '}
               <h4>Website live</h4>
               {' '}
               <p>Het startpunt. Vanaf hier begint het echte werk pas.</p>
@@ -402,8 +394,6 @@ function GroeiPartnership() {
             </div>
             {' '}
             <div className="cyclestep">
-              <span className="cn">02</span>
-              {' '}
               <h4>Meten</h4>
               {' '}
               <p>We verzamelen data over hoe bezoekers de website gebruiken.</p>
@@ -414,8 +404,6 @@ function GroeiPartnership() {
             </div>
             {' '}
             <div className="cyclestep">
-              <span className="cn">03</span>
-              {' '}
               <h4>Analyseren</h4>
               {' '}
               <p>We leggen de knelpunten en kansen bloot.</p>
@@ -426,8 +414,6 @@ function GroeiPartnership() {
             </div>
             {' '}
             <div className="cyclestep">
-              <span className="cn">04</span>
-              {' '}
               <h4>Verbeteren</h4>
               {' '}
               <p>We voeren gerichte aanpassingen door.</p>
@@ -438,8 +424,6 @@ function GroeiPartnership() {
             </div>
             {' '}
             <div className="cyclestep">
-              <span className="cn">05</span>
-              {' '}
               <h4>Herhalen</h4>
               {' '}
               <p>En weer van voren af aan, elke keer een stap beter.</p>

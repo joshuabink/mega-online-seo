@@ -126,7 +126,6 @@ function WebsiteRedesign() {
             {' '}
             <div className="flaw__mini">
               <Reveal as="div" className="miniprob reveal">
-                <span className="mn">01</span>
                 <h4>Je website voelt verouderd</h4>
                 <p>
                   De stijl is van een paar jaar terug en dat zie en voel je meteen.
@@ -134,7 +133,6 @@ function WebsiteRedesign() {
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal" data-d="1">
-                <span className="mn">02</span>
                 <h4>Concurrenten ogen professioneler</h4>
                 <p>
                   Naast hun site valt die van jou net wat minder op zijn plek.
@@ -142,19 +140,16 @@ function WebsiteRedesign() {
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal">
-                <span className="mn">03</span>
                 <h4>Je bedrijf is veranderd</h4>
                 <p>Wie je nu bent staat niet meer goed op je website.</p>
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal" data-d="1">
-                <span className="mn">04</span>
                 <h4>Je aanbod is uitgebreid</h4>
                 <p>Nieuwe diensten passen niet meer logisch in de oude opzet.</p>
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal">
-                <span className="mn">05</span>
                 <h4>Sluit niet meer aan op je doelgroep</h4>
                 <p>
                   De toon en uitstraling passen niet meer bij wie je wilt bereiken.
@@ -162,7 +157,6 @@ function WebsiteRedesign() {
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal" data-d="1">
-                <span className="mn">06</span>
                 <h4>Je bent er niet trots meer op</h4>
                 <p>Je deelt de link liever niet, en dat zegt eigenlijk genoeg.</p>
               </Reveal>
@@ -443,9 +437,9 @@ function WebsiteRedesign() {
           {' '}
           <Reveal as="div" className="tl reveal" style={{ marginTop: "clamp(40px,4.5vw,60px)" }}>
             <div className="tl__row">
-              <span className="tl__dot">01</span>
+              <span className="tl__dot" />
               {' '}
-              <div className="tl__phase">Stap 01 · Begrijpen</div>
+              <div className="tl__phase">Stap 1 · Analyse</div>
               {' '}
               <div className="tl__card">
                 <div className="tl__cardhead">
@@ -459,9 +453,9 @@ function WebsiteRedesign() {
             </div>
             {' '}
             <div className="tl__row">
-              <span className="tl__dot">02</span>
+              <span className="tl__dot" />
               {' '}
-              <div className="tl__phase">Stap 02 · Begrijpen</div>
+              <div className="tl__phase">Stap 2 · Begrijpen</div>
               {' '}
               <div className="tl__card">
                 <div className="tl__cardhead">
@@ -475,9 +469,9 @@ function WebsiteRedesign() {
             </div>
             {' '}
             <div className="tl__row">
-              <span className="tl__dot">03</span>
+              <span className="tl__dot" />
               {' '}
-              <div className="tl__phase">Stap 03 · Onderzoek</div>
+              <div className="tl__phase">Stap 3 · Onderzoek</div>
               {' '}
               <div className="tl__card">
                 <div className="tl__cardhead">
@@ -491,9 +485,9 @@ function WebsiteRedesign() {
             </div>
             {' '}
             <div className="tl__row">
-              <span className="tl__dot">04</span>
+              <span className="tl__dot" />
               {' '}
-              <div className="tl__phase">Stap 04 · Structuur</div>
+              <div className="tl__phase">Stap 4 · Structuur</div>
               {' '}
               <div className="tl__card">
                 <div className="tl__cardhead">
@@ -507,9 +501,9 @@ function WebsiteRedesign() {
             </div>
             {' '}
             <div className="tl__row tl__row--rec">
-              <span className="tl__dot">05</span>
+              <span className="tl__dot" />
               {' '}
-              <div className="tl__phase">Stap 05 · Creatie</div>
+              <div className="tl__phase">Stap 5 · Creatie</div>
               {' '}
               <div className="tl__card tl__card--rec">
                 <div className="tl__cardhead">
@@ -527,7 +521,7 @@ function WebsiteRedesign() {
                 <Icon name="rocket" />
               </span>
               {' '}
-              <span className="tl__livelabel">Stap 06 · Livegang</span>
+              <span className="tl__livelabel">Stap 6 · Livegang</span>
             </div>
           </Reveal>
         </div>
@@ -563,7 +557,6 @@ function WebsiteRedesign() {
             {' '}
             <Reveal as="ul" className="wplist reveal" data-d="1">
               <li>
-                <span className="wn">01</span>
                 <h4>Visueel verouderd</h4>
                 <p>
                   De uitstraling past niet meer bij het niveau van je bedrijf.
@@ -571,31 +564,26 @@ function WebsiteRedesign() {
               </li>
               {' '}
               <li>
-                <span className="wn">02</span>
                 <h4>Technisch verouderd</h4>
                 <p>Het fundament is niet meer veilig, snel of houdbaar.</p>
               </li>
               {' '}
               <li>
-                <span className="wn">03</span>
                 <h4>Strategisch verouderd</h4>
                 <p>De website vertelt niet meer het juiste verhaal.</p>
               </li>
               {' '}
               <li>
-                <span className="wn">04</span>
                 <h4>Niet meer schaalbaar</h4>
                 <p>Je bent gegroeid, maar de site kan niet meegroeien.</p>
               </li>
               {' '}
               <li>
-                <span className="wn">05</span>
                 <h4>Structureel onlogisch</h4>
                 <p>Losse aanpassingen lossen het echte probleem niet op.</p>
               </li>
               {' '}
               <li>
-                <span className="wn">06</span>
                 <h4>Niet meer trots</h4>
                 <p>Je deelt je website liever niet, en dat zegt genoeg.</p>
               </li>
@@ -634,8 +622,6 @@ function WebsiteRedesign() {
               </div>
                             {' '}
               <div className="case__body">
-                <span className="case__no">CASE 01</span>
-                {' '}
                 <h3 className="case__name">Q-Team Solutions</h3>
                 {' '}
                 <div className="case__meta">
@@ -678,8 +664,6 @@ function WebsiteRedesign() {
               </div>
                             {' '}
               <div className="case__body">
-                <span className="case__no">CASE 02</span>
-                {' '}
                 <h3 className="case__name">GuestRoomUtrecht</h3>
                 {' '}
                 <div className="case__meta">
