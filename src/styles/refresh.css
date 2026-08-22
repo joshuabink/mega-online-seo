@@ -27,9 +27,9 @@ h1, h2, h3 { line-height: 1.06; letter-spacing: -0.018em; }
 .display   { letter-spacing: -0.022em; }
 .h2        { letter-spacing: -0.020em; }
 
-/* Nadruk in koppen blijft in accentkleur, maar krijgt er cursief bij zodat
-   het ook nadruk is als je de kleur niet ziet. */
-.display em, .h2 em, .panel__quote em { font-style: italic; }
+/* Nadruk in koppen blijft zoals hij was: alleen de accentkleur, rechtop.
+   Cursief is geprobeerd maar Archivo heeft geen echte cursief, alleen een
+   schuingezette versie, en die voegde weinig toe. De kleur doet het werk. */
 
 /* ---------- 2. Accent: van amber naar mint of citroen ----------
    Diep bosgroen met een warme amber is op dit moment een van de vier
