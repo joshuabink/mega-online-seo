@@ -200,10 +200,6 @@ function OverMegaonline() {
               Wij kijken verder dan design. We bouwen pas als helder is wat een bezoeker écht nodig heeft.
             </div>
           </Reveal>
-          {' '}
-          <Reveal as="figure" className="procband reveal">
-            <Media id="sfeer-overleg" fit="cover" alt="Kort overleg tijdens het werken aan een website" />
-          </Reveal>
         </div>
       </section>
       {' '}
