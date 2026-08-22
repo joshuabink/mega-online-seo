@@ -8,13 +8,14 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { useEffect, useMemo, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter, FunnelFooter } from "@/components/SiteFooter";
+import { SITE_GRAPH, buildPageSchema } from "@/lib/schema";
 
 // MegaOnline design system uit de Claude Design-handoff. De volgorde is de
 // bron van waarheid: styles → concepts → conversie → over → funnel → megamenu.
@@ -36,62 +37,6 @@ export type RouteMeta = {
   /** Geen gedeelde chrome — voor de concept-pagina's met hun eigen stijl. */
   bare?: boolean;
 };
-
-/**
- * Organisatie-schema. Staat op elke pagina met de shared chrome, zodat
- * zoekmachines naam, dienst en prijsindicatie gestructureerd binnenkrijgen.
- */
-const ORG_SCHEMA = {
-  '@context': 'https://schema.org',
-  '@type': 'ProfessionalService',
-  '@id': 'https://megaonline.io/#organization',
-  name: 'MegaOnline.io',
-  url: 'https://megaonline.io/',
-  image: 'https://megaonline.io/og-image.png',
-  logo: 'https://megaonline.io/og-image.png',
-  description:
-    'MegaOnline bouwt websites die vertrouwen uitstralen en bezoekers richting aanvraag of boeking brengen.',
-  inLanguage: 'nl-NL',
-  email: 'hallo@megaonline.io',
-  telephone: '+31634388938',
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: 'Boelekade 106',
-    postalCode: '2806 AM',
-    addressLocality: 'Gouda',
-    addressCountry: 'NL',
-  },
-  identifier: {
-    '@type': 'PropertyValue',
-    name: 'KvK',
-    value: '78580099',
-  },
-  areaServed: { '@type': 'Country', name: 'Nederland' },
-  founder: { '@type': 'Person', name: 'Joshua Bink', jobTitle: 'Oprichter' },
-  makesOffer: [
-    {
-      '@type': 'Offer',
-      name: 'Conversie Website',
-      url: 'https://megaonline.io/diensten/conversie-website',
-      priceSpecification: {
-        '@type': 'PriceSpecification',
-        minPrice: 2500,
-        priceCurrency: 'EUR',
-      },
-    },
-    {
-      '@type': 'Offer',
-      name: 'Groei Partnership',
-      url: 'https://megaonline.io/diensten/groei-partnership',
-      priceSpecification: {
-        '@type': 'UnitPriceSpecification',
-        minPrice: 150,
-        priceCurrency: 'EUR',
-        unitCode: 'MON',
-      },
-    },
-  ],
-}
 
 function NotFoundComponent() {
   return (
@@ -249,11 +194,43 @@ function RootShell({ children }: { children: ReactNode }) {
   );
 }
 
+/**
+ * Titel en beschrijving van de actieve route uit de `head()` van die route.
+ *
+ * Bewust hergebruikt in plaats van overgetypt in een eigen tabel: zo kunnen
+ * de `<title>` op de pagina en de `name` in het schema niet uit elkaar lopen
+ * wanneer iemand later alleen de route aanpast.
+ */
+function useActivePage() {
+  return useRouterState({
+    select: (s) => {
+      const entries = (s.matches.at(-1)?.meta ?? []) as Array<
+        Record<string, string | undefined> | undefined
+      >;
+      let title: string | undefined;
+      let description: string | undefined;
+      for (const entry of entries) {
+        if (!entry) continue;
+        if (!title && typeof entry.title === "string") title = entry.title;
+        if (!description && entry.name === "description") description = entry.content;
+      }
+      // Alleen primitieven selecteren: useRouterState vergelijkt ondiep, dus
+      // een samengesteld object hier zou elke store-update een re-render geven.
+      return { pathname: s.location.pathname, title, description };
+    },
+  });
+}
+
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const meta = useRouterState({
     select: (s) => (s.matches.at(-1)?.staticData ?? {}) as RouteMeta,
   });
+  const { pathname, title, description } = useActivePage();
+  const pageSchema = useMemo(
+    () => buildPageSchema({ pathname, title, description }),
+    [pathname, title, description],
+  );
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -264,8 +241,14 @@ function RootComponent() {
         <>
           <script
             type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(ORG_SCHEMA) }}
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(SITE_GRAPH) }}
           />
+          {pageSchema ? (
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }}
+            />
+          ) : null}
           <SiteHeader light={meta.lightNav} />
           {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
           <Outlet />
