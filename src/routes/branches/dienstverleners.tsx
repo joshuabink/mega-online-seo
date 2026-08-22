@@ -344,7 +344,7 @@ function Dienstverleners() {
           <Reveal as="div" className="shead shead--center reveal">
             <span className="label">Aan de slag</span>
             {' '}
-            <h2 className="display">Klaar om vertrouwen om te zetten in aanvragen?</h2>
+            <h2 className="display">Vertrouwen win je voordat de telefoon gaat.</h2>
             {' '}
             <p className="lead">
               Vraag een gratis websitescan aan. We laten zien hoe je website meer van de juiste klanten kan aantrekken.
