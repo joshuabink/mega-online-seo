@@ -145,7 +145,7 @@ function VeelgesteldeVragen() {
               </Qa>
               {' '}
               <Qa question="Wat heb je van mij nodig?" className="reveal">
-                  Vooral je teksten, je logo en een paar foto’s. Waar dat nodig is denken we mee over de inhoud. Hoe sneller je aanlevert, hoe vlotter we live kunnen.
+                  Vooral je teksten, je logo en een paar foto’s. Waar dat nodig is, denken we mee over de inhoud. Hoe sneller je aanlevert, hoe vlotter we live kunnen.
               </Qa>
               {' '}
               <Qa question="Kan ik later nog dingen aanpassen?" className="reveal">

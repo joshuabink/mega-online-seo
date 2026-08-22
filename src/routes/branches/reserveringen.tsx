@@ -346,7 +346,7 @@ function Reserveringen() {
           <Reveal as="div" className="shead shead--center reveal">
             <span className="label">Aan de slag</span>
             {' '}
-            <h2 className="display">Klaar om dag en nacht reserveringen op te vangen?</h2>
+            <h2 className="display">Je gasten boeken om elf uur 's avonds.</h2>
             {' '}
             <p className="lead">
               Vraag een gratis websitescan aan. We laten zien hoeveel boekingen je nu buiten openingstijden misloopt.
