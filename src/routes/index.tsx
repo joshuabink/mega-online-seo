@@ -347,6 +347,10 @@ function Home() {
             </p>
           </Reveal>
           {' '}
+          <Reveal as="figure" className="procband reveal">
+            <Media id="werkwijze-foto" fit="cover" alt="Overleg over een website aan tafel" />
+          </Reveal>
+          {' '}
           <div className="steps">
             <Reveal as="div" className="step reveal">
               <span className="step__no">Stap 1</span>
@@ -849,11 +853,11 @@ function Home() {
         <div className="wrap">
           <div className="vision">
             <Reveal as="div" className="vision__media reveal">
-              <Media id="team-photo" fit="cover" placeholder="[ TEAM / PORTRET ]" alt="Twee collega's van MegaOnline samen achter een scherm" />
+              <Media id="werkplek-portret" fit="cover" placeholder="[ WERKPLEK ]" alt="Werkplek waar de websites worden gebouwd" />
             </Reveal>
             {' '}
             <Reveal as="div" className="vision__body reveal" data-d="1">
-              <span className="label">De mensen</span>
+              <span className="label">Zo werken we</span>
               {' '}
               <h2 className="h2">
                 Klein van opzet.
