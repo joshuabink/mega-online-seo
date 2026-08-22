@@ -142,7 +142,7 @@ function Integraties() {
             <span className="label">Onze aanpak</span>
             {' '}
             <h2 className="h2">
-              Één soepel geheel,
+              Eén soepel geheel,
               {' '}
               <em>automatisch</em>
               {' '}
@@ -338,7 +338,7 @@ function Integraties() {
           <Reveal as="div" className="shead shead--center reveal">
             <span className="label">Aan de slag</span>
             {' '}
-            <h2 className="display">Klaar om het handwerk weg te automatiseren?</h2>
+            <h2 className="display">Dit hoef je niet zelf te blijven overtypen.</h2>
             {' '}
             <p className="lead">
               Vraag een gratis websitescan aan. We laten zien welke koppelingen jou het meeste tijd besparen.
