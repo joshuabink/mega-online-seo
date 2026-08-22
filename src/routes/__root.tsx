@@ -181,14 +181,14 @@ const NO_JS_FALLBACK = `
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="nl" data-accent="mint" data-display="archivo">
+    <html lang="nl" data-accent="lemon" data-display="archivo">
       <head>
         <HeadContent />
         <noscript>
           <style dangerouslySetInnerHTML={{ __html: NO_JS_FALLBACK }} />
         </noscript>
       </head>
-      <body data-hero="split" data-accent="mint" data-display="archivo">
+      <body data-hero="split" data-accent="lemon" data-display="archivo">
         {children}
         <Scripts />
       </body>

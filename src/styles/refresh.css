@@ -39,7 +39,7 @@ h1, h2, h3 { line-height: 1.06; letter-spacing: -0.018em; }
 
    Beide sets hieronder zijn getoetst op contrast:
      mint    accent op de donkere grond 12,2:1 · accent-deep op wit 6,5:1
-     citroen accent op de donkere grond 13,4:1 · accent-deep op wit 6,4:1
+     citroen accent op de donkere grond 13,4:1 · accent-deep op wit 8,2:1
    Ruim boven de 4,5:1 die WCAG AA voor tekst vraagt.
 
    Wisselen doe je met het data-accent-attribuut op <html> en <body> in
@@ -53,7 +53,11 @@ h1, h2, h3 { line-height: 1.06; letter-spacing: -0.018em; }
 [data-accent="lemon"] {
   --accent:        oklch(0.89 0.130 104);   /* #e6df6f — op donker */
   --accent-strong: oklch(0.875 0.145 102);
-  --accent-deep:   oklch(0.485 0.105 100);
+  /* Op lichte vlakken wordt citroen geen donkergeel maar het diepe groen uit
+     de huisstijl. Een donkere versie van citroen komt onvermijdelijk op olijf
+     uit (#6d6000) en dat oogt vies naast de foto's; het bosgroen sluit aan op
+     de donkere secties en haalt bovendien 8,2:1 op wit tegenover 6,4:1. */
+  --accent-deep:   oklch(0.42 0.075 158);   /* #23593d */
   --accent-ink:    oklch(0.24 0.045 100);
 }
 
