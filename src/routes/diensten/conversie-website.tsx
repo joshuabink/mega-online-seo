@@ -66,7 +66,6 @@ function ConversieWebsite() {
                 <a className="tlink" href="#aanpak">
                   Zo bouwen wij
                   {' '}
-                  <span className="arr">→</span>
                 </a>
               </Reveal>
             </div>
@@ -740,8 +739,6 @@ function ConversieWebsite() {
                     LOGO
                   </div>
                   {' '}
-                  <span className="arr">→</span>
-                  {' '}
                   <div className="logobox logobox--new">
                     NIEUW
                     <br />
@@ -808,7 +805,7 @@ function ConversieWebsite() {
               <div className="rm__foot">
                 <span className="svcprice">Vanaf € 2.500</span>
                 {' '}
-                <Link className="flow-cta" to="/gratis-websitescan">Vraag je gratis scan aan →</Link>
+                <Link className="flow-cta" to="/gratis-websitescan">Vraag je gratis scan aan</Link>
               </div>
             </div>
             {' '}
@@ -821,7 +818,7 @@ function ConversieWebsite() {
             </div>
             {' '}
             <div className="rm__node rm__node--rec">
-              <span className="svctag svctag--rec" style={{ position: "absolute", top: "-12px", left: "clamp(22px,2.2vw,30px)" }}>★ Aanbevolen</span>
+              <span className="svctag svctag--rec" style={{ position: "absolute", top: "-12px", left: "clamp(22px,2.2vw,30px)" }}>Aanbevolen</span>
               {' '}
               <div className="rm__phase">
                 Fase 2
@@ -854,7 +851,7 @@ function ConversieWebsite() {
                   </small>
                 </span>
                 {' '}
-                <Link className="flow-cta" to="/gratis-websitescan">Start het partnership →</Link>
+                <Link className="flow-cta" to="/gratis-websitescan">Start het partnership</Link>
               </div>
             </div>
           </Reveal>
@@ -890,7 +887,6 @@ function ConversieWebsite() {
             <Link className="tlink" to="/gratis-websitescan" style={{ paddingBottom: "6px" }}>
               Start jouw project
               {' '}
-              <span className="arr">→</span>
             </Link>
           </Reveal>
           {' '}
@@ -1167,7 +1163,6 @@ function ConversieWebsite() {
                   <button className="btn btn-primary" type="submit">
                     Stuur mijn gratis scan
                     {' '}
-                    <span className="arr">→</span>
                   </button>
                 </div>
                 {' '}

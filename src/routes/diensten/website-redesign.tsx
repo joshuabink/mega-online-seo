@@ -64,7 +64,6 @@ function WebsiteRedesign() {
                 <Link className="tlink" to="/contact">
                   Plan een kennismaking
                   {' '}
-                  <span className="arr">→</span>
                 </Link>
               </Reveal>
             </div>
@@ -551,7 +550,6 @@ function WebsiteRedesign() {
               <Link className="btn btn-primary" to="/diensten/website-optimalisatie" style={{ marginTop: "26px" }}>
                 Bekijk Website Optimalisatie
                 {' '}
-                <span className="arr">→</span>
               </Link>
             </Reveal>
             {' '}
@@ -611,7 +609,6 @@ function WebsiteRedesign() {
             <Link className="tlink" to="/gratis-websitescan" style={{ paddingBottom: "6px" }}>
               Start jouw redesign
               {' '}
-              <span className="arr">→</span>
             </Link>
           </Reveal>
           {' '}
@@ -847,7 +844,6 @@ function WebsiteRedesign() {
                 <Link className="tlink" to="/contact">
                   Plan een kennismaking
                   {' '}
-                  <span className="arr">→</span>
                 </Link>
               </Reveal>
               {' '}
@@ -974,7 +970,6 @@ function WebsiteRedesign() {
                   <button className="btn btn-primary" type="submit">
                     Stuur mijn gratis scan
                     {' '}
-                    <span className="arr">→</span>
                   </button>
                 </div>
                 {' '}

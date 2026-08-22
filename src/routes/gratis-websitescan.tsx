@@ -106,7 +106,6 @@ function GratisWebsitescan() {
                 <button className="btn btn-primary" type="submit">
                   Stuur mijn gratis scan
                   {' '}
-                  <span className="arr">→</span>
                 </button>
                 {' '}
                 <p className="form__disc">
@@ -770,7 +769,6 @@ function GratisWebsitescan() {
               <button className="btn btn-primary" type="submit">
                 Stuur mijn gratis scan
                 {' '}
-                <span className="arr">→</span>
               </button>
               {' '}
               <p className="form__disc">

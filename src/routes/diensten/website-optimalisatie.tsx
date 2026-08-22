@@ -64,7 +64,6 @@ function WebsiteOptimalisatie() {
                 <Link className="tlink" to="/contact">
                   Plan een kennismaking
                   {' '}
-                  <span className="arr">→</span>
                 </Link>
               </Reveal>
             </div>
@@ -547,7 +546,6 @@ function WebsiteOptimalisatie() {
               <Link className="btn btn-primary" to="/diensten/conversie-website" style={{ marginTop: "26px" }}>
                 Bekijk de Conversie Website
                 {' '}
-                <span className="arr">→</span>
               </Link>
             </Reveal>
             {' '}
@@ -617,7 +615,6 @@ function WebsiteOptimalisatie() {
             <Link className="tlink" to="/gratis-websitescan" style={{ paddingBottom: "6px" }}>
               Start jouw scan
               {' '}
-              <span className="arr">→</span>
             </Link>
           </Reveal>
           {' '}
@@ -878,7 +875,6 @@ function WebsiteOptimalisatie() {
                   <button className="btn btn-primary" type="submit">
                     Stuur mijn gratis scan
                     {' '}
-                    <span className="arr">→</span>
                   </button>
                 </div>
                 {' '}

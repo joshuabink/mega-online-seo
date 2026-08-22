@@ -177,7 +177,6 @@ function Contact() {
               <button className="btn btn-primary" type="submit" style={{ width: "100%", justifyContent: "center" }}>
                 Plan de kennismaking
                 {' '}
-                <span className="arr">→</span>
               </button>
               {' '}
               <p className="form__disc">
@@ -216,7 +215,6 @@ function Contact() {
               <a className="ccard__val" href="mailto:info@megaonline.io">
                 info@megaonline.io
                 {' '}
-                <span className="arr">→</span>
               </a>
             </Reveal>
             {' '}
@@ -234,7 +232,6 @@ function Contact() {
               <a className="ccard__val" href="tel:+31634388938">
                 06-34388938
                 {' '}
-                <span className="arr">→</span>
               </a>
             </Reveal>
             {' '}
@@ -252,7 +249,6 @@ function Contact() {
               <a className="ccard__val" href="https://wa.me/31634388938">
                 Stuur een bericht
                 {' '}
-                <span className="arr">→</span>
               </a>
             </Reveal>
           </div>

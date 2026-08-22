@@ -64,7 +64,6 @@ function Dienstverleners() {
                 <Link className="tlink" to="/contact">
                   Plan een kennismaking
                   {' '}
-                  <span className="arr">→</span>
                 </Link>
               </Reveal>
             </div>
@@ -352,7 +351,6 @@ function Dienstverleners() {
               <Link className="tlink" to="/contact">
                 Plan een kennismaking
                 {' '}
-                <span className="arr">→</span>
               </Link>
             </Reveal>
           </Reveal>

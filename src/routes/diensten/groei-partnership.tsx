@@ -61,13 +61,11 @@ function GroeiPartnership() {
                 <Link className="btn btn-primary" to="/contact">
                   Plan een kennismaking
                   {' '}
-                  <span className="arr">→</span>
                 </Link>
                 {' '}
                 <Link className="tlink" to="/gratis-websitescan">
                   Vraag je gratis scan aan
                   {' '}
-                  <span className="arr">→</span>
                 </Link>
               </Reveal>
             </div>
@@ -587,7 +585,6 @@ function GroeiPartnership() {
                 <Link className="tlink" to="/gratis-websitescan" style={{ marginTop: "18px", justifyContent: "center" }}>
                   Meer weten
                   {' '}
-                  <span className="arr">→</span>
                 </Link>
               </div>
             </div>
@@ -716,13 +713,11 @@ function GroeiPartnership() {
                 <Link className="btn btn-primary" to="/contact">
                   Plan een kennismaking
                   {' '}
-                  <span className="arr">→</span>
                 </Link>
                 {' '}
                 <Link className="tlink" to="/gratis-websitescan">
                   Vraag je gratis scan aan
                   {' '}
-                  <span className="arr">→</span>
                 </Link>
               </Reveal>
               {' '}
@@ -849,7 +844,6 @@ function GroeiPartnership() {
                   <button className="btn btn-primary" type="submit">
                     Stuur mijn gratis scan
                     {' '}
-                    <span className="arr">→</span>
                   </button>
                 </div>
                 {' '}

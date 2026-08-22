@@ -225,7 +225,6 @@ function Home() {
                   <button className="btn btn-primary" type="submit">
                     Stuur mijn gratis scan
                     {' '}
-                    <span className="arr">→</span>
                   </button>
                 </div>
                 {' '}
@@ -472,7 +471,6 @@ function Home() {
             <Link className="tlink" to="/gratis-websitescan" style={{ paddingBottom: "6px" }}>
               Start jouw project
               {' '}
-              <span className="arr">→</span>
             </Link>
           </Reveal>
           {' '}
@@ -690,7 +688,7 @@ function Home() {
               <div className="rm__foot">
                 <span className="svcprice">Vanaf € 2.500</span>
                 {' '}
-                <Link className="flow-cta" to="/gratis-websitescan">Vraag je gratis scan aan →</Link>
+                <Link className="flow-cta" to="/gratis-websitescan">Vraag je gratis scan aan</Link>
               </div>
             </div>
             {' '}
@@ -707,7 +705,7 @@ function Home() {
             </div>
             {' '}
             <div className="rm__node rm__node--rec">
-              <span className="svctag svctag--rec" style={{ position: "absolute", top: "-12px", left: "clamp(22px,2.2vw,30px)" }}>★ Aanbevolen</span>
+              <span className="svctag svctag--rec" style={{ position: "absolute", top: "-12px", left: "clamp(22px,2.2vw,30px)" }}>Aanbevolen</span>
               {' '}
               <div className="rm__phase">
                 Fase 2
@@ -740,7 +738,7 @@ function Home() {
                   </small>
                 </span>
                 {' '}
-                <Link className="flow-cta" to="/gratis-websitescan">Start het partnership →</Link>
+                <Link className="flow-cta" to="/gratis-websitescan">Start het partnership</Link>
               </div>
             </div>
           </Reveal>
@@ -753,7 +751,7 @@ function Home() {
               Voor starters en kleinere bedrijven bouwen we een compactere website, met
               dezelfde aandacht voor vertrouwen en een makkelijke aanvraag.
               {' '}
-              <Link className="flow-cta" to="/diensten/starter-website">Bekijk de Starter Website →</Link>
+              <Link className="flow-cta" to="/diensten/starter-website">Bekijk de Starter Website</Link>
             </div>
             {' '}
             <div className="maint__price">Starter Website · vanaf € 1.500</div>

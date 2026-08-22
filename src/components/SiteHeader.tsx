@@ -319,11 +319,9 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
                   website willen halen.
                 </p>
                 <Link className="mfeat__cta" to="/diensten/conversie-website">
-                  Bekijk de dienst <span className="arr">→</span>
-                </Link>
+                  Bekijk de dienst                </Link>
                 <Link className="mfeat__link" to="/gratis-websitescan">
-                  Vraag je gratis scan aan <span className="arr">→</span>
-                </Link>
+                  Vraag je gratis scan aan                </Link>
               </aside>
 
               <div className="mega__foot">
@@ -333,7 +331,6 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
                 </span>
                 <Link to="/gratis-websitescan">
                   Niet zeker welke oplossing past? Vraag je gratis scan aan{' '}
-                  <span className="arr">→</span>
                 </Link>
               </div>
             </div>
@@ -385,8 +382,7 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
                   zodat klanten precies vinden wat bij hen past.
                 </p>
                 <Link className="mfeat__link" to="/" hash="werk">
-                  Bekijk alle cases <span className="arr">→</span>
-                </Link>
+                  Bekijk alle cases                </Link>
                 <span className="mfeat__foot">Binnenkort: meer branches</span>
               </aside>
             </div>
@@ -436,8 +432,7 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
                   de strategie bepalen en je site bouwen.
                 </p>
                 <Link className="mfeat__link" to="/over-megaonline" hash="waarom">
-                  Lees waarom MegaOnline <span className="arr">→</span>
-                </Link>
+                  Lees waarom MegaOnline                </Link>
               </aside>
             </div>
 
@@ -506,7 +501,7 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
                     to="/veelgestelde-vragen"
                     style={{ color: 'var(--accent)', fontWeight: 600 }}
                   >
-                    Bekijk alle veelgestelde vragen →
+                    Bekijk alle veelgestelde vragen
                   </Link>
                 </span>
               </aside>
@@ -562,8 +557,7 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
                   gemiddeld binnen 2 werkdagen een reactie.
                 </p>
                 <Link className="mfeat__cta" to="/gratis-websitescan">
-                  Vraag je gratis scan aan <span className="arr">→</span>
-                </Link>
+                  Vraag je gratis scan aan                </Link>
               </aside>
             </div>
           </div>

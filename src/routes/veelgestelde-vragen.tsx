@@ -227,7 +227,6 @@ function VeelgesteldeVragen() {
               <Link className="tlink" to="/contact">
                 Plan een kennismaking
                 {' '}
-                <span className="arr">→</span>
               </Link>
             </Reveal>
           </Reveal>

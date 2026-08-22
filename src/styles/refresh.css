@@ -140,3 +140,38 @@ h1, h2, h3 { line-height: 1.06; letter-spacing: -0.018em; }
   border: 0; background: var(--line-strong);
 }
 .tl__row--rec .tl__dot { background: var(--accent-strong); }
+
+/* ---------------------------------------------------------------------------
+   Golf 3 — glyphs als meubilair
+
+   Elke knop eindigde op een pijl, elke opsomming begon met een vinkje. Twee
+   tekens die zo vaak terugkomen dat ze niets meer aanwijzen. De pijlen die
+   écht richting geven blijven staan: de connectoren tussen processtappen en
+   de "Volgende"-knop naast "← Terug". Hetzelfde voor het vinkje: het blijft
+   waar het "gelukt" of "wél, in tegenstelling tot" betekent.
+--------------------------------------------------------------------------- */
+
+/* Opsommingen kregen een → of ✓ als bullet. Nu een getekend vierkantje:
+   een markering in plaats van een woordloze bewering. */
+.svc__list li::before,
+.svc__list--when li::before,
+.svclist li::before,
+.considlist li::before,
+.brand__opt li::before {
+  content: "";
+  width: 5px; height: 5px;
+  background: var(--accent-text);
+  align-self: center;
+  flex: none;
+}
+.svclist li::before { align-self: flex-start; margin-top: 9px; }
+
+/* Een resultaatlabel hoeft niet te melden dat het klopt. */
+.chip::before { content: none; }
+
+/* De vertrouwensregels onder de CTA's: drie korte beloftes op een rij,
+   uit elkaar gezet door ruimte in plaats van door drie vinkjes. */
+.endcta__trust span::before,
+.overcta__trust span::before,
+.ftrust span::before { content: none; }
+.endcta__trust, .overcta__trust, .ftrust { gap: 8px 30px; }
