@@ -218,8 +218,8 @@ const CRUMB_PARENT: { prefix: string; name: string; item: string }[] = [
 
 /**
  * Dienstpagina's krijgen een eigen `Service`-node met `provider` →
- * #organization. Dat koppelt wat we doen aan wie we zijn, wat losse
- * dienstpagina's zonder zo'l koppeling niet doen.
+ * #organization. Dat koppelt wat we doen aan wie we zijn; een losse
+ * dienstpagina zonder die koppeling doet dat niet.
  */
 const SERVICES: Record<
   string,
