@@ -91,7 +91,6 @@ function Offerteaanvragen() {
           <div className="flaw">
             <div className="flaw__mini" style={{ marginTop: "clamp(28px,3vw,40px)" }}>
               <Reveal as="div" className="miniprob reveal">
-                <span className="mn">01</span>
                 <h4>Te vage aanvragen</h4>
                 <p>
                   'Ik wil een offerte' zonder details kost je tijd voordat je kunt inschatten.
@@ -99,7 +98,6 @@ function Offerteaanvragen() {
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal" data-d="1">
-                <span className="mn">02</span>
                 <h4>Veel heen-en-weer</h4>
                 <p>
                   Mails om de aanvraag compleet te krijgen voordat je iets kunt zeggen.
@@ -107,7 +105,6 @@ function Offerteaanvragen() {
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal">
-                <span className="mn">03</span>
                 <h4>Verkeerde leads</h4>
                 <p>
                   Aanvragen buiten je werkgebied, budget of vakgebied kosten alleen maar tijd.
@@ -115,7 +112,6 @@ function Offerteaanvragen() {
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal" data-d="1">
-                <span className="mn">04</span>
                 <h4>Klant vergelijkt</h4>
                 <p>
                   Men vraagt meerdere offertes op. Vertrouwen vooraf bepaalt wie de klus krijgt.
@@ -123,7 +119,6 @@ function Offerteaanvragen() {
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal">
-                <span className="mn">05</span>
                 <h4>Waarom jou?</h4>
                 <p>
                   Zonder bewijs van kwaliteit beland je in een prijzenvergelijking.
@@ -131,7 +126,6 @@ function Offerteaanvragen() {
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal" data-d="1">
-                <span className="mn">06</span>
                 <h4>Leads blijven liggen</h4>
                 <p>
                   Een trage of rommelige opvolging laat goede aanvragen verdampen.

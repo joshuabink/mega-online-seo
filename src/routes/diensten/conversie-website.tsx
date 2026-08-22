@@ -128,7 +128,6 @@ function ConversieWebsite() {
             {' '}
             <div className="flaw__mini">
               <Reveal as="div" className="miniprob reveal">
-                <span className="mn">01</span>
                 <h4>Bezoekers begrijpen niet wat je doet</h4>
                 <p>
                   Is het binnen enkele seconden niet duidelijk, dan zijn ze weg voordat ze iets vragen.
@@ -136,7 +135,6 @@ function ConversieWebsite() {
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal" data-d="1">
-                <span className="mn">02</span>
                 <h4>Te weinig vertrouwen</h4>
                 <p>
                   Een verouderde uitstraling laat bezoekers twijfelen of ze hier wel goed zitten.
@@ -144,13 +142,11 @@ function ConversieWebsite() {
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal">
-                <span className="mn">03</span>
                 <h4>Onduidelijke structuur</h4>
                 <p>Wie moet zoeken naar informatie, klikt vaker weg dan door.</p>
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal" data-d="1">
-                <span className="mn">04</span>
                 <h4>Slechte mobiele ervaring</h4>
                 <p>
                   Het grootste deel komt mobiel binnen. Werkt dat stroef, dan verlies je ze.
@@ -158,13 +154,11 @@ function ConversieWebsite() {
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal">
-                <span className="mn">05</span>
                 <h4>Te veel stappen richting contact</h4>
                 <p>Hoe meer drempels, hoe meer afhakers vlak voor de aanvraag.</p>
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal" data-d="1">
-                <span className="mn">06</span>
                 <h4>Geen duidelijke volgende stap</h4>
                 <p>
                   Een bezoeker die niet weet wat hij moet doen, doet meestal niets.
@@ -198,7 +192,7 @@ function ConversieWebsite() {
             <Reveal as="div" className="bcell bcell--big reveal">
               <div>
                 <div className="bcell__top">
-                  <span className="bcell__no">Stap 01</span>
+                  <span className="bcell__no">Stap 1</span>
                   {' '}
                   <span className="iconbox">
                     <Icon name="search" />
@@ -223,7 +217,7 @@ function ConversieWebsite() {
             {' '}
             <Reveal as="div" className="bcell reveal" data-d="1">
               <div className="bcell__top">
-                <span className="bcell__no">Stap 02</span>
+                <span className="bcell__no">Stap 2</span>
                 <span className="iconbox iconbox--sm">
                   <Icon name="layout" />
                 </span>
@@ -238,7 +232,7 @@ function ConversieWebsite() {
             {' '}
             <Reveal as="div" className="bcell reveal" data-d="2">
               <div className="bcell__top">
-                <span className="bcell__no">Stap 03</span>
+                <span className="bcell__no">Stap 3</span>
                 <span className="iconbox iconbox--sm">
                   <Icon name="pen-tool" />
                 </span>
@@ -253,7 +247,7 @@ function ConversieWebsite() {
             {' '}
             <Reveal as="div" className="bcell reveal" data-d="1">
               <div className="bcell__top">
-                <span className="bcell__no">Stap 04</span>
+                <span className="bcell__no">Stap 4</span>
                 <span className="iconbox iconbox--sm">
                   <Icon name="code-2" />
                 </span>
@@ -268,7 +262,7 @@ function ConversieWebsite() {
             {' '}
             <Reveal as="div" className="bcell reveal" data-d="2">
               <div className="bcell__top">
-                <span className="bcell__no">Stap 05</span>
+                <span className="bcell__no">Stap 5</span>
                 <span className="iconbox iconbox--sm">
                   <Icon name="trending-up" />
                 </span>
@@ -907,8 +901,6 @@ function ConversieWebsite() {
               </div>
               {' '}
               <div className="case__body">
-                <span className="case__no">CASE 01</span>
-                {' '}
                 <h3 className="case__name">Q-Team Solutions</h3>
                 {' '}
                 <div className="case__meta">
@@ -952,8 +944,6 @@ function ConversieWebsite() {
               </div>
               {' '}
               <div className="case__body">
-                <span className="case__no">CASE 02</span>
-                {' '}
                 <h3 className="case__name">GuestRoomUtrecht</h3>
                 {' '}
                 <div className="case__meta">

@@ -272,8 +272,6 @@ function Contact() {
           {' '}
           <div className="expect">
             <Reveal as="div" className="estep reveal">
-              <span className="en">01</span>
-              {' '}
               <h3>Korte kennismaking</h3>
               {' '}
               <p>
@@ -282,8 +280,6 @@ function Contact() {
             </Reveal>
             {' '}
             <Reveal as="div" className="estep reveal" data-d="1">
-              <span className="en">02</span>
-              {' '}
               <h3>Eerlijk advies</h3>
               {' '}
               <p>
@@ -292,8 +288,6 @@ function Contact() {
             </Reveal>
             {' '}
             <Reveal as="div" className="estep reveal" data-d="2">
-              <span className="en">03</span>
-              {' '}
               <h3>Geen druk</h3>
               {' '}
               <p>

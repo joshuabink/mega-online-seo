@@ -159,7 +159,6 @@ function OverMegaonline() {
           {' '}
           <div className="process">
             <Reveal as="div" className="pstep reveal">
-              <span className="pstep__no">01</span>
               <h3>Begrijpen</h3>
               <p>
                 Eerst leren we het bedrijf kennen: wat je doet, waar je voor staat en wat je wilt bereiken.
@@ -168,7 +167,6 @@ function OverMegaonline() {
             </Reveal>
             {' '}
             <Reveal as="div" className="pstep reveal" data-d="1">
-              <span className="pstep__no">02</span>
               <h3>Doelgroep</h3>
               <p>
                 Daarna verdiepen we ons in de klant. Wat zoekt een bezoeker en waar twijfelt hij?
@@ -177,7 +175,6 @@ function OverMegaonline() {
             </Reveal>
             {' '}
             <Reveal as="div" className="pstep reveal" data-d="2">
-              <span className="pstep__no">03</span>
               <h3>Structuur</h3>
               <p>
                 Dan bepalen we wat bezoekers moeten zien en hoe zij naar contact bewegen.
@@ -186,7 +183,6 @@ function OverMegaonline() {
             </Reveal>
             {' '}
             <Reveal as="div" className="pstep reveal" data-d="3">
-              <span className="pstep__no">04</span>
               <h3>Ontwikkeling</h3>
               <p>
                 Pas daarna bouwen we de website. Snel, veilig en eenvoudig zelf te beheren.
@@ -539,7 +535,7 @@ function OverMegaonline() {
               <span className="jnode__ico">
                 <Icon name="handshake" />
               </span>
-              <span className="jnode__step">Stap 01</span>
+              <span className="jnode__step">Stap 1</span>
               <h4>Kennismaking</h4>
               <p>We leren elkaar kennen en kijken of er een klik is.</p>
               <span className="jnode__arrow">→</span>
@@ -549,7 +545,7 @@ function OverMegaonline() {
               <span className="jnode__ico">
                 <Icon name="compass" />
               </span>
-              <span className="jnode__step">Stap 02</span>
+              <span className="jnode__step">Stap 2</span>
               <h4>Strategie</h4>
               <p>We bepalen wat de website moet doen en voor wie.</p>
               <span className="jnode__arrow">→</span>
@@ -559,7 +555,7 @@ function OverMegaonline() {
               <span className="jnode__ico">
                 <Icon name="layout-dashboard" />
               </span>
-              <span className="jnode__step">Stap 03</span>
+              <span className="jnode__step">Stap 3</span>
               <h4>Website</h4>
               <p>We bouwen een site die vertrouwen wekt en helpt.</p>
               <span className="jnode__arrow">→</span>
@@ -569,7 +565,7 @@ function OverMegaonline() {
               <span className="jnode__ico">
                 <Icon name="rocket" />
               </span>
-              <span className="jnode__step">Stap 04</span>
+              <span className="jnode__step">Stap 4</span>
               <h4>Livegang</h4>
               <p>De website gaat live, klaar voor je bezoekers.</p>
               <span className="jnode__arrow">→</span>
@@ -579,7 +575,7 @@ function OverMegaonline() {
               <span className="jnode__ico">
                 <Icon name="trending-up" />
               </span>
-              <span className="jnode__step">Stap 05</span>
+              <span className="jnode__step">Stap 5</span>
               <h4>Groei Partnership</h4>
               <p>Daarna verbeteren we de site maand na maand.</p>
               <span className="jnode__arrow">→</span>
@@ -625,8 +621,6 @@ function OverMegaonline() {
               </div>
               {' '}
               <div className="case__body">
-                <span className="case__no">CASE 01</span>
-                {' '}
                 <h3 className="case__name">Q-Team Solutions</h3>
                 {' '}
                 <div className="case__meta">
@@ -668,8 +662,6 @@ function OverMegaonline() {
               </div>
               {' '}
               <div className="case__body">
-                <span className="case__no">CASE 02</span>
-                {' '}
                 <h3 className="case__name">GuestRoomUtrecht</h3>
                 {' '}
                 <div className="case__meta">
@@ -709,8 +701,6 @@ function OverMegaonline() {
               </div>
               {' '}
               <div className="case__body">
-                <span className="case__no">CASE 03</span>
-                {' '}
                 <h3 className="case__name">Ontmoetingskerk</h3>
                 {' '}
                 <div className="case__meta">
@@ -750,8 +740,6 @@ function OverMegaonline() {
               </div>
               {' '}
               <div className="case__body">
-                <span className="case__no">CASE 04</span>
-                {' '}
                 <h3 className="case__name">LoveForAfrica</h3>
                 {' '}
                 <div className="case__meta">

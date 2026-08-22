@@ -292,8 +292,6 @@ function Home() {
           {' '}
           <div className="problist">
             <Reveal as="div" className="prob reveal">
-              <span className="prob__no">01</span>
-              {' '}
               <h3>Bezoekers begrijpen niet wat je doet</h3>
               {' '}
               <p>
@@ -302,8 +300,6 @@ function Home() {
             </Reveal>
             {' '}
             <Reveal as="div" className="prob reveal" data-d="1">
-              <span className="prob__no">02</span>
-              {' '}
               <h3>Je website straalt weinig vertrouwen uit</h3>
               {' '}
               <p>
@@ -312,8 +308,6 @@ function Home() {
             </Reveal>
             {' '}
             <Reveal as="div" className="prob reveal">
-              <span className="prob__no">03</span>
-              {' '}
               <h3>De mobiele ervaring werkt tegen je</h3>
               {' '}
               <p>
@@ -322,8 +316,6 @@ function Home() {
             </Reveal>
             {' '}
             <Reveal as="div" className="prob reveal" data-d="1">
-              <span className="prob__no">04</span>
-              {' '}
               <h3>Aanvragen zijn te moeilijk gemaakt</h3>
               {' '}
               <p>
@@ -404,35 +396,30 @@ function Home() {
           <div className="why">
             <Reveal as="div" className="whylist reveal">
               <div className="whyitem">
-                <span className="wn">01</span>
                 <div>
                   <h3>Begrijpt een bezoeker direct wat je doet?</h3>
                 </div>
               </div>
               {' '}
               <div className="whyitem">
-                <span className="wn">02</span>
                 <div>
                   <h3>Weet een bezoeker waarom hij voor jou moet kiezen?</h3>
                 </div>
               </div>
               {' '}
               <div className="whyitem">
-                <span className="wn">03</span>
                 <div>
                   <h3>Kan iemand eenvoudig contact opnemen of boeken?</h3>
                 </div>
               </div>
               {' '}
               <div className="whyitem">
-                <span className="wn">04</span>
                 <div>
                   <h3>Straalt je website voldoende vertrouwen uit?</h3>
                 </div>
               </div>
               {' '}
               <div className="whyitem">
-                <span className="wn">05</span>
                 <div>
                   <h3>Werkt alles goed op mobiel?</h3>
                 </div>
@@ -492,8 +479,6 @@ function Home() {
               </div>
               {' '}
               <div className="case__body">
-                <span className="case__no">CASE 01</span>
-                {' '}
                 <h3 className="case__name">Q-Team Solutions</h3>
                 {' '}
                 <div className="case__meta">
@@ -537,8 +522,6 @@ function Home() {
               </div>
               {' '}
               <div className="case__body">
-                <span className="case__no">CASE 02</span>
-                {' '}
                 <h3 className="case__name">GuestRoomUtrecht</h3>
                 {' '}
                 <div className="case__meta">
@@ -580,8 +563,6 @@ function Home() {
               </div>
               {' '}
               <div className="case__body">
-                <span className="case__no">CASE 03</span>
-                {' '}
                 <h3 className="case__name">Ontmoetingskerk</h3>
                 {' '}
                 <div className="case__meta">
@@ -623,8 +604,6 @@ function Home() {
               </div>
               {' '}
               <div className="case__body">
-                <span className="case__no">CASE 04</span>
-                {' '}
                 <h3 className="case__name">LoveForAfrica</h3>
                 {' '}
                 <div className="case__meta">

@@ -126,13 +126,11 @@ function WerkenBijWebsites() {
             {' '}
             <div className="flaw__mini">
               <Reveal as="div" className="miniprob reveal">
-                <span className="mn">01</span>
                 <h4>Geen idee hoe het is om bij je te werken</h4>
                 <p>Wie zich er niets bij kan voorstellen, stapt niet op je af.</p>
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal" data-d="1">
-                <span className="mn">02</span>
                 <h4>Alleen een lijstje vacatures</h4>
                 <p>
                   Functietitels en eisen vertellen niets over de mensen of de sfeer.
@@ -140,7 +138,6 @@ function WerkenBijWebsites() {
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal">
-                <span className="mn">03</span>
                 <h4>Solliciteren kost te veel moeite</h4>
                 <p>
                   Lange formulieren en onduidelijke stappen schrikken juist goede mensen af.
@@ -148,7 +145,6 @@ function WerkenBijWebsites() {
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal" data-d="1">
-                <span className="mn">04</span>
                 <h4>Het bedrijf voelt onpersoonlijk</h4>
                 <p>
                   Een afstandelijke pagina maakt twijfel groter in plaats van kleiner.
@@ -156,7 +152,6 @@ function WerkenBijWebsites() {
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal">
-                <span className="mn">05</span>
                 <h4>Er is geen vertrouwen</h4>
                 <p>
                   Zonder echte verhalen blijft het gissen of dit een fijne werkgever is.
@@ -164,7 +159,6 @@ function WerkenBijWebsites() {
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal" data-d="1">
-                <span className="mn">06</span>
                 <h4>Geen echte foto's van het team</h4>
                 <p>
                   Stockfoto's of geen beeld laten zien dat je iets te verbergen lijkt te hebben.
@@ -438,7 +432,7 @@ function WerkenBijWebsites() {
             <Reveal as="div" className="bcell bcell--big reveal">
               <div>
                 <div className="bcell__top">
-                  <span className="bcell__no">Stap 01</span>
+                  <span className="bcell__no">Stap 1</span>
                   {' '}
                   <span className="iconbox">
                     <Icon name="search" />
@@ -463,7 +457,7 @@ function WerkenBijWebsites() {
             {' '}
             <Reveal as="div" className="bcell reveal" data-d="1">
               <div className="bcell__top">
-                <span className="bcell__no">Stap 02</span>
+                <span className="bcell__no">Stap 2</span>
                 <span className="iconbox iconbox--sm">
                   <Icon name="user-search" />
                 </span>
@@ -478,7 +472,7 @@ function WerkenBijWebsites() {
             {' '}
             <Reveal as="div" className="bcell reveal" data-d="2">
               <div className="bcell__top">
-                <span className="bcell__no">Stap 03</span>
+                <span className="bcell__no">Stap 3</span>
                 <span className="iconbox iconbox--sm">
                   <Icon name="layout" />
                 </span>
@@ -493,7 +487,7 @@ function WerkenBijWebsites() {
             {' '}
             <Reveal as="div" className="bcell reveal" data-d="1">
               <div className="bcell__top">
-                <span className="bcell__no">Stap 04</span>
+                <span className="bcell__no">Stap 4</span>
                 <span className="iconbox iconbox--sm">
                   <Icon name="code-2" />
                 </span>
@@ -680,7 +674,6 @@ function WerkenBijWebsites() {
             {' '}
             <Reveal as="ul" className="wplist reveal" data-d="1">
               <li>
-                <span className="wn">01</span>
                 <h4>Vertrouwen</h4>
                 <p>
                   Een eerlijke uitstraling waardoor mensen durven te reageren.
@@ -688,31 +681,26 @@ function WerkenBijWebsites() {
               </li>
               {' '}
               <li>
-                <span className="wn">02</span>
                 <h4>Duidelijkheid</h4>
                 <p>Helder wat het werk is en wat de volgende stap is.</p>
               </li>
               {' '}
               <li>
-                <span className="wn">03</span>
                 <h4>Gebruiksgemak</h4>
                 <p>Solliciteren zonder onnodige drempels of lange formulieren.</p>
               </li>
               {' '}
               <li>
-                <span className="wn">04</span>
                 <h4>Sociale bewijskracht</h4>
                 <p>Verhalen van collega's die laten zien hoe het echt is.</p>
               </li>
               {' '}
               <li>
-                <span className="wn">05</span>
                 <h4>Sterke call-to-actions</h4>
                 <p>Een duidelijke uitnodiging om de stap te zetten.</p>
               </li>
               {' '}
               <li>
-                <span className="wn">06</span>
                 <h4>Het juiste beeld</h4>
                 <p>
                   Foto's en video die de twijfel wegnemen in plaats van vergroten.

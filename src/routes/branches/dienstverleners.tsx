@@ -93,7 +93,6 @@ function Dienstverleners() {
           <div className="flaw">
             <div className="flaw__mini" style={{ marginTop: "clamp(28px,3vw,40px)" }}>
               <Reveal as="div" className="miniprob reveal">
-                <span className="mn">01</span>
                 <h4>Onzichtbare waarde</h4>
                 <p>
                   Je werk is niet tastbaar. Bezoekers moeten 'm voelen voordat ze 'm snappen.
@@ -101,7 +100,6 @@ function Dienstverleners() {
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal" data-d="1">
-                <span className="mn">02</span>
                 <h4>Vertrouwen eerst</h4>
                 <p>
                   Mensen kiezen een partij, geen product. Geloofwaardigheid is je belangrijkste asset.
@@ -109,7 +107,6 @@ function Dienstverleners() {
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal">
-                <span className="mn">03</span>
                 <h4>Lange beslistrajecten</h4>
                 <p>
                   Vaak beslist niet één persoon, en wordt er vergeleken voordat men contact opneemt.
@@ -117,7 +114,6 @@ function Dienstverleners() {
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal" data-d="1">
-                <span className="mn">04</span>
                 <h4>Expertise bewijzen</h4>
                 <p>
                   'Waarom jij?' moet beantwoord zijn voordat iemand de telefoon pakt.
@@ -125,7 +121,6 @@ function Dienstverleners() {
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal">
-                <span className="mn">05</span>
                 <h4>Aanvragen, geen verkoop</h4>
                 <p>
                   Je hebt geen webshop nodig, maar een soepele route naar een goed gesprek.
@@ -133,7 +128,6 @@ function Dienstverleners() {
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal" data-d="1">
-                <span className="mn">06</span>
                 <h4>Referenties tellen</h4>
                 <p>
                   Cases, cijfers en reviews doen vaak meer dan welke mooie tekst dan ook.

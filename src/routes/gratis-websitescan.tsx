@@ -352,7 +352,7 @@ function GratisWebsitescan() {
           {' '}
           <div className="process">
             <Reveal as="div" className="pstep reveal">
-              <span className="pstep__no">Stap 01</span>
+              <span className="pstep__no">Stap 1</span>
               <h3>Je stuurt je website in</h3>
               <p>
                 Vul het formulier in met je website-adres en je gegevens. Klaar binnen een minuut.
@@ -361,7 +361,7 @@ function GratisWebsitescan() {
             </Reveal>
             {' '}
             <Reveal as="div" className="pstep reveal" data-d="1">
-              <span className="pstep__no">Stap 02</span>
+              <span className="pstep__no">Stap 2</span>
               <h3>Wij analyseren</h3>
               <p>
                 We beoordelen de belangrijkste onderdelen van je website, handmatig en persoonlijk.
@@ -370,7 +370,7 @@ function GratisWebsitescan() {
             </Reveal>
             {' '}
             <Reveal as="div" className="pstep reveal" data-d="2">
-              <span className="pstep__no">Stap 03</span>
+              <span className="pstep__no">Stap 3</span>
               <h3>Je ontvangt verbeterpunten</h3>
               <p>
                 Concrete, toepasbare punten die laten zien waar je kansen laat liggen.
@@ -379,7 +379,7 @@ function GratisWebsitescan() {
             </Reveal>
             {' '}
             <Reveal as="div" className="pstep reveal" data-d="3">
-              <span className="pstep__no">Stap 04</span>
+              <span className="pstep__no">Stap 4</span>
               <h3>Jij bepaalt</h3>
               <p>
                 Je beslist zelf wat je ermee doet. Helemaal vrijblijvend, zonder druk.

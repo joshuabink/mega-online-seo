@@ -135,7 +135,6 @@ function StarterWebsite() {
             {' '}
             <div className="flaw__mini">
               <Reveal as="div" className="miniprob reveal">
-                <span className="mn">01</span>
                 <h4>Je bent net gestart</h4>
                 <p>
                   Je hebt een nette online plek nodig, maar nog geen groot marketingbudget.
@@ -143,7 +142,6 @@ function StarterWebsite() {
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal" data-d="1">
-                <span className="mn">02</span>
                 <h4>Snel online willen</h4>
                 <p>
                   Je wilt niet weken wachten, maar binnen afzienbare tijd live staan.
@@ -151,7 +149,6 @@ function StarterWebsite() {
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal">
-                <span className="mn">03</span>
                 <h4>Overzichtelijk aanbod</h4>
                 <p>
                   Een paar diensten of producten, geen complexe website met tientallen pagina's.
@@ -159,7 +156,6 @@ function StarterWebsite() {
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal" data-d="1">
-                <span className="mn">04</span>
                 <h4>Vooral gevonden worden</h4>
                 <p>
                   Mensen die je naam horen, willen je makkelijk kunnen vinden en bereiken.
@@ -167,7 +163,6 @@ function StarterWebsite() {
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal">
-                <span className="mn">05</span>
                 <h4>Helder budget</h4>
                 <p>
                   Je wilt vooraf weten waar je aan toe bent, zonder verrassingen achteraf.
@@ -175,7 +170,6 @@ function StarterWebsite() {
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal" data-d="1">
-                <span className="mn">06</span>
                 <h4>Ruimte om te groeien</h4>
                 <p>
                   Later doorgroeien naar meer maatwerk moet gewoon mogelijk blijven.
@@ -411,9 +405,9 @@ function StarterWebsite() {
           {' '}
           <Reveal as="div" className="tl reveal" style={{ marginTop: "clamp(40px,4.5vw,60px)" }}>
             <div className="tl__row">
-              <span className="tl__dot">01</span>
+              <span className="tl__dot" />
               {' '}
-              <div className="tl__phase">Stap 01 · Kennismaking</div>
+              <div className="tl__phase">Stap 1 · Kennismaking</div>
               {' '}
               <div className="tl__card">
                 <div className="tl__cardhead">
@@ -427,9 +421,9 @@ function StarterWebsite() {
             </div>
             {' '}
             <div className="tl__row">
-              <span className="tl__dot">02</span>
+              <span className="tl__dot" />
               {' '}
-              <div className="tl__phase">Stap 02 · Aanleveren</div>
+              <div className="tl__phase">Stap 2 · Aanleveren</div>
               {' '}
               <div className="tl__card">
                 <div className="tl__cardhead">
@@ -443,9 +437,9 @@ function StarterWebsite() {
             </div>
             {' '}
             <div className="tl__row tl__row--rec">
-              <span className="tl__dot">03</span>
+              <span className="tl__dot" />
               {' '}
-              <div className="tl__phase">Stap 03 · Samenstellen</div>
+              <div className="tl__phase">Stap 3 · Samenstellen</div>
               {' '}
               <div className="tl__card tl__card--rec">
                 <div className="tl__cardhead">
@@ -459,9 +453,9 @@ function StarterWebsite() {
             </div>
             {' '}
             <div className="tl__row">
-              <span className="tl__dot">04</span>
+              <span className="tl__dot" />
               {' '}
-              <div className="tl__phase">Stap 04 · Bijschaven</div>
+              <div className="tl__phase">Stap 4 · Bijschaven</div>
               {' '}
               <div className="tl__card">
                 <div className="tl__cardhead">
@@ -479,7 +473,7 @@ function StarterWebsite() {
                 <Icon name="rocket" />
               </span>
               {' '}
-              <span className="tl__livelabel">Stap 05 · Livegang</span>
+              <span className="tl__livelabel">Stap 5 · Livegang</span>
             </div>
           </Reveal>
         </div>

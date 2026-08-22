@@ -91,7 +91,6 @@ function Activiteitenbedrijven() {
           <div className="flaw">
             <div className="flaw__mini" style={{ marginTop: "clamp(28px,3vw,40px)" }}>
               <Reveal as="div" className="miniprob reveal">
-                <span className="mn">01</span>
                 <h4>Pieken en dalen</h4>
                 <p>
                   Weekenden zitten vol, doordeweeks blijft het stil. Daar valt omzet te winnen.
@@ -99,7 +98,6 @@ function Activiteitenbedrijven() {
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal" data-d="1">
-                <span className="mn">02</span>
                 <h4>Mensen beslissen snel</h4>
                 <p>
                   Een uitje wordt vaak last-minute geboekt. Wie dan moet bellen, haakt af.
@@ -107,7 +105,6 @@ function Activiteitenbedrijven() {
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal">
-                <span className="mn">03</span>
                 <h4>Groepen en arrangementen</h4>
                 <p>
                   Bedrijfsuitjes, kinderfeestjes en vrijgezellenfeesten vragen om duidelijke pakketten.
@@ -115,7 +112,6 @@ function Activiteitenbedrijven() {
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal" data-d="1">
-                <span className="mn">04</span>
                 <h4>Seizoen en weer</h4>
                 <p>
                   Vakanties en regen bepalen de drukte. Je website kan daar slim op inspelen.
@@ -123,7 +119,6 @@ function Activiteitenbedrijven() {
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal">
-                <span className="mn">05</span>
                 <h4>Veel telefoon en mail</h4>
                 <p>
                   Vragen over beschikbaarheid en prijzen kosten je team uren per week.
@@ -131,7 +126,6 @@ function Activiteitenbedrijven() {
               </Reveal>
               {' '}
               <Reveal as="div" className="miniprob reveal" data-d="1">
-                <span className="mn">06</span>
                 <h4>Beleving verkoopt</h4>
                 <p>
                   Mensen kiezen op sfeer, foto's en reviews. Dat moet meteen voelbaar zijn.
