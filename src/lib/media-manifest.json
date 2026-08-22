@@ -1,7 +1,6 @@
 {
   "founder-av": "/images/founder-av.webp",
   "founder-portret": "/images/founder-portret.webp",
-  "team-photo": "/images/team-photo.webp",
   "case-qteam": "/images/case-qteam.webp",
   "case-guestroom": "/images/case-guestroom.webp",
   "case-kerk": "/images/case-kerk.webp",
@@ -27,5 +26,12 @@
   "gp-hero": "/images/gp-hero.webp",
   "gp-race": "/images/gp-race.webp",
   "t1-logo": "/images/t1-logo.webp",
-  "t2-logo": "/images/t2-logo.webp"
+  "t2-logo": "/images/t2-logo.webp",
+  "werkplek-portret": "/images/werkplek-portret.webp",
+  "werkwijze-foto": "/images/werkwijze-foto.webp",
+  "over-werkplek": "/images/over-werkplek.webp",
+  "over-klantgesprek": "/images/over-klantgesprek.webp",
+  "kantoor-wide": "/images/kantoor-wide.webp",
+  "sfeer-overleg": "/images/sfeer-overleg.webp",
+  "contact-portret": "/images/contact-portret.webp"
 }
