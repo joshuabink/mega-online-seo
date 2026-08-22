@@ -346,7 +346,7 @@ function Offerteaanvragen() {
           <Reveal as="div" className="shead shead--center reveal">
             <span className="label">Aan de slag</span>
             {' '}
-            <h2 className="display">Klaar voor aanvragen waar je wél blij van wordt?</h2>
+            <h2 className="display">Minder offertes schrijven, meer opdrachten binnenhalen.</h2>
             {' '}
             <p className="lead">
               Vraag een gratis websitescan aan. We laten zien hoe je website betere leads kan binnenhalen.
