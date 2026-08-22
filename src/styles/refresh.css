@@ -1,23 +1,23 @@
 /* =========================================================================
    MegaOnline — visuele refresh, golf 1
    -------------------------------------------------------------------------
-   REVIEW-LAAG. Deze laag staat bewust apart zodat je in één bestand kunt
-   zien wat er verandert en het in één keer kunt terugdraaien. Bij akkoord
-   hoort dit in `styles.css` zelf te landen en verdwijnt dit bestand.
+   REVIEW-LAAG. Staat bewust apart zodat je in één bestand kunt zien wat er
+   verandert en het in één keer kunt terugdraaien. Bij akkoord hoort dit in
+   `styles.css` te landen en verdwijnt dit bestand.
 
    Import staat ná megamenu.css in `src/routes/__root.tsx`, dus alles hier
-   wint op bronvolgorde. De selectors zijn qua specificiteit gelijk gehouden
-   aan het origineel; `!important` staat alleen waar tegen een inline style
-   gevochten moet worden.
+   wint op bronvolgorde. Specificiteit is gelijk gehouden aan het origineel;
+   `!important` alleen waar tegen een inline style gevochten wordt.
 
-   Waarom deze drie ingrepen: zie de visuele diagnose. Kort:
-   Geist is de standaardletter van AI-sitebouwers, het accent zat op zoveel
-   elementen dat het niets meer accentueerde, en de vijf pilvormen plus de
-   Lucide-tegels zijn het duidelijkste sjabloonsignaal.
+   Drie ingrepen. Het accent blijft even prominent als eerst, alleen de kleur
+   verandert; het is dus geen opruimactie maar een vervanging.
    ========================================================================= */
 
 /* ---------- 1. Display-letter ----------
-   Geist -> Archivo. De font-import zelf staat in __root.tsx. */
+   Geist -> Archivo. Geist is de huisletter van Vercel en de standaardletter
+   in v0; hij staat op zoveel gegenereerde sites dat hij leest als een logo
+   van de tool waarmee de site gemaakt is. De font-import staat in
+   __root.tsx; Space Grotesk werd geladen maar nergens gebruikt. */
 :root {
   --display: "Archivo", system-ui, -apple-system, sans-serif;
 }
@@ -27,43 +27,54 @@ h1, h2, h3 { line-height: 1.06; letter-spacing: -0.018em; }
 .display   { letter-spacing: -0.022em; }
 .h2        { letter-spacing: -0.020em; }
 
-/* ---------- 2. Accent terug naar waar het iets betekent ----------
-   Nadruk in een kop is nadruk, geen kleurvlek. Het accent blijft over voor
-   de primaire knop en de actieve navigatiestaat. */
-.display em, .h2 em { font-style: italic; color: inherit; }
+/* Nadruk in koppen blijft in accentkleur, maar krijgt er cursief bij zodat
+   het ook nadruk is als je de kleur niet ziet. */
+.display em, .h2 em, .panel__quote em { font-style: italic; }
 
-.prob__no,
-.case__no,
-.step__no,
-.form__head-note   { color: var(--faint); }
-.whyitem .wn       { color: var(--faint); }
-.hero__ticks .ck   { color: var(--faint); font-weight: 500; }
-.logo .dot         { color: var(--faint); }
-.form__step-label b { color: var(--fg); }
-.tlink .arr        { color: inherit; }
-.tlink::after      { background: var(--fg); }
-.qa__q .pm::before,
-.qa__q .pm::after  { background: var(--faint); }
-.nav--light:not(.scrolled) .logo .dot { color: var(--faint); }
+/* ---------- 2. Accent: van amber naar mint of citroen ----------
+   Diep bosgroen met een warme amber is op dit moment een van de vier
+   paletten die AI-tools opleveren bij een vraag om "premium". Dat de twee
+   alternatieven in styles.css terracotta en brass heten bevestigt het: dat
+   zijn de andere twee kleuren uit dezelfde familie.
 
-/* Het groene bolletje in de formulierkop zit als inline style in de JSX. */
-.form__head-note span[style] { display: none !important; }
+   Beide sets hieronder zijn getoetst op contrast:
+     mint    accent op de donkere grond 12,2:1 · accent-deep op wit 6,5:1
+     citroen accent op de donkere grond 13,4:1 · accent-deep op wit 6,4:1
+   Ruim boven de 4,5:1 die WCAG AA voor tekst vraagt.
+
+   Wisselen doe je met het data-accent-attribuut op <html> en <body> in
+   __root.tsx. `honey` is het oude amber en blijft werken als terugvaloptie. */
+[data-accent="mint"] {
+  --accent:        oklch(0.84 0.100 170);   /* #83dfbd — op donker */
+  --accent-strong: oklch(0.82 0.115 168);   /* knopvulling */
+  --accent-deep:   oklch(0.47 0.095 168);   /* op lichte vlakken */
+  --accent-ink:    oklch(0.23 0.045 168);   /* tekst óp de knop */
+}
+[data-accent="lemon"] {
+  --accent:        oklch(0.89 0.130 104);   /* #e6df6f — op donker */
+  --accent-strong: oklch(0.875 0.145 102);
+  --accent-deep:   oklch(0.485 0.105 100);
+  --accent-ink:    oklch(0.24 0.045 100);
+}
 
 /* ---------- 3. Pilvormen worden labels ----------
-   .label, .badge, .tag, .chip en .svc__tag deden alle vijf hetzelfde met
-   border-radius: 100px. Eén behandeling is genoeg. */
+   .label, .badge, .tag, .chip, .svc__tag en .svctag deden alle zes hetzelfde
+   met border-radius: 100px. Die stapeling van bijna-identieke labelvormen is
+   het duidelijkste sjabloonsignaal na de letter. De accentkleur blijft, de
+   pilvorm gaat eraf. */
 .label {
   font-family: var(--mono); font-size: 0.68rem; font-weight: 500;
-  letter-spacing: 0.18em; text-transform: uppercase; color: var(--faint);
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--accent-text);
   border: 0; background: none; border-radius: 0;
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid color-mix(in oklab, var(--accent-text) 40%, var(--line));
   padding: 0 0 6px 0;
 }
 .badge {
   border: 0; background: none; border-radius: 0; padding: 0;
-  color: var(--faint); letter-spacing: 0.18em;
+  color: var(--muted); letter-spacing: 0.18em;
 }
-/* Pulserend bolletje: SaaS-statusindicator, geen merkelement. */
+/* Het pulserende bolletje is een SaaS-statusindicator, geen merkelement. */
 .badge .gdot { display: none; }
 
 .tag {
@@ -72,77 +83,38 @@ h1, h2, h3 { line-height: 1.06; letter-spacing: -0.018em; }
 }
 .chip {
   border: 0; background: none; border-radius: 0; padding: 0;
-  color: var(--muted); font-weight: 400; font-size: 0.88rem;
+  color: var(--fg); font-weight: 400; font-size: 0.9rem;
 }
 .case__meta  { gap: 18px; }
 .case__chips { gap: 6px 20px; }
 
-.svc__tag {
-  border-radius: 0; padding: 0; letter-spacing: 0.16em;
-}
-.svc__tag--feat {
-  background: none; color: var(--fg);
-  border: 0; border-bottom: 1px solid var(--line-strong); padding-bottom: 4px;
-}
-.svc__tag--reg { border: 0; color: var(--faint); }
+/* Aanbevolen-vlaggetjes houden hun accentvulling — daar betekent de kleur
+   iets — maar worden rechthoekig in plaats van pilvormig. */
+.svc__tag, .svctag { border-radius: 0; letter-spacing: 0.16em; }
+.svc__tag--reg, .svctag--start { border-radius: 0; }
 
 /* ---------- 4. Iconen ----------
-   De vier Lucide-iconen in de vertrouwensbalk zeggen niets wat de tekst
-   ernaast niet al zegt. In styles.css hoort de .proof__ico-regel te
-   verdwijnen; hier gaat hij uit zonder index.tsx aan te raken. */
-.proof__item .proof__ico { display: none; }
-.proof__item { gap: 0; }
+   De iconen blijven staan; alleen de tekeningen komen nu uit de eigen set in
+   `src/components/marks.tsx` in plaats van uit Lucide. Zie dat bestand voor
+   het systeem (rechte lijnen, stompe uiteinden, scherpe hoeken).
+
+   Wat wél weg gaat is de getinte tegel eromheen: een 36px vierkantje met
+   10px afronding en een accentwaas is precies de vorm die op elke
+   gegenereerde feature-rij staat. Het icoon staat nu vrij op de band. */
+.proof__item .proof__ico {
+  width: auto; height: auto; border: 0; background: none; border-radius: 0;
+  color: var(--accent-text);
+}
+.proof__item .proof__ico svg { width: 22px; height: 22px; }
+.proof__item { gap: 12px; }
 
 /* ---------- 5. Schaduw alleen waar iets echt zweeft ----------
    Dezelfde --elev lag onder een statische tekstkaart én onder het
-   hero-formulier. Alleen dat laatste zweeft. */
+   hero-formulier. Alleen dat laatste zweeft boven de hero. */
 .case, .quote, .svc__card, .panel, .vision__media { box-shadow: none; }
 
-/* ---------- 6. Restanten accent en tekentjes ----------
-   Losse glyphs als versiering (✓ ★ →) zijn een kleine maar consistente
-   tell, en ze stapelen op met alles hierboven. De vinkjes blijven staan
-   waar ze een opsomming markeren, maar niet meer in accentkleur. */
-.case__step .k { color: var(--faint); }
-
-/* De resultaat-chips zijn geen afvinklijst; het vinkje voegt niets toe. */
-.chip::before { content: none; }
-
-.svclist li::before,
-.considlist li::before,
-.minilist--do li::before,
-.endcta__trust span::before,
-.ftrust span::before,
-.overcta__trust span::before { color: var(--faint); font-weight: 500; }
-
-/* De uitgelichte dienst werd aangekondigd met een oranje pil. Een label
-   met een lijn eronder zegt hetzelfde zonder de sjabloonvorm.
-   TODO bij akkoord: de ★ staat in de JSX (index.tsx) en hoort daar weg. */
-.svctag {
-  border-radius: 0; padding: 0; letter-spacing: 0.16em;
-  background: none; border: 0;
-}
-.svctag--rec   { color: var(--fg); border-bottom: 1px solid var(--line-strong); padding-bottom: 4px; }
-.svctag--start { color: var(--faint); }
-
-/* ---------- 7. Laatste accentresten ----------
-   Na het opruimen hierboven bleven deze elementen oranje. Ze vallen onder
-   dezelfde regel: het accent is voor de primaire knop en de actieve
-   navigatiestaat, niet voor labels, cijfers en losse tekens. */
-.panel__quote em   { font-style: italic; color: inherit; }
-.panel__stats .n   { color: var(--fg); }
-.hvis__stat .n     { color: var(--fg); }
-.svc__when         { color: var(--faint); }
-.svc__tag b,
-.svctag b          { color: var(--faint); }
-.flow-cta          { color: var(--fg); }
-.maint__price      { color: var(--fg); }
-.rm__live          { color: var(--faint); }
-.rm__node--rec     { border-color: var(--line-strong); }
-.rm__badge {
-  background: var(--card-2); border: 1px solid var(--line-strong);
-  box-shadow: none; color: var(--fg);
-}
-
-/* Het reuzenaanhalingsteken boven elke quote is pure versiering; de
-   aanhalingstekens in de tekst zelf doen het werk al. */
+/* ---------- 6. Versierende tekens ----------
+   Het reuzenaanhalingsteken boven elke quote is pure decoratie; de
+   aanhalingstekens in de tekst doen het werk al. De rest van de glyphs
+   (vinkjes, pijlen) blijft staan, in de nieuwe accentkleur. */
 .quote__mark { display: none; }
