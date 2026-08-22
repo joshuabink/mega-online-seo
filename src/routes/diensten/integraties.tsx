@@ -142,7 +142,7 @@ function Integraties() {
             <span className="label">Onze aanpak</span>
             {' '}
             <h2 className="h2">
-              Eén soepel geheel,
+              Één soepel geheel,
               {' '}
               <em>automatisch</em>
               {' '}
