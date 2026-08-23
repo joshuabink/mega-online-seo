@@ -863,7 +863,7 @@ function ConversieWebsite() {
               Dat kan ook. We houden je website veilig en up-to-date, zonder actieve optimalisatie. Een lichtere optie dan het Groei Partnership.
             </div>
             {' '}
-            <div className="maint__price">Onderhoud & Support · vanaf € 49 / mnd</div>
+            <div className="maint__price">Onderhoud & Support · vanaf € 50 / mnd</div>
           </Reveal>
         </div>
       </section>
