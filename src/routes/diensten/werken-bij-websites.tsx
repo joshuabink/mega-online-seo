@@ -170,7 +170,7 @@ function WerkenBijWebsites() {
             </p>
           </Reveal>
           {' '}
-          <div className="exgrid" style={{ gridTemplateColumns: "repeat(5,1fr)", marginTop: "clamp(34px,4vw,48px)" }}>
+          <div className="exgrid" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(180px,1fr))", marginTop: "clamp(34px,4vw,48px)" }}>
             <Reveal as="div" className="exchip reveal" style={{ flexDirection: "column", alignItems: "flex-start", gap: "14px" }}>
               <span className="iconbox iconbox--sm">
                 <Icon name="users" />
