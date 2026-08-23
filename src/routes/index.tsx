@@ -764,7 +764,7 @@ function Home() {
               Ook onderhoud en technische support is mogelijk. We houden je website veilig en up-to-date.
             </div>
             {' '}
-            <div className="maint__price">Onderhoud & Support · vanaf € 49 / mnd</div>
+            <div className="maint__price">Onderhoud & Support · vanaf € 50 / mnd</div>
             </Reveal>
           </div>
         </div>
