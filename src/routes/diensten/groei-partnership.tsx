@@ -54,7 +54,7 @@ function GroeiPartnership() {
               </Reveal>
               {' '}
               <Reveal as="p" className="lead svc-hero__sub reveal" data-d="2">
-                Na livegang gaan we door met online marketing: SEO, SEA en strategie, gestuurd op wat de cijfers laten zien. We werken op uurbasis vanaf 150 euro per maand, mediabudget komt daar bovenop. Geen abonnement op onderhoud, maar een partner die meegroeit.
+                Elke maand zoeken we de grootste groeikans voor jouw bedrijf en daar gaan we mee aan de slag. De ene maand zit die in SEO, de andere in een campagne, een landingspagina of de strategie. We werken op uurbasis vanaf 150 euro per maand, mediabudget komt daar bovenop.
               </Reveal>
               {' '}
               <Reveal as="div" className="svc-hero__ctas reveal" data-d="2">
@@ -354,13 +354,13 @@ function GroeiPartnership() {
             <span className="label">Een continu proces</span>
             {' '}
             <h2 className="h2">
-              Geen project met een einddatum. Een
+              Elke maand de grootste
               {' '}
-              <em>cyclus.</em>
+              <em>groeikans.</em>
             </h2>
             {' '}
             <p className="lead">
-              Meten, leren, verbeteren. En dan weer opnieuw. Elke ronde maakt je website een stukje beter dan de vorige.
+              We kijken elke maand opnieuw waar de meeste winst te halen valt, kiezen daar één of twee dingen uit en voeren die uit. Geen lijst met taken die nooit afkomt, maar steeds de stap die op dat moment het meeste oplevert.
             </p>
           </Reveal>
           {' '}
@@ -378,7 +378,7 @@ function GroeiPartnership() {
             <div className="cyclestep">
               <h4>Meten</h4>
               {' '}
-              <p>We verzamelen data over hoe bezoekers de website gebruiken.</p>
+              <p>We verzamelen data over bezoekers, zoekverkeer en campagnes.</p>
               {' '}
               <span className="cyclestep__arr">
                 <Icon name="arrow-right" />
@@ -386,9 +386,9 @@ function GroeiPartnership() {
             </div>
             {' '}
             <div className="cyclestep">
-              <h4>Analyseren</h4>
+              <h4>Kansen zoeken</h4>
               {' '}
-              <p>We leggen de knelpunten en kansen bloot.</p>
+              <p>We zetten de grootste kansen op een rij en kiezen waar we deze maand op inzetten.</p>
               {' '}
               <span className="cyclestep__arr">
                 <Icon name="arrow-right" />
@@ -396,9 +396,9 @@ function GroeiPartnership() {
             </div>
             {' '}
             <div className="cyclestep">
-              <h4>Verbeteren</h4>
+              <h4>Uitvoeren</h4>
               {' '}
-              <p>We voeren gerichte aanpassingen door.</p>
+              <p>We pakken die kans aan, of dat nu SEO, een campagne of de website is.</p>
               {' '}
               <span className="cyclestep__arr">
                 <Icon name="arrow-right" />
@@ -408,14 +408,14 @@ function GroeiPartnership() {
             <div className="cyclestep">
               <h4>Herhalen</h4>
               {' '}
-              <p>En weer van voren af aan, elke keer een stap beter.</p>
+              <p>Volgende maand opnieuw, met wat we geleerd hebben van de vorige.</p>
             </div>
           </Reveal>
           {' '}
           <Reveal as="div" className="cycle__return reveal" data-d="1">
             <Icon name="refresh-cw" />
             {' '}
-            En dan begint de cyclus opnieuw
+            Elke maand opnieuw, steeds op de plek waar de meeste winst zit
           </Reveal>
         </div>
       </section>
@@ -531,7 +531,7 @@ function GroeiPartnership() {
             </h2>
             {' '}
             <p className="lead">
-              Je koopt een vast aantal uur per maand in. Die uren besteden we aan de dingen die op dat moment het meeste opleveren: de ene maand SEO en content, de andere maand campagnes of aanpassingen op de website. Wat we doen spreken we vooraf af.
+              Je koopt een vast aantal uur per maand in. Die uren gaan naar de groeikans die we die maand samen kiezen: de ene maand SEO en content, de andere maand campagnes of aanpassingen op de website. Wat we oppakken spreken we vooraf af.
             </p>
           </Reveal>
           {' '}
