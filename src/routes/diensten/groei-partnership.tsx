@@ -621,7 +621,7 @@ function GroeiPartnership() {
                 <span className="form__head-note" style={{ justifyContent: "center" }}>Onderhoud & Support</span>
                 {' '}
                 <div className="svcprice" style={{ fontSize: "2.2rem", marginTop: "6px" }}>
-                  € 49
+                  € 50
                   <small style={{ fontSize: "1rem" }}>
                     {' '}
                     / maand
@@ -750,7 +750,7 @@ function GroeiPartnership() {
             </Qa>
             {' '}
             <Qa question="Wat als ik alleen onderhoud wil?" className="reveal">
-                Dat kan. We bieden een lichtere onderhoudsoptie vanaf € 49 per maand, waarbij we je website veilig en up-to-date houden zonder actieve doorontwikkeling. Goed om te weten: dat is bewust iets anders dan het Groei Partnership, waarbij we je website juist maand na maand verbeteren.
+                Dat kan. We bieden een lichtere onderhoudsoptie vanaf € 50 per maand, waarbij we je website veilig en up-to-date houden zonder actieve doorontwikkeling. Goed om te weten: dat is bewust iets anders dan het Groei Partnership, waarbij we je website juist maand na maand verbeteren.
             </Qa>
           </div>
         </div>
