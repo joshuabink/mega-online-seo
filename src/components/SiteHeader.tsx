@@ -744,21 +744,6 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
           </Link>
         </nav>
       </div>
-
-      <div className="mmenu__cta">
-        <div className="mmenu__cta-txt">
-          <span className="mmenu__cta-title">
-            <span className="gdot" />
-            Even sparren?
-          </span>
-          <span className="mmenu__cta-sub">
-            Kort en vrijblijvend kijken we samen naar jouw situatie.
-          </span>
-        </div>
-        <Link className="btn btn-primary" to="/contact" onClick={onClose}>
-          Plan een kennismaking
-        </Link>
-      </div>
     </div>
   )
 }
