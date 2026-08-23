@@ -433,6 +433,10 @@ function GroeiPartnership() {
             {' '}
             En dan begint de cyclus opnieuw
           </Reveal>
+          {' '}
+          <Reveal as="figure" className="procband reveal">
+            <Media id="gp-samenwerking" fit="cover" alt="Overleg over de cijfers van een website" />
+          </Reveal>
         </div>
       </section>
       {' '}
