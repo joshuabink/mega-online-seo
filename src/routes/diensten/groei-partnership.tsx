@@ -472,7 +472,7 @@ function GroeiPartnership() {
             </p>
           </Reveal>
           {' '}
-          <Reveal as="div" className="exgrid reveal" style={{ gridTemplateColumns: "repeat(3,1fr)" }}>
+          <Reveal as="div" className="exgrid reveal" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))" }}>
             <div className="exchip">
               <span className="iconbox iconbox--sm">
                 <Icon name="file-text" />
@@ -536,13 +536,13 @@ function GroeiPartnership() {
           </Reveal>
           {' '}
           <Reveal as="div" className="consider reveal" data-d="1" style={{ marginTop: "clamp(24px,3vw,34px)" }}>
-            <div style={{ display: "grid", gridTemplateColumns: "1.4fr 1fr", gap: "clamp(24px,3vw,40px)", alignItems: "center" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: "clamp(24px,3vw,40px)", alignItems: "center" }}>
               <div>
                 <p style={{ color: "var(--muted)", lineHeight: "1.6" }}>
                   Hoeveel uur je nodig hebt hangt af van wat je wilt bereiken. Wil je vooral zichtbaar blijven, dan is een paar uur per maand genoeg. Wil je actief groeien met campagnes en nieuwe pagina's, dan schalen we op. Je zit nergens aan vast en kunt per periode bijstellen.
                 </p>
                 {' '}
-                <ul className="considlist" style={{ gridTemplateColumns: "1fr 1fr", marginTop: "20px" }}>
+                <ul className="considlist" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(160px,1fr))", marginTop: "20px" }}>
                   <li>Vast aantal uur per maand</li>
                   {' '}
                   <li>Vooraf afgesproken inzet</li>
@@ -594,13 +594,13 @@ function GroeiPartnership() {
           </Reveal>
           {' '}
           <Reveal as="div" className="consider reveal" data-d="1" style={{ marginTop: "clamp(24px,3vw,34px)" }}>
-            <div style={{ display: "grid", gridTemplateColumns: "1.4fr 1fr", gap: "clamp(24px,3vw,40px)", alignItems: "center" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: "clamp(24px,3vw,40px)", alignItems: "center" }}>
               <div>
                 <p style={{ color: "var(--muted)", lineHeight: "1.6" }}>
                   Niet ieder bedrijf heeft behoefte aan doorlopende optimalisatie. Daarom bieden we ook een lichtere onderhoudsoptie, zodat je website veilig en up-to-date blijft, zonder actieve doorontwikkeling.
                 </p>
                 {' '}
-                <ul className="considlist" style={{ gridTemplateColumns: "1fr 1fr", marginTop: "20px" }}>
+                <ul className="considlist" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(160px,1fr))", marginTop: "20px" }}>
                   <li>Updates</li>
                   {' '}
                   <li>Beveiliging</li>
@@ -655,7 +655,7 @@ function GroeiPartnership() {
             </h2>
           </Reveal>
           {' '}
-          <div className="featgrid" style={{ gridTemplateColumns: "repeat(3,1fr)" }}>
+          <div className="featgrid" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))" }}>
             <Reveal as="div" className="feat reveal">
               <span className="iconbox">
                 <Icon name="handshake" />
