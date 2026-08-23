@@ -749,16 +749,13 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
         <div className="mmenu__cta-txt">
           <span className="mmenu__cta-title">
             <span className="gdot" />
-            Gratis websitescan
+            Even sparren?
           </span>
           <span className="mmenu__cta-sub">
-            Ontdek waar jouw website kansen laat liggen.
+            Kort en vrijblijvend kijken we samen naar jouw situatie.
           </span>
         </div>
-        <Link className="btn btn-primary" to="/gratis-websitescan" onClick={onClose}>
-          Vraag je gratis scan aan
-        </Link>
-        <Link className="mmenu__cta-secondary" to="/contact" onClick={onClose}>
+        <Link className="btn btn-primary" to="/contact" onClick={onClose}>
           Plan een kennismaking
         </Link>
       </div>
