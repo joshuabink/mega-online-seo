@@ -512,6 +512,14 @@ form[aria-busy="true"] .btn-primary { opacity: .65; pointer-events: none; }
 /* ---------- Reveal ---------- */
 .reveal { opacity: 0; transform: translateY(22px); transition: opacity .8s cubic-bezier(.2,.7,.3,1), transform .8s cubic-bezier(.2,.7,.3,1); }
 .reveal.in { opacity: 1; transform: none; }
+/* Vangnet. Een `.reveal` wordt pas zichtbaar als React er `in` op zet; krijgt een
+   element de klasse zonder dat het door <Reveal>/useReveal loopt, dan blijft het
+   voor altijd op opacity 0 staan. Dat is precies wat er met de eind-CTA op de
+   homepage gebeurde. Na 10 s dwingt deze animatie alles zichtbaar — lang genoeg
+   om de normale animatie niet in de weg te zitten, kort genoeg dat niemand ooit
+   naar een leeg vlak zit te kijken. Verwijderen mag pas als `.reveal` weg is. */
+.reveal { animation: reveal-vangnet 0s linear 10s forwards; }
+@keyframes reveal-vangnet { to { opacity: 1; transform: none; } }
 .reveal[data-d="1"] { transition-delay: .08s; }
 .reveal[data-d="2"] { transition-delay: .16s; }
 .reveal[data-d="3"] { transition-delay: .24s; }

@@ -43,6 +43,15 @@ Zet scroll-reveals nooit terug naar het rechtstreeks toevoegen van een klasse
 op het DOM-element: dat gaf een hydration-mismatch waarbij React de klasse er
 weer af gooide en secties onzichtbaar terugklapten.
 
+De klasse `reveal` zet een element op `opacity: 0`. Het wordt pas zichtbaar als
+`<Reveal>` of `useReveal()` er `in` op zet. **Zet `reveal` dus nooit op een
+element dat niet door een van die twee loopt** — het blijft dan voor altijd
+onzichtbaar. Zo verdween de knop in de eind-CTA op de homepage: die stond als
+kale `<Link className="btn btn-primary reveal">` in de opmaak. Gebruik
+`<Reveal as={Link} …>`, of zet het element in een `<Reveal as="div">` zoals op
+de dienstenpagina's. In `styles.css` staat een vangnet dat elke `.reveal` na
+10 seconden alsnog zichtbaar dwingt; dat is een net, geen excuus.
+
 **Formulieren** posten via `src/lib/submit-lead.ts` (server function) naar het
 Google Apps Script van de klant. Veldnamen, `_subject` en `_pagina` moeten
 exact blijven, anders breekt de bestaande Sheet. De endpoint is te overschrijven

@@ -905,9 +905,9 @@ function Home() {
             Vraag een gratis websitescan aan en ontdek wat er beter kan. Zonder verplichtingen.
           </Reveal>
           {' '}
-          <Link className="btn btn-primary reveal" data-d="2" to="/gratis-websitescan">
+          <Reveal as={Link} className="btn btn-primary reveal" data-d="2" to="/gratis-websitescan">
             Vraag je gratis scan aan
-          </Link>
+          </Reveal>
         </div>
       </section>
     </main>
