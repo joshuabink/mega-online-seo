@@ -11,9 +11,9 @@ export const Route = createFileRoute('/diensten/groei-partnership')({
   head: () => ({
     meta: [
       { title: "Groei Partnership | MegaOnline.io" },
-      { name: 'description', content: "Een website is geen eindpunt maar een beginpunt. Na livegang blijven meten, leren en verbeteren. Geen onderhoudsabonnement, wel een groeipartner." },
+      { name: 'description', content: "Online marketing traject met SEO, SEA en strategie. Op uurbasis vanaf 150 euro per maand, mediabudget komt daar bovenop." },
       { property: 'og:title', content: "Groei Partnership | MegaOnline.io" },
-      { property: 'og:description', content: "Een website is geen eindpunt maar een beginpunt. Na livegang blijven meten, leren en verbeteren. Geen onderhoudsabonnement, wel een groeipartner." },
+      { property: 'og:description', content: "Online marketing traject met SEO, SEA en strategie. Op uurbasis vanaf 150 euro per maand, mediabudget komt daar bovenop." },
       { property: 'og:url', content: "https://megaonline.io/diensten/groei-partnership" },
     ],
     links: [
@@ -43,7 +43,7 @@ function GroeiPartnership() {
               <Reveal as="div" className="hero__badge reveal" data-d="1">
                 <span className="badge">
                   <span className="gdot" />
-                  Doorlopende samenwerking · na livegang
+                  Online marketing · SEO, SEA en strategie
                 </span>
               </Reveal>
               {' '}
@@ -54,7 +54,7 @@ function GroeiPartnership() {
               </Reveal>
               {' '}
               <Reveal as="p" className="lead svc-hero__sub reveal" data-d="2">
-                Na livegang blijven we kijken waar kansen liggen, waar bezoekers afhaken en hoe jouw website stap voor stap beter kan presteren. Geen abonnement op onderhoud, maar een partner die meegroeit.
+                Na livegang gaan we door met online marketing: SEO, SEA en strategie, gestuurd op wat de cijfers laten zien. We werken op uurbasis vanaf 150 euro per maand, mediabudget komt daar bovenop. Geen abonnement op onderhoud, maar een partner die meegroeit.
               </Reveal>
               {' '}
               <Reveal as="div" className="svc-hero__ctas reveal" data-d="2">
@@ -212,89 +212,89 @@ function GroeiPartnership() {
             <span className="label">In het partnership</span>
             {' '}
             <h2 className="h2">
-              Wat we binnen het Groei Partnership
+              Wat we binnen het traject
               {' '}
               <em>doen.</em>
             </h2>
             {' '}
             <p className="lead">
-              Geen vage beloftes, maar een vast ritme van meten, signaleren en verbeteren. Maand na maand werken we aan een website die beter presteert.
+              Geen los lijstje diensten, maar één traject: strategie bepaalt waar we op inzetten, SEO en SEA brengen bezoekers binnen en de website zorgt dat er wat uitkomt.
             </p>
           </Reveal>
           {' '}
           <div className="featgrid">
             <Reveal as="div" className="feat reveal">
               <span className="iconbox">
-                <Icon name="calendar-check" />
+                <Icon name="compass" />
               </span>
-              <h4>Maandelijkse analyse</h4>
-              <p>Een vast moment waarop we naar de cijfers en kansen kijken.</p>
-            </Reveal>
-            {' '}
-            <Reveal as="div" className="feat reveal" data-d="1">
-              <span className="iconbox">
-                <Icon name="activity" />
-              </span>
-              <h4>Bezoekersgedrag bekijken</h4>
-              <p>Wat doen bezoekers echt, en waar lopen ze vast?</p>
-            </Reveal>
-            {' '}
-            <Reveal as="div" className="feat reveal" data-d="2">
-              <span className="iconbox">
-                <Icon name="alert-triangle" />
-              </span>
-              <h4>Verbeterpunten signaleren</h4>
-              <p>We benoemen concreet waar de meeste winst te halen valt.</p>
-            </Reveal>
-            {' '}
-            <Reveal as="div" className="feat reveal" data-d="3">
-              <span className="iconbox">
-                <Icon name="sliders-horizontal" />
-              </span>
-              <h4>Kleine aanpassingen doorvoeren</h4>
-              <p>Gerichte verbeteringen die samen een groot verschil maken.</p>
-            </Reveal>
-            {' '}
-            <Reveal as="div" className="feat reveal">
-              <span className="iconbox">
-                <Icon name="lightbulb" />
-              </span>
-              <h4>Nieuwe kansen ontdekken</h4>
-              <p>We spotten mogelijkheden voordat je concurrent dat doet.</p>
+              <h4>Strategie en plan</h4>
+              <p>We bepalen samen waar de groei vandaan moet komen en wat er dan als eerste moet gebeuren.</p>
             </Reveal>
             {' '}
             <Reveal as="div" className="feat reveal" data-d="1">
               <span className="iconbox">
                 <Icon name="search-check" />
               </span>
-              <h4>SEO-verbeteringen</h4>
-              <p>Stap voor stap beter vindbaar worden in Google.</p>
+              <h4>SEO</h4>
+              <p>Beter gevonden worden op de zoekopdrachten waar jouw klanten echt op zoeken.</p>
             </Reveal>
             {' '}
             <Reveal as="div" className="feat reveal" data-d="2">
               <span className="iconbox">
-                <Icon name="mouse-pointer-click" />
+                <Icon name="target" />
+              </span>
+              <h4>SEA en Google Ads</h4>
+              <p>Betaalde campagnes opzetten en bijsturen, zodat je budget naar de klikken gaat die iets opleveren.</p>
+            </Reveal>
+            {' '}
+            <Reveal as="div" className="feat reveal" data-d="3">
+              <span className="iconbox">
+                <Icon name="sliders-horizontal" />
               </span>
               <h4>Conversie-optimalisatie</h4>
               <p>Meer aanvragen en boekingen uit dezelfde bezoekers.</p>
             </Reveal>
             {' '}
+            <Reveal as="div" className="feat reveal">
+              <span className="iconbox">
+                <Icon name="file-text" />
+              </span>
+              <h4>Content en landingspagina's</h4>
+              <p>Teksten en pagina's die aansluiten op de zoekvraag en op de campagne.</p>
+            </Reveal>
+            {' '}
+            <Reveal as="div" className="feat reveal" data-d="1">
+              <span className="iconbox">
+                <Icon name="activity" />
+              </span>
+              <h4>Meten en analyseren</h4>
+              <p>We kijken elke maand wat bezoekers doen en wat dat oplevert.</p>
+            </Reveal>
+            {' '}
+            <Reveal as="div" className="feat reveal" data-d="2">
+              <span className="iconbox">
+                <Icon name="bar-chart-2" />
+              </span>
+              <h4>Heldere rapportage</h4>
+              <p>Je ziet waar de uren en het mediabudget naartoe zijn gegaan en wat het heeft gedaan.</p>
+            </Reveal>
+            {' '}
             <Reveal as="div" className="feat reveal" data-d="3">
               <span className="iconbox">
-                <Icon name="settings" />
+                <Icon name="shield-check" />
               </span>
-              <h4>Technische verbeteringen</h4>
-              <p>Snelheid, veiligheid en stabiliteit blijvend op orde.</p>
+              <h4>Techniek op orde</h4>
+              <p>Snelheid, veiligheid en updates blijven gewoon geregeld.</p>
             </Reveal>
             {' '}
             <Reveal as="div" className="feat reveal">
               <span className="iconbox">
-                <Icon name="message-circle" />
+                <Icon name="user-check" />
               </span>
-              <h4>Persoonlijke ondersteuning</h4>
-              <p>Eén vast aanspreekpunt dat je bedrijf echt kent.</p>
+              <h4>Eén vast aanspreekpunt</h4>
+              <p>Geen ticketsysteem, maar iemand die je bedrijf kent.</p>
             </Reveal>
-          </div>
+                    </div>
         </div>
       </section>
       {' '}
@@ -519,6 +519,72 @@ function GroeiPartnership() {
       </section>
       {' '}
       {' '}
+      <section className="section section--tight" data-theme="dark" data-screen-label="Wat het kost">
+        <div className="wrap">
+          <Reveal as="div" className="shead reveal" style={{ maxWidth: "660px" }}>
+            <span className="label">Wat het kost</span>
+            {' '}
+            <h2 className="h2">
+              Vanaf 150 euro per maand,
+              {' '}
+              <em>op uurbasis.</em>
+            </h2>
+            {' '}
+            <p className="lead">
+              Je koopt een vast aantal uur per maand in. Die uren besteden we aan de dingen die op dat moment het meeste opleveren: de ene maand SEO en content, de andere maand campagnes of aanpassingen op de website. Wat we doen spreken we vooraf af.
+            </p>
+          </Reveal>
+          {' '}
+          <Reveal as="div" className="consider reveal" data-d="1" style={{ marginTop: "clamp(24px,3vw,34px)" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "1.4fr 1fr", gap: "clamp(24px,3vw,40px)", alignItems: "center" }}>
+              <div>
+                <p style={{ color: "var(--muted)", lineHeight: "1.6" }}>
+                  Hoeveel uur je nodig hebt hangt af van wat je wilt bereiken. Wil je vooral zichtbaar blijven, dan is een paar uur per maand genoeg. Wil je actief groeien met campagnes en nieuwe pagina's, dan schalen we op. Je zit nergens aan vast en kunt per periode bijstellen.
+                </p>
+                {' '}
+                <ul className="considlist" style={{ gridTemplateColumns: "1fr 1fr", marginTop: "20px" }}>
+                  <li>Vast aantal uur per maand</li>
+                  {' '}
+                  <li>Vooraf afgesproken inzet</li>
+                  {' '}
+                  <li>SEO, SEA en strategie</li>
+                  {' '}
+                  <li>Maandelijkse terugkoppeling</li>
+                  {' '}
+                  <li>Opschalen of afschalen kan</li>
+                </ul>
+                {' '}
+                <p className="brand__tag" style={{ marginTop: "22px", paddingTop: "0" }}>
+                  Mediabudget komt hier bovenop. Dat is het bedrag dat rechtstreeks naar Google of een ander advertentieplatform gaat. Dat betaal je zelf en het staat los van onze uren, zodat je altijd ziet waar je geld naartoe gaat.
+                </p>
+              </div>
+              {' '}
+              <div style={{ border: "1px solid var(--line)", borderRadius: "16px", background: "var(--card-2)", boxShadow: "var(--elev)", padding: "clamp(24px,2.6vw,32px)", textAlign: "center" }}>
+                <span className="form__head-note" style={{ justifyContent: "center" }}>Online marketing traject</span>
+                {' '}
+                <div className="svcprice" style={{ fontSize: "2.2rem", marginTop: "6px" }}>
+                  vanaf € 150
+                  <small style={{ fontSize: "1rem" }}>
+                    {' '}
+                    / maand
+                  </small>
+                </div>
+                {' '}
+                <p style={{ color: "var(--faint)", fontSize: "0.86rem", marginTop: "8px", lineHeight: "1.5" }}>
+                  Uren voor SEO, SEA en strategie. Mediabudget komt daar bovenop.
+                </p>
+                {' '}
+                <Link className="tlink" to="/contact" style={{ marginTop: "18px", justifyContent: "center" }}>
+                  Plan een kennismaking
+                  {' '}
+                </Link>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+      {' '}
+      {' '}
       <section className="section section--tight" data-theme="paper" data-screen-label="Alleen onderhoud nodig?">
         <div className="wrap">
           <Reveal as="div" className="shead reveal" style={{ maxWidth: "620px" }}>
@@ -657,6 +723,14 @@ function GroeiPartnership() {
           <div className="faq">
             <Qa question="Is het Groei Partnership verplicht?" className="reveal">
                 Nee. Sommige klanten kiezen voor een eenmalige website en regelen het beheer zelf of via een andere partij. We raden het partnership wel aan, omdat websites die regelmatig verbeterd worden structureel beter presteren dan websites die blijven stilstaan.
+            </Qa>
+            {' '}
+            <Qa question="Wat krijg ik voor 150 euro per maand?" className="reveal">
+                Een vast aantal uur waarin we aan je online marketing werken. Wat we in die uren doen spreken we vooraf af: de ene maand ligt de nadruk op SEO en content, de andere maand op campagnes of aanpassingen aan de website. Meer uren betekent meer die je kunt oppakken, dus we kijken samen wat past bij wat je wilt bereiken.
+            </Qa>
+            {' '}
+            <Qa question="Zit het advertentiebudget hierbij in?" className="reveal">
+                Nee. Het mediabudget gaat rechtstreeks naar Google of een ander platform en betaal je zelf. Onze uren en jouw advertentiebudget blijven gescheiden, zodat je precies ziet wat je aan werk betaalt en wat aan advertenties.
             </Qa>
             {' '}
             <Qa question="Hoe vaak hebben we contact?" className="reveal">
