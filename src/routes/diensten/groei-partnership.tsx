@@ -315,7 +315,7 @@ function GroeiPartnership() {
             </p>
           </Reveal>
           {' '}
-          <Reveal as="div" className="exgrid reveal" style={{ gridTemplateColumns: "repeat(4,1fr)", marginTop: "clamp(34px,4vw,48px)" }}>
+          <Reveal as="div" className="exgrid reveal" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(200px,1fr))", marginTop: "clamp(34px,4vw,48px)" }}>
             <div className="exchip" style={{ flexDirection: "column", alignItems: "flex-start", gap: "14px" }}>
               <span className="iconbox iconbox--sm">
                 <Icon name="bar-chart-3" />
