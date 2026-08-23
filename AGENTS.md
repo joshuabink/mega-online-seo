@@ -36,7 +36,8 @@ Daaruit volgt:
 **Interactie zit in componenten**, niet in losse DOM-scripts:
 `SiteHeader` (megamenu + mobiel menu), `LeadForm`, `Qa` (FAQ-accordeon),
 `Reveal` (scroll-reveals), `Media` (beeld met placeholder-fallback), `Icon`
-(gebundelde Lucide-iconen uit `src/components/icons.ts`).
+(eigen iconenset uit `src/components/marks.tsx` — Lucide zit bewust niet meer in
+de bundel; voeg een nieuw icoon daar toe, ga niet terug naar `lucide-react`).
 
 Zet scroll-reveals nooit terug naar het rechtstreeks toevoegen van een klasse
 op het DOM-element: dat gaf een hydration-mismatch waarbij React de klasse er
@@ -46,6 +47,20 @@ weer af gooide en secties onzichtbaar terugklapten.
 Google Apps Script van de klant. Veldnamen, `_subject` en `_pagina` moeten
 exact blijven, anders breekt de bestaande Sheet. De endpoint is te overschrijven
 met de environment variable `MO_LEAD_ENDPOINT`.
+
+Daarnaast gaat elke lead als mail naar FormSubmit (`MO_LEAD_MAIL_ENDPOINT`).
+Twee dingen daaraan zijn niet vanzelfsprekend en hebben de mail eerder
+maandenlang stil laten falen:
+
+- FormSubmit weigert elke POST **zonder `Referer`-header**. Wij posten vanaf de
+  server, dus die header wordt handmatig meegegeven (`MAIL_REFERER`). Haal hem
+  er niet uit, en maak hem niet afhankelijk van de pagina van de bezoeker:
+  FormSubmit activeert per domein, dus een preview- of staging-URL geldt als
+  nieuw, niet-geactiveerd formulier.
+- Bij een weigering antwoordt FormSubmit met **HTTP 200** en de fout in de
+  pagina zelf. Alleen op de statuscode controleren betekent dat een mislukte
+  mail als geslaagd telt. Daarom kijkt `formSubmitWeigering()` naar de body.
+  Laat die check staan.
 
 **Oude URL's.** `src/routes/$.tsx` stuurt elk oud `.html`-pad met een 301 door
 naar de nieuwe slug. Laat die tabel (`src/lib/legacy-urls.ts`) intact.

@@ -37,6 +37,38 @@ const DEFAULT_MAIL_ENDPOINT = 'https://formsubmit.co/zakelijk@joshuabink.nl'
 /** Velden die we bewust NIET doorsturen (techniek/spamval). */
 const BLOCKED = new Set(['website_hp'])
 
+/**
+ * FormSubmit weigert elke POST zonder `Referer` met "Unable to submit form" —
+ * hij gaat ervan uit dat een browser het formulier verstuurt. Wij posten vanaf
+ * de server, dus die header moeten we zelf meegeven, anders wordt er niets
+ * verstuurd.
+ *
+ * Bewust een vaste waarde en niet de pagina waar de bezoeker stond: FormSubmit
+ * activeert per domein. Een preview-deploy, een staging-omgeving of localhost
+ * zou dan als nieuw, niet-geactiveerd formulier gelden en stil niets versturen.
+ * Waar de bezoeker vandaan kwam staat sowieso al in `_pagina`.
+ */
+const MAIL_REFERER = 'https://megaonline.io/'
+
+/**
+ * FormSubmit antwoordt bij een weigering met HTTP 200 en de fout in de pagina
+ * zelf. Alleen naar de statuscode kijken betekent dus dat een mislukte mail als
+ * geslaagd telt — precies waardoor dit maandenlang onopgemerkt bleef.
+ */
+function formSubmitWeigering(html: string): string | null {
+  const t = html.toLowerCase()
+  if (t.includes('needs activation')) {
+    return 'formulier nog niet geactiveerd — klik de activatielink in de mail van FormSubmit'
+  }
+  if (t.includes('unable to submit form')) {
+    return 'FormSubmit weigerde de inzending (Referer ontbreekt of wordt niet geaccepteerd)'
+  }
+  if (t.includes('submitted successfully')) return null
+  // Onbekend antwoord: niet blokkeren, wel vastleggen zodat het opvalt.
+  console.warn('[lead] onbekend antwoord van FormSubmit:', html.slice(0, 200))
+  return null
+}
+
 const MAX_FIELD_LENGTH = 5000
 
 
@@ -88,11 +120,23 @@ export const submitLead = createServerFn({ method: 'POST' })
     mailParams.set('_captcha', 'false')
     if (params.get('email')) mailParams.set('_replyto', params.get('email')!)
 
-    async function post(url: string, body: string, label: string) {
+    async function post(
+      url: string,
+      body: string,
+      label: string,
+      opts: {
+        headers?: Record<string, string>
+        /** Geeft een reden terug als de body een weigering is, anders null. */
+        verify?: (html: string) => string | null
+      } = {},
+    ) {
       try {
         const res = await fetch(url, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            ...opts.headers,
+          },
           body,
           signal: AbortSignal.timeout(10_000),
         })
@@ -101,6 +145,13 @@ export const submitLead = createServerFn({ method: 'POST' })
         if (!res.ok && res.status >= 400) {
           console.error(`[lead] ${label} gaf status`, res.status)
           return false
+        }
+        if (opts.verify) {
+          const reden = opts.verify(await res.text())
+          if (reden) {
+            console.error(`[lead] ${label} geweigerd (status ${res.status}): ${reden}`)
+            return false
+          }
         }
         return true
       } catch (err) {
@@ -111,7 +162,10 @@ export const submitLead = createServerFn({ method: 'POST' })
 
     const [sheetOk, mailOk] = await Promise.all([
       post(endpoint, params.toString(), 'Apps Script'),
-      post(mailEndpoint, mailParams.toString(), 'e-mail'),
+      post(mailEndpoint, mailParams.toString(), 'e-mail', {
+        headers: { Referer: MAIL_REFERER },
+        verify: formSubmitWeigering,
+      }),
     ])
 
     if (!sheetOk && !mailOk) {
