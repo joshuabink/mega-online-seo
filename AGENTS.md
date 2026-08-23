@@ -62,6 +62,15 @@ maandenlang stil laten falen:
   mail als geslaagd telt. Daarom kijkt `formSubmitWeigering()` naar de body.
   Laat die check staan.
 
+Staat `MO_RESEND_API_KEY` ingesteld, dan gaat de mail via Resend en wordt
+FormSubmit helemaal overgeslagen — dat is de bedoelde eindsituatie. Mail vanaf
+het eigen domein, dus SPF/DKIM kloppen, en fouten komen als leesbare JSON terug
+in plaats van als een HTML-pagina met status 200. Verder in te stellen met
+`MO_MAIL_FROM`, `MO_MAIL_TO` en `MO_RESEND_ENDPOINT`; die laatste bestaat zodat
+de smoketest tegen een mock kan draaien in plaats van tegen de echte provider.
+Verstuur bij het testen nooit via de echte provider — zet `MO_RESEND_ENDPOINT`
+naar een lokale mock, net zoals `MO_LEAD_ENDPOINT` dat voor de Sheet doet.
+
 **Oude URL's.** `src/routes/$.tsx` stuurt elk oud `.html`-pad met een 301 door
 naar de nieuwe slug. Laat die tabel (`src/lib/legacy-urls.ts`) intact.
 

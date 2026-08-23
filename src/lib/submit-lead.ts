@@ -69,6 +69,115 @@ function formSubmitWeigering(html: string): string | null {
   return null
 }
 
+/**
+ * Voorkeursroute voor de mail: een echte transactionele mailprovider.
+ *
+ * FormSubmit doet het wel, maar is op drie manieren fragiel: de mail komt van
+ * formsubmit.co in plaats van je eigen domein (dus geen SPF/DKIM-match en dus
+ * spamrisico), er is geen bezorglog om iets in terug te zoeken, en hij weigert
+ * server-side POSTs tenzij je een `Referer` meestuurt die wij zelf verzinnen.
+ *
+ * Staat `MO_RESEND_API_KEY` ingesteld, dan gaat de mail via Resend en blijft
+ * FormSubmit ongebruikt. Staat hij er niet, dan verandert er niets. Zo hoeft er
+ * geen moment te zijn waarop beide routes tegelijk om moeten.
+ *
+ * `MO_MAIL_FROM`, `MO_MAIL_TO` en `MO_RESEND_ENDPOINT` zijn te overschrijven;
+ * die laatste bestaat zodat de smoketest tegen een mock kan draaien in plaats
+ * van tegen de echte provider.
+ */
+const DEFAULT_MAIL_TO = 'zakelijk@joshuabink.nl'
+const DEFAULT_MAIL_FROM = 'MegaOnline <aanvragen@megaonline.io>'
+
+/** Nette Nederlandse koppen voor de velden die het formulier verstuurt. */
+const VELDNAMEN: Record<string, string> = {
+  naam: 'Naam',
+  bedrijf: 'Bedrijf',
+  email: 'E-mailadres',
+  telefoon: 'Telefoonnummer',
+  tel: 'Telefoonnummer',
+  url: 'Website',
+  branche: 'Branche',
+  doel: 'Doel',
+  bericht: 'Bericht',
+  toel: 'Toelichting',
+  onderwerp: 'Onderwerp',
+  reden: 'Reden',
+  kanaal: 'Kanaal',
+  pagina: 'Pagina',
+}
+
+function escapeHtml(s: string): string {
+  return s
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+}
+
+async function mailViaResend(
+  apiKey: string,
+  params: URLSearchParams,
+  env: Record<string, string | undefined> | undefined,
+): Promise<boolean> {
+  // `_subject` en `_pagina` zijn techniek, geen inhoud: die horen niet als rij
+  // in de tabel maar in het onderwerp en onderaan als herkomst.
+  const rijen = [...params].filter(([k]) => !k.startsWith('_'))
+  const onderwerp = params.get('_subject') ?? 'Nieuwe aanvraag via MegaOnline.io'
+  const herkomst = params.get('_pagina') ?? ''
+
+  const label = (k: string) => VELDNAMEN[k] ?? k
+  const tekst =
+    rijen.map(([k, v]) => `${label(k)}: ${v}`).join('\n') +
+    (herkomst ? `\n\nAangevraagd via: ${herkomst}` : '')
+
+  const html =
+    '<table cellpadding="8" cellspacing="0" border="0" style="border-collapse:collapse;font:15px/1.5 -apple-system,system-ui,sans-serif">' +
+    rijen
+      .map(
+        ([k, v]) =>
+          `<tr><td style="border-bottom:1px solid #e6e6e6;color:#666;vertical-align:top">${escapeHtml(label(k))}</td>` +
+          `<td style="border-bottom:1px solid #e6e6e6"><strong>${escapeHtml(v)}</strong></td></tr>`,
+      )
+      .join('') +
+    '</table>' +
+    (herkomst
+      ? `<p style="margin-top:18px;color:#888;font:13px -apple-system,system-ui,sans-serif">Aangevraagd via: ${escapeHtml(herkomst)}</p>`
+      : '')
+
+  const afzenderMail = params.get('email')
+
+  try {
+    const res = await fetch(env?.MO_RESEND_ENDPOINT ?? 'https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        from: env?.MO_MAIL_FROM ?? DEFAULT_MAIL_FROM,
+        to: env?.MO_MAIL_TO ?? DEFAULT_MAIL_TO,
+        subject: onderwerp,
+        text: tekst,
+        html,
+        // Antwoorden gaat rechtstreeks naar de aanvrager.
+        ...(afzenderMail ? { reply_to: afzenderMail } : {}),
+      }),
+      signal: AbortSignal.timeout(10_000),
+    })
+
+    if (!res.ok) {
+      // Resend geeft een leesbare JSON-fout terug; die willen we in de log zien
+      // in plaats van een kale statuscode.
+      console.error(`[lead] Resend gaf status ${res.status}:`, await res.text())
+      return false
+    }
+    return true
+  } catch (err) {
+    console.error('[lead] Resend verzenden mislukt:', err)
+    return false
+  }
+}
+
 const MAX_FIELD_LENGTH = 5000
 
 
@@ -160,12 +269,18 @@ export const submitLead = createServerFn({ method: 'POST' })
       }
     }
 
+    // Resend zodra de sleutel er is; anders blijft FormSubmit de mailroute.
+    const resendKey = env?.MO_RESEND_API_KEY
+    const mailTaak = resendKey
+      ? mailViaResend(resendKey, params, env)
+      : post(mailEndpoint, mailParams.toString(), 'e-mail (FormSubmit)', {
+          headers: { Referer: MAIL_REFERER },
+          verify: formSubmitWeigering,
+        })
+
     const [sheetOk, mailOk] = await Promise.all([
       post(endpoint, params.toString(), 'Apps Script'),
-      post(mailEndpoint, mailParams.toString(), 'e-mail', {
-        headers: { Referer: MAIL_REFERER },
-        verify: formSubmitWeigering,
-      }),
+      mailTaak,
     ])
 
     if (!sheetOk && !mailOk) {
