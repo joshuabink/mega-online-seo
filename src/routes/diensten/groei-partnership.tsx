@@ -72,23 +72,7 @@ function GroeiPartnership() {
             {' '}
             <Reveal as="div" className="hvis reveal" data-d="2">
               <div className="hvis__frame">
-                <Media id="gp-hero" fit="cover" placeholder="[ MAANDELIJKSE ANALYSE ]" alt="Voorbeeld van een maandelijkse analyse" />
-              </div>
-              {' '}
-              <div className="hvis__card hvis__toast">
-                <span className="tk">↗</span>
-                {' '}
-                <span>
-                  <span className="tt">Verbeterpunt doorgevoerd</span>
-                  {' '}
-                  <span className="ts">Op basis van data</span>
-                </span>
-              </div>
-              {' '}
-              <div className="hvis__card hvis__stat">
-                <span className="n">+3</span>
-                {' '}
-                <span className="l">verbeteringen / maand</span>
+                <Media id="gp-hero-foto" fit="cover" alt="Overleg over de cijfers van een website" />
               </div>
             </Reveal>
           </div>
@@ -432,10 +416,6 @@ function GroeiPartnership() {
             <Icon name="refresh-cw" />
             {' '}
             En dan begint de cyclus opnieuw
-          </Reveal>
-          {' '}
-          <Reveal as="figure" className="procband reveal">
-            <Media id="gp-samenwerking" fit="cover" alt="Overleg over de cijfers van een website" />
           </Reveal>
         </div>
       </section>
