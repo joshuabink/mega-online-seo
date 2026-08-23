@@ -73,22 +73,6 @@ function WerkenBijWebsites() {
               <div className="hvis__frame">
                 <Media id="wb-hero" fit="cover" placeholder="[ TEAMFOTO OP DE WERKVLOER ]" alt="Team aan het werk op de werkvloer" />
               </div>
-              {' '}
-              <div className="hvis__card hvis__toast">
-                <span className="tk">✓</span>
-                {' '}
-                <span>
-                  <span className="tt">Nieuwe sollicitatie binnen</span>
-                  {' '}
-                  <span className="ts">Via de werken-bij pagina</span>
-                </span>
-              </div>
-              {' '}
-              <div className="hvis__card hvis__stat">
-                <span className="n">8 sec</span>
-                {' '}
-                <span className="l">om te overtuigen</span>
-              </div>
             </Reveal>
           </div>
         </div>
