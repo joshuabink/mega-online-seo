@@ -134,6 +134,18 @@ const ORGANIZATION = {
     worksFor: { "@id": ORG_ID },
     sameAs: ["https://nl.linkedin.com/in/joshuabink"],
   },
+  // KerkOnline is ons merk voor kerken en draait op dezelfde rechtspersoon.
+  // Het @id verwijst naar de organisatie-node op kerkonline.io zelf, zodat de
+  // twee schema's één graaf vormen in plaats van twee losse bedrijven. Aan de
+  // andere kant staat een parentOrganization die hierheen terugwijst.
+  subOrganization: {
+    "@type": "Organization",
+    "@id": "https://kerkonline.io/#organisatie",
+    name: "KerkOnline",
+    url: "https://kerkonline.io/",
+    description:
+      "Websites voor kerken: kerkwebsites, modules, fotografie en onderhoud.",
+  },
   knowsAbout: [
     "Webdesign",
     "Conversieoptimalisatie",
