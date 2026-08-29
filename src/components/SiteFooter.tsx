@@ -18,6 +18,10 @@ const BRANCHES = [
   ['/branches/non-profits', 'Non-profits'],
 ] as const
 
+const SOFTWARE = [
+  ['/megasmart', 'MegaSmart'],
+] as const
+
 const BEDRIJF = [
   ['/over-megaonline', 'Over MegaOnline'],
   ['/gratis-websitescan', 'Gratis websitescan'],
@@ -60,7 +64,13 @@ export function SiteFooter() {
           </div>
 
           <div className="footer__col">
-            <span className="footer__head">Bedrijf</span>
+            <span className="footer__head">Software</span>
+            {SOFTWARE.map(([to, label]) => (
+              <Link to={to} key={to}>
+                {label}
+              </Link>
+            ))}
+            <span className="footer__head" style={{ marginTop: '18px' }}>Bedrijf</span>
             {BEDRIJF.map(([to, label]) => (
               <Link to={to} key={to}>
                 {label}

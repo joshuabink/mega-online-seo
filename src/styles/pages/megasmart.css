@@ -1,0 +1,63 @@
+/* Pagina-specifieke stijlen voor /megasmart.
+   Alleen het prijzenblok: de rest van de pagina draait op de bestaande
+   blokken uit styles.css en conversie.css. De prijskaart bestaat al op
+   /diensten/starter-website, maar staat daar gescoped onder een eigen
+   data-page en is een kaart breed. Hier zijn het er drie naast elkaar,
+   dus de definitie staat opnieuw, met dezelfde tokens. */
+
+[data-page="megasmart"] .price-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: clamp(16px, 1.8vw, 24px);
+  margin-top: clamp(38px, 4vw, 52px);
+  align-items: start;
+}
+[data-page="megasmart"] .price-card {
+  position: relative;
+  border: 1px solid var(--line); border-radius: 18px;
+  background: var(--card); padding: clamp(26px, 2.6vw, 38px);
+  display: flex; flex-direction: column; height: 100%;
+  transition: border-color .3s, transform .3s;
+}
+[data-page="megasmart"] .price-card:hover { transform: translateY(-3px); border-color: var(--line-strong); }
+[data-page="megasmart"] .price-card--feat {
+  border-color: color-mix(in oklab, var(--accent-text) 42%, var(--line));
+  background: var(--card-2);
+}
+[data-page="megasmart"] .price-card__flag {
+  position: absolute; top: 0; left: clamp(26px, 2.6vw, 38px); transform: translateY(-50%);
+  font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase;
+  background: var(--accent-strong); color: var(--accent-ink); padding: 0.5em 0.9em;
+}
+[data-page="megasmart"] .price-card__tag {
+  font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--accent-text);
+}
+[data-page="megasmart"] .price-card__amount { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 10px; margin-top: 14px; }
+[data-page="megasmart"] .price-card__from { font-family: var(--mono); font-size: 0.74rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--faint); }
+[data-page="megasmart"] .price-card__num { font-family: var(--display); font-weight: 700; font-size: clamp(2.2rem, 3.6vw, 3rem); letter-spacing: -0.03em; line-height: 1; }
+[data-page="megasmart"] .price-card__per { font-family: var(--sans); font-size: 0.92rem; color: var(--faint); }
+[data-page="megasmart"] .price-card__note { color: var(--muted); font-size: 0.94rem; line-height: 1.55; margin-top: 14px; }
+[data-page="megasmart"] .price-card__list {
+  list-style: none; padding: 22px 0 0; margin: 22px 0 0;
+  display: grid; gap: 12px; border-top: 1px solid var(--line);
+}
+[data-page="megasmart"] .price-card__list li {
+  display: grid; grid-template-columns: auto 1fr; gap: 11px; align-items: start;
+  color: var(--fg); font-size: 0.95rem; line-height: 1.45;
+}
+[data-page="megasmart"] .price-card__list li .ic {
+  width: 20px; height: 20px; flex: none; display: grid; place-items: center;
+  font-size: 0.72rem; font-weight: 700; margin-top: 1px;
+  background: var(--accent-strong); color: var(--accent-ink);
+}
+[data-page="megasmart"] .price-card .btn { margin-top: auto; width: 100%; justify-content: center; }
+[data-page="megasmart"] .price-card__list + .btn { margin-top: 26px; }
+[data-page="megasmart"] .price-fine {
+  margin-top: clamp(24px, 2.6vw, 34px); max-width: 74ch;
+  font-size: 0.92rem; line-height: 1.6; color: var(--muted);
+}
+
+@media (max-width: 1024px) {
+  [data-page="megasmart"] .price-grid { grid-template-columns: 1fr; gap: 32px; max-width: 560px; }
+  [data-page="megasmart"] .price-card--feat { order: -1; }
+}
