@@ -220,8 +220,14 @@ export const submitLead = createServerFn({ method: 'POST' })
     // Minimale inhoudscheck: zonder contactgegevens is het geen lead.
     const phone = params.get('telefoon') ?? params.get('tel')
     if (!params.get('email') && !phone) {
+      log(`afgekeurd: geen e-mail of telefoon (pagina: ${params.get('_pagina') ?? 'onbekend'})`)
       return { ok: false, error: 'Vul een e-mailadres of telefoonnummer in.' }
     }
+
+    log(
+      `inzending ontvangen van ${params.get('email') ?? phone} ` +
+        `(pagina: ${params.get('_pagina') ?? 'onbekend'}, velden: ${[...params.keys()].join(', ')})`,
+    )
 
     // Via globalThis, zodat dit bestand geen @types/node nodig heeft — de
     // Lovable-repo heeft die niet in zijn tsconfig staan.
