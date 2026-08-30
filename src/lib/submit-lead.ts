@@ -266,19 +266,19 @@ export const submitLead = createServerFn({ method: 'POST' })
         // Apps Script antwoordt met een redirect naar script.googleusercontent.com;
         // fetch volgt die en geeft 200. Alles in de 2xx/3xx-range is goed.
         if (!res.ok && res.status >= 400) {
-          console.error(`[lead] ${label} gaf status`, res.status)
+          logError(`${label} gaf status ${res.status}`)
           return false
         }
         if (opts.verify) {
           const reden = opts.verify(await res.text())
           if (reden) {
-            console.error(`[lead] ${label} geweigerd (status ${res.status}): ${reden}`)
+            logError(`${label} geweigerd (status ${res.status}): ${reden}`)
             return false
           }
         }
         return true
       } catch (err) {
-        console.error(`[lead] ${label} verzenden mislukt:`, err)
+        logError(`${label} verzenden mislukt:`, err)
         return false
       }
     }
