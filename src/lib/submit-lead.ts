@@ -297,6 +297,18 @@ export const submitLead = createServerFn({ method: 'POST' })
       mailTaak,
     ])
 
+    // Eén regel per inzending met de uitkomst van beide routes, zodat je in de
+    // logs direct ziet of de mail naar zakelijk@joshuabink.nl is verstuurd.
+    const mailRoute = resendKey ? 'Resend' : 'FormSubmit'
+    if (sheetOk && mailOk) {
+      log(`doorgestuurd: Sheet ✓, mail (${mailRoute}) ✓`)
+    } else {
+      logError(
+        `doorsturen DEELS of NIET gelukt: Sheet ${sheetOk ? '✓' : '✗'}, ` +
+          `mail (${mailRoute}) ${mailOk ? '✓' : '✗'}`,
+      )
+    }
+
     if (!sheetOk && !mailOk) {
       return {
         ok: false,
