@@ -192,10 +192,18 @@ export const submitLead = createServerFn({ method: 'POST' })
     return data
   })
   .handler(async ({ data }): Promise<LeadResponse> => {
+    // Korte id per inzending zodat alle logregels van één lead te volgen zijn
+    // in de server-logs (Cloud → Logs / dev-server-log).
+    const leadId = Math.random().toString(36).slice(2, 8)
+    const log = (msg: string) => console.info(`[lead ${leadId}] ${msg}`)
+    const logError = (msg: string, err?: unknown) =>
+      console.error(`[lead ${leadId}] ${msg}`, err ?? '')
+
     const incoming = new URLSearchParams(data)
 
     // Honeypot: bots vullen dit verborgen veld wel in, mensen niet.
     if ((incoming.get('website_hp') ?? '').trim()) {
+      log('honeypot geraakt — inzending genegeerd (bot)')
       // Doe alsof het gelukt is, maar stuur niets door.
       return { ok: true }
     }
@@ -212,8 +220,14 @@ export const submitLead = createServerFn({ method: 'POST' })
     // Minimale inhoudscheck: zonder contactgegevens is het geen lead.
     const phone = params.get('telefoon') ?? params.get('tel')
     if (!params.get('email') && !phone) {
+      log(`afgekeurd: geen e-mail of telefoon (pagina: ${params.get('_pagina') ?? 'onbekend'})`)
       return { ok: false, error: 'Vul een e-mailadres of telefoonnummer in.' }
     }
+
+    log(
+      `inzending ontvangen van ${params.get('email') ?? phone} ` +
+        `(pagina: ${params.get('_pagina') ?? 'onbekend'}, velden: ${[...params.keys()].join(', ')})`,
+    )
 
     // Via globalThis, zodat dit bestand geen @types/node nodig heeft — de
     // Lovable-repo heeft die niet in zijn tsconfig staan.
@@ -252,19 +266,19 @@ export const submitLead = createServerFn({ method: 'POST' })
         // Apps Script antwoordt met een redirect naar script.googleusercontent.com;
         // fetch volgt die en geeft 200. Alles in de 2xx/3xx-range is goed.
         if (!res.ok && res.status >= 400) {
-          console.error(`[lead] ${label} gaf status`, res.status)
+          logError(`${label} gaf status ${res.status}`)
           return false
         }
         if (opts.verify) {
           const reden = opts.verify(await res.text())
           if (reden) {
-            console.error(`[lead] ${label} geweigerd (status ${res.status}): ${reden}`)
+            logError(`${label} geweigerd (status ${res.status}): ${reden}`)
             return false
           }
         }
         return true
       } catch (err) {
-        console.error(`[lead] ${label} verzenden mislukt:`, err)
+        logError(`${label} verzenden mislukt:`, err)
         return false
       }
     }
@@ -282,6 +296,18 @@ export const submitLead = createServerFn({ method: 'POST' })
       post(endpoint, params.toString(), 'Apps Script'),
       mailTaak,
     ])
+
+    // Eén regel per inzending met de uitkomst van beide routes, zodat je in de
+    // logs direct ziet of de mail naar zakelijk@joshuabink.nl is verstuurd.
+    const mailRoute = resendKey ? 'Resend' : 'FormSubmit'
+    if (sheetOk && mailOk) {
+      log(`doorgestuurd: Sheet ✓, mail (${mailRoute}) ✓`)
+    } else {
+      logError(
+        `doorsturen DEELS of NIET gelukt: Sheet ${sheetOk ? '✓' : '✗'}, ` +
+          `mail (${mailRoute}) ${mailOk ? '✓' : '✗'}`,
+      )
+    }
 
     if (!sheetOk && !mailOk) {
       return {
