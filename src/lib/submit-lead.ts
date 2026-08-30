@@ -192,10 +192,18 @@ export const submitLead = createServerFn({ method: 'POST' })
     return data
   })
   .handler(async ({ data }): Promise<LeadResponse> => {
+    // Korte id per inzending zodat alle logregels van één lead te volgen zijn
+    // in de server-logs (Cloud → Logs / dev-server-log).
+    const leadId = Math.random().toString(36).slice(2, 8)
+    const log = (msg: string) => console.info(`[lead ${leadId}] ${msg}`)
+    const logError = (msg: string, err?: unknown) =>
+      console.error(`[lead ${leadId}] ${msg}`, err ?? '')
+
     const incoming = new URLSearchParams(data)
 
     // Honeypot: bots vullen dit verborgen veld wel in, mensen niet.
     if ((incoming.get('website_hp') ?? '').trim()) {
+      log('honeypot geraakt — inzending genegeerd (bot)')
       // Doe alsof het gelukt is, maar stuur niets door.
       return { ok: true }
     }
