@@ -175,3 +175,47 @@ h1, h2, h3 { line-height: 1.06; letter-spacing: -0.018em; }
 .overcta__trust span::before,
 .ftrust span::before { content: none; }
 .endcta__trust, .overcta__trust, .ftrust { gap: 8px 30px; }
+
+
+/* ============================================================
+   Brug naar MegaSmart (component MegaSmartBridge)
+   ============================================================ */
+.msbridge { padding-block: clamp(28px, 5vw, 56px); }
+.msbridge__card {
+  display: grid; grid-template-columns: 1fr auto; align-items: center;
+  gap: clamp(18px, 3vw, 40px);
+  padding: clamp(20px, 3vw, 34px);
+  border-radius: 18px;
+  border: 1px solid color-mix(in oklab, var(--accent) 26%, transparent);
+  background:
+    linear-gradient(180deg, color-mix(in oklab, var(--accent) 8%, transparent), transparent 70%),
+    rgba(255, 255, 255, 0.03);
+}
+.msbridge__copy { min-width: 0; }
+.msbridge__eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--accent);
+}
+.msbridge__title {
+  margin: 10px 0 6px; font-size: clamp(1.15rem, 2.2vw, 1.5rem);
+  letter-spacing: -0.015em; line-height: 1.2;
+}
+.msbridge__text { margin: 0; max-width: 62ch; opacity: 0.85; }
+.msbridge__list {
+  display: flex; flex-wrap: wrap; gap: 10px 20px;
+  margin: 14px 0 0; padding: 0; list-style: none;
+}
+.msbridge__list li {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-size: 0.88rem; opacity: 0.9;
+}
+.msbridge__list svg { width: 15px; height: 15px; color: var(--accent); flex: 0 0 auto; }
+.msbridge__actions {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 10px;
+}
+
+@media (max-width: 860px) {
+  .msbridge__card { grid-template-columns: 1fr; }
+  .msbridge__actions { flex-direction: row; align-items: center; flex-wrap: wrap; }
+}
