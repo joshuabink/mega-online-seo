@@ -188,7 +188,7 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
               }}
             >
               <div className="mcol">
-                <span className="mcol__head">Diensten</span>
+                <span className="mcol__head">Website’s</span>
                 <Link className="mlink mlink--star" to="/diensten/conversie-website">
                   <span className="mlink__ico">
                     <Icon name="target" />
@@ -252,7 +252,7 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
               </div>
 
               <div className="mcol">
-                <span className="mcol__head">Oplossingen</span>
+                <span className="mcol__head">Voor wie</span>
                 {[
                   ['/branches/activiteitenbedrijven', 'ticket', 'Activiteitenbedrijven'],
                   ['/branches/verhuurbedrijven', 'package', 'Verhuurbedrijven'],
