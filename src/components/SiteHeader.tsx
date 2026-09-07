@@ -308,21 +308,37 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
                 </div>
               </div>
 
-              <aside className="mfeat">
-                <span className="mfeat__eyebrow">
-                  <span className="gdot" />
-                  Onze kerndienst
-                </span>
-                <h4 className="mfeat__title">Conversie Website</h4>
-                <p className="mfeat__desc">
-                  Voor bedrijven die meer aanvragen, reserveringen en boekingen uit hun
-                  website willen halen.
-                </p>
-                <Link className="mfeat__cta" to="/diensten/conversie-website">
-                  Bekijk de dienst                </Link>
-                <Link className="mfeat__link" to="/gratis-websitescan">
-                  Vraag je gratis scan aan                </Link>
-              </aside>
+              <div className="mrail">
+                <aside className="mfeat mfeat--compact">
+                  <span className="mfeat__eyebrow">
+                    <span className="gdot" />
+                    Onze kerndienst
+                  </span>
+                  <h4 className="mfeat__title">Conversie Website</h4>
+                  <p className="mfeat__desc">
+                    Voor bedrijven die meer aanvragen, reserveringen en boekingen uit hun
+                    website willen halen.
+                  </p>
+                  <Link className="mfeat__cta" to="/diensten/conversie-website">
+                    Bekijk de dienst                  </Link>
+                  <Link className="mfeat__link" to="/gratis-websitescan">
+                    Vraag je gratis scan aan                  </Link>
+                </aside>
+
+                <aside className="mfeat mfeat--soft mfeat--compact">
+                  <span className="mfeat__eyebrow">
+                    <span className="gdot" />
+                    Nieuw - onze software
+                  </span>
+                  <h4 className="mfeat__title">MegaSmart</h4>
+                  <p className="mfeat__desc">
+                    Het CRM- en boekingsplatform voor activiteitenbedrijven: agenda,
+                    online boeken, klantcontact en opvolging in een omgeving.
+                  </p>
+                  <Link className="mfeat__cta" to="/megasmart">
+                    Bekijk MegaSmart                  </Link>
+                </aside>
+              </div>
 
               <div className="mega__foot">
                 <span>
@@ -707,6 +723,12 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
                 <Icon name="plug" />
               </span>
               Integraties
+            </Link>
+            <Link className="macc__link" to="/megasmart" onClick={onClose}>
+              <span className="mlink__ico">
+                <Icon name="calendar-check" />
+              </span>
+              MegaSmart<span className="macc__tag">Software</span>
             </Link>
           </MobileAccordion>
 
