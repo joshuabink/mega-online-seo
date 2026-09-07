@@ -146,6 +146,17 @@
 .mfeat__link .arr { transition: transform .3s; }
 .mfeat__link:hover .arr { transform: translateX(4px); }
 
+/* ---------- Rail: meerdere featured kaarten onder elkaar ---------- */
+.mrail { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.mrail > .mfeat { flex: 0 0 auto; }
+
+/* compacte variant van de featured kaart (past 2 kaarten in dezelfde rail) */
+.mfeat--compact { padding: 16px; gap: 8px; border-radius: 12px; }
+.mfeat--compact .mfeat__title { font-size: 1.02rem; }
+.mfeat--compact .mfeat__desc { font-size: 0.8rem; line-height: 1.45; }
+.mfeat--compact .mfeat__cta { margin-top: 4px; font-size: 0.84rem; padding: 0.6em 0.95em; }
+.mfeat--compact .mfeat__link { font-size: 0.8rem; }
+
 /* stacked groups within one column + supporting "via partners" treatment */
 .mstack { display: flex; flex-direction: column; gap: clamp(16px, 1.6vw, 24px); min-width: 0; }
 .mpartner { margin-top: 2px; padding-top: 12px; border-top: 1px dashed rgba(255,255,255,.10); }
@@ -288,7 +299,8 @@
 /* ---------- Responsive switches ---------- */
 @media (max-width: 1080px) {
   .mega__panel[data-cols="diensten"] { grid-template-columns: repeat(2, 1fr); }
-  .mega__panel[data-cols="diensten"] .mfeat { grid-column: 1 / -1; }
+  .mega__panel[data-cols="diensten"] .mrail { grid-column: 1 / -1; flex-direction: row; }
+  .mega__panel[data-cols="diensten"] .mrail > .mfeat { flex: 1 1 0; }
   .mega__panel[data-cols="kennis"]   { grid-template-columns: 1fr 1fr; }
   .mega__panel[data-cols="kennis"] .mfeat { grid-column: 1 / -1; }
   .mega__panel[data-cols="two"]      { grid-template-columns: 1fr 1fr; }
