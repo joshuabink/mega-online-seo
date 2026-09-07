@@ -3,6 +3,7 @@ import { Link } from '@tanstack/react-router'
 import { Icon } from '@/components/Icon'
 import { Qa } from '@/components/Qa'
 import { Reveal } from '@/components/Reveal'
+import { MegaSmartBridge } from '@/components/MegaSmartBridge'
 
 export const Route = createFileRoute('/branches/verhuurbedrijven')({
   head: () => ({
@@ -307,6 +308,15 @@ function Verhuurbedrijven() {
           </div>
         </div>
       </section>
+      {' '}
+      <MegaSmartBridge
+        text="Bij verhuur zit het werk in de opvolging: beschikbaarheid, offertes, contracten en terugkerende klanten. MegaSmart bundelt online boeken, klantcontact en opvolging in een omgeving, gekoppeld aan je website."
+        bullets={[
+                'Online boeken en beschikbaarheid',
+                'Offertes en contracten opvolgen',
+                'Terugkerende huurders automatisch benaderen',
+        ]}
+      />
       {' '}
       <section className="section" id="faq" data-theme="dark" data-screen-label="FAQ">
         <div className="wrap">
