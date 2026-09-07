@@ -225,10 +225,10 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
                     <Icon name="sprout" />
                   </span>
                   <span className="mlink__txt">
-                    <span className="mlink__name">
-                      Starter Website <span className="mtag">Vanaf €1.500</span>
+                    <span className="mlink__name">Starter Website</span>
+                    <span className="mlink__sub">
+                      Voordelige optie voor starters, vanaf €1.500
                     </span>
-                    <span className="mlink__sub">Voordelige optie voor starters</span>
                   </span>
                 </Link>
                 <Link className="mlink" to="/diensten/werken-bij-websites">
@@ -251,7 +251,7 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
                 </Link>
               </div>
 
-              <div className="mcol">
+              <div className="mcol mcol--plain">
                 <span className="mcol__head">Voor wie</span>
                 {[
                   ['/branches/activiteitenbedrijven', 'ticket', 'Activiteitenbedrijven'],
@@ -271,41 +271,30 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
                 ))}
               </div>
 
-              <div className="mstack">
-                <div className="mcol">
-                  <span className="mcol__head">SEO</span>
-                  {[
-                    ['search', 'SEO Optimalisatie'],
-                    ['map-pin', 'Lokale SEO'],
-                    ['layout-template', 'Landingpagina Optimalisatie'],
-                  ].map(([icon, label]) => (
-                    <Link className="mlink" to="/diensten/seo" key={label}>
-                      <span className="mlink__ico">
-                        <Icon name={icon} />
-                      </span>
-                      <span className="mlink__txt">
-                        <span className="mlink__name">{label}</span>
-                      </span>
-                    </Link>
-                  ))}
-                </div>
-                <div className="mcol">
-                  <span className="mcol__head">Integraties</span>
-                  {[
-                    ['users', 'CRM Koppelingen'],
-                    ['calendar-clock', 'Boekingssystemen'],
-                    ['message-circle', 'WhatsApp Integraties'],
-                  ].map(([icon, label]) => (
-                    <Link className="mlink" to="/diensten/integraties" key={label}>
-                      <span className="mlink__ico">
-                        <Icon name={icon} />
-                      </span>
-                      <span className="mlink__txt">
-                        <span className="mlink__name">{label}</span>
-                      </span>
-                    </Link>
-                  ))}
-                </div>
+              <div className="mcol mcol--plain">
+                <span className="mcol__head">SEO &amp; Integraties</span>
+                <Link className="mlink" to="/diensten/seo">
+                  <span className="mlink__ico">
+                    <Icon name="search" />
+                  </span>
+                  <span className="mlink__txt">
+                    <span className="mlink__name">SEO</span>
+                    <span className="mlink__sub">
+                      Optimalisatie, lokale SEO en landingspagina’s
+                    </span>
+                  </span>
+                </Link>
+                <Link className="mlink" to="/diensten/integraties">
+                  <span className="mlink__ico">
+                    <Icon name="plug" />
+                  </span>
+                  <span className="mlink__txt">
+                    <span className="mlink__name">Integraties</span>
+                    <span className="mlink__sub">
+                      CRM, boekingssystemen en WhatsApp
+                    </span>
+                  </span>
+                </Link>
               </div>
 
               <div className="mrail">
@@ -335,7 +324,7 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
                     Het CRM- en boekingsplatform voor activiteitenbedrijven: agenda,
                     online boeken, klantcontact en opvolging in een omgeving.
                   </p>
-                  <Link className="mfeat__cta" to="/megasmart">
+                  <Link className="mfeat__link" to="/megasmart">
                     Bekijk MegaSmart                  </Link>
                 </aside>
               </div>
