@@ -69,12 +69,18 @@
 /* ---------- Category column ---------- */
 .mcol { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
 .mcol__head {
-  font-family: var(--sans); font-size: 0.64rem; font-weight: 600;
-  letter-spacing: 0.13em; text-transform: uppercase;
-  color: oklch(0.63 0.013 145); /* AA op de menu-sheet: 4.76:1 */
-  padding: 0 12px 8px; margin-bottom: 4px;
-  border-bottom: 1px solid rgba(255,255,255,.07);
+  font-family: var(--sans); font-size: 0.8rem; font-weight: 700;
+  letter-spacing: 0.09em; text-transform: uppercase;
+  color: oklch(0.94 0.012 130);
+  display: flex; align-items: center; gap: 9px;
+  padding: 0 12px 9px; margin-bottom: 6px;
+  border-bottom: 1px solid rgba(255,255,255,.13);
 }
+.mcol__head::before {
+  content: ""; flex: 0 0 auto; width: 3px; height: 0.9em;
+  border-radius: 2px; background: var(--accent-strong);
+}
+.mpartner .mcol__head::before { display: none; }
 
 /* ---------- Link rows ---------- */
 .mlink {
