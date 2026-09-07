@@ -209,17 +209,6 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
                     <span className="mlink__sub">Voor een verouderde website</span>
                   </span>
                 </Link>
-                <Link className="mlink" to="/diensten/website-optimalisatie">
-                  <span className="mlink__ico">
-                    <Icon name="gauge" />
-                  </span>
-                  <span className="mlink__txt">
-                    <span className="mlink__name">Website Optimalisatie</span>
-                    <span className="mlink__sub">
-                      Bestaande site beter laten presteren
-                    </span>
-                  </span>
-                </Link>
                 <Link className="mlink" to="/diensten/starter-website">
                   <span className="mlink__ico">
                     <Icon name="sprout" />
@@ -238,15 +227,6 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
                   <span className="mlink__txt">
                     <span className="mlink__name">Werken-bij Website</span>
                     <span className="mlink__sub">Meer en betere sollicitaties</span>
-                  </span>
-                </Link>
-                <Link className="mlink" to="/diensten/groei-partnership">
-                  <span className="mlink__ico">
-                    <Icon name="trending-up" />
-                  </span>
-                  <span className="mlink__txt">
-                    <span className="mlink__name">Groei Partnership</span>
-                    <span className="mlink__sub">Doorlopend, na livegang</span>
                   </span>
                 </Link>
               </div>
@@ -272,7 +252,18 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
               </div>
 
               <div className="mcol mcol--plain">
-                <span className="mcol__head">SEO &amp; Integraties</span>
+                <span className="mcol__head">Na de livegang</span>
+                <Link className="mlink" to="/diensten/website-optimalisatie">
+                  <span className="mlink__ico">
+                    <Icon name="gauge" />
+                  </span>
+                  <span className="mlink__txt">
+                    <span className="mlink__name">Website Optimalisatie</span>
+                    <span className="mlink__sub">
+                      Bestaande site beter laten presteren
+                    </span>
+                  </span>
+                </Link>
                 <Link className="mlink" to="/diensten/seo">
                   <span className="mlink__ico">
                     <Icon name="search" />
@@ -293,6 +284,15 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
                     <span className="mlink__sub">
                       CRM, boekingssystemen en WhatsApp
                     </span>
+                  </span>
+                </Link>
+                <Link className="mlink" to="/diensten/groei-partnership">
+                  <span className="mlink__ico">
+                    <Icon name="trending-up" />
+                  </span>
+                  <span className="mlink__txt">
+                    <span className="mlink__name">Groei Partnership</span>
+                    <span className="mlink__sub">Doorlopend, na livegang</span>
                   </span>
                 </Link>
               </div>
