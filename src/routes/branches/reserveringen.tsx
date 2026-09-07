@@ -3,6 +3,7 @@ import { Link } from '@tanstack/react-router'
 import { Icon } from '@/components/Icon'
 import { Qa } from '@/components/Qa'
 import { Reveal } from '@/components/Reveal'
+import { MegaSmartBridge } from '@/components/MegaSmartBridge'
 
 export const Route = createFileRoute('/branches/reserveringen')({
   head: () => ({
@@ -305,6 +306,15 @@ function Reserveringen() {
           </div>
         </div>
       </section>
+      {' '}
+      <MegaSmartBridge
+        text="Een reservering binnenhalen is stap een. MegaSmart regelt de rest: online reserveren, bevestigingen, herinneringen tegen no-shows en opvolging na het bezoek, gekoppeld aan je website."
+        bullets={[
+                'Online reserveren vanaf elke pagina',
+                'Herinneringen die no-shows beperken',
+                'Reserveringen en klantcontact in een systeem',
+        ]}
+      />
       {' '}
       <section className="section" id="faq" data-theme="dark" data-screen-label="FAQ">
         <div className="wrap">
