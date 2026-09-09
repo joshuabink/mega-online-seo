@@ -24,6 +24,7 @@ const SOFTWARE = [
 
 const BEDRIJF = [
   ['/over-megaonline', 'Over MegaOnline'],
+  ['/vacatures', 'Vacatures'],
   ['/gratis-websitescan', 'Gratis websitescan'],
   ['/contact', 'Contact'],
 ] as const
