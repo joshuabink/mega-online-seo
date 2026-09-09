@@ -203,6 +203,15 @@ const CRUMB_LABEL: Record<string, string> = {
   "/over-megaonline": "Over MegaOnline",
   "/privacyverklaring": "Privacyverklaring",
   "/veelgestelde-vragen": "Veelgestelde vragen",
+  "/vacatures": "Vacatures",
+  "/vacatures/seo-stage": "SEO Stage",
+  "/vacatures/webdesign-stage": "Webdesign Stage",
+  "/vacatures/webdevelopment-stage": "Webdevelopment Stage",
+  "/vacatures/ai-ontwikkeling-stage": "AI-ontwikkeling Stage",
+  "/vacatures/seo-specialist": "SEO Specialist",
+  "/vacatures/sea-stage": "SEA Stage",
+  "/vacatures/web-consultant": "Web Consultant",
+  "/vacatures/web-app-architect": "Web- en app-architect",
 };
 
 /**
@@ -214,6 +223,7 @@ const CRUMB_PARENT: { prefix: string; name: string; item: string }[] = [
   { prefix: "/diensten/", name: "Diensten", item: `${SITE_URL}/#diensten` },
   { prefix: "/branches/", name: "Branches", item: `${SITE_URL}/#diensten` },
   { prefix: "/veelgestelde-vragen", name: "Kennisbank", item: `${SITE_URL}/#faq` },
+  { prefix: "/vacatures/", name: "Vacatures", item: `${SITE_URL}/vacatures` },
 ];
 
 /**

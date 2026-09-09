@@ -106,6 +106,51 @@
     <priority>0.3</priority>
   </url>
   <url>
+    <loc>https://megaonline.io/vacatures</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://megaonline.io/vacatures/seo-stage</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://megaonline.io/vacatures/webdesign-stage</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://megaonline.io/vacatures/webdevelopment-stage</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://megaonline.io/vacatures/ai-ontwikkeling-stage</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://megaonline.io/vacatures/seo-specialist</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://megaonline.io/vacatures/sea-stage</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://megaonline.io/vacatures/web-consultant</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://megaonline.io/vacatures/web-app-architect</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://megaonline.io/veelgestelde-vragen</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
