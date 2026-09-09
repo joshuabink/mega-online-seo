@@ -1,9 +1,19 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { createFileRoute, Link, notFound, redirect } from "@tanstack/react-router";
 import { Icon } from "@/components/Icon";
 import { Reveal } from "@/components/Reveal";
 import { SollicitatieSectie } from "@/components/SollicitatieForm";
 import { VACATURES, VOORWAARDEN, vacatureBySlug } from "@/lib/vacatures";
 import "@/styles/pages/werken-bij.css";
+
+/**
+ * Slugs die eerder live stonden en inmiddels anders heten. Een 301 vanuit
+ * `legacy-urls.ts` helpt hier niet: die tabel wordt alleen door de splat-route
+ * gelezen en deze route is specifieker, dus die vangt het pad zelf al af.
+ */
+const HERNOEMD: Record<string, string> = {
+  "ai-ontwikkeling-stage": "ai-ontwikkeling",
+  "web-app-architect": "app-web-architect",
+};
 
 /**
  * Eén route voor alle vacatures. De inhoud komt uit `src/lib/vacatures.ts`,
@@ -13,8 +23,11 @@ import "@/styles/pages/werken-bij.css";
  */
 export const Route = createFileRoute("/werken-bij/$slug")({
   loader: ({ params }) => {
-    if (!vacatureBySlug(params.slug)) throw notFound();
-    return null;
+    if (vacatureBySlug(params.slug)) return null;
+    const nieuw = HERNOEMD[params.slug];
+    if (nieuw)
+      throw redirect({ to: "/werken-bij/$slug", params: { slug: nieuw }, statusCode: 301 });
+    throw notFound();
   },
   head: ({ params }) => {
     const v = vacatureBySlug(params.slug);

@@ -427,10 +427,11 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
                 ))}
                 <Link className="mlink" to="/werken-bij">
                   <span className="mlink__ico">
-                    <Icon name="user-plus" />
+                    <Icon name="briefcase" />
                   </span>
                   <span className="mlink__txt">
-                    <span className="mlink__name">Vacatures</span>
+                    <span className="mlink__name">Werken bij</span>
+                    <span className="mlink__sub">Stages, freelance en parttime</span>
                   </span>
                 </Link>
               </div>
@@ -756,7 +757,7 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
             Over MegaOnline <Icon name="arrow-up-right" className="arr-ico" />
           </Link>
           <Link className="mmenu__row" to="/werken-bij" onClick={onClose}>
-            Vacatures <Icon name="arrow-up-right" className="arr-ico" />
+            Werken bij <Icon name="arrow-up-right" className="arr-ico" />
           </Link>
           <Link className="mmenu__row" to="/veelgestelde-vragen" onClick={onClose}>
             Kennisbank <Icon name="arrow-up-right" className="arr-ico" />

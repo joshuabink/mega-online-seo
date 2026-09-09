@@ -20,6 +20,8 @@
  * al gezien en hergebruik voorkomt dat de entiteit opnieuw moet worden geleerd.
  */
 
+import { GELDIG_TOT, GEPLAATST_OP, VOORWAARDEN, vacatureBySlug, type Vacature } from "./vacatures";
+
 export const SITE_URL = "https://megaonline.io";
 
 const ORG_ID = `${SITE_URL}/#organization`;
@@ -203,15 +205,7 @@ const CRUMB_LABEL: Record<string, string> = {
   "/over-megaonline": "Over MegaOnline",
   "/privacyverklaring": "Privacyverklaring",
   "/veelgestelde-vragen": "Veelgestelde vragen",
-  "/werken-bij": "Vacatures",
-  "/werken-bij/seo-stage": "SEO Stage",
-  "/werken-bij/webdesign-stage": "Webdesign Stage",
-  "/werken-bij/webdevelopment-stage": "Webdevelopment Stage",
-  "/werken-bij/ai-ontwikkeling-stage": "AI-ontwikkeling Stage",
-  "/werken-bij/seo-specialist": "SEO Specialist",
-  "/werken-bij/sea-stage": "SEA Stage",
-  "/werken-bij/web-consultant": "Web Consultant",
-  "/werken-bij/web-app-architect": "Web- en app-architect",
+  "/werken-bij": "Werken bij",
 };
 
 /**
@@ -223,7 +217,7 @@ const CRUMB_PARENT: { prefix: string; name: string; item: string }[] = [
   { prefix: "/diensten/", name: "Diensten", item: `${SITE_URL}/#diensten` },
   { prefix: "/branches/", name: "Branches", item: `${SITE_URL}/#diensten` },
   { prefix: "/veelgestelde-vragen", name: "Kennisbank", item: `${SITE_URL}/#faq` },
-  { prefix: "/werken-bij/", name: "Vacatures", item: `${SITE_URL}/werken-bij` },
+  { prefix: "/werken-bij/", name: "Werken bij", item: `${SITE_URL}/werken-bij` },
 ];
 
 /**
@@ -347,11 +341,77 @@ export function buildPageSchema({ pathname, title, description }: PageSchemaInpu
     });
   }
 
+  const vacature = vacatureVoorPad(path);
+  if (vacature) nodes.push(buildJobPosting(vacature, url, pageId));
+
   return { "@context": "https://schema.org", "@graph": nodes };
 }
 
+/** De vacature die bij een pad hoort, of `undefined` op elke andere pagina. */
+function vacatureVoorPad(path: string): Vacature | undefined {
+  if (!path.startsWith("/werken-bij/")) return undefined;
+  return vacatureBySlug(path.slice("/werken-bij/".length));
+}
+
+/**
+ * JobPosting per vacature, zodat de rollen in Google's vacatureresultaten
+ * kunnen verschijnen.
+ *
+ * Twee dingen zijn daar hard nodig en makkelijk te vergeten. `validThrough`
+ * staat in `src/lib/vacatures.ts`: loopt die datum af, dan verdwijnen alle
+ * vacatures stilletjes uit de resultaten. En omdat de rollen ook volledig op
+ * afstand kunnen, staat naast `jobLocation` (Gouda) ook `jobLocationType:
+ * TELECOMMUTE` met `applicantLocationRequirements` op Nederland. Zonder dat
+ * tweede deel keurt Google een remote vacature af als locatiefout.
+ *
+ * De `description` is bewust dezelfde tekst als op de pagina zelf. Markup die
+ * meer belooft dan de zichtbare pagina is een overtreding, geen slimmigheid.
+ */
+function buildJobPosting(v: Vacature, url: string, pageId: string) {
+  const beschrijving = [
+    `<p>${v.intro}</p>`,
+    "<p>Wat je gaat doen:</p><ul>",
+    ...v.doet.map((d) => `<li><b>${d.titel}</b>: ${d.tekst}</li>`),
+    "</ul><p>Wat je meebrengt:</p><ul>",
+    ...v.meebrengt.map((m) => `<li>${m}</li>`),
+    `</ul><p>${v.nietNodigKop}:</p><ul>`,
+    ...v.nietNodig.map((m) => `<li>${m}</li>`),
+    "</ul>",
+  ].join("");
+
+  return {
+    "@type": "JobPosting",
+    "@id": `${url}#jobposting`,
+    title: v.titel,
+    description: beschrijving,
+    datePosted: GEPLAATST_OP,
+    validThrough: `${GELDIG_TOT}T23:59:59+01:00`,
+    employmentType: v.employmentType,
+    hiringOrganization: { "@id": ORG_ID },
+    mainEntityOfPage: { "@id": pageId },
+    directApply: true,
+    url,
+    jobLocation: {
+      "@type": "Place",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "Boelekade 106",
+        postalCode: "2806 AM",
+        addressLocality: VOORWAARDEN.plaats,
+        addressCountry: "NL",
+      },
+    },
+    jobLocationType: "TELECOMMUTE",
+    applicantLocationRequirements: { "@type": "Country", name: "Nederland" },
+    industry: "Webdesign en online marketing",
+    inLanguage: "nl-NL",
+  };
+}
+
 function buildCrumbs(path: string) {
-  const label = CRUMB_LABEL[path];
+  // Vacatures staan op een dynamische route, dus hun label komt uit de
+  // vacaturedata in plaats van uit de vaste tabel hierboven.
+  const label = CRUMB_LABEL[path] ?? vacatureVoorPad(path)?.naam;
   if (!label) return null;
 
   const items: Record<string, unknown>[] = [

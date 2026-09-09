@@ -23,17 +23,20 @@ export const REDIRECTS: Record<string, string> = (() => {
 
   // De vacatures stonden eerder op /vacatures; ze leven nu onder /werken-bij.
   map['/vacatures'] = '/werken-bij'
-  for (const slug of [
-    'seo-stage',
-    'webdesign-stage',
-    'webdevelopment-stage',
-    'ai-ontwikkeling-stage',
-    'seo-specialist',
-    'sea-stage',
-    'web-consultant',
-    'web-app-architect',
-  ]) {
-    map[`/vacatures/${slug}`] = `/werken-bij/${slug}`
+  // Links de oude slug, rechts de huidige: twee rollen zijn onderweg hernoemd.
+  // Wijzig de rechterkant alleen samen met `src/lib/vacatures.ts`.
+  const VACATURE_SLUGS: Record<string, string> = {
+    'seo-stage': 'seo-stage',
+    'webdesign-stage': 'webdesign-stage',
+    'webdevelopment-stage': 'webdevelopment-stage',
+    'ai-ontwikkeling-stage': 'ai-ontwikkeling',
+    'seo-specialist': 'seo-specialist',
+    'sea-stage': 'sea-stage',
+    'web-consultant': 'web-consultant',
+    'web-app-architect': 'app-web-architect',
+  }
+  for (const [oud, nieuw] of Object.entries(VACATURE_SLUGS)) {
+    map[`/vacatures/${oud}`] = `/werken-bij/${nieuw}`
   }
 
   return map
