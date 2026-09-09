@@ -11,9 +11,9 @@ export const Route = createFileRoute('/diensten/groei-partnership')({
   head: () => ({
     meta: [
       { title: "Groei Partnership | MegaOnline.io" },
-      { name: 'description', content: "Online marketing traject met SEO, SEA en strategie. Op uurbasis vanaf 150 euro per maand, mediabudget komt daar bovenop." },
+      { name: 'description', content: "SEO en GEO abonnement: elke maand een nieuwe pagina die je vindbaar maakt in Google en in AI-zoekmachines. 250 euro opstart, daarna 150 euro per maand." },
       { property: 'og:title', content: "Groei Partnership | MegaOnline.io" },
-      { property: 'og:description', content: "Online marketing traject met SEO, SEA en strategie. Op uurbasis vanaf 150 euro per maand, mediabudget komt daar bovenop." },
+      { property: 'og:description', content: "SEO en GEO abonnement: elke maand een nieuwe pagina die je vindbaar maakt in Google en in AI-zoekmachines. 250 euro opstart, daarna 150 euro per maand." },
       { property: 'og:url', content: "https://megaonline.io/diensten/groei-partnership" },
     ],
     links: [
@@ -43,7 +43,7 @@ function GroeiPartnership() {
               <Reveal as="div" className="hero__badge reveal" data-d="1">
                 <span className="badge">
                   <span className="gdot" />
-                  Online marketing · SEO, SEA en strategie
+                  SEO en GEO · elke maand een nieuwe pagina
                 </span>
               </Reveal>
               {' '}
@@ -54,7 +54,7 @@ function GroeiPartnership() {
               </Reveal>
               {' '}
               <Reveal as="p" className="lead svc-hero__sub reveal" data-d="2">
-                Elke maand zoeken we de grootste groeikans voor jouw bedrijf en daar gaan we mee aan de slag. De ene maand zit die in SEO, de andere in een campagne, een landingspagina of de strategie. We werken op uurbasis vanaf 150 euro per maand, mediabudget komt daar bovenop.
+                Elke maand publiceren we een nieuwe pagina die je beter vindbaar maakt, in Google en in AI-zoekmachines zoals ChatGPT en Gemini. Welke pagina's dat worden ligt vooraf vast in je contentplan. 250 euro eenmalig voor het onderzoek en het plan, daarna 150 euro per maand.
               </Reveal>
               {' '}
               <Reveal as="div" className="svc-hero__ctas reveal" data-d="2">
@@ -218,7 +218,7 @@ function GroeiPartnership() {
             </h2>
             {' '}
             <p className="lead">
-              Geen los lijstje diensten, maar één traject: strategie bepaalt waar we op inzetten, SEO en SEA brengen bezoekers binnen en de website zorgt dat er wat uitkomt.
+              Geen los lijstje diensten, maar één traject: het contentplan bepaalt waar we op inzetten, de nieuwe pagina's brengen bezoekers binnen en de website zorgt dat er wat uitkomt.
             </p>
           </Reveal>
           {' '}
@@ -228,7 +228,7 @@ function GroeiPartnership() {
                 <Icon name="compass" />
               </span>
               <h4>Strategie en plan</h4>
-              <p>We bepalen samen waar de groei vandaan moet komen en wat er dan als eerste moet gebeuren.</p>
+              <p>Bij de start doen we zoekwoordenonderzoek en leggen we een contentplan voor twaalf maanden vast.</p>
             </Reveal>
             {' '}
             <Reveal as="div" className="feat reveal" data-d="1">
@@ -243,8 +243,8 @@ function GroeiPartnership() {
               <span className="iconbox">
                 <Icon name="target" />
               </span>
-              <h4>SEA en Google Ads</h4>
-              <p>Betaalde campagnes opzetten en bijsturen, zodat je budget naar de klikken gaat die iets opleveren.</p>
+              <h4>GEO en AI-zoekmachines</h4>
+              <p>Elke pagina krijgt heldere FAQ's, zodat je ook naar voren komt in ChatGPT, Claude en Gemini.</p>
             </Reveal>
             {' '}
             <Reveal as="div" className="feat reveal" data-d="3">
@@ -260,7 +260,7 @@ function GroeiPartnership() {
                 <Icon name="file-text" />
               </span>
               <h4>Content en landingspagina's</h4>
-              <p>Teksten en pagina's die aansluiten op de zoekvraag en op de campagne.</p>
+              <p>Elke maand een nieuwe blog of landingspagina, geschreven en gepubliceerd.</p>
             </Reveal>
             {' '}
             <Reveal as="div" className="feat reveal" data-d="1">
@@ -276,7 +276,7 @@ function GroeiPartnership() {
                 <Icon name="bar-chart-2" />
               </span>
               <h4>Heldere rapportage</h4>
-              <p>Je ziet waar de uren en het mediabudget naartoe zijn gegaan en wat het heeft gedaan.</p>
+              <p>Je ziet welke pagina's er live zijn gegaan en wat ze hebben opgeleverd.</p>
             </Reveal>
             {' '}
             <Reveal as="div" className="feat reveal" data-d="3">
@@ -525,13 +525,13 @@ function GroeiPartnership() {
             <span className="label">Wat het kost</span>
             {' '}
             <h2 className="h2">
-              Vanaf 150 euro per maand,
+              250 euro opstart, daarna
               {' '}
-              <em>op uurbasis.</em>
+              <em>150 euro per maand.</em>
             </h2>
             {' '}
             <p className="lead">
-              Je koopt een vast aantal uur per maand in. Die uren gaan naar de groeikans die we die maand samen kiezen: de ene maand SEO en content, de andere maand campagnes of aanpassingen op de website. Wat we oppakken spreken we vooraf af.
+              Bij de start doen we het zoekwoordenonderzoek, bekijken we je website technisch en stellen we een contentplan op voor twaalf maanden. Daarna publiceren we elke maand een nieuwe pagina uit dat plan.
             </p>
           </Reveal>
           {' '}
@@ -539,31 +539,31 @@ function GroeiPartnership() {
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: "clamp(24px,3vw,40px)", alignItems: "center" }}>
               <div>
                 <p style={{ color: "var(--muted)", lineHeight: "1.6" }}>
-                  Hoeveel uur je nodig hebt hangt af van wat je wilt bereiken. Wil je vooral zichtbaar blijven, dan is een paar uur per maand genoeg. Wil je actief groeien met campagnes en nieuwe pagina's, dan schalen we op. Je zit nergens aan vast en kunt per periode bijstellen.
+                  Elke maand maken we een nieuwe pagina die gericht is op vindbaarheid. Dat kan een blog zijn of een landingspagina. Welk type het wordt staat vooraf in je contentplan, zodat je weet wat eraan komt. Wil je sneller opschalen, dan kost een extra pagina in dezelfde maand 75 euro.
                 </p>
                 {' '}
                 <ul className="considlist" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(160px,1fr))", marginTop: "20px" }}>
-                  <li>Vast aantal uur per maand</li>
+                  <li>Elke maand een nieuwe pagina</li>
                   {' '}
-                  <li>Vooraf afgesproken inzet</li>
+                  <li>Blog of landingspagina</li>
                   {' '}
-                  <li>SEO, SEA en strategie</li>
+                  <li>Vindbaar in Google en AI</li>
                   {' '}
                   <li>Maandelijkse terugkoppeling</li>
                   {' '}
-                  <li>Opschalen of afschalen kan</li>
+                  <li>Extra pagina voor 75 euro</li>
                 </ul>
                 {' '}
                 <p className="brand__tag" style={{ marginTop: "22px", paddingTop: "0" }}>
-                  Mediabudget komt hier bovenop. Dat is het bedrag dat rechtstreeks naar Google of een ander advertentieplatform gaat. Dat betaal je zelf en het staat los van onze uren, zodat je altijd ziet waar je geld naartoe gaat.
+                  Het partnership loopt twaalf maanden en is daarna maandelijks opzegbaar. Die looptijd is er niet om je vast te zetten: vindbaarheid bouwt zich op over maanden, en korter dan een jaar krijgt het plan de kans niet.
                 </p>
               </div>
               {' '}
               <div style={{ border: "1px solid var(--line)", borderRadius: "16px", background: "var(--card-2)", boxShadow: "var(--elev)", padding: "clamp(24px,2.6vw,32px)", textAlign: "center" }}>
-                <span className="form__head-note" style={{ justifyContent: "center" }}>Online marketing traject</span>
+                <span className="form__head-note" style={{ justifyContent: "center" }}>SEO en GEO abonnement</span>
                 {' '}
                 <div className="svcprice" style={{ fontSize: "2.2rem", marginTop: "6px" }}>
-                  vanaf € 150
+                  € 150
                   <small style={{ fontSize: "1rem" }}>
                     {' '}
                     / maand
@@ -571,7 +571,7 @@ function GroeiPartnership() {
                 </div>
                 {' '}
                 <p style={{ color: "var(--faint)", fontSize: "0.86rem", marginTop: "8px", lineHeight: "1.5" }}>
-                  Uren voor SEO, SEA en strategie. Mediabudget komt daar bovenop.
+                  Eenmalig € 250 opstart voor het zoekwoordenonderzoek en het contentplan.
                 </p>
                 {' '}
                 <Link className="tlink" to="/contact" style={{ marginTop: "18px", justifyContent: "center" }}>
@@ -726,11 +726,19 @@ function GroeiPartnership() {
             </Qa>
             {' '}
             <Qa question="Wat krijg ik voor 150 euro per maand?" className="reveal">
-                Een vast aantal uur waarin we aan je online marketing werken. Wat we in die uren doen spreken we vooraf af: de ene maand ligt de nadruk op SEO en content, de andere maand op campagnes of aanpassingen aan de website. Meer uren betekent meer die je kunt oppakken, dus we kijken samen wat past bij wat je wilt bereiken.
+                Elke maand een nieuwe pagina die gericht is op vindbaarheid: een blog of een landingspagina, geschreven, opgebouwd en gepubliceerd. Elke pagina wordt geoptimaliseerd voor Google en voorzien van heldere FAQ's, zodat je ook naar voren komt in AI-zoekmachines. Welk type pagina er wanneer komt, ligt vooraf vast in je contentplan.
             </Qa>
             {' '}
-            <Qa question="Zit het advertentiebudget hierbij in?" className="reveal">
-                Nee. Het mediabudget gaat rechtstreeks naar Google of een ander platform en betaal je zelf. Onze uren en jouw advertentiebudget blijven gescheiden, zodat je precies ziet wat je aan werk betaalt en wat aan advertenties.
+            <Qa question="Kan ik meer dan één pagina per maand krijgen?" className="reveal">
+                Ja. Het abonnement is gebouwd rond één nieuwe pagina per maand. Wil je sneller opschalen, dan kost elke extra pagina in die maand 75 euro. We kijken samen wat past bij wat je wilt bereiken.
+            </Qa>
+            {' '}
+            <Qa question="Moet mijn website door MegaOnline gebouwd zijn?" className="reveal">
+                In de basis wel. Goed gevonden worden begint bij de techniek van je website. Zit die verkeerd in elkaar, dan kun je nog zulke goede pagina's maken, maar dan worden ze niet gevonden. Daarom draait het partnership op een website die wij hebben gebouwd.
+            </Qa>
+            {' '}
+            <Qa question="Ik heb al een website. Kan het dan ook?" className="reveal">
+                Dat kijken we eerst na. We beoordelen je bestaande website technisch en laten je weten wat er nodig is. Is de basis in orde, dan kunnen we gewoon starten. Zo niet, dan brengen we die eerst op orde en daarna loopt het partnership normaal door.
             </Qa>
             {' '}
             <Qa question="Hoe vaak hebben we contact?" className="reveal">
@@ -738,11 +746,11 @@ function GroeiPartnership() {
             </Qa>
             {' '}
             <Qa question="Wat gebeurt er iedere maand?" className="reveal">
-                We kijken naar het bezoekersgedrag, signaleren verbeterpunten en kansen, voeren gerichte aanpassingen door en houden de techniek en SEO op orde. Daarna meten we het effect en sturen we bij. Steeds een stap beter dan de maand ervoor.
+                We publiceren de pagina die voor die maand in het contentplan staat, controleren de website technisch op SEO en GEO en kijken wat de eerder geplaatste pagina's doen. Waar nodig sturen we het plan bij.
             </Qa>
             {' '}
             <Qa question="Kan ik opzeggen?" className="reveal">
-                Ja. Het partnership is een samenwerking, geen gouden kooi. We werken met heldere afspraken en flexibele voorwaarden. We willen dat je blijft omdat het iets oplevert, niet omdat een contract je vasthoudt.
+                Het partnership loopt twaalf maanden en is daarna maandelijks opzegbaar. Die eerste periode is nodig omdat vindbaarheid zich over maanden opbouwt: na twee maanden is er nog weinig te zien, na acht maanden wel.
             </Qa>
             {' '}
             <Qa question="Doen jullie ook technische ondersteuning?" className="reveal">

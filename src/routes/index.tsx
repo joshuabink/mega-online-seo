@@ -62,7 +62,7 @@ const FAQ_ITEMS: { q: string; a: string }[] = [
   },
   {
     q: "Is het Groei Partnership verplicht na een nieuwe website?",
-    a: "Nee. Sommige klanten kiezen voor een eenmalige website en regelen het beheer zelf of via een andere partij. We raden het Partnership wel aan, omdat websites die regelmatig verbeterd worden structureel beter presteren.",
+    a: "Nee. Sommige klanten kiezen voor een eenmalige website en regelen het beheer zelf of via een andere partij. We raden het Partnership wel aan, omdat websites die maand na maand nieuwe pagina's krijgen structureel beter gevonden worden. Het loopt twaalf maanden en is daarna maandelijks opzegbaar.",
   },
   {
     q: "Voor welke bedrijven werkt MegaOnline?",
@@ -716,25 +716,25 @@ function Home() {
               <span className="svcname rm__name">Groei Partnership</span>
               {' '}
               <p>
-                Na livegang begint het echte werk. We meten waar bezoekers afhaken en verbeteren je website maand na maand. Hier zit de meeste waarde voor jouw bedrijf.
+                Na livegang begint het echte werk. Elke maand publiceren we een nieuwe pagina die je beter vindbaar maakt, in Google en in AI-zoekmachines. Hier zit de meeste waarde voor jouw bedrijf.
               </p>
               {' '}
               <div className="svc__when">Ideaal wanneer</div>
               {' '}
               <ul className="svclist">
-                <li>Je meer uit bestaande bezoekers wilt halen</li>
+                <li>Je beter gevonden wilt worden in Google</li>
                 {' '}
-                <li>Je wilt weten waar bezoekers afhaken</li>
+                <li>Je ook zichtbaar wilt zijn in AI-zoekmachines</li>
                 {' '}
-                <li>Je continu wilt verbeteren</li>
+                <li>Je structureel wilt blijven groeien</li>
               </ul>
               {' '}
               <div className="rm__foot">
                 <span className="svcprice">
-                  Vanaf € 150
+                  € 150
                   <small>
                     {' '}
-                    / maand
+                    / maand · € 250 opstart
                   </small>
                 </span>
                 {' '}
