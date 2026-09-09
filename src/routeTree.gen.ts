@@ -32,15 +32,8 @@ import { Route as DienstenStarterWebsiteRouteImport } from './routes/diensten/st
 import { Route as DienstenWebsiteOptimalisatieRouteImport } from './routes/diensten/website-optimalisatie'
 import { Route as DienstenWebsiteRedesignRouteImport } from './routes/diensten/website-redesign'
 import { Route as DienstenWerkenBijWebsitesRouteImport } from './routes/diensten/werken-bij-websites'
-import { Route as VacaturesIndexRouteImport } from './routes/vacatures/index'
-import { Route as VacaturesAiOntwikkelingStageRouteImport } from './routes/vacatures/ai-ontwikkeling-stage'
-import { Route as VacaturesSeaStageRouteImport } from './routes/vacatures/sea-stage'
-import { Route as VacaturesSeoSpecialistRouteImport } from './routes/vacatures/seo-specialist'
-import { Route as VacaturesSeoStageRouteImport } from './routes/vacatures/seo-stage'
-import { Route as VacaturesWebAppArchitectRouteImport } from './routes/vacatures/web-app-architect'
-import { Route as VacaturesWebConsultantRouteImport } from './routes/vacatures/web-consultant'
-import { Route as VacaturesWebdesignStageRouteImport } from './routes/vacatures/webdesign-stage'
-import { Route as VacaturesWebdevelopmentStageRouteImport } from './routes/vacatures/webdevelopment-stage'
+import { Route as WerkenBijIndexRouteImport } from './routes/werken-bij/index'
+import { Route as WerkenBijSlugRouteImport } from './routes/werken-bij/$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -164,49 +157,14 @@ const DienstenWerkenBijWebsitesRoute =
     path: '/diensten/werken-bij-websites',
     getParentRoute: () => rootRouteImport,
   } as any)
-const VacaturesIndexRoute = VacaturesIndexRouteImport.update({
-  id: '/vacatures/',
-  path: '/vacatures',
+const WerkenBijIndexRoute = WerkenBijIndexRouteImport.update({
+  id: '/werken-bij/',
+  path: '/werken-bij/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const VacaturesAiOntwikkelingStageRoute = VacaturesAiOntwikkelingStageRouteImport.update({
-  id: '/vacatures/ai-ontwikkeling-stage',
-  path: '/vacatures/ai-ontwikkeling-stage',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const VacaturesSeaStageRoute = VacaturesSeaStageRouteImport.update({
-  id: '/vacatures/sea-stage',
-  path: '/vacatures/sea-stage',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const VacaturesSeoSpecialistRoute = VacaturesSeoSpecialistRouteImport.update({
-  id: '/vacatures/seo-specialist',
-  path: '/vacatures/seo-specialist',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const VacaturesSeoStageRoute = VacaturesSeoStageRouteImport.update({
-  id: '/vacatures/seo-stage',
-  path: '/vacatures/seo-stage',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const VacaturesWebAppArchitectRoute = VacaturesWebAppArchitectRouteImport.update({
-  id: '/vacatures/web-app-architect',
-  path: '/vacatures/web-app-architect',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const VacaturesWebConsultantRoute = VacaturesWebConsultantRouteImport.update({
-  id: '/vacatures/web-consultant',
-  path: '/vacatures/web-consultant',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const VacaturesWebdesignStageRoute = VacaturesWebdesignStageRouteImport.update({
-  id: '/vacatures/webdesign-stage',
-  path: '/vacatures/webdesign-stage',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const VacaturesWebdevelopmentStageRoute = VacaturesWebdevelopmentStageRouteImport.update({
-  id: '/vacatures/webdevelopment-stage',
-  path: '/vacatures/webdevelopment-stage',
+const WerkenBijSlugRoute = WerkenBijSlugRouteImport.update({
+  id: '/werken-bij/$slug',
+  path: '/werken-bij/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -234,15 +192,8 @@ export interface FileRoutesByFullPath {
   '/diensten/website-optimalisatie': typeof DienstenWebsiteOptimalisatieRoute
   '/diensten/website-redesign': typeof DienstenWebsiteRedesignRoute
   '/diensten/werken-bij-websites': typeof DienstenWerkenBijWebsitesRoute
-  '/vacatures': typeof VacaturesIndexRoute
-  '/vacatures/ai-ontwikkeling-stage': typeof VacaturesAiOntwikkelingStageRoute
-  '/vacatures/sea-stage': typeof VacaturesSeaStageRoute
-  '/vacatures/seo-specialist': typeof VacaturesSeoSpecialistRoute
-  '/vacatures/seo-stage': typeof VacaturesSeoStageRoute
-  '/vacatures/web-app-architect': typeof VacaturesWebAppArchitectRoute
-  '/vacatures/web-consultant': typeof VacaturesWebConsultantRoute
-  '/vacatures/webdesign-stage': typeof VacaturesWebdesignStageRoute
-  '/vacatures/webdevelopment-stage': typeof VacaturesWebdevelopmentStageRoute
+  '/werken-bij/$slug': typeof WerkenBijSlugRoute
+  '/werken-bij/': typeof WerkenBijIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -268,15 +219,8 @@ export interface FileRoutesByTo {
   '/diensten/website-optimalisatie': typeof DienstenWebsiteOptimalisatieRoute
   '/diensten/website-redesign': typeof DienstenWebsiteRedesignRoute
   '/diensten/werken-bij-websites': typeof DienstenWerkenBijWebsitesRoute
-  '/vacatures': typeof VacaturesIndexRoute
-  '/vacatures/ai-ontwikkeling-stage': typeof VacaturesAiOntwikkelingStageRoute
-  '/vacatures/sea-stage': typeof VacaturesSeaStageRoute
-  '/vacatures/seo-specialist': typeof VacaturesSeoSpecialistRoute
-  '/vacatures/seo-stage': typeof VacaturesSeoStageRoute
-  '/vacatures/web-app-architect': typeof VacaturesWebAppArchitectRoute
-  '/vacatures/web-consultant': typeof VacaturesWebConsultantRoute
-  '/vacatures/webdesign-stage': typeof VacaturesWebdesignStageRoute
-  '/vacatures/webdevelopment-stage': typeof VacaturesWebdevelopmentStageRoute
+  '/werken-bij/$slug': typeof WerkenBijSlugRoute
+  '/werken-bij': typeof WerkenBijIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -303,15 +247,8 @@ export interface FileRoutesById {
   '/diensten/website-optimalisatie': typeof DienstenWebsiteOptimalisatieRoute
   '/diensten/website-redesign': typeof DienstenWebsiteRedesignRoute
   '/diensten/werken-bij-websites': typeof DienstenWerkenBijWebsitesRoute
-  '/vacatures/': typeof VacaturesIndexRoute
-  '/vacatures/ai-ontwikkeling-stage': typeof VacaturesAiOntwikkelingStageRoute
-  '/vacatures/sea-stage': typeof VacaturesSeaStageRoute
-  '/vacatures/seo-specialist': typeof VacaturesSeoSpecialistRoute
-  '/vacatures/seo-stage': typeof VacaturesSeoStageRoute
-  '/vacatures/web-app-architect': typeof VacaturesWebAppArchitectRoute
-  '/vacatures/web-consultant': typeof VacaturesWebConsultantRoute
-  '/vacatures/webdesign-stage': typeof VacaturesWebdesignStageRoute
-  '/vacatures/webdevelopment-stage': typeof VacaturesWebdevelopmentStageRoute
+  '/werken-bij/$slug': typeof WerkenBijSlugRoute
+  '/werken-bij/': typeof WerkenBijIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -339,15 +276,8 @@ export interface FileRouteTypes {
     | '/diensten/website-optimalisatie'
     | '/diensten/website-redesign'
     | '/diensten/werken-bij-websites'
-    | '/vacatures'
-    | '/vacatures/ai-ontwikkeling-stage'
-    | '/vacatures/sea-stage'
-    | '/vacatures/seo-specialist'
-    | '/vacatures/seo-stage'
-    | '/vacatures/web-app-architect'
-    | '/vacatures/web-consultant'
-    | '/vacatures/webdesign-stage'
-    | '/vacatures/webdevelopment-stage'
+    | '/werken-bij/$slug'
+    | '/werken-bij/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -373,15 +303,8 @@ export interface FileRouteTypes {
     | '/diensten/website-optimalisatie'
     | '/diensten/website-redesign'
     | '/diensten/werken-bij-websites'
-    | '/vacatures'
-    | '/vacatures/ai-ontwikkeling-stage'
-    | '/vacatures/sea-stage'
-    | '/vacatures/seo-specialist'
-    | '/vacatures/seo-stage'
-    | '/vacatures/web-app-architect'
-    | '/vacatures/web-consultant'
-    | '/vacatures/webdesign-stage'
-    | '/vacatures/webdevelopment-stage'
+    | '/werken-bij/$slug'
+    | '/werken-bij'
   id:
     | '__root__'
     | '/'
@@ -407,15 +330,8 @@ export interface FileRouteTypes {
     | '/diensten/website-optimalisatie'
     | '/diensten/website-redesign'
     | '/diensten/werken-bij-websites'
-    | '/vacatures/'
-    | '/vacatures/ai-ontwikkeling-stage'
-    | '/vacatures/sea-stage'
-    | '/vacatures/seo-specialist'
-    | '/vacatures/seo-stage'
-    | '/vacatures/web-app-architect'
-    | '/vacatures/web-consultant'
-    | '/vacatures/webdesign-stage'
-    | '/vacatures/webdevelopment-stage'
+    | '/werken-bij/$slug'
+    | '/werken-bij/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -442,15 +358,8 @@ export interface RootRouteChildren {
   DienstenWebsiteOptimalisatieRoute: typeof DienstenWebsiteOptimalisatieRoute
   DienstenWebsiteRedesignRoute: typeof DienstenWebsiteRedesignRoute
   DienstenWerkenBijWebsitesRoute: typeof DienstenWerkenBijWebsitesRoute
-  VacaturesIndexRoute: typeof VacaturesIndexRoute
-  VacaturesAiOntwikkelingStageRoute: typeof VacaturesAiOntwikkelingStageRoute
-  VacaturesSeaStageRoute: typeof VacaturesSeaStageRoute
-  VacaturesSeoSpecialistRoute: typeof VacaturesSeoSpecialistRoute
-  VacaturesSeoStageRoute: typeof VacaturesSeoStageRoute
-  VacaturesWebAppArchitectRoute: typeof VacaturesWebAppArchitectRoute
-  VacaturesWebConsultantRoute: typeof VacaturesWebConsultantRoute
-  VacaturesWebdesignStageRoute: typeof VacaturesWebdesignStageRoute
-  VacaturesWebdevelopmentStageRoute: typeof VacaturesWebdevelopmentStageRoute
+  WerkenBijSlugRoute: typeof WerkenBijSlugRoute
+  WerkenBijIndexRoute: typeof WerkenBijIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -616,67 +525,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DienstenWerkenBijWebsitesRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/vacatures/': {
-      id: '/vacatures/'
-      path: '/vacatures'
-      fullPath: '/vacatures'
-      preLoaderRoute: typeof VacaturesIndexRouteImport
+    '/werken-bij/': {
+      id: '/werken-bij/'
+      path: '/werken-bij'
+      fullPath: '/werken-bij/'
+      preLoaderRoute: typeof WerkenBijIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/vacatures/ai-ontwikkeling-stage': {
-      id: '/vacatures/ai-ontwikkeling-stage'
-      path: '/vacatures/ai-ontwikkeling-stage'
-      fullPath: '/vacatures/ai-ontwikkeling-stage'
-      preLoaderRoute: typeof VacaturesAiOntwikkelingStageRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/vacatures/sea-stage': {
-      id: '/vacatures/sea-stage'
-      path: '/vacatures/sea-stage'
-      fullPath: '/vacatures/sea-stage'
-      preLoaderRoute: typeof VacaturesSeaStageRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/vacatures/seo-specialist': {
-      id: '/vacatures/seo-specialist'
-      path: '/vacatures/seo-specialist'
-      fullPath: '/vacatures/seo-specialist'
-      preLoaderRoute: typeof VacaturesSeoSpecialistRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/vacatures/seo-stage': {
-      id: '/vacatures/seo-stage'
-      path: '/vacatures/seo-stage'
-      fullPath: '/vacatures/seo-stage'
-      preLoaderRoute: typeof VacaturesSeoStageRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/vacatures/web-app-architect': {
-      id: '/vacatures/web-app-architect'
-      path: '/vacatures/web-app-architect'
-      fullPath: '/vacatures/web-app-architect'
-      preLoaderRoute: typeof VacaturesWebAppArchitectRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/vacatures/web-consultant': {
-      id: '/vacatures/web-consultant'
-      path: '/vacatures/web-consultant'
-      fullPath: '/vacatures/web-consultant'
-      preLoaderRoute: typeof VacaturesWebConsultantRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/vacatures/webdesign-stage': {
-      id: '/vacatures/webdesign-stage'
-      path: '/vacatures/webdesign-stage'
-      fullPath: '/vacatures/webdesign-stage'
-      preLoaderRoute: typeof VacaturesWebdesignStageRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/vacatures/webdevelopment-stage': {
-      id: '/vacatures/webdevelopment-stage'
-      path: '/vacatures/webdevelopment-stage'
-      fullPath: '/vacatures/webdevelopment-stage'
-      preLoaderRoute: typeof VacaturesWebdevelopmentStageRouteImport
+    '/werken-bij/$slug': {
+      id: '/werken-bij/$slug'
+      path: '/werken-bij/$slug'
+      fullPath: '/werken-bij/$slug'
+      preLoaderRoute: typeof WerkenBijSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -706,15 +566,8 @@ const rootRouteChildren: RootRouteChildren = {
   DienstenWebsiteOptimalisatieRoute: DienstenWebsiteOptimalisatieRoute,
   DienstenWebsiteRedesignRoute: DienstenWebsiteRedesignRoute,
   DienstenWerkenBijWebsitesRoute: DienstenWerkenBijWebsitesRoute,
-  VacaturesIndexRoute: VacaturesIndexRoute,
-  VacaturesAiOntwikkelingStageRoute: VacaturesAiOntwikkelingStageRoute,
-  VacaturesSeaStageRoute: VacaturesSeaStageRoute,
-  VacaturesSeoSpecialistRoute: VacaturesSeoSpecialistRoute,
-  VacaturesSeoStageRoute: VacaturesSeoStageRoute,
-  VacaturesWebAppArchitectRoute: VacaturesWebAppArchitectRoute,
-  VacaturesWebConsultantRoute: VacaturesWebConsultantRoute,
-  VacaturesWebdesignStageRoute: VacaturesWebdesignStageRoute,
-  VacaturesWebdevelopmentStageRoute: VacaturesWebdevelopmentStageRoute,
+  WerkenBijSlugRoute: WerkenBijSlugRoute,
+  WerkenBijIndexRoute: WerkenBijIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

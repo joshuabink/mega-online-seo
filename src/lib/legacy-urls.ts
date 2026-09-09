@@ -21,6 +21,21 @@ export const REDIRECTS: Record<string, string> = (() => {
   // De oude Vercel-deploy serveerde de homepage ook op /index.html.
   map['/index.html'] = '/'
 
+  // De vacatures stonden eerder op /vacatures; ze leven nu onder /werken-bij.
+  map['/vacatures'] = '/werken-bij'
+  for (const slug of [
+    'seo-stage',
+    'webdesign-stage',
+    'webdevelopment-stage',
+    'ai-ontwikkeling-stage',
+    'seo-specialist',
+    'sea-stage',
+    'web-consultant',
+    'web-app-architect',
+  ]) {
+    map[`/vacatures/${slug}`] = `/werken-bij/${slug}`
+  }
+
   return map
 })()
 

@@ -425,7 +425,7 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
                     </span>
                   </Link>
                 ))}
-                <Link className="mlink" to="/vacatures">
+                <Link className="mlink" to="/werken-bij">
                   <span className="mlink__ico">
                     <Icon name="user-plus" />
                   </span>
@@ -755,7 +755,7 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
           <Link className="mmenu__row" to="/over-megaonline" onClick={onClose}>
             Over MegaOnline <Icon name="arrow-up-right" className="arr-ico" />
           </Link>
-          <Link className="mmenu__row" to="/vacatures" onClick={onClose}>
+          <Link className="mmenu__row" to="/werken-bij" onClick={onClose}>
             Vacatures <Icon name="arrow-up-right" className="arr-ico" />
           </Link>
           <Link className="mmenu__row" to="/veelgestelde-vragen" onClick={onClose}>

@@ -203,15 +203,15 @@ const CRUMB_LABEL: Record<string, string> = {
   "/over-megaonline": "Over MegaOnline",
   "/privacyverklaring": "Privacyverklaring",
   "/veelgestelde-vragen": "Veelgestelde vragen",
-  "/vacatures": "Vacatures",
-  "/vacatures/seo-stage": "SEO Stage",
-  "/vacatures/webdesign-stage": "Webdesign Stage",
-  "/vacatures/webdevelopment-stage": "Webdevelopment Stage",
-  "/vacatures/ai-ontwikkeling-stage": "AI-ontwikkeling Stage",
-  "/vacatures/seo-specialist": "SEO Specialist",
-  "/vacatures/sea-stage": "SEA Stage",
-  "/vacatures/web-consultant": "Web Consultant",
-  "/vacatures/web-app-architect": "Web- en app-architect",
+  "/werken-bij": "Vacatures",
+  "/werken-bij/seo-stage": "SEO Stage",
+  "/werken-bij/webdesign-stage": "Webdesign Stage",
+  "/werken-bij/webdevelopment-stage": "Webdevelopment Stage",
+  "/werken-bij/ai-ontwikkeling-stage": "AI-ontwikkeling Stage",
+  "/werken-bij/seo-specialist": "SEO Specialist",
+  "/werken-bij/sea-stage": "SEA Stage",
+  "/werken-bij/web-consultant": "Web Consultant",
+  "/werken-bij/web-app-architect": "Web- en app-architect",
 };
 
 /**
@@ -223,7 +223,7 @@ const CRUMB_PARENT: { prefix: string; name: string; item: string }[] = [
   { prefix: "/diensten/", name: "Diensten", item: `${SITE_URL}/#diensten` },
   { prefix: "/branches/", name: "Branches", item: `${SITE_URL}/#diensten` },
   { prefix: "/veelgestelde-vragen", name: "Kennisbank", item: `${SITE_URL}/#faq` },
-  { prefix: "/vacatures/", name: "Vacatures", item: `${SITE_URL}/vacatures` },
+  { prefix: "/werken-bij/", name: "Vacatures", item: `${SITE_URL}/werken-bij` },
 ];
 
 /**
