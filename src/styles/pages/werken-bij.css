@@ -1,0 +1,284 @@
+/* Werken bij MegaOnline: overzicht (/werken-bij) en de vacaturepagina's.
+   Alles op tokens uit styles.css, zodat elke sectie meekleurt met zijn
+   data-theme. Geen hardcoded kleuren en geen Tailwind-utilities. */
+
+/* --- Overzicht: kaarten per rol ---------------------------------------- */
+[data-page="werken-bij"] .vacs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(14px, 1.6vw, 20px);
+  margin-top: clamp(38px, 4vw, 52px);
+}
+[data-page="werken-bij"] .vac {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--card);
+  padding: clamp(20px, 2vw, 26px);
+  color: var(--fg);
+  text-decoration: none;
+  transition:
+    border-color 0.3s,
+    transform 0.3s;
+}
+[data-page="werken-bij"] .vac:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent-strong);
+}
+[data-page="werken-bij"] .vac__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+[data-page="werken-bij"] .vac__soort {
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--faint);
+  border: 1px solid var(--line-strong);
+  border-radius: 100px;
+  padding: 5px 11px;
+  white-space: nowrap;
+}
+[data-page="werken-bij"] .vac__naam {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 1.18rem;
+  letter-spacing: -0.02em;
+}
+[data-page="werken-bij"] .vac__teaser {
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.5;
+  flex: 1;
+}
+[data-page="werken-bij"] .vac__foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 4px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+[data-page="werken-bij"] .vac__erv {
+  color: var(--faint);
+  font-size: 0.82rem;
+}
+[data-page="werken-bij"] .vac__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--accent-text);
+  font-size: 0.86rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+[data-page="werken-bij"] .vac__link svg {
+  width: 15px;
+  height: 15px;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  fill: none;
+  transition: transform 0.25s;
+}
+[data-page="werken-bij"] .vac:hover .vac__link svg {
+  transform: translateX(3px);
+}
+
+/* --- Vacaturepagina: hero met feitenkaart ------------------------------ */
+[data-page="vacature"] .vac-hero__grid {
+  grid-template-columns: 1.15fr 0.85fr;
+  align-items: start;
+}
+[data-page="vacature"] .vac-facts {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--card);
+  padding: clamp(22px, 2.2vw, 30px);
+}
+[data-page="vacature"] .vac-facts__head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 1.02rem;
+  letter-spacing: -0.02em;
+  margin-bottom: 18px;
+}
+[data-page="vacature"] .vac-facts__list {
+  display: grid;
+  gap: 2px;
+}
+[data-page="vacature"] .vac-facts__row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 16px;
+  align-items: baseline;
+  padding: 11px 0;
+  border-top: 1px solid var(--line);
+}
+[data-page="vacature"] .vac-facts__row:first-child {
+  border-top: 0;
+}
+[data-page="vacature"] .vac-facts__row dt {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+[data-page="vacature"] .vac-facts__row dd {
+  font-size: 0.94rem;
+  font-weight: 500;
+  text-align: right;
+}
+
+/* --- Vacaturepagina: taken en fit -------------------------------------- */
+[data-page="vacature"] .vaclist {
+  display: grid;
+  gap: 12px;
+  margin-top: clamp(34px, 3.6vw, 46px);
+}
+[data-page="vacature"] .vaclist .vrow {
+  grid-template-columns: auto 1fr;
+  align-items: start;
+}
+[data-page="vacature"] .vaclist .vrow__ico {
+  margin-top: 2px;
+}
+
+[data-page="vacature"] .vac-fit {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(14px, 1.6vw, 20px);
+  margin-top: clamp(34px, 3.6vw, 46px);
+}
+[data-page="vacature"] .vac-fit__card {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--card);
+  padding: clamp(20px, 2vw, 28px);
+}
+[data-page="vacature"] .vac-fit__head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 1.06rem;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+[data-page="vacature"] .vac-fit .minilist li {
+  font-size: 0.94rem;
+}
+[data-page="vacature"] .pullnote {
+  margin-top: clamp(24px, 2.6vw, 34px);
+}
+
+[data-page="vacature"] .exchip {
+  align-items: center;
+  text-decoration: none;
+  color: var(--fg);
+}
+[data-page="vacature"] .exchip__soort {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--faint);
+  font-weight: 400;
+  margin-top: 4px;
+}
+
+/* --- Sollicitatieblok (gedeeld door beide pagina's) --------------------- */
+.sol__grid {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: clamp(36px, 5vw, 72px);
+  align-items: start;
+}
+.sol__direct {
+  margin-top: clamp(28px, 3vw, 38px);
+  display: grid;
+  gap: 10px;
+}
+.sol__direct-head {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+.sol__row {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 16px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--card);
+  padding: 14px 18px;
+  color: var(--fg);
+  text-decoration: none;
+  transition:
+    border-color 0.3s,
+    transform 0.3s;
+}
+.sol__row:hover {
+  transform: translateX(4px);
+  border-color: var(--accent-strong);
+}
+.sol__row h4 {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: -0.02em;
+}
+.sol__row p {
+  color: var(--muted);
+  font-size: 0.86rem;
+  margin-top: 2px;
+}
+.sol__row > svg {
+  width: 16px;
+  height: 16px;
+  stroke: var(--faint);
+  stroke-width: 1.8;
+  fill: none;
+}
+
+/* --- Smaller ----------------------------------------------------------- */
+@media (max-width: 1040px) {
+  [data-page="werken-bij"] .vacs {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  [data-page="vacature"] .vac-hero__grid {
+    grid-template-columns: 1fr;
+  }
+  .sol__grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 720px) {
+  [data-page="werken-bij"] .vacs {
+    grid-template-columns: 1fr;
+  }
+  [data-page="vacature"] .vac-fit {
+    grid-template-columns: 1fr;
+  }
+  [data-page="vacature"] .vac-facts__row {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+  [data-page="vacature"] .vac-facts__row dd {
+    text-align: left;
+  }
+}
