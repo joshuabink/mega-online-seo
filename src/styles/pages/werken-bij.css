@@ -1,12 +1,36 @@
 /* Werken bij MegaOnline: overzicht (/werken-bij) en de vacaturepagina's.
    Alles op tokens uit styles.css, zodat elke sectie meekleurt met zijn
-   data-theme. Geen hardcoded kleuren en geen Tailwind-utilities. */
+   data-theme. Geen hardcoded kleuren en geen Tailwind-utilities.
+
+   Uitgangspunt voor deze twee pagina's: weinig lijnen en een tekstbreedte die
+   klopt. De standaard `.shead` is 760px breed, waardoor koppen hier op drie
+   regels braken terwijl de halve pagina leeg bleef. Daarom staan de koppen
+   breder en zit de leesmaat op de lopende tekst zelf. */
+
+[data-page="werken-bij"] .shead,
+[data-page="vacature"] .shead {
+  max-width: 980px;
+}
+[data-page="werken-bij"] .shead .lead,
+[data-page="vacature"] .shead .lead {
+  max-width: 66ch;
+}
+
+/* --- Overzicht: hero --------------------------------------------------- */
+[data-page="werken-bij"] .svc-hero--center h1.display {
+  max-width: 26ch;
+}
+[data-page="werken-bij"] .svc-hero--center .svc-hero__sub {
+  max-width: 64ch;
+}
 
 /* --- Overzicht: kaarten per rol ---------------------------------------- */
+/* Twee kolommen in plaats van drie: acht rollen vullen dan twee volle
+   kolommen zonder weeskaart, en de tekst krijgt een rustige regellengte. */
 [data-page="werken-bij"] .vacs {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: clamp(14px, 1.6vw, 20px);
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(16px, 1.8vw, 24px);
   margin-top: clamp(38px, 4vw, 52px);
 }
 [data-page="werken-bij"] .vac {
@@ -14,9 +38,9 @@
   flex-direction: column;
   gap: 12px;
   border: 1px solid var(--line);
-  border-radius: 14px;
+  border-radius: 16px;
   background: var(--card);
-  padding: clamp(20px, 2vw, 26px);
+  padding: clamp(22px, 2.2vw, 30px);
   color: var(--fg);
   text-decoration: none;
   transition:
@@ -29,52 +53,59 @@
 }
 [data-page="werken-bij"] .vac__top {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 12px;
 }
-[data-page="werken-bij"] .vac__soort {
-  font-family: var(--mono);
-  font-size: 0.58rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--faint);
-  border: 1px solid var(--line-strong);
-  border-radius: 100px;
-  padding: 5px 11px;
-  white-space: nowrap;
+[data-page="werken-bij"] .vac__top svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--accent-text);
+  stroke-width: 1.7;
+  fill: none;
+  flex: none;
+  transform: translateY(2px);
 }
 [data-page="werken-bij"] .vac__naam {
   font-family: var(--display);
   font-weight: 600;
-  font-size: 1.18rem;
+  font-size: 1.22rem;
   letter-spacing: -0.02em;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+[data-page="werken-bij"] .vac__soort {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--faint);
+  white-space: nowrap;
 }
 [data-page="werken-bij"] .vac__teaser {
   color: var(--muted);
-  font-size: 0.92rem;
-  line-height: 1.5;
+  font-size: 0.96rem;
+  line-height: 1.6;
+  max-width: 52ch;
   flex: 1;
 }
 [data-page="werken-bij"] .vac__foot {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: space-between;
-  gap: 12px;
-  margin-top: 4px;
-  padding-top: 14px;
-  border-top: 1px solid var(--line);
+  gap: 16px;
+  margin-top: 6px;
 }
 [data-page="werken-bij"] .vac__erv {
   color: var(--faint);
-  font-size: 0.82rem;
+  font-size: 0.86rem;
 }
 [data-page="werken-bij"] .vac__link {
   display: inline-flex;
   align-items: center;
   gap: 7px;
   color: var(--accent-text);
-  font-size: 0.86rem;
+  font-size: 0.9rem;
   font-weight: 500;
   white-space: nowrap;
 }
@@ -90,11 +121,20 @@
   transform: translateX(3px);
 }
 
-/* --- Vacaturepagina: hero met feitenkaart ------------------------------ */
+/* --- Vacaturepagina: hero met feitenblok ------------------------------- */
 [data-page="vacature"] .vac-hero__grid {
-  grid-template-columns: 1.15fr 0.85fr;
+  grid-template-columns: 1.3fr 0.7fr;
   align-items: start;
 }
+[data-page="vacature"] .vac-hero__grid h1.display {
+  max-width: 20ch;
+  font-size: clamp(2.3rem, 4.2vw, 3.7rem);
+}
+[data-page="vacature"] .vac-hero__grid .svc-hero__sub {
+  max-width: 58ch;
+}
+/* Eén lijn onder de kop, verder geen randen tussen de regels: zes losse
+   lijntjes maakten van een simpel lijstje een tabel. */
 [data-page="vacature"] .vac-facts {
   border: 1px solid var(--line);
   border-radius: 16px;
@@ -109,22 +149,19 @@
   font-weight: 600;
   font-size: 1.02rem;
   letter-spacing: -0.02em;
-  margin-bottom: 18px;
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--line);
 }
 [data-page="vacature"] .vac-facts__list {
   display: grid;
-  gap: 2px;
+  gap: 14px;
 }
 [data-page="vacature"] .vac-facts__row {
   display: grid;
   grid-template-columns: 1fr auto;
   gap: 16px;
   align-items: baseline;
-  padding: 11px 0;
-  border-top: 1px solid var(--line);
-}
-[data-page="vacature"] .vac-facts__row:first-child {
-  border-top: 0;
 }
 [data-page="vacature"] .vac-facts__row dt {
   font-family: var(--mono);
@@ -139,76 +176,124 @@
   text-align: right;
 }
 
-/* --- Vacaturepagina: taken en fit -------------------------------------- */
-[data-page="vacature"] .vaclist {
+/* --- Vacaturepagina: wat je gaat doen ---------------------------------- */
+/* Genummerde lijst in twee kolommen in plaats van vijf omkaderde regels over
+   de volle breedte. Geen randen, wel een leesbare regellengte. */
+[data-page="vacature"] .taken {
+  list-style: none;
+  padding: 0;
+  margin: clamp(34px, 3.6vw, 48px) 0 0;
   display: grid;
-  gap: 12px;
-  margin-top: clamp(34px, 3.6vw, 46px);
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(28px, 3vw, 44px) clamp(40px, 5vw, 80px);
 }
-[data-page="vacature"] .vaclist .vrow {
+[data-page="vacature"] .taak {
+  display: grid;
   grid-template-columns: auto 1fr;
+  gap: 18px;
   align-items: start;
 }
-[data-page="vacature"] .vaclist .vrow__ico {
-  margin-top: 2px;
+[data-page="vacature"] .taak__no {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: var(--accent-text);
+  padding-top: 4px;
 }
-
-[data-page="vacature"] .vac-fit {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(14px, 1.6vw, 20px);
-  margin-top: clamp(34px, 3.6vw, 46px);
-}
-[data-page="vacature"] .vac-fit__card {
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  background: var(--card);
-  padding: clamp(20px, 2vw, 28px);
-}
-[data-page="vacature"] .vac-fit__head {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+[data-page="vacature"] .taak__body h3 {
   font-family: var(--display);
   font-weight: 600;
-  font-size: 1.06rem;
+  font-size: 1.1rem;
+  letter-spacing: -0.02em;
+}
+[data-page="vacature"] .taak__body p {
+  color: var(--muted);
+  font-size: 0.96rem;
+  line-height: 1.6;
+  margin-top: 8px;
+  max-width: 46ch;
+}
+
+/* --- Vacaturepagina: past dit bij jou ---------------------------------- */
+[data-page="vacature"] .vac-fit {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(28px, 3vw, 44px) clamp(40px, 5vw, 80px);
+  margin-top: clamp(34px, 3.6vw, 48px);
+}
+[data-page="vacature"] .vac-fit__head {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 1.1rem;
   letter-spacing: -0.02em;
   margin-bottom: 16px;
 }
+[data-page="vacature"] .vac-fit .minilist {
+  gap: 12px;
+  max-width: 48ch;
+}
 [data-page="vacature"] .vac-fit .minilist li {
-  font-size: 0.94rem;
+  font-size: 0.96rem;
+  line-height: 1.55;
 }
 [data-page="vacature"] .pullnote {
-  margin-top: clamp(24px, 2.6vw, 34px);
+  margin-top: clamp(28px, 3vw, 40px);
+  max-width: 78ch;
 }
 
-[data-page="vacature"] .exchip {
-  align-items: center;
-  text-decoration: none;
-  color: var(--fg);
+/* --- Vacaturepagina: andere rollen ------------------------------------- */
+[data-page="vacature"] .andere {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: clamp(28px, 3vw, 38px);
 }
-[data-page="vacature"] .exchip__soort {
-  display: block;
-  font-family: var(--mono);
-  font-size: 0.6rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--faint);
-  font-weight: 400;
-  margin-top: 4px;
+[data-page="vacature"] .andere__rol {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--line);
+  border-radius: 100px;
+  background: var(--card);
+  padding: 11px 18px;
+  color: var(--fg);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition:
+    border-color 0.3s,
+    transform 0.3s;
+}
+[data-page="vacature"] .andere__rol:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent-strong);
+}
+[data-page="vacature"] .andere__rol svg {
+  width: 16px;
+  height: 16px;
+  stroke: var(--accent-text);
+  stroke-width: 1.7;
+  fill: none;
 }
 
 /* --- Sollicitatieblok (gedeeld door beide pagina's) --------------------- */
 .sol__grid {
   display: grid;
-  grid-template-columns: 0.95fr 1.05fr;
-  gap: clamp(36px, 5vw, 72px);
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(36px, 5vw, 76px);
   align-items: start;
+}
+.sol__copy .shead {
+  max-width: none;
+}
+.sol__copy .lead {
+  max-width: 46ch;
 }
 .sol__direct {
   margin-top: clamp(28px, 3vw, 38px);
   display: grid;
   gap: 10px;
+  max-width: 420px;
 }
 .sol__direct-head {
   font-family: var(--mono);
@@ -257,23 +342,29 @@
 
 /* --- Smaller ----------------------------------------------------------- */
 @media (max-width: 1040px) {
-  [data-page="werken-bij"] .vacs {
-    grid-template-columns: repeat(2, 1fr);
-  }
   [data-page="vacature"] .vac-hero__grid {
     grid-template-columns: 1fr;
+  }
+  [data-page="vacature"] .vac-hero__grid h1.display {
+    max-width: 22ch;
   }
   .sol__grid {
     grid-template-columns: 1fr;
   }
+  .sol__copy .lead {
+    max-width: 62ch;
+  }
 }
-@media (max-width: 720px) {
+@media (max-width: 860px) {
   [data-page="werken-bij"] .vacs {
     grid-template-columns: 1fr;
   }
+  [data-page="vacature"] .taken,
   [data-page="vacature"] .vac-fit {
     grid-template-columns: 1fr;
   }
+}
+@media (max-width: 720px) {
   [data-page="vacature"] .vac-facts__row {
     grid-template-columns: 1fr;
     gap: 2px;

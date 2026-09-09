@@ -74,10 +74,10 @@ function WerkenBij() {
         <div className="wrap">
           <div className="proof__grid">
             {[
-              ["map-pin", VOORWAARDEN.locatie],
-              ["user-plus", "Bij de meeste rollen geen ervaring nodig"],
-              ["handshake", "Je werkt direct met de oprichter"],
-              ["rocket", "Je werk gaat live bij echte klanten"],
+              ["map-pin", "Gouda of volledig remote"],
+              ["user-plus", "Meestal geen ervaring nodig"],
+              ["handshake", "Direct contact met de oprichter"],
+              ["rocket", "Je werk gaat live bij klanten"],
             ].map(([icoon, tekst], i) => (
               <Reveal as="div" className="proof__item reveal" data-d={String(i)} key={tekst}>
                 <span className="proof__ico">
@@ -106,7 +106,7 @@ function WerkenBij() {
             {[
               [
                 "users",
-                "Echte klanten, geen oefenopdracht",
+                "Echte klanten",
                 "Alles wat je maakt komt terecht bij een ondernemer die er zijn omzet uit haalt.",
               ],
               [
@@ -117,12 +117,12 @@ function WerkenBij() {
               [
                 "graduation-cap",
                 "Beginnen mag",
-                "We verwachten niet dat je de tools al kent. We verwachten dat je ze wilt leren.",
+                "We verwachten niet dat je de tools al kent, wel dat je ze wilt leren.",
               ],
               [
                 "map-pin",
-                "Vanuit Gouda of thuis",
-                "Waar je werkt maakt ons niet uit. Af en toe samen aan tafel is wel zo prettig.",
+                "Gouda of thuis",
+                "Waar je werkt maakt niet uit. Af en toe samen aan tafel is wel zo prettig.",
               ],
             ].map(([icoon, kop, tekst], i) => (
               <Reveal as="div" className="feat reveal" data-d={String(i)} key={kop}>
@@ -155,16 +155,14 @@ function WerkenBij() {
                 to="/werken-bij/$slug"
                 params={{ slug: v.slug }}
                 className="vac reveal"
-                data-d={String(i % 3)}
+                data-d={String(i % 2)}
                 key={v.slug}
               >
                 <span className="vac__top">
-                  <span className="iconbox iconbox--sm">
-                    <Icon name={v.icoon} />
-                  </span>
+                  <Icon name={v.icoon} />
+                  <h3 className="vac__naam">{v.naam}</h3>
                   <span className="vac__soort">{v.soort}</span>
                 </span>
-                <h3 className="vac__naam">{v.naam}</h3>
                 <p className="vac__teaser">{v.teaser}</p>
                 <span className="vac__foot">
                   <span className="vac__erv">{v.ervaring}</span>
@@ -200,12 +198,8 @@ function WerkenBij() {
                 "Vijftien tot twintig minuten. Wat zoek jij, wat zoeken wij en klopt dat een beetje op elkaar.",
               ],
               [
-                "Een kleine opdracht",
-                "Iets echts uit onze praktijk, een uurtje werk. Niet om je te testen op perfectie, wel om te zien hoe je iets aanpakt.",
-              ],
-              [
-                "Kennismaken en beginnen",
-                "We bespreken de opdracht, maken afspraken over uren en vergoeding en prikken een startdatum.",
+                "Opdracht en kennismaking",
+                "Iets echts uit onze praktijk, een uurtje werk. Die bespreken we, en daarna maken we afspraken over uren, vergoeding en startdatum.",
               ],
             ].map(([kop, tekst], i) => (
               <Reveal as="div" className="step reveal" data-d={String(i)} key={kop}>

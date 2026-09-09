@@ -129,19 +129,17 @@ function VacaturePagina() {
               Vijf dingen die <em>echt op je bord liggen</em>.
             </h2>
           </Reveal>
-          <div className="vaclist">
+          <ol className="taken">
             {v.doet.map((d, i) => (
-              <Reveal as="div" className="vrow reveal" data-d={String(i % 3)} key={d.titel}>
-                <span className="vrow__ico">
-                  <Icon name="check" />
-                </span>
-                <span className="vrow__txt">
-                  <h4>{d.titel}</h4>
+              <Reveal as="li" className="taak reveal" data-d={String(i % 2)} key={d.titel}>
+                <span className="taak__no">{String(i + 1).padStart(2, "0")}</span>
+                <div className="taak__body">
+                  <h3>{d.titel}</h3>
                   <p>{d.tekst}</p>
-                </span>
+                </div>
               </Reveal>
             ))}
-          </div>
+          </ol>
         </div>
       </section>{" "}
       <section className="section" data-theme="paper" data-screen-label="Wat je meebrengt">
@@ -153,26 +151,16 @@ function VacaturePagina() {
             </h2>
           </Reveal>
           <div className="vac-fit">
-            <Reveal as="div" className="vac-fit__card reveal">
-              <span className="vac-fit__head">
-                <span className="iconbox iconbox--sm">
-                  <Icon name="user-check" />
-                </span>
-                Wat je meebrengt
-              </span>
+            <Reveal as="div" className="vac-fit__col reveal">
+              <h3 className="vac-fit__head">Wat je meebrengt</h3>
               <ul className="minilist minilist--do">
                 {v.meebrengt.map((m) => (
                   <li key={m}>{m}</li>
                 ))}
               </ul>
             </Reveal>
-            <Reveal as="div" className="vac-fit__card reveal" data-d="1">
-              <span className="vac-fit__head">
-                <span className="iconbox iconbox--sm">
-                  <Icon name="x" />
-                </span>
-                {v.nietNodigKop}
-              </span>
+            <Reveal as="div" className="vac-fit__col reveal" data-d="1">
+              <h3 className="vac-fit__head">{v.nietNodigKop}</h3>
               <ul className="minilist">
                 {v.nietNodig.map((m) => (
                   <li key={m}>{m}</li>
@@ -227,23 +215,18 @@ function VacaturePagina() {
             <span className="label">Andere rollen</span>{" "}
             <h2 className="h2">Past deze net niet? Kijk hier verder.</h2>
           </Reveal>
-          <div className="exgrid">
+          <div className="andere">
             {anderen.map((a, i) => (
               <Reveal
                 as={Link}
                 to="/werken-bij/$slug"
                 params={{ slug: a.slug }}
-                className="exchip reveal"
+                className="andere__rol reveal"
                 data-d={String(i % 3)}
                 key={a.slug}
               >
-                <span className="iconbox iconbox--sm">
-                  <Icon name={a.icoon} />
-                </span>
-                <span>
-                  {a.naam}
-                  <span className="exchip__soort">{a.soort}</span>
-                </span>
+                <Icon name={a.icoon} />
+                {a.naam}
               </Reveal>
             ))}
           </div>
