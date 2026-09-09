@@ -203,6 +203,7 @@ const CRUMB_LABEL: Record<string, string> = {
   "/over-megaonline": "Over MegaOnline",
   "/privacyverklaring": "Privacyverklaring",
   "/veelgestelde-vragen": "Veelgestelde vragen",
+  "/werken-bij": "Werken bij",
 };
 
 /**

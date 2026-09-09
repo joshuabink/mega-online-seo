@@ -425,6 +425,14 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
                     </span>
                   </Link>
                 ))}
+                <Link className="mlink" to="/werken-bij">
+                  <span className="mlink__ico">
+                    <Icon name="briefcase" />
+                  </span>
+                  <span className="mlink__txt">
+                    <span className="mlink__name">Werken bij ons</span>
+                  </span>
+                </Link>
               </div>
               <aside className="mfeat mfeat--soft">
                 <span className="mfeat__eyebrow">
@@ -749,6 +757,9 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
           </Link>
           <Link className="mmenu__row" to="/veelgestelde-vragen" onClick={onClose}>
             Kennisbank <Icon name="arrow-up-right" className="arr-ico" />
+          </Link>
+          <Link className="mmenu__row" to="/werken-bij" onClick={onClose}>
+            Werken bij ons <Icon name="arrow-up-right" className="arr-ico" />
           </Link>
           <Link className="mmenu__row" to="/contact" onClick={onClose}>
             Contact <Icon name="arrow-up-right" className="arr-ico" />

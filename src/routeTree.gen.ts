@@ -32,6 +32,8 @@ import { Route as DienstenStarterWebsiteRouteImport } from './routes/diensten/st
 import { Route as DienstenWebsiteOptimalisatieRouteImport } from './routes/diensten/website-optimalisatie'
 import { Route as DienstenWebsiteRedesignRouteImport } from './routes/diensten/website-redesign'
 import { Route as DienstenWerkenBijWebsitesRouteImport } from './routes/diensten/werken-bij-websites'
+import { Route as WerkenBijIndexRouteImport } from './routes/werken-bij/index'
+import { Route as WerkenBijSlugRouteImport } from './routes/werken-bij/$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -155,6 +157,16 @@ const DienstenWerkenBijWebsitesRoute =
     path: '/diensten/werken-bij-websites',
     getParentRoute: () => rootRouteImport,
   } as any)
+const WerkenBijIndexRoute = WerkenBijIndexRouteImport.update({
+  id: '/werken-bij/',
+  path: '/werken-bij/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WerkenBijSlugRoute = WerkenBijSlugRouteImport.update({
+  id: '/werken-bij/$slug',
+  path: '/werken-bij/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -180,6 +192,8 @@ export interface FileRoutesByFullPath {
   '/diensten/website-optimalisatie': typeof DienstenWebsiteOptimalisatieRoute
   '/diensten/website-redesign': typeof DienstenWebsiteRedesignRoute
   '/diensten/werken-bij-websites': typeof DienstenWerkenBijWebsitesRoute
+  '/werken-bij': typeof WerkenBijIndexRoute
+  '/werken-bij/$slug': typeof WerkenBijSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -205,6 +219,8 @@ export interface FileRoutesByTo {
   '/diensten/website-optimalisatie': typeof DienstenWebsiteOptimalisatieRoute
   '/diensten/website-redesign': typeof DienstenWebsiteRedesignRoute
   '/diensten/werken-bij-websites': typeof DienstenWerkenBijWebsitesRoute
+  '/werken-bij': typeof WerkenBijIndexRoute
+  '/werken-bij/$slug': typeof WerkenBijSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -231,6 +247,8 @@ export interface FileRoutesById {
   '/diensten/website-optimalisatie': typeof DienstenWebsiteOptimalisatieRoute
   '/diensten/website-redesign': typeof DienstenWebsiteRedesignRoute
   '/diensten/werken-bij-websites': typeof DienstenWerkenBijWebsitesRoute
+  '/werken-bij/': typeof WerkenBijIndexRoute
+  '/werken-bij/$slug': typeof WerkenBijSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -258,6 +276,8 @@ export interface FileRouteTypes {
     | '/diensten/website-optimalisatie'
     | '/diensten/website-redesign'
     | '/diensten/werken-bij-websites'
+    | '/werken-bij'
+    | '/werken-bij/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -283,6 +303,8 @@ export interface FileRouteTypes {
     | '/diensten/website-optimalisatie'
     | '/diensten/website-redesign'
     | '/diensten/werken-bij-websites'
+    | '/werken-bij'
+    | '/werken-bij/$slug'
   id:
     | '__root__'
     | '/'
@@ -308,6 +330,8 @@ export interface FileRouteTypes {
     | '/diensten/website-optimalisatie'
     | '/diensten/website-redesign'
     | '/diensten/werken-bij-websites'
+    | '/werken-bij/'
+    | '/werken-bij/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -334,6 +358,8 @@ export interface RootRouteChildren {
   DienstenWebsiteOptimalisatieRoute: typeof DienstenWebsiteOptimalisatieRoute
   DienstenWebsiteRedesignRoute: typeof DienstenWebsiteRedesignRoute
   DienstenWerkenBijWebsitesRoute: typeof DienstenWerkenBijWebsitesRoute
+  WerkenBijIndexRoute: typeof WerkenBijIndexRoute
+  WerkenBijSlugRoute: typeof WerkenBijSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -499,6 +525,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DienstenWerkenBijWebsitesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/werken-bij/': {
+      id: '/werken-bij/'
+      path: '/werken-bij'
+      fullPath: '/werken-bij'
+      preLoaderRoute: typeof WerkenBijIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/werken-bij/$slug': {
+      id: '/werken-bij/$slug'
+      path: '/werken-bij/$slug'
+      fullPath: '/werken-bij/$slug'
+      preLoaderRoute: typeof WerkenBijSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -526,6 +566,8 @@ const rootRouteChildren: RootRouteChildren = {
   DienstenWebsiteOptimalisatieRoute: DienstenWebsiteOptimalisatieRoute,
   DienstenWebsiteRedesignRoute: DienstenWebsiteRedesignRoute,
   DienstenWerkenBijWebsitesRoute: DienstenWerkenBijWebsitesRoute,
+  WerkenBijIndexRoute: WerkenBijIndexRoute,
+  WerkenBijSlugRoute: WerkenBijSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
