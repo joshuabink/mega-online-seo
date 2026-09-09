@@ -1,389 +1,693 @@
 /**
- * Bron voor de vacaturepagina's.
+ * Vacatures voor /werken-bij.
  *
- * Eén record per vacature. De overzichtspagina (/vacatures) en de losse
- * detailpagina's lezen allebei hieruit, zodat titel, type en samenvatting
- * niet uit elkaar kunnen lopen.
+ * Eén bron voor drie dingen: de kaarten op de overzichtspagina, de
+ * detailpagina (`src/routes/werken-bij/$slug.tsx`) en de JobPosting-markup in
+ * `src/lib/schema.ts`. Ze uit elkaar laten lopen is precies wat Google's
+ * vacaturecontrole afkeurt, dus voeg een rol hier toe en nergens anders.
  *
- * Uren, vergoeding en locatie staan bewust hier en niet in de opmaak: die
- * pas je op één plek aan zodra ze definitief zijn.
- *
- * `as const` is nodig: daardoor zijn de slugs letterlijke types en accepteert
- * `<Link to={...}>` de paden zonder cast.
+ * Nieuwe rol toevoegen: object erbij, slug uniek houden en `public/sitemap.xml`
+ * aanvullen. De route is dynamisch, dus verder is er niets te registreren.
  */
 
-export const VACATURES = [
-  {
-    slug: "seo-stage",
-    pad: "/vacatures/seo-stage",
-    titel: "SEO Stage",
-    type: "Stage",
-    badge: "Stage · SEO",
-    kort: "Zoekwoorden uitzoeken, teksten scherper maken en zien wat er verandert in Google. Op echte klantwebsites.",
-    kop: "Leer hoe je een website",
-    accent: "vindbaar maakt.",
-    lead: "Je werkt aan de websites van onze klanten: uitzoeken waar hun klanten op zoeken, teksten verbeteren en meten wat dat oplevert. Je hoeft geen expert te zijn. Je moet wel willen begrijpen waarom iets werkt.",
-    uren: "In overleg. Meeloopstage, afstudeerstage of parttime naast je studie.",
-    vergoeding: "Stagevergoeding in overleg.",
-    locatie: "Gouda. In overleg deels op afstand.",
-    metaTitel: "Stage SEO | Werken bij MegaOnline",
-    metaOmschrijving: "SEO-stage bij MegaOnline in Gouda. Werk aan echte klantwebsites: zoekwoordonderzoek, betere teksten en meten wat er verandert in Google.",
-    doet: [
-      { icon: "search-check", kop: "Zoekwoordonderzoek", tekst: "Uitzoeken waar de klanten van onze klanten op zoeken en welke vragen ze stellen." },
-      { icon: "file-text", kop: "Teksten scherper maken", tekst: "Titels, tussenkoppen en tekst zo schrijven dat zowel de bezoeker als Google snapt waar een pagina over gaat." },
-      { icon: "line-chart", kop: "Meten wat het doet", tekst: "Elke maand kijken wat er verandert in vertoningen, klikken en aanvragen." },
-      { icon: "list-checks", kop: "Technische checks", tekst: "Kapotte links, dubbele titels en trage pagina's opsporen en laten oplossen." },
-      { icon: "link-2", kop: "Interne links leggen", tekst: "Zorgen dat pagina's naar elkaar verwijzen zodat bezoeker en Google verder komen." },
-      { icon: "clipboard-list", kop: "Meeschrijven aan de rapportage", tekst: "Wat jij vindt komt terug in het maandoverzicht dat de klant krijgt." },
-    ],
-    meebrengt: [
-      "Een beetje ervaring met SEO. Een studieopdracht of je eigen site telt ook.",
-      "Je schrijft goed Nederlands.",
-      "Je werkt nauwkeurig. SEO is voor een groot deel opletten.",
-      "Je vraagt door waarom iets zo is.",
-      "Je vindt het leuk om in cijfers te zoeken naar een verklaring.",
-    ],
-    krijgt: [
-      "Echte klantwebsites vanaf week één, geen oefenopdracht.",
-      "Je ziet wat je verandert terugkomen in de cijfers.",
-      "Begeleiding van Joshua zelf. Geen tussenlaag.",
-      "Je werkt met dezelfde tools als wij voor klanten gebruiken.",
-      "Ruimte om een eigen onderzoek op te pakken.",
-    ],
-    faq: [
-      { vraag: "Moet ik al met SEO-tools hebben gewerkt?", antwoord: "Nee. Het helpt als je weet wat zoekwoorden zijn. De tools leer je hier." },
-      { vraag: "Werk ik meteen aan echte klanten?", antwoord: "Ja. Alles wat je maakt wordt nagekeken voordat het live gaat, dus je kunt niets stukmaken." },
-      { vraag: "Kan ik dit combineren met mijn studie?", antwoord: "Ja. Meeloopstage, afstudeerstage of parttime naast je studie: we kijken wat past." },
-      { vraag: "Welke opleiding moet ik doen?", antwoord: "Dat maakt ons minder uit dan wat je laat zien. Stuur vooral iets mee dat je zelf hebt gemaakt." },
-    ],
-  },
-  {
-    slug: "webdesign-stage",
-    pad: "/vacatures/webdesign-stage",
-    titel: "Webdesign Stage",
-    type: "Stage",
-    badge: "Stage · Webdesign",
-    kort: "Je hoeft nog niet met ontwerpprogramma's te kunnen werken. Je moet wel kunnen zien waarom de ene pagina rustig oogt en de andere rommelig.",
-    kop: "Ontwerpen leer je hier.",
-    accent: "Smaak neem je mee.",
-    lead: "We zoeken iemand met oog voor vorm. Of je nu al in een ontwerpprogramma hebt gewerkt of niet: als je kunt uitleggen waarom iets er goed uitziet, kunnen we je de rest leren.",
-    uren: "In overleg. Meeloopstage, afstudeerstage of parttime naast je studie.",
-    vergoeding: "Stagevergoeding in overleg.",
-    locatie: "Gouda. In overleg deels op afstand.",
-    metaTitel: "Stage Webdesign | Werken bij MegaOnline",
-    metaOmschrijving: "Webdesign-stage bij MegaOnline in Gouda. Ervaring met ontwerptools is niet nodig, gevoel voor vorm wel. Je ontwerpen worden echt gebouwd.",
-    doet: [
-      { icon: "layout-template", kop: "Pagina's uittekenen", tekst: "Bepalen welk blok waar komt, zodat een bezoeker in de goede volgorde leest." },
-      { icon: "palette", kop: "Kleur en typografie", tekst: "Werken binnen de huisstijl van de klant en die aanscherpen waar het mag." },
-      { icon: "images", kop: "Beeld kiezen en klaarmaken", tekst: "Foto's selecteren, bijsnijden en licht bewerken zodat ze op de site kloppen." },
-      { icon: "smartphone", kop: "Ontwerpen voor elk scherm", tekst: "Een ontwerp is pas af als het op een telefoon net zo goed werkt." },
-      { icon: "eye", kop: "Meekijken bij reviews", tekst: "Aanwezig zijn als een ontwerp met de klant wordt doorgenomen." },
-      { icon: "sparkles", kop: "De laatste tien procent", tekst: "Uitlijnen, ruimte kloppend maken en details afmaken. Daar zit het verschil." },
-    ],
-    meebrengt: [
-      "Je hebt een mening over vormgeving en kunt die onderbouwen.",
-      "Oog voor detail. Scheve marges vallen je op.",
-      "Ervaring met Figma of een ander ontwerpprogramma is niet nodig.",
-      "Je vindt het niet erg om iets vijf keer opnieuw te doen.",
-      "Je bent benieuwd waarom een pagina wel of niet werkt.",
-    ],
-    krijgt: [
-      "Je leert werken in de ontwerptools die wij dagelijks gebruiken.",
-      "Je ontwerpen worden echt gebouwd en gaan live.",
-      "Concrete feedback op alles wat je maakt.",
-      "Werk voor je portfolio waar een naam van een klant onder staat.",
-      "Zicht op wat er ná het ontwerp gebeurt bij de bouw.",
-    ],
-    faq: [
-      { vraag: "Moet ik Figma kennen?", antwoord: "Nee. Wij leren je de tool. Wat je meeneemt is je gevoel voor vorm." },
-      { vraag: "Moet ik kunnen tekenen of illustreren?", antwoord: "Niet per se. Webdesign gaat vooral over indeling, rust en leesbaarheid." },
-      { vraag: "Wat stuur ik mee?", antwoord: "Iets wat je gemaakt hebt. Een schoolproject, een poster of een site die je mooi vindt met de reden erbij." },
-      { vraag: "Werk ik alleen aan nieuwe sites?", antwoord: "Nee. Ook aan bestaande sites die we opnieuw inrichten. Daar leer je vaak het meest van." },
-    ],
-  },
-  {
-    slug: "webdevelopment-stage",
-    pad: "/vacatures/webdevelopment-stage",
-    titel: "Webdevelopment Stage",
-    type: "Stage",
-    badge: "Stage · Development",
-    kort: "Websites in elkaar zetten, koppelingen leggen en zorgen dat alles blijft werken. Grotendeels zonder code.",
-    kop: "Websites bouwen",
-    accent: "zonder dat je kunt programmeren.",
-    lead: "Een groot deel van ons bouwwerk gebeurt zonder een regel code: pagina's opbouwen, koppelingen leggen en testen of alles klopt. Wil je wél leren coderen, dan is daar alle ruimte voor.",
-    uren: "In overleg. Meeloopstage, afstudeerstage of parttime naast je studie.",
-    vergoeding: "Stagevergoeding in overleg.",
-    locatie: "Gouda. In overleg deels op afstand.",
-    metaTitel: "Stage Webdevelopment | Werken bij MegaOnline",
-    metaOmschrijving: "Stage webdevelopment bij MegaOnline in Gouda. Je hoeft niet te kunnen programmeren: je bouwt sites, legt koppelingen en houdt ze werkend.",
-    doet: [
-      { icon: "blocks", kop: "Pagina's opbouwen", tekst: "Een goedgekeurd ontwerp omzetten naar werkende pagina's." },
-      { icon: "plug", kop: "Koppelingen leggen", tekst: "Formulieren, agenda's, boekingssystemen en betaallinks aan elkaar knopen." },
-      { icon: "wrench", kop: "Onderhoud en updates", tekst: "Sites van klanten bijwerken en veilig houden." },
-      { icon: "gauge", kop: "Snelheid nakijken", tekst: "Uitzoeken waarom een pagina traag laadt en dat verhelpen." },
-      { icon: "clipboard", kop: "Testen voor livegang", tekst: "Alles nalopen op elk scherm voordat een site de lucht in gaat." },
-      { icon: "code-2", kop: "Leren coderen als je wilt", tekst: "Wie verder wil komt aan echte code toe. Dat hoeft niet, het mag wel." },
-    ],
-    meebrengt: [
-      "Je denkt logisch en houdt van uitzoekwerk.",
-      "Je werkt nauwkeurig. Eén verkeerd vinkje is een kapot formulier.",
-      "Ervaring met programmeren is niet nodig.",
-      "Je durft iets te proberen voor je het vraagt.",
-      "Je vindt het prettig om iets af te maken.",
-    ],
-    krijgt: [
-      "Je bouwt aan sites die echt gebruikt worden.",
-      "Je leert hoe een site technisch in elkaar zit, van hosting tot formulier.",
-      "Begeleiding bij elke stap. Je wordt niet in het diepe gegooid.",
-      "Ruimte om door te groeien richting code als dat je ligt.",
-      "Je ziet je werk binnen weken live staan.",
-    ],
-    faq: [
-      { vraag: "Moet ik echt niet kunnen programmeren?", antwoord: "Klopt. Het meeste bouwwerk doen we in systemen die zonder code werken. Wil je code leren, dan kan dat hier." },
-      { vraag: "Wat als ik iets stukmaak?", antwoord: "Dan draaien we het terug. We werken met versies, dus fouten zijn hier goedkoop." },
-      { vraag: "Werk ik ook met klanten?", antwoord: "Soms. Meestal krijg je het werk via ons en zie je de klant bij de oplevering." },
-      { vraag: "Welke opleiding past hierbij?", antwoord: "Van ICT tot communicatie. Interesse in techniek weegt zwaarder dan je opleiding." },
-    ],
-  },
-  {
-    slug: "ai-ontwikkeling-stage",
-    pad: "/vacatures/ai-ontwikkeling-stage",
-    titel: "AI-ontwikkeling Stage",
-    type: "Stage",
-    badge: "Stage · AI",
-    kort: "Hulpmiddelen bouwen met AI die ons werk sneller maken. Je bouwt met AI, je bouwt geen AI.",
-    kop: "Dingen maken mét AI.",
-    accent: "Niet zelf AI bouwen.",
-    lead: "Wij gebruiken AI om terugkerend werk weg te nemen: teksten voorbereiden, rapportages opbouwen, gegevens uit systemen halen. Jij bedenkt en maakt zulke hulpmiddelen mee.",
-    uren: "In overleg. Meeloopstage, afstudeerstage of parttime naast je studie.",
-    vergoeding: "Stagevergoeding in overleg.",
-    locatie: "Gouda. In overleg deels op afstand.",
-    metaTitel: "Stage AI-ontwikkeling | Werken bij MegaOnline",
-    metaOmschrijving: "Stage AI-ontwikkeling bij MegaOnline in Gouda. Je bouwt praktische hulpmiddelen met AI voor ons eigen werk en dat van klanten.",
-    doet: [
-      { icon: "bot", kop: "Assistenten opzetten", tekst: "Hulpjes maken die een vaste taak overnemen, bijvoorbeeld een eerste opzet van een tekst." },
-      { icon: "workflow", kop: "Werk automatiseren", tekst: "Stappen aan elkaar knopen zodat een taak vanzelf loopt." },
-      { icon: "file-spreadsheet", kop: "Rapportages voorbereiden", tekst: "Cijfers uit verschillende bronnen samenbrengen tot iets leesbaars." },
-      { icon: "repeat", kop: "Herhaalwerk wegnemen", tekst: "Zoeken naar het werk dat elke week terugkomt en dat als eerste aanpakken." },
-      { icon: "shield-check", kop: "Nakijken wat eruit komt", tekst: "AI gokt soms. Jij bedenkt hoe we dat op tijd zien." },
-      { icon: "lightbulb", kop: "Nieuwe toepassingen bedenken", tekst: "Meedenken waar dit ons of onze klanten nog meer kan helpen." },
-    ],
-    meebrengt: [
-      "Je hebt al eens iets gemaakt met AI, ook al was het klein.",
-      "Je kunt een taak opdelen in stappen.",
-      "Je bent kritisch op wat er uit een model komt.",
-      "Kennis van machine learning is niet nodig.",
-      "Je hebt zin om veel te proberen en snel bij te sturen.",
-    ],
-    krijgt: [
-      "Vrijheid om te bouwen wat je zelf bedenkt, mits het werk oplevert.",
-      "Toegang tot de betaalde tools waar we mee werken.",
-      "Je maakt iets waar het hele bureau daarna mee werkt.",
-      "Begeleiding van iemand die dit dagelijks doet.",
-      "Een onderwerp dat zich uitstekend leent voor een afstudeeropdracht.",
-    ],
-    faq: [
-      { vraag: "Moet ik modellen kunnen trainen?", antwoord: "Nee. We bouwen met bestaande modellen. Het gaat om de toepassing, niet om de techniek eronder." },
-      { vraag: "Moet ik kunnen programmeren?", antwoord: "Handig, niet verplicht. Veel bouwen we in tools waar je stappen aan elkaar klikt." },
-      { vraag: "Wat voor dingen bouwen jullie nu al?", antwoord: "Onder andere hulpmiddelen voor websiteanalyses en voor de maandrapportages van klanten." },
-      { vraag: "Kan ik hier afstuderen?", antwoord: "Ja. Er liggen genoeg vraagstukken die groot genoeg zijn voor een afstudeeropdracht." },
-    ],
-  },
-  {
-    slug: "seo-specialist",
-    pad: "/vacatures/seo-specialist",
-    titel: "SEO Specialist",
-    type: "Freelance of parttime",
-    badge: "Freelance of parttime",
-    kort: "Jij weet hoe SEO werkt en wilt het toepassen op een vaste groep klanten, zonder de rompslomp van eigen acquisitie.",
-    kop: "Jij weet al hoe SEO werkt.",
-    accent: "Wij hebben de klanten.",
-    lead: "We zoeken iemand die zelfstandig de vindbaarheid van onze klanten oppakt: strategie bepalen, uitvoeren en in gewone taal uitleggen wat het opleverde.",
-    uren: "In overleg, van een paar uur per week tot vaste dagen.",
-    vergoeding: "Uurtarief in overleg.",
-    locatie: "Gouda. In overleg deels op afstand.",
-    metaTitel: "SEO Specialist, freelance of parttime | Werken bij MegaOnline",
-    metaOmschrijving: "Freelance of parttime SEO-specialist bij MegaOnline. Vaste klanten, geen acquisitie, uren in overleg.",
-    doet: [
-      { icon: "target", kop: "Strategie per klant", tekst: "Bepalen waar de winst zit voor dit bedrijf, deze markt en deze regio." },
-      { icon: "search-check", kop: "Onderzoek en analyse", tekst: "Zoekgedrag, concurrentie en de huidige stand van de site in kaart brengen." },
-      { icon: "edit-3", kop: "Content sturen", tekst: "Bepalen welke pagina's er moeten komen en waar ze over gaan." },
-      { icon: "git-merge", kop: "Technische SEO", tekst: "Structuur, snelheid en indexering op orde brengen samen met de bouwers." },
-      { icon: "bar-chart-3", kop: "Rapporteren in klanttaal", tekst: "Elke maand uitleggen wat er gebeurde en wat het aan aanvragen deed." },
-      { icon: "graduation-cap", kop: "Stagiairs meenemen", tekst: "Je werkt samen met onze SEO-stagiair en helpt hem verder." },
-    ],
-    meebrengt: [
-      "Aantoonbare ervaring met SEO voor meerdere klanten of sites.",
-      "Je kunt uitleggen zonder jargon.",
-      "Je werkt zelfstandig en stuurt zelf bij.",
-      "Je stuurt op aanvragen, niet op bezoekersaantallen.",
-      "Je bent bereikbaar op vaste momenten, ook al bepaal je zelf je uren.",
-    ],
-    krijgt: [
-      "Klanten liggen klaar. Je hoeft niet te verkopen.",
-      "Korte lijnen. Je overlegt direct met Joshua.",
-      "Je bepaalt zelf hoeveel uur je doet en wanneer.",
-      "Geen lange contracten aan beide kanten.",
-      "Ruimte om de aanpak in te richten zoals jij hem goed vindt.",
-    ],
-    faq: [
-      { vraag: "Is dit freelance of loondienst?", antwoord: "Freelance of parttime in dienst: allebei bespreekbaar." },
-      { vraag: "Hoeveel uur kost dit per week?", antwoord: "Dat groeit mee met het aantal klanten. We beginnen klein en breiden uit als het bevalt." },
-      { vraag: "Moet ik ook advertenties doen?", antwoord: "Nee. SEA is een aparte rol. Overlap mag, verplicht is het niet." },
-      { vraag: "Wie schrijft de teksten?", antwoord: "Dat verdelen we. Jij bepaalt de richting, schrijven kan samen met stagiairs." },
-    ],
-  },
-  {
-    slug: "sea-stage",
-    pad: "/vacatures/sea-stage",
-    titel: "SEA Stage",
-    type: "Stage",
-    badge: "Stage · SEA",
-    kort: "Advertenties opzetten, budget bewaken en uitzoeken wat een aanvraag kost. Met echt geld en echte klanten.",
-    kop: "Advertenties die",
-    accent: "aanvragen opleveren.",
-    lead: "Je leert campagnes opzetten en bijsturen voor bedrijven die leven van aanvragen en boekingen. Elke euro die je uitgeeft is van een echte klant, dus je leert snel om kritisch te kijken.",
-    uren: "In overleg. Meeloopstage, afstudeerstage of parttime naast je studie.",
-    vergoeding: "Stagevergoeding in overleg.",
-    locatie: "Gouda. In overleg deels op afstand.",
-    metaTitel: "Stage SEA | Werken bij MegaOnline",
-    metaOmschrijving: "SEA-stage bij MegaOnline in Gouda. Campagnes opzetten, budget bewaken en sturen op de kosten per aanvraag.",
-    doet: [
-      { icon: "search", kop: "Campagnes opzetten", tekst: "Zoekwoorden kiezen, groepen indelen en advertenties schrijven." },
-      { icon: "euro", kop: "Budget bewaken", tekst: "Kijken waar het geld heen gaat en of dat terugverdiend wordt." },
-      { icon: "filter-x", kop: "Verkeer wegfilteren", tekst: "Zoekopdrachten uitsluiten die nooit een klant worden. Hier zit vaak de snelste winst." },
-      { icon: "mouse-pointer-click", kop: "Advertentieteksten testen", tekst: "Twee varianten naast elkaar leggen en de winnaar aanhouden." },
-      { icon: "route", kop: "Advertentie en pagina laten kloppen", tekst: "Zorgen dat de landingspagina belooft wat de advertentie zei." },
-      { icon: "pie-chart", kop: "Meten wat een aanvraag kost", tekst: "Van klik naar aanvraag rekenen in plaats van naar bezoekers kijken." },
-    ],
-    meebrengt: [
-      "Je bent goed met getallen.",
-      "Je schrijft kort en scherp. Een advertentie heeft weinig woorden.",
-      "Ervaring met adverteren is niet nodig.",
-      "Je durft te zeggen dat iets niet werkt.",
-      "Je bent netjes met andermans geld.",
-    ],
-    krijgt: [
-      "Je werkt met echte budgetten, geen simulatie.",
-      "Je ziet direct terug wat een aanpassing doet.",
-      "Begeleiding bij elke wijziging voordat die live gaat.",
-      "Inzicht in de hele route van advertentie tot aanvraag.",
-      "Kennis die je overal kunt gebruiken.",
-    ],
-    faq: [
-      { vraag: "Krijg ik zelf toegang tot de advertentieaccounts?", antwoord: "Ja, met begeleiding. Wijzigingen worden nagekeken voordat ze live gaan." },
-      { vraag: "Moet ik certificaten hebben?", antwoord: "Nee. Die kun je hier halen als je wilt." },
-      { vraag: "Doe ik ook SEO?", antwoord: "Je leert het verband kennen. De uitvoering ligt bij de SEO-rol." },
-      { vraag: "Hoe lang duurt de stage?", antwoord: "Een half jaar is gebruikelijk, korter of langer kan in overleg." },
-    ],
-  },
-  {
-    slug: "web-consultant",
-    pad: "/vacatures/web-consultant",
-    titel: "Web Consultant",
-    type: "Parttime, freelance of stage",
-    badge: "Parttime, freelance of stage",
-    kort: "Gesprekken voeren met klanten, hun doelgroep uitwerken en dat vertalen naar wat er op de site moet staan.",
-    kop: "Praat met de klant.",
-    accent: "Vertaal het naar zijn website.",
-    lead: "Je voert de gesprekken met klanten en met bedrijven die klant willen worden: wat doen ze, wie koopt bij ze en waar loopt het vast. Daarna bepaal je welke diensten daarbij horen en hoe dat op de website terugkomt.",
-    uren: "In overleg, van een paar uur per week tot vaste dagen.",
-    vergoeding: "Uurtarief in overleg.",
-    locatie: "Gouda. In overleg deels op afstand.",
-    metaTitel: "Web Consultant, parttime, freelance of stage | Werken bij MegaOnline",
-    metaOmschrijving: "Web consultant bij MegaOnline. Klantgesprekken voeren, doelgroep en diensten uitwerken en dat vertalen naar de website.",
-    doet: [
-      { icon: "phone-call", kop: "Kennismakingsgesprekken", tekst: "Het eerste gesprek voeren en boven tafel krijgen wat een bedrijf echt nodig heeft." },
-      { icon: "users", kop: "Doelgroep uitwerken", tekst: "Beschrijven wie de klant van de klant is en waar die op let." },
-      { icon: "compass", kop: "Strategie bepalen", tekst: "Kiezen welke diensten voorop staan en welke boodschap daarbij hoort." },
-      { icon: "layout", kop: "Vertalen naar de site", tekst: "Bepalen welke pagina's er komen, in welke volgorde en met welke woorden." },
-      { icon: "handshake", kop: "Voorstellen presenteren", tekst: "Het plan uitleggen aan de klant en de vragen erover opvangen." },
-      { icon: "refresh-cw", kop: "Terugkoppelen na livegang", tekst: "Na een paar maanden kijken of het klopte wat we bedacht hadden." },
-    ],
-    meebrengt: [
-      "Je praat makkelijk met ondernemers en luistert beter dan je praat.",
-      "Je kunt een gesprek omzetten in een helder plan op papier.",
-      "Je begrijpt hoe een bedrijf aan klanten komt.",
-      "Technische kennis is handig, geen eis.",
-      "Je bent eerlijk als iets niet gaat werken.",
-    ],
-    krijgt: [
-      "Je zit vanaf het eerste gesprek aan tafel.",
-      "Je ziet je plan echt gebouwd worden.",
-      "Veel verschillende branches, van klimhal tot installateur.",
-      "Uren en vorm in overleg: parttime, freelance of stage.",
-      "Directe samenwerking met de mensen die bouwen.",
-    ],
-    faq: [
-      { vraag: "Is dit een verkooprol?", antwoord: "Deels. Het gesprek gaat over wat iemand nodig heeft. Als dat wij niet zijn, zeggen we dat." },
-      { vraag: "Kan ik dit als stage doen?", antwoord: "Ja. Dan schuif je eerst mee aan en voer je later zelf gesprekken." },
-      { vraag: "Moet ik verstand van techniek hebben?", antwoord: "Niet vooraf. Je moet wel willen begrijpen hoe een site werkt." },
-      { vraag: "Werk ik met vaste klanten?", antwoord: "Zowel met nieuwe bedrijven als met klanten die we al langer begeleiden." },
-    ],
-  },
-  {
-    slug: "web-app-architect",
-    pad: "/vacatures/web-app-architect",
-    titel: "Web- en app-architect",
-    type: "Parttime, freelance of stage",
-    badge: "Parttime, freelance of stage",
-    kort: "Nadenken over hoe een website of webapp technisch in elkaar zit, voordat er iets gebouwd wordt.",
-    kop: "Bedenk hoe het",
-    accent: "technisch in elkaar zit.",
-    lead: "Voor er gebouwd wordt moet duidelijk zijn hoe iets werkt: welke gegevens waar staan, wat aan wat gekoppeld wordt en wat er gebeurt als het druk wordt. Dat uitdenken is jouw werk.",
-    uren: "In overleg, van een paar uur per week tot vaste dagen.",
-    vergoeding: "Uurtarief in overleg.",
-    locatie: "Gouda. In overleg deels op afstand.",
-    metaTitel: "Web- en app-architect, parttime, freelance of stage | Werken bij MegaOnline",
-    metaOmschrijving: "Web- en app-architect bij MegaOnline. Je bedenkt de technische inrichting van websites en webapps voordat de bouw begint.",
-    doet: [
-      { icon: "layers", kop: "De opzet bepalen", tekst: "Kiezen uit welke onderdelen iets bestaat en hoe die zich tot elkaar verhouden." },
-      { icon: "database", kop: "Het datamodel", tekst: "Vastleggen welke gegevens we bijhouden en hoe ze samenhangen." },
-      { icon: "plug", kop: "Koppelingen kiezen", tekst: "Bepalen welk systeem de baas is over welke gegevens en wie wat mag ophalen." },
-      { icon: "shield", kop: "Veiligheid en rechten", tekst: "Uitwerken wie wat mag zien en wat er met persoonsgegevens gebeurt." },
-      { icon: "gauge", kop: "Snelheid en groei", tekst: "Zorgen dat het ook werkt als er tien keer zoveel gebruikers komen." },
-      { icon: "files", kop: "Vastleggen wat je bedacht", tekst: "Zo opschrijven dat een ander het kan bouwen zonder jou te bellen." },
-    ],
-    meebrengt: [
-      "Je denkt in structuren en ziet snel waar iets gaat wringen.",
-      "Je kunt een ingewikkelde opzet simpel uitleggen.",
-      "Ervaring met bouwen helpt. Je hoeft niet dagelijks te programmeren.",
-      "Je stelt de vraag achter de vraag voordat je een keuze maakt.",
-      "Je kiest liever iets saais dat werkt dan iets nieuws dat spannend is.",
-    ],
-    krijgt: [
-      "Je bepaalt hoe onze projecten technisch worden opgezet.",
-      "Afwisseling: van een eenvoudige site tot een boekingssysteem.",
-      "Je keuzes worden ook echt uitgevoerd.",
-      "Uren en vorm in overleg: parttime, freelance of stage.",
-      "Overleg met iemand die zelf bouwt, dus geen discussie over haalbaarheid.",
-    ],
-    faq: [
-      { vraag: "Moet ik zelf bouwen?", antwoord: "Niet per se. Meedenken en vastleggen is het belangrijkste, meebouwen mag." },
-      { vraag: "Kan ik dit als stage doen?", antwoord: "Ja. Dan werk je mee aan de opzet en denk je mee over de keuzes." },
-      { vraag: "Met welke techniek werken jullie?", antwoord: "Wisselend, van gewone websites tot webapps met een eigen database. We kiezen per project." },
-      { vraag: "Hoeveel projecten lopen er tegelijk?", antwoord: "Genoeg om afwisseling te hebben, weinig genoeg om overzicht te houden." },
-    ],
-  },
-] as const
+export type Vacature = {
+  /** Laatste deel van de URL: /werken-bij/<slug>. */
+  slug: string;
+  /** Korte naam voor kaarten, kruimelpad en navigatie. */
+  naam: string;
+  /** Volledige functietitel, ook de `title` in de JobPosting-markup. */
+  titel: string;
+  /** Zichtbaar label: Stage, Freelance of parttime, … */
+  soort: string;
+  /** schema.org employmentType. INTERN, PART_TIME of CONTRACTOR. */
+  employmentType: string[];
+  /** Icoonnaam uit `src/components/marks.tsx`. */
+  icoon: string;
+  /** Eén zin op de kaart in het overzicht. */
+  teaser: string;
+  /** Introzin onder de H1. */
+  intro: string;
+  /** Accentwoord in de H1, wordt door het designsysteem gekleurd. */
+  koph1: [string, string, string];
+  uren: string;
+  ervaring: string;
+  doet: { titel: string; tekst: string }[];
+  meebrengt: string[];
+  nietNodig: string[];
+  nietNodigKop: string;
+  krijgt: { icoon: string; titel: string; tekst: string }[];
+  metaTitle: string;
+  metaDescription: string;
+};
 
-export type Vacature = (typeof VACATURES)[number]
-
-/** Het adres waar sollicitaties binnenkomen. */
-export const SOLLICITATIE_MAIL = 'joshua@joshuabink.nl'
-export const SOLLICITATIE_WHATSAPP = 'https://wa.me/31634388938'
-
-/** Mailto-link met onderwerp, zodat een reactie meteen te herkennen is. */
-export function sollicitatieMail(titel: string): string {
-  return `mailto:${SOLLICITATIE_MAIL}?subject=${encodeURIComponent('Sollicitatie ' + titel)}`
-}
+/** Geldt voor alle rollen, dus één keer vastgelegd. */
+export const VOORWAARDEN = {
+  locatie: "Gouda of volledig remote",
+  vergoeding: "In overleg",
+  start: "In overleg",
+  bedrijf: "MegaOnline.io",
+  plaats: "Gouda",
+  mail: "joshua@joshuabink.nl",
+  whatsapp: "+31634388938",
+  whatsappUrl: "https://wa.me/31634388938",
+};
 
 /**
- * Zoekt een vacature op slug. Gooit bij een typefout meteen een fout in
- * plaats van een lege pagina te renderen.
+ * Datum waarop deze vacatures zijn gepubliceerd, plus de datum waarop Google
+ * ze weer uit de vacatureresultaten haalt. Blijft `geldigTot` in het verleden
+ * liggen, dan verdwijnen alle rollen stilletjes uit Google for Jobs. Verzet hem
+ * dus zolang de vacatures open staan.
  */
-export function vacature(slug: Vacature['slug']): Vacature {
-  const gevonden = VACATURES.find((v) => v.slug === slug)
-  if (!gevonden) throw new Error(`Onbekende vacature: ${slug}`)
-  return gevonden
+export const GEPLAATST_OP = "2026-09-09";
+export const GELDIG_TOT = "2027-03-31";
+
+export const VACATURES: Vacature[] = [
+  {
+    slug: "seo-stage",
+    naam: "SEO Stage",
+    titel: "Stage SEO",
+    soort: "Stage",
+    employmentType: ["INTERN"],
+    icoon: "search-check",
+    teaser:
+      "Uitzoeken waarom de ene pagina wel gevonden wordt en de andere niet. En die tweede pagina beter maken.",
+    intro:
+      "Je werkt aan de vindbaarheid van echte klantsites. Je ziet in de zoekdata welke pagina’s wel vertoningen krijgen maar geen klikken. Jij schrijft de titels die dat omdraaien. Wat jij aanpast, zie je een maand later terug in de rapportage.",
+    koph1: ["Zoeken, testen en ", "echt iets zien bewegen", " in Google."],
+    uren: "2 tot 5 dagen per week",
+    ervaring: "Een beetje ervaring is fijn",
+    doet: [
+      {
+        titel: "Zoekwoorden uitzoeken",
+        tekst:
+          "Per klant en per pagina bepalen waar mensen echt op zoeken en welke van die vragen nog geen antwoord heeft op de site.",
+      },
+      {
+        titel: "Titels en omschrijvingen herschrijven",
+        tekst:
+          "Een pagina die vaak verschijnt maar zelden wordt aangeklikt heeft geen zichtbaarheidsprobleem. Die heeft een titelprobleem.",
+      },
+      {
+        titel: "Pagina’s technisch nalopen",
+        tekst:
+          "Snelheid, koppenstructuur, interne links en dubbele pagina’s. Je leert waar je naar kijkt en waarom het uitmaakt.",
+      },
+      {
+        titel: "Maandrapportages voorbereiden",
+        tekst:
+          "De cijfers ophalen en er duiding bij schrijven. Niet alleen wat er veranderde, maar wat het opleverde aan aanvragen.",
+      },
+      {
+        titel: "Kennisbankartikelen schrijven",
+        tekst:
+          "Antwoorden op vragen die ondernemers echt stellen. Jouw stukken komen onder je eigen naam online.",
+      },
+    ],
+    meebrengt: [
+      "Je bent nieuwsgierig naar hoe zoekmachines kiezen wat bovenaan komt",
+      "Je schrijft in gewoon Nederlands, zonder vakjargon",
+      "Je werkt netjes en houdt je eigen werk bij",
+      "Je zegt het als je iets niet weet in plaats van te gokken",
+      "Je volgt een opleiding richting marketing, communicatie of media",
+    ],
+    nietNodigKop: "Wat je niet hoeft te hebben",
+    nietNodig: [
+      "Certificaten of cursussen op je cv",
+      "Ervaring met dure analysetools",
+      "Kunnen programmeren",
+    ],
+    krijgt: [
+      {
+        icoon: "users",
+        titel: "Echte klanten",
+        tekst: "Geen oefencases. Je werkt aan sites waar mensen hun omzet uit halen.",
+      },
+      {
+        icoon: "line-chart",
+        titel: "Je ziet je effect",
+        tekst: "Elke maand terug in de cijfers, met uitleg waarom iets wel of niet werkte.",
+      },
+      {
+        icoon: "pen-tool",
+        titel: "Werk onder je naam",
+        tekst: "Je artikelen komen online. Dat is meteen je portfolio.",
+      },
+      {
+        icoon: "handshake",
+        titel: "Directe begeleiding",
+        tekst: "Je werkt naast Joshua, niet onder drie lagen leidinggevenden.",
+      },
+    ],
+    metaTitle: "Stage SEO | Werken bij MegaOnline.io",
+    metaDescription:
+      "Stage SEO bij MegaOnline in Gouda of volledig remote. Zoekwoordonderzoek, titels herschrijven, techniek nalopen en rapportages maken voor echte klanten.",
+  },
+
+  {
+    slug: "webdesign-stage",
+    naam: "Webdesign Stage",
+    titel: "Stage Webdesign",
+    soort: "Stage",
+    employmentType: ["INTERN"],
+    icoon: "palette",
+    teaser:
+      "Je hoeft geen enkel programma te kennen. Je moet kunnen zien waarom de ene pagina rust uitstraalt en de andere niet.",
+    intro:
+      "Vormgeving is bij ons geen laagje op het eind. Het is de keuze wat bovenaan staat, wat weg mag en waar de blik als eerste landt. Die keuzes leer je maken op sites die daarna echt live gaan.",
+    koph1: ["Smaak is een begin. ", "Weten waarom", " is het vak."],
+    uren: "2 tot 5 dagen per week",
+    ervaring: "Geen ervaring nodig",
+    doet: [
+      {
+        titel: "Pagina’s schetsen",
+        tekst:
+          "Op basis van wie de bezoeker is en wat hij zoekt. Eerst de volgorde van het verhaal, dan pas de vorm.",
+      },
+      {
+        titel: "Kiezen wat weg kan",
+        tekst:
+          "De meeste sites zijn niet te lelijk, ze zijn te vol. Jij helpt bepalen wat er echt toe doet.",
+      },
+      {
+        titel: "Beeld selecteren en bijsnijden",
+        tekst:
+          "Foto’s zoeken die kloppen bij het bedrijf en ze zo bijsnijden dat ze op elk scherm werken.",
+      },
+      {
+        titel: "Bestaande klantsites nalopen",
+        tekst:
+          "Waar wringt het: te kleine letters, knoppen die verdwijnen, tekst op een druk beeld. Jij vindt het en stelt iets beters voor.",
+      },
+      {
+        titel: "Meedenken over huisstijl",
+        tekst:
+          "Kleuren, typografie en de manier waarop een merk consequent terugkomt op elke pagina.",
+      },
+    ],
+    meebrengt: [
+      "Je hebt gevoel voor wat rustig en verzorgd oogt",
+      "Je kijkt kritisch naar sites die je tegenkomt en kunt zeggen wat je stoort",
+      "Je wilt weten waaróm iets werkt, niet alleen dat het mooi is",
+      "Je vindt het prima om je werk te laten afkraken en het daarna beter te maken",
+    ],
+    nietNodigKop: "Wat je niet hoeft te kunnen",
+    nietNodig: [
+      "Werken met Figma, Photoshop of welk programma dan ook",
+      "Een portfolio laten zien",
+      "Een opleiding in vormgeving (handig, geen eis)",
+    ],
+    krijgt: [
+      {
+        icoon: "layout-template",
+        titel: "Je ontwerp gaat live",
+        tekst: "Wat je maakt blijft niet in een map staan. Het komt op het internet.",
+      },
+      {
+        icoon: "graduation-cap",
+        titel: "Je leert de tools hier",
+        tekst: "We zetten je op weg in de programma’s die we gebruiken. Beginnen mag.",
+      },
+      {
+        icoon: "eye",
+        titel: "Je oog wordt scherper",
+        tekst: "Na een paar maanden zie je in tien seconden wat er mis is met een pagina.",
+      },
+      {
+        icoon: "handshake",
+        titel: "Directe begeleiding",
+        tekst: "Feedback op je werk van iemand die het zelf ook bouwt.",
+      },
+    ],
+    metaTitle: "Stage Webdesign | Werken bij MegaOnline.io",
+    metaDescription:
+      "Stage webdesign bij MegaOnline in Gouda of volledig remote. Geen ervaring met ontwerpprogramma’s nodig, gevoel voor wat werkt wel. Je ontwerp gaat echt live.",
+  },
+
+  {
+    slug: "webdevelopment-stage",
+    naam: "Webdevelopment Stage",
+    titel: "Stage Webdevelopment",
+    soort: "Stage",
+    employmentType: ["INTERN"],
+    icoon: "code-2",
+    teaser:
+      "Je hoeft niet te kunnen coderen. Je moet het leuk vinden om net zo lang te pielen tot iets werkt.",
+    intro:
+      "Websites bouwen is voor het grootste deel puzzelen: het juiste blok op de juiste plek, een formulier dat op de goede plek uitkomt, een koppeling die blijft werken. Dat kun je leren zonder ooit een regel code te hebben geschreven.",
+    koph1: ["Bouwen zonder dat je ", "programmeur", " bent."],
+    uren: "2 tot 5 dagen per week",
+    ervaring: "Geen ervaring nodig",
+    doet: [
+      {
+        titel: "Pagina’s bouwen",
+        tekst:
+          "In de bouwers die wij gebruiken. Uit een ontwerp een werkende pagina maken die op mobiel net zo goed staat.",
+      },
+      {
+        titel: "Koppelingen leggen",
+        tekst:
+          "Formulieren naar de mailbox, agenda’s naar de site, aanvragen naar het systeem van de klant.",
+      },
+      {
+        titel: "Sites live zetten en nalopen",
+        tekst: "Domeinen, doorverwijzingen en de controle of alles het na livegang nog doet.",
+      },
+      {
+        titel: "Fouten opsporen",
+        tekst:
+          "Iets doet het niet. Jij zoekt uit wáár het misgaat en schrijft op hoe je het kunt herhalen.",
+      },
+      {
+        titel: "Met AI kleine aanpassingen maken",
+        tekst:
+          "Een stukje code aanpassen met hulp van AI en daarna controleren of het klopt. Zo leer je lezen wat er staat.",
+      },
+    ],
+    meebrengt: [
+      "Je vindt uitzoeken leuker dan opgeven",
+      "Je werkt nauwkeurig, want één verkeerd teken breekt een pagina",
+      "Je durft te klooien in een testomgeving zonder bang te zijn iets stuk te maken",
+      "Je kunt opschrijven wat je gedaan hebt, zodat een ander het snapt",
+    ],
+    nietNodigKop: "Wat je niet hoeft te kunnen",
+    nietNodig: ["Programmeren", "Een technische opleiding volgen", "Frameworks of talen kennen"],
+    krijgt: [
+      {
+        icoon: "rocket",
+        titel: "Je zet sites live",
+        tekst: "Binnen je stage staat er werk van jou online, met bezoekers erop.",
+      },
+      {
+        icoon: "workflow",
+        titel: "Je leert het hele pad",
+        tekst: "Van ontwerp naar pagina naar koppeling naar livegang. Niet één stukje.",
+      },
+      {
+        icoon: "bot",
+        titel: "Werken met AI",
+        tekst: "Je leert AI inzetten als gereedschap, inclusief wanneer het onzin oplevert.",
+      },
+      {
+        icoon: "handshake",
+        titel: "Directe begeleiding",
+        tekst: "Vastlopen mag. Er zit altijd iemand naast je die het al eens heeft opgelost.",
+      },
+    ],
+    metaTitle: "Stage Webdevelopment | Werken bij MegaOnline.io",
+    metaDescription:
+      "Stage webdevelopment bij MegaOnline in Gouda of volledig remote. Je hoeft niet te kunnen coderen. Pagina’s bouwen, koppelingen leggen en sites live zetten.",
+  },
+
+  {
+    slug: "ai-ontwikkeling",
+    naam: "AI-ontwikkeling",
+    titel: "AI-ontwikkelaar (stage of parttime)",
+    soort: "Stage of parttime",
+    employmentType: ["INTERN", "PART_TIME"],
+    icoon: "bot",
+    teaser:
+      "Dingen maken mét AI. Je hoeft zelf geen model te bouwen, je moet er iets werkends van maken.",
+    intro:
+      "Wij automatiseren ons eigen werk: rapportages die zichzelf voorbereiden, offertes die al klaarstaan, klantvragen die op de goede plek belanden. Jij bouwt die dingen, test ze tot ze betrouwbaar zijn en zoekt uit wat je juist níet aan een AI moet overlaten.",
+    koph1: ["Bouwen ", "met", " AI, niet aan AI."],
+    uren: "2 tot 4 dagen per week",
+    ervaring: "Eigen geknutsel telt als ervaring",
+    doet: [
+      {
+        titel: "Handwerk automatiseren",
+        tekst:
+          "Zoeken naar de taken die elke week terugkomen en er een werkende automatisering van maken.",
+      },
+      {
+        titel: "Agents en workflows bouwen",
+        tekst:
+          "Zodat rapportages, offertes en opvolging voorbereid klaarstaan voor een mens ze goedkeurt.",
+      },
+      {
+        titel: "Koppelingen leggen",
+        tekst:
+          "Tussen de tools die we gebruiken: website, mail, agenda, boekhouding en klantsysteem.",
+      },
+      {
+        titel: "Prompts schrijven en testen",
+        tekst:
+          "Net zo lang bijschaven tot het antwoord tien keer op rij klopt. Eén keer goed is toeval.",
+      },
+      {
+        titel: "Grenzen bewaken",
+        tekst:
+          "Bepalen waar een mens moet kijken voordat er iets naar buiten gaat. Er zit altijd iemand tussen.",
+      },
+    ],
+    meebrengt: [
+      "Je speelt uit jezelf al met AI-tools",
+      "Je denkt in stappen: eerst dit, dan dat en wat als het misgaat",
+      "Je vindt het leuk om te blijven schaven tot iets klopt",
+      "Je bent kritisch op wat een model beweert",
+    ],
+    nietNodigKop: "Wat je niet hoeft te kunnen",
+    nietNodig: [
+      "Modellen trainen of finetunen",
+      "Wiskunde of datascience",
+      "Zwaar programmeerwerk",
+    ],
+    krijgt: [
+      {
+        icoon: "sparkles",
+        titel: "Vrije hand",
+        tekst: "Zie je iets dat sneller kan? Bouw het. Dat is hier geen zijproject.",
+      },
+      {
+        icoon: "blocks",
+        titel: "Toegang tot alles",
+        tekst: "Je werkt met de tools en systemen die het bedrijf echt draaiende houden.",
+      },
+      {
+        icoon: "clock",
+        titel: "Meetbaar resultaat",
+        tekst: "Uren die je bespaart zijn uren. Dat is prettig concreet.",
+      },
+      {
+        icoon: "handshake",
+        titel: "Directe begeleiding",
+        tekst: "Korte lijnen, snelle beslissingen, geen goedkeuringsronde van drie weken.",
+      },
+    ],
+    metaTitle: "AI-ontwikkelaar, stage of parttime | Werken bij MegaOnline.io",
+    metaDescription:
+      "Bouw met AI bij MegaOnline in Gouda of volledig remote. Automatiseringen, agents en koppelingen maken. Geen modellen trainen, wel iets werkends opleveren.",
+  },
+
+  {
+    slug: "seo-specialist",
+    naam: "SEO Specialist",
+    titel: "SEO Specialist (freelance of parttime)",
+    soort: "Freelance of parttime",
+    employmentType: ["CONTRACTOR", "PART_TIME"],
+    icoon: "trending-up",
+    teaser:
+      "Je pakt de vindbaarheid van een vaste set klanten en bent verantwoordelijk voor wat er groeit.",
+    intro:
+      "Onze klanten leven van aanvragen en boekingen. Jij zorgt dat ze gevonden worden door de mensen die daar klaar voor zijn. Elke maand leg je uit wat je deed en wat het opleverde. Geen rapport vol grafieken, wel een eerlijk verhaal.",
+    koph1: ["Eigenaar van de ", "groei", " van een vaste set klanten."],
+    uren: "In overleg, vanaf 8 uur per week",
+    ervaring: "Aantoonbare ervaring vereist",
+    doet: [
+      {
+        titel: "Per klant een plan maken",
+        tekst:
+          "Waar staat de site nu, waar valt de meeste winst te halen en in welke volgorde pakken we dat.",
+      },
+      {
+        titel: "Zoekwoordonderzoek en contentplanning",
+        tekst: "Van zoekvraag naar pagina. Je bepaalt wat er geschreven moet worden en waarom.",
+      },
+      {
+        titel: "Techniek en interne links",
+        tekst:
+          "Zorgen dat de site vindbaar én leesbaar is en dat autoriteit terechtkomt op de pagina’s die moeten scoren.",
+      },
+      {
+        titel: "Maandrapportage met duiding",
+        tekst:
+          "Elk cijfer krijgt uitleg. Bij een daling benoemen we die in plaats van hem weg te poetsen.",
+      },
+      {
+        titel: "Stagiairs begeleiden",
+        tekst: "Je stuurt het werk van de SEO-stagiair aan en maakt hem beter. Dat hoort erbij.",
+      },
+    ],
+    meebrengt: [
+      "Aantoonbare ervaring met SEO voor het mkb",
+      "Je kunt zelfstandig prioriteiten stellen zonder dat iemand je werk verdeelt",
+      "Je legt in gewone taal uit wat je doet, ook aan een ondernemer die niks van SEO weet",
+      "Je stuurt op aanvragen, niet op bezoekersaantallen",
+    ],
+    nietNodigKop: "Wat we niet vragen",
+    nietNodig: ["Fulltime beschikbaar zijn", "Op kantoor zitten", "Een cv van een groot bureau"],
+    krijgt: [
+      {
+        icoon: "target",
+        titel: "Eigen klanten",
+        tekst: "Je krijgt een vaste set en bouwt daar een echte relatie mee op.",
+      },
+      {
+        icoon: "sliders",
+        titel: "Je eigen aanpak",
+        tekst: "Wij schrijven geen draaiboek voor. Jij bepaalt hoe je het aanpakt.",
+      },
+      {
+        icoon: "calendar-check",
+        titel: "Ritme, geen ruis",
+        tekst: "Maandritme met vaste momenten. Geen ad-hoc verzoeken op vrijdagmiddag.",
+      },
+      {
+        icoon: "handshake",
+        titel: "Kort schakelen",
+        tekst: "Eén aanspreekpunt. Beslissingen dezelfde dag.",
+      },
+    ],
+    metaTitle: "SEO Specialist, freelance of parttime | Werken bij MegaOnline.io",
+    metaDescription:
+      "SEO Specialist gezocht bij MegaOnline, freelance of parttime, remote of vanuit Gouda. Eigen klantenset, eigen aanpak en maandelijkse rapportage met duiding.",
+  },
+
+  {
+    slug: "sea-stage",
+    naam: "SEA Stage",
+    titel: "Stage SEA",
+    soort: "Stage",
+    employmentType: ["INTERN"],
+    icoon: "mouse-pointer-click",
+    teaser: "Adverteren waarbij het niet om klikken gaat, maar om wat er na de klik gebeurt.",
+    intro:
+      "Een campagne die veel klikken oplevert en geen aanvragen is geen succes, hoe mooi het dashboard er ook uitziet. Jij leert kijken naar wat een aanvraag kost en wat je moet veranderen om dat bedrag omlaag te krijgen.",
+    koph1: ["Adverteren op ", "aanvragen", ", niet op klikken."],
+    uren: "2 tot 5 dagen per week",
+    ervaring: "Geen ervaring nodig",
+    doet: [
+      {
+        titel: "Campagnes opzetten en bijhouden",
+        tekst:
+          "Structuur, zoekwoorden en budget. Je leert waarom een nette opbouw je later geld bespaart.",
+      },
+      {
+        titel: "Verspilling eruit halen",
+        tekst:
+          "Zoektermen uitsluiten die wel klikken maar nooit klanten opleveren. Dat is het werk dat het verschil maakt.",
+      },
+      {
+        titel: "Advertenties schrijven en testen",
+        tekst: "Kort, concreet en eerlijk. Twee versies naast elkaar en de cijfers laten kiezen.",
+      },
+      {
+        titel: "Landingspagina’s beoordelen",
+        tekst:
+          "De klik is betaald. Als de pagina daarna niet overtuigt, is het geld weg. Jij ziet waar dat misgaat.",
+      },
+      {
+        titel: "Rekenen naar kosten per aanvraag",
+        tekst: "Van uitgaven naar het enige getal dat een ondernemer echt interesseert.",
+      },
+    ],
+    meebrengt: [
+      "Je bent goed met getallen en verliest je niet in ze",
+      "Je schrijft kort en scherp",
+      "Je hebt het geduld om te blijven testen en bij te sturen",
+      "Je volgt een opleiding richting marketing of commercie",
+    ],
+    nietNodigKop: "Wat je niet hoeft te hebben",
+    nietNodig: ["Certificaten", "Eerder campagnes gedraaid", "Ervaring met grote budgetten"],
+    krijgt: [
+      {
+        icoon: "euro",
+        titel: "Echt budget",
+        tekst: "Je werkt met lopende campagnes van klanten, niet met een oefenaccount.",
+      },
+      {
+        icoon: "gauge",
+        titel: "Snelle terugkoppeling",
+        tekst: "Bij adverteren zie je binnen dagen of je keuze klopte. Dat leert hard.",
+      },
+      {
+        icoon: "link-2",
+        titel: "Verder dan de klik",
+        tekst: "Je leert ook de pagina erachter beoordelen, want daar valt de winst.",
+      },
+      {
+        icoon: "handshake",
+        titel: "Directe begeleiding",
+        tekst: "Je zit niet alleen op een campagne. We kijken samen naar de cijfers.",
+      },
+    ],
+    metaTitle: "Stage SEA | Werken bij MegaOnline.io",
+    metaDescription:
+      "Stage SEA bij MegaOnline in Gouda of volledig remote. Campagnes opzetten, verspilling eruit halen en sturen op kosten per aanvraag. Geen ervaring nodig.",
+  },
+
+  {
+    slug: "web-consultant",
+    naam: "Web Consultant",
+    titel: "Web Consultant (parttime, freelance of stage)",
+    soort: "Parttime, freelance of stage",
+    employmentType: ["PART_TIME", "CONTRACTOR", "INTERN"],
+    icoon: "message-square-text",
+    teaser:
+      "Gesprekken voeren met klanten, hun bedrijf vertalen naar een strategie en die strategie omzetten naar wat er op de site moet staan.",
+    intro:
+      "De beste website begint niet bij vormgeving maar bij een goed gesprek. Wie is de klant, waar loopt hij op vast en welke vraag moet de site beantwoorden voordat iemand contact opneemt. Jij voert dat gesprek en maakt er een plan van dat de bouwers kunnen uitvoeren.",
+    koph1: ["Van een goed ", "gesprek", " naar een site die klopt."],
+    uren: "In overleg",
+    ervaring: "Ervaring welkom, houding belangrijker",
+    doet: [
+      {
+        titel: "Kennismakingsgesprekken voeren",
+        tekst:
+          "Met ondernemers die meer aanvragen willen. Luisteren, doorvragen en eerlijk zeggen wat je denkt.",
+      },
+      {
+        titel: "Doelgroep en aanbod scherp krijgen",
+        tekst:
+          "Voor wie is dit bedrijf er precies en waarom zou iemand hén kiezen en niet de buurman.",
+      },
+      {
+        titel: "Bepalen wat de site moet doen",
+        tekst:
+          "Welke pagina’s er nodig zijn, wat er bovenaan hoort en welke twijfel je op welk moment wegneemt.",
+      },
+      {
+        titel: "Voorstellen maken en toelichten",
+        tekst:
+          "Een plan dat een ondernemer begrijpt zonder vaktaal, met een duidelijke reden achter elke keuze.",
+      },
+      {
+        titel: "Na livegang meedenken",
+        tekst: "De site is een beginpunt. Jij helpt bepalen wat de volgende groeikans is.",
+      },
+    ],
+    meebrengt: [
+      "Je kunt luisteren en doorvragen zonder je eigen verhaal erdoorheen te duwen",
+      "Je legt makkelijk contact en voelt je thuis in een gesprek met een ondernemer",
+      "Je zet een gesprek om in een helder plan dat een ander kan uitvoeren",
+      "Je vindt commercieel werk leuk zonder te willen pushen",
+    ],
+    nietNodigKop: "Wat je niet hoeft te hebben",
+    nietNodig: [
+      "Verkoopervaring bij een bureau",
+      "Technische kennis van websites",
+      "Een script dat je uit je hoofd opdreunt",
+    ],
+    krijgt: [
+      {
+        icoon: "user-check",
+        titel: "Eigen gesprekken",
+        tekst: "Je voert ze zelf, niet als toehoorder. Vanaf het moment dat je er klaar voor bent.",
+      },
+      {
+        icoon: "compass",
+        titel: "Invloed op het werk",
+        tekst: "Wat jij ophaalt bepaalt wat er gebouwd wordt. Dat is geen bijrol.",
+      },
+      {
+        icoon: "briefcase",
+        titel: "Breed beeld",
+        tekst: "Je kijkt bij tientallen bedrijven binnen en ziet wat werkt en wat niet.",
+      },
+      {
+        icoon: "handshake",
+        titel: "Kort schakelen",
+        tekst: "Van gesprek naar voorstel naar bouw, zonder tussenlagen.",
+      },
+    ],
+    metaTitle: "Web Consultant, parttime, freelance of stage | Werken bij MegaOnline.io",
+    metaDescription:
+      "Web Consultant bij MegaOnline in Gouda of volledig remote. Klantgesprekken voeren, doelgroep en strategie uitwerken en vertalen naar wat er op de site moet staan.",
+  },
+
+  {
+    slug: "app-web-architect",
+    naam: "App & Web Architect",
+    titel: "App & Web Architect (parttime, freelance of stage)",
+    soort: "Parttime, freelance of stage",
+    employmentType: ["PART_TIME", "CONTRACTOR", "INTERN"],
+    icoon: "blocks",
+    teaser:
+      "Logisch nadenken over de technische inrichting van websites en webapps, voordat er iets gebouwd wordt.",
+    intro:
+      "De duurste fouten in een project worden gemaakt voordat er één pagina staat: de verkeerde structuur, een koppeling die niet blijkt te bestaan, een keuze die over een jaar niet meer meegroeit. Jij denkt dat vooraf door en legt het zo uit dat iedereen het snapt.",
+    koph1: ["Eerst goed ", "nadenken", ", dan pas bouwen."],
+    uren: "In overleg",
+    ervaring: "Denkwerk telt zwaarder dan je cv",
+    doet: [
+      {
+        titel: "Structuur bepalen",
+        tekst:
+          "Hoe verhouden gegevens, pagina’s en gebruikers zich tot elkaar. Dat is de basis waar alles op rust.",
+      },
+      {
+        titel: "Platformkeuzes maken",
+        tekst:
+          "Wat past bij deze klant: een site, een webapp of iets bestaands. Inclusief waarom het alternatief afvalt.",
+      },
+      {
+        titel: "Koppelingen ontwerpen",
+        tekst:
+          "Tussen site, klantsysteem, agenda, betaling en mail. Vooral bedenken wat er gebeurt als er iets misgaat.",
+      },
+      {
+        titel: "Risico’s vroeg benoemen",
+        tekst:
+          "Een probleem dat je op papier ziet kost een uur. Datzelfde probleem in code kost een week.",
+      },
+      {
+        titel: "Meekijken tijdens de bouw",
+        tekst: "Bouwers en stagiairs scherp houden op de afspraken die je gemaakt hebt.",
+      },
+    ],
+    meebrengt: [
+      "Je denkt gestructureerd en ziet de gevolgen van een keuze twee stappen verderop",
+      "Je kunt techniek uitleggen aan iemand die er niets van weet",
+      "Je hebt ervaring met webapplicaties, koppelingen of datamodellen",
+      "Je durft te zeggen dat een idee niet gaat werken, met argumenten erbij",
+    ],
+    nietNodigKop: "Wat we niet vragen",
+    nietNodig: [
+      "Een specifieke taal of framework beheersen",
+      "Fulltime beschikbaar zijn",
+      "Alles zelf bouwen",
+    ],
+    krijgt: [
+      {
+        icoon: "layers",
+        titel: "Invloed vooraan",
+        tekst: "Jij bepaalt mee hoe projecten worden ingericht, niet achteraf repareren.",
+      },
+      {
+        icoon: "shuffle",
+        titel: "Afwisseling",
+        tekst: "Van een eenvoudige site tot een klantportaal met koppelingen.",
+      },
+      {
+        icoon: "users",
+        titel: "Een team dat luistert",
+        tekst: "Je keuzes worden opgevolgd, want er zit niemand tussen die ze overrulet.",
+      },
+      {
+        icoon: "handshake",
+        titel: "Kort schakelen",
+        tekst: "Direct contact met de oprichter en met de mensen die bouwen.",
+      },
+    ],
+    metaTitle: "App & Web Architect, parttime, freelance of stage | Werken bij MegaOnline.io",
+    metaDescription:
+      "App & Web Architect bij MegaOnline in Gouda of volledig remote. De technische inrichting van websites en webapps doordenken voordat er gebouwd wordt.",
+  },
+];
+
+/** Eén vacature op slug. `undefined` betekent een onbekende URL, dus een 404. */
+export function vacatureBySlug(slug: string): Vacature | undefined {
+  return VACATURES.find((v) => v.slug === slug);
 }
+
+/** Alle detailpaden, voor de sitemap en de schema-tabel. */
+export const VACATURE_PADEN = VACATURES.map((v) => `/werken-bij/${v.slug}`);
