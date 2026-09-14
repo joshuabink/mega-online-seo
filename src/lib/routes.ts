@@ -18,7 +18,7 @@ export const PAGE_ROUTES: Record<string, string> = {
   'Werken-bij Websites.html': '/diensten/werken-bij-websites',
   'SEO.html': '/diensten/seo',
   'Integraties.html': '/diensten/integraties',
-  'Groei Partnership.html': '/diensten/groei-partnership',
+  'Groei Partnership.html': '/diensten/seo',
 
   // Branches
   'Branche - Dienstverleners.html': '/branches/dienstverleners',

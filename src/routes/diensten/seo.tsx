@@ -1,16 +1,19 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { Link } from '@tanstack/react-router'
 import { Icon } from '@/components/Icon'
+import { Media } from '@/components/Media'
 import { Qa } from '@/components/Qa'
 import { Reveal } from '@/components/Reveal'
+import { SteppedLeadForm } from '@/components/LeadForm'
+import '@/styles/pages/diensten-seo.css'
 
 export const Route = createFileRoute('/diensten/seo')({
   head: () => ({
     meta: [
-      { title: "SEO: beter gevonden worden | MegaOnline.io" },
-      { name: 'description', content: "SEO die zorgt dat de juiste klanten je vinden. Lokale vindbaarheid, sterke landingspagina's en een gezonde technische basis, gericht op meer aanvragen." },
-      { property: 'og:title', content: "SEO: beter gevonden worden | MegaOnline.io" },
-      { property: 'og:description', content: "SEO die zorgt dat de juiste klanten je vinden. Lokale vindbaarheid, sterke landingspagina's en een gezonde technische basis, gericht op meer aanvragen." },
+      { title: "SEO en GEO | Gevonden worden in Google en in AI | MegaOnline.io" },
+      { name: 'description', content: "Elke maand een nieuwe pagina die je vindbaar maakt in Google en in AI-zoekmachines. 250 euro opstart, daarna 150 euro per maand. Geen trucjes, wel een plan." },
+      { property: 'og:title', content: "SEO en GEO | Gevonden worden in Google en in AI | MegaOnline.io" },
+      { property: 'og:description', content: "Elke maand een nieuwe pagina die je vindbaar maakt in Google en in AI-zoekmachines. 250 euro opstart, daarna 150 euro per maand. Geen trucjes, wel een plan." },
       { property: 'og:url', content: "https://megaonline.io/diensten/seo" },
     ],
     links: [
@@ -22,8 +25,8 @@ export const Route = createFileRoute('/diensten/seo')({
 
 function Seo() {
   return (
-    <main id="top">
-      <section className="section svc-hero svc-hero--center" data-theme="dark" data-screen-label="Hero — SEO">
+    <main id="top" data-page="diensten-seo">
+      <section className="section svc-hero" data-theme="dark" data-screen-label="Hero — SEO en GEO">
         <div className="wrap">
           <div className="svc-hero__grid">
             <div className="svc-hero__copy">
@@ -34,40 +37,48 @@ function Seo() {
                 <Link to="/" hash="diensten">Diensten</Link>
                 <span className="sep">/</span>
                 {' '}
-                <b>SEO</b>
+                <b>SEO en GEO</b>
               </Reveal>
               {' '}
               <Reveal as="div" className="hero__badge reveal" data-d="1">
                 <span className="badge">
                   <span className="gdot" />
-                  SEO
+                  SEO en GEO · elke maand een nieuwe pagina
                 </span>
               </Reveal>
               {' '}
               <Reveal as="h1" className="display reveal" data-d="1">
-                Gevonden worden door wie
+                Gevonden worden door wie al naar je
                 {' '}
-                <em>al naar je zoekt.</em>
+                <em>zoekt.</em>
               </Reveal>
               {' '}
               <Reveal as="p" className="lead svc-hero__sub reveal" data-d="2">
-                Een mooie website heeft pas waarde als de juiste mensen ‘m vinden. Wij zorgen dat je verschijnt op het moment dat iemand zoekt naar wat jij biedt, en dat die bezoeker ook echt klant wordt.
+                Elke maand publiceren we een nieuwe pagina die je beter vindbaar maakt, in Google en in AI-zoekmachines zoals ChatGPT en Gemini. Welke pagina's dat worden ligt vooraf vast in je contentplan. 250 euro eenmalig voor het onderzoek en het plan, daarna 150 euro per maand.
               </Reveal>
               {' '}
               <Reveal as="div" className="svc-hero__ctas reveal" data-d="2">
-                <Link className="btn btn-primary" to="/gratis-websitescan">
-                  Vraag je gratis scan aan
+                <Link className="btn btn-primary" to="/contact">
+                  Plan een kennismaking
+                  {' '}
                 </Link>
                 {' '}
-                <Link className="tlink" to="/contact">
-                  Plan een kennismaking
+                <Link className="tlink" to="/gratis-websitescan">
+                  Vraag je gratis scan aan
                   {' '}
                 </Link>
               </Reveal>
             </div>
+            {' '}
+            <Reveal as="div" className="hvis reveal" data-d="2">
+              <div className="hvis__frame">
+                <Media id="gp-hero-foto" fit="cover" alt="Overleg over de cijfers van een website" />
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>
+      {' '}
       {' '}
       <section className="section section--tight" data-theme="paper" data-screen-label="Het probleem">
         <div className="wrap">
@@ -123,174 +134,640 @@ function Seo() {
         </div>
       </section>
       {' '}
-      <section className="section" data-theme="light" data-screen-label="Onze aanpak">
+      {' '}
+      <section className="section section--tight" data-theme="paper" data-screen-label="Waarom de meeste websites stil blijven staan">
         <div className="wrap">
           <Reveal as="div" className="shead reveal">
-            <span className="label">Onze aanpak</span>
+            <span className="label">Een website is nooit af</span>
             {' '}
             <h2 className="h2">
-              SEO die op
+              De wereld beweegt. De meeste websites
               {' '}
-              <em>aanvragen</em>
-              {' '}
-              stuurt, niet op ijdele cijfers.
+              <em>blijven staan.</em>
             </h2>
             {' '}
             <p className="lead">
-              We jagen geen bezoekersaantallen na, maar de juiste bezoekers: mensen met een concrete vraag die bij jou past.
+              Een website wordt één keer gebouwd en daarna jarenlang met rust gelaten. Maar alles eromheen verandert continu. Daar zit precies het probleem.
             </p>
           </Reveal>
           {' '}
-          <div className="bento">
-            <Reveal as="div" className="bcell bcell--big reveal">
-              <div>
-                <div className="bcell__top">
-                  <span className="bcell__no">De kern</span>
-                  <span className="iconbox">
-                    <Icon name="search-check" />
-                  </span>
-                </div>
-                {' '}
-                <h3 style={{ marginTop: "18px" }}>Gevonden op wat je klant echt zoekt</h3>
-                {' '}
-                <p style={{ marginTop: "14px" }}>
-                  We brengen in kaart waar jouw klanten op zoeken en richten je pagina's daarop in. Geen trucjes, maar relevante inhoud en een gezonde technische basis die blijvend resultaat geeft.
+          <div className="flaw">
+            <Reveal as="div" className="flaw__intro reveal">
+              <h3>
+                Een website die stilstaat, gaat langzaam achteruit. Ook als je er niets aan verandert.
+              </h3>
+              {' '}
+              <p>
+                Niet omdat de website slechter wordt, maar omdat de wereld eromheen vooruit gaat. Je doelgroep, je concurrenten en het gedrag van bezoekers staan nooit stil.
+              </p>
+              {' '}
+              <p>
+                Wie zijn website met rust laat, valt niet stil, maar achterop. Stap voor stap, zonder dat je het direct merkt.
+              </p>
+            </Reveal>
+            {' '}
+            <div className="flaw__mini">
+              <Reveal as="div" className="miniprob reveal">
+                <h4>Doelgroepen veranderen</h4>
+                <p>
+                  Wat mensen verwachten van een website verschuift voortdurend.
                 </p>
-              </div>
+              </Reveal>
               {' '}
-              <div className="pullnote" style={{ marginTop: "24px" }}>
-                De juiste bezoeker op de juiste pagina,
+              <Reveal as="div" className="miniprob reveal" data-d="1">
+                <h4>Concurrenten verbeteren</h4>
+                <p>
+                  Stilstaan betekent ingehaald worden door wie wél doorontwikkelt.
+                </p>
+              </Reveal>
+              {' '}
+              <Reveal as="div" className="miniprob reveal">
+                <h4>Bezoekers gedragen zich anders</h4>
+                <p>
+                  Hoe mensen klikken en zoeken verandert sneller dan je denkt.
+                </p>
+              </Reveal>
+              {' '}
+              <Reveal as="div" className="miniprob reveal" data-d="1">
+                <h4>Nieuwe kansen ontstaan</h4>
+                <p>Er komen continu mogelijkheden bij die nog onbenut blijven.</p>
+              </Reveal>
+              {' '}
+              <Reveal as="div" className="miniprob reveal">
+                <h4>Bedrijven groeien</h4>
+                <p>Je aanbod en ambitie veranderen, je website meestal niet.</p>
+              </Reveal>
+              {' '}
+              <Reveal as="div" className="miniprob reveal" data-d="1">
+                <h4>Websites blijven hetzelfde</h4>
+                <p>En precies daar loopt het langzaam scheef met de rest.</p>
+              </Reveal>
+            </div>
+          </div>
+        </div>
+      </section>
+      {' '}
+      {' '}
+      <section className="section" data-theme="dark" data-screen-label="De echte winst na livegang">
+        <div className="wrap">
+          <div className="why">
+            <Reveal as="div" className="shead reveal" style={{ maxWidth: "none" }}>
+              <span className="label">Na livegang</span>
+              {' '}
+              <h2 className="h2">
+                De echte winst zit vaak in de maanden
                 {' '}
-                <em>klaar</em>
+                <em>ná</em>
                 {' '}
-                om contact op te nemen.
-              </div>
+                livegang.
+              </h2>
+              {' '}
+              <p className="lead">
+                De eerste versie van je website is gebouwd op kennis en aannames. Goede aannames, maar nog steeds aannames. Pas wanneer echte bezoekers de website gebruiken, ontstaat er waardevolle informatie.
+              </p>
+              {' '}
+              <p className="lead">
+                Vanaf dat moment hoeven we niet meer te gokken. We kunnen kijken, leren en gericht verbeteren.
+              </p>
             </Reveal>
             {' '}
-            <Reveal as="div" className="bcell reveal" data-d="1">
-              <div className="bcell__top">
-                <span className="bcell__no">Aanpak 01</span>
-                <span className="iconbox iconbox--sm">
-                  <Icon name="map-pin" />
-                </span>
-              </div>
+            <Reveal as="aside" className="panel reveal" data-d="1">
+              <p className="panel__quote">
+                De eerste versie is een
+                {' '}
+                <em>hypothese.</em>
+                {' '}
+                De data is het bewijs.
+              </p>
               {' '}
-              <h3>Lokale vindbaarheid</h3>
+              <p className="panel__support">
+                Zodra bezoekers de website gebruiken, zien we wat er werkelijk gebeurt:
+              </p>
               {' '}
-              <p>Bovenaan komen in je eigen regio, waar je klanten zoeken.</p>
-            </Reveal>
-            {' '}
-            <Reveal as="div" className="bcell reveal" data-d="2">
-              <div className="bcell__top">
-                <span className="bcell__no">Aanpak 02</span>
-                <span className="iconbox iconbox--sm">
-                  <Icon name="layout-template" />
-                </span>
-              </div>
-              {' '}
-              <h3>Sterke landingspagina's</h3>
-              {' '}
-              <p>Pagina's die scoren én bezoekers naar actie leiden.</p>
-            </Reveal>
-            {' '}
-            <Reveal as="div" className="bcell reveal" data-d="1">
-              <div className="bcell__top">
-                <span className="bcell__no">Aanpak 03</span>
-                <span className="iconbox iconbox--sm">
-                  <Icon name="gauge" />
-                </span>
-              </div>
-              {' '}
-              <h3>Technische basis</h3>
-              {' '}
-              <p>Snelheid, structuur en mobiel op orde als fundament.</p>
-            </Reveal>
-            {' '}
-            <Reveal as="div" className="bcell reveal" data-d="2">
-              <div className="bcell__top">
-                <span className="bcell__no">Aanpak 04</span>
-                <span className="iconbox iconbox--sm">
-                  <Icon name="bar-chart-3" />
-                </span>
-              </div>
-              {' '}
-              <h3>Inzicht & groei</h3>
-              {' '}
-              <p>Heldere rapportage over posities, verkeer en aanvragen.</p>
+              <ul className="considlist" style={{ gridTemplateColumns: "1fr", marginTop: "18px" }}>
+                <li>Waar bezoekers afhaken</li>
+                {' '}
+                <li>Welke pagina's goed werken</li>
+                {' '}
+                <li>Welke pagina's minder presteren</li>
+                {' '}
+                <li>Welke vragen mensen hebben</li>
+                {' '}
+                <li>Welke onderdelen aandacht nodig hebben</li>
+              </ul>
             </Reveal>
           </div>
         </div>
       </section>
       {' '}
-      <section className="section section--tight" data-theme="paper" data-screen-label="Wat je krijgt">
+      {' '}
+      <section className="section section--tight" data-theme="light" data-screen-label="Wat we binnen het Groei Partnership doen">
         <div className="wrap">
           <Reveal as="div" className="shead reveal">
-            <span className="label">Wat we oppakken</span>
+            <span className="label">In het partnership</span>
             {' '}
             <h2 className="h2">
-              Wat goede SEO
+              Wat we binnen het traject
               {' '}
-              <em>nodig heeft.</em>
+              <em>doen.</em>
             </h2>
             {' '}
             <p className="lead">
-              Een complete aanpak, van zoekwoorden tot techniek tot meetbaar resultaat.
+              Geen los lijstje diensten, maar één traject: het contentplan bepaalt waar we op inzetten, de nieuwe pagina's brengen bezoekers binnen en de website zorgt dat er wat uitkomt.
             </p>
           </Reveal>
           {' '}
           <div className="featgrid">
             <Reveal as="div" className="feat reveal">
               <span className="iconbox">
-                <Icon name="search" />
+                <Icon name="compass" />
               </span>
-              <h4>Zoekwoordonderzoek</h4>
-              <p>We bepalen op welke termen je klant echt zoekt.</p>
+              <h4>Strategie en plan</h4>
+              <p>Bij de start doen we zoekwoordenonderzoek en leggen we een contentplan voor twaalf maanden vast.</p>
             </Reveal>
             {' '}
             <Reveal as="div" className="feat reveal" data-d="1">
               <span className="iconbox">
-                <Icon name="map-pin" />
+                <Icon name="search-check" />
               </span>
-              <h4>Lokale SEO</h4>
-              <p>Google Bedrijfsprofiel en regionale vindbaarheid.</p>
+              <h4>SEO</h4>
+              <p>Beter gevonden worden op de zoekopdrachten waar jouw klanten echt op zoeken.</p>
             </Reveal>
             {' '}
             <Reveal as="div" className="feat reveal" data-d="2">
               <span className="iconbox">
-                <Icon name="layout-template" />
+                <Icon name="target" />
               </span>
-              <h4>Landingspagina's</h4>
-              <p>Pagina's die scoren en converteren tegelijk.</p>
+              <h4>GEO en AI-zoekmachines</h4>
+              <p>Elke pagina krijgt heldere FAQ's, zodat je ook naar voren komt in ChatGPT, Claude en Gemini.</p>
             </Reveal>
             {' '}
             <Reveal as="div" className="feat reveal" data-d="3">
               <span className="iconbox">
-                <Icon name="file-text" />
+                <Icon name="sliders-horizontal" />
               </span>
-              <h4>Content & structuur</h4>
-              <p>Inhoud en opbouw die Google en bezoeker overtuigen.</p>
+              <h4>Conversie-optimalisatie</h4>
+              <p>Meer aanvragen en boekingen uit dezelfde bezoekers.</p>
             </Reveal>
             {' '}
             <Reveal as="div" className="feat reveal">
               <span className="iconbox">
-                <Icon name="gauge" />
+                <Icon name="file-text" />
               </span>
-              <h4>Techniek & snelheid</h4>
-              <p>Een snelle, gezonde basis als fundament onder je posities.</p>
+              <h4>Content en landingspagina's</h4>
+              <p>Elke maand een nieuwe blog of landingspagina, geschreven en gepubliceerd.</p>
             </Reveal>
             {' '}
             <Reveal as="div" className="feat reveal" data-d="1">
               <span className="iconbox">
+                <Icon name="activity" />
+              </span>
+              <h4>Meten en analyseren</h4>
+              <p>We kijken elke maand wat bezoekers doen en wat dat oplevert.</p>
+            </Reveal>
+            {' '}
+            <Reveal as="div" className="feat reveal" data-d="2">
+              <span className="iconbox">
+                <Icon name="bar-chart-2" />
+              </span>
+              <h4>Heldere rapportage</h4>
+              <p>Je ziet welke pagina's er live zijn gegaan en wat ze hebben opgeleverd.</p>
+            </Reveal>
+            {' '}
+            <Reveal as="div" className="feat reveal" data-d="3">
+              <span className="iconbox">
+                <Icon name="shield-check" />
+              </span>
+              <h4>Techniek op orde</h4>
+              <p>Snelheid, veiligheid en updates blijven gewoon geregeld.</p>
+            </Reveal>
+            {' '}
+            <Reveal as="div" className="feat reveal">
+              <span className="iconbox">
+                <Icon name="user-check" />
+              </span>
+              <h4>Eén vast aanspreekpunt</h4>
+              <p>Geen ticketsysteem, maar iemand die je bedrijf kent.</p>
+            </Reveal>
+                    </div>
+        </div>
+      </section>
+      {' '}
+      {' '}
+      <section className="section" data-theme="paper" data-screen-label="Van onderbuikgevoel naar inzicht">
+        <div className="wrap">
+          <Reveal as="div" className="shead reveal">
+            <span className="label">Van gevoel naar inzicht</span>
+            {' '}
+            <h2 className="h2">
+              Niet gokken.
+              {' '}
+              <em>Meten.</em>
+            </h2>
+            {' '}
+            <p className="lead">
+              Verbeteringen voeren we niet door omdat ze ons een goed idee lijken. We nemen beslissingen op basis van wat we daadwerkelijk zien gebeuren.
+            </p>
+          </Reveal>
+          {' '}
+          <Reveal as="div" className="exgrid reveal" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(200px,1fr))", marginTop: "clamp(34px,4vw,48px)" }}>
+            <div className="exchip" style={{ flexDirection: "column", alignItems: "flex-start", gap: "14px" }}>
+              <span className="iconbox iconbox--sm">
                 <Icon name="bar-chart-3" />
               </span>
-              <h4>Meten & rapporteren</h4>
-              <p>Inzicht in posities, verkeer en aanvragen.</p>
+              Data: de cijfers achter je website
+            </div>
+            {' '}
+            <div className="exchip" style={{ flexDirection: "column", alignItems: "flex-start", gap: "14px" }}>
+              <span className="iconbox iconbox--sm">
+                <Icon name="activity" />
+              </span>
+              Gedrag: wat bezoekers echt doen
+            </div>
+            {' '}
+            <div className="exchip" style={{ flexDirection: "column", alignItems: "flex-start", gap: "14px" }}>
+              <span className="iconbox iconbox--sm">
+                <Icon name="message-square-text" />
+              </span>
+              Feedback: wat mensen je vertellen
+            </div>
+            {' '}
+            <div className="exchip" style={{ flexDirection: "column", alignItems: "flex-start", gap: "14px" }}>
+              <span className="iconbox iconbox--sm">
+                <Icon name="lightbulb" />
+              </span>
+              Inzichten: de conclusies die we trekken
+            </div>
+          </Reveal>
+        </div>
+      </section>
+      {' '}
+      {' '}
+      <section className="section" id="aanpak" data-theme="dark" data-screen-label="Hoe een samenwerking eruitziet (cyclus)">
+        <div className="wrap">
+          <Reveal as="div" className="shead reveal">
+            <span className="label">Een continu proces</span>
+            {' '}
+            <h2 className="h2">
+              Elke maand de grootste
+              {' '}
+              <em>groeikans.</em>
+            </h2>
+            {' '}
+            <p className="lead">
+              We kijken elke maand opnieuw waar de meeste winst te halen valt, kiezen daar één of twee dingen uit en voeren die uit. Geen lijst met taken die nooit afkomt, maar steeds de stap die op dat moment het meeste oplevert.
+            </p>
+          </Reveal>
+          {' '}
+          <Reveal as="div" className="cycle reveal">
+            <div className="cyclestep cyclestep--rec">
+              <h4>Website live</h4>
+              {' '}
+              <p>Het startpunt. Vanaf hier begint het echte werk pas.</p>
+              {' '}
+              <span className="cyclestep__arr">
+                <Icon name="arrow-right" />
+              </span>
+            </div>
+            {' '}
+            <div className="cyclestep">
+              <h4>Meten</h4>
+              {' '}
+              <p>We verzamelen data over bezoekers, zoekverkeer en campagnes.</p>
+              {' '}
+              <span className="cyclestep__arr">
+                <Icon name="arrow-right" />
+              </span>
+            </div>
+            {' '}
+            <div className="cyclestep">
+              <h4>Kansen zoeken</h4>
+              {' '}
+              <p>We zetten de grootste kansen op een rij en kiezen waar we deze maand op inzetten.</p>
+              {' '}
+              <span className="cyclestep__arr">
+                <Icon name="arrow-right" />
+              </span>
+            </div>
+            {' '}
+            <div className="cyclestep">
+              <h4>Uitvoeren</h4>
+              {' '}
+              <p>We pakken die kans aan, of dat nu SEO, een campagne of de website is.</p>
+              {' '}
+              <span className="cyclestep__arr">
+                <Icon name="arrow-right" />
+              </span>
+            </div>
+            {' '}
+            <div className="cyclestep">
+              <h4>Herhalen</h4>
+              {' '}
+              <p>Volgende maand opnieuw, met wat we geleerd hebben van de vorige.</p>
+            </div>
+          </Reveal>
+          {' '}
+          <Reveal as="div" className="cycle__return reveal" data-d="1">
+            <Icon name="refresh-cw" />
+            {' '}
+            Elke maand opnieuw, steeds op de plek waar de meeste winst zit
+          </Reveal>
+        </div>
+      </section>
+      {' '}
+      {' '}
+      <section className="section" data-theme="paper" data-screen-label="Zie het als onderhoud aan een raceauto">
+        <div className="wrap">
+          <div className="vision">
+            <Reveal as="div" className="vision__media reveal">
+              <Media id="gp-race" fit="cover" placeholder="[ PITSTOP / RACEAUTO ]" alt="PITSTOP / RACEAUTO" />
+            </Reveal>
+            {' '}
+            <Reveal as="div" className="vision__body reveal" data-d="1">
+              <span className="label">De metafoor</span>
+              {' '}
+              <h2 className="h2">
+                Zie het als onderhoud aan een
+                {' '}
+                <em>raceauto.</em>
+              </h2>
+              {' '}
+              <p>
+                Een raceauto wordt niet één keer gebouwd en daarna vergeten. Tussen elke race door wordt hij gecontroleerd, afgesteld en verbeterd. Een paar tienden hier, een betere afstelling daar.
+              </p>
+              {' '}
+              <p>
+                Met een website is het precies zo. Het zijn zelden grote ingrepen. Het zijn de kleine, continue verbeteringen die op de lange termijn een groot verschil maken in wat je website oplevert.
+              </p>
+              {' '}
+              <div className="pullnote" style={{ marginTop: "24px" }}>
+                Stilstaande websites verliezen langzaam terrein. Bijgestuurde websites blijven
+                {' '}
+                <em>winnen.</em>
+              </div>
             </Reveal>
           </div>
         </div>
       </section>
       {' '}
-      <section className="section" id="faq" data-theme="dark" data-screen-label="FAQ">
+      {' '}
+      <section className="section section--tight" data-theme="light" data-screen-label="Voor wie is dit interessant?">
+        <div className="wrap">
+          <Reveal as="div" className="shead reveal">
+            <span className="label">Voor wie</span>
+            {' '}
+            <h2 className="h2">
+              Voor wie is dit
+              {' '}
+              <em>interessant?</em>
+            </h2>
+            {' '}
+            <p className="lead">
+              Het Groei Partnership is bedoeld voor bedrijven waarvoor de website echt iets moet opleveren, niet alleen online moet staan.
+            </p>
+          </Reveal>
+          {' '}
+          <Reveal as="div" className="exgrid reveal" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))" }}>
+            <div className="exchip">
+              <span className="iconbox iconbox--sm">
+                <Icon name="file-text" />
+              </span>
+              Bedrijven die afhankelijk zijn van aanvragen
+            </div>
+            {' '}
+            <div className="exchip">
+              <span className="iconbox iconbox--sm">
+                <Icon name="calendar-clock" />
+              </span>
+              Bedrijven met reserveringen
+            </div>
+            {' '}
+            <div className="exchip">
+              <span className="iconbox iconbox--sm">
+                <Icon name="calendar-check" />
+              </span>
+              Bedrijven met boekingen
+            </div>
+            {' '}
+            <div className="exchip">
+              <span className="iconbox iconbox--sm">
+                <Icon name="trending-up" />
+              </span>
+              Bedrijven die willen groeien
+            </div>
+            {' '}
+            <div className="exchip">
+              <span className="iconbox iconbox--sm">
+                <Icon name="bar-chart-3" />
+              </span>
+              Bedrijven die inzicht willen
+            </div>
+            {' '}
+            <div className="exchip">
+              <span className="iconbox iconbox--sm">
+                <Icon name="handshake" />
+              </span>
+              Bedrijven die een online partner zoeken
+            </div>
+          </Reveal>
+        </div>
+      </section>
+      {' '}
+      {' '}
+      <section className="section section--tight" data-theme="dark" data-screen-label="Wat het kost">
+        <div className="wrap">
+          <Reveal as="div" className="shead reveal" style={{ maxWidth: "660px" }}>
+            <span className="label">Wat het kost</span>
+            {' '}
+            <h2 className="h2">
+              250 euro opstart, daarna
+              {' '}
+              <em>150 euro per maand.</em>
+            </h2>
+            {' '}
+            <p className="lead">
+              Bij de start doen we het zoekwoordenonderzoek, bekijken we je website technisch en stellen we een contentplan op voor twaalf maanden. Daarna publiceren we elke maand een nieuwe pagina uit dat plan.
+            </p>
+          </Reveal>
+          {' '}
+          <Reveal as="div" className="consider reveal" data-d="1" style={{ marginTop: "clamp(24px,3vw,34px)" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: "clamp(24px,3vw,40px)", alignItems: "center" }}>
+              <div>
+                <p style={{ color: "var(--muted)", lineHeight: "1.6" }}>
+                  Elke maand maken we een nieuwe pagina die gericht is op vindbaarheid. Dat kan een blog zijn of een landingspagina. Welk type het wordt staat vooraf in je contentplan, zodat je weet wat eraan komt. Wil je sneller opschalen, dan kost een extra pagina in dezelfde maand 75 euro.
+                </p>
+                {' '}
+                <ul className="considlist" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(160px,1fr))", marginTop: "20px" }}>
+                  <li>Elke maand een nieuwe pagina</li>
+                  {' '}
+                  <li>Blog of landingspagina</li>
+                  {' '}
+                  <li>Vindbaar in Google en AI</li>
+                  {' '}
+                  <li>Maandelijkse terugkoppeling</li>
+                  {' '}
+                  <li>Extra pagina voor 75 euro</li>
+                </ul>
+                {' '}
+                <p className="brand__tag" style={{ marginTop: "22px", paddingTop: "0" }}>
+                  Het partnership loopt twaalf maanden en is daarna maandelijks opzegbaar. Die looptijd is er niet om je vast te zetten: vindbaarheid bouwt zich op over maanden. Korter dan een jaar krijgt het plan de kans niet.
+                </p>
+              </div>
+              {' '}
+              <div style={{ border: "1px solid var(--line)", borderRadius: "16px", background: "var(--card-2)", boxShadow: "var(--elev)", padding: "clamp(24px,2.6vw,32px)", textAlign: "center" }}>
+                <span className="form__head-note" style={{ justifyContent: "center" }}>SEO en GEO abonnement</span>
+                {' '}
+                <div className="svcprice" style={{ fontSize: "2.2rem", marginTop: "6px" }}>
+                  € 150
+                  <small style={{ fontSize: "1rem" }}>
+                    {' '}
+                    / maand
+                  </small>
+                </div>
+                {' '}
+                <p style={{ color: "var(--faint)", fontSize: "0.86rem", marginTop: "8px", lineHeight: "1.5" }}>
+                  Eenmalig € 250 opstart voor het zoekwoordenonderzoek en het contentplan.
+                </p>
+                {' '}
+                <Link className="tlink" to="/contact" style={{ marginTop: "18px", justifyContent: "center" }}>
+                  Plan een kennismaking
+                  {' '}
+                </Link>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+      {' '}
+      {' '}
+      <section className="section section--tight" data-theme="paper" data-screen-label="Alleen onderhoud nodig?">
+        <div className="wrap">
+          <Reveal as="div" className="shead reveal" style={{ maxWidth: "620px" }}>
+            <span className="label">Lichtere optie</span>
+            {' '}
+            <h2 className="h2" style={{ fontSize: "clamp(1.5rem,2.6vw,2rem)" }}>Alleen ondersteuning en onderhoud nodig?</h2>
+          </Reveal>
+          {' '}
+          <Reveal as="div" className="consider reveal" data-d="1" style={{ marginTop: "clamp(24px,3vw,34px)" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: "clamp(24px,3vw,40px)", alignItems: "center" }}>
+              <div>
+                <p style={{ color: "var(--muted)", lineHeight: "1.6" }}>
+                  Niet ieder bedrijf heeft behoefte aan doorlopende optimalisatie. Daarom bieden we ook een lichtere onderhoudsoptie, zodat je website veilig en up-to-date blijft, zonder actieve doorontwikkeling.
+                </p>
+                {' '}
+                <ul className="considlist" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(160px,1fr))", marginTop: "20px" }}>
+                  <li>Updates</li>
+                  {' '}
+                  <li>Beveiliging</li>
+                  {' '}
+                  <li>Back-ups</li>
+                  {' '}
+                  <li>Kleine wijzigingen</li>
+                  {' '}
+                  <li>Technische ondersteuning</li>
+                </ul>
+                {' '}
+                <p className="brand__tag" style={{ marginTop: "22px", paddingTop: "0" }}>
+                  Let op: dit is niet hetzelfde als het Groei Partnership. Bij onderhoud houden we je website draaiend, maar verbeteren we niet actief. Voor groei blijft het partnership de aanbevolen route.
+                </p>
+              </div>
+              {' '}
+              <div style={{ border: "1px solid var(--line)", borderRadius: "16px", background: "var(--card-2)", boxShadow: "var(--elev)", padding: "clamp(24px,2.6vw,32px)", textAlign: "center" }}>
+                <span className="form__head-note" style={{ justifyContent: "center" }}>Onderhoud & Support</span>
+                {' '}
+                <div className="svcprice" style={{ fontSize: "2.2rem", marginTop: "6px" }}>
+                  € 50
+                  <small style={{ fontSize: "1rem" }}>
+                    {' '}
+                    / maand
+                  </small>
+                </div>
+                {' '}
+                <p style={{ color: "var(--faint)", fontSize: "0.86rem", marginTop: "8px", lineHeight: "1.5" }}>
+                  Veilig, up-to-date en in goede handen. Zonder actieve optimalisatie.
+                </p>
+                {' '}
+                <Link className="tlink" to="/gratis-websitescan" style={{ marginTop: "18px", justifyContent: "center" }}>
+                  Meer weten
+                  {' '}
+                </Link>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+      {' '}
+      {' '}
+      <section className="section" data-theme="light" data-screen-label="Waarom klanten hiervoor kiezen">
+        <div className="wrap">
+          <Reveal as="div" className="shead reveal">
+            <span className="label">De waarde</span>
+            {' '}
+            <h2 className="h2">
+              Waarom klanten hiervoor
+              {' '}
+              <em>kiezen.</em>
+            </h2>
+          </Reveal>
+          {' '}
+          <div className="featgrid" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))" }}>
+            <Reveal as="div" className="feat reveal">
+              <span className="iconbox">
+                <Icon name="handshake" />
+              </span>
+              <h4>Betrokken partner</h4>
+              <p>
+                Iemand die je website kent en blijft meedenken, ook na livegang.
+              </p>
+            </Reveal>
+            {' '}
+            <Reveal as="div" className="feat reveal" data-d="1">
+              <span className="iconbox">
+                <Icon name="zap" />
+              </span>
+              <h4>Snellere verbeteringen</h4>
+              <p>Korte lijnen, dus aanpassingen zijn snel doorgevoerd.</p>
+            </Reveal>
+            {' '}
+            <Reveal as="div" className="feat reveal" data-d="2">
+              <span className="iconbox">
+                <Icon name="bar-chart-3" />
+              </span>
+              <h4>Meer inzicht</h4>
+              <p>Je weet wat bezoekers doen en wat dat oplevert.</p>
+            </Reveal>
+            {' '}
+            <Reveal as="div" className="feat reveal" data-d="3">
+              <span className="iconbox">
+                <Icon name="shield-check" />
+              </span>
+              <h4>Minder zorgen</h4>
+              <p>
+                Techniek, veiligheid en updates regelen wij op de achtergrond.
+              </p>
+            </Reveal>
+            {' '}
+            <Reveal as="div" className="feat reveal" data-d="1">
+              <span className="iconbox">
+                <Icon name="refresh-cw" />
+              </span>
+              <h4>Doorlopende optimalisatie</h4>
+              <p>Je website wordt elke maand een stukje beter.</p>
+            </Reveal>
+            {' '}
+            <Reveal as="div" className="feat reveal" data-d="2">
+              <span className="iconbox">
+                <Icon name="user-check" />
+              </span>
+              <h4>Eén vast aanspreekpunt</h4>
+              <p>Geen ticketsysteem, maar een vertrouwd gezicht.</p>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+      {' '}
+      {' '}
+      <section className="section" id="faq" data-theme="paper" data-screen-label="FAQ">
         <div className="wrap">
           <Reveal as="div" className="shead reveal" style={{ maxWidth: "680px" }}>
             <span className="label">Veelgestelde vragen</span>
@@ -299,47 +776,212 @@ function Seo() {
           </Reveal>
           {' '}
           <div className="faq">
-            <Qa question="Hoe snel zie ik resultaat van SEO?" className="reveal">
-                SEO is geen knop die je omzet. De eerste verbeteringen zijn vaak binnen enkele weken zichtbaar, maar serieuze, blijvende posities bouw je op over enkele maanden. We sturen op gestage, duurzame groei in plaats van korte trucs.
+            <Qa question="Hoe lang duurt het voordat ik iets merk van SEO?" className="reveal">
+                SEO is geen knop die je omzet. De eerste verbeteringen zijn vaak binnen enkele weken zichtbaar, maar serieuze, blijvende posities bouw je op over maanden. Daarom werken we met een contentplan voor twaalf maanden in plaats van losse acties.
             </Qa>
             {' '}
-            <Qa question="Werkt SEO ook voor een klein, lokaal bedrijf?" className="reveal">
-                Juist dan. Lokale SEO is vaak de snelste winst: je concurreert in je eigen regio in plaats van met heel Nederland. We zorgen dat je verschijnt wanneer iemand in de buurt zoekt naar wat jij doet.
+            <Qa question="Is lokale vindbaarheid ook zinvol voor een klein bedrijf?" className="reveal">
+                Juist dan. Lokaal is vaak de snelste winst: je concurreert in je eigen regio in plaats van met heel Nederland. We zorgen dat je verschijnt wanneer iemand in de buurt zoekt naar wat jij doet.
             </Qa>
             {' '}
-            <Qa question="Moet mijn website opnieuw gebouwd worden?" className="reveal">
-                Meestal niet. We kijken eerst wat er met je huidige website mogelijk is. Vaak valt er veel te winnen met content, structuur en techniek zonder een volledige herbouw.
+            <Qa question="Is het Groei Partnership verplicht?" className="reveal">
+                Nee. Sommige klanten kiezen voor een eenmalige website en regelen het beheer zelf of via een andere partij. We raden het partnership wel aan, omdat websites die regelmatig verbeterd worden structureel beter presteren dan websites die blijven stilstaan.
             </Qa>
             {' '}
-            <Qa question="Is SEO los van een website af te nemen?" className="reveal">
-                Ja. SEO kan op je bestaande website, los van een nieuw ontwerp. We beginnen graag met een gratis websitescan om te laten zien waar je vindbaarheid blijft liggen.
+            <Qa question="Wat krijg ik voor 150 euro per maand?" className="reveal">
+                Elke maand een nieuwe pagina die gericht is op vindbaarheid: een blog of een landingspagina, geschreven, opgebouwd en gepubliceerd. Elke pagina wordt geoptimaliseerd voor Google en voorzien van heldere FAQ's, zodat je ook naar voren komt in AI-zoekmachines. Welk type pagina er wanneer komt, ligt vooraf vast in je contentplan.
+            </Qa>
+            {' '}
+            <Qa question="Kan ik meer dan één pagina per maand krijgen?" className="reveal">
+                Ja. Het abonnement is gebouwd rond één nieuwe pagina per maand. Wil je sneller opschalen, dan kost elke extra pagina in die maand 75 euro. We kijken samen wat past bij wat je wilt bereiken.
+            </Qa>
+            {' '}
+            <Qa question="Moet mijn website door MegaOnline gebouwd zijn?" className="reveal">
+                In de basis wel. Goed gevonden worden begint bij de techniek van je website. Zit die verkeerd in elkaar, dan kun je nog zulke goede pagina's maken, maar dan worden ze niet gevonden. Daarom draait het partnership op een website die wij hebben gebouwd.
+            </Qa>
+            {' '}
+            <Qa question="Ik heb al een website. Kan het dan ook?" className="reveal">
+                Dat kijken we eerst na. We beoordelen je bestaande website technisch en laten je weten wat er nodig is. Is de basis in orde, dan kunnen we gewoon starten. Zo niet, dan brengen we die eerst op orde en daarna loopt het partnership normaal door.
+            </Qa>
+            {' '}
+            <Qa question="Hoe vaak hebben we contact?" className="reveal">
+                In de basis spreken we elke maand de analyse en verbeterpunten door. Daarnaast zijn de lijnen kort: heb je tussendoor een vraag of een wijziging, dan staan we voor je klaar. Je hebt één vast aanspreekpunt dat je bedrijf kent.
+            </Qa>
+            {' '}
+            <Qa question="Wat gebeurt er iedere maand?" className="reveal">
+                We publiceren de pagina die voor die maand in het contentplan staat, controleren de website technisch op SEO en GEO en kijken wat de eerder geplaatste pagina's doen. Waar nodig sturen we het plan bij.
+            </Qa>
+            {' '}
+            <Qa question="Kan ik opzeggen?" className="reveal">
+                Het partnership loopt twaalf maanden en is daarna maandelijks opzegbaar. Die eerste periode is nodig omdat vindbaarheid zich over maanden opbouwt: na twee maanden is er nog weinig te zien, na acht maanden wel.
+            </Qa>
+            {' '}
+            <Qa question="Doen jullie ook technische ondersteuning?" className="reveal">
+                Zeker. Updates, beveiliging, back-ups en snelheid horen er gewoon bij. Binnen het Groei Partnership gaat dat samen met actieve optimalisatie. Heb je alleen het technische deel nodig, dan kan dat ook via onze lichtere onderhoudsoptie.
+            </Qa>
+            {' '}
+            <Qa question="Wat als ik alleen onderhoud wil?" className="reveal">
+                Dat kan. We bieden een lichtere onderhoudsoptie vanaf € 50 per maand, waarbij we je website veilig en up-to-date houden zonder actieve doorontwikkeling. Goed om te weten: dat is bewust iets anders dan het Groei Partnership, waarbij we je website juist maand na maand verbeteren.
             </Qa>
           </div>
         </div>
       </section>
       {' '}
-      <section className="section" id="scan" data-theme="paper" data-screen-label="Eind-CTA">
+      {' '}
+      <section className="section" id="scan" data-theme="dark" data-screen-label="Eind-CTA + scan-formulier">
         <div className="wrap">
-          <Reveal as="div" className="shead shead--center reveal">
-            <span className="label">Aan de slag</span>
-            {' '}
-            <h2 className="display">Wie jou niet vindt, zoekt gewoon verder.</h2>
-            {' '}
-            <p className="lead">
-              Vraag een gratis websitescan aan. We laten zien waar je nu vindbaarheid, en dus aanvragen, misloopt.
-            </p>
-            {' '}
-            <Reveal as="div" className="svc-hero__ctas reveal" data-d="1" style={{ justifyContent: "center", marginTop: "28px" }}>
-              <Link className="btn btn-primary" to="/gratis-websitescan">
-                Vraag je gratis scan aan
-              </Link>
+          <div className="endcta__grid">
+            <div className="endcta__copy">
+              <Reveal as="h2" className="display reveal">Een website is nooit af. Dat is juist het punt.</Reveal>
               {' '}
-              <Link className="tlink" to="/contact">
-                Plan een kennismaking
+              <Reveal as="p" className="lead reveal" data-d="1">
+                Een betere website ontstaat niet in één dag. Die ontstaat door continu te meten, leren en verbeteren.
+              </Reveal>
+              {' '}
+              <Reveal as="div" className="svc-hero__ctas reveal" data-d="2" style={{ marginTop: "28px" }}>
+                <Link className="btn btn-primary" to="/contact">
+                  Plan een kennismaking
+                  {' '}
+                </Link>
                 {' '}
-              </Link>
-            </Reveal>
-          </Reveal>
+                <Link className="tlink" to="/gratis-websitescan">
+                  Vraag je gratis scan aan
+                  {' '}
+                </Link>
+              </Reveal>
+              {' '}
+              <Reveal as="div" className="endcta__trust reveal" data-d="2" style={{ marginTop: "24px" }}>
+                <span>Geen lange contracten</span>
+                {' '}
+                <span>Eén vast aanspreekpunt</span>
+                {' '}
+                <span>Maand na maand beter</span>
+              </Reveal>
+            </div>
+            {' '}
+            <SteppedLeadForm
+              className="reveal"
+              subject="Nieuwe websitescan-aanvraag - MegaOnline.io"
+              head={
+                <>
+                  <span className="form__head-note">
+                    <span style={{ width: "7px", height: "7px", borderRadius: "50%", background: "var(--accent-text)", display: "inline-block" }} />
+                    Gratis websitescan
+                  </span>
+                  {' '}
+                  <h3>Vraag je websitescan aan</h3>
+                  {' '}
+                  <p>
+                    Begin met je website-adres. De rest volgt in twee korte stappen.
+                  </p>
+                </>
+              }
+              ok={
+                <>
+                <div className="ic">✓</div>
+                {' '}
+                <h3>Bedankt. Aanvraag ontvangen.</h3>
+                {' '}
+                <p style={{ color: "var(--muted)", marginTop: "10px" }}>
+                  We nemen gemiddeld binnen 2 werkdagen contact met je op. Geen automatisch gegenereerd rapport.
+                </p>
+                </>
+              }
+            >
+              <div className="form__progress">
+                <span className="form__step-label">
+                  Stap
+                  {' '}
+                  <b id="stepNum">1</b>
+                  {' '}
+                  van 3
+                </span>
+                {' '}
+                <div className="form__bar">
+                  <i id="stepBar" />
+                </div>
+              </div>
+              {' '}
+              <div className="fstep" data-step="1">
+                <div className="field">
+                  <label htmlFor="f-url">Wat is je website nu?</label>
+                  {' '}
+                  <input id="f-url" name="url" type="text" inputMode="url" placeholder="jouwwebsite.nl" required />
+                </div>
+                {' '}
+                <button className="btn btn-primary" type="button" data-next="">
+                  Volgende
+                  {' '}
+                  <span className="arr">→</span>
+                </button>
+              </div>
+              {' '}
+              <div className="fstep" data-step="2" hidden>
+                <div className="field-row">
+                  <div className="field">
+                    <label htmlFor="f-naam">Je naam</label>
+                    {' '}
+                    <input id="f-naam" name="naam" type="text" placeholder="Voor- en achternaam" required />
+                  </div>
+                  {' '}
+                  <div className="field">
+                    <label htmlFor="f-bedrijf">Bedrijfsnaam</label>
+                    {' '}
+                    <input id="f-bedrijf" name="bedrijf" type="text" placeholder="Bedrijfsnaam" required />
+                  </div>
+                </div>
+                {' '}
+                <div className="form__nav">
+                  <button className="btn btn-ghost" type="button" data-prev="">← Terug</button>
+                  {' '}
+                  <button className="btn btn-primary" type="button" data-next="">
+                    Volgende
+                    {' '}
+                    <span className="arr">→</span>
+                  </button>
+                </div>
+              </div>
+              {' '}
+              <div className="fstep" data-step="3" hidden>
+                <div className="field">
+                  <label htmlFor="f-email">E-mailadres</label>
+                  {' '}
+                  <input id="f-email" name="email" type="email" placeholder="jij@bedrijf.nl" required />
+                </div>
+                {' '}
+                <div className="field">
+                  <label htmlFor="f-doel">Wat wil je bereiken?</label>
+                  {' '}
+                  <select id="f-doel" name="doel" required defaultValue="">
+                    <option value="" disabled>Kies je belangrijkste doel</option>
+                    {' '}
+                    <option value="Doorlopend blijven verbeteren">Doorlopend blijven verbeteren</option>
+                    {' '}
+                    <option value="Meer aanvragen / boekingen">Meer aanvragen / boekingen</option>
+                    {' '}
+                    <option value="Meer inzicht in bezoekers">Meer inzicht in bezoekers</option>
+                    {' '}
+                    <option value="Een vaste online partner">Een vaste online partner</option>
+                    {' '}
+                    <option value="Alleen onderhoud & support">Alleen onderhoud & support</option>
+                  </select>
+                </div>
+                {' '}
+                <div className="form__nav">
+                  <button className="btn btn-ghost" type="button" data-prev="">← Terug</button>
+                  {' '}
+                  <button className="btn btn-primary" type="submit">
+                    Stuur mijn gratis scan
+                    {' '}
+                  </button>
+                </div>
+                {' '}
+                <p className="form__disc">
+                  We nemen binnen twee werkdagen contact op om te kijken of het past. Zonder verkooppraatje.
+                </p>
+              </div>
+            </SteppedLeadForm>
+          </div>
         </div>
       </section>
     </main>
