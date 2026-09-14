@@ -829,25 +829,25 @@ function ConversieWebsite() {
               <span className="svcname rm__name">Groei Partnership</span>
               {' '}
               <p>
-                Na livegang begint het echte werk. We meten waar bezoekers afhaken en verbeteren je website maand na maand. Hier zit de meeste waarde voor jouw bedrijf.
+                Na livegang begint het echte werk. Elke maand publiceren we een nieuwe pagina die je beter vindbaar maakt, in Google en in AI-zoekmachines. Hier zit de meeste waarde voor jouw bedrijf.
               </p>
               {' '}
               <div className="svc__when">Ideaal wanneer</div>
               {' '}
               <ul className="svclist">
-                <li>Je meer uit bestaande bezoekers wilt halen</li>
+                <li>Je beter gevonden wilt worden in Google</li>
                 {' '}
-                <li>Je wilt weten waar bezoekers afhaken</li>
+                <li>Je ook zichtbaar wilt zijn in AI-zoekmachines</li>
                 {' '}
-                <li>Je continu wilt verbeteren</li>
+                <li>Je structureel wilt blijven groeien</li>
               </ul>
               {' '}
               <div className="rm__foot">
                 <span className="svcprice">
-                  Vanaf € 150
+                  € 150
                   <small>
                     {' '}
-                    / maand
+                    / maand · € 250 opstart
                   </small>
                 </span>
                 {' '}

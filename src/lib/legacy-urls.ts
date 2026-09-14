@@ -21,6 +21,10 @@ export const REDIRECTS: Record<string, string> = (() => {
   // De oude Vercel-deploy serveerde de homepage ook op /index.html.
   map['/index.html'] = '/'
 
+  // Het Groei Partnership en de SEO-pagina beloofden hetzelfde. Ze zijn
+  // samengevoegd op /diensten/seo; de naam blijft bestaan als pakketnaam.
+  map['/diensten/groei-partnership'] = '/diensten/seo'
+
   // De vacatures stonden eerder op /vacatures; ze leven nu onder /werken-bij.
   map['/vacatures'] = '/werken-bij'
   // Links de oude slug, rechts de huidige: twee rollen zijn onderweg hernoemd.

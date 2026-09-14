@@ -66,7 +66,7 @@ const OFFERS = [
   {
     "@type": "Offer",
     name: "Groei Partnership",
-    url: `${SITE_URL}/diensten/groei-partnership`,
+    url: `${SITE_URL}/diensten/seo`,
     priceSpecification: {
       "@type": "UnitPriceSpecification",
       minPrice: 150,
@@ -194,9 +194,8 @@ const CRUMB_LABEL: Record<string, string> = {
   "/branches/verhuurbedrijven": "Verhuurbedrijven",
   "/contact": "Contact",
   "/diensten/conversie-website": "Conversie Website",
-  "/diensten/groei-partnership": "Groei Partnership",
   "/diensten/integraties": "Integraties",
-  "/diensten/seo": "SEO",
+  "/diensten/seo": "SEO en GEO",
   "/diensten/starter-website": "Starter Website",
   "/diensten/website-optimalisatie": "Website Optimalisatie",
   "/diensten/website-redesign": "Website Redesign",
@@ -239,12 +238,7 @@ const SERVICES: Record<
     serviceType: "Webdesign en conversieoptimalisatie",
     price: 2500,
   },
-  "/diensten/groei-partnership": {
-    name: "Groei Partnership",
-    serviceType: "Doorlopende websiteoptimalisatie",
-    price: 150,
-    unitCode: "MON",
-  },
+
   "/diensten/website-redesign": {
     name: "Website Redesign",
     serviceType: "Herontwerp van bestaande websites",
@@ -254,8 +248,10 @@ const SERVICES: Record<
     serviceType: "Conversieoptimalisatie",
   },
   "/diensten/seo": {
-    name: "SEO",
-    serviceType: "Zoekmachineoptimalisatie",
+    name: "Groei Partnership",
+    serviceType: "Zoekmachineoptimalisatie en optimalisatie voor AI-zoekmachines",
+    price: 150,
+    unitCode: "MON",
   },
   "/diensten/integraties": {
     name: "Integraties en koppelingen",

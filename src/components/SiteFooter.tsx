@@ -6,7 +6,7 @@ const DIENSTEN = [
   ['/diensten/website-optimalisatie', 'Website Optimalisatie'],
   ['/diensten/starter-website', 'Starter Website'],
   ['/diensten/werken-bij-websites', 'Werken-bij Website'],
-  ['/diensten/groei-partnership', 'Groei Partnership'],
+  ['/diensten/seo', 'SEO en GEO'],
 ] as const
 
 const BRANCHES = [

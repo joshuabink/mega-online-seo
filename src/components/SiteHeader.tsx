@@ -269,9 +269,9 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
                     <Icon name="search" />
                   </span>
                   <span className="mlink__txt">
-                    <span className="mlink__name">SEO</span>
+                    <span className="mlink__name">SEO en GEO</span>
                     <span className="mlink__sub">
-                      Optimalisatie, lokale SEO en landingspagina’s
+                      Elke maand een nieuwe pagina, in Google en in AI
                     </span>
                   </span>
                 </Link>
@@ -284,15 +284,6 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
                     <span className="mlink__sub">
                       CRM, boekingssystemen en WhatsApp
                     </span>
-                  </span>
-                </Link>
-                <Link className="mlink" to="/diensten/groei-partnership">
-                  <span className="mlink__ico">
-                    <Icon name="trending-up" />
-                  </span>
-                  <span className="mlink__txt">
-                    <span className="mlink__name">Groei Partnership</span>
-                    <span className="mlink__sub">Doorlopend, na livegang</span>
                   </span>
                 </Link>
               </div>
@@ -700,21 +691,11 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
               </span>
               Werken-bij Website
             </Link>
-            <Link
-              className="macc__link"
-              to="/diensten/groei-partnership"
-              onClick={onClose}
-            >
-              <span className="mlink__ico">
-                <Icon name="trending-up" />
-              </span>
-              Groei Partnership
-            </Link>
             <Link className="macc__link" to="/diensten/seo" onClick={onClose}>
               <span className="mlink__ico">
                 <Icon name="search" />
               </span>
-              SEO
+              SEO en GEO
             </Link>
             <Link className="macc__link" to="/diensten/integraties" onClick={onClose}>
               <span className="mlink__ico">

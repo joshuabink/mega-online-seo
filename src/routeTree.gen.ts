@@ -25,7 +25,6 @@ import { Route as BranchesOfferteaanvragenRouteImport } from './routes/branches/
 import { Route as BranchesReserveringenRouteImport } from './routes/branches/reserveringen'
 import { Route as BranchesVerhuurbedrijvenRouteImport } from './routes/branches/verhuurbedrijven'
 import { Route as DienstenConversieWebsiteRouteImport } from './routes/diensten/conversie-website'
-import { Route as DienstenGroeiPartnershipRouteImport } from './routes/diensten/groei-partnership'
 import { Route as DienstenIntegratiesRouteImport } from './routes/diensten/integraties'
 import { Route as DienstenSeoRouteImport } from './routes/diensten/seo'
 import { Route as DienstenStarterWebsiteRouteImport } from './routes/diensten/starter-website'
@@ -119,12 +118,6 @@ const DienstenConversieWebsiteRoute =
     path: '/diensten/conversie-website',
     getParentRoute: () => rootRouteImport,
   } as any)
-const DienstenGroeiPartnershipRoute =
-  DienstenGroeiPartnershipRouteImport.update({
-    id: '/diensten/groei-partnership',
-    path: '/diensten/groei-partnership',
-    getParentRoute: () => rootRouteImport,
-  } as any)
 const DienstenIntegratiesRoute = DienstenIntegratiesRouteImport.update({
   id: '/diensten/integraties',
   path: '/diensten/integraties',
@@ -185,7 +178,6 @@ export interface FileRoutesByFullPath {
   '/branches/reserveringen': typeof BranchesReserveringenRoute
   '/branches/verhuurbedrijven': typeof BranchesVerhuurbedrijvenRoute
   '/diensten/conversie-website': typeof DienstenConversieWebsiteRoute
-  '/diensten/groei-partnership': typeof DienstenGroeiPartnershipRoute
   '/diensten/integraties': typeof DienstenIntegratiesRoute
   '/diensten/seo': typeof DienstenSeoRoute
   '/diensten/starter-website': typeof DienstenStarterWebsiteRoute
@@ -212,7 +204,6 @@ export interface FileRoutesByTo {
   '/branches/reserveringen': typeof BranchesReserveringenRoute
   '/branches/verhuurbedrijven': typeof BranchesVerhuurbedrijvenRoute
   '/diensten/conversie-website': typeof DienstenConversieWebsiteRoute
-  '/diensten/groei-partnership': typeof DienstenGroeiPartnershipRoute
   '/diensten/integraties': typeof DienstenIntegratiesRoute
   '/diensten/seo': typeof DienstenSeoRoute
   '/diensten/starter-website': typeof DienstenStarterWebsiteRoute
@@ -240,7 +231,6 @@ export interface FileRoutesById {
   '/branches/reserveringen': typeof BranchesReserveringenRoute
   '/branches/verhuurbedrijven': typeof BranchesVerhuurbedrijvenRoute
   '/diensten/conversie-website': typeof DienstenConversieWebsiteRoute
-  '/diensten/groei-partnership': typeof DienstenGroeiPartnershipRoute
   '/diensten/integraties': typeof DienstenIntegratiesRoute
   '/diensten/seo': typeof DienstenSeoRoute
   '/diensten/starter-website': typeof DienstenStarterWebsiteRoute
@@ -269,7 +259,6 @@ export interface FileRouteTypes {
     | '/branches/reserveringen'
     | '/branches/verhuurbedrijven'
     | '/diensten/conversie-website'
-    | '/diensten/groei-partnership'
     | '/diensten/integraties'
     | '/diensten/seo'
     | '/diensten/starter-website'
@@ -296,7 +285,6 @@ export interface FileRouteTypes {
     | '/branches/reserveringen'
     | '/branches/verhuurbedrijven'
     | '/diensten/conversie-website'
-    | '/diensten/groei-partnership'
     | '/diensten/integraties'
     | '/diensten/seo'
     | '/diensten/starter-website'
@@ -323,7 +311,6 @@ export interface FileRouteTypes {
     | '/branches/reserveringen'
     | '/branches/verhuurbedrijven'
     | '/diensten/conversie-website'
-    | '/diensten/groei-partnership'
     | '/diensten/integraties'
     | '/diensten/seo'
     | '/diensten/starter-website'
@@ -351,7 +338,6 @@ export interface RootRouteChildren {
   BranchesReserveringenRoute: typeof BranchesReserveringenRoute
   BranchesVerhuurbedrijvenRoute: typeof BranchesVerhuurbedrijvenRoute
   DienstenConversieWebsiteRoute: typeof DienstenConversieWebsiteRoute
-  DienstenGroeiPartnershipRoute: typeof DienstenGroeiPartnershipRoute
   DienstenIntegratiesRoute: typeof DienstenIntegratiesRoute
   DienstenSeoRoute: typeof DienstenSeoRoute
   DienstenStarterWebsiteRoute: typeof DienstenStarterWebsiteRoute
@@ -476,13 +462,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DienstenConversieWebsiteRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/diensten/groei-partnership': {
-      id: '/diensten/groei-partnership'
-      path: '/diensten/groei-partnership'
-      fullPath: '/diensten/groei-partnership'
-      preLoaderRoute: typeof DienstenGroeiPartnershipRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/diensten/integraties': {
       id: '/diensten/integraties'
       path: '/diensten/integraties'
@@ -559,7 +538,6 @@ const rootRouteChildren: RootRouteChildren = {
   BranchesReserveringenRoute: BranchesReserveringenRoute,
   BranchesVerhuurbedrijvenRoute: BranchesVerhuurbedrijvenRoute,
   DienstenConversieWebsiteRoute: DienstenConversieWebsiteRoute,
-  DienstenGroeiPartnershipRoute: DienstenGroeiPartnershipRoute,
   DienstenIntegratiesRoute: DienstenIntegratiesRoute,
   DienstenSeoRoute: DienstenSeoRoute,
   DienstenStarterWebsiteRoute: DienstenStarterWebsiteRoute,
