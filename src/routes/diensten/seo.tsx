@@ -48,9 +48,9 @@ function Seo() {
               </Reveal>
               {' '}
               <Reveal as="h1" className="display reveal" data-d="1">
-                Gevonden worden door wie al naar je
+                Gevonden worden in Google. En in de
                 {' '}
-                <em>zoekt.</em>
+                <em>AI die je klant nu vraagt.</em>
               </Reveal>
               {' '}
               <Reveal as="p" className="lead svc-hero__sub reveal" data-d="2">
