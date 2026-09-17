@@ -7,6 +7,7 @@ const DIENSTEN = [
   ['/diensten/starter-website', 'Starter Website'],
   ['/diensten/werken-bij-websites', 'Werken-bij Website'],
   ['/diensten/seo', 'SEO en GEO'],
+  ['/diensten/google-ads', 'Google Ads'],
 ] as const
 
 const BRANCHES = [

@@ -275,6 +275,17 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
                     </span>
                   </span>
                 </Link>
+                <Link className="mlink" to="/diensten/google-ads">
+                  <span className="mlink__ico">
+                    <Icon name="mouse-pointer-click" />
+                  </span>
+                  <span className="mlink__txt">
+                    <span className="mlink__name">Google Ads</span>
+                    <span className="mlink__sub">
+                      Zichtbaar bij de juiste zoekopdracht
+                    </span>
+                  </span>
+                </Link>
                 <Link className="mlink" to="/diensten/integraties">
                   <span className="mlink__ico">
                     <Icon name="plug" />
@@ -696,6 +707,12 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
                 <Icon name="search" />
               </span>
               SEO en GEO
+            </Link>
+            <Link className="macc__link" to="/diensten/google-ads" onClick={onClose}>
+              <span className="mlink__ico">
+                <Icon name="mouse-pointer-click" />
+              </span>
+              Google Ads
             </Link>
             <Link className="macc__link" to="/diensten/integraties" onClick={onClose}>
               <span className="mlink__ico">

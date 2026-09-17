@@ -25,6 +25,7 @@ import { Route as BranchesOfferteaanvragenRouteImport } from './routes/branches/
 import { Route as BranchesReserveringenRouteImport } from './routes/branches/reserveringen'
 import { Route as BranchesVerhuurbedrijvenRouteImport } from './routes/branches/verhuurbedrijven'
 import { Route as DienstenConversieWebsiteRouteImport } from './routes/diensten/conversie-website'
+import { Route as DienstenGoogleAdsRouteImport } from './routes/diensten/google-ads'
 import { Route as DienstenIntegratiesRouteImport } from './routes/diensten/integraties'
 import { Route as DienstenSeoRouteImport } from './routes/diensten/seo'
 import { Route as DienstenStarterWebsiteRouteImport } from './routes/diensten/starter-website'
@@ -118,6 +119,11 @@ const DienstenConversieWebsiteRoute =
     path: '/diensten/conversie-website',
     getParentRoute: () => rootRouteImport,
   } as any)
+const DienstenGoogleAdsRoute = DienstenGoogleAdsRouteImport.update({
+  id: '/diensten/google-ads',
+  path: '/diensten/google-ads',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DienstenIntegratiesRoute = DienstenIntegratiesRouteImport.update({
   id: '/diensten/integraties',
   path: '/diensten/integraties',
@@ -178,6 +184,7 @@ export interface FileRoutesByFullPath {
   '/branches/reserveringen': typeof BranchesReserveringenRoute
   '/branches/verhuurbedrijven': typeof BranchesVerhuurbedrijvenRoute
   '/diensten/conversie-website': typeof DienstenConversieWebsiteRoute
+  '/diensten/google-ads': typeof DienstenGoogleAdsRoute
   '/diensten/integraties': typeof DienstenIntegratiesRoute
   '/diensten/seo': typeof DienstenSeoRoute
   '/diensten/starter-website': typeof DienstenStarterWebsiteRoute
@@ -204,6 +211,7 @@ export interface FileRoutesByTo {
   '/branches/reserveringen': typeof BranchesReserveringenRoute
   '/branches/verhuurbedrijven': typeof BranchesVerhuurbedrijvenRoute
   '/diensten/conversie-website': typeof DienstenConversieWebsiteRoute
+  '/diensten/google-ads': typeof DienstenGoogleAdsRoute
   '/diensten/integraties': typeof DienstenIntegratiesRoute
   '/diensten/seo': typeof DienstenSeoRoute
   '/diensten/starter-website': typeof DienstenStarterWebsiteRoute
@@ -231,6 +239,7 @@ export interface FileRoutesById {
   '/branches/reserveringen': typeof BranchesReserveringenRoute
   '/branches/verhuurbedrijven': typeof BranchesVerhuurbedrijvenRoute
   '/diensten/conversie-website': typeof DienstenConversieWebsiteRoute
+  '/diensten/google-ads': typeof DienstenGoogleAdsRoute
   '/diensten/integraties': typeof DienstenIntegratiesRoute
   '/diensten/seo': typeof DienstenSeoRoute
   '/diensten/starter-website': typeof DienstenStarterWebsiteRoute
@@ -259,6 +268,7 @@ export interface FileRouteTypes {
     | '/branches/reserveringen'
     | '/branches/verhuurbedrijven'
     | '/diensten/conversie-website'
+    | '/diensten/google-ads'
     | '/diensten/integraties'
     | '/diensten/seo'
     | '/diensten/starter-website'
@@ -285,6 +295,7 @@ export interface FileRouteTypes {
     | '/branches/reserveringen'
     | '/branches/verhuurbedrijven'
     | '/diensten/conversie-website'
+    | '/diensten/google-ads'
     | '/diensten/integraties'
     | '/diensten/seo'
     | '/diensten/starter-website'
@@ -311,6 +322,7 @@ export interface FileRouteTypes {
     | '/branches/reserveringen'
     | '/branches/verhuurbedrijven'
     | '/diensten/conversie-website'
+    | '/diensten/google-ads'
     | '/diensten/integraties'
     | '/diensten/seo'
     | '/diensten/starter-website'
@@ -338,6 +350,7 @@ export interface RootRouteChildren {
   BranchesReserveringenRoute: typeof BranchesReserveringenRoute
   BranchesVerhuurbedrijvenRoute: typeof BranchesVerhuurbedrijvenRoute
   DienstenConversieWebsiteRoute: typeof DienstenConversieWebsiteRoute
+  DienstenGoogleAdsRoute: typeof DienstenGoogleAdsRoute
   DienstenIntegratiesRoute: typeof DienstenIntegratiesRoute
   DienstenSeoRoute: typeof DienstenSeoRoute
   DienstenStarterWebsiteRoute: typeof DienstenStarterWebsiteRoute
@@ -462,6 +475,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DienstenConversieWebsiteRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/diensten/google-ads': {
+      id: '/diensten/google-ads'
+      path: '/diensten/google-ads'
+      fullPath: '/diensten/google-ads'
+      preLoaderRoute: typeof DienstenGoogleAdsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/diensten/integraties': {
       id: '/diensten/integraties'
       path: '/diensten/integraties'
@@ -538,6 +558,7 @@ const rootRouteChildren: RootRouteChildren = {
   BranchesReserveringenRoute: BranchesReserveringenRoute,
   BranchesVerhuurbedrijvenRoute: BranchesVerhuurbedrijvenRoute,
   DienstenConversieWebsiteRoute: DienstenConversieWebsiteRoute,
+  DienstenGoogleAdsRoute: DienstenGoogleAdsRoute,
   DienstenIntegratiesRoute: DienstenIntegratiesRoute,
   DienstenSeoRoute: DienstenSeoRoute,
   DienstenStarterWebsiteRoute: DienstenStarterWebsiteRoute,
