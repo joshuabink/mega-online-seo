@@ -206,6 +206,7 @@ const CRUMB_LABEL: Record<string, string> = {
   "/branches/verhuurbedrijven": "Verhuurbedrijven",
   "/contact": "Contact",
   "/diensten/conversie-website": "Conversie Website",
+  "/diensten/google-ads": "Google Ads",
   "/diensten/integraties": "Integraties",
   "/diensten/seo": "SEO en GEO",
   "/diensten/starter-website": "Starter Website",
@@ -264,6 +265,10 @@ const SERVICES: Record<
     serviceType: "Zoekmachineoptimalisatie en optimalisatie voor AI-zoekmachines",
     price: 150,
     unitCode: "MON",
+  },
+  "/diensten/google-ads": {
+    name: "Google Ads beheer",
+    serviceType: "Zoekmachineadverteren (SEA)",
   },
   "/diensten/integraties": {
     name: "Integraties en koppelingen",
