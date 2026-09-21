@@ -764,7 +764,7 @@ function WebsiteOptimalisatie() {
             {' '}
             <Reveal as="div" className="feat reveal" data-d="2">
               <h4><Link to="/branches/dienstverleners">Website laten maken voor dienstverleners</Link></h4>
-              <p>Bezoekers komen wel, maar wekken je pagina's genoeg vertrouwen.</p>
+              <p>Bezoekers komen wel, alleen wekken je pagina's te weinig vertrouwen.</p>
             </Reveal>
           </div>
         </div>
