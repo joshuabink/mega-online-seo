@@ -1043,7 +1043,7 @@ function ConversieWebsite() {
             {' '}
             <Reveal as="div" className="feat reveal" data-d="1">
               <h4><Link to="/branches/verhuurbedrijven">Website laten maken voor verhuurbedrijven</Link></h4>
-              <p>Verhuur per periode, waar beschikbaarheid en tarieven de meeste vragen oplevert.</p>
+              <p>Verhuur per periode, waar beschikbaarheid en tarieven de meeste vragen opleveren.</p>
             </Reveal>
             {' '}
             <Reveal as="div" className="feat reveal" data-d="2">
