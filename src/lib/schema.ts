@@ -20,6 +20,7 @@
  * al gezien en hergebruik voorkomt dat de entiteit opnieuw moet worden geleerd.
  */
 
+import { artikelBySlug, type Artikel } from "./kennisbank";
 import { GELDIG_TOT, GEPLAATST_OP, VOORWAARDEN, vacatureBySlug, type Vacature } from "./vacatures";
 
 export const SITE_URL = "https://megaonline.io";
@@ -214,6 +215,7 @@ const CRUMB_LABEL: Record<string, string> = {
   "/diensten/website-redesign": "Website Redesign",
   "/diensten/werken-bij-websites": "Werken-bij Websites",
   "/gratis-websitescan": "Gratis Websitescan",
+  "/kennisbank": "Kennisbank",
   "/over-megaonline": "Over MegaOnline",
   "/privacyverklaring": "Privacyverklaring",
   "/veelgestelde-vragen": "Veelgestelde vragen",
@@ -228,7 +230,8 @@ const CRUMB_LABEL: Record<string, string> = {
 const CRUMB_PARENT: { prefix: string; name: string; item: string }[] = [
   { prefix: "/diensten/", name: "Diensten", item: `${SITE_URL}/#diensten` },
   { prefix: "/branches/", name: "Branches", item: `${SITE_URL}/#diensten` },
-  { prefix: "/veelgestelde-vragen", name: "Kennisbank", item: `${SITE_URL}/#faq` },
+  { prefix: "/kennisbank/", name: "Kennisbank", item: `${SITE_URL}/kennisbank` },
+  { prefix: "/veelgestelde-vragen", name: "Kennisbank", item: `${SITE_URL}/kennisbank` },
   { prefix: "/werken-bij/", name: "Werken bij", item: `${SITE_URL}/werken-bij` },
 ];
 
@@ -357,7 +360,57 @@ export function buildPageSchema({ pathname, title, description }: PageSchemaInpu
   const vacature = vacatureVoorPad(path);
   if (vacature) nodes.push(buildJobPosting(vacature, url, pageId));
 
+  const artikel = artikelVoorPad(path);
+  if (artikel) nodes.push(...buildArtikel(artikel, url, pageId));
+
   return { "@context": "https://schema.org", "@graph": nodes };
+}
+
+/** Het kennisbankartikel dat bij een pad hoort, of `undefined` elders. */
+function artikelVoorPad(path: string): Artikel | undefined {
+  if (!path.startsWith("/kennisbank/")) return undefined;
+  return artikelBySlug(path.slice("/kennisbank/".length));
+}
+
+/**
+ * Article plus FAQPage per kennisbankartikel. De FAQ-node komt uit dezelfde
+ * vragen die op de pagina staan, want markup die iets anders zegt dan de
+ * zichtbare tekst is precies wat Google afkeurt. `author` is de oprichter en
+ * niet het bedrijf: een artikel met een mens erachter is beter te herkennen
+ * als bron, ook door AI-antwoorden die de auteur meewegen.
+ */
+function buildArtikel(a: Artikel, url: string, pageId: string) {
+  const nodes: Record<string, unknown>[] = [
+    {
+      "@type": "Article",
+      "@id": `${url}#article`,
+      headline: a.vraag,
+      description: a.metaDescription,
+      inLanguage: "nl-NL",
+      datePublished: a.gepubliceerd,
+      dateModified: a.gewijzigd,
+      author: { "@id": FOUNDER_ID },
+      publisher: { "@id": ORG_ID },
+      isPartOf: { "@id": WEBSITE_ID },
+      mainEntityOfPage: { "@id": pageId },
+      image: { "@id": LOGO_ID },
+      articleSection: a.pijler,
+    },
+  ];
+
+  if (a.faq.length) {
+    nodes.push({
+      "@type": "FAQPage",
+      "@id": `${url}#faq`,
+      mainEntity: a.faq.map(({ q, a: antwoord }) => ({
+        "@type": "Question",
+        name: q,
+        acceptedAnswer: { "@type": "Answer", text: antwoord },
+      })),
+    });
+  }
+
+  return nodes;
 }
 
 /** De vacature die bij een pad hoort, of `undefined` op elke andere pagina. */
@@ -424,7 +477,7 @@ function buildJobPosting(v: Vacature, url: string, pageId: string) {
 function buildCrumbs(path: string) {
   // Vacatures staan op een dynamische route, dus hun label komt uit de
   // vacaturedata in plaats van uit de vaste tabel hierboven.
-  const label = CRUMB_LABEL[path] ?? vacatureVoorPad(path)?.naam;
+  const label = CRUMB_LABEL[path] ?? vacatureVoorPad(path)?.naam ?? artikelVoorPad(path)?.naam;
   if (!label) return null;
 
   const items: Record<string, unknown>[] = [

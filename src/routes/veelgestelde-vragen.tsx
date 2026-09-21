@@ -31,7 +31,7 @@ function VeelgesteldeVragen() {
             <Reveal as="div" className="crumb reveal">
               <Link to="/" hash="top">Home</Link>
               <span className="sep">/</span>
-              <Link to="/" hash="top">Kennisbank</Link>
+              <Link to="/kennisbank">Kennisbank</Link>
               <span className="sep">/</span>
               <b>Veelgestelde vragen</b>
             </Reveal>

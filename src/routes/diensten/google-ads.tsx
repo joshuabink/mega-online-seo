@@ -308,18 +308,18 @@ function GoogleAds() {
             </p>
           </Reveal>{' '}
           <Reveal as="div" className="exgrid reveal" style={{ gridTemplateColumns: 'repeat(auto-fit,minmax(220px,1fr))' }}>
-            <div className="exchip">
+            <Link className="exchip" to="/branches/offerteaanvragen">
               <span className="iconbox iconbox--sm"><Icon name="file-text" /></span>
               Bedrijven die leven van offerteaanvragen
-            </div>{' '}
-            <div className="exchip">
+            </Link>{' '}
+            <Link className="exchip" to="/branches/activiteitenbedrijven">
               <span className="iconbox iconbox--sm"><Icon name="ticket" /></span>
               Activiteitenbedrijven met lege doordeweekse dagen
-            </div>{' '}
-            <div className="exchip">
+            </Link>{' '}
+            <Link className="exchip" to="/branches/verhuurbedrijven">
               <span className="iconbox iconbox--sm"><Icon name="package" /></span>
               Verhuurbedrijven met seizoenspieken
-            </div>{' '}
+            </Link>{' '}
             <div className="exchip">
               <span className="iconbox iconbox--sm"><Icon name="map-pin" /></span>
               Bedrijven die regionaal werken

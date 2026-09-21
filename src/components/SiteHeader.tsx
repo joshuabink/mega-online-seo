@@ -1,8 +1,17 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { Link, useRouterState } from '@tanstack/react-router'
 import { Icon } from './Icon'
+import { artikelenNieuwsteEerst } from '@/lib/kennisbank'
 
 type Panel = 'diensten' | 'cases' | 'over' | 'kennis' | 'contact'
+
+/**
+ * De drie nieuwste kennisbankartikelen in het megamenu. Komt uit dezelfde bron
+ * als de pagina's zelf, dus een nieuw artikel staat hier automatisch in.
+ */
+const KENNISBANK_LINKS = artikelenNieuwsteEerst()
+  .slice(0, 3)
+  .map(({ slug, icoon, naam }) => ({ slug, icoon, naam }))
 
 /**
  * Sticky header + megamenu + fullscreen mobiel menu.
@@ -484,40 +493,44 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
                 ))}
               </div>
               <div className="mcol">
-                <span className="mcol__head">Tips &amp; checklists</span>
-                {[
-                  ['search', 'SEO Tips'],
-                  ['mouse-pointer-click', 'Conversie Tips'],
-                  ['list-checks', 'Website Checklists'],
-                ].map(([icon, label]) => (
-                  <span className="mlink mlink--soon" key={label}>
+                <span className="mcol__head">Uit de kennisbank</span>
+                {KENNISBANK_LINKS.map(({ slug, icoon, naam }) => (
+                  <Link
+                    className="mlink"
+                    to="/kennisbank/$slug"
+                    params={{ slug }}
+                    key={slug}
+                  >
                     <span className="mlink__ico">
-                      <Icon name={icon} />
+                      <Icon name={icoon} />
                     </span>
                     <span className="mlink__txt">
-                      <span className="mlink__name">
-                        {label} <span className="mtag mtag--soon">Binnenkort</span>
-                      </span>
+                      <span className="mlink__name">{naam}</span>
                     </span>
-                  </span>
+                  </Link>
                 ))}
+                <Link className="mlink" to="/kennisbank">
+                  <span className="mlink__ico">
+                    <Icon name="list-checks" />
+                  </span>
+                  <span className="mlink__txt">
+                    <span className="mlink__name">Alle artikelen</span>
+                  </span>
+                </Link>
               </div>
               <aside className="mfeat mfeat--soft">
                 <span className="mfeat__eyebrow">
                   <span className="gdot" />
                   Kenniscentrum
                 </span>
-                <h4 className="mfeat__title">In opbouw</h4>
+                <h4 className="mfeat__title">Wat we in scans zien</h4>
                 <p className="mfeat__desc">
-                  We verzamelen onze beste inzichten over websites, conversie en SEO op
-                  één plek.
+                  Wat er steeds terugkomt in onze websitescans, uitgewerkt zodat je er
+                  zelf mee aan de slag kunt.
                 </p>
                 <span className="mfeat__foot">
-                  <Link
-                    to="/veelgestelde-vragen"
-                    style={{ color: 'var(--accent)', fontWeight: 600 }}
-                  >
-                    Bekijk alle veelgestelde vragen
+                  <Link to="/kennisbank" style={{ color: 'var(--accent)', fontWeight: 600 }}>
+                    Naar de kennisbank
                   </Link>
                 </span>
               </aside>
@@ -757,7 +770,7 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
           <Link className="mmenu__row" to="/werken-bij" onClick={onClose}>
             Werken bij <Icon name="arrow-up-right" className="arr-ico" />
           </Link>
-          <Link className="mmenu__row" to="/veelgestelde-vragen" onClick={onClose}>
+          <Link className="mmenu__row" to="/kennisbank" onClick={onClose}>
             Kennisbank <Icon name="arrow-up-right" className="arr-ico" />
           </Link>
           <Link className="mmenu__row" to="/contact" onClick={onClose}>
