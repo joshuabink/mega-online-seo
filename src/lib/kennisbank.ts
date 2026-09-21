@@ -56,63 +56,111 @@ export type Artikel = {
 
 export const ARTIKELEN: Artikel[] = [
   {
-    slug: "website-bezoekers-maar-geen-aanvragen",
-    naam: "Bezoekers maar geen aanvragen",
-    vraag: "Waarom levert je website wel bezoekers op maar geen aanvragen?",
+    slug: "website-levert-geen-aanvragen-op",
+    naam: "Website levert geen aanvragen op",
+    vraag: "Waarom levert je website geen aanvragen of klanten op?",
     pijler: "Zo werkt het echt",
     icoon: "trending-up",
     branche: "Bedrijven met offerteaanvragen",
     teaser:
-      "Bezoek en aanvragen zijn twee verschillende dingen. Dit zijn de vier plekken waar het in de praktijk weglekt.",
+      "Veel bezoekers, weinig aanvragen. Zes plekken waar het weglekt en hoe je in een uur uitvindt welke het bij jou is.",
     antwoord:
-      "Omdat bezoek en aanvragen twee verschillende dingen zijn. Bijna altijd geeft de website de bezoeker te weinig om op te beslissen: geen bewijs dat je te vertrouwen bent, geen idee van de prijs of geen makkelijke eerste stap.",
-    leestijd: "5 minuten",
+      "Omdat bezoek en aanvragen twee verschillende dingen zijn. Je website haalt mensen binnen, alleen geeft hij ze te weinig om op te beslissen: geen bewijs dat je te vertrouwen bent, geen idee van de prijs of een aanvraagroute die te veel vraagt.",
+    leestijd: "7 minuten",
     gepubliceerd: "2026-09-21",
     gewijzigd: "2026-09-21",
     secties: [
       {
-        kop: "Bezoekers zijn een tussenstap, geen resultaat",
-        accent: "geen resultaat",
+        kop: "Bezoekers, aanvragen en klanten zijn drie verschillende getallen",
+        accent: "drie verschillende getallen",
         alineas: [
-          "Twee websites met precies evenveel bezoek kunnen een heel verschillend aantal aanvragen opleveren. Het verkeer is dan niet het verschil, de pagina is het verschil. Wie op bezoekers stuurt, stuurt dus op een getal dat niets zegt over wat er onder de streep bij komt.",
-          "Reken het voor jezelf eens door. Stel dat er 500 mensen per maand op je site komen en je krijgt twee aanvragen. Verdubbel je het bezoek naar 1.000, dan krijg je bij dezelfde pagina vier aanvragen. Dat verdubbelen kost maanden werk of advertentiebudget. Zorg je in plaats daarvan dat vier op de honderd bezoekers aanvraagt in plaats van vier op de duizend, dan werkt die verbetering door op al het bezoek dat je nu al hebt. Dit is een rekenvoorbeeld, geen belofte, maar het laat zien welke kant van de rekensom meestal het goedkoopst is.",
+          "Een website die geen klanten oplevert heeft zelden een bezoekersprobleem. Twee sites met precies evenveel bezoek kunnen een heel verschillend aantal aanvragen opleveren. Het verkeer is dan niet het verschil, de pagina is het verschil. Wie op bezoekers stuurt, stuurt dus op een getal dat niets zegt over wat er onder de streep bij komt.",
+          "Reken het voor jezelf eens door. Stel dat er 500 mensen per maand op je site komen en je krijgt twee aanvragen. Verdubbel je het bezoek naar 1.000, dan levert dezelfde pagina vier aanvragen op. Dat verdubbelen kost maanden werk of advertentiebudget. Zorg je in plaats daarvan dat vier op de honderd bezoekers aanvraagt in plaats van vier op de duizend, dan werkt die verbetering door op al het bezoek dat je nu al hebt. Dit is een rekenvoorbeeld en geen belofte, maar het laat zien welke kant van de rekensom meestal het goedkoopst is. Dat is precies waar [website optimalisatie](/diensten/website-optimalisatie) over gaat.",
+          "Daarom begint elke websitescan bij ons met één getal: hoeveel aanvragen kreeg je de afgelopen drie maanden. Zolang dat getal ontbreekt is elke verbetering een gevoel in plaats van een uitkomst.",
         ],
       },
       {
-        kop: "Vier plekken waar het in de praktijk weglekt",
+        kop: "Zes plekken waar het in de praktijk weglekt",
         accent: "in de praktijk",
         alineas: [
-          "In websitescans zien we vrijwel altijd een combinatie van deze vier. Zelden ligt het aan één ding.",
+          "In scans zien we vrijwel altijd een combinatie van deze zes. Zelden ligt het aan één ding. Bijna nooit aan de techniek alleen.",
         ],
         punten: [
           {
-            titel: "De bezoeker komt binnen met een andere vraag dan de pagina beantwoordt",
+            titel: "1. De bezoeker komt met een andere vraag dan je pagina beantwoordt",
             tekst:
-              "Iemand zoekt wat iets kost of hoe snel het kan. Wat hij vindt is een pagina die vooral vertelt hoe lang je bedrijf bestaat. De bezoeker is dan wel binnen, alleen niet geholpen. In Google Search Console zie je op welke zoekvragen je vertoningen krijgt. Passen die vragen niet bij de pagina waarop mensen landen, dan is dat je eerste aanwijzing.",
+              "Iemand zoekt wat iets kost of hoe snel het kan. Wat hij vindt is een pagina die vooral vertelt hoe lang je bedrijf bestaat. De bezoeker is dan wel binnen, alleen niet geholpen. In Google Search Console zie je op welke zoekvragen je vertoningen krijgt. Passen die vragen niet bij de pagina waarop mensen landen, dan is dat je eerste aanwijzing. Het oplossen daarvan hoort bij je [vindbaarheid in Google en in AI](/diensten/seo), niet bij je formulier.",
           },
           {
-            titel: "Er staat te weinig op de site om je te durven vertrouwen",
+            titel: "2. Er staat te weinig op de site om je te durven vertrouwen",
             tekst:
-              "Geen gezicht, geen echte foto's, geen prijsindicatie, geen adres of inschrijvingsnummer. Wie jou niet kent heeft geen enkele reden om aan te nemen dat het goed komt. Vertrouwen komt vóór techniek: een snelle website die niets bewijst levert nog steeds niets op.",
+              "Geen gezicht, geen echte foto's van eigen werk, geen adres of inschrijvingsnummer, geen enkele klant die iets zegt. Wie jou niet kent heeft dan geen reden om aan te nemen dat het goed komt. Vertrouwen komt vóór techniek: een snelle website die niets bewijst levert nog steeds niets op. Dit is het eerste dat we aanpakken bij een [conversiegerichte website](/diensten/conversie-website).",
           },
           {
-            titel: "Het formulier vraagt te veel en te vroeg",
+            titel: "3. De prijs staat er nergens",
             tekst:
-              "Acht velden waarvan de helft pas relevant is als er al een gesprek is geweest. Iemand die twijfelt haakt daar af. Drie velden die vragen wat je echt nodig hebt om terug te bellen leveren meer aanvragen op, ook al voelen ze onvollediger.",
+              "Geen prijs betekent voor de bezoeker: dit wordt duur, of dit wordt een gesprek waar ik niet onderuit kom. Een vanafprijs of een bandbreedte houdt mensen niet weg, het houdt de verkeerde mensen weg. Dat scheelt jou offertes die toch niets worden. Zeker in branches waar per periode of per stuk wordt afgerekend, zoals bij [verhuurbedrijven](/branches/verhuurbedrijven), belt iemand liever de concurrent die wel een tarief noemt.",
           },
           {
-            titel: "Op de telefoon is de eerste stap niet te vinden",
+            titel: "4. Het aanvraagformulier vraagt te veel en te vroeg",
             tekst:
-              "De aanvraagknop staat onder een lange hero, het telefoonnummer is geen link of het formulier springt bij het typen. Het grootste deel van je bezoek komt van een telefoon, dus wat daar niet werkt werkt bijna niet.",
+              "Acht velden waarvan de helft pas relevant is als er al een gesprek is geweest. Iemand die nog twijfelt haakt daar af. Drie velden die vragen wat je echt nodig hebt om terug te bellen leveren meer aanvragen op, ook al voelen ze onvollediger. Hoe je een formulier bouwt dat kwalificeert in plaats van afschrikt staat op de pagina over [meer offerteaanvragen via je website](/branches/offerteaanvragen).",
+          },
+          {
+            titel: "5. Op de telefoon is de eerste stap niet te vinden",
+            tekst:
+              "De aanvraagknop staat onder een lange hero, het telefoonnummer is geen link of het formulier springt bij het typen. Het grootste deel van je bezoek komt van een telefoon, dus wat daar niet werkt werkt bijna niet. Pak je eigen site erbij op je mobiel en tel hoeveel tikken het kost om een aanvraag te versturen.",
+          },
+          {
+            titel: "6. Er staat geen duidelijke vervolgstap",
+            tekst:
+              "Bellen, mailen, offerte aanvragen, nieuwsbrief, demo en chat door elkaar. Drie keuzes op één pagina is geen service, het is uitstel. Eén duidelijke vervolgstap per pagina werkt beter, ook als die stap klein is. Gaat het om reserveren of boeken, dan telt elke extra klik dubbel: zie [website met reserveringssysteem laten maken](/branches/reserveringen).",
           },
         ],
       },
       {
-        kop: "Zo zoek je het zelf uit",
-        accent: "zelf uit",
+        kop: "Zo vind je in een uur uit welke het bij jou is",
+        accent: "in een uur",
         alineas: [
-          "Hier heb je geen dure software voor nodig. Vier dingen brengen je verder dan de meeste rapportages.",
-          "Tel eerst hoeveel aanvragen je de afgelopen drie maanden kreeg. Zonder dat getal kun je later niet zien of iets werkte. Kijk daarna in Google Search Console welke zoekvragen vertoningen opleveren en of die passen bij de landingspagina. Vul vervolgens je eigen formulier in op je telefoon en tel hoeveel velden en hoeveel tikken het kost. Vraag ten slotte drie klanten wat hen deed besluiten om contact op te nemen. Wat zij noemen staat verrassend vaak nergens op je site.",
+          "Hier heb je geen dure software voor nodig. Vier controles brengen je verder dan de meeste rapportages. Je kunt ze alle vier zelf doen.",
+        ],
+        punten: [
+          {
+            titel: "Tel je aanvragen van de laatste drie maanden",
+            tekst:
+              "Uit je mailbox, je telefoon en je formulier bij elkaar. Eén getal per maand is genoeg. Zonder beginpunt kun je later niet zien of iets werkte.",
+          },
+          {
+            titel: "Kijk welke zoekvragen je vertoningen opleveren",
+            tekst:
+              "In Google Search Console zie je per zoekvraag de vertoningen, de klikken en de pagina waarop mensen landen. Zoekvragen die niet passen bij die pagina verklaren een deel van je verlies al.",
+          },
+          {
+            titel: "Vul je eigen formulier in op je telefoon",
+            tekst:
+              "Tel de velden en tel de tikken. Laat het daarna iemand doen die je bedrijf niet kent en kijk waar hij aarzelt. Dat is goedkoper dan elk onderzoek.",
+          },
+          {
+            titel: "Vraag drie klanten wat hen deed besluiten",
+            tekst:
+              "Wat zij noemen staat verrassend vaak nergens op je site. Precies die zin hoort boven de vouw te staan in plaats van in je hoofd.",
+          },
+        ],
+      },
+      {
+        kop: "Wat we hierin het vaakst terugzien",
+        accent: "het vaakst",
+        alineas: [
+          "Twee patronen komen zo vaak voorbij dat ze bijna standaard zijn. Het eerste: een pagina die veel vertoningen krijgt in Google en nauwelijks klikken. Dat is geen vindbaarheidsprobleem, dat is een titelprobleem. De pagina staat er wel, alleen belooft de titel niet wat de zoeker zocht.",
+          "Het tweede: bijna al het bezoek komt binnen op de homepage en er gaat nauwelijks iemand door naar de pagina die zijn vraag beantwoordt. Dan is de website geen route maar een wachtkamer. Dat los je op met een duidelijke ingang per doelgroep en met links in de tekst die de bezoeker meenemen, niet met meer bezoek.",
+        ],
+      },
+      {
+        kop: "Eerst de pagina, dan pas meer bezoek",
+        accent: "dan pas meer bezoek",
+        alineas: [
+          "De verleiding is groot om te beginnen met adverteren of met een SEO-traject. Dat kan verstandig zijn, alleen niet als eerste stap. Elke euro die je in extra bezoek steekt loopt langs dezelfde pagina die nu al te weinig oplevert. Zet die pagina eerst goed en je verdient hem terug op al het verkeer dat je daarna binnenhaalt.",
+          "Andersom geldt het ook. Een perfect ingerichte pagina waar niemand komt levert niets op. De volgorde is dus: eerst zorgen dat wie er komt ook aanvraagt, daarna pas zorgen dat er meer mensen komen.",
         ],
       },
     ],
@@ -120,21 +168,30 @@ export const ARTIKELEN: Artikel[] = [
       "Tel je aanvragen van de laatste drie maanden en schrijf het getal op.",
       "Haal uit je aanvraagformulier elk veld dat je ook in het eerste gesprek kunt vragen.",
       "Zet één zin met een prijsindicatie op je belangrijkste pagina, al is het een vanafprijs.",
+      "Kies per pagina één vervolgstap en haal de rest weg.",
       "Vul je eigen formulier in op je telefoon en laat iemand anders het ook proberen.",
       "Zet het antwoord op de vraag die klanten het vaakst stellen boven de vouw.",
     ],
     faq: [
       {
-        q: "Hoeveel aanvragen zijn normaal voor mijn website?",
-        a: "Er is geen getal dat voor elke branche klopt. Elk percentage dat je online vindt komt uit een andere markt dan de jouwe. Meet daarom je eigen beginpunt: het aantal aanvragen per maand nu. Dat is het enige cijfer waarmee je later kunt vergelijken.",
+        q: "Wat is een goede conversie voor een website?",
+        a: "Er is geen getal dat voor elke branche klopt. Elk percentage dat je online vindt komt uit een andere markt dan de jouwe, met andere prijzen en een ander soort beslissing. Meet daarom je eigen beginpunt: het aantal aanvragen per maand nu. Dat is het enige cijfer waarmee je later kunt vergelijken.",
       },
       {
-        q: "Moet ik eerst aan mijn vindbaarheid werken of aan mijn pagina's?",
-        a: "Meestal eerst aan de pagina's. Alles wat je daar verbetert werkt door op het bezoek dat je nu al hebt, plus op elke bezoeker die je er later bij haalt. Vindbaarheid vergroten terwijl de pagina niets overbrengt betekent dat je meer mensen naar hetzelfde probleem stuurt.",
+        q: "Hoeveel bezoekers heb ik nodig voor een aanvraag?",
+        a: "Dat hangt af van je aanbod en van wie er binnenkomt. Bezoek uit een zoekvraag als wat kost een kartbaan huren is heel wat anders dan bezoek uit een tip op social media. Vergelijk daarom nooit met een gemiddelde, maar met je eigen cijfer van vorige maand.",
+      },
+      {
+        q: "Moet ik eerst adverteren of eerst mijn website aanpakken?",
+        a: "Meestal eerst je website. Advertenties sturen mensen naar dezelfde pagina die nu al te weinig oplevert, dus je betaalt dan voor bezoek dat op dezelfde plek blijft hangen. Staat de pagina eenmaal goed, dan verdient elke advertentie-euro meer terug.",
+      },
+      {
+        q: "Hoe lang duurt het voordat je verschil ziet?",
+        a: "Aanpassingen aan teksten, formulieren en vertrouwen werken direct op het bezoek dat je al hebt, dus daar kun je binnen enkele weken iets van zien als je genoeg verkeer hebt. Werk aan je vindbaarheid duurt langer, vaak maanden. Dat is de tweede reden om met de pagina te beginnen.",
       },
       {
         q: "Wat als ik geen idee heb hoeveel aanvragen ik nu krijg?",
-        a: "Dan begin je met tellen, desnoods met de hand in een schriftje of een los tabblad. Drie maanden is genoeg om een beginpunt te hebben. Zolang dat getal ontbreekt is elke verbetering een gevoel in plaats van een uitkomst.",
+        a: "Dan begin je met tellen, desnoods met de hand in een schriftje of een los tabblad. Drie maanden is genoeg om een beginpunt te hebben. Wie dat overslaat blijft raden of iets werkte.",
       },
     ],
     links: [
@@ -154,9 +211,9 @@ export const ARTIKELEN: Artikel[] = [
         tekst: "Een nieuwe site die vanaf de eerste dag op aanvragen is gebouwd.",
       },
     ],
-    metaTitle: "Waarom levert je website geen aanvragen op? | MegaOnline.io",
+    metaTitle: "Waarom je website geen aanvragen oplevert | MegaOnline.io",
     metaDescription:
-      "Wel bezoekers, geen aanvragen. De vier plekken waar het in de praktijk weglekt, plus hoe je zelf terugvindt welke het bij jou is.",
+      "Veel bezoekers, weinig aanvragen. De zes plekken waar het weglekt, hoe je in een uur uitvindt welke het bij jou is en wat je er zelf aan kunt doen.",
   },
 ];
 

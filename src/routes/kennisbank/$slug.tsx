@@ -1,4 +1,4 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { createFileRoute, Link, notFound, redirect } from "@tanstack/react-router";
 import { Icon } from "@/components/Icon";
 import { Qa } from "@/components/Qa";
 import { Reveal } from "@/components/Reveal";
@@ -11,10 +11,22 @@ import "@/styles/pages/kennisbank.css";
  * Article- plus FAQPage-markup in `src/lib/schema.ts` niet uit elkaar lopen.
  * Een onbekende slug valt door naar de 404 van de root.
  */
+/**
+ * Slugs die eerder live stonden en inmiddels anders heten. De tabel in
+ * `legacy-urls.ts` helpt hier niet: die wordt alleen door de splat-route
+ * gelezen en deze route is specifieker, dus die vangt het pad zelf al af.
+ */
+const HERNOEMD: Record<string, string> = {
+  "website-bezoekers-maar-geen-aanvragen": "website-levert-geen-aanvragen-op",
+};
+
 export const Route = createFileRoute("/kennisbank/$slug")({
   loader: ({ params }) => {
-    if (!artikelBySlug(params.slug)) throw notFound();
-    return null;
+    if (artikelBySlug(params.slug)) return null;
+    const nieuw = HERNOEMD[params.slug];
+    if (nieuw)
+      throw redirect({ to: "/kennisbank/$slug", params: { slug: nieuw }, statusCode: 301 });
+    throw notFound();
   },
   head: ({ params }) => {
     const a = artikelBySlug(params.slug);
@@ -44,6 +56,29 @@ const MAANDEN = [
 function datumNl(iso: string): string {
   const [jaar, maand, dag] = iso.split("-");
   return `${Number(dag)} ${MAANDEN[Number(maand) - 1]} ${jaar}`;
+}
+
+/**
+ * Rendert [ankertekst](/pad) uit de artikelteksten als een echte interne link.
+ * Zo kunnen links in de lopende tekst staan in plaats van alleen in een blok
+ * eronder, wat voor de lezer en voor Google het meeste waard is. Alleen interne
+ * paden worden herkend, dus een artikel kan er geen externe link mee smokkelen.
+ */
+function RichTekst({ tekst }: { tekst: string }) {
+  const delen = tekst.split(/(\[[^\]]+\]\(\/[^)]*\))/g);
+  return (
+    <>
+      {delen.map((deel, i) => {
+        const link = deel.match(/^\[([^\]]+)\]\((\/[^)]*)\)$/);
+        if (!link) return deel;
+        return (
+          <Link to={link[2]} key={`${link[2]}-${i}`}>
+            {link[1]}
+          </Link>
+        );
+      })}
+    </>
+  );
 }
 
 /** Zet het accentwoord uit de sectiekop in een <em>, net als elders op de site. */
@@ -116,7 +151,7 @@ function ArtikelPagina() {
             <div className="art__body">
               {s.alineas.map((p) => (
                 <Reveal as="p" className="reveal" key={p.slice(0, 40)}>
-                  {p}
+                  <RichTekst tekst={p} />
                 </Reveal>
               ))}
             </div>
@@ -125,7 +160,9 @@ function ArtikelPagina() {
                 {s.punten.map((p, j) => (
                   <Reveal as="div" className="feat reveal" data-d={String(j % 3)} key={p.titel}>
                     <h4>{p.titel}</h4>
-                    <p>{p.tekst}</p>
+                    <p>
+                      <RichTekst tekst={p.tekst} />
+                    </p>
                   </Reveal>
                 ))}
               </div>

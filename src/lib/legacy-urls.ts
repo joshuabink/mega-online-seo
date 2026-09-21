@@ -27,6 +27,10 @@ export const REDIRECTS: Record<string, string> = (() => {
 
   // De vacatures stonden eerder op /vacatures; ze leven nu onder /werken-bij.
   map['/vacatures'] = '/werken-bij'
+
+  // Het eerste kennisbankartikel kreeg een slug met het zoekwoord erin.
+  map['/kennisbank/website-bezoekers-maar-geen-aanvragen'] =
+    '/kennisbank/website-levert-geen-aanvragen-op'
   // Links de oude slug, rechts de huidige: twee rollen zijn onderweg hernoemd.
   // Wijzig de rechterkant alleen samen met `src/lib/vacatures.ts`.
   const VACATURE_SLUGS: Record<string, string> = {
