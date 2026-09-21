@@ -843,7 +843,7 @@ function WebsiteRedesign() {
             {' '}
             <Reveal as="div" className="feat reveal" data-d="1">
               <h4><Link to="/branches/verhuurbedrijven">Website laten maken voor verhuurbedrijven</Link></h4>
-              <p>Het assortiment is uitgebreid, de structuur van de site is meegegroeid noch opgeruimd.</p>
+              <p>Het assortiment is uitgebreid, de structuur van de site is nooit meegegroeid.</p>
             </Reveal>
             {' '}
             <Reveal as="div" className="feat reveal" data-d="2">
