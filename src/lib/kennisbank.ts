@@ -215,6 +215,311 @@ export const ARTIKELEN: Artikel[] = [
     metaDescription:
       "Veel bezoekers, weinig aanvragen. De zes plekken waar het weglekt, hoe je in een uur uitvindt welke het bij jou is en wat je er zelf aan kunt doen.",
   },
+  {
+    slug: "vertrouwen-wekken-zakelijke-website",
+    naam: "Vertrouwen wekken op je website",
+    vraag: "Hoe wek je vertrouwen op een zakelijke website?",
+    pijler: "Zo werkt het echt",
+    icoon: "shield-check",
+    branche: "Zakelijke dienstverleners",
+    teaser:
+      "Vertrouwen is geen gevoel, het is een lijstje dat je bezoeker afvinkt. Dit staat erop. Dit haalt het onderuit.",
+    antwoord:
+      "Door te laten zien wie je bent, wat het ongeveer kost en wat je eerder hebt gedaan. Vertrouwen op een zakelijke website komt niet van mooie woorden over kwaliteit en passie, maar van bewijs dat een vreemde in twintig seconden kan controleren.",
+    leestijd: "7 minuten",
+    gepubliceerd: "2026-09-21",
+    gewijzigd: "2026-09-21",
+    secties: [
+      {
+        kop: "Vertrouwen is geen gevoel, het is een lijstje dat de bezoeker afvinkt",
+        accent: "een lijstje",
+        alineas: [
+          "Iemand die jouw website voor het eerst opent doet in stilte een risicocontrole. Bestaat dit bedrijf echt. Werkt hier een mens. Weet die persoon waar hij over praat. Wat gaat dit ongeveer kosten. Wat gebeurt er als het misgaat. Pas als die vragen genoeg antwoord hebben gehad, vult iemand een formulier in.",
+          "Het lastige is dat bijna elke zakelijke website precies hetzelfde zegt. Kwaliteit, maatwerk, korte lijnen, jarenlange ervaring. Die woorden zijn gratis, dus ze bewijzen niets. Bewijs is alles wat iemand kan controleren zonder jou te bellen: een naam, een gezicht, een prijs, een project dat echt bestaat. Daarom begint een [conversiegerichte website](/diensten/conversie-website) bij ons met bewijs en niet bij een ontwerp.",
+          "Dit geldt sterker naarmate de opdracht groter is. Wie een offerte aanvraagt voor een installatie van tienduizend euro neemt een risico met zijn eigen naam eraan. Zie ook wat dat betekent voor [dienstverleners](/branches/dienstverleners), waar de site het vertrouwen moet wekken dat jij in een gesprek vanzelf wekt.",
+        ],
+      },
+      {
+        kop: "Zeven dingen die een zakelijke bezoeker zoekt",
+        accent: "zeven dingen",
+        alineas: [
+          "Dit is geen wensenlijst, dit is wat we in websitescans het vaakst missen. Hoe meer ervan klopt, hoe minder reden iemand heeft om af te haken.",
+        ],
+        punten: [
+          {
+            titel: "1. Een mens met een naam",
+            tekst:
+              "Wie ga ik aan de lijn krijgen. Eén foto van de eigenaar of het team met namen erbij doet meer dan drie alinea's over betrokkenheid. Bij kleine bedrijven is dit het sterkste wat je hebt: bij jou is er geen accountmanager tussen de klant en de maker.",
+          },
+          {
+            titel: "2. Eigen werk in beeld",
+            tekst:
+              "Foto's van je eigen projecten, machines, ruimtes of geleverde klussen. Ook als ze niet perfect zijn. Een echte foto van een rommelige werkplaats overtuigt meer dan een stockfoto van vier mensen die naar een laptop wijzen.",
+          },
+          {
+            titel: "3. Een prijsindicatie",
+            tekst:
+              "Geen prijs betekent voor de bezoeker: dit wordt duur, of dit wordt een verkoopgesprek. Een vanafprijs of een bandbreedte houdt niet iedereen weg, het houdt de verkeerde mensen weg. Waarom dat zo werkt staat uitgewerkt in [moet je je prijzen op je website zetten](/kennisbank/prijzen-op-website-verhuurbedrijf).",
+          },
+          {
+            titel: "4. Bedrijfsgegevens die kloppen",
+            tekst:
+              "Adres, telefoonnummer, inschrijvingsnummer en een mailadres op je eigen domein. Klein detail met groot effect: een formulier dat naar een gratis mailadres stuurt kost vertrouwen bij precies de klanten die je wil hebben.",
+          },
+          {
+            titel: "5. Klanten die iets concreets zeggen",
+            tekst:
+              "Eén review met naam, bedrijf en wat er precies gedaan is weegt zwaarder dan tien anonieme sterren. Geen toestemming voor de naam? Noem dan de branche en de opdracht. Laat de naam weg in plaats van hem te verzinnen.",
+          },
+          {
+            titel: "6. Duidelijkheid over wat je niet doet",
+            tekst:
+              "Alles voor iedereen wekt geen vertrouwen. Wie durft te zeggen voor wie hij niet werkt, komt over als iemand die weet wat hij doet. Het scheelt bovendien [offerteaanvragen](/branches/offerteaanvragen) die toch niets worden.",
+          },
+          {
+            titel: "7. Wat er gebeurt nadat iemand op verzenden drukt",
+            tekst:
+              "Eén zin bij je formulier: je krijgt binnen twee werkdagen antwoord. Je zit nergens aan vast. Onzekerheid over wat er daarna gebeurt is een van de goedkoopst op te lossen redenen om niet te versturen.",
+          },
+        ],
+      },
+      {
+        kop: "Vier dingen die vertrouwen juist onderuit halen",
+        accent: "onderuit halen",
+        alineas: [
+          "Net zo belangrijk als toevoegen: weghalen. Deze vier zien we vaak op sites die inhoudelijk prima zijn.",
+        ],
+        punten: [
+          {
+            titel: "Stockfoto's van mensen die niet bestaan",
+            tekst:
+              "Bezoekers herkennen ze inmiddels. Eén echte foto van je eigen werk is meer waard dan vijf gelikte beelden die net zo goed bij een ander bedrijf kunnen staan.",
+          },
+          {
+            titel: "Sporen van verwaarlozing",
+            tekst:
+              "Een jaartal van drie jaar terug in de footer, een nieuwsbericht uit 2022 als laatste item, een pagina met tekst die er nog staat sinds de oplevering. De bezoeker denkt dan: als de site niet wordt bijgehouden, hoe zit het dan met het werk.",
+          },
+          {
+            titel: "Keurmerklogo's zonder betekenis",
+            tekst:
+              "Voor een webshop kan een keurmerk helpen. Voor een dienstverlener werkt een rij logo's die de bezoeker niet kent vaak averechts, want het lijkt op iets verbergen. Echte certificeringen en branchelidmaatschappen zijn een ander verhaal: noem die met naam.",
+          },
+          {
+            titel: "Te veel keuzes tegelijk",
+            tekst:
+              "Bellen, mailen, chatten, nieuwsbrief en offerte door elkaar. Drie opties op één pagina voelt niet als service maar als twijfel. Eén duidelijke vervolgstap per pagina maakt de keuze makkelijk.",
+          },
+        ],
+      },
+      {
+        kop: "Waarom dit vóór snelheid en vindbaarheid komt",
+        accent: "vóór snelheid",
+        alineas: [
+          "Een snelle website die niets bewijst levert nog steeds niets op. Techniek bepaalt of iemand je pagina ziet, vertrouwen bepaalt of hij iets doet. Dat is ook waarom we bij een scan eerst naar vertrouwen kijken en pas daarna naar laadtijd.",
+          "Het loont daarna dubbel. Elke bezoeker die je met [betere vindbaarheid in Google](/diensten/seo) binnenhaalt komt op een pagina die de twijfel al heeft weggenomen. Andersom werkt het niet: meer bezoek op een pagina die geen bewijs levert betekent alleen meer mensen die weer weggaan.",
+        ],
+      },
+    ],
+    doen: [
+      "Zet één echte foto van jezelf of je team op je belangrijkste pagina, met naam erbij.",
+      "Vervang je eerste stockfoto door een foto van eigen werk, ook als die niet perfect is.",
+      "Zet een vanafprijs of bandbreedte op de pagina van je belangrijkste dienst.",
+      "Vraag je laatste drie klanten één zin over wat je voor hen deed, met naam en bedrijf.",
+      "Schrijf bij je formulier wat er gebeurt na verzenden en binnen hoeveel tijd.",
+      "Loop je site na op verouderde jaartallen, oude berichten en teksten die niemand meer leest.",
+    ],
+    faq: [
+      {
+        q: "Moet ik reviews op mijn website zetten?",
+        a: "Als je ze eerlijk kunt krijgen wel. Eén review met naam, bedrijf en de opdracht erbij doet meer dan een rij sterren zonder bron. Heb je geen toestemming voor de naam, noem dan de branche en de opdracht. Verzin er nooit een bij: dat is precies het soort ding dat een klant later ontdekt.",
+      },
+      {
+        q: "Werken keurmerken voor een zakelijke dienstverlener?",
+        a: "Minder dan voor een webshop. Een keurmerk dat je bezoeker niet kent voegt weinig toe. Certificeringen die in jouw vak echt iets betekenen, zoals een vakdiploma of een branchelidmaatschap, werken juist wel. Noem die dan met naam in plaats van als logo zonder uitleg.",
+      },
+      {
+        q: "Moet mijn foto er echt op?",
+        a: "Bij een klein bedrijf is het het sterkste bewijs dat je hebt, want de klant koopt bij jou en niet bij een logo. Wil je liever niet op de foto, gebruik dan iets anders dat even persoonlijk is: je naam onder de teksten, een foto van je werkplaats of een korte video waarin je uitlegt hoe je werkt.",
+      },
+      {
+        q: "Hoeveel referenties heb ik nodig?",
+        a: "Drie goed uitgewerkte projecten doen meer dan twintig logo's. Wat een bezoeker wil weten is: heeft hij dit eerder gedaan voor iemand zoals ik. Eén project uit zijn eigen branche, met wat er niet werkte en wat het opleverde, beantwoordt die vraag.",
+      },
+      {
+        q: "Helpt een chatfunctie bij vertrouwen?",
+        a: "Alleen als er echt iemand antwoordt. Een chat die na twee minuten stil blijft doet meer kwaad dan geen chat, want het is een belofte die je voor de ogen van de bezoeker breekt. Zonder bezetting is een zichtbaar telefoonnummer met een reactietijd beter.",
+      },
+    ],
+    links: [
+      {
+        to: "/branches/dienstverleners",
+        label: "Website laten maken voor dienstverleners",
+        tekst: "Wat een zakelijke website nodig heeft om een offerteaanvraag los te maken.",
+      },
+      {
+        to: "/diensten/conversie-website",
+        label: "Conversiegerichte website laten maken",
+        tekst: "Een site die op bewijs en vertrouwen is gebouwd in plaats van op mooie woorden.",
+      },
+      {
+        to: "/diensten/website-optimalisatie",
+        label: "Website optimalisatie",
+        tekst: "Je huidige site langs de tien scanpunten, zonder opnieuw te beginnen.",
+      },
+    ],
+    metaTitle: "Vertrouwen wekken op je zakelijke website | MegaOnline.io",
+    metaDescription:
+      "Vertrouwen komt van bewijs dat een vreemde kan controleren. Zeven dingen die een zakelijke bezoeker zoekt en vier die het onderuit halen.",
+  },
+  {
+    slug: "prijzen-op-website-verhuurbedrijf",
+    naam: "Prijzen op je website zetten",
+    vraag: "Moet je als verhuurbedrijf je prijzen op de website zetten?",
+    pijler: "Mening",
+    icoon: "euro",
+    branche: "Verhuurbedrijven",
+    teaser:
+      "Ja, in bijna alle gevallen. Niet je hele prijslijst, wel genoeg dat iemand weet of hij bij jou moet zijn.",
+    antwoord:
+      "Ja, in bijna alle gevallen wel. Niet je volledige prijslijst, maar een vanafprijs of een bandbreedte per periode, zodat iemand weet of hij bij jou aan het juiste adres is voordat hij de telefoon pakt.",
+    leestijd: "6 minuten",
+    gepubliceerd: "2026-09-21",
+    gewijzigd: "2026-09-21",
+    secties: [
+      {
+        kop: "De drie redenen om ze weg te laten en wat ervan waar is",
+        accent: "wat ervan waar is",
+        alineas: [
+          "Bijna elke verhuurder die geen prijzen op zijn site heeft staan noemt een van deze drie redenen. Ze zijn allemaal begrijpelijk. Twee ervan houden geen stand.",
+          "De eerste: mijn concurrent kijkt mee. Dat doet hij toch al. Wie in jouw markt zit kent je tarieven binnen een paar telefoontjes, of hij vraagt gewoon een offerte aan onder een andere naam. Je verbergt je prijs dus vooral voor de klant, niet voor de concurrent.",
+          "De tweede: elke verhuur is anders. Vaak waar. Precies daarom werkt een vanafprijs. Niemand verwacht een exacte prijs voor een samengestelde order. Wel wil hij weten of hij in de buurt van jouw orde van grootte zit. Een tarief per dag, weekend en week met een ondergrens is genoeg om die vraag te beantwoorden.",
+          "De derde: ik wil eerst het gesprek. Dat is een echte reden, alleen kost hij je de gesprekken die je juist wil. De klant die zijn budget kent en jouw prijs ziet passen, belt. De klant die niets kan inschatten belt de volgende in Google. Je selecteert zo op mensen met veel tijd in plaats van op mensen die willen huren.",
+        ],
+      },
+      {
+        kop: "Wat er in de praktijk gebeurt als de prijs er niet staat",
+        accent: "in de praktijk",
+        alineas: [
+          "Deze vier gevolgen komen we in scans steeds tegen bij verhuurders zonder tarieven op de site.",
+        ],
+        punten: [
+          {
+            titel: "1. De bezoeker gaat terug naar Google",
+            tekst:
+              "Niet boos, gewoon verder zoekend. Het tabblad ernaast is een concurrent die wel een tarief noemt. Dit is het stilste verlies dat er bestaat, want je ziet het nergens terug behalve in het aantal aanvragen dat uitblijft.",
+          },
+          {
+            titel: "2. Je telefoon wordt een prijslijst",
+            tekst:
+              "Dezelfde vraag, tien keer per week, vaak van mensen die alleen even peilen. Dat werk verdwijnt niet door harder te werken, het verdwijnt door het antwoord op te schrijven. Precies waar een [website voor verhuurbedrijven](/branches/verhuurbedrijven) voor bedoeld is: het standaardwerk uit handen nemen.",
+          },
+          {
+            titel: "3. Je maakt offertes die nooit iets worden",
+            tekst:
+              "Zonder prijsindicatie komen er aanvragen binnen van mensen met een heel ander budget. Elke offerte kost je tijd. Een vanafprijs filtert dat vooraf, net als een formulier dat kwalificeert in plaats van afschrikt bij [meer offerteaanvragen via je website](/branches/offerteaanvragen).",
+          },
+          {
+            titel: "4. Je verliest van een duurdere concurrent",
+            tekst:
+              "Dat gebeurt vaker dan je denkt. Wie wel een prijs noemt, wekt vertrouwen, ook als hij duurder is. Geen prijs voelt als iets achterhouden. Dat is dezelfde mechaniek als in [vertrouwen wekken op je zakelijke website](/kennisbank/vertrouwen-wekken-zakelijke-website).",
+          },
+        ],
+      },
+      {
+        kop: "Zo zet je prijzen erop zonder je vast te leggen",
+        accent: "zonder je vast te leggen",
+        alineas: [
+          "Je hoeft geen webshop te worden. Vijf dingen zijn genoeg. Ze kosten je niets aan onderhandelingsruimte.",
+        ],
+        punten: [
+          {
+            titel: "Een vanafprijs per artikel of categorie",
+            tekst:
+              "Vanaf 45 euro per dag zegt genoeg. Zet erbij vanaf wanneer het oploopt, bijvoorbeeld bij bezorging of bij een langere periode, zodat niemand zich later overvallen voelt.",
+          },
+          {
+            titel: "Tarieven per periode naast elkaar",
+            tekst:
+              "Dag, weekend en week in één tabel. Verhuur wordt in periodes gedacht, dus je prijzen horen in periodes te staan. Dit is ook het blok dat het vaakst wordt gelezen op een verhuurpagina.",
+          },
+          {
+            titel: "Borg en voorwaarden apart en vooraf",
+            tekst:
+              "Niet in de kleine lettertjes maar naast de prijs. Onduidelijkheid over borg levert discussie op achteraf. Dat kost je meer dan een klant die nu afziet.",
+          },
+          {
+            titel: "Wat wel en niet is inbegrepen",
+            tekst:
+              "Bezorging, brandstof, schoonmaak, verzekering. Twee regels zijn genoeg. Dit is de vraag die na de prijs altijd komt, dus geef het antwoord ernaast.",
+          },
+          {
+            titel: "Eén rekenvoorbeeld",
+            tekst:
+              "Een compleet voorbeeld voor een veelgevraagde combinatie, met periode, borg en bezorging erin. Wie zich in dat voorbeeld herkent weet meteen waar hij aan toe is. Komen je tarieven uit een verhuursysteem, dan kan dat via [integraties met je systemen](/diensten/integraties) automatisch actueel blijven.",
+          },
+        ],
+      },
+      {
+        kop: "Wanneer je ze wel weglaat",
+        accent: "wel weglaat",
+        alineas: [
+          "Er is een uitzondering. Die is kleiner dan de meeste ondernemers denken. Bij echt samengesteld werk, waar de prijs van tien variabelen afhangt en elke opdracht op maat wordt gerekend, is een losse prijs zinloos. Dan zet je geen bedrag neer maar een bandbreedte plus dat rekenvoorbeeld.",
+          "Wat je nooit doet is de vraag onbeantwoord laten. Prijs op aanvraag zonder verdere uitleg is het slechtste van twee werelden: de bezoeker weet niets en jij krijgt de vraag alsnog. Eén zin over hoe de prijs wordt opgebouwd is dan het minimum.",
+        ],
+      },
+    ],
+    doen: [
+      "Zet bij je drie meest verhuurde artikelen een vanafprijs per dag.",
+      "Maak één tabel met dag, weekend en week naast elkaar.",
+      "Zet borg en voorwaarden naast de prijs in plaats van in een los document.",
+      "Schrijf in twee regels wat wel en niet is inbegrepen.",
+      "Zet één volledig rekenvoorbeeld op de pagina van je populairste artikel.",
+      "Tel de komende twee weken hoeveel telefoontjes nog over de prijs gaan.",
+    ],
+    faq: [
+      {
+        q: "Kijkt mijn concurrent dan niet mee?",
+        a: "Die kijkt toch al mee. In een markt met een handvol aanbieders kent iedereen elkaars orde van grootte. Wie het niet weet vraagt gewoon een offerte aan. De vraag is dus niet of je concurrent je prijs ziet, maar of je klant hem ziet.",
+      },
+      {
+        q: "Wat als mijn prijzen vaak veranderen?",
+        a: "Werk met vanafprijzen en zet erbij per wanneer ze gelden. Verandert er veel en komt het uit een verhuur- of boekingssysteem, dan kun je de tarieven laten meelopen met dat systeem in plaats van ze met de hand bij te werken.",
+      },
+      {
+        q: "Moet ik dan al mijn prijzen tonen?",
+        a: "Nee. Je belangrijkste categorieën met een vanafprijs is genoeg om de vraag te beantwoorden. Een complete prijslijst is voor veel verhuurders juist onhandig, want die wordt nooit bijgehouden en is dan sneller fout dan nuttig.",
+      },
+      {
+        q: "Helpt het voor je vindbaarheid in Google?",
+        a: "Indirect. Mensen zoeken vaak letterlijk op wat iets kost, dus een pagina die dat beantwoordt past bij die zoekvraag. Belangrijker is dat de bezoeker die binnenkomt blijft in plaats van meteen terug te gaan naar de zoekresultaten.",
+      },
+      {
+        q: "Wat doe ik met kortingen voor vaste klanten?",
+        a: "Die noem je als staffel of als afspraak, niet als los bedrag. Bijvoorbeeld: bij meer dan vijf verhuringen per jaar maken we een vaste prijsafspraak. Zo houd je je ruimte en weet de terugkerende klant toch dat er iets te halen is.",
+      },
+    ],
+    links: [
+      {
+        to: "/branches/verhuurbedrijven",
+        label: "Website laten maken voor verhuurbedrijven",
+        tekst: "Beschikbaarheid, tarieven en voorwaarden zo neerzetten dat het bellen stopt.",
+      },
+      {
+        to: "/diensten/integraties",
+        label: "Website koppelen aan je systemen",
+        tekst: "Tarieven en beschikbaarheid automatisch actueel uit je verhuursoftware.",
+      },
+      {
+        to: "/diensten/conversie-website",
+        label: "Conversiegerichte website laten maken",
+        tekst: "Een site die van beschikbaarheid naar bevestigde verhuur leidt.",
+      },
+    ],
+    metaTitle: "Prijzen op je website zetten als verhuurbedrijf | MegaOnline.io",
+    metaDescription:
+      "Wel of geen tarieven op je verhuurwebsite? De drie bezwaren, wat er gebeurt als de prijs er niet staat en hoe je hem noemt zonder je vast te leggen.",
+  },
 ];
 
 /** Het artikel bij een slug, of `undefined` als die slug niet bestaat. */
