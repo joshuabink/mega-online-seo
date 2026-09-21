@@ -249,7 +249,7 @@ function NonProfits() {
             </h2>
             {' '}
             <p className="lead">
-              Gericht op vertrouwen, betrokkenheid en steun, zonder onnodige kosten.
+              Gericht op vertrouwen, betrokkenheid en steun, zonder onnodige kosten. Ook met een beperkt budget begint het bij een <Link to="/diensten/starter-website">compacte website voor starters</Link> die je verhaal goed overbrengt. Wil je dat donateurs en vrijwilligers je vinden, dan helpt werken aan je <Link to="/diensten/seo">vindbaarheid in Google</Link>.
             </p>
           </Reveal>
           {' '}

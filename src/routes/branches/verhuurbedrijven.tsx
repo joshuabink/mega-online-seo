@@ -251,7 +251,7 @@ function Verhuurbedrijven() {
             </h2>
             {' '}
             <p className="lead">
-              Gericht op minder administratie en meer bevestigde boekingen.
+              Gericht op minder administratie en meer bevestigde boekingen. Dat begint bij een <Link to="/diensten/conversie-website">conversiegerichte website</Link> die de bezoeker naar een complete aanvraag leidt. Wil je dat huurders je vinden voordat ze de concurrent bellen, dan werken we daarna aan je <Link to="/diensten/seo">vindbaarheid in Google</Link>.
             </p>
           </Reveal>
           {' '}

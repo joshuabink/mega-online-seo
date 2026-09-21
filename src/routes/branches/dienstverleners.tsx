@@ -248,7 +248,7 @@ function Dienstverleners() {
             </h2>
             {' '}
             <p className="lead">
-              Gericht op vertrouwen en kwalitatieve aanvragen, niet op zoveel mogelijk klikken.
+              Gericht op vertrouwen en kwalitatieve aanvragen, niet op zoveel mogelijk klikken. Vertrouwen komt vóór techniek, dus bouwen we eerst een <Link to="/diensten/conversie-website">conversiegerichte website</Link> die laat zien wie er achter je bedrijf zit. Pas daarna heeft het zin om te werken aan je <Link to="/diensten/seo">vindbaarheid in Google en in AI</Link>.
             </p>
           </Reveal>
           {' '}

@@ -718,6 +718,36 @@ function StarterWebsite() {
         </div>
       </section>
       {' '}
+      <section className="section section--tight" data-theme="paper" data-screen-label="Voor wie">
+        <div className="wrap">
+          <Reveal as="div" className="shead reveal">
+            <span className="label">Voor wie</span>
+            {' '}
+            <h2 className="h2">Voor wie de Starter Website bedoeld is.</h2>
+            {' '}
+            <p className="lead">
+              Een compacte website die er verzorgd uitziet en meteen duidelijk maakt wat je doet. Deze groepen kiezen er het vaakst voor.
+            </p>
+          </Reveal>
+          {' '}
+          <div className="featgrid">
+            <Reveal as="div" className="feat reveal">
+              <h4><Link to="/branches/dienstverleners">Website laten maken voor dienstverleners</Link></h4>
+              <p>Net begonnen in advies, installatie of techniek en toe aan een serieuze uitstraling.</p>
+            </Reveal>
+            {' '}
+            <Reveal as="div" className="feat reveal" data-d="1">
+              <h4><Link to="/branches/non-profits">Website laten maken voor stichtingen en verenigingen</Link></h4>
+              <p>Een sterk verhaal met een beperkt budget, dat online net zo goed moet landen.</p>
+            </Reveal>
+            {' '}
+            <Reveal as="div" className="feat reveal" data-d="2">
+              <h4><Link to="/branches/offerteaanvragen">Meer offerteaanvragen via je website</Link></h4>
+              <p>Eén goed aanvraagformulier is soms alles wat je nodig hebt om te beginnen.</p>
+            </Reveal>
+          </div>
+        </div>
+      </section>
       {' '}
       <section className="section" id="scan" data-theme="paper" data-screen-label="Eind-CTA + scan-formulier">
         <div className="wrap">

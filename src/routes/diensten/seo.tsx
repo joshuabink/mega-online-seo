@@ -827,6 +827,36 @@ function Seo() {
         </div>
       </section>
       {' '}
+      <section className="section section--tight" data-theme="paper" data-screen-label="Voor wie">
+        <div className="wrap">
+          <Reveal as="div" className="shead reveal">
+            <span className="label">Voor wie</span>
+            {' '}
+            <h2 className="h2">Voor wie we aan vindbaarheid werken.</h2>
+            {' '}
+            <p className="lead">
+              Vindbaarheid levert pas iets op als de bezoeker daarna ook aanvraagt. Daarom werken we het liefst voor deze branches.
+            </p>
+          </Reveal>
+          {' '}
+          <div className="featgrid">
+            <Reveal as="div" className="feat reveal">
+              <h4><Link to="/branches/dienstverleners">Website laten maken voor dienstverleners</Link></h4>
+              <p>Concurrenten staan hoger in Google terwijl jouw werk beter is.</p>
+            </Reveal>
+            {' '}
+            <Reveal as="div" className="feat reveal" data-d="1">
+              <h4><Link to="/branches/activiteitenbedrijven">Website laten maken voor activiteitenbedrijven</Link></h4>
+              <p>Wie een uitje zoekt begint bij Google, niet bij jouw bedrijfsnaam.</p>
+            </Reveal>
+            {' '}
+            <Reveal as="div" className="feat reveal" data-d="2">
+              <h4><Link to="/branches/verhuurbedrijven">Website laten maken voor verhuurbedrijven</Link></h4>
+              <p>Gevonden worden op wat je verhuurt, niet alleen op hoe je heet.</p>
+            </Reveal>
+          </div>
+        </div>
+      </section>
       {' '}
       <section className="section" id="scan" data-theme="dark" data-screen-label="Eind-CTA + scan-formulier">
         <div className="wrap">

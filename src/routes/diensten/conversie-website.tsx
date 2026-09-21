@@ -1023,6 +1023,36 @@ function ConversieWebsite() {
         </div>
       </section>
       {' '}
+      <section className="section section--tight" data-theme="paper" data-screen-label="Voor wie">
+        <div className="wrap">
+          <Reveal as="div" className="shead reveal">
+            <span className="label">Voor wie</span>
+            {' '}
+            <h2 className="h2">Voor wie we deze websites bouwen.</h2>
+            {' '}
+            <p className="lead">
+              Een conversiegerichte website levert het meeste op bij bedrijven die leven van aanvragen en boekingen. Dit zijn de branches waarvoor we het vaakst bouwen.
+            </p>
+          </Reveal>
+          {' '}
+          <div className="featgrid">
+            <Reveal as="div" className="feat reveal">
+              <h4><Link to="/branches/activiteitenbedrijven">Website laten maken voor activiteitenbedrijven</Link></h4>
+              <p>Escaperooms, klimhallen en uitjes die ook doordeweeks vol willen zitten.</p>
+            </Reveal>
+            {' '}
+            <Reveal as="div" className="feat reveal" data-d="1">
+              <h4><Link to="/branches/verhuurbedrijven">Website laten maken voor verhuurbedrijven</Link></h4>
+              <p>Verhuur per periode, waar beschikbaarheid en tarieven de meeste vragen oplevert.</p>
+            </Reveal>
+            {' '}
+            <Reveal as="div" className="feat reveal" data-d="2">
+              <h4><Link to="/branches/dienstverleners">Website laten maken voor dienstverleners</Link></h4>
+              <p>Advies, installatie en techniek, waar vertrouwen bepaalt of de offerteaanvraag komt.</p>
+            </Reveal>
+          </div>
+        </div>
+      </section>
       {' '}
       <section className="section" id="scan" data-theme="dark" data-screen-label="Eind-CTA + scan-formulier">
         <div className="wrap">

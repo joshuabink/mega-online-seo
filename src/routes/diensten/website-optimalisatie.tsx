@@ -739,6 +739,36 @@ function WebsiteOptimalisatie() {
         </div>
       </section>
       {' '}
+      <section className="section section--tight" data-theme="paper" data-screen-label="Voor wie">
+        <div className="wrap">
+          <Reveal as="div" className="shead reveal">
+            <span className="label">Voor wie</span>
+            {' '}
+            <h2 className="h2">Voor wie optimalisatie het snelst iets oplevert.</h2>
+            {' '}
+            <p className="lead">
+              Er is al verkeer, er komen alleen te weinig aanvragen uit. Bij deze branches zit de winst meestal het dichtst bij de oppervlakte.
+            </p>
+          </Reveal>
+          {' '}
+          <div className="featgrid">
+            <Reveal as="div" className="feat reveal">
+              <h4><Link to="/branches/offerteaanvragen">Meer offerteaanvragen via je website</Link></h4>
+              <p>Een formulier dat te veel of te vroeg vraagt kost je de aanvraag.</p>
+            </Reveal>
+            {' '}
+            <Reveal as="div" className="feat reveal" data-d="1">
+              <h4><Link to="/branches/reserveringen">Website met reserveringssysteem laten maken</Link></h4>
+              <p>Elke extra stap in het reserveren kost je een deel van je gasten.</p>
+            </Reveal>
+            {' '}
+            <Reveal as="div" className="feat reveal" data-d="2">
+              <h4><Link to="/branches/dienstverleners">Website laten maken voor dienstverleners</Link></h4>
+              <p>Bezoekers komen wel, maar wekken je pagina's genoeg vertrouwen.</p>
+            </Reveal>
+          </div>
+        </div>
+      </section>
       {' '}
       <section className="section" id="scan" data-theme="dark" data-screen-label="Eind-CTA + scan-formulier">
         <div className="wrap">

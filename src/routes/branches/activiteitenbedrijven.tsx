@@ -253,7 +253,7 @@ function Activiteitenbedrijven() {
             </h2>
             {' '}
             <p className="lead">
-              Geen overbodige toeters, wel alles wat bezoekers nodig hebben om te boeken.
+              Geen overbodige toeters, wel alles wat bezoekers nodig hebben om te boeken. De basis is een <Link to="/diensten/conversie-website">conversiegerichte website</Link> waarop boeken op de telefoon in een paar stappen lukt. Daarna zorgen we dat je gevonden wordt door wie een uitje zoekt, met <Link to="/diensten/seo">SEO en GEO</Link>.
             </p>
           </Reveal>
           {' '}
