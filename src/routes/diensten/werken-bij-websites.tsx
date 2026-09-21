@@ -726,6 +726,36 @@ function WerkenBijWebsites() {
         </div>
       </section>
       {' '}
+      <section className="section section--tight" data-theme="paper" data-screen-label="Voor wie">
+        <div className="wrap">
+          <Reveal as="div" className="shead reveal">
+            <span className="label">Voor wie</span>
+            {' '}
+            <h2 className="h2">Voor wie een werken-bij-website loont.</h2>
+            {' '}
+            <p className="lead">
+              Personeel vinden is bij sommige bedrijven net zo lastig als klanten vinden. Deze branches lopen er het vaakst tegenaan.
+            </p>
+          </Reveal>
+          {' '}
+          <div className="featgrid">
+            <Reveal as="div" className="feat reveal">
+              <h4><Link to="/branches/dienstverleners">Website laten maken voor dienstverleners</Link></h4>
+              <p>Monteurs en adviseurs kiezen ook op wat ze online over je vinden.</p>
+            </Reveal>
+            {' '}
+            <Reveal as="div" className="feat reveal" data-d="1">
+              <h4><Link to="/branches/activiteitenbedrijven">Website laten maken voor activiteitenbedrijven</Link></h4>
+              <p>Weekendkrachten en gastheren werven doorlopend, niet één keer per jaar.</p>
+            </Reveal>
+            {' '}
+            <Reveal as="div" className="feat reveal" data-d="2">
+              <h4><Link to="/branches/verhuurbedrijven">Website laten maken voor verhuurbedrijven</Link></h4>
+              <p>Chauffeurs en medewerkers buitendienst vinden je via je eigen site.</p>
+            </Reveal>
+          </div>
+        </div>
+      </section>
       {' '}
       <section className="section" id="scan" data-theme="dark" data-screen-label="Eind-CTA + scan-formulier">
         <div className="wrap">

@@ -823,6 +823,36 @@ function WebsiteRedesign() {
         </div>
       </section>
       {' '}
+      <section className="section section--tight" data-theme="paper" data-screen-label="Voor wie">
+        <div className="wrap">
+          <Reveal as="div" className="shead reveal">
+            <span className="label">Voor wie</span>
+            {' '}
+            <h2 className="h2">Voor wie een redesign het verschil maakt.</h2>
+            {' '}
+            <p className="lead">
+              Je bedrijf is gegroeid, je website niet meegegroeid. Dat zien we het vaakst bij deze groepen.
+            </p>
+          </Reveal>
+          {' '}
+          <div className="featgrid">
+            <Reveal as="div" className="feat reveal">
+              <h4><Link to="/branches/dienstverleners">Website laten maken voor dienstverleners</Link></h4>
+              <p>Het werk is groter geworden, de site praat nog tegen je eerste klanten.</p>
+            </Reveal>
+            {' '}
+            <Reveal as="div" className="feat reveal" data-d="1">
+              <h4><Link to="/branches/verhuurbedrijven">Website laten maken voor verhuurbedrijven</Link></h4>
+              <p>Het assortiment is uitgebreid, de structuur van de site is meegegroeid noch opgeruimd.</p>
+            </Reveal>
+            {' '}
+            <Reveal as="div" className="feat reveal" data-d="2">
+              <h4><Link to="/branches/non-profits">Website laten maken voor stichtingen en verenigingen</Link></h4>
+              <p>Jaren aan losse pagina's die samen geen verhaal meer vertellen.</p>
+            </Reveal>
+          </div>
+        </div>
+      </section>
       {' '}
       <section className="section" id="scan" data-theme="dark" data-screen-label="Eind-CTA + scan-formulier">
         <div className="wrap">

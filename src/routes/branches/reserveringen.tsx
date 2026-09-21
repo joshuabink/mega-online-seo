@@ -249,7 +249,7 @@ function Reserveringen() {
             </h2>
             {' '}
             <p className="lead">
-              Gericht op meer boekingen, minder telefoon en een planning die altijd klopt.
+              Gericht op meer boekingen, minder telefoon en een planning die altijd klopt. Reserveren in zo min mogelijk stappen vraagt om een <Link to="/diensten/conversie-website">conversiegerichte website</Link> die daarop is ingericht. De koppeling met je agenda of kassa regelen we via <Link to="/diensten/integraties">integraties met je systemen</Link>.
             </p>
           </Reveal>
           {' '}

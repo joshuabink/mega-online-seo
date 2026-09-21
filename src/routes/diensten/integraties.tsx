@@ -326,6 +326,37 @@ function Integraties() {
         </div>
       </section>
       {' '}
+      <section className="section section--tight" data-theme="paper" data-screen-label="Voor wie">
+        <div className="wrap">
+          <Reveal as="div" className="shead reveal">
+            <span className="label">Voor wie</span>
+            {' '}
+            <h2 className="h2">Voor wie koppelingen het meeste werk wegnemen.</h2>
+            {' '}
+            <p className="lead">
+              Een koppeling is pas nuttig als hij je handwerk uit handen neemt. Deze branches merken dat het snelst.
+            </p>
+          </Reveal>
+          {' '}
+          <div className="featgrid">
+            <Reveal as="div" className="feat reveal">
+              <h4><Link to="/branches/reserveringen">Website met reserveringssysteem laten maken</Link></h4>
+              <p>Reserveringen die direct in je agenda staan zonder overtypen.</p>
+            </Reveal>
+            {' '}
+            <Reveal as="div" className="feat reveal" data-d="1">
+              <h4><Link to="/branches/verhuurbedrijven">Website laten maken voor verhuurbedrijven</Link></h4>
+              <p>Beschikbaarheid uit je verhuursoftware live op de website.</p>
+            </Reveal>
+            {' '}
+            <Reveal as="div" className="feat reveal" data-d="2">
+              <h4><Link to="/branches/activiteitenbedrijven">Website laten maken voor activiteitenbedrijven</Link></h4>
+              <p>Boekingen, betalingen en cadeaubonnen die elkaar automatisch bijwerken.</p>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+      {' '}
       <section className="section" id="scan" data-theme="paper" data-screen-label="Eind-CTA">
         <div className="wrap">
           <Reveal as="div" className="shead shead--center reveal">
