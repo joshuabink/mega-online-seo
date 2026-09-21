@@ -96,3 +96,80 @@
 .art__andere {
   margin-top: clamp(28px, 3vw, 40px);
 }
+
+/* ---------- Artikel: andere artikelen ----------
+   Deze chips gebruiken dezelfde opmaak als de vacaturepagina. Die regels staan
+   in werken-bij.css achter [data-page="vacature"], dus ze gelden hier niet.
+   Zonder deze regels heeft het icoon geen afmeting en rekt het uit tot de
+   volle breedte van de kolom. */
+[data-page="artikel"] .andere {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+[data-page="artikel"] .andere__rol {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--line);
+  border-radius: 100px;
+  background: var(--card);
+  padding: 11px 18px;
+  color: var(--fg);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition:
+    border-color 0.3s,
+    transform 0.3s;
+}
+
+[data-page="artikel"] .andere__rol:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent-strong);
+}
+
+[data-page="artikel"] .andere__rol svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  stroke: var(--accent-text);
+  stroke-width: 1.7;
+  fill: none;
+}
+
+/* Vangnet: een icoon zonder iconbox mag nooit meer de hele kolom vullen. */
+[data-page="artikel"] :not(.iconbox) > svg,
+[data-page="kennisbank"] :not(.iconbox) > svg {
+  max-width: 24px;
+  max-height: 24px;
+}
+
+/* ---------- Artikel: links in de lopende tekst ----------
+   Zonder deze regels erft een link de kleur van de tekst en is hij niet van
+   gewone tekst te onderscheiden. Bosgroen op een lichte grond, want citroen
+   is daar onleesbaar. */
+[data-page="artikel"] .art__body a,
+[data-page="artikel"] .art__punten p a,
+[data-page="artikel"] .feat h4 a {
+  color: var(--accent-text);
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  text-decoration-color: color-mix(in oklab, var(--accent-text) 45%, transparent);
+  transition: text-decoration-color 0.3s;
+}
+
+[data-page="artikel"] .art__body a:hover,
+[data-page="artikel"] .art__punten p a:hover,
+[data-page="artikel"] .feat h4 a:hover {
+  text-decoration-color: var(--accent-text);
+}
+
+/* Drie kolommen in plaats van vier: deze blokken bevatten lopende tekst,
+   geen korte kenmerken, dus smalle kolommen lezen slecht. */
+[data-page="artikel"] .art__punten {
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
