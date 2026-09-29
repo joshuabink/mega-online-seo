@@ -127,11 +127,19 @@ function Privacyverklaring() {
                 <h2>6. Cookies</h2>
                 {' '}
                 <p>
-                  Onze website kan gebruikmaken van functionele en analytische cookies om de website goed te laten werken en het gebruik ervan te analyseren. Functionele cookies zijn noodzakelijk voor de werking van de site.
+                  We gebruiken cookies in drie categorieën. Welke je toestaat, kies je zelf in de cookiebanner. Je kunt je keuze altijd wijzigen of intrekken via Cookie-instellingen onderaan de site.
                 </p>
                 {' '}
                 <p>
-                  Je kunt cookies altijd zelf beheren of verwijderen via de instellingen van je browser.
+                  <strong>Noodzakelijk.</strong> Deze cookie onthoudt je cookiekeuze (cc_cookie, 12 maanden). Hiervoor is geen toestemming nodig.
+                </p>
+                {' '}
+                <p>
+                  <strong>Statistieken.</strong> Op dit moment gebruiken we geen statistiekcookies. Voegen we die later toe, dan alleen met je toestemming, en dan noemen we de dienst hier.
+                </p>
+                {' '}
+                <p>
+                  <strong>Marketing.</strong> Alleen als je hiervoor kiest, gebruiken we een dienst die aan de hand van het IP-adres herkent welke bedrijven onze website bezoeken en welke pagina's zij bekijken. We gebruiken dit om zakelijke bezoekers beter te helpen.
                 </p>
               </section>
               {' '}
