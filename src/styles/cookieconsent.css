@@ -27,7 +27,7 @@
   --cc-btn-secondary-hover-border-color: var(--accent);
   --cc-separator-border-color: var(--line);
   --cc-toggle-on-bg: var(--accent-strong);
-  --cc-toggle-off-bg: var(--card-2);
+  --cc-toggle-off-bg: var(--faint);
   --cc-toggle-on-knob-bg: var(--bg);
   --cc-toggle-readonly-bg: var(--accent-strong);
   --cc-toggle-readonly-knob-bg: var(--bg);
