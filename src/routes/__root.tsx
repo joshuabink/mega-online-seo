@@ -15,6 +15,7 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter, FunnelFooter } from "@/components/SiteFooter";
+import { CookieBanner } from "@/components/CookieBanner";
 import { SITE_GRAPH, buildPageSchema } from "@/lib/schema";
 
 // MegaOnline design system uit de Claude Design-handoff. De volgorde is de
@@ -184,11 +185,6 @@ function RootShell({ children }: { children: ReactNode }) {
     <html lang="nl" data-accent="lemon" data-display="archivo">
       <head>
         <HeadContent />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(l,e,a,d,i,n,f,o){if(!l[i]){l.GlobalLeadinfoNamespace=l.GlobalLeadinfoNamespace||[];l.GlobalLeadinfoNamespace.push(i);l[i]=function(){(l[i].q=l[i].q||[]).push(arguments)};l[i].t=l[i].t||n;l[i].q=l[i].q||[];o=e.createElement(a);f=e.getElementsByTagName(a)[0];o.async=1;o.src=d;f.parentNode.insertBefore(o,f);}}(window,document,'script','https://cdn.leadinfo.net/ping.js','leadinfo','LI-6AAEB0E23B183'));`,
-          }}
-        />
         <noscript>
           <style dangerouslySetInnerHTML={{ __html: NO_JS_FALLBACK }} />
         </noscript>
@@ -241,6 +237,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <CookieBanner />
       {meta.bare ? (
         // Concept-pagina's brengen hun eigen chrome en stijl mee.
         <Outlet />

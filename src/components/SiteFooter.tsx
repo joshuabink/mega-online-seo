@@ -1,4 +1,5 @@
 import { Link } from '@tanstack/react-router'
+import { CookieSettingsButton } from '@/components/CookieBanner'
 
 const DIENSTEN = [
   ['/diensten/conversie-website', 'Conversie Website'],
@@ -95,6 +96,7 @@ export function SiteFooter() {
           <nav className="footer__legal" aria-label="Juridisch">
             <Link to="/algemene-voorwaarden">Algemene voorwaarden</Link>
             <Link to="/privacyverklaring">Privacyverklaring</Link>
+            <CookieSettingsButton className="footer__cookie" />
           </nav>
         </div>
       </div>
@@ -114,6 +116,7 @@ export function FunnelFooter() {
           MegaOnline<span className="dot">.io</span>
         </Link>
         <span className="ffooter__copy">© 2026 MegaOnline.io · Gratis websitescan</span>
+        <CookieSettingsButton className="footer__cookie" />
       </div>
     </footer>
   )

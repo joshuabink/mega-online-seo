@@ -1,0 +1,172 @@
+/* Cookiebanner in de huisstijl. Tokens komen uit styles.css / refresh.css.
+   De banner zelf staat buiten de secties, daarom krijgt #cookie-consent-root
+   data-theme="dark" zodat --bg, --fg, --card en --muted daar kloppen. */
+
+#cookie-consent-root {
+  display: contents;
+}
+
+#cc-main {
+  --cc-font-family: var(--sans);
+  --cc-modal-border-radius: 16px;
+  --cc-btn-border-radius: var(--radius);
+  --cc-bg: var(--card);
+  --cc-primary-color: var(--fg);
+  --cc-secondary-color: var(--muted);
+  --cc-btn-primary-bg: var(--accent-strong);
+  --cc-btn-primary-color: var(--accent-ink);
+  --cc-btn-primary-border-color: var(--accent-strong);
+  --cc-btn-primary-hover-bg: var(--accent);
+  --cc-btn-primary-hover-color: var(--accent-ink);
+  --cc-btn-primary-hover-border-color: var(--accent);
+  --cc-btn-secondary-bg: var(--accent-strong);
+  --cc-btn-secondary-color: var(--accent-ink);
+  --cc-btn-secondary-border-color: var(--accent-strong);
+  --cc-btn-secondary-hover-bg: var(--accent);
+  --cc-btn-secondary-hover-color: var(--accent-ink);
+  --cc-btn-secondary-hover-border-color: var(--accent);
+  --cc-separator-border-color: var(--line);
+  --cc-toggle-on-bg: var(--accent-strong);
+  --cc-toggle-off-bg: var(--card-2);
+  --cc-toggle-on-knob-bg: var(--bg);
+  --cc-toggle-readonly-bg: var(--accent-strong);
+  --cc-toggle-readonly-knob-bg: var(--bg);
+  --cc-cookie-category-block-bg: var(--card-2);
+  --cc-cookie-category-block-border: var(--line);
+  --cc-cookie-category-block-hover-bg: var(--card-2);
+  --cc-cookie-category-block-hover-border: var(--line-strong);
+  --cc-overlay-bg: color-mix(in oklab, var(--bg) 72%, transparent);
+  --cc-link-color: var(--accent);
+  --cc-footer-bg: transparent;
+  --cc-footer-color: var(--muted);
+  --cc-footer-border-color: var(--line);
+}
+
+#cc-main .cm__title,
+#cc-main .pm__title,
+#cc-main .pm__section-title {
+  font-family: var(--display);
+  letter-spacing: -0.02em;
+}
+
+#cc-main .cm__desc a {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+#cc-main .cm__btn,
+#cc-main .cm__btn--secondary,
+#cc-main .pm__btn,
+#cc-main .pm__btn--secondary {
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.2;
+  min-height: 46px;
+  padding: 0.7em 1em;
+  text-align: center;
+  background: var(--accent-strong);
+  color: var(--accent-ink);
+  border: 1px solid var(--accent-strong);
+  border-radius: var(--radius);
+}
+
+#cc-main .cm__btn:hover,
+#cc-main .cm__btn--secondary:hover,
+#cc-main .pm__btn:hover,
+#cc-main .pm__btn--secondary:hover {
+  background: var(--accent);
+  color: var(--accent-ink);
+  border-color: var(--accent);
+}
+
+#cc-main button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* Drie gelijkwaardige knoppen naast elkaar. display:contents haalt de
+   groepen weg zodat elke knop even breed wordt. */
+@media (min-width: 641px) {
+  #cc-main .cm {
+    max-width: 46rem;
+  }
+
+  #cc-main .cm__btns,
+  #cc-main .pm__footer {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: stretch !important;
+    justify-content: stretch !important;
+    gap: 0.5rem;
+  }
+
+  #cc-main .cm__btn-group,
+  #cc-main .pm__btn-group {
+    display: contents !important;
+  }
+
+  #cc-main .cm__btn,
+  #cc-main .pm__btn,
+  #cc-main .cm__btn + .cm__btn,
+  #cc-main .pm__btn + .pm__btn,
+  #cc-main .cm__btn-group + .cm__btn-group,
+  #cc-main .pm__btn-group + .pm__btn-group {
+    flex: 1 1 0 !important;
+    width: auto !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+  }
+}
+
+/* Op smalle schermen onder elkaar, wel even breed. */
+@media (max-width: 640px) {
+  #cc-main .cm__btns,
+  #cc-main .pm__footer,
+  #cc-main .cm__btn-group,
+  #cc-main .pm__btn-group {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    width: 100%;
+  }
+
+  #cc-main .cm__btn,
+  #cc-main .pm__btn {
+    width: 100% !important;
+    flex: 1 1 auto !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+}
+
+.footer__legal .footer__cookie,
+.ffooter .footer__cookie {
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.03em;
+  padding: 0;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.footer__legal .footer__cookie {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.footer__legal .footer__cookie:hover {
+  color: var(--fg);
+}
+
+.ffooter .footer__cookie {
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--faint);
+}
+
+.ffooter .footer__cookie:hover {
+  color: var(--fg);
+}
