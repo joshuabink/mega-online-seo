@@ -25,6 +25,9 @@ export function CookieBanner() {
       if (cancelled || (window as ConsentWindow)._ccRun) return;
 
       await cc.run({
+        // #cc-main moet in dit element, anders erven de dark-tokens niet:
+        // het pakket hangt de banner anders direct onder body.
+        root: "#cookie-consent-root",
         mode: "opt-in",
         // Verhoog dit getal als categorieën of teksten wijzigen. De banner
         // vraagt dan opnieuw, ook als er al een keuze is opgeslagen.
