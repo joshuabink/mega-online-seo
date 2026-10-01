@@ -73,13 +73,13 @@ export function CookieBanner() {
                 description:
                   'We gebruiken noodzakelijke cookies om de site te laten werken. Met jouw toestemming gebruiken we ook cookies voor statistieken en marketing. Je keuze kun je altijd wijzigen via Cookie-instellingen onderaan de site. <a href="/privacyverklaring">Privacyverklaring</a>',
                 acceptAllBtn: "Alles accepteren",
-                acceptNecessaryBtn: "Alles weigeren",
+                acceptNecessaryBtn: "Alleen essentiële cookies",
                 showPreferencesBtn: "Instellingen",
               },
               preferencesModal: {
                 title: "Cookie-instellingen",
                 acceptAllBtn: "Alles accepteren",
-                acceptNecessaryBtn: "Alles weigeren",
+                acceptNecessaryBtn: "Alleen essentiële cookies",
                 savePreferencesBtn: "Keuze opslaan",
                 closeIconLabel: "Sluiten",
                 sections: [
