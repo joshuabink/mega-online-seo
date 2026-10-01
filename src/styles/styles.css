@@ -197,8 +197,10 @@ h1, h2, h3 { font-family: var(--display); font-weight: 600; line-height: 1.04; l
 .nav { position: fixed; inset: 0 0 auto 0; z-index: 50; transition: background .4s, backdrop-filter .4s, border-color .4s; border-bottom: 1px solid transparent; }
 .nav.scrolled { background: color-mix(in oklab, oklch(0.205 0.020 158) 82%, transparent); backdrop-filter: blur(14px) saturate(1.2); border-bottom-color: rgba(255,255,255,.1); }
 .nav__inner { max-width: var(--maxw); margin-inline: auto; padding: 18px var(--gutter); display: flex; align-items: center; justify-content: space-between; gap: 24px; }
-.logo { font-family: var(--display); font-weight: 600; font-size: 1.3rem; letter-spacing: -0.03em; color: oklch(0.965 0.010 95); display: inline-flex; align-items: baseline; }
-.logo .dot { color: var(--accent); }
+.logo { display: inline-flex; align-items: center; line-height: 0; color: #F5F3EC; --logo-accent: #E9DF73; }
+.logo svg { display: block; height: 1.85rem; width: auto; }
+@media (max-width: 420px) { .nav .logo svg, .mmenu .logo svg { height: 1.5rem; } }
+.logo__accent { fill: var(--logo-accent); }
 .nav__links { display: flex; align-items: center; gap: 34px; }
 .nav__links a.navlink { font-size: 0.92rem; color: oklch(0.80 0.014 130); font-weight: 500; transition: color .25s; }
 .nav__links a.navlink:hover { color: oklch(0.965 0.010 95); }
@@ -212,8 +214,7 @@ h1, h2, h3 { font-family: var(--display); font-weight: 600; line-height: 1.04; l
    zodat logo en menu-items leesbaar blijven op wit. Bij scrollen keert de
    donkere balk terug en gelden weer de standaard lichte kleuren. */
 .nav--light:not(.scrolled) { --focus: var(--accent-deep); }
-.nav--light:not(.scrolled) .logo { color: oklch(0.34 0.045 158); }
-.nav--light:not(.scrolled) .logo .dot { color: var(--accent); }
+.nav--light:not(.scrolled) .logo { color: #0F1A14; --logo-accent: #23593D; }
 .nav--light:not(.scrolled) .mnav__item { color: oklch(0.36 0.035 158); }
 .nav--light:not(.scrolled) .mnav__item .chev { color: oklch(0.50 0.04 158); }
 .nav--light:not(.scrolled) .mnav__item:hover,

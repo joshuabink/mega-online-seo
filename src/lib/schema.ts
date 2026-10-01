@@ -95,9 +95,9 @@ const ORGANIZATION = {
   logo: {
     "@type": "ImageObject",
     "@id": LOGO_ID,
-    url: `${SITE_URL}/og-image.png`,
-    width: 1200,
-    height: 630,
+    url: `${SITE_URL}/icon-512.png`,
+    width: 512,
+    height: 512,
     caption: "MegaOnline.io",
   },
   email: "info@megaonline.io",

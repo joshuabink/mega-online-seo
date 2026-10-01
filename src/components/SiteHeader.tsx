@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { Link, useRouterState } from '@tanstack/react-router'
 import { Icon } from './Icon'
+import { Logo } from './Logo'
 import { artikelenNieuwsteEerst } from '@/lib/kennisbank'
 
 type Panel = 'diensten' | 'cases' | 'over' | 'kennis' | 'contact'
@@ -142,7 +143,7 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
       >
         <div className="nav__inner">
           <Link to="/" className="logo" aria-label="MegaOnline.io home">
-            MegaOnline<span className="dot">.io</span>
+            <Logo />
           </Link>
           <nav className="mnav" aria-label="Hoofdmenu">
             {trigger('diensten', 'Diensten')}
@@ -658,7 +659,7 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
     >
       <div className="mmenu__top">
         <Link to="/" className="logo" onClick={onClose} aria-label="MegaOnline.io home">
-          MegaOnline<span className="dot">.io</span>
+          <Logo />
         </Link>
         <button
           className="mmenu__close"
