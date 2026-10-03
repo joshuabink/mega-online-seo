@@ -31,7 +31,7 @@
 [data-page="index"] .hero__form.concept { padding: clamp(20px, 2vw, 28px); }
 [data-page="index"] .hero__form .form__head-note { margin-bottom: 8px; }
 [data-page="index"] .hero__form .form__inner h3 { font-size: 1.2rem; margin-bottom: 10px; }
-[data-page="index"] .hero__form h3 + p { display: none; }
+[data-page="index"] .hero__form .form__inner > h3 + p { display: none; }
 [data-page="index"] .hero__form .concept__ticks { margin-bottom: 14px; gap: 6px 14px; }
 [data-page="index"] .hero__form .concept__ticks li { font-size: 0.86rem; }
 [data-page="index"] .hero__form .form__progress { margin-bottom: 14px; }
