@@ -163,6 +163,12 @@
 }
 .mcol--plain .mlink__ico svg { width: 18px; height: 18px; }
 
+.mlink--concept {
+  margin-top: 10px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,.12);
+}
+
 /* ---------- Rail: meerdere featured kaarten onder elkaar ---------- */
 .mrail { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
 .mrail > .mfeat { flex: 0 0 auto; }
@@ -289,6 +295,7 @@
 .mmenu__row .arr-ico { width: 18px; height: 18px; color: oklch(0.6 0.013 145); transition: transform .25s, color .2s; }
 .mmenu__row:hover { color: var(--accent); }
 .mmenu__row:hover .arr-ico { color: var(--accent); transform: translate(2px, -2px); }
+.mmenu__row--concept { margin-bottom: 8px; }
 
 /* sticky CTA footer — always visible */
 .mmenu__cta {

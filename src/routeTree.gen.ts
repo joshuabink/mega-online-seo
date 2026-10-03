@@ -25,6 +25,8 @@ import { Route as BranchesNonProfitsRouteImport } from './routes/branches/non-pr
 import { Route as BranchesOfferteaanvragenRouteImport } from './routes/branches/offerteaanvragen'
 import { Route as BranchesReserveringenRouteImport } from './routes/branches/reserveringen'
 import { Route as BranchesVerhuurbedrijvenRouteImport } from './routes/branches/verhuurbedrijven'
+import { Route as ConceptenIndexRouteImport } from './routes/concepten/index'
+import { Route as ConceptenSlugRouteImport } from './routes/concepten/$slug'
 import { Route as DienstenConversieWebsiteRouteImport } from './routes/diensten/conversie-website'
 import { Route as DienstenGoogleAdsRouteImport } from './routes/diensten/google-ads'
 import { Route as DienstenIntegratiesRouteImport } from './routes/diensten/integraties'
@@ -121,6 +123,16 @@ const BranchesVerhuurbedrijvenRoute =
     path: '/branches/verhuurbedrijven',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ConceptenIndexRoute = ConceptenIndexRouteImport.update({
+  id: '/concepten/',
+  path: '/concepten/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConceptenSlugRoute = ConceptenSlugRouteImport.update({
+  id: '/concepten/$slug',
+  path: '/concepten/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DienstenConversieWebsiteRoute =
   DienstenConversieWebsiteRouteImport.update({
     id: '/diensten/conversie-website',
@@ -202,6 +214,7 @@ export interface FileRoutesByFullPath {
   '/branches/offerteaanvragen': typeof BranchesOfferteaanvragenRoute
   '/branches/reserveringen': typeof BranchesReserveringenRoute
   '/branches/verhuurbedrijven': typeof BranchesVerhuurbedrijvenRoute
+  '/concepten/$slug': typeof ConceptenSlugRoute
   '/diensten/conversie-website': typeof DienstenConversieWebsiteRoute
   '/diensten/google-ads': typeof DienstenGoogleAdsRoute
   '/diensten/integraties': typeof DienstenIntegratiesRoute
@@ -212,6 +225,7 @@ export interface FileRoutesByFullPath {
   '/diensten/werken-bij-websites': typeof DienstenWerkenBijWebsitesRoute
   '/kennisbank/$slug': typeof KennisbankSlugRoute
   '/werken-bij/$slug': typeof WerkenBijSlugRoute
+  '/concepten/': typeof ConceptenIndexRoute
   '/kennisbank/': typeof KennisbankIndexRoute
   '/werken-bij/': typeof WerkenBijIndexRoute
 }
@@ -232,6 +246,7 @@ export interface FileRoutesByTo {
   '/branches/offerteaanvragen': typeof BranchesOfferteaanvragenRoute
   '/branches/reserveringen': typeof BranchesReserveringenRoute
   '/branches/verhuurbedrijven': typeof BranchesVerhuurbedrijvenRoute
+  '/concepten/$slug': typeof ConceptenSlugRoute
   '/diensten/conversie-website': typeof DienstenConversieWebsiteRoute
   '/diensten/google-ads': typeof DienstenGoogleAdsRoute
   '/diensten/integraties': typeof DienstenIntegratiesRoute
@@ -242,6 +257,7 @@ export interface FileRoutesByTo {
   '/diensten/werken-bij-websites': typeof DienstenWerkenBijWebsitesRoute
   '/kennisbank/$slug': typeof KennisbankSlugRoute
   '/werken-bij/$slug': typeof WerkenBijSlugRoute
+  '/concepten': typeof ConceptenIndexRoute
   '/kennisbank': typeof KennisbankIndexRoute
   '/werken-bij': typeof WerkenBijIndexRoute
 }
@@ -263,6 +279,7 @@ export interface FileRoutesById {
   '/branches/offerteaanvragen': typeof BranchesOfferteaanvragenRoute
   '/branches/reserveringen': typeof BranchesReserveringenRoute
   '/branches/verhuurbedrijven': typeof BranchesVerhuurbedrijvenRoute
+  '/concepten/$slug': typeof ConceptenSlugRoute
   '/diensten/conversie-website': typeof DienstenConversieWebsiteRoute
   '/diensten/google-ads': typeof DienstenGoogleAdsRoute
   '/diensten/integraties': typeof DienstenIntegratiesRoute
@@ -273,6 +290,7 @@ export interface FileRoutesById {
   '/diensten/werken-bij-websites': typeof DienstenWerkenBijWebsitesRoute
   '/kennisbank/$slug': typeof KennisbankSlugRoute
   '/werken-bij/$slug': typeof WerkenBijSlugRoute
+  '/concepten/': typeof ConceptenIndexRoute
   '/kennisbank/': typeof KennisbankIndexRoute
   '/werken-bij/': typeof WerkenBijIndexRoute
 }
@@ -295,6 +313,7 @@ export interface FileRouteTypes {
     | '/branches/offerteaanvragen'
     | '/branches/reserveringen'
     | '/branches/verhuurbedrijven'
+    | '/concepten/$slug'
     | '/diensten/conversie-website'
     | '/diensten/google-ads'
     | '/diensten/integraties'
@@ -305,6 +324,7 @@ export interface FileRouteTypes {
     | '/diensten/werken-bij-websites'
     | '/kennisbank/$slug'
     | '/werken-bij/$slug'
+    | '/concepten/'
     | '/kennisbank/'
     | '/werken-bij/'
   fileRoutesByTo: FileRoutesByTo
@@ -325,6 +345,7 @@ export interface FileRouteTypes {
     | '/branches/offerteaanvragen'
     | '/branches/reserveringen'
     | '/branches/verhuurbedrijven'
+    | '/concepten/$slug'
     | '/diensten/conversie-website'
     | '/diensten/google-ads'
     | '/diensten/integraties'
@@ -335,6 +356,7 @@ export interface FileRouteTypes {
     | '/diensten/werken-bij-websites'
     | '/kennisbank/$slug'
     | '/werken-bij/$slug'
+    | '/concepten'
     | '/kennisbank'
     | '/werken-bij'
   id:
@@ -355,6 +377,7 @@ export interface FileRouteTypes {
     | '/branches/offerteaanvragen'
     | '/branches/reserveringen'
     | '/branches/verhuurbedrijven'
+    | '/concepten/$slug'
     | '/diensten/conversie-website'
     | '/diensten/google-ads'
     | '/diensten/integraties'
@@ -365,6 +388,7 @@ export interface FileRouteTypes {
     | '/diensten/werken-bij-websites'
     | '/kennisbank/$slug'
     | '/werken-bij/$slug'
+    | '/concepten/'
     | '/kennisbank/'
     | '/werken-bij/'
   fileRoutesById: FileRoutesById
@@ -386,6 +410,7 @@ export interface RootRouteChildren {
   BranchesOfferteaanvragenRoute: typeof BranchesOfferteaanvragenRoute
   BranchesReserveringenRoute: typeof BranchesReserveringenRoute
   BranchesVerhuurbedrijvenRoute: typeof BranchesVerhuurbedrijvenRoute
+  ConceptenSlugRoute: typeof ConceptenSlugRoute
   DienstenConversieWebsiteRoute: typeof DienstenConversieWebsiteRoute
   DienstenGoogleAdsRoute: typeof DienstenGoogleAdsRoute
   DienstenIntegratiesRoute: typeof DienstenIntegratiesRoute
@@ -396,6 +421,7 @@ export interface RootRouteChildren {
   DienstenWerkenBijWebsitesRoute: typeof DienstenWerkenBijWebsitesRoute
   KennisbankSlugRoute: typeof KennisbankSlugRoute
   WerkenBijSlugRoute: typeof WerkenBijSlugRoute
+  ConceptenIndexRoute: typeof ConceptenIndexRoute
   KennisbankIndexRoute: typeof KennisbankIndexRoute
   WerkenBijIndexRoute: typeof WerkenBijIndexRoute
 }
@@ -514,6 +540,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BranchesVerhuurbedrijvenRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/concepten/': {
+      id: '/concepten/'
+      path: '/concepten'
+      fullPath: '/concepten/'
+      preLoaderRoute: typeof ConceptenIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/concepten/$slug': {
+      id: '/concepten/$slug'
+      path: '/concepten/$slug'
+      fullPath: '/concepten/$slug'
+      preLoaderRoute: typeof ConceptenSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/diensten/conversie-website': {
       id: '/diensten/conversie-website'
       path: '/diensten/conversie-website'
@@ -618,6 +658,7 @@ const rootRouteChildren: RootRouteChildren = {
   BranchesOfferteaanvragenRoute: BranchesOfferteaanvragenRoute,
   BranchesReserveringenRoute: BranchesReserveringenRoute,
   BranchesVerhuurbedrijvenRoute: BranchesVerhuurbedrijvenRoute,
+  ConceptenSlugRoute: ConceptenSlugRoute,
   DienstenConversieWebsiteRoute: DienstenConversieWebsiteRoute,
   DienstenGoogleAdsRoute: DienstenGoogleAdsRoute,
   DienstenIntegratiesRoute: DienstenIntegratiesRoute,
@@ -628,6 +669,7 @@ const rootRouteChildren: RootRouteChildren = {
   DienstenWerkenBijWebsitesRoute: DienstenWerkenBijWebsitesRoute,
   KennisbankSlugRoute: KennisbankSlugRoute,
   WerkenBijSlugRoute: WerkenBijSlugRoute,
+  ConceptenIndexRoute: ConceptenIndexRoute,
   KennisbankIndexRoute: KennisbankIndexRoute,
   WerkenBijIndexRoute: WerkenBijIndexRoute,
 }

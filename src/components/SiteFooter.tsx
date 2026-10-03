@@ -27,6 +27,7 @@ const SOFTWARE = [
 
 const BEDRIJF = [
   ['/over-megaonline', 'Over MegaOnline'],
+  ['/concepten', 'Concepten'],
   ['/werken-bij', 'Werken bij'],
   ['/gratis-websiteconcept', 'Gratis websiteconcept'],
   ['/contact', 'Contact'],

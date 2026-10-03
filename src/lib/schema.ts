@@ -206,6 +206,8 @@ const CRUMB_LABEL: Record<string, string> = {
   "/branches/reserveringen": "Bedrijven met reserveringen",
   "/branches/verhuurbedrijven": "Verhuurbedrijven",
   "/contact": "Contact",
+  "/concepten": "Concepten",
+  "/concepten/ns": "NS",
   "/diensten/conversie-website": "Conversie Website",
   "/diensten/google-ads": "Google Ads",
   "/diensten/integraties": "Integraties",
@@ -228,6 +230,7 @@ const CRUMB_LABEL: Record<string, string> = {
  * dienstensectie op de homepage. De markup volgt dat één op één.
  */
 const CRUMB_PARENT: { prefix: string; name: string; item: string }[] = [
+  { prefix: "/concepten/", name: "Concepten", item: `${SITE_URL}/concepten` },
   { prefix: "/diensten/", name: "Diensten", item: `${SITE_URL}/#diensten` },
   { prefix: "/branches/", name: "Branches", item: `${SITE_URL}/#diensten` },
   { prefix: "/kennisbank/", name: "Kennisbank", item: `${SITE_URL}/kennisbank` },
