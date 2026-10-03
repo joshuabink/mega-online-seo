@@ -4,16 +4,16 @@ import { Icon } from '@/components/Icon'
 import { Media } from '@/components/Media'
 import { Qa } from '@/components/Qa'
 import { Reveal } from '@/components/Reveal'
-import { SteppedLeadForm } from '@/components/LeadForm'
+import { ConceptForm } from '@/components/ConceptForm'
 import '@/styles/pages/index.css'
 
 export const Route = createFileRoute('/')({
   head: () => ({
     meta: [
       { title: "MegaOnline.io | Websites die werken voor jouw bedrijf" },
-      { name: 'description', content: "MegaOnline bouwt websites die vertrouwen uitstralen en bezoekers richting aanvraag of boeking brengen. Vraag een gratis websitescan aan." },
+      { name: 'description', content: "MegaOnline bouwt websites die vertrouwen uitstralen en bezoekers richting aanvraag of boeking brengen. Vraag een gratis websiteconcept aan." },
       { property: 'og:title', content: "MegaOnline.io | Websites die werken voor jouw bedrijf" },
-      { property: 'og:description', content: "MegaOnline bouwt websites die vertrouwen uitstralen en bezoekers richting aanvraag of boeking brengen. Vraag een gratis websitescan aan." },
+      { property: 'og:description', content: "MegaOnline bouwt websites die vertrouwen uitstralen en bezoekers richting aanvraag of boeking brengen. Vraag een gratis websiteconcept aan." },
       { property: 'og:url', content: "https://megaonline.io/" },
     ],
     links: [
@@ -30,7 +30,7 @@ export const Route = createFileRoute('/')({
 const FAQ_ITEMS: { q: string; a: string }[] = [
   {
     q: "Wat kost een website bij MegaOnline?",
-    a: "Een Conversie Website begint vanaf € 2.500. De uiteindelijke prijs hangt af van het aantal pagina's en de complexiteit. En van welke extra functionaliteiten je nodig hebt. In de gratis websitescan geven we je een eerlijke indicatie op basis van jouw situatie.",
+    a: "Een Conversie Website begint vanaf € 2.500. De uiteindelijke prijs hangt af van het aantal pagina's en de complexiteit. En van welke extra functionaliteiten je nodig hebt. In het gratis websiteconcept geven we je een eerlijke indicatie op basis van jouw situatie.",
   },
   {
     q: "Waarom niet kiezen voor een goedkope webbouwer?",
@@ -54,7 +54,7 @@ const FAQ_ITEMS: { q: string; a: string }[] = [
   },
   {
     q: "Wij hebben al een website. Kunnen jullie die verbeteren?",
-    a: "Ja. In sommige gevallen is een volledig nieuwe website de beste keuze. In andere gevallen kunnen gerichte verbeteringen al veel effect hebben. De websitescan helpt ons om te bepalen wat voor jou de slimste aanpak is.",
+    a: "Ja. In sommige gevallen is een volledig nieuwe website de beste keuze. In andere gevallen kunnen gerichte verbeteringen al veel effect hebben. Het gratis websiteconcept helpt ons om te bepalen wat voor jou de slimste aanpak is.",
   },
   {
     q: "Wat als ik na livegang iets wil aanpassen?",
@@ -132,132 +132,7 @@ function Home() {
               </Reveal>
             </div>
             {' '}
-            <SteppedLeadForm
-              className="hero__form reveal"
-              subject="Nieuwe websitescan-aanvraag - MegaOnline.io"
-              head={
-                <>
-                  <span className="form__head-note">
-                    <span style={{ width: "7px", height: "7px", borderRadius: "50%", background: "var(--accent-text)", display: "inline-block" }} />
-                    Gratis websitescan
-                  </span>
-                  {' '}
-                  <h3>Vraag je gratis websitescan aan</h3>
-                  {' '}
-                  <p>
-                    Begin met je website-adres. Daarna volgen nog twee korte stappen.
-                  </p>
-                </>
-              }
-              ok={
-                <>
-                <div className="ic">✓</div>
-                {' '}
-                <h3>Bedankt. Aanvraag ontvangen.</h3>
-                {' '}
-                <p style={{ color: "var(--muted)", marginTop: "10px" }}>
-                  We nemen gemiddeld binnen 2 werkdagen contact met je op. Geen automatisch gegenereerd rapport.
-                </p>
-                </>
-              }
-            >
-              <div className="form__progress">
-                <span className="form__step-label">
-                  Stap
-                  {' '}
-                  <b id="stepNum">1</b>
-                  {' '}
-                  van 3
-                </span>
-                {' '}
-                <div className="form__bar">
-                  <i id="stepBar" />
-                </div>
-              </div>
-              {' '}
-              <div className="fstep" data-step="1">
-                <div className="field">
-                  <label htmlFor="f-url">Wat is je website nu?</label>
-                  {' '}
-                  <input id="f-url" name="url" type="text" inputMode="url" placeholder="jouwwebsite.nl" required />
-                </div>
-                {' '}
-                <button className="btn btn-primary" type="button" data-next="">
-                  Volgende
-                  {' '}
-                  <span className="arr">→</span>
-                </button>
-              </div>
-              {' '}
-              <div className="fstep" data-step="2" hidden>
-                <div className="field-row">
-                  <div className="field">
-                    <label htmlFor="f-naam">Je naam</label>
-                    {' '}
-                    <input id="f-naam" name="naam" type="text" placeholder="Voor- en achternaam" required />
-                  </div>
-                  {' '}
-                  <div className="field">
-                    <label htmlFor="f-bedrijf">Bedrijfsnaam</label>
-                    {' '}
-                    <input id="f-bedrijf" name="bedrijf" type="text" placeholder="Bedrijfsnaam" required />
-                  </div>
-                </div>
-                {' '}
-                <div className="form__nav">
-                  <button className="btn btn-ghost" type="button" data-prev="">← Terug</button>
-                  {' '}
-                  <button className="btn btn-primary" type="button" data-next="">
-                    Volgende
-                    {' '}
-                    <span className="arr">→</span>
-                  </button>
-                </div>
-              </div>
-              {' '}
-              <div className="fstep" data-step="3" hidden>
-                <div className="field">
-                  <label htmlFor="f-email">E-mailadres</label>
-                  {' '}
-                  <input id="f-email" name="email" type="email" placeholder="jij@bedrijf.nl" required />
-                </div>
-                {' '}
-                <div className="field">
-                  <label htmlFor="f-branche">Branche</label>
-                  {' '}
-                  <select id="f-branche" name="branche" required defaultValue="">
-                    <option value="" disabled>Kies je branche</option>
-                    {' '}
-                    <option value="Activiteiten / Recreatie">Activiteiten / Recreatie</option>
-                    {' '}
-                    <option value="Verhuur">Verhuur</option>
-                    {' '}
-                    <option value="Zakelijke dienstverlening">Zakelijke dienstverlening</option>
-                    {' '}
-                    <option value="Transport / Verhuizing">Transport / Verhuizing</option>
-                    {' '}
-                    <option value="Rijschool">Rijschool</option>
-                    {' '}
-                    <option value="Horeca / Catering">Horeca / Catering</option>
-                    {' '}
-                    <option value="Anders">Anders</option>
-                  </select>
-                </div>
-                {' '}
-                <div className="form__nav">
-                  <button className="btn btn-ghost" type="button" data-prev="">← Terug</button>
-                  {' '}
-                  <button className="btn btn-primary" type="submit">
-                    Stuur mijn gratis scan
-                    {' '}
-                  </button>
-                </div>
-                {' '}
-                <p className="form__disc">
-                  Je hoort binnen twee werkdagen van ons. We zetten je niet op een mailinglijst.
-                </p>
-              </div>
-            </SteppedLeadForm>
+            <ConceptForm className="hero__form reveal" />
           </div>
         </div>
       </section>
@@ -524,10 +399,10 @@ function Home() {
           </Reveal>
           {' '}
           <Reveal as="div" className="cmp__foot reveal">
-            <p>Wil je weten hoe dit op jouw site staat? We kijken er kosteloos naar en sturen je de punten die we zien.</p>
+            <p>Wil je zien hoe dit voor jouw bedrijf kan werken? We maken een gratis websiteconcept met persoonlijk advies.</p>
             {' '}
-            <Link className="tlink" to="/gratis-websitescan">
-              Vraag de gratis scan aan
+            <Link className="tlink" to="/gratis-websiteconcept">
+              Vraag je gratis websiteconcept aan
               {' '}
               <span className="arr">&rarr;</span>
             </Link>
@@ -545,7 +420,7 @@ function Home() {
               <h2 className="h2">Wat we voor deze bedrijven oplosten.</h2>
             </div>
             {' '}
-            <Link className="tlink" to="/gratis-websitescan" style={{ paddingBottom: "6px" }}>
+            <Link className="tlink" to="/gratis-websiteconcept" style={{ paddingBottom: "6px" }}>
               Start jouw project
               {' '}
             </Link>
@@ -765,7 +640,7 @@ function Home() {
               <div className="rm__foot">
                 <span className="svcprice">Vanaf € 2.500</span>
                 {' '}
-                <Link className="flow-cta" to="/gratis-websitescan">Vraag je gratis scan aan</Link>
+                <Link className="flow-cta" to="/gratis-websiteconcept">Vraag je gratis concept aan</Link>
               </div>
             </div>
             {' '}
@@ -815,7 +690,7 @@ function Home() {
                   </small>
                 </span>
                 {' '}
-                <Link className="flow-cta" to="/gratis-websitescan">Start het partnership</Link>
+                <Link className="flow-cta" to="/gratis-websiteconcept">Start het partnership</Link>
               </div>
             </div>
           </Reveal>
@@ -979,11 +854,11 @@ function Home() {
           <Reveal as="h2" className="display reveal">Zullen we eens naar je website kijken?</Reveal>
           {' '}
           <Reveal as="p" className="lead reveal" data-d="1">
-            Vraag een gratis websitescan aan en ontdek wat er beter kan. Zonder verplichtingen.
+            Vraag een gratis websiteconcept aan en ontdek wat er beter kan. Zonder verplichtingen.
           </Reveal>
           {' '}
-          <Reveal as={Link} className="btn btn-primary reveal" data-d="2" to="/gratis-websitescan">
-            Vraag je gratis scan aan
+          <Reveal as={Link} className="btn btn-primary reveal" data-d="2" to="/gratis-websiteconcept">
+            Vraag je gratis concept aan
           </Reveal>
         </div>
       </section>

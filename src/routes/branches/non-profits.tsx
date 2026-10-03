@@ -55,8 +55,8 @@ function NonProfits() {
               </Reveal>
               {' '}
               <Reveal as="div" className="svc-hero__ctas reveal" data-d="2">
-                <Link className="btn btn-primary" to="/gratis-websitescan">
-                  Vraag je gratis scan aan
+                <Link className="btn btn-primary" to="/gratis-websiteconcept">
+                  Vraag je gratis concept aan
                 </Link>
                 {' '}
                 <Link className="tlink" to="/contact">
@@ -341,12 +341,12 @@ function NonProfits() {
             <h2 className="display">Mensen willen best helpen. Maak het ze makkelijk.</h2>
             {' '}
             <p className="lead">
-              Vraag een gratis websitescan aan. We laten zien hoe je website meer donaties, vrijwilligers en betrokkenheid kan opleveren.
+              Vraag een gratis websiteconcept aan. We laten zien hoe je website meer donaties, vrijwilligers en betrokkenheid kan opleveren.
             </p>
             {' '}
             <Reveal as="div" className="svc-hero__ctas reveal" data-d="1" style={{ justifyContent: "center", marginTop: "28px" }}>
-              <Link className="btn btn-primary" to="/gratis-websitescan">
-                Vraag je gratis scan aan
+              <Link className="btn btn-primary" to="/gratis-websiteconcept">
+                Vraag je gratis concept aan
               </Link>
               {' '}
               <Link className="tlink" to="/contact">

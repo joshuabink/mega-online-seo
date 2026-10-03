@@ -132,7 +132,7 @@ function NsConcept() {
           <Reveal as="div" className="concept-copy reveal" data-d="1">
             <p>NS is groot, maar het principe is hetzelfde voor een kartbaan, een verhuurbedrijf of een installateur. De meeste websites proberen alles tegelijk te doen. Daardoor helpen ze niemand echt verder.</p>
             <p>Kies één doel. Zoek het moment waarop een bezoeker er het dichtst bij is. Zet de volgende stap precies daar neer, in zijn woorden en met de prijs erbij.</p>
-            <p><Link className="btn btn-primary" to="/gratis-websitescan">Wil je weten waar dat moment op jouw site zit? Ik kijk er kosteloos naar en stuur je de punten die ik zie.</Link></p>
+            <p><Link className="btn btn-primary" to="/gratis-websiteconcept">Wil je weten waar dat moment op jouw site zit? Ik kijk er kosteloos naar en stuur je de punten die ik zie.</Link></p>
             <p className="concept-disclaimer">Dit concept is gemaakt op eigen initiatief en niet in opdracht van of in samenwerking met NS. De naam NS is eigendom van NS. Prijzen zoals op ns.nl op 27 september 2026. Het ontwerp is een studie en geen bestaande of geplande website.</p>
           </Reveal>
         </div>

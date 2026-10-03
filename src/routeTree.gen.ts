@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as SplatRouteImport } from './routes/$'
 import { Route as AlgemeneVoorwaardenRouteImport } from './routes/algemene-voorwaarden'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as GratisWebsiteconceptRouteImport } from './routes/gratis-websiteconcept'
 import { Route as GratisWebsitescanRouteImport } from './routes/gratis-websitescan'
 import { Route as MegasmartRouteImport } from './routes/megasmart'
 import { Route as OverMegaonlineRouteImport } from './routes/over-megaonline'
@@ -57,6 +58,11 @@ const AlgemeneVoorwaardenRoute = AlgemeneVoorwaardenRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GratisWebsiteconceptRoute = GratisWebsiteconceptRouteImport.update({
+  id: '/gratis-websiteconcept',
+  path: '/gratis-websiteconcept',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GratisWebsitescanRoute = GratisWebsitescanRouteImport.update({
@@ -196,6 +202,7 @@ export interface FileRoutesByFullPath {
   '/$': typeof SplatRoute
   '/algemene-voorwaarden': typeof AlgemeneVoorwaardenRoute
   '/contact': typeof ContactRoute
+  '/gratis-websiteconcept': typeof GratisWebsiteconceptRoute
   '/gratis-websitescan': typeof GratisWebsitescanRoute
   '/megasmart': typeof MegasmartRoute
   '/over-megaonline': typeof OverMegaonlineRoute
@@ -227,6 +234,7 @@ export interface FileRoutesByTo {
   '/$': typeof SplatRoute
   '/algemene-voorwaarden': typeof AlgemeneVoorwaardenRoute
   '/contact': typeof ContactRoute
+  '/gratis-websiteconcept': typeof GratisWebsiteconceptRoute
   '/gratis-websitescan': typeof GratisWebsitescanRoute
   '/megasmart': typeof MegasmartRoute
   '/over-megaonline': typeof OverMegaonlineRoute
@@ -259,6 +267,7 @@ export interface FileRoutesById {
   '/$': typeof SplatRoute
   '/algemene-voorwaarden': typeof AlgemeneVoorwaardenRoute
   '/contact': typeof ContactRoute
+  '/gratis-websiteconcept': typeof GratisWebsiteconceptRoute
   '/gratis-websitescan': typeof GratisWebsitescanRoute
   '/megasmart': typeof MegasmartRoute
   '/over-megaonline': typeof OverMegaonlineRoute
@@ -292,6 +301,7 @@ export interface FileRouteTypes {
     | '/$'
     | '/algemene-voorwaarden'
     | '/contact'
+    | '/gratis-websiteconcept'
     | '/gratis-websitescan'
     | '/megasmart'
     | '/over-megaonline'
@@ -323,6 +333,7 @@ export interface FileRouteTypes {
     | '/$'
     | '/algemene-voorwaarden'
     | '/contact'
+    | '/gratis-websiteconcept'
     | '/gratis-websitescan'
     | '/megasmart'
     | '/over-megaonline'
@@ -354,6 +365,7 @@ export interface FileRouteTypes {
     | '/$'
     | '/algemene-voorwaarden'
     | '/contact'
+    | '/gratis-websiteconcept'
     | '/gratis-websitescan'
     | '/megasmart'
     | '/over-megaonline'
@@ -386,6 +398,7 @@ export interface RootRouteChildren {
   SplatRoute: typeof SplatRoute
   AlgemeneVoorwaardenRoute: typeof AlgemeneVoorwaardenRoute
   ContactRoute: typeof ContactRoute
+  GratisWebsiteconceptRoute: typeof GratisWebsiteconceptRoute
   GratisWebsitescanRoute: typeof GratisWebsitescanRoute
   MegasmartRoute: typeof MegasmartRoute
   OverMegaonlineRoute: typeof OverMegaonlineRoute
@@ -441,6 +454,13 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gratis-websiteconcept': {
+      id: '/gratis-websiteconcept'
+      path: '/gratis-websiteconcept'
+      fullPath: '/gratis-websiteconcept'
+      preLoaderRoute: typeof GratisWebsiteconceptRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/gratis-websitescan': {
@@ -626,6 +646,7 @@ const rootRouteChildren: RootRouteChildren = {
   SplatRoute: SplatRoute,
   AlgemeneVoorwaardenRoute: AlgemeneVoorwaardenRoute,
   ContactRoute: ContactRoute,
+  GratisWebsiteconceptRoute: GratisWebsiteconceptRoute,
   GratisWebsitescanRoute: GratisWebsitescanRoute,
   MegasmartRoute: MegasmartRoute,
   OverMegaonlineRoute: OverMegaonlineRoute,

@@ -53,8 +53,8 @@ function NotFound() {
           >
             <Link className="btn btn-primary" to="/">
               Naar de homepage            </Link>
-            <Link className="btn btn-outline" to="/gratis-websitescan">
-              Vraag je gratis scan aan
+            <Link className="btn btn-outline" to="/gratis-websiteconcept">
+              Vraag je gratis concept aan
             </Link>
             <Link className="btn btn-ghost" to="/contact">
               Contact

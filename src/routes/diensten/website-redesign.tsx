@@ -4,7 +4,7 @@ import { Icon } from '@/components/Icon'
 import { Media } from '@/components/Media'
 import { Qa } from '@/components/Qa'
 import { Reveal } from '@/components/Reveal'
-import { SteppedLeadForm } from '@/components/LeadForm'
+import { ConceptForm } from '@/components/ConceptForm'
 
 export const Route = createFileRoute('/diensten/website-redesign')({
   head: () => ({
@@ -57,8 +57,8 @@ function WebsiteRedesign() {
               </Reveal>
               {' '}
               <Reveal as="div" className="svc-hero__ctas reveal" data-d="2">
-                <Link className="btn btn-primary" to="/gratis-websitescan">
-                  Vraag je gratis scan aan
+                <Link className="btn btn-primary" to="/gratis-websiteconcept">
+                  Vraag je gratis concept aan
                 </Link>
                 {' '}
                 <Link className="tlink" to="/contact">
@@ -606,7 +606,7 @@ function WebsiteRedesign() {
               </h2>
             </div>
             {' '}
-            <Link className="tlink" to="/gratis-websitescan" style={{ paddingBottom: "6px" }}>
+            <Link className="tlink" to="/gratis-websiteconcept" style={{ paddingBottom: "6px" }}>
               Start jouw redesign
               {' '}
             </Link>
@@ -797,7 +797,7 @@ function WebsiteRedesign() {
           {' '}
           <div className="faq">
             <Qa question="Moet mijn website volledig opnieuw gebouwd worden?" className="reveal">
-                Niet altijd. Soms volstaat een grondige restyling op de bestaande basis, soms is het slimmer om opnieuw op te bouwen. Dat hangt af van de technische en strategische staat van je huidige website. We bepalen dat samen tijdens de scan en zijn daar eerlijk over.
+                Niet altijd. Soms volstaat een grondige restyling op de bestaande basis, soms is het slimmer om opnieuw op te bouwen. Dat hangt af van de technische en strategische staat van je huidige website. We bepalen dat samen tijdens het advies en zijn daar eerlijk over.
             </Qa>
             {' '}
             <Qa question="Kunnen jullie bestaande content overnemen?" className="reveal">
@@ -809,7 +809,7 @@ function WebsiteRedesign() {
             </Qa>
             {' '}
             <Qa question="Hoe lang duurt een redesign?" className="reveal">
-                Dat hangt af van de omvang en hoe snel content en feedback rond zijn. Een redesign is doorgaans een traject van enkele weken. Na de scan en kennismaking geven we een realistische inschatting voor jouw situatie.
+                Dat hangt af van de omvang en hoe snel content en feedback rond zijn. Een redesign is doorgaans een traject van enkele weken. Na het concept en de kennismaking geven we een realistische inschatting voor jouw situatie.
             </Qa>
             {' '}
             <Qa question="Is een redesign altijd beter dan optimaliseren?" className="reveal">
@@ -863,12 +863,12 @@ function WebsiteRedesign() {
               </Reveal>
               {' '}
               <Reveal as="p" className="lead reveal" data-d="1">
-                Ontdek tijdens een gratis websitescan of een redesign de juiste volgende stap is.
+                Ontdek met een gratis websiteconcept of een redesign de juiste volgende stap is.
               </Reveal>
               {' '}
               <Reveal as="div" className="svc-hero__ctas reveal" data-d="2" style={{ marginTop: "28px" }}>
-                <Link className="btn btn-primary" to="/gratis-websitescan">
-                  Vraag je gratis scan aan
+                <Link className="btn btn-primary" to="/gratis-websiteconcept">
+                  Vraag je gratis concept aan
                 </Link>
                 {' '}
                 <Link className="tlink" to="/contact">
@@ -886,128 +886,7 @@ function WebsiteRedesign() {
               </Reveal>
             </div>
             {' '}
-            <SteppedLeadForm
-              className="reveal"
-              subject="Nieuwe websitescan-aanvraag - MegaOnline.io"
-              head={
-                <>
-                  <span className="form__head-note">
-                    <span style={{ width: "7px", height: "7px", borderRadius: "50%", background: "var(--accent-text)", display: "inline-block" }} />
-                    Gratis websitescan
-                  </span>
-                  {' '}
-                  <h3>Vraag je websitescan aan</h3>
-                  {' '}
-                  <p>
-                    Begin met je website-adres. De rest volgt in twee korte stappen.
-                  </p>
-                </>
-              }
-              ok={
-                <>
-                <div className="ic">✓</div>
-                {' '}
-                <h3>Bedankt. Aanvraag ontvangen.</h3>
-                {' '}
-                <p style={{ color: "var(--muted)", marginTop: "10px" }}>
-                  We nemen gemiddeld binnen 2 werkdagen contact met je op. Geen automatisch gegenereerd rapport.
-                </p>
-                </>
-              }
-            >
-              <div className="form__progress">
-                <span className="form__step-label">
-                  Stap
-                  {' '}
-                  <b id="stepNum">1</b>
-                  {' '}
-                  van 3
-                </span>
-                {' '}
-                <div className="form__bar">
-                  <i id="stepBar" />
-                </div>
-              </div>
-              {' '}
-              <div className="fstep" data-step="1">
-                <div className="field">
-                  <label htmlFor="f-url">Wat is je website nu?</label>
-                  {' '}
-                  <input id="f-url" name="url" type="text" inputMode="url" placeholder="jouwwebsite.nl" required />
-                </div>
-                {' '}
-                <button className="btn btn-primary" type="button" data-next="">
-                  Volgende
-                  {' '}
-                  <span className="arr">→</span>
-                </button>
-              </div>
-              {' '}
-              <div className="fstep" data-step="2" hidden>
-                <div className="field-row">
-                  <div className="field">
-                    <label htmlFor="f-naam">Je naam</label>
-                    {' '}
-                    <input id="f-naam" name="naam" type="text" placeholder="Voor- en achternaam" required />
-                  </div>
-                  {' '}
-                  <div className="field">
-                    <label htmlFor="f-bedrijf">Bedrijfsnaam</label>
-                    {' '}
-                    <input id="f-bedrijf" name="bedrijf" type="text" placeholder="Bedrijfsnaam" required />
-                  </div>
-                </div>
-                {' '}
-                <div className="form__nav">
-                  <button className="btn btn-ghost" type="button" data-prev="">← Terug</button>
-                  {' '}
-                  <button className="btn btn-primary" type="button" data-next="">
-                    Volgende
-                    {' '}
-                    <span className="arr">→</span>
-                  </button>
-                </div>
-              </div>
-              {' '}
-              <div className="fstep" data-step="3" hidden>
-                <div className="field">
-                  <label htmlFor="f-email">E-mailadres</label>
-                  {' '}
-                  <input id="f-email" name="email" type="email" placeholder="jij@bedrijf.nl" required />
-                </div>
-                {' '}
-                <div className="field">
-                  <label htmlFor="f-reden">Wat speelt er?</label>
-                  {' '}
-                  <select id="f-reden" name="reden" required defaultValue="">
-                    <option value="" disabled>Kies wat het beste past</option>
-                    {' '}
-                    <option value="Mijn website voelt verouderd">Mijn website voelt verouderd</option>
-                    {' '}
-                    <option value="Mijn bedrijf is veranderd / gegroeid">Mijn bedrijf is veranderd / gegroeid</option>
-                    {' '}
-                    <option value="Concurrenten ogen professioneler">Concurrenten ogen professioneler</option>
-                    {' '}
-                    <option value="Mijn website sluit niet meer aan">Mijn website sluit niet meer aan</option>
-                    {' '}
-                    <option value="Weet ik nog niet, adviseer mij">Weet ik nog niet, adviseer mij</option>
-                  </select>
-                </div>
-                {' '}
-                <div className="form__nav">
-                  <button className="btn btn-ghost" type="button" data-prev="">← Terug</button>
-                  {' '}
-                  <button className="btn btn-primary" type="submit">
-                    Stuur mijn gratis scan
-                    {' '}
-                  </button>
-                </div>
-                {' '}
-                <p className="form__disc">
-                  Binnen twee werkdagen hoor je van ons wat we in je huidige site zien zitten.
-                </p>
-              </div>
-            </SteppedLeadForm>
+            <ConceptForm className="reveal" />
           </div>
         </div>
       </section>

@@ -56,8 +56,8 @@ function Activiteitenbedrijven() {
               </Reveal>
               {' '}
               <Reveal as="div" className="svc-hero__ctas reveal" data-d="2">
-                <Link className="btn btn-primary" to="/gratis-websitescan">
-                  Vraag je gratis scan aan
+                <Link className="btn btn-primary" to="/gratis-websiteconcept">
+                  Vraag je gratis concept aan
                 </Link>
                 {' '}
                 <Link className="tlink" to="/contact">
@@ -346,7 +346,7 @@ function Activiteitenbedrijven() {
             </Qa>
             {' '}
             <Qa question="Wat kost zo'n website?" className="reveal">
-                Dat hangt af van wat je nodig hebt aan reserveringen en koppelingen. Begin met een gratis websitescan, dan brengen we het vrijblijvend voor je in kaart.
+                Dat hangt af van wat je nodig hebt aan reserveringen en koppelingen. Begin met een gratis websiteconcept, dan brengen we het vrijblijvend voor je in kaart.
             </Qa>
           </div>
         </div>
@@ -360,12 +360,12 @@ function Activiteitenbedrijven() {
             <h2 className="display">De drukke dagen lopen vanzelf. De stille niet.</h2>
             {' '}
             <p className="lead">
-              Vraag een gratis websitescan aan. We laten zien waar je nu boekingen misloopt en hoe je dat omdraait.
+              Vraag een gratis websiteconcept aan. We laten zien waar je nu boekingen misloopt en hoe je dat omdraait.
             </p>
             {' '}
             <Reveal as="div" className="svc-hero__ctas reveal" data-d="1" style={{ justifyContent: "center", marginTop: "28px" }}>
-              <Link className="btn btn-primary" to="/gratis-websitescan">
-                Vraag je gratis scan aan
+              <Link className="btn btn-primary" to="/gratis-websiteconcept">
+                Vraag je gratis concept aan
               </Link>
               {' '}
               <Link className="tlink" to="/contact">

@@ -5,7 +5,7 @@
 - De eerste kaart toont de NS-hero, de titel `NS · abonnementen als hoofddoel` en het label `Concept · eigen initiatief`.
 - Een nieuwe detailpagina op `/concepten/ns` met alle aangeleverde tekst letterlijk overgenomen.
 - De vier screenshots komen op de gevraagde plekken: hero bovenaan, sporen bij keuze 1, abonnementen bij keuze 2 en 3 en mobiel bij keuze 4.
-- De slotzin wordt de enige call to action en linkt naar `/gratis-websitescan`.
+- De slotzin wordt de enige call to action en linkt naar `/gratis-websiteconcept`.
 
 ## Vormgeving
 - De pagina’s gebruiken de bestaande MegaOnline-huisstijl, sectiethema’s, typografie, breadcrumbs en reveal-animaties.

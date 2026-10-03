@@ -4,7 +4,7 @@ import { Icon } from '@/components/Icon'
 import { Media } from '@/components/Media'
 import { Qa } from '@/components/Qa'
 import { Reveal } from '@/components/Reveal'
-import { SteppedLeadForm } from '@/components/LeadForm'
+import { ConceptForm } from '@/components/ConceptForm'
 import '@/styles/pages/diensten-starter-website.css'
 
 export const Route = createFileRoute('/diensten/starter-website')({
@@ -670,8 +670,8 @@ function StarterWebsite() {
                 </li>
               </ul>
               {' '}
-              <Link className="btn btn-primary" to="/gratis-websitescan">
-                Vraag een vrijblijvende offerte aan
+              <Link className="btn btn-primary" to="/gratis-websiteconcept">
+                Vraag je gratis concept aan
                 {' '}
               </Link>
               {' '}
@@ -756,12 +756,12 @@ function StarterWebsite() {
               <Reveal as="h2" className="display reveal">Je eerste website hoeft geen gok te zijn.</Reveal>
               {' '}
               <Reveal as="p" className="lead reveal" data-d="1">
-                Vraag een vrijblijvende offerte aan of plan een korte kennismaking. We kijken samen of de Starter Website bij je past, of dat een andere optie slimmer is.
+                Vraag een gratis websiteconcept aan of plan een korte kennismaking. We kijken samen of de Starter Website bij je past, of dat een andere optie slimmer is.
               </Reveal>
               {' '}
               <Reveal as="div" className="svc-hero__ctas reveal" data-d="2" style={{ marginTop: "28px" }}>
-                <Link className="btn btn-primary" to="/gratis-websitescan">
-                  Vraag een vrijblijvende offerte aan
+                <Link className="btn btn-primary" to="/gratis-websiteconcept">
+                  Vraag je gratis concept aan
                   {' '}
                 </Link>
                 {' '}
@@ -780,124 +780,7 @@ function StarterWebsite() {
               </Reveal>
             </div>
             {' '}
-            <SteppedLeadForm
-              className="reveal"
-              subject="Nieuwe offerteaanvraag - Starter Website"
-              head={
-                <>
-                  <span className="form__head-note">
-                    <span style={{ width: "7px", height: "7px", borderRadius: "50%", background: "var(--accent-text)", display: "inline-block" }} />
-                    Starter Website
-                  </span>
-                  {' '}
-                  <h3>Vraag je offerte aan</h3>
-                  {' '}
-                  <p>Begin met je gegevens. De rest volgt in twee korte stappen.</p>
-                </>
-              }
-              ok={
-                <>
-                <div className="ic">✓</div>
-                {' '}
-                <h3>Bedankt. Aanvraag ontvangen.</h3>
-                {' '}
-                <p style={{ color: "var(--muted)", marginTop: "10px" }}>
-                  We nemen gemiddeld binnen 2 werkdagen contact met je op met een vrijblijvende offerte op maat.
-                </p>
-                </>
-              }
-            >
-              <div className="form__progress">
-                <span className="form__step-label">
-                  Stap
-                  {' '}
-                  <b id="stepNum">1</b>
-                  {' '}
-                  van 3
-                </span>
-                {' '}
-                <div className="form__bar">
-                  <i id="stepBar" />
-                </div>
-              </div>
-              {' '}
-              <div className="fstep" data-step="1">
-                <div className="field">
-                  <label htmlFor="f-naam">Je naam</label>
-                  {' '}
-                  <input id="f-naam" name="naam" type="text" placeholder="Voor- en achternaam" required />
-                </div>
-                {' '}
-                <button className="btn btn-primary" type="button" data-next="">
-                  Volgende
-                  {' '}
-                  <span className="arr">→</span>
-                </button>
-              </div>
-              {' '}
-              <div className="fstep" data-step="2" hidden>
-                <div className="field-row">
-                  <div className="field">
-                    <label htmlFor="f-bedrijf">Bedrijfsnaam</label>
-                    {' '}
-                    <input id="f-bedrijf" name="bedrijf" type="text" placeholder="Bedrijfsnaam (of in oprichting)" required />
-                  </div>
-                  {' '}
-                  <div className="field">
-                    <label htmlFor="f-email">E-mailadres</label>
-                    {' '}
-                    <input id="f-email" name="email" type="email" placeholder="jij@bedrijf.nl" required />
-                  </div>
-                </div>
-                {' '}
-                <div className="form__nav">
-                  <button className="btn btn-ghost" type="button" data-prev="">← Terug</button>
-                  {' '}
-                  <button className="btn btn-primary" type="button" data-next="">
-                    Volgende
-                    {' '}
-                    <span className="arr">→</span>
-                  </button>
-                </div>
-              </div>
-              {' '}
-              <div className="fstep" data-step="3" hidden>
-                <div className="field">
-                  <label htmlFor="f-pagina">Hoeveel pagina's heb je ongeveer nodig?</label>
-                  {' '}
-                  <select id="f-pagina" name="pagina" required defaultValue="">
-                    <option value="" disabled>Kies wat het beste past</option>
-                    {' '}
-                    <option value="1 pagina (one-pager)">1 pagina (one-pager)</option>
-                    {' '}
-                    <option value="2 tot 3 pagina's">2 tot 3 pagina's</option>
-                    {' '}
-                    <option value="4 tot 5 pagina's">4 tot 5 pagina's</option>
-                    {' '}
-                    <option value="Weet ik nog niet, adviseer mij">Weet ik nog niet, adviseer mij</option>
-                  </select>
-                </div>
-                {' '}
-                <div className="field">
-                  <label htmlFor="f-toel">Waar gaat je bedrijf over? (optioneel)</label>
-                  {' '}
-                  <input id="f-toel" name="toel" type="text" placeholder="In één zin" />
-                </div>
-                {' '}
-                <div className="form__nav">
-                  <button className="btn btn-ghost" type="button" data-prev="">← Terug</button>
-                  {' '}
-                  <button className="btn btn-primary" type="submit">
-                    Stuur mijn aanvraag
-                    {' '}
-                  </button>
-                </div>
-                {' '}
-                <p className="form__disc">
-                  Binnen twee werkdagen een reactie, en een eerlijk antwoord als je beter af bent met iets anders.
-                </p>
-              </div>
-            </SteppedLeadForm>
+            <ConceptForm className="reveal" />
           </div>
         </div>
       </section>

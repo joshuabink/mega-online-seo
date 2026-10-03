@@ -55,8 +55,8 @@ function Offerteaanvragen() {
               </Reveal>
               {' '}
               <Reveal as="div" className="svc-hero__ctas reveal" data-d="2">
-                <Link className="btn btn-primary" to="/gratis-websitescan">
-                  Vraag je gratis scan aan
+                <Link className="btn btn-primary" to="/gratis-websiteconcept">
+                  Vraag je gratis concept aan
                 </Link>
                 {' '}
                 <Link className="tlink" to="/contact">
@@ -328,7 +328,7 @@ function Offerteaanvragen() {
             </Qa>
             {' '}
             <Qa question="Wat kost zo'n website?" className="reveal">
-                Dat hangt af van de complexiteit van je aanvraagproces en koppelingen. Met een gratis websitescan brengen we het vrijblijvend in kaart.
+                Dat hangt af van de complexiteit van je aanvraagproces en koppelingen. Met een gratis websiteconcept brengen we het vrijblijvend in kaart.
             </Qa>
           </div>
         </div>
@@ -342,12 +342,12 @@ function Offerteaanvragen() {
             <h2 className="display">Minder offertes schrijven, meer opdrachten binnenhalen.</h2>
             {' '}
             <p className="lead">
-              Vraag een gratis websitescan aan. We laten zien hoe je website betere leads kan binnenhalen.
+              Vraag een gratis websiteconcept aan. We laten zien hoe je website betere leads kan binnenhalen.
             </p>
             {' '}
             <Reveal as="div" className="svc-hero__ctas reveal" data-d="1" style={{ justifyContent: "center", marginTop: "28px" }}>
-              <Link className="btn btn-primary" to="/gratis-websitescan">
-                Vraag je gratis scan aan
+              <Link className="btn btn-primary" to="/gratis-websiteconcept">
+                Vraag je gratis concept aan
               </Link>
               {' '}
               <Link className="tlink" to="/contact">

@@ -1,8 +1,7 @@
 /**
  * Browser-smoketest voor het interactieve gedrag.
  *
- * De lead-endpoint wordt afgevangen, zodat een test nooit een echte inzending
- * in de Sheet van de klant zet.
+ * De mailroute wordt afgevangen, zodat een test nooit een echte mail verstuurt.
  *
  * Draaien met de dev-server actief:  node scripts/smoke.mjs
  */
@@ -39,9 +38,9 @@ page.on('console', (m) => {
 })
 page.on('pageerror', (e) => consoleErrors.push(String(e)))
 
-// De dev-server draait met MO_LEAD_ENDPOINT naar scripts/mock-endpoint.mjs,
-// dus de volledige keten (browser → server function → POST) wordt getest
-// zonder dat er een testlead in de echte Sheet belandt.
+// De dev-server draait met MO_LEAD_MAIL_ENDPOINT naar scripts/mock-endpoint.mjs,
+// dus de keten (browser → server function → mail) wordt getest zonder echte mail.
+// Zet MO_RESEND_API_KEY uit, anders slaat de server FormSubmit over.
 const LEADS = path.join(import.meta.dirname, '.mock-leads.json')
 const readLeads = () => {
   try { return JSON.parse(fs.readFileSync(LEADS, 'utf8')) } catch { return [] }
@@ -95,67 +94,165 @@ check('nav krijgt .scrolled', !!scrolled)
 await page.evaluate(() => window.scrollTo(0, 0))
 await page.waitForTimeout(200)
 
-/* --- meerstaps formulier --- */
-const bar = () =>
-  page.evaluate(() => {
-    const b = document.querySelector('#leadForm .form__bar i, .form .form__bar i')
-    return b ? b.style.width : null
-  })
+/* --- conceptformulier, 6 stappen --- */
+const stepVisible = (n) => page.isVisible(`.fstep[data-step="${n}"]`)
+const choice = (step, index) =>
+  page.locator(`.fstep[data-step="${step}"] .choice input`).nth(index)
 
-await page.fill('#f-url', 'mijnbedrijf.nl')
-const bar1 = await bar()
+// Zonder keuze blijft stap 1 staan en verschijnt de fout bij de groep.
 await page.click('.fstep[data-step="1"] [data-next]')
 await page.waitForTimeout(200)
-const step2Visible = await page.isVisible('.fstep[data-step="2"]')
-const bar2 = await bar()
-check('formulier stap 1 → 2', step2Visible, `balk ${bar1} → ${bar2}`)
+const blockedHome = await stepVisible(1)
+const homeError = await page.locator('.fstep[data-step="1"] .field__error').innerText()
+check('lege klikstap blokkeert', blockedHome && /Kies minimaal één antwoord/.test(homeError), homeError)
 
-await page.fill('#f-naam', 'Test Persoon')
-await page.fill('#f-bedrijf', 'Testbedrijf BV')
+await choice(1, 0).check()
+await choice(1, 1).check()
+const thirdDisabled = await choice(1, 2).isDisabled()
+const countText = await page.locator('.fstep[data-step="1"] .choice__count').innerText()
+check('maximum van twee keuzes', thirdDisabled && /2 van 2 gekozen/i.test(countText),
+  `disabled=${thirdDisabled} teller=${countText}`)
+
+// Enter op stap 1 betekent volgende stap, niet meteen versturen.
+await choice(1, 0).press('Enter')
+await page.waitForTimeout(200)
+check('Enter op stap 1 gaat naar stap 2', await stepVisible(2))
+
+await choice(2, 0).check()
 await page.click('.fstep[data-step="2"] [data-next]')
 await page.waitForTimeout(200)
-const step3Visible = await page.isVisible('.fstep[data-step="3"]')
-const bar3 = await bar()
-check('formulier stap 2 → 3', step3Visible, `balk ${bar3}`)
+check('formulier stap 2 → 3', await stepVisible(3))
 
-// Terug-knop
-await page.click('.fstep[data-step="3"] [data-prev]')
+await choice(3, 0).check()
+await page.click('.fstep[data-step="3"] [data-next]')
 await page.waitForTimeout(200)
-check('formulier terug-knop', await page.isVisible('.fstep[data-step="2"]'))
-await page.click('.fstep[data-step="2"] [data-next]')
+check('formulier stap 3 → 4', await stepVisible(4))
+
+await page.fill('[name="bedrijf"]', 'Testbedrijf BV')
+await page.fill('[name="omschrijving"]', 'We verhuren springkussens in de regio Gouda.')
+await page.fill('[name="url"]', 'mijnbedrijf.nl')
+await page.click('.fstep[data-step="4"] [data-next]')
+await page.waitForTimeout(200)
+check('formulier stap 4 → 5', await stepVisible(5))
+
+await page.click('.fstep[data-step="5"] [data-prev]')
+await page.waitForTimeout(200)
+check('formulier terug-knop', await stepVisible(4))
+await page.click('.fstep[data-step="4"] [data-next]')
 await page.waitForTimeout(200)
 
-await page.fill('#f-email', 'test@example.com')
-await page.selectOption('#f-branche', { index: 1 })
-await page.click('.fstep[data-step="3"] button[type="submit"]')
-await page.waitForTimeout(800)
+await choice(5, 0).check()
+await page.click('.fstep[data-step="5"] [data-next]')
+await page.waitForTimeout(200)
+check('formulier stap 5 → 6', await stepVisible(6))
 
-await page.waitForTimeout(1200)
+await page.fill('[name="naam"]', 'Test Persoon')
+await page.fill('[name="email"]', 'test@example.com')
+await page.fill('[name="telefoon"]', '0612345678')
+await page.click('.fstep[data-step="6"] button[type="submit"]')
+await page.waitForTimeout(1500)
+
 const sent = await page.evaluate(
   () => document.querySelector('.form')?.classList.contains('sent') ?? false,
 )
-check('formulier toont bedankt-staat', sent)
+check('geslaagde mail is ok', sent, sent ? 'bedankt-staat' : 'formulier niet verzonden')
 
 const leads = readLeads()
 const lead = leads[leads.length - 1]
-check('inzending komt aan op de endpoint', leads.length === leadsBefore + 1)
+check('inzending komt aan op de endpoint', leads.length === leadsBefore + 1, `aantal ${leads.length - leadsBefore}`)
 check('velden komen correct door',
-  lead?.naam === 'Test Persoon' && lead?.bedrijf === 'Testbedrijf BV' &&
-  lead?.email === 'test@example.com' && !!lead?.branche,
-  JSON.stringify(lead ?? {}).slice(0, 120))
+  lead?.naam === 'Test Persoon' &&
+  lead?.bedrijf === 'Testbedrijf BV' &&
+  lead?.email === 'test@example.com' &&
+  lead?.telefoon === '0612345678' &&
+  lead?.branche === 'Activiteiten / Recreatie' &&
+  lead?.start === 'Zo snel mogelijk' &&
+  lead?.omschrijving === 'We verhuren springkussens in de regio Gouda.' &&
+  lead?.knelpunt === 'Er komen te weinig aanvragen of boekingen binnen, Mijn website ziet er verouderd uit' &&
+  lead?.doel === 'Meer offerteaanvragen',
+  JSON.stringify(lead ?? {}).slice(0, 240))
 check('url wordt genormaliseerd naar https://',
   lead?.url === 'https://mijnbedrijf.nl', `url=${lead?.url}`)
 check('_subject en _pagina gaan mee',
-  !!lead?._subject && !!lead?._pagina, `${lead?._subject}`)
+  lead?._subject === 'Nieuwe aanvraag gratis websiteconcept - MegaOnline.io' && !!lead?._pagina,
+  `${lead?._subject}`)
 check('honeypot wordt niet doorgestuurd', !('website_hp' in (lead ?? {})))
+check('lege optionele velden gaan niet mee', !lead?.geen_website)
 
-/* --- validatie blokkeert lege stap --- */
+/* --- mislukte mail: FormSubmit-weigering (HTTP 200 met fout in de body) --- */
+await page.goto(BASE + '/contact', { waitUntil: 'load' })
+await waitHydrated(page)
+await page.fill('#c-naam', 'Mail Faalt')
+await page.fill('#c-email', 'mail-faalt@example.com')
+await page.selectOption('#c-onderwerp', 'Iets anders')
+await page.click('.fhero__form button[type="submit"]')
+await page.waitForTimeout(1500)
+const mailFout = await page.evaluate(() => {
+  const form = document.querySelector('.fhero__form')
+  return {
+    sent: form?.classList.contains('sent') ?? false,
+    error: form?.querySelector('.form__error')?.textContent?.trim() ?? '',
+  }
+})
+check(
+  'mislukte mail geeft een foutmelding',
+  !mailFout.sent && /niet verwerken/.test(mailFout.error),
+  mailFout.error || 'geen fouttekst',
+)
+
+/* --- validatie blokkeert lege stap op een dienstpagina --- */
 await page.goto(BASE + '/diensten/conversie-website', { waitUntil: 'load' })
 await waitHydrated(page)
 await page.click('.fstep[data-step="1"] [data-next]')
 await page.waitForTimeout(200)
 const blocked = await page.isVisible('.fstep[data-step="1"]')
 check('lege verplichte stap blokkeert', blocked)
+
+// De volgende knop staat onderaan een lang formulier. Na de stapwissel
+// moet de stapkop onder de fixed header blijven, niet eronder verdwijnen.
+await page.locator('.fstep[data-step="1"] [data-next]').evaluate((el) => {
+  const root = document.documentElement
+  const previous = root.style.scrollBehavior
+  root.style.scrollBehavior = 'auto'
+  const rect = el.getBoundingClientRect()
+  const scroller = document.scrollingElement ?? root
+  scroller.scrollTop = scroller.scrollTop + rect.bottom - window.innerHeight + 24
+  root.style.scrollBehavior = previous
+})
+await choice(1, 6).check()
+await page.click('.fstep[data-step="1"] [data-next]')
+await page.waitForTimeout(250)
+const headerGap = await page.evaluate(() => {
+  const nav = document.querySelector('header.nav')?.getBoundingClientRect()
+  const kop = document.querySelector('.fstep[data-step="2"] [data-step-focus]')?.getBoundingClientRect()
+  if (!nav || !kop) return -1
+  return Math.round(kop.top - nav.bottom)
+})
+check('stapkop blijft onder de header', headerGap >= 12, `ruimte=${headerGap}px`)
+
+await choice(2, 0).check()
+await page.click('.fstep[data-step="2"] [data-next]')
+await choice(3, 0).check()
+await page.click('.fstep[data-step="3"] [data-next]')
+await page.waitForTimeout(200)
+const geenAan = await page.locator('[name="geen_website"]').isChecked()
+const urlDicht = await page.locator('[name="url"]').isDisabled()
+await page.locator('[name="geen_website"]').uncheck()
+const geenUit = !(await page.locator('[name="geen_website"]').isChecked())
+const urlOpen = await page.locator('[name="url"]').isEnabled()
+check(
+  'vinkje geen website is uit te zetten',
+  geenAan && urlDicht && geenUit && urlOpen,
+  `aan=${geenAan} urlDicht=${urlDicht} uit=${geenUit} urlOpen=${urlOpen}`,
+)
+
+/* --- oude scan-URL --- */
+{
+  const res = await page.request.get(BASE + '/gratis-websitescan', { maxRedirects: 0 })
+  const loc = res.headers()['location'] ?? ''
+  check('301 /gratis-websitescan', res.status() === 301 && loc.includes('/gratis-websiteconcept'),
+    `${res.status()} → ${loc}`)
+}
 
 /* --- FAQ accordeon --- */
 await page.goto(BASE + '/veelgestelde-vragen', { waitUntil: 'load' })
@@ -216,13 +313,14 @@ const homeBefore = await page.evaluate(() => ({
   font: getComputedStyle(document.querySelector('h1')).fontFamily,
   bg: getComputedStyle(document.body).backgroundColor,
 }))
+// De concept-pagina's onder /concept/** zijn verwijderd (aug 2026). De oude
+// URL mag geen eigen pagina meer zijn, en de hoofdsite mag er niet van veranderen.
 await page.goto(BASE + '/concept/branches/zonnepanelen', { waitUntil: 'load' })
-await page.waitForTimeout(1200)
-const legacyFont = await page.evaluate(() => {
-  const h = document.querySelector('.legacy-concept h1')
-  return h ? getComputedStyle(h).fontFamily : null
-})
-check('concept-pagina rendert in eigen stijl', /Caveat/.test(legacyFont ?? ''), legacyFont ?? '')
+await page.waitForTimeout(400)
+const conceptGone = await page.evaluate(
+  () => document.title.includes('niet gevonden'),
+)
+check('oude concept-URL is geen publieke pagina', conceptGone, await page.title())
 
 await page.goto(BASE + '/', { waitUntil: 'load' })
 await waitHydrated(page)

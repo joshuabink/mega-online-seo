@@ -1,8 +1,10 @@
 /**
- * Lokale stand-in voor de Google Apps Script webapp, alleen voor tests.
+ * Lokale stand-in voor de mailroute, alleen voor tests.
  * Legt elke inzending vast in `scripts/.mock-leads.json` zodat de smoketest
- * kan controleren welke velden er daadwerkelijk aankomen — zonder dat er een
- * testlead in de echte Sheet van de klant belandt.
+ * kan controleren welke velden aankomen, zonder een echte mail te versturen.
+ *
+ * Het adres mail-faalt@example.com krijgt het FormSubmit-weigergedrag: HTTP 200
+ * met de fout in de body. Alle andere adressen krijgen een geslaagde mail.
  */
 import http from 'node:http'
 import fs from 'node:fs'
@@ -10,6 +12,7 @@ import path from 'node:path'
 
 const PORT = Number(process.env.MOCK_PORT ?? 3101)
 const FILE = path.join(import.meta.dirname, '.mock-leads.json')
+const FAIL_EMAIL = 'mail-faalt@example.com'
 
 fs.writeFileSync(FILE, '[]')
 
@@ -18,15 +21,27 @@ http
     let body = ''
     req.on('data', (c) => (body += c))
     req.on('end', () => {
-      if (req.method === 'POST') {
-        const fields = Object.fromEntries(new URLSearchParams(body))
-        let all = []
-        try { all = JSON.parse(fs.readFileSync(FILE, 'utf8')) } catch { all = [] }
-        all.push(fields)
-        fs.writeFileSync(FILE, JSON.stringify(all, null, 2))
+      if (req.method !== 'POST') {
+        res.writeHead(404)
+        res.end('niet gevonden')
+        return
       }
-      res.writeHead(200, { 'Content-Type': 'text/plain' })
-      res.end('OK')
+
+      const fields = Object.fromEntries(new URLSearchParams(body))
+      let all = []
+      try { all = JSON.parse(fs.readFileSync(FILE, 'utf8')) } catch { all = [] }
+      all.push(fields)
+      fs.writeFileSync(FILE, JSON.stringify(all, null, 2))
+
+      // Zelfde antwoord als FormSubmit bij een weigering: status 200, fout in de pagina.
+      if ((fields.email ?? '').trim() === FAIL_EMAIL) {
+        res.writeHead(200, { 'Content-Type': 'text/html' })
+        res.end('Unable to submit form')
+        return
+      }
+
+      res.writeHead(200, { 'Content-Type': 'text/html' })
+      res.end('submitted successfully')
     })
   })
-  .listen(PORT, () => console.log(`mock lead-endpoint op http://localhost:${PORT}`))
+  .listen(PORT, () => console.log(`mock mail-endpoint op http://localhost:${PORT}`))

@@ -4,7 +4,7 @@ import { submitLead } from './submit-lead'
  * Client-side helper voor lead-inzendingen.
  *
  * Verzamelt het formulier, normaliseert het url-veld en roept de server
- * function aan die de inzending doorzet naar het Apps Script. Anders dan in de
+ * function aan die de inzending als mail verstuurt. Anders dan in de
  * prototypes krijgen we nu een echte status terug.
  */
 
@@ -34,10 +34,20 @@ export async function sendLead(
     typeof document !== 'undefined' ? `${document.title} — ${location.href}` : '',
   )
 
-  const params = new URLSearchParams()
+  // Meerkeuze (twee waarden onder dezelfde naam) wordt één waarde,
+  // zodat de mail één regel per veld krijgt.
+  const buckets = new Map<string, string[]>()
   data.forEach((value, key) => {
-    if (typeof value === 'string') params.append(key, value)
+    if (typeof value !== 'string') return
+    const list = buckets.get(key)
+    if (list) list.push(value)
+    else buckets.set(key, [value])
   })
+
+  const params = new URLSearchParams()
+  for (const [key, values] of buckets) {
+    params.append(key, values.join(', '))
+  }
 
   try {
     return await submitLead({ data: params.toString() })

@@ -165,7 +165,7 @@
 .wplist p { color: var(--muted); font-size: 0.9rem; line-height: 1.5; }
 
 /* ---------- Section 13 — Final CTA + form ---------- */
-.endcta__grid { display: grid; grid-template-columns: 1.04fr 0.96fr; gap: clamp(40px, 6vw, 88px); align-items: center; }
+.endcta__grid { display: grid; grid-template-columns: 1.04fr 0.96fr; gap: clamp(40px, 6vw, 88px); align-items: start; }
 .endcta__copy h2.display { font-size: clamp(2.2rem, 4.4vw, 3.8rem); max-width: 15ch; }
 .endcta__copy .lead { margin-top: 22px; }
 .endcta__trust { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 10px 22px; }

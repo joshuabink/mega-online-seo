@@ -140,10 +140,10 @@ function Kennisbank() {
         <div className="wrap">
           <Reveal as="div" className="shead shead--center reveal">
             <span className="label">Aan de slag</span>{" "}
-            <h2 className="display">Liever eerst weten hoe jouw site ervoor staat?</h2>{" "}
+            <h2 className="display">Liever eerst een websiteconcept zien?</h2>{" "}
             <p className="lead">
-              Ik kijk er kosteloos naar en stuur je de punten die ik zie. Een persoonlijke
-              beoordeling op tien onderdelen, gemiddeld binnen twee werkdagen.
+              Beantwoord zes korte vragen. Daarna kijken we persoonlijk naar je bedrijf en laten
+              we zien hoe je website meer aanvragen en boekingen kan opleveren.
             </p>{" "}
             <Reveal
               as="div"
@@ -151,8 +151,8 @@ function Kennisbank() {
               data-d="1"
               style={{ justifyContent: "center", marginTop: "28px" }}
             >
-              <Link className="btn btn-primary" to="/gratis-websitescan">
-                Vraag je gratis scan aan
+              <Link className="btn btn-primary" to="/gratis-websiteconcept">
+                Vraag je gratis concept aan
               </Link>
             </Reveal>
           </Reveal>

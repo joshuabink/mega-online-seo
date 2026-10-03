@@ -8,9 +8,9 @@ import { VACATURES, VOORWAARDEN } from "@/lib/vacatures";
  * Sollicitatieblok voor /werken-bij en de vacaturepagina's.
  *
  * Gebruikt bewust hetzelfde `SingleLeadForm` als de rest van de site, dus de
- * inzending loopt via `src/lib/submit-lead.ts` naar de Sheet én de mail. De
- * veldnamen van de bestaande formulieren (`naam`, `email`, `tel`) blijven
- * gelijk zodat ze in dezelfde kolommen landen; `rol`, `link` en `motivatie`
+ * inzending loopt via `src/lib/submit-lead.ts` als mail naar
+ * zakelijk@joshuabink.nl. De veldnamen van de bestaande formulieren
+ * (`naam`, `email`, `tel`) blijven gelijk; `rol`, `link` en `motivatie`
  * komen er als extra velden bij.
  *
  * Er is geen bestandsupload: het formulier gaat als platte velden de deur uit.
