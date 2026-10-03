@@ -259,15 +259,6 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
                     </span>
                   </Link>
                 ))}
-                <Link className="mlink mlink--concept" to="/concepten">
-                  <span className="mlink__ico">
-                    <Icon name="paintbrush" />
-                  </span>
-                  <span className="mlink__txt">
-                    <span className="mlink__name">Concepten</span>
-                    <span className="mlink__sub">Eigen initiatief, geen klantopdrachten</span>
-                  </span>
-                </Link>
               </div>
 
               <div className="mcol mcol--plain">
@@ -396,6 +387,15 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
                     </span>
                   </Link>
                 ))}
+                <Link className="mlink mlink--concept" to="/concepten">
+                  <span className="mlink__ico">
+                    <Icon name="paintbrush" />
+                  </span>
+                  <span className="mlink__txt">
+                    <span className="mlink__name">Concepten</span>
+                    <span className="mlink__sub">Eigen initiatief, geen klantopdrachten</span>
+                  </span>
+                </Link>
               </div>
               <aside className="mfeat mfeat--soft">
                 <span className="mfeat__eyebrow">
