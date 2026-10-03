@@ -4,7 +4,7 @@ import { Icon } from '@/components/Icon'
 import { Media } from '@/components/Media'
 import { Qa } from '@/components/Qa'
 import { Reveal } from '@/components/Reveal'
-import { SteppedLeadForm } from '@/components/LeadForm'
+import { ConceptForm } from '@/components/ConceptForm'
 import '@/styles/pages/diensten-seo.css'
 
 export const Route = createFileRoute('/diensten/seo')({
@@ -63,8 +63,8 @@ function Seo() {
                   {' '}
                 </Link>
                 {' '}
-                <Link className="tlink" to="/gratis-websitescan">
-                  Vraag je gratis scan aan
+                <Link className="tlink" to="/gratis-websiteconcept">
+                  Vraag je gratis concept aan
                   {' '}
                 </Link>
               </Reveal>
@@ -687,7 +687,7 @@ function Seo() {
                   Veilig, up-to-date en in goede handen. Zonder actieve optimalisatie.
                 </p>
                 {' '}
-                <Link className="tlink" to="/gratis-websitescan" style={{ marginTop: "18px", justifyContent: "center" }}>
+                <Link className="tlink" to="/gratis-websiteconcept" style={{ marginTop: "18px", justifyContent: "center" }}>
                   Meer weten
                   {' '}
                 </Link>
@@ -874,8 +874,8 @@ function Seo() {
                   {' '}
                 </Link>
                 {' '}
-                <Link className="tlink" to="/gratis-websitescan">
-                  Vraag je gratis scan aan
+                <Link className="tlink" to="/gratis-websiteconcept">
+                  Vraag je gratis concept aan
                   {' '}
                 </Link>
               </Reveal>
@@ -889,128 +889,7 @@ function Seo() {
               </Reveal>
             </div>
             {' '}
-            <SteppedLeadForm
-              className="reveal"
-              subject="Nieuwe websitescan-aanvraag - MegaOnline.io"
-              head={
-                <>
-                  <span className="form__head-note">
-                    <span style={{ width: "7px", height: "7px", borderRadius: "50%", background: "var(--accent-text)", display: "inline-block" }} />
-                    Gratis websitescan
-                  </span>
-                  {' '}
-                  <h3>Vraag je websitescan aan</h3>
-                  {' '}
-                  <p>
-                    Begin met je website-adres. De rest volgt in twee korte stappen.
-                  </p>
-                </>
-              }
-              ok={
-                <>
-                <div className="ic">✓</div>
-                {' '}
-                <h3>Bedankt. Aanvraag ontvangen.</h3>
-                {' '}
-                <p style={{ color: "var(--muted)", marginTop: "10px" }}>
-                  We nemen gemiddeld binnen 2 werkdagen contact met je op. Geen automatisch gegenereerd rapport.
-                </p>
-                </>
-              }
-            >
-              <div className="form__progress">
-                <span className="form__step-label">
-                  Stap
-                  {' '}
-                  <b id="stepNum">1</b>
-                  {' '}
-                  van 3
-                </span>
-                {' '}
-                <div className="form__bar">
-                  <i id="stepBar" />
-                </div>
-              </div>
-              {' '}
-              <div className="fstep" data-step="1">
-                <div className="field">
-                  <label htmlFor="f-url">Wat is je website nu?</label>
-                  {' '}
-                  <input id="f-url" name="url" type="text" inputMode="url" placeholder="jouwwebsite.nl" required />
-                </div>
-                {' '}
-                <button className="btn btn-primary" type="button" data-next="">
-                  Volgende
-                  {' '}
-                  <span className="arr">→</span>
-                </button>
-              </div>
-              {' '}
-              <div className="fstep" data-step="2" hidden>
-                <div className="field-row">
-                  <div className="field">
-                    <label htmlFor="f-naam">Je naam</label>
-                    {' '}
-                    <input id="f-naam" name="naam" type="text" placeholder="Voor- en achternaam" required />
-                  </div>
-                  {' '}
-                  <div className="field">
-                    <label htmlFor="f-bedrijf">Bedrijfsnaam</label>
-                    {' '}
-                    <input id="f-bedrijf" name="bedrijf" type="text" placeholder="Bedrijfsnaam" required />
-                  </div>
-                </div>
-                {' '}
-                <div className="form__nav">
-                  <button className="btn btn-ghost" type="button" data-prev="">← Terug</button>
-                  {' '}
-                  <button className="btn btn-primary" type="button" data-next="">
-                    Volgende
-                    {' '}
-                    <span className="arr">→</span>
-                  </button>
-                </div>
-              </div>
-              {' '}
-              <div className="fstep" data-step="3" hidden>
-                <div className="field">
-                  <label htmlFor="f-email">E-mailadres</label>
-                  {' '}
-                  <input id="f-email" name="email" type="email" placeholder="jij@bedrijf.nl" required />
-                </div>
-                {' '}
-                <div className="field">
-                  <label htmlFor="f-doel">Wat wil je bereiken?</label>
-                  {' '}
-                  <select id="f-doel" name="doel" required defaultValue="">
-                    <option value="" disabled>Kies je belangrijkste doel</option>
-                    {' '}
-                    <option value="Doorlopend blijven verbeteren">Doorlopend blijven verbeteren</option>
-                    {' '}
-                    <option value="Meer aanvragen / boekingen">Meer aanvragen / boekingen</option>
-                    {' '}
-                    <option value="Meer inzicht in bezoekers">Meer inzicht in bezoekers</option>
-                    {' '}
-                    <option value="Een vaste online partner">Een vaste online partner</option>
-                    {' '}
-                    <option value="Alleen onderhoud & support">Alleen onderhoud & support</option>
-                  </select>
-                </div>
-                {' '}
-                <div className="form__nav">
-                  <button className="btn btn-ghost" type="button" data-prev="">← Terug</button>
-                  {' '}
-                  <button className="btn btn-primary" type="submit">
-                    Stuur mijn gratis scan
-                    {' '}
-                  </button>
-                </div>
-                {' '}
-                <p className="form__disc">
-                  We nemen binnen twee werkdagen contact op om te kijken of het past. Zonder verkooppraatje.
-                </p>
-              </div>
-            </SteppedLeadForm>
+            <ConceptForm className="reveal" />
           </div>
         </div>
       </section>

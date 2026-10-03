@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type ReactNode } from 'react'
+import { useLayoutEffect, useRef, useState, type ReactNode } from 'react'
 import { sendLead } from '@/lib/lead'
 import { useReveal } from './Reveal'
 
@@ -32,7 +32,9 @@ export function SteppedLeadForm({
   ok,
 }: {
   head?: ReactNode
-  children: ReactNode
+  /** Stappen. Een functie krijgt het huidige stapnummer (0-based) zodat
+   *  `hidden` bij een re-render klopt en niet door de effect wordt weggevaagd. */
+  children: ReactNode | ((step: number) => ReactNode)
   className?: string
   subject?: string
 } & OkProps) {
@@ -48,7 +50,10 @@ export function SteppedLeadForm({
       : []
 
   // Stap-zichtbaarheid, teller en voortgangsbalk synchroon houden met `step`.
-  useEffect(() => {
+  // De stappen zetten `hidden` zelf via de children-functie. Dit effect houdt
+  // de balk, de teller en de focus bij, en zet `hidden` nog eens zodat een
+  // stap niet zichtbaar blijft als de markup het attribuut mist.
+  useLayoutEffect(() => {
     const all = stepEls()
     if (!all.length) return
 
@@ -66,27 +71,76 @@ export function SteppedLeadForm({
     const num = formRef.current?.querySelector<HTMLElement>('.form__step-label b')
     if (num) num.textContent = String(step + 1)
 
-    if (step > 0) {
-      const first = all[step]?.querySelector<HTMLElement>('input, select, textarea')
-      if (first) {
-        const t = setTimeout(() => first.focus(), 60)
-        return () => clearTimeout(t)
+    // Stap 1 krijgt geen focus. Op mobiel opent dat het toetsenbord en
+    // springt de pagina. Vanaf stap 2 gaat de focus naar de vraagkop.
+    if (step === 0) return
+
+    const card = formRef.current?.closest<HTMLElement>('.form')
+    if (card) {
+      const top = card.getBoundingClientRect().top
+      if (top < 0 || top > window.innerHeight * 0.35) {
+        card.scrollIntoView({ block: 'nearest' })
       }
     }
+
+    const focusEl = all[step]?.querySelector<HTMLElement>('[data-step-focus]')
+    if (!focusEl) return
+    const t = setTimeout(() => focusEl.focus({ preventScroll: true }), 60)
+    return () => clearTimeout(t)
   }, [step])
+
+  function showFieldError(field: HTMLElement, message: string) {
+    field.setAttribute('aria-invalid', 'true')
+    const described = field.getAttribute('aria-describedby') ?? ''
+    const errId = described.split(/\s+/).find((id) => id.endsWith('-error'))
+    const err = errId ? document.getElementById(errId) : null
+    if (err) {
+      err.hidden = false
+      err.textContent = message
+    }
+  }
 
   function validStep(i: number) {
     const el = stepEls()[i]
     if (!el) return true
-    for (const f of el.querySelectorAll<HTMLInputElement>(
-      'input, select, textarea',
-    )) {
-      if (!f.checkValidity()) {
-        f.reportValidity()
-        return false
+
+    el.querySelectorAll<HTMLElement>('.field__error').forEach((n) => {
+      n.hidden = true
+      n.textContent = ''
+    })
+    el.querySelectorAll<HTMLElement>('[aria-invalid="true"]').forEach((n) => {
+      n.removeAttribute('aria-invalid')
+    })
+
+    let ok = true
+    let first: HTMLElement | null = null
+
+    // Keuzegroepen: data-min telt aangevinkte opties. De fout hoort bij de
+    // groep, niet bij een los vakje.
+    for (const group of el.querySelectorAll<HTMLFieldSetElement>('fieldset[data-min]')) {
+      const min = Number(group.dataset.min || '1')
+      const checked = group.querySelectorAll('input:checked').length
+      if (checked < min) {
+        ok = false
+        showFieldError(group, group.dataset.error || 'Kies minimaal één antwoord.')
+        first ??= group
       }
     }
-    return true
+
+    for (const f of el.querySelectorAll<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>(
+      'input, select, textarea',
+    )) {
+      if (f.disabled || f.type === 'hidden' || f.type === 'checkbox' || f.type === 'radio') continue
+      if (f.name === 'website_hp') continue
+      if (!f.checkValidity()) {
+        ok = false
+        showFieldError(f, f.dataset.error || 'Vul dit veld in.')
+        first ??= f
+      }
+    }
+
+    if (!ok && first) first.focus()
+    return ok
   }
 
   function onClick(e: React.MouseEvent<HTMLFormElement>) {
@@ -151,7 +205,7 @@ export function SteppedLeadForm({
             aria-hidden="true"
             style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, opacity: 0 }}
           />
-          {children}
+          {typeof children === 'function' ? children(step) : children}
           {error && (
             <p className="form__error" role="alert">
               {error}

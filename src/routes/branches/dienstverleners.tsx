@@ -57,8 +57,8 @@ function Dienstverleners() {
               </Reveal>
               {' '}
               <Reveal as="div" className="svc-hero__ctas reveal" data-d="2">
-                <Link className="btn btn-primary" to="/gratis-websitescan">
-                  Vraag je gratis scan aan
+                <Link className="btn btn-primary" to="/gratis-websiteconcept">
+                  Vraag je gratis concept aan
                 </Link>
                 {' '}
                 <Link className="tlink" to="/contact">
@@ -322,11 +322,11 @@ function Dienstverleners() {
             </Qa>
             {' '}
             <Qa question="Levert dit echt meer aanvragen op?" className="reveal">
-                Een website die vertrouwen wekt en een duidelijke volgende stap biedt, verlaagt de drempel om contact op te nemen. Met een gratis websitescan laten we zien waar je nu aanvragen misloopt.
+                Een website die vertrouwen wekt en een duidelijke volgende stap biedt, verlaagt de drempel om contact op te nemen. Met een gratis websiteconcept laten we zien waar je nu aanvragen misloopt.
             </Qa>
             {' '}
             <Qa question="Wat kost zo'n website?" className="reveal">
-                Dat hangt af van de omvang en je wensen. Begin vrijblijvend met een gratis websitescan, dan brengen we het samen in kaart.
+                Dat hangt af van de omvang en je wensen. Begin vrijblijvend met een gratis websiteconcept, dan brengen we het samen in kaart.
             </Qa>
           </div>
         </div>
@@ -340,12 +340,12 @@ function Dienstverleners() {
             <h2 className="display">Vertrouwen win je voordat de telefoon gaat.</h2>
             {' '}
             <p className="lead">
-              Vraag een gratis websitescan aan. We laten zien hoe je website meer van de juiste klanten kan aantrekken.
+              Vraag een gratis websiteconcept aan. We laten zien hoe je website meer van de juiste klanten kan aantrekken.
             </p>
             {' '}
             <Reveal as="div" className="svc-hero__ctas reveal" data-d="1" style={{ justifyContent: "center", marginTop: "28px" }}>
-              <Link className="btn btn-primary" to="/gratis-websitescan">
-                Vraag je gratis scan aan
+              <Link className="btn btn-primary" to="/gratis-websiteconcept">
+                Vraag je gratis concept aan
               </Link>
               {' '}
               <Link className="tlink" to="/contact">

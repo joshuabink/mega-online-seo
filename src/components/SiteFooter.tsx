@@ -28,7 +28,7 @@ const SOFTWARE = [
 const BEDRIJF = [
   ['/over-megaonline', 'Over MegaOnline'],
   ['/werken-bij', 'Werken bij'],
-  ['/gratis-websitescan', 'Gratis websitescan'],
+  ['/gratis-websiteconcept', 'Gratis websiteconcept'],
   ['/contact', 'Contact'],
 ] as const
 
@@ -45,8 +45,8 @@ export function SiteFooter() {
               Websites die zorgen voor meer aanvragen, reserveringen en boekingen voor
               jouw bedrijf.
             </p>
-            <Link className="footer__scan" to="/gratis-websitescan">
-              Vraag je gratis scan aan            </Link>
+            <Link className="footer__scan" to="/gratis-websiteconcept">
+              Vraag je gratis concept aan            </Link>
           </div>
 
           <div className="footer__col">
@@ -106,7 +106,7 @@ export function SiteFooter() {
 }
 
 /**
- * Compacte funnel-footer voor de Gratis Websitescan: bewust zonder
+ * Compacte funnel-footer. Bewust zonder
  * uitgangen, zodat niets met het formulier concurreert.
  */
 export function FunnelFooter() {
@@ -116,7 +116,7 @@ export function FunnelFooter() {
         <Link to="/" className="logo" aria-label="MegaOnline home">
           <Logo />
         </Link>
-        <span className="ffooter__copy">© 2026 MegaOnline.io · Gratis websitescan</span>
+        <span className="ffooter__copy">© 2026 MegaOnline.io · Gratis websiteconcept</span>
         <CookieSettingsButton className="footer__cookie" />
       </div>
     </footer>

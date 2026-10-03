@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as SplatRouteImport } from './routes/$'
 import { Route as AlgemeneVoorwaardenRouteImport } from './routes/algemene-voorwaarden'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as GratisWebsiteconceptRouteImport } from './routes/gratis-websiteconcept'
 import { Route as GratisWebsitescanRouteImport } from './routes/gratis-websitescan'
 import { Route as MegasmartRouteImport } from './routes/megasmart'
 import { Route as OverMegaonlineRouteImport } from './routes/over-megaonline'
@@ -32,6 +33,8 @@ import { Route as DienstenStarterWebsiteRouteImport } from './routes/diensten/st
 import { Route as DienstenWebsiteOptimalisatieRouteImport } from './routes/diensten/website-optimalisatie'
 import { Route as DienstenWebsiteRedesignRouteImport } from './routes/diensten/website-redesign'
 import { Route as DienstenWerkenBijWebsitesRouteImport } from './routes/diensten/werken-bij-websites'
+import { Route as KennisbankIndexRouteImport } from './routes/kennisbank/index'
+import { Route as KennisbankSlugRouteImport } from './routes/kennisbank/$slug'
 import { Route as WerkenBijIndexRouteImport } from './routes/werken-bij/index'
 import { Route as WerkenBijSlugRouteImport } from './routes/werken-bij/$slug'
 
@@ -53,6 +56,11 @@ const AlgemeneVoorwaardenRoute = AlgemeneVoorwaardenRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GratisWebsiteconceptRoute = GratisWebsiteconceptRouteImport.update({
+  id: '/gratis-websiteconcept',
+  path: '/gratis-websiteconcept',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GratisWebsitescanRoute = GratisWebsitescanRouteImport.update({
@@ -156,6 +164,16 @@ const DienstenWerkenBijWebsitesRoute =
     path: '/diensten/werken-bij-websites',
     getParentRoute: () => rootRouteImport,
   } as any)
+const KennisbankIndexRoute = KennisbankIndexRouteImport.update({
+  id: '/kennisbank/',
+  path: '/kennisbank/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KennisbankSlugRoute = KennisbankSlugRouteImport.update({
+  id: '/kennisbank/$slug',
+  path: '/kennisbank/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const WerkenBijIndexRoute = WerkenBijIndexRouteImport.update({
   id: '/werken-bij/',
   path: '/werken-bij/',
@@ -172,6 +190,7 @@ export interface FileRoutesByFullPath {
   '/$': typeof SplatRoute
   '/algemene-voorwaarden': typeof AlgemeneVoorwaardenRoute
   '/contact': typeof ContactRoute
+  '/gratis-websiteconcept': typeof GratisWebsiteconceptRoute
   '/gratis-websitescan': typeof GratisWebsitescanRoute
   '/megasmart': typeof MegasmartRoute
   '/over-megaonline': typeof OverMegaonlineRoute
@@ -191,7 +210,9 @@ export interface FileRoutesByFullPath {
   '/diensten/website-optimalisatie': typeof DienstenWebsiteOptimalisatieRoute
   '/diensten/website-redesign': typeof DienstenWebsiteRedesignRoute
   '/diensten/werken-bij-websites': typeof DienstenWerkenBijWebsitesRoute
+  '/kennisbank/$slug': typeof KennisbankSlugRoute
   '/werken-bij/$slug': typeof WerkenBijSlugRoute
+  '/kennisbank/': typeof KennisbankIndexRoute
   '/werken-bij/': typeof WerkenBijIndexRoute
 }
 export interface FileRoutesByTo {
@@ -199,6 +220,7 @@ export interface FileRoutesByTo {
   '/$': typeof SplatRoute
   '/algemene-voorwaarden': typeof AlgemeneVoorwaardenRoute
   '/contact': typeof ContactRoute
+  '/gratis-websiteconcept': typeof GratisWebsiteconceptRoute
   '/gratis-websitescan': typeof GratisWebsitescanRoute
   '/megasmart': typeof MegasmartRoute
   '/over-megaonline': typeof OverMegaonlineRoute
@@ -218,7 +240,9 @@ export interface FileRoutesByTo {
   '/diensten/website-optimalisatie': typeof DienstenWebsiteOptimalisatieRoute
   '/diensten/website-redesign': typeof DienstenWebsiteRedesignRoute
   '/diensten/werken-bij-websites': typeof DienstenWerkenBijWebsitesRoute
+  '/kennisbank/$slug': typeof KennisbankSlugRoute
   '/werken-bij/$slug': typeof WerkenBijSlugRoute
+  '/kennisbank': typeof KennisbankIndexRoute
   '/werken-bij': typeof WerkenBijIndexRoute
 }
 export interface FileRoutesById {
@@ -227,6 +251,7 @@ export interface FileRoutesById {
   '/$': typeof SplatRoute
   '/algemene-voorwaarden': typeof AlgemeneVoorwaardenRoute
   '/contact': typeof ContactRoute
+  '/gratis-websiteconcept': typeof GratisWebsiteconceptRoute
   '/gratis-websitescan': typeof GratisWebsitescanRoute
   '/megasmart': typeof MegasmartRoute
   '/over-megaonline': typeof OverMegaonlineRoute
@@ -246,7 +271,9 @@ export interface FileRoutesById {
   '/diensten/website-optimalisatie': typeof DienstenWebsiteOptimalisatieRoute
   '/diensten/website-redesign': typeof DienstenWebsiteRedesignRoute
   '/diensten/werken-bij-websites': typeof DienstenWerkenBijWebsitesRoute
+  '/kennisbank/$slug': typeof KennisbankSlugRoute
   '/werken-bij/$slug': typeof WerkenBijSlugRoute
+  '/kennisbank/': typeof KennisbankIndexRoute
   '/werken-bij/': typeof WerkenBijIndexRoute
 }
 export interface FileRouteTypes {
@@ -256,6 +283,7 @@ export interface FileRouteTypes {
     | '/$'
     | '/algemene-voorwaarden'
     | '/contact'
+    | '/gratis-websiteconcept'
     | '/gratis-websitescan'
     | '/megasmart'
     | '/over-megaonline'
@@ -275,7 +303,9 @@ export interface FileRouteTypes {
     | '/diensten/website-optimalisatie'
     | '/diensten/website-redesign'
     | '/diensten/werken-bij-websites'
+    | '/kennisbank/$slug'
     | '/werken-bij/$slug'
+    | '/kennisbank/'
     | '/werken-bij/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -283,6 +313,7 @@ export interface FileRouteTypes {
     | '/$'
     | '/algemene-voorwaarden'
     | '/contact'
+    | '/gratis-websiteconcept'
     | '/gratis-websitescan'
     | '/megasmart'
     | '/over-megaonline'
@@ -302,7 +333,9 @@ export interface FileRouteTypes {
     | '/diensten/website-optimalisatie'
     | '/diensten/website-redesign'
     | '/diensten/werken-bij-websites'
+    | '/kennisbank/$slug'
     | '/werken-bij/$slug'
+    | '/kennisbank'
     | '/werken-bij'
   id:
     | '__root__'
@@ -310,6 +343,7 @@ export interface FileRouteTypes {
     | '/$'
     | '/algemene-voorwaarden'
     | '/contact'
+    | '/gratis-websiteconcept'
     | '/gratis-websitescan'
     | '/megasmart'
     | '/over-megaonline'
@@ -329,7 +363,9 @@ export interface FileRouteTypes {
     | '/diensten/website-optimalisatie'
     | '/diensten/website-redesign'
     | '/diensten/werken-bij-websites'
+    | '/kennisbank/$slug'
     | '/werken-bij/$slug'
+    | '/kennisbank/'
     | '/werken-bij/'
   fileRoutesById: FileRoutesById
 }
@@ -338,6 +374,7 @@ export interface RootRouteChildren {
   SplatRoute: typeof SplatRoute
   AlgemeneVoorwaardenRoute: typeof AlgemeneVoorwaardenRoute
   ContactRoute: typeof ContactRoute
+  GratisWebsiteconceptRoute: typeof GratisWebsiteconceptRoute
   GratisWebsitescanRoute: typeof GratisWebsitescanRoute
   MegasmartRoute: typeof MegasmartRoute
   OverMegaonlineRoute: typeof OverMegaonlineRoute
@@ -357,7 +394,9 @@ export interface RootRouteChildren {
   DienstenWebsiteOptimalisatieRoute: typeof DienstenWebsiteOptimalisatieRoute
   DienstenWebsiteRedesignRoute: typeof DienstenWebsiteRedesignRoute
   DienstenWerkenBijWebsitesRoute: typeof DienstenWerkenBijWebsitesRoute
+  KennisbankSlugRoute: typeof KennisbankSlugRoute
   WerkenBijSlugRoute: typeof WerkenBijSlugRoute
+  KennisbankIndexRoute: typeof KennisbankIndexRoute
   WerkenBijIndexRoute: typeof WerkenBijIndexRoute
 }
 
@@ -389,6 +428,13 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gratis-websiteconcept': {
+      id: '/gratis-websiteconcept'
+      path: '/gratis-websiteconcept'
+      fullPath: '/gratis-websiteconcept'
+      preLoaderRoute: typeof GratisWebsiteconceptRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/gratis-websitescan': {
@@ -524,6 +570,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DienstenWerkenBijWebsitesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/kennisbank/': {
+      id: '/kennisbank/'
+      path: '/kennisbank'
+      fullPath: '/kennisbank/'
+      preLoaderRoute: typeof KennisbankIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kennisbank/$slug': {
+      id: '/kennisbank/$slug'
+      path: '/kennisbank/$slug'
+      fullPath: '/kennisbank/$slug'
+      preLoaderRoute: typeof KennisbankSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/werken-bij/': {
       id: '/werken-bij/'
       path: '/werken-bij'
@@ -546,6 +606,7 @@ const rootRouteChildren: RootRouteChildren = {
   SplatRoute: SplatRoute,
   AlgemeneVoorwaardenRoute: AlgemeneVoorwaardenRoute,
   ContactRoute: ContactRoute,
+  GratisWebsiteconceptRoute: GratisWebsiteconceptRoute,
   GratisWebsitescanRoute: GratisWebsitescanRoute,
   MegasmartRoute: MegasmartRoute,
   OverMegaonlineRoute: OverMegaonlineRoute,
@@ -565,7 +626,9 @@ const rootRouteChildren: RootRouteChildren = {
   DienstenWebsiteOptimalisatieRoute: DienstenWebsiteOptimalisatieRoute,
   DienstenWebsiteRedesignRoute: DienstenWebsiteRedesignRoute,
   DienstenWerkenBijWebsitesRoute: DienstenWerkenBijWebsitesRoute,
+  KennisbankSlugRoute: KennisbankSlugRoute,
   WerkenBijSlugRoute: WerkenBijSlugRoute,
+  KennisbankIndexRoute: KennisbankIndexRoute,
   WerkenBijIndexRoute: WerkenBijIndexRoute,
 }
 export const routeTree = rootRouteImport

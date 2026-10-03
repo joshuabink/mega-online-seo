@@ -56,8 +56,8 @@ function Verhuurbedrijven() {
               </Reveal>
               {' '}
               <Reveal as="div" className="svc-hero__ctas reveal" data-d="2">
-                <Link className="btn btn-primary" to="/gratis-websitescan">
-                  Vraag je gratis scan aan
+                <Link className="btn btn-primary" to="/gratis-websiteconcept">
+                  Vraag je gratis concept aan
                 </Link>
                 {' '}
                 <Link className="tlink" to="/contact">
@@ -340,7 +340,7 @@ function Verhuurbedrijven() {
             </Qa>
             {' '}
             <Qa question="Wat kost zo'n website?" className="reveal">
-                Dat hangt af van je assortiment en de gewenste koppelingen. Met een gratis websitescan brengen we het vrijblijvend in kaart.
+                Dat hangt af van je assortiment en de gewenste koppelingen. Met een gratis websiteconcept brengen we het vrijblijvend in kaart.
             </Qa>
           </div>
         </div>
@@ -354,12 +354,12 @@ function Verhuurbedrijven() {
             <h2 className="display">Laat je website de beschikbaarheid uitleggen.</h2>
             {' '}
             <p className="lead">
-              Vraag een gratis websitescan aan. We laten zien hoeveel handwerk je website kan overnemen.
+              Vraag een gratis websiteconcept aan. We laten zien hoeveel handwerk je website kan overnemen.
             </p>
             {' '}
             <Reveal as="div" className="svc-hero__ctas reveal" data-d="1" style={{ justifyContent: "center", marginTop: "28px" }}>
-              <Link className="btn btn-primary" to="/gratis-websitescan">
-                Vraag je gratis scan aan
+              <Link className="btn btn-primary" to="/gratis-websiteconcept">
+                Vraag je gratis concept aan
               </Link>
               {' '}
               <Link className="tlink" to="/contact">

@@ -153,9 +153,9 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
             {trigger('contact', 'Contact')}
           </nav>
           <div className="nav__cta">
-            <Link className="btn btn-primary" to="/gratis-websitescan">
-              <span className="nav__scan-long">Vraag je gratis scan aan</span>
-              <span className="nav__scan-short">Gratis scan</span>
+            <Link className="btn btn-primary" to="/gratis-websiteconcept">
+              <span className="nav__scan-long">Gratis websiteconcept</span>
+              <span className="nav__scan-short">Gratis concept</span>
             </Link>
             <button
               className="btn btn-outline nav__menu-btn"
@@ -322,8 +322,8 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
                   </p>
                   <Link className="mfeat__cta" to="/diensten/conversie-website">
                     Bekijk de dienst                  </Link>
-                  <Link className="mfeat__link" to="/gratis-websitescan">
-                    Vraag je gratis scan aan                  </Link>
+                  <Link className="mfeat__link" to="/gratis-websiteconcept">
+                    Vraag je gratis concept aan                  </Link>
                 </aside>
 
                 <aside className="mfeat mfeat--soft mfeat--compact">
@@ -346,8 +346,8 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
                   Websites zijn onze kern: SEO, content en integraties versterken het
                   resultaat.
                 </span>
-                <Link to="/gratis-websitescan">
-                  Niet zeker welke oplossing past? Vraag je gratis scan aan{' '}
+                <Link to="/gratis-websiteconcept">
+                  Niet zeker welke oplossing past? Vraag je gratis concept aan{' '}
                 </Link>
               </div>
             </div>
@@ -548,13 +548,13 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
             >
               <div className="mcol">
                 <span className="mcol__head">Contact</span>
-                <Link className="mlink mlink--star" to="/gratis-websitescan">
+                <Link className="mlink mlink--star" to="/gratis-websiteconcept">
                   <span className="mlink__ico">
-                    <Icon name="search-check" />
+                    <Icon name="layout" />
                   </span>
                   <span className="mlink__txt">
                     <span className="mlink__name">
-                      Gratis websitescan <span className="mtag">Gratis</span>
+                      Gratis websiteconcept <span className="mtag">Gratis</span>
                     </span>
                     <span className="mlink__sub">Onze belangrijkste eerste stap</span>
                   </span>
@@ -581,13 +581,13 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
                   <span className="gdot" />
                   Begin hier
                 </span>
-                <h4 className="mfeat__title">Gratis websitescan</h4>
+                <h4 className="mfeat__title">Gratis websiteconcept</h4>
                 <p className="mfeat__desc">
-                  Ontdek waar jouw grootste online kansen liggen. Geen verplichtingen,
-                  gemiddeld binnen 2 werkdagen een reactie.
+                  Een gratis websiteconcept met persoonlijk advies. Vrijblijvend en reactie
+                  binnen 2 werkdagen.
                 </p>
-                <Link className="mfeat__cta" to="/gratis-websitescan">
-                  Vraag je gratis scan aan                </Link>
+                <Link className="mfeat__cta" to="/gratis-websiteconcept">
+                  Vraag je gratis concept aan                </Link>
               </aside>
             </div>
           </div>

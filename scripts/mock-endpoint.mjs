@@ -18,6 +18,14 @@ http
     let body = ''
     req.on('data', (c) => (body += c))
     req.on('end', () => {
+      // Mailroute van de smoketest. Antwoordt zoals FormSubmit bij succes,
+      // maar legt niets vast en stuurt niets door.
+      if (req.method === 'POST' && (req.url ?? '').startsWith('/mail')) {
+        res.writeHead(200, { 'Content-Type': 'text/html' })
+        res.end('submitted successfully')
+        return
+      }
+
       if (req.method === 'POST') {
         const fields = Object.fromEntries(new URLSearchParams(body))
         let all = []

@@ -57,8 +57,8 @@ function Integraties() {
               </Reveal>
               {' '}
               <Reveal as="div" className="svc-hero__ctas reveal" data-d="2">
-                <Link className="btn btn-primary" to="/gratis-websitescan">
-                  Vraag je gratis scan aan
+                <Link className="btn btn-primary" to="/gratis-websiteconcept">
+                  Vraag je gratis concept aan
                 </Link>
                 {' '}
                 <Link className="tlink" to="/contact">
@@ -320,7 +320,7 @@ function Integraties() {
             </Qa>
             {' '}
             <Qa question="Is een integratie los van een website af te nemen?" className="reveal">
-                Ja. We kunnen koppelingen ook toevoegen aan je bestaande website. Begin met een gratis websitescan, dan kijken we waar je het meeste handwerk kunt wegnemen.
+                Ja. We kunnen koppelingen ook toevoegen aan je bestaande website. Begin met een gratis websiteconcept, dan kijken we waar je het meeste handwerk kunt wegnemen.
             </Qa>
           </div>
         </div>
@@ -365,12 +365,12 @@ function Integraties() {
             <h2 className="display">Dit hoef je niet zelf te blijven overtypen.</h2>
             {' '}
             <p className="lead">
-              Vraag een gratis websitescan aan. We laten zien welke koppelingen jou het meeste tijd besparen.
+              Vraag een gratis websiteconcept aan. We laten zien welke koppelingen jou het meeste tijd besparen.
             </p>
             {' '}
             <Reveal as="div" className="svc-hero__ctas reveal" data-d="1" style={{ justifyContent: "center", marginTop: "28px" }}>
-              <Link className="btn btn-primary" to="/gratis-websitescan">
-                Vraag je gratis scan aan
+              <Link className="btn btn-primary" to="/gratis-websiteconcept">
+                Vraag je gratis concept aan
               </Link>
               {' '}
               <Link className="tlink" to="/contact">

@@ -17,6 +17,8 @@
   --mono:    "Hanken Grotesk", system-ui, -apple-system, sans-serif;
 
   --focus: var(--accent);
+  /* Focusring van het conceptformulier. Bestaande huisstijl, heather. */
+  --heather: #BB7190;
 
   --maxw: 1280px;
   --gutter: clamp(20px, 5vw, 72px);
@@ -229,7 +231,7 @@ h1, h2, h3 { font-family: var(--display); font-weight: 600; line-height: 1.04; l
 
 /* ---------- HERO (split: value + form) ---------- */
 .hero { padding-top: clamp(128px, 17vh, 188px); padding-bottom: clamp(56px, 7vw, 96px); }
-.hero__grid { display: grid; grid-template-columns: 1.12fr 0.88fr; gap: clamp(48px, 7vw, 120px); align-items: center; }
+.hero__grid { display: grid; grid-template-columns: 1.12fr 0.88fr; gap: clamp(48px, 7vw, 120px); align-items: start; }
 .hero__badge { margin-bottom: clamp(22px, 3vw, 32px); }
 .hero h1.display { font-size: clamp(2.5rem, 5vw, 4.6rem); max-width: 18ch; }
 .hero__sub { margin-top: clamp(20px, 2.6vw, 30px); max-width: 54ch; }
@@ -314,6 +316,150 @@ form[aria-busy="true"] .btn-primary { opacity: .65; pointer-events: none; }
   color: oklch(0.46 0.170 25);
   background: color-mix(in oklab, oklch(0.62 0.19 25) 9%, transparent);
   border-color: color-mix(in oklab, oklch(0.62 0.19 25) 30%, transparent);
+}
+
+/* Subtekst in de formulierkop. De p staat in .form__inner, niet direct in .form. */
+.form__inner > p { color: var(--muted); font-size: 0.96rem; line-height: 1.5; margin: 0 0 16px; }
+.form__dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent-text); display: inline-block; }
+
+/* ---------- Conceptformulier (klikstappen) ---------- */
+.concept { --focus: var(--heather); container-type: inline-size; }
+.concept .form__bar i { width: 16.67%; }
+.concept .form__inner h3,
+.concept .fstep__title {
+  font-size: clamp(1.2rem, 2vw, 1.45rem);
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  margin-bottom: 8px;
+}
+.concept .btn { min-height: 44px; }
+.concept .btn-primary[type="submit"] {
+  white-space: normal;
+  text-align: center;
+  line-height: 1.25;
+}
+.concept .form__disc a { text-decoration: underline; text-underline-offset: 2px; }
+.concept .form__ok a { color: var(--accent-text); text-decoration: underline; text-underline-offset: 2px; }
+.concept .form__ok p { color: var(--muted); margin-top: 10px; }
+
+.concept__ticks {
+  list-style: none; padding: 0; margin: 0 0 18px;
+  display: flex; flex-wrap: wrap; gap: 8px 16px;
+}
+.concept__ticks li {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 0.92rem; color: var(--muted);
+}
+.concept__ticks li::before { content: "✓"; color: var(--accent-text); font-weight: 700; }
+
+.choices {
+  border: 0; padding: 0; margin: 0 0 14px; min-inline-size: 0;
+  display: flex; flex-direction: column;
+}
+.choices:focus { outline: 2px solid var(--heather); outline-offset: 3px; }
+.choice__legend {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  gap: 12px; width: 100%; padding: 0; margin-bottom: 8px;
+}
+.choice__q {
+  font-family: var(--display); font-weight: 600;
+  font-size: clamp(1.15rem, 2vw, 1.35rem);
+  line-height: 1.2; letter-spacing: -0.03em;
+}
+.choice__count {
+  flex: none; align-self: center;
+  font-family: var(--mono); font-size: 0.68rem; font-weight: 600;
+  letter-spacing: 0.04em; text-transform: uppercase;
+  color: var(--accent-text);
+  background: color-mix(in oklab, var(--accent-text) 10%, transparent);
+  border: 1px solid color-mix(in oklab, var(--accent-text) 28%, var(--line));
+  border-radius: 100px; padding: 0.4em 0.75em;
+}
+.choice__help { color: var(--muted); font-size: 0.92rem; margin: 0 0 12px; }
+.choice__grid { display: grid; grid-template-columns: 1fr; gap: 10px; }
+@container (min-width: 520px) {
+  .choice__grid { grid-template-columns: 1fr 1fr; }
+}
+.choice {
+  position: relative;
+  display: flex; align-items: center; gap: 12px;
+  min-height: 44px; padding: 12px 14px;
+  border: 1px solid var(--line-strong); border-radius: var(--radius);
+  background: var(--field-bg); cursor: pointer;
+  font-size: 0.98rem; line-height: 1.35;
+}
+.choice input {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  margin: 0; opacity: 0; cursor: pointer;
+}
+.choice:has(input:focus-visible) {
+  outline: 2px solid var(--heather); outline-offset: 2px;
+}
+.choice:has(input:checked) {
+  border-color: var(--accent-strong);
+  background: color-mix(in oklab, var(--accent-strong) 14%, var(--field-bg));
+}
+.choice:has(input:disabled) { opacity: 0.48; cursor: not-allowed; }
+.choice:has(input:disabled) input { cursor: not-allowed; }
+.choice__mark {
+  width: 18px; height: 18px; flex: none;
+  border: 1.5px solid var(--line-strong); border-radius: 4px;
+  display: grid; place-items: center;
+}
+.choice--radio .choice__mark { border-radius: 50%; }
+.choice:has(input:checked) .choice__mark {
+  border-color: var(--accent-strong); background: var(--accent-strong);
+}
+.choice:has(input:checked) .choice__mark::after {
+  content: "";
+  width: 8px; height: 5px;
+  border-left: 2px solid var(--accent-ink);
+  border-bottom: 2px solid var(--accent-ink);
+  transform: rotate(-45deg) translateY(-1px);
+}
+.choice--radio:has(input:checked) .choice__mark::after {
+  width: 8px; height: 8px; border: 0; border-radius: 50%;
+  background: var(--accent-ink); transform: none;
+}
+.choice__limit { min-height: 1.35em; margin: 8px 0 0; font-size: 0.86rem; color: var(--muted); }
+.field__error { margin: 8px 0 0; font-size: 0.88rem; line-height: 1.4; color: oklch(0.72 0.155 25); }
+.field__error[hidden] { display: none; }
+.hero__form .field__error,
+[data-theme="light"] .field__error,
+[data-theme="paper"] .field__error { color: oklch(0.46 0.170 25); }
+.concept .field input[aria-invalid="true"],
+.concept .field textarea[aria-invalid="true"] { border-color: oklch(0.55 0.17 25); }
+.concept .field input:focus,
+.concept .field textarea:focus {
+  outline: 2px solid var(--heather);
+  outline-offset: 2px;
+  border-color: var(--heather);
+  box-shadow: none;
+}
+.concept .field input:disabled { opacity: 0.55; cursor: not-allowed; }
+.fstep__title:focus { outline: 2px solid var(--heather); outline-offset: 3px; }
+.checkline {
+  display: flex; align-items: center; gap: 12px;
+  min-height: 44px; margin: 2px 0 14px; cursor: pointer;
+}
+.checkline input {
+  width: 20px; height: 20px; flex: none;
+  accent-color: var(--accent-strong);
+}
+.checkline input:focus-visible { outline: 2px solid var(--heather); outline-offset: 3px; }
+
+/* Landingspagina /gratis-websiteconcept */
+.concept-page {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: clamp(36px, 5vw, 72px);
+  align-items: start;
+}
+.concept-page .display { font-size: clamp(2.2rem, 4.2vw, 3.5rem); max-width: 16ch; }
+.concept-page .lead { margin-top: 16px; }
+.concept-page > .concept-page__copy .concept__ticks { margin-top: 22px; }
+@media (max-width: 900px) {
+  .concept-page { grid-template-columns: 1fr; }
 }
 
 /* ---------- Beeld & placeholders ----------

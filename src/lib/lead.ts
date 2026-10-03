@@ -34,10 +34,20 @@ export async function sendLead(
     typeof document !== 'undefined' ? `${document.title} — ${location.href}` : '',
   )
 
-  const params = new URLSearchParams()
+  // Meerkeuze (twee waarden onder dezelfde naam) wordt één waarde.
+  // Apps Script leest met e.parameter meestal alleen de eerste.
+  const buckets = new Map<string, string[]>()
   data.forEach((value, key) => {
-    if (typeof value === 'string') params.append(key, value)
+    if (typeof value !== 'string') return
+    const list = buckets.get(key)
+    if (list) list.push(value)
+    else buckets.set(key, [value])
   })
+
+  const params = new URLSearchParams()
+  for (const [key, values] of buckets) {
+    params.append(key, values.join(', '))
+  }
 
   try {
     return await submitLead({ data: params.toString() })

@@ -650,8 +650,8 @@ function MegaSmart() {
                 Plan een demo
               </Link>
               {' '}
-              <Link className="tlink" to="/gratis-websitescan">
-                Vraag eerst een gratis websitescan aan
+              <Link className="tlink" to="/gratis-websiteconcept">
+                Vraag eerst een gratis websiteconcept aan
                 {' '}
               </Link>
             </Reveal>

@@ -109,7 +109,7 @@ function VeelgesteldeVragen() {
             {' '}
             <div className="faq">
               <Qa question="Wat kost een website bij jullie?" className="reveal">
-                  Dat hangt af van wat je nodig hebt. Onze Starter Website begint vanaf €1.500 en is bedoeld voor starters die voordelig en snel online willen. Een volledige Conversie Website is maatwerk en wordt geprijsd op basis van omvang, strategie en koppelingen. In een gratis websitescan brengen we het vrijblijvend voor je in kaart.
+                  Dat hangt af van wat je nodig hebt. Onze Starter Website begint vanaf €1.500 en is bedoeld voor starters die voordelig en snel online willen. Een volledige Conversie Website is maatwerk en wordt geprijsd op basis van omvang, strategie en koppelingen. In een gratis websiteconcept brengen we het vrijblijvend voor je in kaart.
               </Qa>
               {' '}
               <Qa question="Waarom is de Starter Website goedkoper?" className="reveal">
@@ -216,12 +216,12 @@ function VeelgesteldeVragen() {
             <h2 className="display">We denken graag met je mee.</h2>
             {' '}
             <p className="lead">
-              Geen verkooppraat, gewoon eerlijk advies. Plan een vrijblijvende kennismaking of vraag een gratis websitescan aan.
+              Geen verkooppraat, gewoon eerlijk advies. Plan een vrijblijvende kennismaking of vraag een gratis websiteconcept aan.
             </p>
             {' '}
             <Reveal as="div" className="svc-hero__ctas reveal" data-d="1" style={{ justifyContent: "center", marginTop: "28px" }}>
-              <Link className="btn btn-primary" to="/gratis-websitescan">
-                Vraag je gratis scan aan
+              <Link className="btn btn-primary" to="/gratis-websiteconcept">
+                Vraag je gratis concept aan
               </Link>
               {' '}
               <Link className="tlink" to="/contact">

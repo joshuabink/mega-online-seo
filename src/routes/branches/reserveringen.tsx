@@ -58,8 +58,8 @@ function Reserveringen() {
               </Reveal>
               {' '}
               <Reveal as="div" className="svc-hero__ctas reveal" data-d="2">
-                <Link className="btn btn-primary" to="/gratis-websitescan">
-                  Vraag je gratis scan aan
+                <Link className="btn btn-primary" to="/gratis-websiteconcept">
+                  Vraag je gratis concept aan
                 </Link>
                 {' '}
                 <Link className="tlink" to="/contact">
@@ -338,7 +338,7 @@ function Reserveringen() {
             </Qa>
             {' '}
             <Qa question="Wat kost zo'n website?" className="reveal">
-                Dat hangt af van het reserveringssysteem en de koppelingen die je wilt. Met een gratis websitescan brengen we het vrijblijvend in kaart.
+                Dat hangt af van het reserveringssysteem en de koppelingen die je wilt. Met een gratis websiteconcept brengen we het vrijblijvend in kaart.
             </Qa>
           </div>
         </div>
@@ -352,12 +352,12 @@ function Reserveringen() {
             <h2 className="display">Je gasten boeken om elf uur 's avonds.</h2>
             {' '}
             <p className="lead">
-              Vraag een gratis websitescan aan. We laten zien hoeveel boekingen je nu buiten openingstijden misloopt.
+              Vraag een gratis websiteconcept aan. We laten zien hoeveel boekingen je nu buiten openingstijden misloopt.
             </p>
             {' '}
             <Reveal as="div" className="svc-hero__ctas reveal" data-d="1" style={{ justifyContent: "center", marginTop: "28px" }}>
-              <Link className="btn btn-primary" to="/gratis-websitescan">
-                Vraag je gratis scan aan
+              <Link className="btn btn-primary" to="/gratis-websiteconcept">
+                Vraag je gratis concept aan
               </Link>
               {' '}
               <Link className="tlink" to="/contact">
