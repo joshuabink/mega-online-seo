@@ -80,6 +80,31 @@ const FAQ_SCHEMA = {
   })),
 }
 
+const VERSCHIL = [
+  {
+    k: 'Startpunt',
+    them: 'Jouw wensenlijst: welke pagina\u2019s, welke kleuren.',
+    us: 'Je klant: wie hij is, wat hij zoekt en wat hem over de streep trekt.',
+  },
+  { k: 'Doel', them: 'Een site die er goed uitziet.', us: 'Een site die aanvragen en boekingen oplevert.' },
+  {
+    k: 'Aanvraagformulier',
+    them: 'Een standaard contactformulier.',
+    us: 'Afgestemd op je klant. Alleen de vragen die echt nodig zijn.',
+  },
+  {
+    k: 'Vindbaarheid',
+    them: 'Een SEO-plugin aanzetten.',
+    us: 'Structuur en teksten gebouwd op wat je klant in Google intypt.',
+  },
+  { k: 'Na de livegang', them: 'Project af, factuur verstuurd.', us: 'Doorlopend bijsturen op de grootste groeikans.' },
+  {
+    k: 'Meten',
+    them: 'Bezoekersaantallen, als je erom vraagt.',
+    us: 'Elke maand zwart op wit wat het opleverde in aanvragen.',
+  },
+]
+
 function Home() {
   return (
     <main id="top" data-page="index">
@@ -455,6 +480,58 @@ function Home() {
               </div>
             </Reveal>
           </div>
+        </div>
+      </section>
+      {' '}
+      <section className="section section--tight" id="verschil" data-theme="dark" data-screen-label="Vergelijking websitebouwer">
+        <div className="wrap">
+          <Reveal as="div" className="shead reveal">
+            <span className="label">Het verschil</span>
+            {' '}
+            <h2 className="h2">
+              Een websitebouwer maakt wat je vraagt. Wij bouwen wat je klant laat
+              {' '}
+              <em>aanvragen.</em>
+            </h2>
+            {' '}
+            <p className="lead">
+              Niet elke bouwer werkt zo. Maar dit is het verschil in aanpak waar het om draait als je website aanvragen moet opleveren.
+            </p>
+          </Reveal>
+          {' '}
+          <Reveal as="div" className="cmp reveal" data-d="1">
+            <div className="cmp__row cmp__row--head" aria-hidden="true">
+              <span />
+              <span className="cmp__col">Gemiddelde websitebouwer</span>
+              <span className="cmp__col cmp__col--us">MegaOnline</span>
+            </div>
+            {VERSCHIL.map((r) => (
+              <div className="cmp__row" key={r.k}>
+                <h3 className="cmp__k">{r.k}</h3>
+                <p className="cmp__them">
+                  <span className="cmp__who">Gemiddelde websitebouwer</span>
+                  {r.them}
+                </p>
+                <p className="cmp__us">
+                  <Icon name="check" className="cmp__ck" />
+                  <span>
+                    <span className="cmp__who">MegaOnline</span>
+                    {r.us}
+                  </span>
+                </p>
+              </div>
+            ))}
+          </Reveal>
+          {' '}
+          <Reveal as="div" className="cmp__foot reveal">
+            <p>Wil je weten hoe dit op jouw site staat? We kijken er kosteloos naar en sturen je de punten die we zien.</p>
+            {' '}
+            <Link className="tlink" to="/gratis-websitescan">
+              Vraag de gratis scan aan
+              {' '}
+              <span className="arr">&rarr;</span>
+            </Link>
+          </Reveal>
         </div>
       </section>
       {' '}
