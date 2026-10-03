@@ -87,6 +87,10 @@ naar de nieuwe slug. Laat die tabel (`src/lib/legacy-urls.ts`) intact.
 en staan bewust los: eigen stylesheet, gescoped onder `.legacy-concept`, niet in
 de navigatie en op `Disallow` in `robots.txt`.
 
+**Nieuwe eigen-initiatiefroutes** staan onder `/concepten/**`, gebruiken de gedeelde
+MegaOnline-chrome en komen uit de uitbreidbare lijst in `src/lib/concepten.ts`, zodat
+ze nooit met de oude `/concept/**`-prototypes of klantcases worden vermengd.
+
 Tests: `node scripts/mock-endpoint.mjs` en dan
 `MO_LEAD_ENDPOINT=http://localhost:3101/mock` bij de dev-server, gevolgd door
 `node scripts/smoke.mjs`. Draai de smoketest nooit zonder die mock — anders
