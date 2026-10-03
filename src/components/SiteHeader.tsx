@@ -259,6 +259,15 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
                     </span>
                   </Link>
                 ))}
+                <Link className="mlink mlink--concept" to="/concepten">
+                  <span className="mlink__ico">
+                    <Icon name="paintbrush" />
+                  </span>
+                  <span className="mlink__txt">
+                    <span className="mlink__name">Concepten</span>
+                    <span className="mlink__sub">Eigen initiatief, geen klantopdrachten</span>
+                  </span>
+                </Link>
               </div>
 
               <div className="mcol mcol--plain">
@@ -764,6 +773,9 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
         <nav className="mmenu__rows" aria-label="Overige navigatie">
           <Link className="mmenu__row" to="/" hash="werk" onClick={onClose}>
             Cases <Icon name="arrow-up-right" className="arr-ico" />
+          </Link>
+          <Link className="mmenu__row mmenu__row--concept" to="/concepten" onClick={onClose}>
+            Concepten <Icon name="arrow-up-right" className="arr-ico" />
           </Link>
           <Link className="mmenu__row" to="/over-megaonline" onClick={onClose}>
             Over MegaOnline <Icon name="arrow-up-right" className="arr-ico" />

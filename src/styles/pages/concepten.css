@@ -1,0 +1,153 @@
+[data-page="concepten"] .concept-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+  gap: clamp(22px, 3vw, 34px);
+  margin-top: clamp(30px, 4vw, 48px);
+}
+
+[data-page="concepten"] .concept-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  color: var(--fg);
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  text-decoration: none;
+  transition: transform 0.3s, border-color 0.3s;
+}
+
+[data-page="concepten"] .concept-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--line-strong);
+}
+
+[data-page="concepten"] .concept-card__media {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--card-2);
+  border-bottom: 1px solid var(--line);
+}
+
+[data-page="concepten"] .concept-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+[data-page="concepten"] .concept-card__body {
+  display: grid;
+  gap: 12px;
+  padding: clamp(22px, 2.4vw, 32px);
+}
+
+[data-page="concepten"] .concept-card__label {
+  color: var(--accent-text);
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+[data-page="concepten"] .concept-card__title {
+  font-family: var(--display);
+  font-size: clamp(1.45rem, 2.2vw, 2rem);
+  line-height: 1.12;
+}
+
+[data-page="concept-ns"] .concept-hero__image {
+  margin-top: clamp(36px, 5vw, 66px);
+}
+
+[data-page="concept-ns"] .concept-copy {
+  max-width: 70ch;
+}
+
+[data-page="concept-ns"] .concept-copy p,
+[data-page="concept-ns"] .concept-choice p {
+  color: var(--muted);
+  font-size: 1.04rem;
+  line-height: 1.75;
+}
+
+[data-page="concept-ns"] .concept-copy p + p,
+[data-page="concept-ns"] .concept-choice p + p {
+  margin-top: 1.2em;
+}
+
+[data-page="concept-ns"] .concept-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(360px, 1.1fr);
+  gap: clamp(34px, 6vw, 86px);
+  align-items: center;
+  margin-top: clamp(36px, 5vw, 62px);
+}
+
+[data-page="concept-ns"] .concept-layout--mobile {
+  grid-template-columns: minmax(0, 1fr) minmax(230px, 0.52fr);
+}
+
+[data-page="concept-ns"] .concept-stack {
+  display: grid;
+  gap: clamp(30px, 4vw, 48px);
+}
+
+[data-page="concept-ns"] .concept-choice {
+  display: grid;
+  gap: 14px;
+}
+
+[data-page="concept-ns"] .concept-choice h3 {
+  font-size: clamp(1.35rem, 2vw, 1.8rem);
+  line-height: 1.2;
+}
+
+[data-page="concept-ns"] .concept-browser {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--card);
+  box-shadow: 0 28px 70px -44px color-mix(in oklab, var(--fg) 45%, transparent);
+}
+
+[data-page="concept-ns"] .concept-browser::before {
+  content: "";
+  display: block;
+  height: 28px;
+  border-bottom: 1px solid var(--line);
+  background:
+    radial-gradient(circle at 15px 50%, var(--line-strong) 0 3px, transparent 4px),
+    radial-gradient(circle at 29px 50%, var(--line-strong) 0 3px, transparent 4px),
+    radial-gradient(circle at 43px 50%, var(--line-strong) 0 3px, transparent 4px),
+    var(--card-2);
+}
+
+[data-page="concept-ns"] .concept-browser img {
+  width: 100%;
+  height: auto;
+}
+
+[data-page="concept-ns"] .concept-browser--phone {
+  max-width: 390px;
+  margin-inline: auto;
+}
+
+[data-page="concept-ns"] .concept-disclaimer {
+  margin-top: clamp(34px, 4vw, 52px);
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+  color: var(--faint);
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+  [data-page="concept-ns"] .concept-layout,
+  [data-page="concept-ns"] .concept-layout--mobile {
+    grid-template-columns: 1fr;
+  }
+
+  [data-page="concept-ns"] .concept-layout--mobile .concept-browser {
+    max-width: 340px;
+  }
+}
