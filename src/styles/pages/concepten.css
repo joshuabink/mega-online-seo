@@ -141,6 +141,13 @@
   line-height: 1.6;
 }
 
+[data-page="concept-ns"] .concept-copy .btn {
+  max-width: 100%;
+  white-space: normal;
+  line-height: 1.45;
+  text-align: left;
+}
+
 @media (max-width: 900px) {
   [data-page="concept-ns"] .concept-layout,
   [data-page="concept-ns"] .concept-layout--mobile {
