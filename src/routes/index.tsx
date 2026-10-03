@@ -399,10 +399,10 @@ function Home() {
           </Reveal>
           {' '}
           <Reveal as="div" className="cmp__foot reveal">
-            <p>Wil je weten hoe dit op jouw site staat? We kijken er kosteloos naar en sturen je de punten die we zien.</p>
+            <p>Wil je zien hoe dit voor jouw bedrijf kan werken? We maken een gratis websiteconcept met persoonlijk advies.</p>
             {' '}
-            <Link className="tlink" to="/gratis-websitescan">
-              Vraag de gratis scan aan
+            <Link className="tlink" to="/gratis-websiteconcept">
+              Vraag je gratis websiteconcept aan
               {' '}
               <span className="arr">&rarr;</span>
             </Link>
