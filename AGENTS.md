@@ -52,14 +52,14 @@ kale `<Link className="btn btn-primary reveal">` in de opmaak. Gebruik
 de dienstenpagina's. In `styles.css` staat een vangnet dat elke `.reveal` na
 10 seconden alsnog zichtbaar dwingt; dat is een net, geen excuus.
 
-**Formulieren** posten via `src/lib/submit-lead.ts` (server function) naar het
-Google Apps Script van de klant. Veldnamen, `_subject` en `_pagina` moeten
-exact blijven, anders breekt de bestaande Sheet. De endpoint is te overschrijven
-met de environment variable `MO_LEAD_ENDPOINT`.
+**Formulieren** posten via `src/lib/submit-lead.ts` (server function). Een
+inzending gaat alleen per mail naar zakelijk@joshuabink.nl. Er is geen Google
+Sheet en geen Apps Script. Veldnamen, `_subject` en `_pagina` blijven zoals de
+formulieren ze sturen.
 
-Daarnaast gaat elke lead als mail naar FormSubmit (`MO_LEAD_MAIL_ENDPOINT`).
-Twee dingen daaraan zijn niet vanzelfsprekend en hebben de mail eerder
-maandenlang stil laten falen:
+De mail gaat via Resend als `MO_RESEND_API_KEY` staat, anders via FormSubmit
+(`MO_LEAD_MAIL_ENDPOINT`). Twee dingen aan FormSubmit zijn niet vanzelfsprekend
+en hebben de mail eerder maandenlang stil laten falen:
 
 - FormSubmit weigert elke POST **zonder `Referer`-header**. Wij posten vanaf de
   server, dus die header wordt handmatig meegegeven (`MAIL_REFERER`). Haal hem
@@ -77,8 +77,10 @@ het eigen domein, dus SPF/DKIM kloppen, en fouten komen als leesbare JSON terug
 in plaats van als een HTML-pagina met status 200. Verder in te stellen met
 `MO_MAIL_FROM`, `MO_MAIL_TO` en `MO_RESEND_ENDPOINT`; die laatste bestaat zodat
 de smoketest tegen een mock kan draaien in plaats van tegen de echte provider.
-Verstuur bij het testen nooit via de echte provider — zet `MO_RESEND_ENDPOINT`
-naar een lokale mock, net zoals `MO_LEAD_ENDPOINT` dat voor de Sheet doet.
+Verstuur bij het testen nooit via de echte provider. Zet
+`MO_LEAD_MAIL_ENDPOINT` naar de lokale mailmock, en laat `MO_RESEND_API_KEY`
+weg. `MO_RESEND_ENDPOINT` bestaat zodat een test mét Resend-sleutel alsnog
+tegen die mock kan draaien.
 
 **Oude URL's.** `src/routes/$.tsx` stuurt elk oud `.html`-pad met een 301 door
 naar de nieuwe slug. Laat die tabel (`src/lib/legacy-urls.ts`) intact.
@@ -88,6 +90,6 @@ en staan bewust los: eigen stylesheet, gescoped onder `.legacy-concept`, niet in
 de navigatie en op `Disallow` in `robots.txt`.
 
 Tests: `node scripts/mock-endpoint.mjs` en dan
-`MO_LEAD_ENDPOINT=http://localhost:3101/mock` bij de dev-server, gevolgd door
-`node scripts/smoke.mjs`. Draai de smoketest nooit zonder die mock — anders
-belandt de testinzending in de échte Sheet van de klant.
+`MO_LEAD_MAIL_ENDPOINT=http://localhost:3101/mail` bij de dev-server, gevolgd
+door `node scripts/smoke.mjs`. Draai de smoketest nooit zonder die mock en nooit
+met `MO_RESEND_API_KEY`, anders belandt de testinzending in de echte mail.

@@ -8,25 +8,17 @@ import { createServerFn } from '@tanstack/react-start'
  * en de aanroep in de browser faalt. `createServerFn` regelt de client/server-
  * splitsing zelf: de handler-body verdwijnt uit de client-bundel.
  *
- * In de prototypes postte de browser rechtstreeks naar de Google Apps Script
- * webapp met `mode: "no-cors"`. Dat was fire-and-forget: de response was niet
- * leesbaar, dus een mislukte inzending zag je nooit — het formulier meldde
- * altijd "verzonden".
+ * Een inzending gaat alleen per mail naar zakelijk@joshuabink.nl. Er is geen
+ * Google Sheet en geen Apps Script: die aanroep kan een inzending niet meer
+ * blokkeren of vertragen. Succes of fout hangt alleen af van de mailroute.
  *
- * Nu gaat de POST naar deze server function, die hem doorzet naar hetzelfde
- * Apps Script met exact dezelfde veldnamen (inclusief `_subject` en
- * `_pagina`). De bestaande Sheet/automatisering blijft dus ongewijzigd werken,
- * maar we krijgen wél een echte status terug, kunnen spam filteren en de
- * endpoint-URL blijft buiten de client-bundle.
- *
- * Zet `MO_LEAD_ENDPOINT` als environment variable om de URL te wijzigen zonder
- * de code aan te passen.
+ * Mailroute: Resend als `MO_RESEND_API_KEY` staat, anders FormSubmit. De
+ * veldnamen blijven zoals de formulieren ze sturen, inclusief `_subject` en
+ * `_pagina`.
  */
-const DEFAULT_ENDPOINT =
-  'https://script.google.com/macros/s/AKfycbysHVGhN1DBp58AgD46qX3LtQwj3XstB-FEaRDTwKNRe1RnmrFlou2rxPDxsmkgUhL2/exec'
 
 /**
- * Tweede bestemming: e-mail naar zakelijk@joshuabink.nl via FormSubmit.
+ * E-mail naar zakelijk@joshuabink.nl via FormSubmit, als Resend niet is ingesteld.
  * Geen account of API-key nodig; FormSubmit stuurt álle meegegeven velden mee
  * en gebruikt dezelfde `_subject`-conventie als het bestaande formulier.
  * Let op: de eerste inzending moet éénmalig per mail bevestigd worden.
@@ -212,8 +204,7 @@ export const submitLead = createServerFn({ method: 'POST' })
       return { ok: true }
     }
 
-    // Álle ingevulde velden gaan mee — alleen de spamval valt eruit. Zo mist
-    // geen enkel formulierveld meer in de mail of de Sheet.
+    // Álle ingevulde velden gaan mee in de mail. Alleen de spamval valt eruit.
     const params = new URLSearchParams()
     for (const [key, value] of incoming) {
       if (BLOCKED.has(key)) continue
@@ -237,7 +228,6 @@ export const submitLead = createServerFn({ method: 'POST' })
     // Lovable-repo heeft die niet in zijn tsconfig staan.
     const env = (globalThis as { process?: { env?: Record<string, string | undefined> } })
       .process?.env
-    const endpoint = env?.MO_LEAD_ENDPOINT ?? DEFAULT_ENDPOINT
     const mailEndpoint = env?.MO_LEAD_MAIL_ENDPOINT ?? DEFAULT_MAIL_ENDPOINT
 
     // E-mailvariant: zelfde velden, plus FormSubmit-opties voor een leesbare
@@ -267,8 +257,6 @@ export const submitLead = createServerFn({ method: 'POST' })
           body,
           signal: AbortSignal.timeout(10_000),
         })
-        // Apps Script antwoordt met een redirect naar script.googleusercontent.com;
-        // fetch volgt die en geeft 200. Alles in de 2xx/3xx-range is goed.
         if (!res.ok && res.status >= 400) {
           logError(`${label} gaf status ${res.status}`)
           return false
@@ -288,38 +276,25 @@ export const submitLead = createServerFn({ method: 'POST' })
     }
 
     // Resend zodra de sleutel er is; anders blijft FormSubmit de mailroute.
+    // Er is geen tweede bestemming. De bezoeker wacht alleen op deze mail.
     const resendKey = env?.MO_RESEND_API_KEY
-    const mailTaak = resendKey
-      ? mailViaResend(resendKey, params, env)
-      : post(mailEndpoint, mailParams.toString(), 'e-mail (FormSubmit)', {
+    const mailRoute = resendKey ? 'Resend' : 'FormSubmit'
+    const mailOk = resendKey
+      ? await mailViaResend(resendKey, params, env)
+      : await post(mailEndpoint, mailParams.toString(), 'e-mail (FormSubmit)', {
           headers: { Referer: MAIL_REFERER },
           verify: formSubmitWeigering,
         })
 
-    const [sheetOk, mailOk] = await Promise.all([
-      post(endpoint, params.toString(), 'Apps Script'),
-      mailTaak,
-    ])
-
-    // Eén regel per inzending met de uitkomst van beide routes, zodat je in de
-    // logs direct ziet of de mail naar zakelijk@joshuabink.nl is verstuurd.
-    const mailRoute = resendKey ? 'Resend' : 'FormSubmit'
-    if (sheetOk && mailOk) {
-      log(`doorgestuurd: Sheet ✓, mail (${mailRoute}) ✓`)
-    } else {
-      logError(
-        `doorsturen DEELS of NIET gelukt: Sheet ${sheetOk ? '✓' : '✗'}, ` +
-          `mail (${mailRoute}) ${mailOk ? '✓' : '✗'}`,
-      )
-    }
-
-    if (!sheetOk && !mailOk) {
+    if (!mailOk) {
+      logError(`mail (${mailRoute}) ✗`)
       return {
         ok: false,
         error: 'We konden je aanvraag niet verwerken. Probeer het nog eens of mail ons direct.',
       }
     }
 
+    log(`mail (${mailRoute}) verstuurd ✓`)
     return { ok: true }
 
   })

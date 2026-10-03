@@ -1,8 +1,7 @@
 /**
  * Browser-smoketest voor het interactieve gedrag.
  *
- * De lead-endpoint wordt afgevangen, zodat een test nooit een echte inzending
- * in de Sheet van de klant zet.
+ * De mailroute wordt afgevangen, zodat een test nooit een echte mail verstuurt.
  *
  * Draaien met de dev-server actief:  node scripts/smoke.mjs
  */
@@ -39,10 +38,9 @@ page.on('console', (m) => {
 })
 page.on('pageerror', (e) => consoleErrors.push(String(e)))
 
-// De dev-server draait met MO_LEAD_ENDPOINT en MO_LEAD_MAIL_ENDPOINT naar
-// scripts/mock-endpoint.mjs, dus de volledige keten (browser → server function
-// → POST) wordt getest zonder dat er een testlead in de echte Sheet of mail belandt.
-// Zet MO_RESEND_API_KEY uit, anders gaat de mail alsnog naar de provider.
+// De dev-server draait met MO_LEAD_MAIL_ENDPOINT naar scripts/mock-endpoint.mjs,
+// dus de keten (browser → server function → mail) wordt getest zonder echte mail.
+// Zet MO_RESEND_API_KEY uit, anders slaat de server FormSubmit over.
 const LEADS = path.join(import.meta.dirname, '.mock-leads.json')
 const readLeads = () => {
   try { return JSON.parse(fs.readFileSync(LEADS, 'utf8')) } catch { return [] }
@@ -157,7 +155,7 @@ await page.waitForTimeout(1500)
 const sent = await page.evaluate(
   () => document.querySelector('.form')?.classList.contains('sent') ?? false,
 )
-check('formulier toont bedankt-staat', sent)
+check('geslaagde mail is ok', sent, sent ? 'bedankt-staat' : 'formulier niet verzonden')
 
 const leads = readLeads()
 const lead = leads[leads.length - 1]
@@ -180,6 +178,27 @@ check('_subject en _pagina gaan mee',
   `${lead?._subject}`)
 check('honeypot wordt niet doorgestuurd', !('website_hp' in (lead ?? {})))
 check('lege optionele velden gaan niet mee', !lead?.geen_website)
+
+/* --- mislukte mail: FormSubmit-weigering (HTTP 200 met fout in de body) --- */
+await page.goto(BASE + '/contact', { waitUntil: 'load' })
+await waitHydrated(page)
+await page.fill('#c-naam', 'Mail Faalt')
+await page.fill('#c-email', 'mail-faalt@example.com')
+await page.selectOption('#c-onderwerp', 'Iets anders')
+await page.click('.fhero__form button[type="submit"]')
+await page.waitForTimeout(1500)
+const mailFout = await page.evaluate(() => {
+  const form = document.querySelector('.fhero__form')
+  return {
+    sent: form?.classList.contains('sent') ?? false,
+    error: form?.querySelector('.form__error')?.textContent?.trim() ?? '',
+  }
+})
+check(
+  'mislukte mail geeft een foutmelding',
+  !mailFout.sent && /niet verwerken/.test(mailFout.error),
+  mailFout.error || 'geen fouttekst',
+)
 
 /* --- validatie blokkeert lege stap op een dienstpagina --- */
 await page.goto(BASE + '/diensten/conversie-website', { waitUntil: 'load' })
