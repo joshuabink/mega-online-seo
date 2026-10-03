@@ -189,6 +189,44 @@ await page.waitForTimeout(200)
 const blocked = await page.isVisible('.fstep[data-step="1"]')
 check('lege verplichte stap blokkeert', blocked)
 
+// De volgende knop staat onderaan een lang formulier. Na de stapwissel
+// moet de stapkop onder de fixed header blijven, niet eronder verdwijnen.
+await page.locator('.fstep[data-step="1"] [data-next]').evaluate((el) => {
+  const root = document.documentElement
+  const previous = root.style.scrollBehavior
+  root.style.scrollBehavior = 'auto'
+  const rect = el.getBoundingClientRect()
+  const scroller = document.scrollingElement ?? root
+  scroller.scrollTop = scroller.scrollTop + rect.bottom - window.innerHeight + 24
+  root.style.scrollBehavior = previous
+})
+await choice(1, 6).check()
+await page.click('.fstep[data-step="1"] [data-next]')
+await page.waitForTimeout(250)
+const headerGap = await page.evaluate(() => {
+  const nav = document.querySelector('header.nav')?.getBoundingClientRect()
+  const kop = document.querySelector('.fstep[data-step="2"] [data-step-focus]')?.getBoundingClientRect()
+  if (!nav || !kop) return -1
+  return Math.round(kop.top - nav.bottom)
+})
+check('stapkop blijft onder de header', headerGap >= 12, `ruimte=${headerGap}px`)
+
+await choice(2, 0).check()
+await page.click('.fstep[data-step="2"] [data-next]')
+await choice(3, 0).check()
+await page.click('.fstep[data-step="3"] [data-next]')
+await page.waitForTimeout(200)
+const geenAan = await page.locator('[name="geen_website"]').isChecked()
+const urlDicht = await page.locator('[name="url"]').isDisabled()
+await page.locator('[name="geen_website"]').uncheck()
+const geenUit = !(await page.locator('[name="geen_website"]').isChecked())
+const urlOpen = await page.locator('[name="url"]').isEnabled()
+check(
+  'vinkje geen website is uit te zetten',
+  geenAan && urlDicht && geenUit && urlOpen,
+  `aan=${geenAan} urlDicht=${urlDicht} uit=${geenUit} urlOpen=${urlOpen}`,
+)
+
 /* --- oude scan-URL --- */
 {
   const res = await page.request.get(BASE + '/gratis-websitescan', { maxRedirects: 0 })

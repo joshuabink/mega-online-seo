@@ -43,6 +43,7 @@ export function SteppedLeadForm({
   const [step, setStep] = useState(0)
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent'>('idle')
   const [error, setError] = useState<string | null>(null)
+  const vorigeStap = useRef<number | null>(null)
 
   const stepEls = () =>
     formRef.current
@@ -71,18 +72,38 @@ export function SteppedLeadForm({
     const num = formRef.current?.querySelector<HTMLElement>('.form__step-label b')
     if (num) num.textContent = String(step + 1)
 
-    // Stap 1 krijgt geen focus. Op mobiel opent dat het toetsenbord en
-    // springt de pagina. Vanaf stap 2 gaat de focus naar de vraagkop.
-    if (step === 0) return
+    // Strict mode draait dit effect twee keer bij de mount. Alleen een echte
+    // stapwissel mag scrollen, anders springt de hero bij het laden.
+    const veranderd = vorigeStap.current !== null && vorigeStap.current !== step
+    vorigeStap.current = step
+    if (!veranderd) return
 
-    const card = formRef.current?.closest<HTMLElement>('.form')
-    if (card) {
-      const top = card.getBoundingClientRect().top
-      if (top < 0 || top > window.innerHeight * 0.35) {
-        card.scrollIntoView({ block: 'nearest' })
+    // De header is fixed. Zonder offset verdwijnt de stapkop eronder.
+    // scroll-behavior op html is smooth, dus een kale scrollTop-toewijzing
+    // animeert en leest meteen daarna nog de oude positie. Even uitzetten.
+    const navH = parseFloat(
+      getComputedStyle(document.documentElement).getPropertyValue('--nav-h'),
+    )
+    const offset = (Number.isFinite(navH) ? navH : 80) + 16
+    const anchor =
+      formRef.current?.querySelector<HTMLElement>('.form__progress') ?? all[step]
+    if (anchor) {
+      const top = anchor.getBoundingClientRect().top
+      if (top < offset || top > window.innerHeight * 0.4) {
+        const root = document.documentElement
+        const previous = root.style.scrollBehavior
+        root.style.scrollBehavior = 'auto'
+        const scroller = document.scrollingElement ?? root
+        scroller.scrollTop = Math.max(0, scroller.scrollTop + top - offset)
+        root.style.scrollBehavior = previous
       }
     }
 
+    // Stap 1 krijgt geen focus. Op mobiel opent dat het toetsenbord en
+    // springt de pagina. Vanaf stap 2 gaat de focus naar de vraagkop.
+    // preventScroll: de positie hierboven blijft staan, ook als de browser
+    // het gefocuste element anders naar y=0 trekt, onder de header.
+    if (step === 0) return
     const focusEl = all[step]?.querySelector<HTMLElement>('[data-step-focus]')
     if (!focusEl) return
     const t = setTimeout(() => focusEl.focus({ preventScroll: true }), 60)

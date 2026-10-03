@@ -1,4 +1,4 @@
-import { useEffect, useId, useState } from 'react'
+import { useEffect, useId, useRef, useState } from 'react'
 import { Link } from '@tanstack/react-router'
 import { SteppedLeadForm } from './LeadForm'
 
@@ -160,13 +160,19 @@ export function ConceptForm({
   const [start, setStart] = useState('')
   const [geenWebsite, setGeenWebsite] = useState(false)
   const [url, setUrl] = useState('')
+  const geenStondAan = useRef(false)
 
-  const geenUitStap1 = knelpunt.includes(GEEN_WEBSITE)
-  const geenAan = geenUitStap1 || geenWebsite
+  // Stap 1 zet het vinkje aan op het moment dat die keuze erbij komt.
+  // Uitvinken in stap 4 blijft staan en maakt het websiteveld weer actief.
+  useEffect(() => {
+    const aan = knelpunt.includes(GEEN_WEBSITE)
+    if (aan && !geenStondAan.current) setGeenWebsite(true)
+    geenStondAan.current = aan
+  }, [knelpunt])
 
   useEffect(() => {
-    if (geenAan) setUrl('')
-  }, [geenAan])
+    if (geenWebsite) setUrl('')
+  }, [geenWebsite])
 
   return (
     <SteppedLeadForm
@@ -312,7 +318,7 @@ export function ConceptForm({
             autoComplete="url"
             placeholder="jouwwebsite.nl"
             value={url}
-            disabled={geenAan}
+            disabled={geenWebsite}
             onChange={(e) => setUrl(e.target.value)}
           />
         </div>
@@ -321,11 +327,8 @@ export function ConceptForm({
             type="checkbox"
             name="geen_website"
             value="ja"
-            checked={geenAan}
-            onChange={(e) => {
-              if (geenUitStap1) return
-              setGeenWebsite(e.target.checked)
-            }}
+            checked={geenWebsite}
+            onChange={(e) => setGeenWebsite(e.target.checked)}
           />
           <span>Ik heb nog geen website</span>
         </label>

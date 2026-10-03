@@ -325,6 +325,15 @@ form[aria-busy="true"] .btn-primary { opacity: .65; pointer-events: none; }
 /* ---------- Conceptformulier (klikstappen) ---------- */
 .concept { --focus: var(--heather); container-type: inline-size; }
 .concept .form__bar i { width: 16.67%; }
+/* Fixed header dekt de stapkop anders af bij scrollIntoView en focus. */
+.concept,
+.concept .form__progress,
+.concept [data-step-focus],
+.concept .field input,
+.concept .field textarea,
+.concept .checkline {
+  scroll-margin-top: calc(var(--nav-h, 80px) + 16px);
+}
 .concept .form__inner h3,
 .concept .fstep__title {
   font-size: clamp(1.2rem, 2vw, 1.45rem);
