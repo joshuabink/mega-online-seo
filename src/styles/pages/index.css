@@ -45,3 +45,17 @@
 @container (min-width: 400px) {
   [data-page="index"] .hero__form .choice__grid { grid-template-columns: 1fr 1fr; }
 }
+
+/* Vergelijking: afgeronde tegels in de MegaOnline-kolom, vaste marges */
+[data-page="index"] .cmp { padding: 6px clamp(10px, 1.4vw, 18px); }
+[data-page="index"] .cmp__row { align-items: center; }
+[data-page="index"] .cmp__k, [data-page="index"] .cmp__them, [data-page="index"] .cmp__col { margin: 0; }
+[data-page="index"] .cmp__col--us { margin: 8px 0; border-radius: 10px; }
+[data-page="index"] .cmp__us { margin: 8px 0; border-radius: 12px; }
+
+@media (max-width: 760px) {
+  [data-page="index"] .cmp { padding: 4px 12px; }
+  [data-page="index"] .cmp__k { padding: 16px 0 8px; }
+  [data-page="index"] .cmp__them { padding: 0 0 12px; }
+  [data-page="index"] .cmp__us { margin: 0 0 14px; }
+}
