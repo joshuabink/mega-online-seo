@@ -87,16 +87,6 @@ const VERSCHIL = [
     us: 'Je klant: wie hij is, wat hij zoekt en wat hem over de streep trekt.',
   },
   { k: 'Doel', them: 'Een site die er goed uitziet.', us: 'Een site die aanvragen en boekingen oplevert.' },
-  {
-    k: 'Aanvraagformulier',
-    them: 'Een standaard contactformulier.',
-    us: 'Afgestemd op je klant. Alleen de vragen die echt nodig zijn.',
-  },
-  {
-    k: 'Vindbaarheid',
-    them: 'Een SEO-plugin aanzetten.',
-    us: 'Structuur en teksten gebouwd op wat je klant in Google intypt.',
-  },
   { k: 'Na de livegang', them: 'Project af, factuur verstuurd.', us: 'Doorlopend bijsturen op de grootste groeikans.' },
   {
     k: 'Meten',
@@ -493,10 +483,6 @@ function Home() {
               {' '}
               <em>aanvragen.</em>
             </h2>
-            {' '}
-            <p className="lead">
-              Niet elke bouwer werkt zo. Maar dit is het verschil in aanpak waar het om draait als je website aanvragen moet opleveren.
-            </p>
           </Reveal>
           {' '}
           <Reveal as="div" className="cmp reveal" data-d="1">
