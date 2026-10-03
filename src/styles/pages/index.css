@@ -5,11 +5,12 @@
 [data-page="index"] .quote__logo .mediaslot img { width: auto; max-width: 130px; height: 100%; object-position: left center; }
 
 /* Vergelijking met de gemiddelde websitebouwer (#verschil) */
-[data-page="index"] .cmp { margin-top: clamp(28px, 3vw, 40px); border-top: 1px solid var(--line-strong); }
+[data-page="index"] .cmp { margin-top: clamp(28px, 3vw, 40px); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; background: var(--card); box-shadow: var(--elev); }
 [data-page="index"] .cmp__row { display: grid; grid-template-columns: minmax(150px, 0.7fr) 1fr 1fr; border-bottom: 1px solid var(--line); }
+[data-page="index"] .cmp__row:last-child { border-bottom: 0; }
 [data-page="index"] .cmp__col { font-family: var(--sans); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--faint); padding: 12px clamp(14px, 1.6vw, 22px); }
 [data-page="index"] .cmp__col--us { color: var(--accent-text); background: color-mix(in oklab, var(--accent) 9%, transparent); }
-[data-page="index"] .cmp__k { margin: 0; padding: 16px 16px 16px 0; font-family: var(--sans); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; line-height: 1.5; color: var(--accent-text); }
+[data-page="index"] .cmp__k { margin: 0; padding: 16px 16px 16px clamp(18px, 2vw, 26px); font-family: var(--sans); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; line-height: 1.5; color: var(--accent-text); }
 [data-page="index"] .cmp__them { padding: 16px clamp(14px, 1.6vw, 22px); color: var(--muted); font-size: 0.96rem; line-height: 1.55; }
 [data-page="index"] .cmp__us { display: flex; gap: 12px; align-items: flex-start; padding: 16px clamp(14px, 1.6vw, 22px); color: var(--fg); font-size: 0.96rem; font-weight: 500; line-height: 1.55; background: color-mix(in oklab, var(--accent) 9%, transparent); }
 [data-page="index"] .cmp__ck { width: 18px; height: 18px; flex: none; margin-top: 3px; color: var(--accent-text); }
@@ -20,9 +21,10 @@
 @media (max-width: 760px) {
   [data-page="index"] .cmp__row { grid-template-columns: 1fr; }
   [data-page="index"] .cmp__row--head { display: none; }
-  [data-page="index"] .cmp__k { padding: 16px 0 8px; }
-  [data-page="index"] .cmp__them { padding: 0 0 12px; }
-  [data-page="index"] .cmp__us { padding: 12px 14px; border-radius: 10px; margin-bottom: 16px; }
+  [data-page="index"] .cmp__k { padding: 16px 16px 8px; }
+  [data-page="index"] .cmp__row { padding-inline: 0; }
+  [data-page="index"] .cmp__them { padding: 0 16px 12px; }
+  [data-page="index"] .cmp__us { padding: 12px 14px; border-radius: 10px; margin: 0 12px 14px; }
   [data-page="index"] .cmp__who { display: block; margin-bottom: 4px; font-family: var(--sans); font-size: 0.66rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--faint); }
   [data-page="index"] .cmp__us .cmp__who { color: var(--accent-text); }
 }
