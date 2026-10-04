@@ -229,7 +229,23 @@ function Home() {
           </Reveal>
           {' '}
           <Reveal as="figure" className="procband reveal">
-            <Media id="werkwijze-foto" fit="cover" alt="Overleg over een website aan tafel" />
+            <picture>
+              <source
+                media="(max-width: 767px)"
+                srcSet="/images/werkwijze-visual-mobiel.webp"
+                width={1200}
+                height={2000}
+              />
+              <img
+                src="/images/werkwijze-visual.webp"
+                width={2400}
+                height={1048}
+                alt="Zo gaat een bezoeker van eerste indruk naar een aanvraag: eerste indruk, vertrouwen, makkelijk aanvragen en meer aanvragen, met meten en verbeteren na livegang"
+                loading="lazy"
+                decoding="async"
+                className="w-full h-auto block"
+              />
+            </picture>
           </Reveal>
           {' '}
           <div className="steps">
