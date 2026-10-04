@@ -784,7 +784,7 @@ function Home() {
         <div className="wrap">
           <div className="vision">
             <Reveal as="div" className="vision__media reveal">
-              <img src="/images/zo-werken-we-visual.webp" width={1600} height={2000} alt="Bij een groot bureau loopt je vraag via accountmanager, projectmanager, designer en developer. Bij MegaOnline heb je direct contact met Joshua, die de strategie bepaalt en je site bouwt." loading="lazy" decoding="async" className="w-full h-auto block" />
+              <img src="/images/zo-werken-we-visual-v2.webp" width={1600} height={2000} alt="Bij een groot bureau loopt je vraag via accountmanager, projectmanager, designer en developer. Bij MegaOnline heb je direct contact met je eigen webspecialist, die de strategie bepaalt en je site bouwt." loading="lazy" decoding="async" className="w-full h-auto block" />
             </Reveal>
             {' '}
             <Reveal as="div" className="vision__body reveal" data-d="1">
