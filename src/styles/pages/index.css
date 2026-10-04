@@ -59,3 +59,6 @@
   [data-page="index"] .cmp__them { padding: 0 0 12px; }
   [data-page="index"] .cmp__us { margin: 0 0 14px; }
 }
+
+/* Werkwijze-beeld: volledige afbeelding tonen zonder bijsnijden, frame behouden */
+[data-page="index"] .procband { aspect-ratio: auto; }
