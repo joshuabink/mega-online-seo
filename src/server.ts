@@ -51,9 +51,7 @@ function canonicalPathname(pathname: string): string {
   const collapsed = pathname.replace(/\\/g, "/").replace(/\/{2,}/g, "/");
   const withSlash = collapsed.startsWith("/") ? collapsed : `/${collapsed}`;
   const stripped =
-    withSlash.length > 1 && withSlash.endsWith("/")
-      ? withSlash.replace(/\/+$/, "")
-      : withSlash;
+    withSlash.length > 1 && withSlash.endsWith("/") ? withSlash.replace(/\/+$/, "") : withSlash;
   if (stripped.startsWith("/") && !stripped.startsWith("//") && !stripped.includes("\\")) {
     return stripped;
   }
@@ -61,7 +59,12 @@ function canonicalPathname(pathname: string): string {
 }
 
 function sameOriginLocation(origin: string, path: string, search: string): string | null {
-  if (!path.startsWith("/") || path.startsWith("//") || path.includes("\\") || path.includes("//")) {
+  if (
+    !path.startsWith("/") ||
+    path.startsWith("//") ||
+    path.includes("\\") ||
+    path.includes("//")
+  ) {
     return null;
   }
   const query = search.startsWith("?") && !/[\s\\]/.test(search) ? search : "";
