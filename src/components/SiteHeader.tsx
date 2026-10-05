@@ -323,7 +323,7 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
                   <Link className="mfeat__cta" to="/diensten/conversie-website">
                     Bekijk de dienst                  </Link>
                   <Link className="mfeat__link" to="/gratis-websiteconcept">
-                    Vraag je gratis concept aan                  </Link>
+                    Vraag je gratis websiteconcept aan                  </Link>
                 </aside>
 
                 <aside className="mfeat mfeat--soft mfeat--compact">
@@ -347,7 +347,7 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
                   resultaat.
                 </span>
                 <Link to="/gratis-websiteconcept">
-                  Niet zeker welke oplossing past? Vraag je gratis concept aan{' '}
+                  Niet zeker welke oplossing past? Vraag je gratis websiteconcept aan{' '}
                 </Link>
               </div>
             </div>
@@ -596,7 +596,7 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
                   binnen 2 werkdagen.
                 </p>
                 <Link className="mfeat__cta" to="/gratis-websiteconcept">
-                  Vraag je gratis concept aan                </Link>
+                  Vraag je gratis websiteconcept aan                </Link>
               </aside>
             </div>
           </div>

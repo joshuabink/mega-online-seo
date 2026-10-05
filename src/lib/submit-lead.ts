@@ -98,6 +98,22 @@ function formSubmitWeigering(html: string, status: number): FormSubmitWeigering 
   return null
 }
 
+/**
+ * Alleen het pad voor de log. `_pagina` in de mail blijft de volle waarde,
+ * inclusief titel, query en hash.
+ */
+function paginaPad(value: string | null): string {
+  if (!value) return 'onbekend'
+  const embedded = value.match(/https?:\/\/\S+/)
+  const raw = embedded?.[0] ?? value.trim()
+  try {
+    return new URL(raw).pathname || '/'
+  } catch {
+    const path = raw.split(/[?#]/)[0]
+    return path.startsWith('/') && path ? path : 'onbekend'
+  }
+}
+
 type MailResult = { ok: true } | { ok: false; reason: string; retry: 'client' | 'none' }
 
 function httpWeigering(status: number, body: string): { reason: string; retry: 'client' | 'none' } {
@@ -285,13 +301,13 @@ export const submitLead = createServerFn({ method: 'POST' })
     // Minimale inhoudscheck: zonder contactgegevens is het geen lead.
     const phone = params.get('telefoon') ?? params.get('tel')
     if (!params.get('email') && !phone) {
-      log(`afgekeurd: geen e-mail of telefoon (pagina: ${params.get('_pagina') ?? 'onbekend'})`)
+      log(`afgekeurd: geen e-mail of telefoon (pagina: ${paginaPad(params.get('_pagina'))})`)
       return { ok: false, error: 'Vul een e-mailadres of telefoonnummer in.', retry: 'none' }
     }
 
     log(
       `inzending ontvangen van ${maskContact(params.get('email') ?? phone ?? '')} ` +
-        `(pagina: ${params.get('_pagina') ?? 'onbekend'}, velden: ${[...params.keys()].join(', ')})`,
+        `(pagina: ${paginaPad(params.get('_pagina'))}, velden: ${[...params.keys()].join(', ')})`,
     )
 
     // Via globalThis, zodat dit bestand geen @types/node nodig heeft — de

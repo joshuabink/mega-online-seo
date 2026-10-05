@@ -67,7 +67,7 @@ function NotFoundComponent() {
               Naar de homepage
             </Link>
             <Link className="btn btn-outline" to="/gratis-websiteconcept">
-              Vraag je gratis concept aan
+              Vraag je gratis websiteconcept aan
             </Link>
           </div>
         </div>

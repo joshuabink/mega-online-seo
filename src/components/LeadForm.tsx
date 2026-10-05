@@ -255,7 +255,7 @@ export function SteppedLeadForm({
       }
     } catch {
       setFailure({
-        error: 'Je aanvraag is niet automatisch verstuurd. Je antwoorden blijven hier staan.',
+        error: `Je aanvraag is niet automatisch verstuurd. Mail direct naar ${LEAD_CONTACT.mail}.`,
       })
     } finally {
       busy.current = false
@@ -345,7 +345,7 @@ export function SingleLeadForm({
       }
     } catch {
       setFailure({
-        error: 'Je aanvraag is niet automatisch verstuurd. Je antwoorden blijven hier staan.',
+        error: `Je aanvraag is niet automatisch verstuurd. Mail direct naar ${LEAD_CONTACT.mail}.`,
       })
     } finally {
       busy.current = false
