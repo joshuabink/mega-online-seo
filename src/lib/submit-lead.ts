@@ -45,20 +45,80 @@ const MAIL_REFERER = 'https://megaonline.io/'
 /**
  * FormSubmit antwoordt bij een weigering met HTTP 200 en de fout in de pagina
  * zelf. Alleen naar de statuscode kijken betekent dus dat een mislukte mail als
- * geslaagd telt — precies waardoor dit maandenlang onopgemerkt bleef.
+ * geslaagd telt, precies waardoor dit maandenlang onopgemerkt bleef.
+ *
+ * Reden waarom een FormSubmit-antwoord geen geslaagde mail is.
+ * `retry: 'client'` betekent dat de mail aantoonbaar niet is verstuurd, zodat
+ * de browser daarna één keer zelf mag proberen. Bij een onduidelijk antwoord
+ * blijft die tweede poging achterwege: de mail kan al weg zijn.
  */
-function formSubmitWeigering(html: string): string | null {
+type FormSubmitWeigering = { reason: string; detail: string; retry: 'client' | 'none' }
+
+function formSubmitWeigering(html: string): FormSubmitWeigering | null {
   const t = html.toLowerCase()
   if (t.includes('needs activation')) {
-    return 'formulier nog niet geactiveerd — klik de activatielink in de mail van FormSubmit'
+    return {
+      reason: 'needs-activation',
+      detail: 'formulier nog niet geactiveerd, activatielink in de mail van FormSubmit',
+      retry: 'client',
+    }
   }
   if (t.includes('unable to submit form')) {
-    return 'FormSubmit weigerde de inzending (Referer ontbreekt of wordt niet geaccepteerd)'
+    return {
+      reason: 'referer-refused',
+      detail: 'FormSubmit weigerde de inzending (Referer ontbreekt of wordt niet geaccepteerd)',
+      retry: 'client',
+    }
+  }
+  // AJAX-antwoord is JSON met de string "false", niet de boolean. Een losse
+  // truthiness-check zou die weigering als succes zien.
+  if (/"success"\s*:\s*"false"/.test(t) || /"success"\s*:\s*false\b/.test(t)) {
+    return {
+      reason: 'success-false',
+      detail: 'FormSubmit antwoordde success false',
+      retry: 'client',
+    }
+  }
+  if (
+    t.includes('just a moment') ||
+    t.includes('cf-browser-verification') ||
+    t.includes('attention required') ||
+    t.includes('enable javascript and cookies') ||
+    t.includes('you have been blocked')
+  ) {
+    return {
+      reason: 'cloudflare-challenge',
+      detail: 'FormSubmit (Cloudflare) diende een bot-challenge uit in plaats van de mail',
+      retry: 'client',
+    }
   }
   if (t.includes('submitted successfully')) return null
-  // Onbekend antwoord: niet blokkeren, wel vastleggen zodat het opvalt.
+  // Onbekend antwoord: niet blokkeren. Een afwijkende bedankpagina is geen
+  // bewijs dat de mail faalde, en een tweede poging zou dan dubbel kunnen gaan.
   console.warn('[lead] onbekend antwoord van FormSubmit:', html.slice(0, 200))
   return null
+}
+
+type MailResult = { ok: true } | { ok: false; reason: string; retry: 'client' | 'none' }
+
+function httpWeigering(status: number, body: string): { reason: string; retry: 'client' | 'none' } {
+  const t = body.toLowerCase()
+  let reason = `http-${status}`
+  if (t.includes('needs activation')) reason = 'needs-activation'
+  else if (t.includes('unable to submit form')) reason = 'referer-refused'
+  else if (
+    t.includes('just a moment') ||
+    t.includes('attention required') ||
+    t.includes('you have been blocked') ||
+    t.includes('error 1010') ||
+    t.includes('error 1020')
+  ) {
+    reason = `http-${status}-blocked`
+  }
+  // 4xx: geweigerd, er is geen mail verstuurd. 5xx kan na een geslaagde
+  // verwerking alsnog terugkomen, dus dan niet nog eens vanaf de browser.
+  const retry = status >= 400 && status < 500 ? 'client' : 'none'
+  return { reason, retry }
 }
 
 /**
@@ -114,7 +174,7 @@ async function mailViaResend(
   apiKey: string,
   params: URLSearchParams,
   env: Record<string, string | undefined> | undefined,
-): Promise<boolean> {
+): Promise<MailResult> {
   // `_subject` en `_pagina` zijn techniek, geen inhoud: die horen niet als rij
   // in de tabel maar in het onderwerp en onderaan als herkomst.
   const rijen = [...params].filter(([k]) => !k.startsWith('_'))
@@ -163,21 +223,35 @@ async function mailViaResend(
 
     if (!res.ok) {
       // Resend geeft een leesbare JSON-fout terug; die willen we in de log zien
-      // in plaats van een kale statuscode.
-      console.error(`[lead] Resend gaf status ${res.status}:`, await res.text())
-      return false
+      // in plaats van een kale statuscode. De body kan het adres van de
+      // aanvrager herhalen, dus die blijft uit de gestructureerde regel.
+      const body = await res.text()
+      console.error(`[lead] Resend gaf status ${res.status}:`, body.slice(0, 300))
+      const retry = res.status >= 400 && res.status < 500 ? 'client' : 'none'
+      return { ok: false, reason: `resend-http-${res.status}`, retry }
     }
-    return true
+    return { ok: true }
   } catch (err) {
     console.error('[lead] Resend verzenden mislukt:', err)
-    return false
+    return { ok: false, reason: 'resend-network', retry: 'none' }
   }
 }
 
 const MAX_FIELD_LENGTH = 5000
 
 
-export type LeadResponse = { ok: true } | { ok: false; error: string }
+export type LeadResponse =
+  | { ok: true }
+  | {
+      ok: false
+      error: string
+      /**
+       * `client`: de mail is aantoonbaar niet verstuurd. De browser mag dan
+       * één keer zelf naar FormSubmit posten. `none`: niet nog eens proberen
+       * (validatie, timeout, of een antwoord dat al een mail kan zijn).
+       */
+      retry: 'client' | 'none'
+    }
 
 // `inputValidator` i.p.v. het nieuwere `validator`: die methode bestaat pas
 // vanaf react-start 1.168 en de Lovable-repo draait op 1.167. Deze naam werkt
@@ -216,7 +290,7 @@ export const submitLead = createServerFn({ method: 'POST' })
     const phone = params.get('telefoon') ?? params.get('tel')
     if (!params.get('email') && !phone) {
       log(`afgekeurd: geen e-mail of telefoon (pagina: ${params.get('_pagina') ?? 'onbekend'})`)
-      return { ok: false, error: 'Vul een e-mailadres of telefoonnummer in.' }
+      return { ok: false, error: 'Vul een e-mailadres of telefoonnummer in.', retry: 'none' }
     }
 
     log(
@@ -235,6 +309,10 @@ export const submitLead = createServerFn({ method: 'POST' })
     const mailParams = new URLSearchParams(params)
     mailParams.set('_template', 'table')
     mailParams.set('_captcha', 'false')
+    // FormSubmit raadt `_url` aan als de Referer alleen het domein is of
+    // onderweg wordt gestript. Zelfde vaste oorsprong als MAIL_REFERER, zodat
+    // een preview-URL geen tweede, niet-geactiveerd formulier wordt.
+    mailParams.set('_url', MAIL_REFERER)
     if (params.get('email')) mailParams.set('_replyto', params.get('email')!)
 
     async function post(
@@ -244,9 +322,9 @@ export const submitLead = createServerFn({ method: 'POST' })
       opts: {
         headers?: Record<string, string>
         /** Geeft een reden terug als de body een weigering is, anders null. */
-        verify?: (html: string) => string | null
+        verify?: (html: string) => FormSubmitWeigering | null
       } = {},
-    ) {
+    ): Promise<MailResult> {
       try {
         const res = await fetch(url, {
           method: 'POST',
@@ -258,20 +336,21 @@ export const submitLead = createServerFn({ method: 'POST' })
           signal: AbortSignal.timeout(10_000),
         })
         if (!res.ok && res.status >= 400) {
-          logError(`${label} gaf status ${res.status}`)
-          return false
+          const detail = httpWeigering(res.status, await res.text().catch(() => ''))
+          logError(`${label} gaf status ${res.status} (${detail.reason})`)
+          return { ok: false, reason: detail.reason, retry: detail.retry }
         }
         if (opts.verify) {
           const reden = opts.verify(await res.text())
           if (reden) {
-            logError(`${label} geweigerd (status ${res.status}): ${reden}`)
-            return false
+            logError(`${label} geweigerd (status ${res.status}): ${reden.detail}`)
+            return { ok: false, reason: reden.reason, retry: reden.retry }
           }
         }
-        return true
+        return { ok: true }
       } catch (err) {
         logError(`${label} verzenden mislukt:`, err)
-        return false
+        return { ok: false, reason: 'network', retry: 'none' }
       }
     }
 
@@ -282,15 +361,19 @@ export const submitLead = createServerFn({ method: 'POST' })
     const mailOk = resendKey
       ? await mailViaResend(resendKey, params, env)
       : await post(mailEndpoint, mailParams.toString(), 'e-mail (FormSubmit)', {
-          headers: { Referer: MAIL_REFERER },
+          headers: { Referer: MAIL_REFERER, Origin: 'https://megaonline.io' },
           verify: formSubmitWeigering,
         })
 
-    if (!mailOk) {
+    if (!mailOk.ok) {
+      // Gestructureerd, zonder de inhoud van de aanvraag, zodat een mislukte
+      // mail in de Lovable-logs op één regel te vinden is.
+      console.error(`[lead-failed] id=${leadId} route=${mailRoute} reason=${mailOk.reason}`)
       logError(`mail (${mailRoute}) ✗`)
       return {
         ok: false,
         error: 'We konden je aanvraag niet verwerken. Probeer het nog eens of mail ons direct.',
+        retry: mailOk.retry,
       }
     }
 
