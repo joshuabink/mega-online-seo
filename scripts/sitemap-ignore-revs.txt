@@ -3,7 +3,7 @@
 #
 # De generator slaat deze commits over bij de lastmod per bestand.
 # Daarnaast slaat hij zelf berichten over die (hoofdletterongevoelig)
-# prettier, format, lint, eslint of refactor bevatten, of de marker
+# prettier, format, lint, eslint, refactor of style bevatten, of de marker
 # [skip-lastmod]. Een typo-fix telt wél als inhoud en wordt niet overgeslagen.
 #
 # Toekomstige opmaakcommit uitsluiten: zet [skip-lastmod] in het bericht,

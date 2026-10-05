@@ -7,8 +7,8 @@
  *
  * Commits in scripts/sitemap-ignore-revs.txt tellen niet mee, net als
  * berichten die opmaak of onderhoud zijn (prettier, format, lint, eslint,
- * refactor) of de marker [skip-lastmod] bevatten. Typo-fixes blijven wel
- * meetellen.
+ * refactor of style) of de marker [skip-lastmod] bevatten. Typo-fixes
+ * blijven wel meetellen.
  *
  * Lovable bouwt soms zonder volledige git-geschiedenis. Dan zou elke
  * lastmod dezelfde shallow-datum krijgen. Dit script overschrijft de
@@ -34,7 +34,7 @@ const DATE_OVERRIDES = {
   // "src/routes/voorbeeld.tsx": "2026-01-01",
 };
 
-const SKIP_SUBJECT = /\b(?:prettier|format|lint|eslint|refactor)\b|\[skip-lastmod\]/i;
+const SKIP_SUBJECT = /\b(?:prettier|format|lint|eslint|refactor|style)\b|\[skip-lastmod\]/i;
 
 const ROUTE_FILES = {
   "/": "src/routes/index.tsx",

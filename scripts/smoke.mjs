@@ -375,7 +375,7 @@ check('onbekende URL geeft 404', missing.status() === 404, String(missing.status
 }
 
 /* --- broodkruimels diensten en branches --- */
-for (const crumbPath of ["/diensten/seo", "/branches/verhuurbedrijven"]) {
+for (const crumbPath of ["/diensten/integraties", "/diensten/seo", "/branches/verhuurbedrijven"]) {
   await page.goto(BASE + crumbPath, { waitUntil: "load" });
   await waitHydrated(page);
   await page.waitForFunction(
@@ -394,6 +394,7 @@ for (const crumbPath of ["/diensten/seo", "/branches/verhuurbedrijven"]) {
       (node) => node.getAttribute("href") || "",
     );
     const badItems = [];
+    let lastLabel = "";
     for (const raw of scripts) {
       let data;
       try {
@@ -404,7 +405,10 @@ for (const crumbPath of ["/diensten/seo", "/branches/verhuurbedrijven"]) {
       const nodes = Array.isArray(data["@graph"]) ? data["@graph"] : [data];
       for (const node of nodes) {
         if (node["@type"] !== "BreadcrumbList") continue;
-        for (const item of node.itemListElement || []) {
+        const items = node.itemListElement || [];
+        const last = items[items.length - 1];
+        if (last && typeof last.name === "string") lastLabel = last.name;
+        for (const item of items) {
           const href = typeof item.item === "string" ? item.item : "";
           if (!href) continue;
           let pathname = "";
@@ -426,12 +430,19 @@ for (const crumbPath of ["/diensten/seo", "/branches/verhuurbedrijven"]) {
       json: scripts.join("\n"),
       hrefs,
       badItems,
+      lastLabel,
+      visible: document.querySelector(".crumb b")?.textContent?.trim() ?? "",
     };
   });
   check(
     `${crumbPath} JSON-LD zonder #diensten`,
     !crumb.json.includes("megaonline.io/#diensten") && crumb.badItems.length === 0,
     crumb.badItems.join(", "),
+  );
+  check(
+    `${crumbPath} kruimellabel gelijk aan zichtbare tekst`,
+    crumb.lastLabel !== "" && crumb.lastLabel === crumb.visible,
+    `json=${crumb.lastLabel} zichtbaar=${crumb.visible}`,
   );
   check(
     `${crumbPath} zichtbare kruimel zonder #diensten`,
