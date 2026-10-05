@@ -376,11 +376,26 @@ function artikelVoorPad(path: string): Artikel | undefined {
 }
 
 /**
+ * Auteur van het Article-schema.
+ *
+ * Leeg of ontbrekend houdt de bestaande verwijzing naar `#joshua-bink`.
+ * Een gevulde naam wordt zelf de auteur en wijst niet meer naar Joshua.
+ */
+function artikelAuteur(a: Artikel): Record<string, unknown> {
+  const naam = a.auteur?.trim();
+  if (!naam) return { "@id": FOUNDER_ID };
+  return { "@type": "Person", name: naam };
+}
+
+/**
  * Article plus FAQPage per kennisbankartikel. De FAQ-node komt uit dezelfde
  * vragen die op de pagina staan, want markup die iets anders zegt dan de
- * zichtbare tekst is precies wat Google afkeurt. `author` is de oprichter en
- * niet het bedrijf: een artikel met een mens erachter is beter te herkennen
- * als bron, ook door AI-antwoorden die de auteur meewegen.
+ * zichtbare tekst is precies wat Google afkeurt. Zonder vragen is er geen
+ * FAQPage, net zoals de pagina dan geen FAQ-blok toont.
+ *
+ * `author` is standaard de oprichter en niet het bedrijf: een artikel met een
+ * mens erachter is beter te herkennen als bron, ook door AI-antwoorden die de
+ * auteur meewegen.
  */
 function buildArtikel(a: Artikel, url: string, pageId: string) {
   const nodes: Record<string, unknown>[] = [
@@ -392,7 +407,7 @@ function buildArtikel(a: Artikel, url: string, pageId: string) {
       inLanguage: "nl-NL",
       datePublished: a.gepubliceerd,
       dateModified: a.gewijzigd,
-      author: { "@id": FOUNDER_ID },
+      author: artikelAuteur(a),
       publisher: { "@id": ORG_ID },
       isPartOf: { "@id": WEBSITE_ID },
       mainEntityOfPage: { "@id": pageId },
@@ -401,11 +416,12 @@ function buildArtikel(a: Artikel, url: string, pageId: string) {
     },
   ];
 
-  if (a.faq.length) {
+  const faq = a.faq ?? [];
+  if (faq.length) {
     nodes.push({
       "@type": "FAQPage",
       "@id": `${url}#faq`,
-      mainEntity: a.faq.map(({ q, a: antwoord }) => ({
+      mainEntity: faq.map(({ q, a: antwoord }) => ({
         "@type": "Question",
         name: q,
         acceptedAnswer: { "@type": "Answer", text: antwoord },

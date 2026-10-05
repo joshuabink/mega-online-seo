@@ -9,7 +9,8 @@ import "@/styles/pages/kennisbank.css";
  * Eén route voor alle kennisbankartikelen. De inhoud komt uit
  * `src/lib/kennisbank.ts`, zodat de kaart in het overzicht, deze pagina en de
  * Article- plus FAQPage-markup in `src/lib/schema.ts` niet uit elkaar lopen.
- * Een onbekende slug valt door naar de 404 van de root.
+ * Zonder vragen rendert deze pagina geen FAQ-blok. Het schema slaat FAQPage
+ * dan ook over. Een onbekende slug valt door naar de 404 van de root.
  */
 /**
  * Slugs die eerder live stonden en inmiddels anders heten. De tabel in
@@ -99,6 +100,7 @@ function ArtikelPagina() {
   const a = artikelBySlug(slug);
   if (!a) return null;
 
+  const faq = a.faq ?? [];
   const anderen = artikelenNieuwsteEerst().filter((x) => x.slug !== a.slug);
 
   return (
@@ -193,21 +195,23 @@ function ArtikelPagina() {
           </ul>
         </div>
       </section>{" "}
-      <section className="section" id="faq" data-theme="dark" data-screen-label="FAQ">
-        <div className="wrap">
-          <Reveal as="div" className="shead reveal" style={{ maxWidth: "680px" }}>
-            <span className="label">Veelgestelde vragen</span>{" "}
-            <h2 className="h2">Wat je hierover nog vaker gevraagd wordt</h2>
-          </Reveal>{" "}
-          <div className="faq">
-            {a.faq.map(({ q, a: antw }) => (
-              <Qa key={q} question={q} className="reveal">
-                {antw}
-              </Qa>
-            ))}
+      {faq.length > 0 ? (
+        <section className="section" id="faq" data-theme="dark" data-screen-label="FAQ">
+          <div className="wrap">
+            <Reveal as="div" className="shead reveal" style={{ maxWidth: "680px" }}>
+              <span className="label">Veelgestelde vragen</span>{" "}
+              <h2 className="h2">Wat je hierover nog vaker gevraagd wordt</h2>
+            </Reveal>{" "}
+            <div className="faq">
+              {faq.map(({ q, a: antw }) => (
+                <Qa key={q} question={q} className="reveal">
+                  {antw}
+                </Qa>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>{" "}
+        </section>
+      ) : null}{" "}
       <section className="section section--tight" data-theme="light" data-screen-label="Lees verder">
         <div className="wrap">
           <Reveal as="div" className="shead reveal">
