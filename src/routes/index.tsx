@@ -200,7 +200,7 @@ function Home() {
               <h3>De mobiele ervaring werkt tegen je</h3>
               {' '}
               <p>
-                Het grootste deel van je bezoekers komt mobiel binnen. Als de ervaring niet soepel is, verlies je kansen.
+                Bijna iedereen gaat ook met de telefoon online. Als de ervaring daar niet soepel is, verlies je kansen.
               </p>
             </Reveal>
             {' '}
@@ -350,13 +350,24 @@ function Home() {
               {' '}
               <div className="panel__stats">
                 <div>
-                  <div className="n">60%+</div>
-                  <div className="l">van bezoekers komt via mobiel</div>
+                  <div className="n">96%</div>
+                  <div className="l">
+                    van de Nederlanders (12+) gaat online met de telefoon (
+                    <a
+                      href="https://www.cbs.nl/nl-nl/longread/rapportages/2026/digitalisering-en-kenniseconomie-2025/4-ict-gebruik-personen"
+                      target="_blank"
+                      rel="noopener"
+                      style={{ textDecoration: "underline", textUnderlineOffset: "2px" }}
+                    >
+                      CBS, 2025
+                    </a>
+                    )
+                  </div>
                 </div>
                 {' '}
                 <div>
-                  <div className="n">3 sec</div>
-                  <div className="l">om een bezoeker te overtuigen of te verliezen</div>
+                  <div className="n">Eerste indruk</div>
+                  <div className="l">telt mee in de keuze om contact op te nemen</div>
                 </div>
               </div>
             </Reveal>
