@@ -247,6 +247,8 @@ const mailFout = await page.evaluate(() => {
     mailto: fallback?.querySelector('a.btn')?.getAttribute('href') ?? '',
     tel: fallback?.querySelector('a[href^="tel:"]')?.getAttribute('href') ?? '',
     wa: fallback?.querySelector('a[href*="wa.me"]')?.getAttribute('href') ?? '',
+    waTarget: fallback?.querySelector('a[href*="wa.me"]')?.getAttribute('target') ?? '',
+    waRel: fallback?.querySelector('a[href*="wa.me"]')?.getAttribute('rel') ?? '',
     naam: form?.querySelector('#c-naam')?.value ?? '',
     email: form?.querySelector('#c-email')?.value ?? '',
     bericht: form?.querySelector('#c-bericht')?.value ?? '',
@@ -259,8 +261,9 @@ const failLeads = readLeads().slice(leadsBeforeFail)
 check(
   'mislukte mail toont de fallback',
   !mailFout.sent &&
-    /niet automatisch versturen/.test(mailFout.text) &&
-    /Verstuur via je eigen mail/.test(mailFout.text),
+    /niet automatisch verstuurd/.test(mailFout.text) &&
+    /Verstuur via je eigen mail/.test(mailFout.text) &&
+    /zakelijk@joshuabink\.nl/.test(mailFout.text),
   mailFout.text || 'geen fallback',
 )
 check(
@@ -271,14 +274,22 @@ check(
     mailtoBody.includes('E-mailadres: mail-faalt@example.com') &&
     mailtoBody.includes('Telefoonnummer: 0611111111') &&
     mailtoBody.includes('Bericht: Graag een kennismaking.') &&
-    mailtoBody.includes('Onderwerp: Iets anders'),
+    mailtoBody.includes('Onderwerp: Iets anders') &&
+    mailFout.mailto.includes('%0D%0A'),
   mailtoSubject,
 )
 check('telefoon en WhatsApp staan in de fallback',
   /06 34 38 89 38/.test(mailFout.text) &&
     mailFout.tel === 'tel:+31634388938' &&
-    mailFout.wa === 'https://wa.me/31634388938',
-  `${mailFout.text} ${mailFout.tel} ${mailFout.wa}`)
+    mailFout.wa === 'https://wa.me/31634388938' &&
+    mailFout.waTarget === '_blank' &&
+    mailFout.waRel.includes('noopener'),
+  `${mailFout.tel} ${mailFout.wa} ${mailFout.waTarget}`)
+check('browserpost zonder honeypot en met vast _url',
+  failPosts.length === 1 &&
+    !failPosts[0].body.includes('website_hp') &&
+    failPosts[0].body.includes('_url=https%3A%2F%2Fmegaonline.io%2Fcontact'),
+  failPosts[0]?.body?.slice(0, 180) ?? '')
 check('invoer blijft staan na een mislukte mail',
   mailFout.naam === 'Mail Faalt' && mailFout.email === 'mail-faalt@example.com' &&
     mailFout.bericht === 'Graag een kennismaking.')
@@ -307,6 +318,132 @@ check('browser-fallback telt als verstuurd', clientSent)
 check('geen dubbele serverpost als de browser het overneemt',
   clientLeadAdds === 1 && clientPostAdds === 1,
   `server=${clientLeadAdds} browser=${clientPostAdds}`)
+
+async function verstuurContact(email, naam) {
+  await page.goto(BASE + '/contact', { waitUntil: 'load' })
+  await waitHydrated(page)
+  await page.fill('#c-naam', naam)
+  await page.fill('#c-email', email)
+  await page.fill('#c-tel', '0610101010')
+  await page.selectOption('#c-onderwerp', 'Iets anders')
+  const postsBefore = clientPosts.length
+  const leadsBefore = readLeads().length
+  await page.click('.fhero__form button[type="submit"]')
+  return { postsBefore, leadsBefore }
+}
+
+function sinds(email, postsBefore, leadsBefore) {
+  const stem = email.split('@')[0]
+  return {
+    posts: clientPosts.slice(postsBefore).filter((p) => p.body.includes(stem)),
+    leads: readLeads().slice(leadsBefore).filter((l) => l.email === email),
+  }
+}
+
+async function fallbackZichtbaar(timeout = 8000) {
+  await page.locator('.fhero__form [data-lead-fallback]').waitFor({ timeout })
+  return page.evaluate(() => ({
+    busy: document.querySelector('.fhero__form')?.getAttribute('aria-busy'),
+    mailto: !!document.querySelector('.fhero__form [data-lead-fallback] a.btn'),
+    sent: document.querySelector('.fhero__form')?.classList.contains('sent') ?? false,
+  }))
+}
+
+{
+  const t = await verstuurContact('status403@example.com', 'Status 403')
+  const ui = await fallbackZichtbaar()
+  const d = sinds('status403@example.com', t.postsBefore, t.leadsBefore)
+  check('403: precies één browserpost en een mailto',
+    !ui.sent && ui.mailto && ui.busy !== 'true' && d.leads.length === 1 && d.posts.length === 1,
+    `server=${d.leads.length} browser=${d.posts.length} busy=${ui.busy}`)
+}
+
+{
+  const t = await verstuurContact('status500@example.com', 'Status 500')
+  const ui = await fallbackZichtbaar()
+  const d = sinds('status500@example.com', t.postsBefore, t.leadsBefore)
+  check('5xx: geen browserpost, wel mailto',
+    !ui.sent && ui.mailto && d.leads.length === 1 && d.posts.length === 0,
+    `server=${d.leads.length} browser=${d.posts.length}`)
+}
+
+{
+  const t = await verstuurContact('hangt@example.com', 'Hangt')
+  const ui = await fallbackZichtbaar(20000)
+  const d = sinds('hangt@example.com', t.postsBefore, t.leadsBefore)
+  check('timeout: geen browserpost, wel mailto, formulier niet blijven hangen',
+    !ui.sent && ui.mailto && ui.busy !== 'true' && d.leads.length === 1 && d.posts.length === 0,
+    `server=${d.leads.length} browser=${d.posts.length} busy=${ui.busy}`)
+}
+
+{
+  const t = await verstuurContact('challenge@example.com', 'Challenge')
+  const ui = await fallbackZichtbaar()
+  const d = sinds('challenge@example.com', t.postsBefore, t.leadsBefore)
+  check('Cloudflare-challenge is geen succes',
+    !ui.sent && ui.mailto && d.leads.length === 1 && d.posts.length === 1,
+    `server=${d.leads.length} browser=${d.posts.length}`)
+}
+
+{
+  const t = await verstuurContact('successfalse@example.com', 'Success False')
+  const ui = await fallbackZichtbaar()
+  const d = sinds('successfalse@example.com', t.postsBefore, t.leadsBefore)
+  check('success false is geen succes',
+    !ui.sent && ui.mailto && d.leads.length === 1 && d.posts.length === 1,
+    `server=${d.leads.length} browser=${d.posts.length}`)
+}
+
+{
+  let aborted = 0
+  const abortServerFn = async (route) => {
+    if (route.request().method() === 'POST') {
+      aborted += 1
+      await route.abort('failed')
+      return
+    }
+    await route.fallback()
+  }
+  await page.route('**/_serverFn/**', abortServerFn)
+  const postsBefore = clientPosts.length
+  await page.goto(BASE + '/contact', { waitUntil: 'load' })
+  await waitHydrated(page)
+  await page.fill('#c-naam', 'Server Gooit')
+  await page.fill('#c-email', 'gooit@example.com')
+  await page.selectOption('#c-onderwerp', 'Iets anders')
+  await page.click('.fhero__form button[type="submit"]')
+  const ui = await fallbackZichtbaar()
+  await page.unroute('**/_serverFn/**', abortServerFn)
+  const posts = clientPosts.length - postsBefore
+  check('server function gooit: mailto, geen browserpost, niet blijven hangen',
+    !ui.sent && ui.mailto && ui.busy !== 'true' && aborted >= 1 && posts === 0,
+    `afgebroken=${aborted} browser=${posts} busy=${ui.busy}`)
+}
+
+{
+  const postsBefore = clientPosts.length
+  const leadsBefore = readLeads().length
+  await page.goto(BASE + '/contact', { waitUntil: 'load' })
+  await waitHydrated(page)
+  await page.fill('#c-naam', 'Zonder Contact')
+  await page.fill('#c-email', '')
+  await page.fill('#c-tel', '')
+  await page.evaluate(() => {
+    document.querySelectorAll('.fhero__form [required]').forEach((el) => el.removeAttribute('required'))
+  })
+  await page.click('.fhero__form button[type="submit"]')
+  await page.locator('.fhero__form .form__error').waitFor({ timeout: 8000 })
+  const validatie = await page.evaluate(() => ({
+    fout: document.querySelector('.fhero__form .form__error')?.textContent ?? '',
+    mailto: document.querySelectorAll('.fhero__form [data-lead-fallback]').length,
+  }))
+  check('validatiefout zonder mailto',
+    /e-mailadres of telefoonnummer/.test(validatie.fout) &&
+      validatie.mailto === 0 &&
+      clientPosts.length === postsBefore &&
+      readLeads().length === leadsBefore,
+    validatie.fout)
+}
 
 /* --- validatie blokkeert lege stap op een dienstpagina --- */
 await page.goto(BASE + '/diensten/conversie-website', { waitUntil: 'load' })
@@ -527,16 +664,24 @@ async function conceptFallback(pg) {
   const beforePosts = clientPosts.filter((p) => p.body.includes('concept-faalt')).length
   await pg.click('.fstep[data-step="6"] button[type="submit"]')
   await pg.locator('[data-lead-fallback]').waitFor({ timeout: 8000 })
+  await pg.waitForFunction(
+    () => document.activeElement?.classList.contains('form__fallback-title'),
+    null,
+    { timeout: 3000 },
+  )
   const state = await pg.evaluate(() => {
     const form = document.querySelector('.concept.form')
     const naam = form?.querySelector('[name="naam"]')?.value ?? ''
     const email = form?.querySelector('[name="email"]')?.value ?? ''
-    const direct = form?.querySelector('.form__direct')?.textContent ?? ''
+    const direct = form?.querySelector('.form__direct')
+    const fallback = form?.querySelector('[data-lead-fallback]')
     return {
       sent: form?.classList.contains('sent') ?? false,
       naam,
       email,
-      direct,
+      directHidden: direct ? getComputedStyle(direct).display === 'none' : false,
+      fallbackText: fallback?.textContent ?? '',
+      focused: document.activeElement?.classList.contains('form__fallback-title') ?? false,
       overflow: document.documentElement.scrollWidth <= window.innerWidth + 1,
     }
   })
@@ -550,13 +695,16 @@ async function conceptFallback(pg) {
   check('conceptformulier toont de fallback',
     !desktopFallback.sent && desktopFallback.naam === 'Concept Faalt' &&
       desktopFallback.email === 'concept-faalt@example.com' &&
-      /zakelijk@joshuabink.nl/.test(desktopFallback.direct) &&
+      /zakelijk@joshuabink\.nl/.test(desktopFallback.fallbackText) &&
+      desktopFallback.directHidden &&
+      desktopFallback.focused &&
       desktopFallback.addedLeads === 1 && desktopFallback.addedPosts === 1,
     `sent=${desktopFallback.sent} server=${desktopFallback.addedLeads} browser=${desktopFallback.addedPosts}`)
-  const shotDir = '/opt/cursor/artifacts'
+  const shotDir = process.env.SCREENSHOT_DIR ?? '/opt/cursor/artifacts'
   fs.mkdirSync(shotDir, { recursive: true })
-  await page.locator('.concept.form').screenshot({
-    path: path.join(shotDir, 'lead_fallback_desktop.png'),
+  await page.locator('[data-lead-fallback]').scrollIntoViewIfNeeded()
+  await page.locator('[data-lead-fallback]').screenshot({
+    path: path.join(shotDir, 'lead_fallback_desktop_full.png'),
   })
 
   const narrow = await browser.newPage({ viewport: { width: 390, height: 844 } })
@@ -566,8 +714,9 @@ async function conceptFallback(pg) {
   check('fallback op 390px zonder horizontale scroll',
     !mobileFallback.sent && mobileFallback.overflow && mobileFallback.addedLeads === 1,
     `overflowOk=${mobileFallback.overflow} server=${mobileFallback.addedLeads}`)
-  await narrow.locator('.concept.form').screenshot({
-    path: path.join(shotDir, 'lead_fallback_mobile.png'),
+  await narrow.locator('[data-lead-fallback]').scrollIntoViewIfNeeded()
+  await narrow.locator('[data-lead-fallback]').screenshot({
+    path: path.join(shotDir, 'lead_fallback_mobile_full.png'),
   })
   await narrow.close()
 }

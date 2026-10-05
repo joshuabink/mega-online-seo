@@ -37,6 +37,30 @@ http
       fs.writeFileSync(FILE, JSON.stringify(all, null, 2))
 
       const email = (fields.email ?? '').trim()
+      if (email === 'hangt@example.com') {
+        // Geen antwoord. De server moet op zijn eigen timeout terugvallen.
+        return
+      }
+      if (email === 'status403@example.com') {
+        res.writeHead(403, { 'Content-Type': 'text/html' })
+        res.end('Sorry, you have been blocked')
+        return
+      }
+      if (email === 'status500@example.com') {
+        res.writeHead(502, { 'Content-Type': 'text/html' })
+        res.end('bad gateway')
+        return
+      }
+      if (email === 'challenge@example.com') {
+        res.writeHead(200, { 'Content-Type': 'text/html' })
+        res.end('<html><title>Just a moment...</title>Attention Required | Cloudflare</html>')
+        return
+      }
+      if (email === 'successfalse@example.com') {
+        res.writeHead(200, { 'Content-Type': 'application/json' })
+        res.end('{"success":"false","message":"no"}')
+        return
+      }
       const fail = email.includes('faalt') || FAIL_EXACT.has(email)
       // Zelfde antwoord als FormSubmit bij een weigering: status 200, fout in de pagina.
       if (fail) {
