@@ -179,7 +179,7 @@ check(
   'contactregel staat onder de verzendknop',
   /Liever direct contact/.test(direct) &&
     /zakelijk@joshuabink\.nl/.test(direct) &&
-    /\+31634388938/.test(direct) &&
+    /06 34 38 89 38/.test(direct) &&
     /WhatsApp/.test(direct) &&
     directMail === 'mailto:zakelijk@joshuabink.nl' &&
     directTel === 'tel:+31634388938' &&
@@ -275,8 +275,10 @@ check(
   mailtoSubject,
 )
 check('telefoon en WhatsApp staan in de fallback',
-  mailFout.tel === 'tel:+31634388938' && mailFout.wa === 'https://wa.me/31634388938',
-  `${mailFout.tel} ${mailFout.wa}`)
+  /06 34 38 89 38/.test(mailFout.text) &&
+    mailFout.tel === 'tel:+31634388938' &&
+    mailFout.wa === 'https://wa.me/31634388938',
+  `${mailFout.text} ${mailFout.tel} ${mailFout.wa}`)
 check('invoer blijft staan na een mislukte mail',
   mailFout.naam === 'Mail Faalt' && mailFout.email === 'mail-faalt@example.com' &&
     mailFout.bericht === 'Graag een kennismaking.')
