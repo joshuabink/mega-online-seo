@@ -13,8 +13,8 @@
   --dot:           oklch(0.74 0.165 150);
 
   --display: "Geist", system-ui, -apple-system, sans-serif;
-  --sans:    "Hanken Grotesk", system-ui, -apple-system, sans-serif;
-  --mono:    "Hanken Grotesk", system-ui, -apple-system, sans-serif;
+  --sans:    "Hanken Grotesk", "Hanken Grotesk Fallback", system-ui, -apple-system, sans-serif;
+  --mono:    "Hanken Grotesk", "Hanken Grotesk Fallback", system-ui, -apple-system, sans-serif;
 
   --focus: var(--accent);
   /* Focusring van het conceptformulier. Bestaande huisstijl, heather. */
@@ -211,6 +211,30 @@ h1, h2, h3 { font-family: var(--display); font-weight: 600; line-height: 1.04; l
 .nav__scan-short { display: none; }
 .nav__menu-btn { display: none; color: oklch(0.965 0.010 95); border-color: rgba(255,255,255,.2); }
 .nav__menu-btn svg { width: 18px; height: 18px; }
+/* Telefoonlink. Het volledige nummer past naast het menu vanaf 1280px.
+   Tussen 721 en 980px (desktopmenu verborgen) een icoon van 44px.
+   Daartussen en onder 720px zou het logo of de CTA in elkaar worden
+   gedrukt; daar staat het nummer in het mobiele menu. */
+.nav__phone {
+  display: none; align-items: center; gap: 8px;
+  min-height: 44px; padding-inline: 2px;
+  font-family: var(--mono); font-size: 0.84rem; font-weight: 500;
+  letter-spacing: 0.02em; color: oklch(0.965 0.010 95); white-space: nowrap;
+}
+.nav__phone svg { width: 18px; height: 18px; flex: none; }
+.nav__phone:hover { color: var(--accent); }
+.nav__phone--icon {
+  width: 44px; height: 44px; padding: 0; justify-content: center;
+  border: 1px solid rgba(255,255,255,.2); border-radius: var(--radius);
+}
+@media (min-width: 1280px) {
+  .nav .logo { flex-shrink: 0; }
+  .nav__cta { gap: 12px; }
+  .nav__phone:not(.nav__phone--icon) { display: inline-flex; }
+}
+@media (max-width: 980px) and (min-width: 721px) {
+  .nav__phone--icon { display: inline-flex; }
+}
 
 /* Lichte header (pagina's die met een lichte sectie beginnen): groen/donker
    zodat logo en menu-items leesbaar blijven op wit. Bij scrollen keert de
@@ -223,6 +247,9 @@ h1, h2, h3 { font-family: var(--display); font-weight: 600; line-height: 1.04; l
 .nav--light:not(.scrolled) .mnav__item[aria-expanded="true"] { color: oklch(0.24 0.05 158); background: rgba(20,50,40,.06); }
 .nav--light:not(.scrolled) .mnav__item[aria-expanded="true"] .chev { color: var(--accent); }
 .nav--light:not(.scrolled) .nav__menu-btn { color: oklch(0.34 0.045 158); border-color: rgba(20,50,40,.18); }
+.nav--light:not(.scrolled) .nav__phone { color: oklch(0.34 0.045 158); }
+.nav--light:not(.scrolled) .nav__phone:hover { color: var(--accent-deep); }
+.nav--light:not(.scrolled) .nav__phone--icon { border-color: rgba(20,50,40,.18); }
 
 /* ---------- Badge ---------- */
 .badge { display: inline-flex; align-items: center; gap: 0.6em; font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--line); border-radius: 100px; padding: 0.5em 0.95em; white-space: nowrap; }
@@ -696,7 +723,14 @@ form[aria-busy="true"] .btn-primary { opacity: .65; pointer-events: none; }
 .footer__grid { display: grid; grid-template-columns: 1.5fr 1fr 1.2fr 1fr; gap: clamp(28px, 4vw, 60px); }
 .footer__brand .logo { font-size: 1.3rem; }
 .footer__tagline { color: var(--muted); margin-top: 16px; max-width: 32ch; line-height: 1.55; font-size: 0.95rem; }
-.footer__scan { display: inline-flex; align-items: center; gap: 8px; margin-top: 20px; font-size: 0.92rem; color: oklch(0.965 0.010 95); border-bottom: 1px solid rgba(255,255,255,.28); padding-bottom: 3px; transition: border-color .25s; }
+.footer__phone {
+  display: inline-flex; align-items: center; gap: 8px;
+  min-height: 44px; margin-top: 8px;
+  font-family: var(--mono); font-size: 0.92rem; letter-spacing: 0.03em; color: var(--fg);
+}
+.footer__phone svg { width: 18px; height: 18px; flex: none; }
+.footer__phone:hover { color: var(--accent-text); }
+.footer__scan { display: inline-flex; align-items: center; gap: 8px; margin-top: 12px; font-size: 0.92rem; color: oklch(0.965 0.010 95); border-bottom: 1px solid rgba(255,255,255,.28); padding-bottom: 3px; transition: border-color .25s; }
 .footer__scan:hover { border-color: var(--accent-text); }
 .footer__col { display: flex; flex-direction: column; gap: 12px; }
 .footer__head { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.13em; text-transform: uppercase; color: rgba(255,255,255,.5); margin-bottom: 4px; }
