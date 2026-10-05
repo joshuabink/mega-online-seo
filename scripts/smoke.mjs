@@ -349,79 +349,101 @@ check('onbekende URL geeft 404', missing.status() === 404, String(missing.status
 
 /* --- sitemap lastmod --- */
 {
-  const res = await page.request.get(BASE + '/sitemap.xml')
-  const xml = await res.text()
-  const blocks = [...xml.matchAll(/<url>([\s\S]*?)<\/url>/g)].map((m) => m[1])
-  const lastmods = blocks.map((block) => [...block.matchAll(/<lastmod>([^<]*)<\/lastmod>/g)].map((m) => m[1]))
-  const dates = lastmods.map((list) => list[0] ?? '')
-  check('sitemap 200', res.status() === 200, String(res.status()))
-  check('sitemap heeft 37 urls', blocks.length === 37, String(blocks.length))
+  const res = await page.request.get(BASE + "/sitemap.xml");
+  const xml = await res.text();
+  const blocks = [...xml.matchAll(/<url>([\s\S]*?)<\/url>/g)].map((m) => m[1]);
+  const lastmods = blocks.map((block) =>
+    [...block.matchAll(/<lastmod>([^<]*)<\/lastmod>/g)].map((m) => m[1]),
+  );
+  const dates = lastmods.map((list) => list[0] ?? "");
+  check("sitemap 200", res.status() === 200, String(res.status()));
+  check("sitemap heeft 37 urls", blocks.length === 37, String(blocks.length));
   check(
-    'elke url heeft precies één lastmod',
+    "elke url heeft precies één lastmod",
     lastmods.every((list) => list.length === 1 && /^\d{4}-\d{2}-\d{2}$/.test(list[0])),
-    dates.filter((date) => !/^\d{4}-\d{2}-\d{2}$/.test(date)).slice(0, 3).join(', '),
-  )
-  check('sitemap zonder changefreq en priority', !/<changefreq>|<priority>/.test(xml))
+    dates
+      .filter((date) => !/^\d{4}-\d{2}-\d{2}$/.test(date))
+      .slice(0, 3)
+      .join(", "),
+  );
+  check("sitemap zonder changefreq en priority", !/<changefreq>|<priority>/.test(xml));
   check(
-    'lastmod is niet overal dezelfde datum',
+    "lastmod is niet overal dezelfde datum",
     new Set(dates).size > 1,
-    [...new Set(dates)].join(', '),
-  )
+    [...new Set(dates)].join(", "),
+  );
 }
 
 /* --- broodkruimels diensten en branches --- */
-for (const crumbPath of ['/diensten/seo', '/branches/verhuurbedrijven']) {
-  await page.goto(BASE + crumbPath, { waitUntil: 'load' })
-  await waitHydrated(page)
+for (const crumbPath of ["/diensten/seo", "/branches/verhuurbedrijven"]) {
+  await page.goto(BASE + crumbPath, { waitUntil: "load" });
+  await waitHydrated(page);
   await page.waitForFunction(
-    () => [...document.querySelectorAll('script[type="application/ld+json"]')]
-      .some((node) => (node.textContent || '').includes('BreadcrumbList')),
+    () =>
+      [...document.querySelectorAll('script[type="application/ld+json"]')].some((node) =>
+        (node.textContent || "").includes("BreadcrumbList"),
+      ),
     null,
     { timeout: 10000 },
-  )
+  );
   const crumb = await page.evaluate(() => {
-    const scripts = [...document.querySelectorAll('script[type="application/ld+json"]')]
-      .map((node) => node.textContent || '')
-    const hrefs = [...document.querySelectorAll('.crumb a')].map((node) => node.getAttribute('href') || '')
-    const badItems = []
+    const scripts = [...document.querySelectorAll('script[type="application/ld+json"]')].map(
+      (node) => node.textContent || "",
+    );
+    const hrefs = [...document.querySelectorAll(".crumb a")].map(
+      (node) => node.getAttribute("href") || "",
+    );
+    const badItems = [];
     for (const raw of scripts) {
-      let data
-      try { data = JSON.parse(raw) } catch { continue }
-      const nodes = Array.isArray(data['@graph']) ? data['@graph'] : [data]
+      let data;
+      try {
+        data = JSON.parse(raw);
+      } catch {
+        continue;
+      }
+      const nodes = Array.isArray(data["@graph"]) ? data["@graph"] : [data];
       for (const node of nodes) {
-        if (node['@type'] !== 'BreadcrumbList') continue
+        if (node["@type"] !== "BreadcrumbList") continue;
         for (const item of node.itemListElement || []) {
-          const href = typeof item.item === 'string' ? item.item : ''
-          if (!href) continue
-          let pathname = ''
-          let hash = ''
+          const href = typeof item.item === "string" ? item.item : "";
+          if (!href) continue;
+          let pathname = "";
+          let hash = "";
           try {
-            const url = new URL(href)
-            pathname = url.pathname.replace(/\/$/, '') || '/'
-            hash = url.hash
-          } catch { pathname = href }
-          if (hash === '#diensten' || pathname === '/diensten' || pathname === '/branches') {
-            badItems.push(href)
+            const url = new URL(href);
+            pathname = url.pathname.replace(/\/$/, "") || "/";
+            hash = url.hash;
+          } catch {
+            pathname = href;
+          }
+          if (hash === "#diensten" || pathname === "/diensten" || pathname === "/branches") {
+            badItems.push(href);
           }
         }
       }
     }
     return {
-      json: scripts.join('\n'),
+      json: scripts.join("\n"),
       hrefs,
       badItems,
-    }
-  })
+    };
+  });
   check(
     `${crumbPath} JSON-LD zonder #diensten`,
-    !crumb.json.includes('megaonline.io/#diensten') && crumb.badItems.length === 0,
-    crumb.badItems.join(', '),
-  )
+    !crumb.json.includes("megaonline.io/#diensten") && crumb.badItems.length === 0,
+    crumb.badItems.join(", "),
+  );
   check(
     `${crumbPath} zichtbare kruimel zonder #diensten`,
-    crumb.hrefs.length > 0 && crumb.hrefs.every((href) => !href.includes('#diensten') && !/\/diensten\/?$/.test(href) && !/\/branches\/?$/.test(href)),
-    crumb.hrefs.join(', '),
-  )
+    crumb.hrefs.length > 0 &&
+      crumb.hrefs.every(
+        (href) =>
+          !href.includes("#diensten") &&
+          !/\/diensten\/?$/.test(href) &&
+          !/\/branches\/?$/.test(href),
+      ),
+    crumb.hrefs.join(", "),
+  );
 }
 
 /* ---------------- Mobiel ---------------- */
