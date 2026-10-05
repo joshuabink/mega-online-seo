@@ -7,6 +7,7 @@
  */
 import { chromium } from 'playwright'
 import fs from 'node:fs'
+import http from 'node:http'
 import path from 'node:path'
 
 const BASE = process.env.BASE ?? 'http://localhost:3000'
@@ -246,12 +247,77 @@ check(
   `aan=${geenAan} urlDicht=${urlDicht} uit=${geenUit} urlOpen=${urlOpen}`,
 )
 
-/* --- oude scan-URL --- */
+/* --- oude scan-URL en canonieke redirects --- */
 {
   const res = await page.request.get(BASE + '/gratis-websitescan', { maxRedirects: 0 })
   const loc = res.headers()['location'] ?? ''
   check('301 /gratis-websitescan', res.status() === 301 && loc.includes('/gratis-websiteconcept'),
     `${res.status()} → ${loc}`)
+}
+
+// node:http stuurt het pad ongewijzigd. fetch en Playwright normaliseren
+// `//` en `\` al vóór de request, en dan is de open redirect niet te zien.
+function rawGet(requestPath) {
+  const target = new URL(BASE)
+  return new Promise((resolve, reject) => {
+    const req = http.request(
+      {
+        protocol: target.protocol,
+        hostname: target.hostname,
+        port: target.port,
+        method: 'GET',
+        path: requestPath,
+      },
+      (res) => {
+        res.resume()
+        res.on('end', () =>
+          resolve({
+            status: res.statusCode ?? 0,
+            location: res.headers.location ?? '',
+          }),
+        )
+      },
+    )
+    req.on('error', reject)
+    req.end()
+  })
+}
+
+const canonicalRedirects = [
+  ['/', 200, ''],
+  ['/gratis-websiteconcept/', 308, '/gratis-websiteconcept'],
+  ['/diensten/seo/', 308, '/diensten/seo'],
+  ['/gratis-websitescan/', 301, '/gratis-websiteconcept'],
+  ['/diensten/seo/?utm_source=test&x=1', 308, '/diensten/seo?utm_source=test&x=1'],
+  ['//evil.com/', 308, '/evil.com'],
+  ['/\\evil.com/', 308, '/evil.com'],
+  ['///evil.com', 308, '/evil.com'],
+  ['/diensten//seo/', 308, '/diensten/seo'],
+  ['/gratis-websitescan?utm=mail', 301, '/gratis-websiteconcept?utm=mail'],
+  ['/gratis-websitescan/?utm=mail', 301, '/gratis-websiteconcept?utm=mail'],
+]
+for (const [from, status, location] of canonicalRedirects) {
+  const res = await rawGet(from)
+  const sameOrigin =
+    location === '' ||
+    (location.startsWith('/') &&
+      !location.startsWith('//') &&
+      !location.includes('\\') &&
+      new URL(location, BASE).origin === new URL(BASE).origin)
+  check(
+    `redirect ${from}`,
+    res.status === status && res.location === location && sameOrigin,
+    `${res.status} → ${res.location}`,
+  )
+}
+{
+  const first = await rawGet('/diensten//seo/')
+  const second = await rawGet(first.location || '/')
+  check(
+    '308 /diensten//seo/ in één hop',
+    first.status === 308 && first.location === '/diensten/seo' && second.status === 200,
+    `${first.status} → ${first.location} → ${second.status}`,
+  )
 }
 
 /* --- FAQ accordeon --- */
