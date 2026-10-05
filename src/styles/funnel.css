@@ -101,6 +101,13 @@
 .ffooter { border-top: 1px solid var(--line); padding: clamp(28px, 3vw, 40px) 0; }
 .ffooter .wrap { display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap; }
 .ffooter__copy { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.04em; color: var(--faint); }
+.ffooter__phone {
+  display: inline-flex; align-items: center; gap: 8px;
+  min-height: 44px; font-family: var(--mono); font-size: 0.82rem;
+  letter-spacing: 0.03em; color: var(--fg);
+}
+.ffooter__phone svg { width: 18px; height: 18px; flex: none; }
+.ffooter__phone:hover { color: var(--accent-text); }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 1080px) {

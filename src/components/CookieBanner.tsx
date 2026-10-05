@@ -1,6 +1,6 @@
-import { useEffect } from "react";
-import "vanilla-cookieconsent/dist/cookieconsent.css";
-import "@/styles/cookieconsent.css";
+import { useEffect, useState } from "react";
+import vendorCss from "vanilla-cookieconsent/dist/cookieconsent.css?url";
+import consentCss from "@/styles/cookieconsent.css?url";
 
 /**
  * Later een tool toevoegen: zet een script-tag in de pagina met
@@ -17,7 +17,12 @@ const LEADINFO_SNIPPET = `(function(l,e,a,d,i,n,f,o){if(!l[i]){l.GlobalLeadinfoN
 type ConsentWindow = Window & { _ccRun?: boolean };
 
 export function CookieBanner() {
+  // De cookiestyles horen niet in de eerste paint. Ze starten als print
+  // (niet render-blocking) en worden pas na hydration op all gezet.
+  const [stylesOn, setStylesOn] = useState(false);
+
   useEffect(() => {
+    setStylesOn(true);
     let cancelled = false;
 
     void (async () => {
@@ -115,6 +120,9 @@ export function CookieBanner() {
   }, []);
 
   return (
+    <>
+    <link rel="stylesheet" href={vendorCss} media={stylesOn ? "all" : "print"} />
+    <link rel="stylesheet" href={consentCss} media={stylesOn ? "all" : "print"} />
     <div id="cookie-consent-root" data-theme="dark">
       <script
         type="text/plain"
@@ -122,6 +130,7 @@ export function CookieBanner() {
         dangerouslySetInnerHTML={{ __html: LEADINFO_SNIPPET }}
       />
     </div>
+    </>
   );
 }
 

@@ -233,17 +233,16 @@ function Home() {
               <source
                 media="(max-width: 767px)"
                 srcSet="/images/werkwijze-visual-mobiel.webp"
-                width={1200}
-                height={2000}
+                width={740}
+                height={1233}
               />
               <img
                 src="/images/werkwijze-visual.webp"
-                width={2400}
-                height={1048}
+                width={1600}
+                height={699}
                 alt="Zo gaat een bezoeker van eerste indruk naar een aanvraag: eerste indruk, vertrouwen, makkelijk aanvragen en meer aanvragen, met meten en verbeteren na livegang"
                 loading="lazy"
                 decoding="async"
-                className="w-full h-auto block"
               />
             </picture>
           </Reveal>
@@ -784,7 +783,7 @@ function Home() {
         <div className="wrap">
           <div className="vision">
             <Reveal as="div" className="vision__media reveal">
-              <img src="/images/zo-werken-we-visual-v2.webp" width={1600} height={2000} alt="Bij een groot bureau loopt je vraag via accountmanager, projectmanager, designer en developer. Bij MegaOnline heb je direct contact met je eigen webspecialist, die de strategie bepaalt en je site bouwt." loading="lazy" decoding="async" className="w-full h-auto block" />
+              <img src="/images/zo-werken-we-visual-v2.webp" width={1600} height={2000} alt="Bij een groot bureau loopt je vraag via accountmanager, projectmanager, designer en developer. Bij MegaOnline heb je direct contact met je eigen webspecialist, die de strategie bepaalt en je site bouwt." loading="lazy" decoding="async" />
             </Reveal>
             {' '}
             <Reveal as="div" className="vision__body reveal" data-d="1">

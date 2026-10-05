@@ -10,7 +10,6 @@ import {
 } from "@tanstack/react-router";
 import { useEffect, useMemo, type ReactNode } from "react";
 
-import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
 import { SiteHeader } from "@/components/SiteHeader";
@@ -19,9 +18,11 @@ import { CookieBanner } from "@/components/CookieBanner";
 import { SITE_GRAPH, buildPageSchema } from "@/lib/schema";
 
 // MegaOnline design system uit de Claude Design-handoff. De volgorde is de
-// bron van waarheid: styles → concepts → conversie → over → funnel → megamenu.
-// Deze imports komen ná Tailwind (../styles.css wordt hierboven als <link>
-// geladen), zodat de huisstijl wint waar beide iets over hetzelfde zeggen.
+// bron van waarheid: fonts → styles → concepts → conversie → over → funnel →
+// megamenu. Tailwind (src/styles.css) wordt hier niet geladen: de marketing-
+// pagina's gebruiken het niet, en een tweede render-blocking stylesheet
+// vertraagt de eerste paint.
+import "@/styles/fonts.css";
 import "@/styles/styles.css";
 import "@/styles/concepts.css";
 import "@/styles/conversie.css";
@@ -143,13 +144,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:image", content: "https://megaonline.io/og-image.png" },
     ],
     links: [
-      { rel: "stylesheet", href: appCss },
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap",
-      },
       { rel: "manifest", href: "/site.webmanifest" },
       { rel: "icon", href: "/favicon.ico", sizes: "48x48" },
       { rel: "icon", href: "/icon-96.png", type: "image/png", sizes: "96x96" },
@@ -184,6 +178,20 @@ function RootShell({ children }: { children: ReactNode }) {
   return (
     <html lang="nl" data-accent="lemon" data-display="archivo">
       <head>
+        <link
+          rel="preload"
+          href="/fonts/hanken-grotesk-latin.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/archivo-latin.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
         <HeadContent />
         <noscript>
           <style dangerouslySetInnerHTML={{ __html: NO_JS_FALLBACK }} />

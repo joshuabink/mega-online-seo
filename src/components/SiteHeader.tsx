@@ -153,6 +153,17 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
             {trigger('contact', 'Contact')}
           </nav>
           <div className="nav__cta">
+            <a className="nav__phone" href="tel:+31634388938">
+              <Icon name="phone" />
+              <span>06 34 38 89 38</span>
+            </a>
+            <a
+              className="nav__phone nav__phone--icon"
+              href="tel:+31634388938"
+              aria-label="Bel MegaOnline"
+            >
+              <Icon name="phone" />
+            </a>
             <Link className="btn btn-primary" to="/gratis-websiteconcept">
               <span className="nav__scan-long">Gratis websiteconcept</span>
               <span className="nav__scan-short">Gratis concept</span>
@@ -680,6 +691,10 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
         </button>
       </div>
       <div className="mmenu__scroll">
+        <a className="mmenu__phone" href="tel:+31634388938" onClick={onClose}>
+          <Icon name="phone" />
+          <span>06 34 38 89 38</span>
+        </a>
         <div className="macc">
           <MobileAccordion label="Diensten">
             <Link
