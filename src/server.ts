@@ -37,9 +37,38 @@ async function normalizeCatastrophicSsrResponse(response: Response): Promise<Res
   });
 }
 
+/**
+ * TanStack Router normaliseert een trailing slash in `beforeLoad` via
+ * `redirect({ href })`. Die helper gebruikt standaard status 307, en de
+ * check gebeurt vóór de route. Daardoor is `/pad/` een tijdelijke redirect,
+ * en wordt `/gratis-websitescan/` eerst 307 en daarna pas 301.
+ * Hier lossen we dat af vóór de router: permanent, in één hop, querystring
+ * blijft staan.
+ */
+function trailingSlashRedirect(request: Request): Response | null {
+  const { pathname, search } = new URL(request.url);
+  if (pathname.length <= 1 || !pathname.endsWith("/")) return null;
+
+  const stripped = pathname.replace(/\/+$/, "") || "/";
+  if (stripped === "/gratis-websitescan") {
+    return new Response(null, {
+      status: 301,
+      headers: { Location: `/gratis-websiteconcept${search}` },
+    });
+  }
+
+  return new Response(null, {
+    status: 308,
+    headers: { Location: `${stripped}${search}` },
+  });
+}
+
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
     try {
+      const slashRedirect = trailingSlashRedirect(request);
+      if (slashRedirect) return slashRedirect;
+
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);
       return await normalizeCatastrophicSsrResponse(response);
