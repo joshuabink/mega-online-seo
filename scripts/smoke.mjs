@@ -220,6 +220,9 @@ check('_subject en _pagina gaan mee',
 check('honeypot wordt niet doorgestuurd', !('website_hp' in (lead ?? {})))
 check('lege optionele velden gaan niet mee', !lead?.geen_website)
 check('_url gaat mee naar FormSubmit', lead?._url === 'https://megaonline.io/', lead?._url)
+check('Referer en Origin gaan mee',
+  lead?._test_referer === 'https://megaonline.io/' && lead?._test_origin === 'https://megaonline.io',
+  `referer=${lead?._test_referer} origin=${lead?._test_origin}`)
 check('geslaagde mail post niet nog eens vanuit de browser', clientPosts.length === 0,
   `browserposts=${clientPosts.length}`)
 
@@ -545,6 +548,7 @@ async function conceptFallback(pg) {
   check('conceptformulier toont de fallback',
     !desktopFallback.sent && desktopFallback.naam === 'Concept Faalt' &&
       desktopFallback.email === 'concept-faalt@example.com' &&
+      /zakelijk@joshuabink.nl/.test(desktopFallback.direct) &&
       desktopFallback.addedLeads === 1 && desktopFallback.addedPosts === 1,
     `sent=${desktopFallback.sent} server=${desktopFallback.addedLeads} browser=${desktopFallback.addedPosts}`)
   const shotDir = '/opt/cursor/artifacts'
