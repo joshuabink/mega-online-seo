@@ -1,4 +1,5 @@
 import { createServerFn } from '@tanstack/react-start'
+import { LEAD_CONTACT } from './lead-contact'
 
 /**
  * Server-side doorzetten van lead-inzendingen (TanStack Start server function).
@@ -24,7 +25,7 @@ import { createServerFn } from '@tanstack/react-start'
  * Let op: de eerste inzending moet éénmalig per mail bevestigd worden.
  * Te overschrijven met `MO_LEAD_MAIL_ENDPOINT`.
  */
-const DEFAULT_MAIL_ENDPOINT = 'https://formsubmit.co/zakelijk@joshuabink.nl'
+const DEFAULT_MAIL_ENDPOINT = `https://formsubmit.co/${LEAD_CONTACT.mail}`
 
 /** Velden die we bewust NIET doorsturen (techniek/spamval). */
 const BLOCKED = new Set(['website_hp'])
@@ -137,7 +138,7 @@ function httpWeigering(status: number, body: string): { reason: string; retry: '
  * die laatste bestaat zodat de smoketest tegen een mock kan draaien in plaats
  * van tegen de echte provider.
  */
-const DEFAULT_MAIL_TO = 'zakelijk@joshuabink.nl'
+const DEFAULT_MAIL_TO = LEAD_CONTACT.mail
 const DEFAULT_MAIL_FROM = 'MegaOnline <aanvragen@megaonline.io>'
 
 /** Nette Nederlandse koppen voor de velden die het formulier verstuurt. */

@@ -1,6 +1,39 @@
 import { useLayoutEffect, useRef, useState, type ReactNode } from 'react'
-import { sendLead } from '@/lib/lead'
+import { sendLead, type LeadResult } from '@/lib/lead'
+import { LEAD_CONTACT } from '@/lib/lead-contact'
 import { useReveal } from './Reveal'
+
+type LeadFailure = { error: string; mailto?: string }
+
+function LeadFallback({ mailto }: { mailto: string }) {
+  return (
+    <div className="form__fallback" role="alert" data-lead-fallback="">
+      <p>We konden je aanvraag niet automatisch versturen. Je antwoorden blijven hier staan.</p>
+      <a className="btn btn-primary" href={mailto}>
+        Verstuur via je eigen mail
+      </a>
+      <p className="form__fallback-alt">
+        Of bel <a href={`tel:${LEAD_CONTACT.phone}`}>{LEAD_CONTACT.phone}</a> of stuur een{' '}
+        <a href={LEAD_CONTACT.whatsappUrl}>WhatsApp</a>.
+      </p>
+    </div>
+  )
+}
+
+function LeadSendNotice({ failure }: { failure: LeadFailure | null }) {
+  if (!failure) return null
+  if (failure.mailto) return <LeadFallback mailto={failure.mailto} />
+  return (
+    <p className="form__error" role="alert">
+      {failure.error}
+    </p>
+  )
+}
+
+function failureFrom(result: LeadResult): LeadFailure | null {
+  if (result.ok) return null
+  return { error: result.error, mailto: result.mailto }
+}
 
 type OkProps = { ok?: ReactNode }
 
@@ -42,8 +75,9 @@ export function SteppedLeadForm({
   const reveal = useReveal(className)
   const [step, setStep] = useState(0)
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent'>('idle')
-  const [error, setError] = useState<string | null>(null)
+  const [failure, setFailure] = useState<LeadFailure | null>(null)
   const vorigeStap = useRef<number | null>(null)
+  const busy = useRef(false)
 
   const stepEls = () =>
     formRef.current
@@ -64,7 +98,7 @@ export function SteppedLeadForm({
 
     // Een foutmelding hoort bij de stap waarop hij ontstond. Bleef hij staan,
     // dan las een bezoeker op stap 1 een klacht over stap 3.
-    setError(null)
+    setFailure(null)
 
     const bar = formRef.current?.querySelector<HTMLElement>('.form__bar i')
     if (bar) bar.style.width = `${((step + 1) / all.length) * 100}%`
@@ -175,7 +209,7 @@ export function SteppedLeadForm({
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    if (!formRef.current || !validStep(step)) return
+    if (busy.current || !formRef.current || !validStep(step)) return
 
     /* Enter in een invoerveld verstuurt een formulier impliciet, ook als de
        bezoeker nog op stap 1 staat: de browser activeert dan de submitknop
@@ -192,14 +226,18 @@ export function SteppedLeadForm({
       return
     }
 
+    busy.current = true
     setStatus('sending')
-    setError(null)
-    const result = await sendLead(formRef.current, { subject })
-
-    if (result.ok) setStatus('sent')
-    else {
-      setStatus('idle')
-      setError(result.error)
+    setFailure(null)
+    try {
+      const result = await sendLead(formRef.current, { subject })
+      if (result.ok) setStatus('sent')
+      else {
+        setStatus('idle')
+        setFailure(failureFrom(result))
+      }
+    } finally {
+      busy.current = false
     }
   }
 
@@ -227,11 +265,7 @@ export function SteppedLeadForm({
             style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, opacity: 0 }}
           />
           {typeof children === 'function' ? children(step) : children}
-          {error && (
-            <p className="form__error" role="alert">
-              {error}
-            </p>
-          )}
+          <LeadSendNotice failure={failure} />
         </form>
       </div>{' '}
       <div className="form__ok">{ok ?? <DefaultOk />}</div>
@@ -258,12 +292,13 @@ export function SingleLeadForm({
   const formRef = useRef<HTMLFormElement>(null)
   const reveal = useReveal(className)
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent'>('idle')
-  const [error, setError] = useState<string | null>(null)
+  const [failure, setFailure] = useState<LeadFailure | null>(null)
+  const busy = useRef(false)
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     const form = formRef.current
-    if (!form) return
+    if (busy.current || !form) return
 
     for (const f of form.querySelectorAll<HTMLInputElement>(
       'input, select, textarea',
@@ -274,14 +309,18 @@ export function SingleLeadForm({
       }
     }
 
+    busy.current = true
     setStatus('sending')
-    setError(null)
-    const result = await sendLead(form, { subject })
-
-    if (result.ok) setStatus('sent')
-    else {
-      setStatus('idle')
-      setError(result.error)
+    setFailure(null)
+    try {
+      const result = await sendLead(form, { subject })
+      if (result.ok) setStatus('sent')
+      else {
+        setStatus('idle')
+        setFailure(failureFrom(result))
+      }
+    } finally {
+      busy.current = false
     }
   }
 
@@ -309,11 +348,7 @@ export function SingleLeadForm({
             style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, opacity: 0 }}
           />
           {children}
-          {error && (
-            <p className="form__error" role="alert">
-              {error}
-            </p>
-          )}
+          <LeadSendNotice failure={failure} />
         </form>
       </div>{' '}
       <div className="form__ok">{ok ?? <DefaultOk />}</div>
