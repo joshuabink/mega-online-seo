@@ -225,14 +225,12 @@ const CRUMB_LABEL: Record<string, string> = {
 };
 
 /**
- * Tussenniveau van het kruimelpad. De site heeft geen /diensten- of
- * /branches-overzichtspagina; het zichtbare kruimelpad linkt daarvoor naar de
- * dienstensectie op de homepage. De markup volgt dat één op één.
+ * Tussenniveau van het kruimelpad, alleen waar een echte overzichtspagina
+ * bestaat. Diensten en branches hebben die niet. Daar blijft het pad Home
+ * en de huidige pagina, zonder item naar /#diensten of naar een 404.
  */
 const CRUMB_PARENT: { prefix: string; name: string; item: string }[] = [
   { prefix: "/concepten/", name: "Concepten", item: `${SITE_URL}/concepten` },
-  { prefix: "/diensten/", name: "Diensten", item: `${SITE_URL}/#diensten` },
-  { prefix: "/branches/", name: "Branches", item: `${SITE_URL}/#diensten` },
   { prefix: "/kennisbank/", name: "Kennisbank", item: `${SITE_URL}/kennisbank` },
   { prefix: "/veelgestelde-vragen", name: "Kennisbank", item: `${SITE_URL}/kennisbank` },
   { prefix: "/werken-bij/", name: "Werken bij", item: `${SITE_URL}/werken-bij` },

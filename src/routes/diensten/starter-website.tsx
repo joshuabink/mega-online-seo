@@ -34,9 +34,6 @@ function StarterWebsite() {
                 <Link to="/" hash="top">Home</Link>
                 <span className="sep">/</span>
                 {' '}
-                <Link to="/" hash="diensten">Diensten</Link>
-                <span className="sep">/</span>
-                {' '}
                 <b>Starter Website</b>
               </Reveal>
               {' '}

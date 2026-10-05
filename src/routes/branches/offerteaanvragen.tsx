@@ -31,9 +31,6 @@ function Offerteaanvragen() {
                 <Link to="/" hash="top">Home</Link>
                 <span className="sep">/</span>
                 {' '}
-                <Link to="/" hash="diensten">Branches</Link>
-                <span className="sep">/</span>
-                {' '}
                 <b>Bedrijven met offerteaanvragen</b>
               </Reveal>
               {' '}
