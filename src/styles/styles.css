@@ -362,6 +362,20 @@ form[aria-busy="true"] .btn-primary { opacity: .65; pointer-events: none; }
   text-align: center;
   line-height: 1.25;
 }
+.concept .form__direct {
+  margin: 12px 0 0;
+  text-align: center;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--muted);
+  text-wrap: pretty;
+}
+.concept .form__direct a {
+  color: var(--fg);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  overflow-wrap: anywhere;
+}
 .concept .form__disc a { text-decoration: underline; text-underline-offset: 2px; }
 .concept .form__ok a { color: var(--accent-text); text-decoration: underline; text-underline-offset: 2px; }
 .concept .form__ok p { color: var(--muted); margin-top: 10px; }

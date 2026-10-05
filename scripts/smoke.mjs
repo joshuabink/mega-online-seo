@@ -171,6 +171,22 @@ await page.click('.fstep[data-step="5"] [data-next]')
 await page.waitForTimeout(200)
 check('formulier stap 5 → 6', await stepVisible(6))
 
+const direct = await page.locator('.form__direct').innerText()
+const directMail = await page.locator('.form__direct a[href^="mailto:"]').getAttribute('href')
+const directTel = await page.locator('.form__direct a[href^="tel:"]').getAttribute('href')
+const directWa = await page.locator('.form__direct a[href*="wa.me"]').getAttribute('href')
+check(
+  'contactregel staat onder de verzendknop',
+  /Liever direct contact/.test(direct) &&
+    /zakelijk@joshuabink\.nl/.test(direct) &&
+    /\+31634388938/.test(direct) &&
+    /WhatsApp/.test(direct) &&
+    directMail === 'mailto:zakelijk@joshuabink.nl' &&
+    directTel === 'tel:+31634388938' &&
+    directWa === 'https://wa.me/31634388938',
+  direct,
+)
+
 await page.fill('[name="naam"]', 'Test Persoon')
 await page.fill('[name="email"]', 'test@example.com')
 await page.fill('[name="telefoon"]', '0612345678')
@@ -510,10 +526,12 @@ async function conceptFallback(pg) {
     const form = document.querySelector('.concept.form')
     const naam = form?.querySelector('[name="naam"]')?.value ?? ''
     const email = form?.querySelector('[name="email"]')?.value ?? ''
+    const direct = form?.querySelector('.form__direct')?.textContent ?? ''
     return {
       sent: form?.classList.contains('sent') ?? false,
       naam,
       email,
+      direct,
       overflow: document.documentElement.scrollWidth <= window.innerWidth + 1,
     }
   })
