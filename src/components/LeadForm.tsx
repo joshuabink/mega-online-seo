@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState, type ReactNode } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 'react'
 import { sendLead, type LeadResult } from '@/lib/lead'
 import { LEAD_CONTACT } from '@/lib/lead-contact'
 import { useReveal } from './Reveal'
@@ -6,15 +6,30 @@ import { useReveal } from './Reveal'
 type LeadFailure = { error: string; mailto?: string }
 
 function LeadFallback({ mailto }: { mailto: string }) {
+  const headingRef = useRef<HTMLHeadingElement>(null)
+
+  useEffect(() => {
+    const el = headingRef.current
+    if (!el) return
+    el.scrollIntoView({ block: 'center' })
+    el.focus({ preventScroll: true })
+  }, [])
+
   return (
     <div className="form__fallback" role="alert" data-lead-fallback="">
-      <p>We konden je aanvraag niet automatisch versturen. Je antwoorden blijven hier staan.</p>
+      <h3 ref={headingRef} tabIndex={-1} className="form__fallback-title">
+        Je aanvraag is niet automatisch verstuurd.
+      </h3>
+      <p>Je antwoorden blijven hier staan.</p>
       <a className="btn btn-primary" href={mailto}>
         Verstuur via je eigen mail
       </a>
       <p className="form__fallback-alt">
-        Of bel <a href={`tel:${LEAD_CONTACT.phone}`}>{LEAD_CONTACT.phoneText}</a> of stuur een{' '}
-        <a href={LEAD_CONTACT.whatsappUrl}>WhatsApp</a>.
+        Of bel <a href={`tel:${LEAD_CONTACT.phone}`}>{LEAD_CONTACT.phoneText}</a>, stuur een{' '}
+        <a href={LEAD_CONTACT.whatsappUrl} target="_blank" rel="noopener">
+          WhatsApp
+        </a>{' '}
+        of mail direct naar <a href={`mailto:${LEAD_CONTACT.mail}`}>{LEAD_CONTACT.mail}</a>.
       </p>
     </div>
   )
@@ -229,15 +244,22 @@ export function SteppedLeadForm({
     busy.current = true
     setStatus('sending')
     setFailure(null)
+    let verstuurd = false
     try {
       const result = await sendLead(formRef.current, { subject })
-      if (result.ok) setStatus('sent')
-      else {
-        setStatus('idle')
+      if (result.ok) {
+        verstuurd = true
+        setStatus('sent')
+      } else {
         setFailure(failureFrom(result))
       }
+    } catch {
+      setFailure({
+        error: 'Je aanvraag is niet automatisch verstuurd. Je antwoorden blijven hier staan.',
+      })
     } finally {
       busy.current = false
+      if (!verstuurd) setStatus('idle')
     }
   }
 
@@ -312,15 +334,22 @@ export function SingleLeadForm({
     busy.current = true
     setStatus('sending')
     setFailure(null)
+    let verstuurd = false
     try {
       const result = await sendLead(form, { subject })
-      if (result.ok) setStatus('sent')
-      else {
-        setStatus('idle')
+      if (result.ok) {
+        verstuurd = true
+        setStatus('sent')
+      } else {
         setFailure(failureFrom(result))
       }
+    } catch {
+      setFailure({
+        error: 'Je aanvraag is niet automatisch verstuurd. Je antwoorden blijven hier staan.',
+      })
     } finally {
       busy.current = false
+      if (!verstuurd) setStatus('idle')
     }
   }
 

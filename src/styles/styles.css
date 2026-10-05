@@ -294,11 +294,18 @@ body[data-hero="stack"] .hero__form { width: min(560px, 100%); margin-top: 8px; 
   background: color-mix(in oklab, var(--fg) 4%, transparent);
   display: flex; flex-direction: column; gap: 10px;
 }
+.form .form__fallback-title,
+.scanform .form__fallback-title {
+  margin: 0; font-size: 1.05rem; line-height: 1.35; letter-spacing: -0.02em; color: var(--fg);
+}
+.form__fallback-title:focus { outline: 2px solid var(--heather); outline-offset: 3px; }
 .form__fallback p { margin: 0; color: var(--fg); font-size: 0.9rem; line-height: 1.45; }
 .form__fallback-alt { color: var(--muted); font-size: 0.86rem; }
 .form__fallback a:not(.btn) {
   color: var(--accent-text); text-decoration: underline; text-underline-offset: 2px;
+  overflow-wrap: anywhere;
 }
+.form:has([data-lead-fallback]) .form__direct { display: none; }
 .form__fallback .btn {
   width: 100%; justify-content: center; text-align: center;
   white-space: normal; line-height: 1.25;

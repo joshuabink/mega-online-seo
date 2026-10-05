@@ -1,5 +1,6 @@
 import { createServerFn } from '@tanstack/react-start'
 import { LEAD_CONTACT } from './lead-contact'
+import { maskContact, schoneVelden } from './lead-mailto'
 
 /**
  * Server-side doorzetten van lead-inzendingen (TanStack Start server function).
@@ -26,9 +27,6 @@ import { LEAD_CONTACT } from './lead-contact'
  * Te overschrijven met `MO_LEAD_MAIL_ENDPOINT`.
  */
 const DEFAULT_MAIL_ENDPOINT = `https://formsubmit.co/${LEAD_CONTACT.mail}`
-
-/** Velden die we bewust NIET doorsturen (techniek/spamval). */
-const BLOCKED = new Set(['website_hp'])
 
 /**
  * FormSubmit weigert elke POST zonder `Referer` met "Unable to submit form" —
@@ -223,11 +221,16 @@ async function mailViaResend(
     })
 
     if (!res.ok) {
-      // Resend geeft een leesbare JSON-fout terug; die willen we in de log zien
-      // in plaats van een kale statuscode. De body kan het adres van de
-      // aanvrager herhalen, dus die blijft uit de gestructureerde regel.
-      const body = await res.text()
-      console.error(`[lead] Resend gaf status ${res.status}:`, body.slice(0, 300))
+      // Alleen status en foutcode. De body kan het adres van de aanvrager herhalen.
+      const raw = await res.text()
+      let code = ''
+      try {
+        const data = JSON.parse(raw) as { name?: unknown; code?: unknown }
+        code = [data.name, data.code].filter((v) => typeof v === 'string').join(',')
+      } catch {
+        code = ''
+      }
+      console.error(`[lead] Resend status ${res.status}${code ? ` code=${code}` : ''}`)
       const retry = res.status >= 400 && res.status < 500 ? 'client' : 'none'
       return { ok: false, reason: `resend-http-${res.status}`, retry }
     }
@@ -237,9 +240,6 @@ async function mailViaResend(
     return { ok: false, reason: 'resend-network', retry: 'none' }
   }
 }
-
-const MAX_FIELD_LENGTH = 5000
-
 
 export type LeadResponse =
   | { ok: true }
@@ -279,13 +279,8 @@ export const submitLead = createServerFn({ method: 'POST' })
       return { ok: true }
     }
 
-    // Álle ingevulde velden gaan mee in de mail. Alleen de spamval valt eruit.
-    const params = new URLSearchParams()
-    for (const [key, value] of incoming) {
-      if (BLOCKED.has(key)) continue
-      const clean = value.trim().slice(0, MAX_FIELD_LENGTH)
-      if (clean) params.append(key, clean)
-    }
+    // Zelfde trim en maximum als de browser-retry. De spamval valt eruit.
+    const params = schoneVelden(incoming)
 
     // Minimale inhoudscheck: zonder contactgegevens is het geen lead.
     const phone = params.get('telefoon') ?? params.get('tel')
@@ -295,7 +290,7 @@ export const submitLead = createServerFn({ method: 'POST' })
     }
 
     log(
-      `inzending ontvangen van ${params.get('email') ?? phone} ` +
+      `inzending ontvangen van ${maskContact(params.get('email') ?? phone ?? '')} ` +
         `(pagina: ${params.get('_pagina') ?? 'onbekend'}, velden: ${[...params.keys()].join(', ')})`,
     )
 
@@ -373,7 +368,7 @@ export const submitLead = createServerFn({ method: 'POST' })
       logError(`mail (${mailRoute}) ✗`)
       return {
         ok: false,
-        error: 'We konden je aanvraag niet verwerken. Probeer het nog eens of mail ons direct.',
+        error: `Je aanvraag is niet automatisch verstuurd. Of mail direct naar ${LEAD_CONTACT.mail}.`,
         retry: mailOk.retry,
       }
     }

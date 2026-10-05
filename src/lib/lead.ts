@@ -1,5 +1,6 @@
 import { submitLead } from './submit-lead'
 import { LEAD_CONTACT } from './lead-contact'
+import { leadMailto, schoneVelden } from './lead-mailto'
 
 /**
  * Client-side helper voor lead-inzendingen.
@@ -20,31 +21,17 @@ export function normalizeUrl(value: string | null | undefined): string {
   return v
 }
 
-const VELD_LABELS: Record<string, string> = {
-  naam: 'Naam',
-  bedrijf: 'Bedrijf',
-  email: 'E-mailadres',
-  telefoon: 'Telefoonnummer',
-  tel: 'Telefoonnummer',
-  url: 'Website',
-  branche: 'Branche',
-  doel: 'Wat de website moet opleveren',
-  knelpunt: 'Knelpunt',
-  omschrijving: 'Wat het bedrijf doet',
-  geen_website: 'Nog geen website',
-  start: 'Wanneer starten',
-  bericht: 'Bericht',
-  toel: 'Toelichting',
-  onderwerp: 'Onderwerp',
-  reden: 'Reden',
-  kanaal: 'Kanaal',
-  rol: 'Rol',
-  link: 'Link',
-  motivatie: 'Motivatie',
-}
-
 /** Zelfde ajax-endpoint als de documentatie van FormSubmit. De browser stuurt zelf Referer en Origin mee. */
 const FORMSUBMIT_AJAX = `https://formsubmit.co/ajax/${LEAD_CONTACT.mail}`
+
+/** Productiepad van de huidige pagina, zonder query of preview-host. */
+export function canonicalFormUrl(pathname?: string): string {
+  const path =
+    pathname ??
+    (typeof location !== 'undefined' && location.pathname ? location.pathname : '/gratis-websiteconcept')
+  const clean = path.startsWith('/') ? path : `/${path}`
+  return `https://megaonline.io${clean}`
+}
 
 const VALIDATION_ERROR = 'Vul een e-mailadres of telefoonnummer in.'
 
@@ -52,21 +39,7 @@ export type LeadResult =
   | { ok: true }
   | { ok: false; error: string; mailto?: string }
 
-export function leadMailto(subject: string, params: URLSearchParams): string {
-  const lines: string[] = []
-  for (const [key, value] of params) {
-    if (!value || key.startsWith('_') || key === 'website_hp') continue
-    lines.push(`${VELD_LABELS[key] ?? key}: ${value}`)
-  }
-  const pagina = params.get('_pagina')
-  if (pagina) lines.push('', `Pagina: ${pagina}`)
-
-  let body = lines.join('\n')
-  const head = `mailto:${LEAD_CONTACT.mail}?subject=${encodeURIComponent(subject)}&body=`
-  const budget = 1900 - head.length
-  if (body.length > budget) body = `${body.slice(0, Math.max(0, budget - 3))}...`
-  return head + encodeURIComponent(body)
-}
+export { leadMailto } from './lead-mailto'
 
 /**
  * FormSubmit ajax antwoordt met `"success":"true"` of `"success":"false"` als
@@ -87,10 +60,10 @@ export function formSubmitAjaxGelukt(body: string): boolean {
 }
 
 async function postFormSubmitFromBrowser(params: URLSearchParams): Promise<boolean> {
-  const body = new URLSearchParams(params)
+  const body = schoneVelden(params)
   body.set('_template', 'table')
   body.set('_captcha', 'false')
-  if (typeof location !== 'undefined') body.set('_url', location.href)
+  body.set('_url', canonicalFormUrl())
   const email = body.get('email')
   if (email) body.set('_replyto', email)
 
@@ -102,11 +75,13 @@ async function postFormSubmitFromBrowser(params: URLSearchParams): Promise<boole
         Accept: 'application/json',
       },
       body: body.toString(),
+      signal: AbortSignal.timeout(8_000),
     })
     const text = await res.text()
     if (!res.ok) return false
     return formSubmitAjaxGelukt(text)
   } catch {
+    // Timeout of netwerk: niet nog een keer posten. De mailto-fallback volgt.
     return false
   }
 }
