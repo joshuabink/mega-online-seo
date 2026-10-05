@@ -53,7 +53,7 @@ const MAIL_REFERER = 'https://megaonline.io/'
  */
 type FormSubmitWeigering = { reason: string; detail: string; retry: 'client' | 'none' }
 
-function formSubmitWeigering(html: string): FormSubmitWeigering | null {
+function formSubmitWeigering(html: string, status: number): FormSubmitWeigering | null {
   const t = html.toLowerCase()
   if (t.includes('needs activation')) {
     return {
@@ -94,7 +94,7 @@ function formSubmitWeigering(html: string): FormSubmitWeigering | null {
   if (t.includes('submitted successfully')) return null
   // Onbekend antwoord: niet blokkeren. Een afwijkende bedankpagina is geen
   // bewijs dat de mail faalde, en een tweede poging zou dan dubbel kunnen gaan.
-  console.warn('[lead] onbekend antwoord van FormSubmit:', html.slice(0, 200))
+  console.warn(`[lead] onbekend antwoord van FormSubmit (status ${status})`)
   return null
 }
 
@@ -318,7 +318,7 @@ export const submitLead = createServerFn({ method: 'POST' })
       opts: {
         headers?: Record<string, string>
         /** Geeft een reden terug als de body een weigering is, anders null. */
-        verify?: (html: string) => FormSubmitWeigering | null
+        verify?: (html: string, status: number) => FormSubmitWeigering | null
       } = {},
     ): Promise<MailResult> {
       try {
@@ -337,7 +337,7 @@ export const submitLead = createServerFn({ method: 'POST' })
           return { ok: false, reason: detail.reason, retry: detail.retry }
         }
         if (opts.verify) {
-          const reden = opts.verify(await res.text())
+          const reden = opts.verify(await res.text(), res.status)
           if (reden) {
             logError(`${label} geweigerd (status ${res.status}): ${reden.detail}`)
             return { ok: false, reason: reden.reason, retry: reden.retry }
@@ -368,7 +368,7 @@ export const submitLead = createServerFn({ method: 'POST' })
       logError(`mail (${mailRoute}) ✗`)
       return {
         ok: false,
-        error: `Je aanvraag is niet automatisch verstuurd. Of mail direct naar ${LEAD_CONTACT.mail}.`,
+        error: `Je aanvraag is niet automatisch verstuurd. Mail direct naar ${LEAD_CONTACT.mail}.`,
         retry: mailOk.retry,
       }
     }
