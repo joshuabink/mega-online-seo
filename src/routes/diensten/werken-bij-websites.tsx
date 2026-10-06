@@ -234,7 +234,7 @@ function WerkenBijWebsites() {
                 <Icon name="camera" />
               </span>
               <h4>Goede foto's</h4>
-              <p>Eerlijk beeld van de werkvloer.</p>
+              <p>Een eerlijk beeld van de werkvloer.</p>
             </Reveal>
             <Reveal as="div" className="feat reveal" data-d="2">
               <span className="iconbox">
