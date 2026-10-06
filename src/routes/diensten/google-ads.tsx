@@ -61,7 +61,7 @@ function GoogleAds() {
                   Plan een kennismaking
                 </Link>{' '}
                 <Link className="tlink" to="/gratis-websiteconcept">
-                  Vraag je gratis concept aan
+                  Vraag je gratis websiteconcept aan
                 </Link>
               </Reveal>
             </div>{' '}
@@ -456,7 +456,7 @@ function GoogleAds() {
                   Plan een kennismaking
                 </Link>{' '}
                 <Link className="tlink" to="/gratis-websiteconcept">
-                  Vraag je gratis concept aan
+                  Vraag je gratis websiteconcept aan
                 </Link>
               </Reveal>{' '}
               <Reveal as="div" className="endcta__trust reveal" data-d="2" style={{ marginTop: '24px' }}>

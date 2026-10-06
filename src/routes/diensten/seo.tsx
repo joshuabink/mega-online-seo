@@ -64,7 +64,7 @@ function Seo() {
                 </Link>
                 {' '}
                 <Link className="tlink" to="/gratis-websiteconcept">
-                  Vraag je gratis concept aan
+                  Vraag je gratis websiteconcept aan
                   {' '}
                 </Link>
               </Reveal>
@@ -875,7 +875,7 @@ function Seo() {
                 </Link>
                 {' '}
                 <Link className="tlink" to="/gratis-websiteconcept">
-                  Vraag je gratis concept aan
+                  Vraag je gratis websiteconcept aan
                   {' '}
                 </Link>
               </Reveal>

@@ -671,7 +671,7 @@ function StarterWebsite() {
               </ul>
               {' '}
               <Link className="btn btn-primary" to="/gratis-websiteconcept">
-                Vraag je gratis concept aan
+                Vraag je gratis websiteconcept aan
                 {' '}
               </Link>
               {' '}
@@ -761,7 +761,7 @@ function StarterWebsite() {
               {' '}
               <Reveal as="div" className="svc-hero__ctas reveal" data-d="2" style={{ marginTop: "28px" }}>
                 <Link className="btn btn-primary" to="/gratis-websiteconcept">
-                  Vraag je gratis concept aan
+                  Vraag je gratis websiteconcept aan
                   {' '}
                 </Link>
                 {' '}

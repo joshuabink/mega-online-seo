@@ -642,7 +642,7 @@ function Home() {
               <div className="rm__foot">
                 <span className="svcprice">Vanaf € 2.500</span>
                 {' '}
-                <Link className="flow-cta" to="/gratis-websiteconcept">Vraag je gratis concept aan</Link>
+                <Link className="flow-cta" to="/gratis-websiteconcept">Vraag je gratis websiteconcept aan</Link>
               </div>
             </div>
             {' '}
@@ -860,7 +860,7 @@ function Home() {
           </Reveal>
           {' '}
           <Reveal as={Link} className="btn btn-primary reveal" data-d="2" to="/gratis-websiteconcept">
-            Vraag je gratis concept aan
+            Vraag je gratis websiteconcept aan
           </Reveal>
         </div>
       </section>
