@@ -170,18 +170,18 @@ function Reserveringen() {
               <span className="iconbox">
                 <Icon name="layout" />
               </span>
-              <h4>Een module op je eigen pagina:</h4>
+              <h4>Een module op je eigen pagina</h4>
               <p>
-                het reserveringsblok van je systeem staat op je website. De gast blijft op je site.
+                Het reserveringsblok van je systeem staat op je website. De gast blijft op je site.
               </p>
             </Reveal>
             <Reveal as="div" className="feat reveal" data-d="1">
               <span className="iconbox">
                 <Icon name="mouse-pointer-click" />
               </span>
-              <h4>Een knop naar een boekingspagina:</h4>
+              <h4>Een knop naar een boekingspagina</h4>
               <p>
-                de knop 'Reserveren' opent een pagina van het systeem. Snel geregeld, maar de gast
+                De knop 'Reserveren' opent een pagina van het systeem. Snel geregeld, maar de gast
                 verlaat je website om te reserveren.
               </p>
             </Reveal>
@@ -189,9 +189,9 @@ function Reserveringen() {
               <span className="iconbox">
                 <Icon name="plug" />
               </span>
-              <h4>Een koppeling of maatwerk:</h4>
+              <h4>Een koppeling of maatwerk</h4>
               <p>
-                je website en je systeem wisselen gegevens uit, zoals de beschikbaarheid. Dat kan
+                Je website en je systeem wisselen gegevens uit, zoals de beschikbaarheid. Dat kan
                 alleen als je systeem dat ondersteunt.
               </p>
             </Reveal>
@@ -291,7 +291,7 @@ function Reserveringen() {
               >
                 waarom prijzen op je website helpen
               </Link>
-              .
+              , met voorbeelden uit de verhuur.
             </Punt>
             <Punt>Openingstijden en sluitingsdagen, gelijk aan wat in je systeem staat.</Punt>
             <Punt>Je annuleringsvoorwaarden en wat er gebeurt als iemand niet komt.</Punt>
