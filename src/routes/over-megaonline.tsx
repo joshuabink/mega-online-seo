@@ -58,7 +58,7 @@ function OverMegaonline() {
                 </Link>
                 {' '}
                 <Link className="tlink" to="/gratis-websiteconcept">
-                  Vraag je gratis concept aan
+                  Vraag je gratis websiteconcept aan
                   {' '}
                 </Link>
               </Reveal>
@@ -795,7 +795,7 @@ function OverMegaonline() {
             {' '}
             <div className="overcta__ctas">
               <Link className="btn btn-primary" to="/gratis-websiteconcept">
-                Vraag je gratis concept aan
+                Vraag je gratis websiteconcept aan
               </Link>
               {' '}
               <Link className="btn btn-outline" to="/contact">Plan een kennismaking</Link>

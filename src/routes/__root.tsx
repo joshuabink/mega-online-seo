@@ -7,6 +7,7 @@ import {
   useRouterState,
   HeadContent,
   Scripts,
+  type ErrorComponentProps,
 } from "@tanstack/react-router";
 import { useEffect, useMemo, type ReactNode } from "react";
 
@@ -67,7 +68,7 @@ function NotFoundComponent() {
               Naar de homepage
             </Link>
             <Link className="btn btn-outline" to="/gratis-websiteconcept">
-              Vraag je gratis concept aan
+              Vraag je gratis websiteconcept aan
             </Link>
           </div>
         </div>
@@ -76,7 +77,7 @@ function NotFoundComponent() {
   );
 }
 
-function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
+function ErrorComponent({ error, reset }: ErrorComponentProps) {
   console.error(error);
   const router = useRouter();
   useEffect(() => {

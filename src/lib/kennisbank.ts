@@ -6,9 +6,9 @@
  * FAQPage-markup. Laat ze niet uit elkaar lopen, want de zichtbare vragen en
  * de markup horen gelijk te zijn.
  *
- * Nieuw artikel toevoegen: object erbij, slug uniek houden en
- * `public/sitemap.xml` aanvullen. De route is dynamisch, dus verder is er
- * niets te registreren.
+ * Nieuw artikel toevoegen: object erbij, slug uniek houden en de URL in
+ * `public/sitemap.xml` zetten. `scripts/generate-sitemap.mjs` vult lastmod
+ * vanuit `gewijzigd`. De route is dynamisch, dus verder is er niets te registreren.
  *
  * `auteur` is optioneel. Laat het weg of laat het leeg als Joshua Bink de
  * auteur blijft. Alleen een gevulde naam komt in het Article-schema terecht.

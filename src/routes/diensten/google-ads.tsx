@@ -36,8 +36,6 @@ function GoogleAds() {
               <Reveal as="div" className="crumb reveal">
                 <Link to="/" hash="top">Home</Link>
                 <span className="sep">/</span>{' '}
-                <Link to="/" hash="diensten">Diensten</Link>
-                <span className="sep">/</span>{' '}
                 <b>Google Ads</b>
               </Reveal>{' '}
               <Reveal as="div" className="hero__badge reveal" data-d="1">
@@ -61,7 +59,7 @@ function GoogleAds() {
                   Plan een kennismaking
                 </Link>{' '}
                 <Link className="tlink" to="/gratis-websiteconcept">
-                  Vraag je gratis concept aan
+                  Vraag je gratis websiteconcept aan
                 </Link>
               </Reveal>
             </div>{' '}
@@ -456,7 +454,7 @@ function GoogleAds() {
                   Plan een kennismaking
                 </Link>{' '}
                 <Link className="tlink" to="/gratis-websiteconcept">
-                  Vraag je gratis concept aan
+                  Vraag je gratis websiteconcept aan
                 </Link>
               </Reveal>{' '}
               <Reveal as="div" className="endcta__trust reveal" data-d="2" style={{ marginTop: '24px' }}>

@@ -33,9 +33,6 @@ function WerkenBijWebsites() {
                 <Link to="/" hash="top">Home</Link>
                 <span className="sep">/</span>
                 {' '}
-                <Link to="/" hash="diensten">Diensten</Link>
-                <span className="sep">/</span>
-                {' '}
                 <b>Werken-bij Websites</b>
               </Reveal>
               {' '}
@@ -63,7 +60,7 @@ function WerkenBijWebsites() {
                 </Link>
                 {' '}
                 <Link className="tlink" to="/gratis-websiteconcept">
-                  Vraag je gratis concept aan
+                  Vraag je gratis websiteconcept aan
                   {' '}
                 </Link>
               </Reveal>

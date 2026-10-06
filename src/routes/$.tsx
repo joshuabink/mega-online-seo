@@ -54,7 +54,7 @@ function NotFound() {
             <Link className="btn btn-primary" to="/">
               Naar de homepage            </Link>
             <Link className="btn btn-outline" to="/gratis-websiteconcept">
-              Vraag je gratis concept aan
+              Vraag je gratis websiteconcept aan
             </Link>
             <Link className="btn btn-ghost" to="/contact">
               Contact

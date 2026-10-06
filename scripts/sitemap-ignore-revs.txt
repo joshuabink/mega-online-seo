@@ -1,0 +1,16 @@
+# Zelfde idee als .git-blame-ignore-revs: één commit-hash per regel.
+# Regels die met # beginnen, en tekst na #, zijn commentaar.
+#
+# De generator slaat deze commits over bij de lastmod per bestand.
+# Daarnaast slaat hij zelf berichten over die (hoofdletterongevoelig)
+# prettier, format, lint, eslint, refactor of style bevatten, of de marker
+# [skip-lastmod]. Een typo-fix telt wél als inhoud en wordt niet overgeslagen.
+#
+# Toekomstige opmaakcommit uitsluiten: zet [skip-lastmod] in het bericht,
+# of voeg de hash hier toe met een korte reden.
+
+# Brede opmaak op main: em-dashes vervangen door komma's, dubbele punten
+# en pipes in paginatitels. 43 routebestanden, alleen leestekens, geen
+# inhoudelijke herschrijving. In de geschiedenis van main staat geen
+# aparte Prettier- of lint-sweep.
+7e75eb0f3fe0fabc6f8b5b47b86e009de64ca232

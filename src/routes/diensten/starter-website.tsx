@@ -34,9 +34,6 @@ function StarterWebsite() {
                 <Link to="/" hash="top">Home</Link>
                 <span className="sep">/</span>
                 {' '}
-                <Link to="/" hash="diensten">Diensten</Link>
-                <span className="sep">/</span>
-                {' '}
                 <b>Starter Website</b>
               </Reveal>
               {' '}
@@ -671,7 +668,7 @@ function StarterWebsite() {
               </ul>
               {' '}
               <Link className="btn btn-primary" to="/gratis-websiteconcept">
-                Vraag je gratis concept aan
+                Vraag je gratis websiteconcept aan
                 {' '}
               </Link>
               {' '}
@@ -761,7 +758,7 @@ function StarterWebsite() {
               {' '}
               <Reveal as="div" className="svc-hero__ctas reveal" data-d="2" style={{ marginTop: "28px" }}>
                 <Link className="btn btn-primary" to="/gratis-websiteconcept">
-                  Vraag je gratis concept aan
+                  Vraag je gratis websiteconcept aan
                   {' '}
                 </Link>
                 {' '}
