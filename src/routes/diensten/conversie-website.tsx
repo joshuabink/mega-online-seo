@@ -57,7 +57,7 @@ function ConversieWebsite() {
               {' '}
               <Reveal as="div" className="svc-hero__ctas reveal" data-d="2">
                 <Link className="btn btn-primary" to="/gratis-websiteconcept">
-                  Vraag je gratis concept aan
+                  Vraag je gratis websiteconcept aan
                 </Link>
                 {' '}
                 <a className="tlink" href="#aanpak">
@@ -802,7 +802,7 @@ function ConversieWebsite() {
               <div className="rm__foot">
                 <span className="svcprice">Vanaf € 2.500</span>
                 {' '}
-                <Link className="flow-cta" to="/gratis-websiteconcept">Vraag je gratis concept aan</Link>
+                <Link className="flow-cta" to="/gratis-websiteconcept">Vraag je gratis websiteconcept aan</Link>
               </div>
             </div>
             {' '}

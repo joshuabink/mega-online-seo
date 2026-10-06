@@ -47,7 +47,7 @@ export function SiteFooter() {
               jouw bedrijf.
             </p>
             <Link className="footer__scan" to="/gratis-websiteconcept">
-              Vraag je gratis concept aan            </Link>
+              Vraag je gratis websiteconcept aan            </Link>
           </div>
 
           <div className="footer__col">

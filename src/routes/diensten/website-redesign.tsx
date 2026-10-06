@@ -55,7 +55,7 @@ function WebsiteRedesign() {
               {' '}
               <Reveal as="div" className="svc-hero__ctas reveal" data-d="2">
                 <Link className="btn btn-primary" to="/gratis-websiteconcept">
-                  Vraag je gratis concept aan
+                  Vraag je gratis websiteconcept aan
                 </Link>
                 {' '}
                 <Link className="tlink" to="/contact">
@@ -865,7 +865,7 @@ function WebsiteRedesign() {
               {' '}
               <Reveal as="div" className="svc-hero__ctas reveal" data-d="2" style={{ marginTop: "28px" }}>
                 <Link className="btn btn-primary" to="/gratis-websiteconcept">
-                  Vraag je gratis concept aan
+                  Vraag je gratis websiteconcept aan
                 </Link>
                 {' '}
                 <Link className="tlink" to="/contact">
