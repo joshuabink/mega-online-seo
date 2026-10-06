@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
 import { type CSSProperties, type ReactNode } from "react";
+import { ConceptForm } from "@/components/ConceptForm";
 import { Icon } from "@/components/Icon";
 import { Media } from "@/components/Media";
 import { Qa } from "@/components/Qa";
@@ -122,7 +123,7 @@ function WerkenBijWebsites() {
               </Reveal>
               <Reveal as="div" className="svc-hero__ctas reveal" data-d="2">
                 <Link className="btn btn-primary" to="/gratis-websiteconcept">
-                  Gratis websiteconcept
+                  Vraag je gratis websiteconcept aan
                 </Link>
                 <Link className="tlink" to="/contact">
                   Plan een kennismaking
@@ -216,14 +217,14 @@ function WerkenBijWebsites() {
 
       <section
         className="section section--tight"
-        data-theme="dark"
+        data-theme="light"
         data-screen-label="Wat een werken-bij website nodig heeft"
       >
         <div className="wrap">
           <Reveal as="div" className="shead reveal">
             <h2 className="h2">Wat heeft een goede werken-bij website nodig?</h2>
           </Reveal>
-          <div className="featgrid" style={kaarten}>
+          <div className="featgrid">
             <Reveal as="div" className="feat reveal">
               <span className="iconbox">
                 <Icon name="users" />
@@ -277,9 +278,9 @@ function WerkenBijWebsites() {
         </div>
       </section>
 
-      <section className="section" data-theme="paper" data-screen-label="Foto's en video">
+      <section className="section" data-theme="dark" data-screen-label="Foto's en video">
         <div className="wrap">
-          <Reveal as="div" className="shead reveal">
+          <Reveal as="div" className="shead reveal" style={{ marginBottom: "8px" }}>
             <h2 className="h2">
               Waarom zijn foto's en video zo belangrijk op een werken-bij website?
             </h2>
@@ -449,7 +450,12 @@ function WerkenBijWebsites() {
         </div>
       </section>
 
-      <section className="section section--tight" data-theme="light" data-screen-label="Aanpak">
+      <section
+        className="section section--tight"
+        id="aanpak"
+        data-theme="paper"
+        data-screen-label="Aanpak"
+      >
         <div className="wrap">
           <Reveal as="div" className="shead reveal">
             <h2 className="h2">Hoe pakt MegaOnline een werken-bij website aan?</h2>
@@ -479,11 +485,7 @@ function WerkenBijWebsites() {
         </div>
       </section>
 
-      <section
-        className="section section--tight"
-        data-theme="dark"
-        data-screen-label="Voor welke bedrijven"
-      >
+      <section className="section" data-theme="dark" data-screen-label="Voor welke bedrijven">
         <div className="wrap">
           <Reveal as="div" className="shead reveal">
             <h2 className="h2">Voor welke bedrijven is een werken-bij website?</h2>
@@ -522,9 +524,9 @@ function WerkenBijWebsites() {
         </div>
       </section>
 
-      <section className="section" id="faq" data-theme="light" data-screen-label="FAQ">
+      <section className="section" id="faq" data-theme="paper" data-screen-label="FAQ">
         <div className="wrap">
-          <Reveal as="div" className="shead reveal">
+          <Reveal as="div" className="shead reveal" style={{ maxWidth: "680px" }}>
             <h2 className="h2">Veelgestelde vragen over werken-bij websites</h2>
           </Reveal>
           <div className="faq">
@@ -537,25 +539,38 @@ function WerkenBijWebsites() {
         </div>
       </section>
 
-      <section className="section" id="scan" data-theme="dark" data-screen-label="Eind-CTA">
+      <section
+        className="section"
+        id="scan"
+        data-theme="dark"
+        data-screen-label="Eind-CTA + scan-formulier"
+      >
         <div className="wrap">
-          <Reveal as="div" className="shead shead--center reveal">
-            <h2 className="h2">Gratis websiteconcept voor je werken-bij website</h2>
-            <p className="lead">
-              Wil je weten hoe jouw werken-bij website eruit kan zien? Ontvang een gratis
-              websiteconcept met persoonlijk advies. Beantwoord zes korte vragen. Vrijblijvend.
-            </p>
-            <Reveal
-              as="div"
-              className="svc-hero__ctas reveal"
-              data-d="1"
-              style={{ justifyContent: "center", marginTop: "28px" }}
-            >
-              <Link className="btn btn-primary" to="/gratis-websiteconcept">
-                Gratis websiteconcept
-              </Link>
-            </Reveal>
-          </Reveal>
+          <div className="endcta__grid">
+            <div className="endcta__copy">
+              <Reveal as="h2" className="display reveal">
+                Gratis websiteconcept voor je werken-bij website
+              </Reveal>
+              <Reveal as="p" className="lead reveal" data-d="1">
+                Wil je weten hoe jouw werken-bij website eruit kan zien? Ontvang een gratis
+                websiteconcept met persoonlijk advies. Beantwoord zes korte vragen. Vrijblijvend.
+              </Reveal>
+              <Reveal
+                as="div"
+                className="svc-hero__ctas reveal"
+                data-d="2"
+                style={{ marginTop: "28px" }}
+              >
+                <Link className="btn btn-primary" to="/gratis-websiteconcept">
+                  Vraag je gratis websiteconcept aan
+                </Link>
+                <Link className="tlink" to="/contact">
+                  Plan een kennismaking
+                </Link>
+              </Reveal>
+            </div>
+            <ConceptForm className="reveal" />
+          </div>
         </div>
       </section>
     </main>
