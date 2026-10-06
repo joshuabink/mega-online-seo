@@ -1,0 +1,91 @@
+# Typecheck en smoketest. Draait op elke pull request en op elke push naar main.
+# De smoketest praat alleen met de lokale mailmock, nooit met een echte provider.
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  typecheck:
+    name: Typecheck
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.4.2"
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Typecheck
+        run: bunx tsc --noEmit
+
+  smoke:
+    name: Smoketest
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.4.2"
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      # Playwright hoort niet bij de site. Alleen deze job installeert hem,
+      # zonder package.json of het lockfile aan te passen.
+      - name: Install browser
+        run: |
+          bun add --no-save playwright@1.63.0
+          bunx playwright install --with-deps chromium
+
+      - name: Smoketest
+        env:
+          BASE: http://localhost:3000
+          MO_LEAD_MAIL_ENDPOINT: http://localhost:3101/mail
+          MO_RESEND_API_KEY: ""
+        run: |
+          set -euo pipefail
+          node scripts/mock-endpoint.mjs > /tmp/mock-mail.log 2>&1 &
+          bun run dev -- --host :: --port 3000 --strictPort > /tmp/dev-server.log 2>&1 &
+          ready=0
+          for _ in $(seq 1 60); do
+            if curl -fsS -o /dev/null http://localhost:3000/; then
+              ready=1
+              break
+            fi
+            sleep 2
+          done
+          if [ "$ready" != 1 ]; then
+            echo "dev-server kwam niet op http://localhost:3000"
+            cat /tmp/dev-server.log || true
+            exit 1
+          fi
+          CHROMIUM_PATH="$(node --input-type=module -e 'import { chromium } from "playwright"; process.stdout.write(chromium.executablePath())')"
+          export CHROMIUM_PATH
+          test -x "$CHROMIUM_PATH"
+          node scripts/smoke.mjs
