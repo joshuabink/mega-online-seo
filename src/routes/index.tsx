@@ -15,6 +15,7 @@ export const Route = createFileRoute('/')({
       { property: 'og:title', content: "MegaOnline.io | Websites die werken voor jouw bedrijf" },
       { property: 'og:description', content: "MegaOnline bouwt websites die vertrouwen uitstralen en bezoekers richting aanvraag of boeking brengen. Vraag een gratis websiteconcept aan." },
       { property: 'og:url', content: "https://megaonline.io/" },
+      { name: 'msvalidate.01', content: 'F3537383AE304C7D373DB9D77878E50E' },
     ],
     links: [
       { rel: 'canonical', href: "https://megaonline.io/" },
