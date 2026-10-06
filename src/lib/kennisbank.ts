@@ -6,9 +6,9 @@
  * FAQPage-markup. Laat ze niet uit elkaar lopen, want de zichtbare vragen en
  * de markup horen gelijk te zijn.
  *
- * Nieuw artikel toevoegen: object erbij, slug uniek houden en
- * `public/sitemap.xml` aanvullen. De route is dynamisch, dus verder is er
- * niets te registreren.
+ * Nieuw artikel toevoegen: object erbij, slug uniek houden en de URL in
+ * `public/sitemap.xml` zetten. `scripts/generate-sitemap.mjs` vult lastmod
+ * vanuit `gewijzigd`. De route is dynamisch, dus verder is er niets te registreren.
  *
  * Schrijfregels voor de teksten hieronder: geen em-streepjes, geen komma vóór
  * "en", je-vorm, "aanvragen" in plaats van dat andere woord, elk getal krijgt

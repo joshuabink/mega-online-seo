@@ -37,9 +37,77 @@ async function normalizeCatastrophicSsrResponse(response: Response): Promise<Res
   });
 }
 
+/**
+ * TanStack Router normaliseert een afwijkend pad in `beforeLoad` via
+ * `redirect({ href })` (standaard 307), en die check loopt vóór de route.
+ * Een pad als `//evil.com/` of `/\evil.com/` wordt daarbij een
+ * protocol-relatieve Location. Hier normaliseren we eerst: backslashes
+ * worden slashes, herhaalde slashes vallen samen, een trailing slash gaat
+ * eraf. De Location is altijd een same-origin pad met precies één leidende
+ * `/`. `/gratis-websitescan` gaat in dezelfde hop met 301 door, inclusief
+ * de querystring.
+ */
+function canonicalPathname(pathname: string): string {
+  const collapsed = pathname.replace(/\\/g, "/").replace(/\/{2,}/g, "/");
+  const withSlash = collapsed.startsWith("/") ? collapsed : `/${collapsed}`;
+  const stripped =
+    withSlash.length > 1 && withSlash.endsWith("/") ? withSlash.replace(/\/+$/, "") : withSlash;
+  if (stripped.startsWith("/") && !stripped.startsWith("//") && !stripped.includes("\\")) {
+    return stripped;
+  }
+  return "/";
+}
+
+function sameOriginLocation(origin: string, path: string, search: string): string | null {
+  if (
+    !path.startsWith("/") ||
+    path.startsWith("//") ||
+    path.includes("\\") ||
+    path.includes("//")
+  ) {
+    return null;
+  }
+  const query = search.startsWith("?") && !/[\s\\]/.test(search) ? search : "";
+  const location = `${path}${query}`;
+  try {
+    const resolved = new URL(location, origin);
+    if (resolved.origin !== origin || resolved.pathname !== path) return null;
+  } catch {
+    return null;
+  }
+  return location;
+}
+
+function canonicalRedirect(request: Request): Response | null {
+  let url: URL;
+  try {
+    url = new URL(request.url);
+  } catch {
+    return null;
+  }
+
+  const canonical = canonicalPathname(url.pathname);
+  const search = url.search;
+
+  if (canonical === "/gratis-websitescan") {
+    const location = sameOriginLocation(url.origin, "/gratis-websiteconcept", search);
+    if (!location) return null;
+    return new Response(null, { status: 301, headers: { Location: location } });
+  }
+
+  if (canonical === url.pathname) return null;
+
+  const location = sameOriginLocation(url.origin, canonical, search);
+  if (!location) return null;
+  return new Response(null, { status: 308, headers: { Location: location } });
+}
+
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
     try {
+      const slashRedirect = canonicalRedirect(request);
+      if (slashRedirect) return slashRedirect;
+
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);
       return await normalizeCatastrophicSsrResponse(response);

@@ -651,7 +651,7 @@ function MegaSmart() {
               </Link>
               {' '}
               <Link className="tlink" to="/gratis-websiteconcept">
-                Vraag eerst een gratis websiteconcept aan
+                Vraag je gratis websiteconcept aan
                 {' '}
               </Link>
             </Reveal>
