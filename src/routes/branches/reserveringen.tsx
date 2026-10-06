@@ -119,10 +119,10 @@ function Reserveringen() {
               </Reveal>
               <Reveal as="div" className="svc-hero__ctas reveal" data-d="2">
                 <Link className="btn btn-primary" to="/gratis-websiteconcept">
-                  Gratis websiteconcept
+                  Vraag je gratis websiteconcept aan
                 </Link>
                 <Link className="tlink" to="/contact">
-                  Plan een gesprek
+                  Plan een kennismaking
                 </Link>
               </Reveal>
             </div>
@@ -353,9 +353,9 @@ function Reserveringen() {
         ]}
       />
 
-      <section className="section" id="faq" data-theme="paper" data-screen-label="FAQ">
+      <section className="section" id="faq" data-theme="dark" data-screen-label="FAQ">
         <div className="wrap">
-          <Reveal as="div" className="shead reveal">
+          <Reveal as="div" className="shead reveal" style={{ maxWidth: "680px" }}>
             <h2 className="h2">Veelgestelde vragen over een website met reserveringen</h2>
           </Reveal>
           <div className="faq">
@@ -368,10 +368,10 @@ function Reserveringen() {
         </div>
       </section>
 
-      <section className="section" id="scan" data-theme="dark" data-screen-label="Eind-CTA">
+      <section className="section" id="scan" data-theme="paper" data-screen-label="Eind-CTA">
         <div className="wrap">
           <Reveal as="div" className="shead shead--center reveal">
-            <h2 className="h2">Gratis websiteconcept voor je reserveringen</h2>
+            <h2 className="display">Gratis websiteconcept voor je reserveringen</h2>
             <p className="lead">
               Wil je weten hoe online reserveren op jouw website kan werken? Ontvang een gratis
               websiteconcept met persoonlijk advies. Beantwoord zes korte vragen. Vrijblijvend.
@@ -383,7 +383,10 @@ function Reserveringen() {
               style={{ justifyContent: "center", marginTop: "28px" }}
             >
               <Link className="btn btn-primary" to="/gratis-websiteconcept">
-                Gratis websiteconcept
+                Vraag je gratis websiteconcept aan
+              </Link>
+              <Link className="tlink" to="/contact">
+                Plan een kennismaking
               </Link>
             </Reveal>
           </Reveal>
