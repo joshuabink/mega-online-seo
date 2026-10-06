@@ -10,13 +10,13 @@ import { Reveal } from "@/components/Reveal";
 export const Route = createFileRoute("/diensten/werken-bij-websites")({
   head: () => ({
     meta: [
-      { title: "Werken bij website laten maken | MegaOnline.io" },
+      { title: "Werken-bij website laten maken | MegaOnline.io" },
       {
         name: "description",
         content:
           "Een werken-bij website laten maken die laat zien hoe het echt is. Lees wat erop moet, hoe vacatures op je site komen en wat Google met vacatures doet.",
       },
-      { property: "og:title", content: "Werken bij website laten maken | MegaOnline.io" },
+      { property: "og:title", content: "Werken-bij website laten maken | MegaOnline.io" },
       {
         property: "og:description",
         content:
@@ -226,50 +226,50 @@ function WerkenBijWebsites() {
               <span className="iconbox">
                 <Icon name="users" />
               </span>
-              <h4>Echte mensen:</h4>
-              <p>gezichten en verhalen van collega's, niet alleen functietitels.</p>
+              <h4>Echte mensen</h4>
+              <p>Gezichten en verhalen van collega's, niet alleen functietitels.</p>
             </Reveal>
             <Reveal as="div" className="feat reveal" data-d="1">
               <span className="iconbox">
                 <Icon name="camera" />
               </span>
-              <h4>Goede foto's:</h4>
-              <p>eerlijk beeld van de werkvloer.</p>
+              <h4>Goede foto's</h4>
+              <p>Eerlijk beeld van de werkvloer.</p>
             </Reveal>
             <Reveal as="div" className="feat reveal" data-d="2">
               <span className="iconbox">
                 <Icon name="list-checks" />
               </span>
-              <h4>Heldere verwachtingen:</h4>
-              <p>wat het werk inhoudt, zodat de juiste mensen reageren.</p>
+              <h4>Heldere verwachtingen</h4>
+              <p>Wat het werk inhoudt, zodat de juiste mensen reageren.</p>
             </Reveal>
             <Reveal as="div" className="feat reveal" data-d="3">
               <span className="iconbox">
                 <Icon name="send" />
               </span>
-              <h4>Eenvoudig solliciteren:</h4>
-              <p>een kort formulier, zonder verplichte velden die niet nodig zijn.</p>
+              <h4>Eenvoudig solliciteren</h4>
+              <p>Een kort formulier, zonder verplichte velden die niet nodig zijn.</p>
             </Reveal>
             <Reveal as="div" className="feat reveal">
               <span className="iconbox">
                 <Icon name="award" />
               </span>
-              <h4>Een herkenbaar verhaal:</h4>
-              <p>wie je bent en waarom mensen blijven.</p>
+              <h4>Een herkenbaar verhaal</h4>
+              <p>Wie je bent en waarom mensen blijven.</p>
             </Reveal>
             <Reveal as="div" className="feat reveal" data-d="1">
               <span className="iconbox">
                 <Icon name="smartphone" />
               </span>
-              <h4>Goed op mobiel:</h4>
-              <p>solliciteren werkt op een telefoon net zo goed als op een laptop.</p>
+              <h4>Goed op mobiel</h4>
+              <p>Solliciteren werkt op een telefoon net zo goed als op een laptop.</p>
             </Reveal>
             <Reveal as="div" className="feat reveal" data-d="2">
               <span className="iconbox">
                 <Icon name="phone-call" />
               </span>
-              <h4>Snel contact:</h4>
-              <p>even appen of bellen, voor wie nog geen volledige sollicitatie wil sturen.</p>
+              <h4>Snel contact</h4>
+              <p>Even appen of bellen, voor wie nog geen volledige sollicitatie wil sturen.</p>
             </Reveal>
           </div>
         </div>
@@ -344,18 +344,18 @@ function WerkenBijWebsites() {
               <span className="iconbox">
                 <Icon name="file-text" />
               </span>
-              <h4>Zelf beheren:</h4>
+              <h4>Zelf beheren</h4>
               <p>
-                je zet een vacature online of haalt hem weg op de website, zonder technische kennis.
+                Je zet een vacature online of haalt hem weg op de website, zonder technische kennis.
               </p>
             </Reveal>
             <Reveal as="div" className="feat reveal" data-d="1">
               <span className="iconbox">
                 <Icon name="workflow" />
               </span>
-              <h4>Uit je wervingssysteem:</h4>
+              <h4>Uit je wervingssysteem</h4>
               <p>
-                de vacatures komen uit het systeem waarin je sollicitaties beheert (een ATS). Dat
+                De vacatures komen uit het systeem waarin je sollicitaties beheert (een ATS). Dat
                 kan alleen als dat systeem een koppeling of een vacaturelijst voor websites
                 aanbiedt. Ondersteunt je systeem dat, dan kijkt MegaOnline per situatie wat de
                 slimste koppeling is.
@@ -409,7 +409,7 @@ function WerkenBijWebsites() {
             <p className="lead">
               Op{" "}
               <Link to="/werken-bij" style={tekstLink}>
-                megaonline.io/werken-bij
+                de vacaturepagina van MegaOnline
               </Link>{" "}
               staan de open rollen van MegaOnline zelf, van stages tot freelance. Zo is die pagina
               opgebouwd:
@@ -489,17 +489,17 @@ function WerkenBijWebsites() {
             <p className="lead">
               Voor bedrijven die moeite hebben om goede mensen te vinden, zoals
               installatiebedrijven, bouwbedrijven, transportbedrijven, hoveniers, technische
-              bedrijven en dienstverleners. Zie ook websites voor{" "}
+              bedrijven en dienstverleners. Zoek je ook meer klanten via je website? Bekijk dan{" "}
               <Link to="/branches/dienstverleners" style={tekstLink}>
-                dienstverleners
+                websites voor dienstverleners
               </Link>
               ,{" "}
               <Link to="/branches/activiteitenbedrijven" style={tekstLink}>
-                activiteitenbedrijven
+                websites voor activiteitenbedrijven
               </Link>{" "}
-              en{" "}
+              of{" "}
               <Link to="/branches/verhuurbedrijven" style={tekstLink}>
-                verhuurbedrijven
+                websites voor verhuurbedrijven
               </Link>
               .
             </p>
