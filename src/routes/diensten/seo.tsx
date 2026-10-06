@@ -23,6 +23,82 @@ export const Route = createFileRoute('/diensten/seo')({
   component: Seo,
 })
 
+/**
+ * Eén bron voor de zichtbare vragen op deze pagina.
+ * Feitenblok staat hier niet in. Geen FAQPage-markup (TK-86).
+ */
+const FAQ_ITEMS: { q: string; a: string }[] = [
+  {
+    q: "Hoe lang duurt het voordat ik iets merk van SEO?",
+    a: "SEO is geen knop die je omzet. De eerste verbeteringen zijn vaak binnen enkele weken zichtbaar, maar serieuze, blijvende posities bouw je op over maanden. Daarom werken we met een contentplan voor twaalf maanden in plaats van losse acties.",
+  },
+  {
+    q: "Is lokale vindbaarheid ook zinvol voor een klein bedrijf?",
+    a: "Juist dan. Lokaal is vaak de snelste winst: je concurreert in je eigen regio in plaats van met heel Nederland. We zorgen dat je verschijnt wanneer iemand in de buurt zoekt naar wat jij doet.",
+  },
+  {
+    q: "Is het Groei Partnership verplicht?",
+    a: "Nee. Sommige klanten kiezen voor een eenmalige website en regelen het beheer zelf of via een andere partij. We raden het partnership wel aan, omdat websites die regelmatig verbeterd worden structureel beter presteren dan websites die blijven stilstaan.",
+  },
+  {
+    q: "Wat krijg ik voor 150 euro per maand?",
+    a: "Elke maand een nieuwe pagina die gericht is op vindbaarheid: een blog of een landingspagina, geschreven, opgebouwd en gepubliceerd. Elke pagina wordt geoptimaliseerd voor Google en voorzien van heldere FAQ's, zodat je ook naar voren komt in AI-zoekmachines. Welk type pagina er wanneer komt, ligt vooraf vast in je contentplan.",
+  },
+  {
+    q: "Kan ik meer dan één pagina per maand krijgen?",
+    a: "Ja. Het abonnement is gebouwd rond één nieuwe pagina per maand. Wil je sneller opschalen, dan kost elke extra pagina in die maand 75 euro. We kijken samen wat past bij wat je wilt bereiken.",
+  },
+  {
+    q: "Moet mijn website door MegaOnline gebouwd zijn?",
+    a: "In de basis wel. Goed gevonden worden begint bij de techniek van je website. Zit die verkeerd in elkaar, dan kun je nog zulke goede pagina's maken, maar dan worden ze niet gevonden. Daarom draait het partnership op een website die wij hebben gebouwd.",
+  },
+  {
+    q: "Ik heb al een website. Kan het dan ook?",
+    a: "Dat kijken we eerst na. We beoordelen je bestaande website technisch en laten je weten wat er nodig is. Is de basis in orde, dan kunnen we gewoon starten. Zo niet, dan brengen we die eerst op orde en daarna loopt het partnership normaal door.",
+  },
+  {
+    q: "Hoe vaak hebben we contact?",
+    a: "In de basis spreken we elke maand de analyse en verbeterpunten door. Daarnaast zijn de lijnen kort: heb je tussendoor een vraag of een wijziging, dan staan we voor je klaar. Je hebt één vast aanspreekpunt dat je bedrijf kent.",
+  },
+  {
+    q: "Wat gebeurt er iedere maand?",
+    a: "We publiceren de pagina die voor die maand in het contentplan staat, controleren de website technisch op SEO en GEO en kijken wat de eerder geplaatste pagina's doen. Waar nodig sturen we het plan bij.",
+  },
+  {
+    q: "Kan ik opzeggen?",
+    a: "Het partnership loopt twaalf maanden en is daarna maandelijks opzegbaar. Die eerste periode is nodig omdat vindbaarheid zich over maanden opbouwt: na twee maanden is er nog weinig te zien, na acht maanden wel.",
+  },
+  {
+    q: "Doen jullie ook technische ondersteuning?",
+    a: "Zeker. Updates, beveiliging, back-ups en snelheid horen er gewoon bij. Binnen het Groei Partnership gaat dat samen met actieve optimalisatie. Heb je alleen het technische deel nodig, dan kan dat ook via onze lichtere onderhoudsoptie.",
+  },
+  {
+    q: "Wat als ik alleen onderhoud wil?",
+    a: "Dat kan. We bieden een lichtere onderhoudsoptie vanaf € 50 per maand, waarbij we je website veilig en up-to-date houden zonder actieve doorontwikkeling. Goed om te weten: dat is bewust iets anders dan het Groei Partnership, waarbij we je website juist maand na maand verbeteren.",
+  },
+  {
+    q: "Wat is GEO en wat is het verschil met SEO?",
+    a: "SEO is beter gevonden worden in Google, op de zoekopdrachten waar je klanten op zoeken. GEO hoort bij hetzelfde Groei Partnership en gaat over AI-zoekmachines.",
+  },
+  {
+    q: "Wat kost SEO per maand bij MegaOnline?",
+    a: "Je betaalt € 250 eenmalig voor het zoekwoordenonderzoek en het contentplan. Daarna kost het € 150 per maand. Daarvoor komt er elke maand een nieuwe pagina bij: een blog of een landingspagina.",
+  },
+  {
+    q: "Kunnen jullie een plek bovenaan in Google garanderen?",
+    a: "Nee. Een plek bovenaan in Google of een vermelding in AI-antwoorden kan niemand garanderen. Wat wel vastligt: welke pagina's er komen, staat in je contentplan en elke maand gaat er een nieuwe pagina live. Je ziet welke pagina's live zijn gegaan en wat ze hebben opgeleverd.",
+  },
+  {
+    q: "Voor wie is het Groei Partnership bedoeld?",
+    a: "Voor bedrijven waarvoor de website iets moet opleveren, zoals aanvragen, reserveringen of boekingen. Het partnership past als je elke maand wilt bouwen aan je vindbaarheid in Google en in AI-zoekmachines.",
+  },
+  {
+    q: "Kom ik met MegaOnline ook in ChatGPT en andere AI-zoekmachines?",
+    a: "Elke pagina krijgt heldere FAQ's voor AI-zoekmachines zoals ChatGPT. Dat hoort bij het Groei Partnership, net als vindbaarheid in Google. Een vermelding kan niemand garanderen.",
+  },
+]
+
+
 function Seo() {
   return (
     <main id="top" data-page="diensten-seo">
@@ -73,6 +149,9 @@ function Seo() {
               </div>
             </Reveal>
           </div>
+          <p className="feitenblok">
+            Het Groei Partnership is de SEO- en GEO-dienst van MegaOnline: elke maand een nieuwe pagina, gericht op vindbaarheid in Google en in AI-zoekmachines. Bij de start doet MegaOnline zoekwoordenonderzoek en legt een contentplan voor twaalf maanden vast. Je betaalt € 250 eenmalig en daarna € 150 per maand. Een extra pagina kost € 75.
+          </p>
         </div>
       </section>
       {' '}
@@ -773,53 +852,11 @@ function Seo() {
           </Reveal>
           {' '}
           <div className="faq">
-            <Qa question="Hoe lang duurt het voordat ik iets merk van SEO?" className="reveal">
-                SEO is geen knop die je omzet. De eerste verbeteringen zijn vaak binnen enkele weken zichtbaar, maar serieuze, blijvende posities bouw je op over maanden. Daarom werken we met een contentplan voor twaalf maanden in plaats van losse acties.
-            </Qa>
-            {' '}
-            <Qa question="Is lokale vindbaarheid ook zinvol voor een klein bedrijf?" className="reveal">
-                Juist dan. Lokaal is vaak de snelste winst: je concurreert in je eigen regio in plaats van met heel Nederland. We zorgen dat je verschijnt wanneer iemand in de buurt zoekt naar wat jij doet.
-            </Qa>
-            {' '}
-            <Qa question="Is het Groei Partnership verplicht?" className="reveal">
-                Nee. Sommige klanten kiezen voor een eenmalige website en regelen het beheer zelf of via een andere partij. We raden het partnership wel aan, omdat websites die regelmatig verbeterd worden structureel beter presteren dan websites die blijven stilstaan.
-            </Qa>
-            {' '}
-            <Qa question="Wat krijg ik voor 150 euro per maand?" className="reveal">
-                Elke maand een nieuwe pagina die gericht is op vindbaarheid: een blog of een landingspagina, geschreven, opgebouwd en gepubliceerd. Elke pagina wordt geoptimaliseerd voor Google en voorzien van heldere FAQ's, zodat je ook naar voren komt in AI-zoekmachines. Welk type pagina er wanneer komt, ligt vooraf vast in je contentplan.
-            </Qa>
-            {' '}
-            <Qa question="Kan ik meer dan één pagina per maand krijgen?" className="reveal">
-                Ja. Het abonnement is gebouwd rond één nieuwe pagina per maand. Wil je sneller opschalen, dan kost elke extra pagina in die maand 75 euro. We kijken samen wat past bij wat je wilt bereiken.
-            </Qa>
-            {' '}
-            <Qa question="Moet mijn website door MegaOnline gebouwd zijn?" className="reveal">
-                In de basis wel. Goed gevonden worden begint bij de techniek van je website. Zit die verkeerd in elkaar, dan kun je nog zulke goede pagina's maken, maar dan worden ze niet gevonden. Daarom draait het partnership op een website die wij hebben gebouwd.
-            </Qa>
-            {' '}
-            <Qa question="Ik heb al een website. Kan het dan ook?" className="reveal">
-                Dat kijken we eerst na. We beoordelen je bestaande website technisch en laten je weten wat er nodig is. Is de basis in orde, dan kunnen we gewoon starten. Zo niet, dan brengen we die eerst op orde en daarna loopt het partnership normaal door.
-            </Qa>
-            {' '}
-            <Qa question="Hoe vaak hebben we contact?" className="reveal">
-                In de basis spreken we elke maand de analyse en verbeterpunten door. Daarnaast zijn de lijnen kort: heb je tussendoor een vraag of een wijziging, dan staan we voor je klaar. Je hebt één vast aanspreekpunt dat je bedrijf kent.
-            </Qa>
-            {' '}
-            <Qa question="Wat gebeurt er iedere maand?" className="reveal">
-                We publiceren de pagina die voor die maand in het contentplan staat, controleren de website technisch op SEO en GEO en kijken wat de eerder geplaatste pagina's doen. Waar nodig sturen we het plan bij.
-            </Qa>
-            {' '}
-            <Qa question="Kan ik opzeggen?" className="reveal">
-                Het partnership loopt twaalf maanden en is daarna maandelijks opzegbaar. Die eerste periode is nodig omdat vindbaarheid zich over maanden opbouwt: na twee maanden is er nog weinig te zien, na acht maanden wel.
-            </Qa>
-            {' '}
-            <Qa question="Doen jullie ook technische ondersteuning?" className="reveal">
-                Zeker. Updates, beveiliging, back-ups en snelheid horen er gewoon bij. Binnen het Groei Partnership gaat dat samen met actieve optimalisatie. Heb je alleen het technische deel nodig, dan kan dat ook via onze lichtere onderhoudsoptie.
-            </Qa>
-            {' '}
-            <Qa question="Wat als ik alleen onderhoud wil?" className="reveal">
-                Dat kan. We bieden een lichtere onderhoudsoptie vanaf € 50 per maand, waarbij we je website veilig en up-to-date houden zonder actieve doorontwikkeling. Goed om te weten: dat is bewust iets anders dan het Groei Partnership, waarbij we je website juist maand na maand verbeteren.
-            </Qa>
+            {FAQ_ITEMS.map(({ q, a }) => (
+              <Qa key={q} question={q} className="reveal">
+                {a}
+              </Qa>
+            ))}
           </div>
         </div>
       </section>
