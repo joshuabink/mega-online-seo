@@ -291,7 +291,7 @@ function Reserveringen() {
               >
                 waarom prijzen op je website helpen
               </Link>
-              , met voorbeelden uit de verhuur.
+              .
             </Punt>
             <Punt>Openingstijden en sluitingsdagen, gelijk aan wat in je systeem staat.</Punt>
             <Punt>Je annuleringsvoorwaarden en wat er gebeurt als iemand niet komt.</Punt>
