@@ -658,6 +658,126 @@ for (const [from, to] of redirects) {
 const missing = await page.request.get(BASE + '/bestaat-niet', { maxRedirects: 0 })
 check('onbekende URL geeft 404', missing.status() === 404, String(missing.status()))
 
+/* --- kennisbank: FAQ-blok, FAQPage en auteur --- */
+const JOSHUA_ID = 'https://megaonline.io/#joshua-bink'
+
+function normTekst(s) {
+  return String(s ?? '').replace(/\s+/g, ' ').trim()
+}
+
+async function leesKennisbank(pg) {
+  return pg.evaluate((joshuaId) => {
+    const blok = document.querySelector('section#faq')
+    const vragen = blok
+      ? [...blok.querySelectorAll('.qa .qa__q')].map((el) => (el.textContent || '').replace(/\s+/g, ' ').trim())
+      : []
+    const vijf = (document.body.innerText || '').includes(
+      'Vijf dingen die je zonder ons kunt uitvoeren',
+    )
+    const found = []
+    const walk = (value) => {
+      if (!value || typeof value !== 'object') return
+      if (Array.isArray(value)) {
+        value.forEach(walk)
+        return
+      }
+      found.push(value)
+      Object.values(value).forEach(walk)
+    }
+    for (const s of document.querySelectorAll('script[type="application/ld+json"]')) {
+      try {
+        walk(JSON.parse(s.textContent || 'null'))
+      } catch {
+        /* ongeldige markup telt hieronder als ontbrekend schema */
+      }
+    }
+    const article = found.find((n) => n['@type'] === 'Article') ?? null
+    const faqPages = found.filter((n) => n['@type'] === 'FAQPage')
+    const joshua = found.some((n) => n['@id'] === joshuaId && n.name === 'Joshua Bink')
+    return {
+      faqBlok: !!blok,
+      vragen,
+      vijf,
+      author: article?.author ?? null,
+      faqVragen: faqPages.map((n) =>
+        Array.isArray(n.mainEntity) ? n.mainEntity.map((q) => String(q.name ?? '')) : [],
+      ),
+      joshua,
+    }
+  }, JOSHUA_ID)
+}
+
+function auteurIsJoshua(author) {
+  return !!author && author['@id'] === JOSHUA_ID && !author.name
+}
+
+async function openKennisbank(pad) {
+  await page.goto(BASE + pad, { waitUntil: 'load' })
+  await waitHydrated(page)
+  return leesKennisbank(page)
+}
+
+for (const pad of [
+  '/kennisbank/website-levert-geen-aanvragen-op',
+  '/kennisbank/vertrouwen-wekken-zakelijke-website',
+  '/kennisbank/prijzen-op-website-verhuurbedrijf',
+]) {
+  const data = await openKennisbank(pad)
+  const schemaVragen = (data.faqVragen[0] ?? []).map(normTekst)
+  const zichtbaar = data.vragen.map(normTekst)
+  const gelijk =
+    data.faqVragen.length === 1 &&
+    zichtbaar.length > 0 &&
+    zichtbaar.length === schemaVragen.length &&
+    zichtbaar.every((q, i) => q === schemaVragen[i])
+  check(
+    `${pad} toont FAQ-blok en FAQPage`,
+    data.faqBlok && gelijk && data.vijf && auteurIsJoshua(data.author) && data.joshua,
+    `blok=${data.faqBlok} vragen=${zichtbaar.length} schema=${data.faqVragen.length} vijf=${data.vijf} auteur=${JSON.stringify(data.author)} joshua=${data.joshua}`,
+  )
+}
+
+{
+  const data = await openKennisbank('/kennisbank/smoke-zonder-faq')
+  check(
+    'artikel zonder FAQ toont geen FAQ-blok en geen FAQPage',
+    !data.faqBlok &&
+      data.vragen.length === 0 &&
+      data.faqVragen.length === 0 &&
+      data.vijf &&
+      auteurIsJoshua(data.author) &&
+      data.joshua,
+    `blok=${data.faqBlok} schema=${data.faqVragen.length} vijf=${data.vijf} auteur=${JSON.stringify(data.author)} joshua=${data.joshua}`,
+  )
+}
+
+{
+  const data = await openKennisbank('/kennisbank/smoke-met-auteur')
+  const author = data.author ?? {}
+  check(
+    'gezet auteursveld gebruikt die naam en slaat FAQ over',
+    !data.faqBlok &&
+      data.vragen.length === 0 &&
+      data.faqVragen.length === 0 &&
+      data.vijf &&
+      author['@type'] === 'Person' &&
+      author.name === 'Smoke Auteur' &&
+      !author['@id'],
+    `blok=${data.faqBlok} schema=${data.faqVragen.length} auteur=${JSON.stringify(data.author)}`,
+  )
+}
+
+await page.goto(BASE + '/kennisbank', { waitUntil: 'load' })
+await waitHydrated(page)
+const overzichtHrefs = await page.evaluate(() =>
+  [...document.querySelectorAll('a')].map((a) => a.getAttribute('href') || ''),
+)
+check(
+  'controlepagina staat niet in het kennisbankoverzicht',
+  !overzichtHrefs.some((href) => href.includes('smoke-')),
+  overzichtHrefs.filter((href) => href.includes('kennisbank')).join(' '),
+)
+
 /* --- sitemap lastmod --- */
 {
   const res = await page.request.get(BASE + "/sitemap.xml");

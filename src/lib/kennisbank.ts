@@ -10,6 +10,16 @@
  * `public/sitemap.xml` zetten. `scripts/generate-sitemap.mjs` vult lastmod
  * vanuit `gewijzigd`. De route is dynamisch, dus verder is er niets te registreren.
  *
+ * `auteur` is optioneel. Laat het weg of laat het leeg als Joshua Bink de
+ * auteur blijft. Alleen een gevulde naam komt in het Article-schema terecht.
+ *
+ * `faq` mag leeg zijn of ontbreken. Dan toont de pagina geen FAQ-blok en
+ * komt er geen FAQPage in het schema. De tekst "Vijf dingen" in het blok
+ * "morgen doen" hoort daar los van en blijft altijd staan.
+ *
+ * `SMOKE_ARTIKELEN` bestaat alleen op de dev-server. Die pagina's zitten niet
+ * in `ARTIKELEN`, dus niet in het overzicht, het menu of de sitemap.
+ *
  * Schrijfregels voor de teksten hieronder: geen em-streepjes, geen komma vóór
  * "en", je-vorm, "aanvragen" in plaats van dat andere woord, elk getal krijgt
  * duiding en nooit een belofte over posities of resultaat.
@@ -44,10 +54,19 @@ export type Artikel = {
   leestijd: string;
   gepubliceerd: string;
   gewijzigd: string;
+  /**
+   * Naam in het Article-schema. Leeg of weggelaten houdt Joshua Bink,
+   * dezelfde persoon als `#joshua-bink`. Een gevulde naam vervangt die verwijzing.
+   */
+  auteur?: string;
   secties: ArtikelSectie[];
   /** Wat de lezer morgen zelf kan doen, ook als hij nooit klant wordt. */
   doen: string[];
-  faq: { q: string; a: string }[];
+  /**
+   * Vragen onderaan de pagina. Leeg of weggelaten betekent geen FAQ-blok
+   * en geen FAQPage.
+   */
+  faq?: { q: string; a: string }[];
   /** Interne vervolgstappen. Ankertekst is het zoekwoord, niet "bekijk". */
   links: { to: string; label: string; tekst: string }[];
   metaTitle: string;
@@ -522,9 +541,79 @@ export const ARTIKELEN: Artikel[] = [
   },
 ];
 
+/**
+ * Alleen de dev-server. Niet opnemen in `ARTIKELEN`: dan verschijnen ze in
+ * het overzicht, het menu en de vervolglinks. De smoketest opent de slugs
+ * rechtstreeks.
+ *
+ * `smoke-zonder-faq` heeft een lege FAQ en een leeg auteursveld.
+ * `smoke-met-auteur` laat `faq` weg en zet een auteursnaam.
+ */
+const SMOKE_ARTIKELEN: Artikel[] = import.meta.env.DEV
+  ? [
+      {
+        slug: "smoke-zonder-faq",
+        naam: "Smoketest zonder FAQ",
+        vraag: "Wat toont een kennisbankartikel zonder FAQ?",
+        pijler: "Smoketest",
+        icoon: "shield-check",
+        branche: "Smoketest",
+        teaser: "Controlepagina voor een artikel zonder vragen en met een leeg auteursveld.",
+        antwoord:
+          "Geen FAQ-blok en geen FAQPage. Een leeg auteursveld houdt Joshua als auteur in het schema.",
+        leestijd: "1 minuut",
+        gepubliceerd: "2026-01-01",
+        gewijzigd: "2026-01-01",
+        auteur: "",
+        secties: [
+          {
+            kop: "Alleen een controle",
+            alineas: [
+              "Deze pagina bestaat zodat de smoketest een artikel zonder FAQ kan openen. Hij hoort niet in het overzicht.",
+            ],
+          },
+        ],
+        doen: ["Niets. Dit is een controlepagina."],
+        faq: [],
+        links: [],
+        metaTitle: "Smoketest zonder FAQ | MegaOnline.io",
+        metaDescription: "Controlepagina zonder FAQ en met een leeg auteursveld.",
+      },
+      {
+        slug: "smoke-met-auteur",
+        naam: "Smoketest met auteur",
+        vraag: "Welke auteur krijgt een kennisbankartikel met een gezet veld?",
+        pijler: "Smoketest",
+        icoon: "shield-check",
+        branche: "Smoketest",
+        teaser: "Controlepagina zonder FAQ-veld en met een gevulde auteursnaam.",
+        antwoord:
+          "De gevulde naam staat in het Article-schema. Omdat de vragen ontbreken is er geen FAQ-blok en geen FAQPage.",
+        leestijd: "1 minuut",
+        gepubliceerd: "2026-01-01",
+        gewijzigd: "2026-01-01",
+        auteur: "Smoke Auteur",
+        secties: [
+          {
+            kop: "Alleen een controle",
+            alineas: [
+              "Deze pagina bestaat zodat de smoketest een gezet auteursveld kan lezen. Hij hoort niet in het overzicht.",
+            ],
+          },
+        ],
+        doen: ["Niets. Dit is een controlepagina."],
+        links: [],
+        metaTitle: "Smoketest met auteur | MegaOnline.io",
+        metaDescription: "Controlepagina met een gezet auteursveld en zonder FAQ.",
+      },
+    ]
+  : [];
+
 /** Het artikel bij een slug, of `undefined` als die slug niet bestaat. */
 export function artikelBySlug(slug: string): Artikel | undefined {
-  return ARTIKELEN.find((a) => a.slug === slug);
+  return (
+    ARTIKELEN.find((a) => a.slug === slug) ?? SMOKE_ARTIKELEN.find((a) => a.slug === slug)
+  );
 }
 
 /** Nieuwste artikelen eerst, zodat het overzicht zichzelf sorteert. */
