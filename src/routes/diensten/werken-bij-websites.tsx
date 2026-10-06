@@ -33,9 +33,6 @@ function WerkenBijWebsites() {
                 <Link to="/" hash="top">Home</Link>
                 <span className="sep">/</span>
                 {' '}
-                <Link to="/" hash="diensten">Diensten</Link>
-                <span className="sep">/</span>
-                {' '}
                 <b>Werken-bij Websites</b>
               </Reveal>
               {' '}
