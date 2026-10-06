@@ -1,9 +1,9 @@
-import { useRef, useState, type RefObject } from 'react'
 import { createFileRoute } from '@tanstack/react-router'
 import { Link } from '@tanstack/react-router'
 import { Icon } from '@/components/Icon'
 import { Media } from '@/components/Media'
-import { Reveal, useReveal } from '@/components/Reveal'
+import { Qa } from '@/components/Qa'
+import { Reveal } from '@/components/Reveal'
 import { ConceptForm } from '@/components/ConceptForm'
 import '@/styles/pages/diensten-seo.css'
 
@@ -78,7 +78,7 @@ const FAQ_ITEMS: { q: string; a: string }[] = [
   },
   {
     q: "Wat is GEO en wat is het verschil met SEO?",
-    a: "GEO staat voor Generative Engine Optimization: je website zo inrichten dat AI-zoekmachines je pagina's kunnen vinden, begrijpen en als bron kunnen gebruiken. SEO richt zich op vindbaarheid in Google. Bij MegaOnline horen ze allebei bij het Groei Partnership.",
+    a: "SEO is beter gevonden worden in Google, op de zoekopdrachten waar je klanten op zoeken. GEO hoort bij hetzelfde Groei Partnership en gaat over AI-zoekmachines.",
   },
   {
     q: "Wat kost SEO per maand bij MegaOnline?",
@@ -94,95 +94,10 @@ const FAQ_ITEMS: { q: string; a: string }[] = [
   },
   {
     q: "Kom ik met MegaOnline ook in ChatGPT en andere AI-zoekmachines?",
-    a: "MegaOnline richt pagina's zo in dat AI-zoekmachines ze kunnen lezen en als bron kunnen gebruiken. Dat hoort bij het Groei Partnership, net als vindbaarheid in Google. Een vermelding kan niemand garanderen.",
+    a: "Elke pagina krijgt heldere FAQ's voor AI-zoekmachines zoals ChatGPT. Dat hoort bij het Groei Partnership, net als vindbaarheid in Google. Een vermelding kan niemand garanderen.",
   },
 ]
 
-
-function FaqAnswer({ text }: { text: string }) {
-  const parts = text.split(/(\[[^\]]+\]\([^)]+\))/g).filter((part) => part !== "")
-  return (
-    <>
-      {parts.map((part, i) => {
-        const match = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/)
-        if (!match) return <span key={i}>{part}</span>
-        const label = match[1]
-        const href = match[2]
-        if (href === "https://megaonline.io/gratis-websiteconcept") {
-          return (
-            <Link key={i} to="/gratis-websiteconcept">
-              {label}
-            </Link>
-          )
-        }
-        return (
-          <a key={i} href={href}>
-            {label}
-          </a>
-        )
-      })}
-    </>
-  )
-}
-
-function FaqRow({
-  item,
-  index,
-}: {
-  item: { q: string; a: string }
-  index: number
-}) {
-  const [open, setOpen] = useState(false)
-  const panelRef = useRef<HTMLDivElement>(null)
-  const reveal = useReveal("reveal")
-  const id = `faq-${index}`
-
-  function toggle() {
-    const panel = panelRef.current
-    if (!panel) return
-
-    if (open) {
-      panel.style.height = panel.scrollHeight + "px"
-      requestAnimationFrame(() => {
-        panel.style.height = "0px"
-      })
-      setOpen(false)
-    } else {
-      setOpen(true)
-      panel.style.height = panel.scrollHeight + "px"
-      const onEnd = () => {
-        if (panel.style.height !== "0px") panel.style.height = "auto"
-        panel.removeEventListener("transitionend", onEnd)
-      }
-      panel.addEventListener("transitionend", onEnd)
-    }
-  }
-
-  return (
-    <div
-      ref={reveal.ref as RefObject<HTMLDivElement>}
-      className={`qa ${open ? "open" : ""} ${reveal.className}`.trim()}
-    >
-      <h3 className="qa__h">
-        <button
-          className="qa__q"
-          type="button"
-          aria-expanded={open}
-          aria-controls={id}
-          onClick={toggle}
-        >
-          {item.q}
-          <span className="pm" />
-        </button>
-      </h3>
-      <div id={id} className="qa__a" ref={panelRef}>
-        <div className="qa__a-inner">
-          <FaqAnswer text={item.a} />
-        </div>
-      </div>
-    </div>
-  )
-}
 
 function Seo() {
   return (
@@ -940,8 +855,10 @@ function Seo() {
           </Reveal>
           {' '}
           <div className="faq">
-            {FAQ_ITEMS.map((item, index) => (
-              <FaqRow key={item.q} item={item} index={index} />
+            {FAQ_ITEMS.map(({ q, a }) => (
+              <Qa key={q} question={q} className="reveal">
+                {a}
+              </Qa>
             ))}
           </div>
         </div>

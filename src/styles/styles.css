@@ -632,7 +632,6 @@ form[aria-busy="true"] .btn-primary { opacity: .65; pointer-events: none; }
 }
 .faq { display: grid; margin-top: 46px; border-top: 1px solid var(--line); }
 .qa { border-bottom: 1px solid var(--line); }
-.qa__h { margin: 0; font: inherit; letter-spacing: inherit; line-height: inherit; }
 .qa__q { width: 100%; text-align: left; display: flex; align-items: center; gap: 24px; padding: clamp(22px, 2.4vw, 30px) 0; font-family: var(--display); font-weight: 600; font-size: clamp(1.2rem, 1.8vw, 1.6rem); line-height: 1.2; letter-spacing: -0.02em; color: var(--fg); }
 .qa__q .pm { margin-left: auto; flex: none; width: 26px; height: 26px; position: relative; }
 .qa__q .pm::before, .qa__q .pm::after { content: ""; position: absolute; background: var(--accent-text); border-radius: 2px; transition: transform .3s; }

@@ -1,7 +1,8 @@
-import { useRef, useState, type RefObject } from 'react'
+import { type ReactNode } from 'react'
 import { createFileRoute, Link } from '@tanstack/react-router'
 import { ConceptForm } from '@/components/ConceptForm'
-import { Reveal, useReveal } from '@/components/Reveal'
+import { Qa } from '@/components/Qa'
+import { Reveal } from '@/components/Reveal'
 
 export const Route = createFileRoute('/gratis-websiteconcept')({
   head: () => ({
@@ -29,10 +30,10 @@ export const Route = createFileRoute('/gratis-websiteconcept')({
  * Eén bron voor de zichtbare vragen op deze pagina.
  * Feitenblok staat hier niet in. Geen FAQPage-markup (TK-86).
  */
-const FAQ_ITEMS: { q: string; a: string }[] = [
+const FAQ_ITEMS: { q: string; a: ReactNode }[] = [
   {
     q: 'Wat is een gratis websiteconcept?',
-    a: 'Je beantwoordt zes korte vragen over je bedrijf en je website. MegaOnline kijkt daarna zelf naar je bedrijf en maakt een eerste websiteconcept, met persoonlijk advies over hoe je website meer aanvragen en boekingen kan opleveren. Het is geen automatisch rapport.',
+    a: 'Je vult het formulier in over je bedrijf en je website. MegaOnline kijkt daarna zelf naar je bedrijf en maakt een eerste websiteconcept, met persoonlijk advies over hoe je website meer aanvragen en boekingen kan opleveren. Het is geen automatisch rapport.',
   },
   {
     q: 'Is het websiteconcept echt gratis?',
@@ -40,7 +41,7 @@ const FAQ_ITEMS: { q: string; a: string }[] = [
   },
   {
     q: 'Wat gebeurt er nadat ik de vragen heb beantwoord?',
-    a: 'MegaOnline maakt een eerste websiteconcept voor je bedrijf. Daarna neemt MegaOnline persoonlijk contact met je op om het concept en het advies te bespreken. Vragen in de tussentijd? Mail naar [info@megaonline.io](mailto:info@megaonline.io).',
+    a: 'MegaOnline maakt een eerste websiteconcept voor je bedrijf. Daarna neemt MegaOnline contact met je op om het concept en het advies te bespreken.',
   },
   {
     q: 'Kan ik een concept aanvragen als ik nog geen website heb?',
@@ -48,88 +49,14 @@ const FAQ_ITEMS: { q: string; a: string }[] = [
   },
   {
     q: 'Wat doen jullie met mijn gegevens?',
-    a: 'MegaOnline gebruikt je gegevens alleen voor je concept en advies. Je komt niet op een mailinglijst. Meer lees je in de privacyverklaring.',
+    a: (
+      <>
+        MegaOnline gebruikt je gegevens alleen voor je concept en advies. Meer lees je in de{' '}
+        <Link to="/privacyverklaring">privacyverklaring</Link>.
+      </>
+    ),
   },
 ]
-
-function FaqAnswer({ text }: { text: string }) {
-  const parts = text.split(/(\[[^\]]+\]\([^)]+\))/g).filter((part) => part !== '')
-  return (
-    <>
-      {parts.map((part, i) => {
-        const match = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/)
-        if (!match) return <span key={i}>{part}</span>
-        const label = match[1]
-        const href = match[2]
-        if (href === 'https://megaonline.io/gratis-websiteconcept') {
-          return (
-            <Link key={i} to="/gratis-websiteconcept">
-              {label}
-            </Link>
-          )
-        }
-        return (
-          <a key={i} href={href}>
-            {label}
-          </a>
-        )
-      })}
-    </>
-  )
-}
-
-function FaqRow({ item, index }: { item: { q: string; a: string }; index: number }) {
-  const [open, setOpen] = useState(false)
-  const panelRef = useRef<HTMLDivElement>(null)
-  const reveal = useReveal('reveal')
-  const id = `faq-${index}`
-
-  function toggle() {
-    const panel = panelRef.current
-    if (!panel) return
-
-    if (open) {
-      panel.style.height = panel.scrollHeight + 'px'
-      requestAnimationFrame(() => {
-        panel.style.height = '0px'
-      })
-      setOpen(false)
-    } else {
-      setOpen(true)
-      panel.style.height = panel.scrollHeight + 'px'
-      const onEnd = () => {
-        if (panel.style.height !== '0px') panel.style.height = 'auto'
-        panel.removeEventListener('transitionend', onEnd)
-      }
-      panel.addEventListener('transitionend', onEnd)
-    }
-  }
-
-  return (
-    <div
-      ref={reveal.ref as RefObject<HTMLDivElement>}
-      className={`qa ${open ? 'open' : ''} ${reveal.className}`.trim()}
-    >
-      <h3 className="qa__h">
-        <button
-          className="qa__q"
-          type="button"
-          aria-expanded={open}
-          aria-controls={id}
-          onClick={toggle}
-        >
-          {item.q}
-          <span className="pm" />
-        </button>
-      </h3>
-      <div id={id} className="qa__a" ref={panelRef}>
-        <div className="qa__a-inner">
-          <FaqAnswer text={item.a} />
-        </div>
-      </div>
-    </div>
-  )
-}
 
 function GratisWebsiteconcept() {
   return (
@@ -161,10 +88,9 @@ function GratisWebsiteconcept() {
           </div>
           <p className="feitenblok">
             Het gratis websiteconcept van MegaOnline is een eerste websiteconcept voor je bedrijf, met
-            persoonlijk advies over hoe je website meer aanvragen en boekingen kan opleveren. Je
-            beantwoordt zes korte vragen. Daarna neemt MegaOnline persoonlijk contact met je op om het te
-            bespreken. Het is vrijblijvend. Je krijgt geen automatisch rapport en komt niet op een
-            mailinglijst.
+            persoonlijk advies over hoe je website meer aanvragen en boekingen kan opleveren. Je vult
+            het formulier in. Daarna neemt MegaOnline contact met je op om het te bespreken. Het is
+            vrijblijvend. Je krijgt geen automatisch rapport.
           </p>
         </div>
       </section>
@@ -175,8 +101,10 @@ function GratisWebsiteconcept() {
             <h2 className="h2">Wat je misschien nog wil weten</h2>
           </Reveal>
           <div className="faq">
-            {FAQ_ITEMS.map((item, index) => (
-              <FaqRow key={item.q} item={item} index={index} />
+            {FAQ_ITEMS.map(({ q, a }) => (
+              <Qa key={q} question={q} className="reveal">
+                {a}
+              </Qa>
             ))}
           </div>
         </div>

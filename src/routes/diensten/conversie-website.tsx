@@ -1,9 +1,10 @@
-import { useRef, useState, type RefObject } from 'react'
+import { type ReactNode } from 'react'
 import { createFileRoute } from '@tanstack/react-router'
 import { Link } from '@tanstack/react-router'
 import { Icon } from '@/components/Icon'
 import { Media } from '@/components/Media'
-import { Reveal, useReveal } from '@/components/Reveal'
+import { Qa } from '@/components/Qa'
+import { Reveal } from '@/components/Reveal'
 import { ConceptForm } from '@/components/ConceptForm'
 
 export const Route = createFileRoute('/diensten/conversie-website')({
@@ -26,7 +27,7 @@ export const Route = createFileRoute('/diensten/conversie-website')({
  * Eén bron voor de zichtbare vragen op deze pagina.
  * Feitenblok staat hier niet in. Geen FAQPage-markup (TK-86).
  */
-const FAQ_ITEMS: { q: string; a: string }[] = [
+const FAQ_ITEMS: { q: string; a: ReactNode }[] = [
   {
     q: "Waarom niet kiezen voor een goedkope webbouwer?",
     a: "Een website bouwen is meer dan pagina's online zetten. Een goedkope website ziet er soms prima uit, maar denkt niet na over vertrouwen, gebruiksgemak en hoe bezoekers daadwerkelijk tot een aanvraag komen. Wij bouwen vanuit dat doel. Dat is precies waar het verschil zit tussen een website die bestaat en een website die klanten oplevert.",
@@ -61,11 +62,21 @@ const FAQ_ITEMS: { q: string; a: string }[] = [
   },
   {
     q: "Wat kost een Conversie Website?",
-    a: "De prijs van een Conversie Website hangt af van het aantal pagina's, de complexiteit en de extra functies die je nodig hebt. In het gratis websiteconcept krijg je een eerlijke indicatie voor jouw situatie.",
+    a: (
+      <>
+        De prijs van een Conversie Website hangt af van het aantal pagina's, de complexiteit en de extra functies die je nodig hebt. In het gratis websiteconcept krijg je een eerlijke indicatie voor jouw situatie.
+        {/* [prijs: Beslissing Joshua (TK-166 punt 5 / TK-85 vraag 1)] */}
+      </>
+    ),
   },
   {
     q: "Wat is het verschil tussen een Starter Website en een Conversie Website?",
-    a: "De Starter Website is compact: tot ongeveer 5 pagina's, gebouwd met vaste bouwblokken en met één feedbackronde. De Conversie Website is volledig maatwerk. Je krijgt een strategie voor je doelgroep, je aanvragen en je vindbaarheid. Er zijn meerdere ontwerp- en feedbackrondes.",
+    a: (
+      <>
+        De Starter Website is compact: tot ongeveer 5 pagina's, gebouwd met vaste bouwblokken en met één feedbackronde. De Conversie Website is volledig maatwerk. Je krijgt een strategie voor je doelgroep, je aanvragen en je vindbaarheid. Er zijn meerdere ontwerp- en feedbackrondes.
+        {/* [prijs: Beslissing Joshua (TK-166 punt 5 / TK-85 vraag 1)] */}
+      </>
+    ),
   },
   {
     q: "Wat zit er standaard in een Conversie Website?",
@@ -73,102 +84,14 @@ const FAQ_ITEMS: { q: string; a: string }[] = [
   },
   {
     q: "Hoe begin ik met een Conversie Website?",
-    a: "Je begint met een [gratis websiteconcept](https://megaonline.io/gratis-websiteconcept). Je beantwoordt zes korte vragen. Daarna neemt MegaOnline persoonlijk contact met je op om het concept en het advies te bespreken. Het traject zelf heeft vijf stappen: begrijpen, structureren, ontwerpen, ontwikkelen en verbeteren.",
+    a: (
+      <>
+        Je begint met een <Link to="/gratis-websiteconcept">gratis websiteconcept</Link>. Je vult het formulier in. Daarna neemt MegaOnline contact met je op om het concept en het advies te bespreken. Het traject zelf heeft vijf stappen: begrijpen, structureren, ontwerpen, ontwikkelen en verbeteren.
+      </>
+    ),
   },
 ]
 
-
-function FaqAnswer({ text }: { text: string }) {
-  const parts = text.split(/(\[[^\]]+\]\([^)]+\))/g).filter((part) => part !== "")
-  return (
-    <>
-      {parts.map((part, i) => {
-        const match = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/)
-        if (!match) return <span key={i}>{part}</span>
-        const label = match[1]
-        const href = match[2]
-        if (href === "https://megaonline.io/gratis-websiteconcept") {
-          return (
-            <Link key={i} to="/gratis-websiteconcept">
-              {label}
-            </Link>
-          )
-        }
-        return (
-          <a key={i} href={href}>
-            {label}
-          </a>
-        )
-      })}
-    </>
-  )
-}
-
-function FaqRow({
-  item,
-  index,
-  prijs,
-}: {
-  item: { q: string; a: string }
-  index: number
-  prijs?: boolean
-}) {
-  const [open, setOpen] = useState(false)
-  const panelRef = useRef<HTMLDivElement>(null)
-  const reveal = useReveal("reveal")
-  const id = `faq-${index}`
-
-  function toggle() {
-    const panel = panelRef.current
-    if (!panel) return
-
-    if (open) {
-      panel.style.height = panel.scrollHeight + "px"
-      requestAnimationFrame(() => {
-        panel.style.height = "0px"
-      })
-      setOpen(false)
-    } else {
-      setOpen(true)
-      panel.style.height = panel.scrollHeight + "px"
-      const onEnd = () => {
-        if (panel.style.height !== "0px") panel.style.height = "auto"
-        panel.removeEventListener("transitionend", onEnd)
-      }
-      panel.addEventListener("transitionend", onEnd)
-    }
-  }
-
-  return (
-    <div
-      ref={reveal.ref as RefObject<HTMLDivElement>}
-      className={`qa ${open ? "open" : ""} ${reveal.className}`.trim()}
-    >
-      <h3 className="qa__h">
-        <button
-          className="qa__q"
-          type="button"
-          aria-expanded={open}
-          aria-controls={id}
-          onClick={toggle}
-        >
-          {item.q}
-          <span className="pm" />
-        </button>
-      </h3>
-      <div id={id} className="qa__a" ref={panelRef}>
-        <div className="qa__a-inner">
-          <FaqAnswer text={item.a} />
-          {prijs ? (
-            <>
-              {/* [prijs: Beslissing Joshua (TK-166 punt 5 / TK-85 vraag 1)] */}
-            </>
-          ) : null}
-        </div>
-      </div>
-    </div>
-  )
-}
 
 function ConversieWebsite() {
   return (
@@ -241,10 +164,10 @@ function ConversieWebsite() {
             </Reveal>
           </div>
           <p className="feitenblok">
-            Een Conversie Website van MegaOnline is een website voor bedrijven die afhankelijk zijn van aanvragen, reserveringen en boekingen. Het is de kerndienst van MegaOnline. De website is volledig maatwerk.
+            Een Conversie Website van MegaOnline is een website voor bedrijven die afhankelijk zijn van aanvragen, reserveringen en boekingen. De website is volledig maatwerk.
             {/* [prijs: Beslissing Joshua (TK-166 punt 5 / TK-85 vraag 1)] */}
             {" "}
-            Teksten en foto's pas je zelf aan. Na livegang kies je voor het Groei Partnership (€ 250 opstart, daarna € 150 per maand) of alleen voor onderhoud.
+            Teksten en foto's pas je zelf aan. Na livegang kun je kiezen voor het Groei Partnership (€ 250 opstart, daarna € 150 per maand) of alleen voor onderhoud.
             {/* [prijs: Beslissing Joshua (TK-166 punt 5 / TK-85 vraag 1)] */}
           </p>
         </div>
@@ -1143,16 +1066,10 @@ function ConversieWebsite() {
           </Reveal>
           {' '}
           <div className="faq">
-            {FAQ_ITEMS.map((item, index) => (
-              <FaqRow
-                key={item.q}
-                item={item}
-                index={index}
-                prijs={
-                  item.q === "Wat kost een Conversie Website?" ||
-                  item.q === "Wat is het verschil tussen een Starter Website en een Conversie Website?"
-                }
-              />
+            {FAQ_ITEMS.map(({ q, a }) => (
+              <Qa key={q} question={q} className="reveal">
+                {a}
+              </Qa>
             ))}
           </div>
         </div>
