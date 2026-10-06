@@ -5,6 +5,7 @@ import { Qa } from '@/components/Qa'
 import { Media } from '@/components/Media'
 import { Reveal } from '@/components/Reveal'
 import { SingleLeadForm } from '@/components/LeadForm'
+import { LEAD_CONTACT } from '@/lib/lead-contact'
 import '@/styles/pages/contact.css'
 
 export const Route = createFileRoute('/contact')({
@@ -229,8 +230,8 @@ function Contact() {
                 Liever even sparren? Bel ons gerust tijdens kantooruren (ma–vr, 9–17 uur).
               </p>
               {' '}
-              <a className="ccard__val" href="tel:+31634388938">
-                06-34388938
+              <a className="ccard__val" href={`tel:${LEAD_CONTACT.phone}`}>
+                {LEAD_CONTACT.phoneText}
                 {' '}
               </a>
             </Reveal>

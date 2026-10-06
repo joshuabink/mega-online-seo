@@ -98,9 +98,6 @@ function Reserveringen() {
                 <Link to="/" hash="top">Home</Link>
                 <span className="sep">/</span>
                 {' '}
-                <Link to="/" hash="diensten">Branches</Link>
-                <span className="sep">/</span>
-                {' '}
                 <b>Bedrijven met reserveringen</b>
               </Reveal>{" "}
               <Reveal as="div" className="hero__badge reveal" data-d="1">

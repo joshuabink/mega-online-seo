@@ -1,3 +1,4 @@
+import { type ReactNode } from 'react'
 import { createFileRoute } from '@tanstack/react-router'
 import { Link } from '@tanstack/react-router'
 import { Icon } from '@/components/Icon'
@@ -22,6 +23,76 @@ export const Route = createFileRoute('/diensten/conversie-website')({
   component: ConversieWebsite,
 })
 
+/**
+ * Eén bron voor de zichtbare vragen op deze pagina.
+ * Feitenblok staat hier niet in. Geen FAQPage-markup (TK-86).
+ */
+const FAQ_ITEMS: { q: string; a: ReactNode }[] = [
+  {
+    q: "Waarom niet kiezen voor een goedkope webbouwer?",
+    a: "Een website bouwen is meer dan pagina's online zetten. Een goedkope website ziet er soms prima uit, maar denkt niet na over vertrouwen, gebruiksgemak en hoe bezoekers daadwerkelijk tot een aanvraag komen. Wij bouwen vanuit dat doel. Dat is precies waar het verschil zit tussen een website die bestaat en een website die klanten oplevert.",
+  },
+  {
+    q: "Kan ik mijn website zelf beheren?",
+    a: "Ja. Je website is flexibel, veilig en schaalbaar, en je kunt teksten en foto’s eenvoudig zelf aanpassen. Je zit nooit vast aan één leverancier: de website blijft van jou.",
+  },
+  {
+    q: "Wat gebeurt er na livegang?",
+    a: "Livegang is het startpunt, niet het eindpunt. We kunnen blijven kijken waar bezoekers afhaken en de website maand na maand verbeteren via een Groei Partnership. Wil je dat liever niet, dan is alleen onderhoud en support ook mogelijk.",
+  },
+  {
+    q: "Kan mijn website gekoppeld worden aan bestaande software?",
+    a: "In de meeste gevallen wel. Denk aan CRM-systemen, boekingssystemen, agenda's, WhatsApp, e-mailsoftware en betaalsystemen. Zo wordt je website een onderdeel van je bedrijf in plaats van een los eiland. Werk je met iets specifieks? Dan kijken we samen wat mogelijk is.",
+  },
+  {
+    q: "Werken jullie ook met bestaande websites?",
+    a: "Soms is een volledig nieuwe website de beste keuze, soms hebben gerichte verbeteringen al veel effect. Het gratis websiteconcept helpt ons bepalen wat voor jouw situatie de slimste aanpak is.",
+  },
+  {
+    q: "Is een Groei Partnership verplicht?",
+    a: "Nee. Sommige klanten kiezen voor een eenmalige website en regelen het beheer zelf of via een andere partij. We raden het Partnership wel aan, omdat websites die regelmatig verbeterd worden structureel beter presteren.",
+  },
+  {
+    q: "Helpen jullie ook met foto's en video's?",
+    a: "Ja. Goede beelden maken vaak het verschil tussen afhaken of vertrouwen krijgen. We kunnen helpen met fotografie op locatie, content shoots, bedrijfsvideo's en dronebeelden. Eenmalig bij de bouw, of periodiek via contentdagen om je content vers te houden.",
+  },
+  {
+    q: "Kunnen jullie ook helpen met een logo of huisstijl?",
+    a: "Heb je al een sterke huisstijl, dan bouwen we daarop verder. Heb je die nog niet, dan kunnen we samen met gespecialiseerde ontwerpers helpen met een logo, lettertypes, kleuren en een eenvoudig brandbook. Wij zijn geen brandingbureau, maar we bieden het aan omdat een sterke huisstijl bijna altijd tot een betere website leidt.",
+  },
+  {
+    q: "Wat kost een Conversie Website?",
+    a: (
+      <>
+        De prijs van een Conversie Website hangt af van het aantal pagina's, de complexiteit en de extra functies die je nodig hebt. In het gratis websiteconcept krijg je een eerlijke indicatie voor jouw situatie.
+        {/* [prijs: Beslissing Joshua (TK-166 punt 5 / TK-85 vraag 1)] */}
+      </>
+    ),
+  },
+  {
+    q: "Wat is het verschil tussen een Starter Website en een Conversie Website?",
+    a: (
+      <>
+        De Starter Website is compact: tot ongeveer 5 pagina's, gebouwd met vaste bouwblokken en met één feedbackronde. De Conversie Website is volledig maatwerk. Je krijgt een strategie voor je doelgroep, je aanvragen en je vindbaarheid. Er zijn meerdere ontwerp- en feedbackrondes.
+        {/* [prijs: Beslissing Joshua (TK-166 punt 5 / TK-85 vraag 1)] */}
+      </>
+    ),
+  },
+  {
+    q: "Wat zit er standaard in een Conversie Website?",
+    a: "Elke Conversie Website werkt goed op mobiel en is snel en veilig opgezet. Bezoekersstatistieken zijn ingericht, zodat je ziet wat bezoekers doen. Teksten en foto's pas je zelf aan. De technische basis is opgezet om gevonden te worden in Google.",
+  },
+  {
+    q: "Hoe begin ik met een Conversie Website?",
+    a: (
+      <>
+        Je begint met een <Link to="/gratis-websiteconcept">gratis websiteconcept</Link>. Je vult het formulier in. Daarna neemt MegaOnline contact met je op om het concept en het advies te bespreken. Het traject zelf heeft vijf stappen: begrijpen, structureren, ontwerpen, ontwikkelen en verbeteren.
+      </>
+    ),
+  },
+]
+
+
 function ConversieWebsite() {
   return (
     <main id="top">
@@ -31,9 +102,6 @@ function ConversieWebsite() {
             <div className="svc-hero__copy">
               <Reveal as="div" className="crumb reveal">
                 <Link to="/" hash="top">Home</Link>
-                <span className="sep">/</span>
-                {' '}
-                <Link to="/" hash="diensten">Diensten</Link>
                 <span className="sep">/</span>
                 {' '}
                 <b>Conversie Website</b>
@@ -60,7 +128,7 @@ function ConversieWebsite() {
               {' '}
               <Reveal as="div" className="svc-hero__ctas reveal" data-d="2">
                 <Link className="btn btn-primary" to="/gratis-websiteconcept">
-                  Vraag je gratis concept aan
+                  Vraag je gratis websiteconcept aan
                 </Link>
                 {' '}
                 <a className="tlink" href="#aanpak">
@@ -92,6 +160,13 @@ function ConversieWebsite() {
               </div>
             </Reveal>
           </div>
+          <p className="feitenblok">
+            Een Conversie Website van MegaOnline is een website voor bedrijven die afhankelijk zijn van aanvragen, reserveringen en boekingen. De website is volledig maatwerk.
+            {/* [prijs: Beslissing Joshua (TK-166 punt 5 / TK-85 vraag 1)] */}
+            {" "}
+            Teksten en foto's pas je zelf aan. Na livegang kun je kiezen voor het Groei Partnership (€ 250 opstart, daarna € 150 per maand) of alleen voor onderhoud.
+            {/* [prijs: Beslissing Joshua (TK-166 punt 5 / TK-85 vraag 1)] */}
+          </p>
         </div>
       </section>
       {' '}
@@ -805,7 +880,7 @@ function ConversieWebsite() {
               <div className="rm__foot">
                 <span className="svcprice">Vanaf € 2.500</span>
                 {' '}
-                <Link className="flow-cta" to="/gratis-websiteconcept">Vraag je gratis concept aan</Link>
+                <Link className="flow-cta" to="/gratis-websiteconcept">Vraag je gratis websiteconcept aan</Link>
               </div>
             </div>
             {' '}
@@ -988,37 +1063,11 @@ function ConversieWebsite() {
           </Reveal>
           {' '}
           <div className="faq">
-            <Qa question="Waarom niet kiezen voor een goedkope webbouwer?" className="reveal">
-                Een website bouwen is meer dan pagina's online zetten. Een goedkope website ziet er soms prima uit, maar denkt niet na over vertrouwen, gebruiksgemak en hoe bezoekers daadwerkelijk tot een aanvraag komen. Wij bouwen vanuit dat doel. Dat is precies waar het verschil zit tussen een website die bestaat en een website die klanten oplevert.
-            </Qa>
-            {' '}
-            <Qa question="Kan ik mijn website zelf beheren?" className="reveal">
-                Ja. Je website is flexibel, veilig en schaalbaar, en je kunt teksten en foto’s eenvoudig zelf aanpassen. Je zit nooit vast aan één leverancier: de website blijft van jou.
-            </Qa>
-            {' '}
-            <Qa question="Wat gebeurt er na livegang?" className="reveal">
-                Livegang is het startpunt, niet het eindpunt. We kunnen blijven kijken waar bezoekers afhaken en de website maand na maand verbeteren via een Groei Partnership. Wil je dat liever niet, dan is alleen onderhoud en support ook mogelijk.
-            </Qa>
-            {' '}
-            <Qa question="Kan mijn website gekoppeld worden aan bestaande software?" className="reveal">
-                In de meeste gevallen wel. Denk aan CRM-systemen, boekingssystemen, agenda's, WhatsApp, e-mailsoftware en betaalsystemen. Zo wordt je website een onderdeel van je bedrijf in plaats van een los eiland. Werk je met iets specifieks? Dan kijken we samen wat mogelijk is.
-            </Qa>
-            {' '}
-            <Qa question="Werken jullie ook met bestaande websites?" className="reveal">
-                Soms is een volledig nieuwe website de beste keuze, soms hebben gerichte verbeteringen al veel effect. Het gratis websiteconcept helpt ons bepalen wat voor jouw situatie de slimste aanpak is.
-            </Qa>
-            {' '}
-            <Qa question="Is een Groei Partnership verplicht?" className="reveal">
-                Nee. Sommige klanten kiezen voor een eenmalige website en regelen het beheer zelf of via een andere partij. We raden het Partnership wel aan, omdat websites die regelmatig verbeterd worden structureel beter presteren.
-            </Qa>
-            {' '}
-            <Qa question="Helpen jullie ook met foto's en video's?" className="reveal">
-                Ja. Goede beelden maken vaak het verschil tussen afhaken of vertrouwen krijgen. We kunnen helpen met fotografie op locatie, content shoots, bedrijfsvideo's en dronebeelden. Eenmalig bij de bouw, of periodiek via contentdagen om je content vers te houden.
-            </Qa>
-            {' '}
-            <Qa question="Kunnen jullie ook helpen met een logo of huisstijl?" className="reveal">
-                Heb je al een sterke huisstijl, dan bouwen we daarop verder. Heb je die nog niet, dan kunnen we samen met gespecialiseerde ontwerpers helpen met een logo, lettertypes, kleuren en een eenvoudig brandbook. Wij zijn geen brandingbureau, maar we bieden het aan omdat een sterke huisstijl bijna altijd tot een betere website leidt.
-            </Qa>
+            {FAQ_ITEMS.map(({ q, a }) => (
+              <Qa key={q} question={q} className="reveal">
+                {a}
+              </Qa>
+            ))}
           </div>
         </div>
       </section>

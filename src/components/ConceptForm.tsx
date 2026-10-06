@@ -1,5 +1,6 @@
 import { useEffect, useId, useRef, useState } from 'react'
 import { Link } from '@tanstack/react-router'
+import { LEAD_CONTACT } from '@/lib/lead-contact'
 import { SteppedLeadForm } from './LeadForm'
 
 /**
@@ -410,9 +411,15 @@ export function ConceptForm({
             ← Terug
           </button>
           <button className="btn btn-primary" type="submit">
-            Vraag mijn gratis concept aan
+            Vraag je gratis websiteconcept aan
           </button>
         </div>
+        <p className="form__direct">
+          Liever direct contact? Mail{' '}
+          <a href={`mailto:${LEAD_CONTACT.mail}`}>{LEAD_CONTACT.mail}</a>, bel{' '}
+          <a href={`tel:${LEAD_CONTACT.phone}`}>{LEAD_CONTACT.phoneText}</a> of stuur een{' '}
+          <a href={LEAD_CONTACT.whatsappUrl} target="_blank" rel="noopener">WhatsApp</a>.
+        </p>
         <p className="form__disc">
           We gebruiken je gegevens alleen voor je concept en advies. Je komt niet op een
           mailinglijst.{' '}
