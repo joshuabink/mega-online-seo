@@ -62,6 +62,8 @@
 
 /* Werkwijze-beeld: volledige afbeelding tonen zonder bijsnijden, frame behouden */
 [data-page="index"] .procband { aspect-ratio: auto; }
+[data-page="index"] .procband > picture > img,
+[data-page="index"] .vision__media > img { width: 100%; height: auto; }
 
 /* "Zo werken we"-beeld: volledige afbeelding tonen zonder bijsnijden, frame behouden */
 [data-page="index"] .vision__media { aspect-ratio: auto; }

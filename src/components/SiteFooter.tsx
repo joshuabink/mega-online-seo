@@ -1,5 +1,6 @@
 import { Link } from '@tanstack/react-router'
 import { CookieSettingsButton } from '@/components/CookieBanner'
+import { Icon } from './Icon'
 import { Logo } from './Logo'
 
 const DIENSTEN = [
@@ -46,6 +47,10 @@ export function SiteFooter() {
               Websites die zorgen voor meer aanvragen, reserveringen en boekingen voor
               jouw bedrijf.
             </p>
+            <a className="footer__phone" href="tel:+31634388938">
+              <Icon name="phone" />
+              <span>06 34 38 89 38</span>
+            </a>
             <Link className="footer__scan" to="/gratis-websiteconcept">
               Vraag je gratis websiteconcept aan            </Link>
           </div>
@@ -117,6 +122,10 @@ export function FunnelFooter() {
         <Link to="/" className="logo" aria-label="MegaOnline home">
           <Logo />
         </Link>
+        <a className="ffooter__phone" href="tel:+31634388938">
+          <Icon name="phone" />
+          <span>06 34 38 89 38</span>
+        </a>
         <span className="ffooter__copy">© 2026 MegaOnline.io · Gratis websiteconcept</span>
         <CookieSettingsButton className="footer__cookie" />
       </div>

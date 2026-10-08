@@ -16,10 +16,10 @@
 /* ---------- 1. Display-letter ----------
    Geist -> Archivo. Geist is de huisletter van Vercel en de standaardletter
    in v0; hij staat op zoveel gegenereerde sites dat hij leest als een logo
-   van de tool waarmee de site gemaakt is. De font-import staat in
-   __root.tsx; Space Grotesk werd geladen maar nergens gebruikt. */
+   van de tool waarmee de site gemaakt is. De bestanden staan in
+   src/styles/fonts.css; Space Grotesk werd geladen maar nergens gebruikt. */
 :root {
-  --display: "Archivo", system-ui, -apple-system, sans-serif;
+  --display: "Archivo", "Archivo Fallback", system-ui, -apple-system, sans-serif;
 }
 
 /* De knijp van -0.038em op koppen van 5rem hoort bij dezelfde look. */
