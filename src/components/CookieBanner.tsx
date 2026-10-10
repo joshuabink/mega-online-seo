@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { initAnalytics, optOut } from "@/lib/analytics";
 import "vanilla-cookieconsent/dist/cookieconsent.css";
 import "@/styles/cookieconsent.css";
 
@@ -24,6 +25,11 @@ export function CookieBanner() {
       const cc = await import("vanilla-cookieconsent");
       if (cancelled || (window as ConsentWindow)._ccRun) return;
 
+      const syncAnalytics = () => {
+        if (cc.acceptedCategory("statistieken")) initAnalytics();
+        else optOut();
+      };
+
       await cc.run({
         // #cc-main moet in dit element, anders erven de dark-tokens niet:
         // het pakket hangt de banner anders direct onder body.
@@ -31,9 +37,11 @@ export function CookieBanner() {
         mode: "opt-in",
         // Verhoog dit getal als categorieën of teksten wijzigen. De banner
         // vraagt dan opnieuw, ook als er al een keuze is opgeslagen.
-        revision: 0,
+        revision: 1,
         manageScriptTags: true,
         autoClearCookies: true,
+        onConsent: syncAnalytics,
+        onChange: syncAnalytics,
         guiOptions: {
           consentModal: {
             layout: "box",
@@ -92,7 +100,7 @@ export function CookieBanner() {
                   {
                     title: "Statistieken",
                     description:
-                      "Meten hoe de website wordt gebruikt, zodat we hem kunnen verbeteren. Op dit moment gebruiken we geen statistiekcookies.",
+                      "Meten hoe bezoekers de website gebruiken: welke pagina's ze bekijken, waar ze klikken en hoe ver ze door een formulier komen. Wat je in formulieren typt wordt niet vastgelegd. De gegevens staan op servers in de EU.",
                     linkedCategory: "statistieken",
                   },
                   {
