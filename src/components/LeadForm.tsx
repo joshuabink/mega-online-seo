@@ -1,5 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 'react'
 import { sendLead, type LeadResult } from '@/lib/lead'
+import { track } from '@/lib/analytics'
 import { LEAD_CONTACT } from '@/lib/lead-contact'
 import { useReveal } from './Reveal'
 
@@ -52,6 +53,63 @@ function failureFrom(result: LeadResult): LeadFailure | null {
 
 type OkProps = { ok?: ReactNode }
 
+/**
+ * Formulier-events voor statistieken. Alleen veldnamen, nooit waarden.
+ * - form_start: eerste focus of invoer, één keer per paginaweergave
+ * - form_step_view: bij elke stapwissel, en stap 1 zodra het formulier in beeld komt
+ */
+function useFormTracking(
+  formRef: React.RefObject<HTMLFormElement | null>,
+  subject: string | undefined,
+  step: number,
+  totalSteps: number,
+) {
+  const base = () => ({
+    form: subject || (typeof location !== 'undefined' ? location.pathname : ''),
+    path: typeof location !== 'undefined' ? location.pathname : '',
+  })
+  const baseRef = useRef(base)
+  baseRef.current = base
+  const zichtbaar = useRef(false)
+
+  useEffect(() => {
+    const form = formRef.current
+    if (!form) return
+    let started = false
+    const onStart = () => {
+      if (started) return
+      started = true
+      track('form_start', baseRef.current())
+    }
+    form.addEventListener('focusin', onStart)
+    form.addEventListener('input', onStart)
+    return () => {
+      form.removeEventListener('focusin', onStart)
+      form.removeEventListener('input', onStart)
+    }
+  }, [formRef])
+
+  useEffect(() => {
+    if (!totalSteps) return
+    if (zichtbaar.current) {
+      track('form_step_view', { ...baseRef.current(), step: step + 1, total_steps: totalSteps })
+      return
+    }
+    const form = formRef.current
+    if (!form || typeof IntersectionObserver === 'undefined') return
+    const io = new IntersectionObserver((entries) => {
+      if (!entries.some((e) => e.isIntersecting)) return
+      io.disconnect()
+      zichtbaar.current = true
+      track('form_step_view', { ...baseRef.current(), step: step + 1, total_steps: totalSteps })
+    })
+    io.observe(form)
+    return () => io.disconnect()
+  }, [formRef, step, totalSteps])
+
+  return base
+}
+
 function DefaultOk() {
   return (
     <>
@@ -93,6 +151,11 @@ export function SteppedLeadForm({
   const [failure, setFailure] = useState<LeadFailure | null>(null)
   const vorigeStap = useRef<number | null>(null)
   const busy = useRef(false)
+  const [totalSteps, setTotalSteps] = useState(0)
+  useLayoutEffect(() => {
+    setTotalSteps(formRef.current?.querySelectorAll('.fstep').length ?? 0)
+  }, [])
+  const base = useFormTracking(formRef, subject, step, totalSteps)
 
   const stepEls = () =>
     formRef.current
@@ -184,6 +247,7 @@ export function SteppedLeadForm({
 
     let ok = true
     let first: HTMLElement | null = null
+    const failed: string[] = []
 
     // Keuzegroepen: data-min telt aangevinkte opties. De fout hoort bij de
     // groep, niet bij een los vakje.
@@ -193,6 +257,12 @@ export function SteppedLeadForm({
       if (checked < min) {
         ok = false
         showFieldError(group, group.dataset.error || 'Kies minimaal één antwoord.')
+        failed.push(
+          group.name ||
+            group.querySelector<HTMLInputElement>('input[name]')?.name ||
+            group.id ||
+            'fieldset',
+        )
         first ??= group
       }
     }
@@ -205,10 +275,18 @@ export function SteppedLeadForm({
       if (!f.checkValidity()) {
         ok = false
         showFieldError(f, f.dataset.error || 'Vul dit veld in.')
+        failed.push(f.name || f.id || f.type)
         first ??= f
       }
     }
 
+    if (!ok) {
+      track('form_validation_error', {
+        ...base(),
+        step: i + 1,
+        fields: [...new Set(failed)],
+      })
+    }
     if (!ok && first) first.focus()
     return ok
   }
@@ -216,8 +294,12 @@ export function SteppedLeadForm({
   function onClick(e: React.MouseEvent<HTMLFormElement>) {
     const target = e.target as HTMLElement
     if (target.closest('[data-next]')) {
-      if (validStep(step)) setStep((s) => Math.min(s + 1, stepEls().length - 1))
+      if (validStep(step)) {
+        track('form_step_complete', { ...base(), step: step + 1 })
+        setStep((s) => Math.min(s + 1, stepEls().length - 1))
+      }
     } else if (target.closest('[data-prev]')) {
+      track('form_step_back', { ...base(), step: step + 1 })
       setStep((s) => Math.max(s - 1, 0))
     }
   }
@@ -237,6 +319,7 @@ export function SteppedLeadForm({
        "versturen". Dat is ook wat een bezoeker verwacht. */
     const laatste = stepEls().length - 1
     if (step < laatste) {
+      track('form_step_complete', { ...base(), step: step + 1 })
       setStep((s) => Math.min(s + 1, laatste))
       return
     }
@@ -250,10 +333,13 @@ export function SteppedLeadForm({
       if (result.ok) {
         verstuurd = true
         setStatus('sent')
+        track('form_submit_success', base())
       } else {
         setFailure(failureFrom(result))
+        track('form_submit_fail', { ...base(), reason: result.mailto ? 'mailto_fallback' : 'error' })
       }
     } catch {
+      track('form_submit_fail', { ...base(), reason: 'error' })
       setFailure({
         error: `Je aanvraag is niet automatisch verstuurd. Mail direct naar ${LEAD_CONTACT.mail}.`,
       })
@@ -316,19 +402,24 @@ export function SingleLeadForm({
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent'>('idle')
   const [failure, setFailure] = useState<LeadFailure | null>(null)
   const busy = useRef(false)
+  const base = useFormTracking(formRef, subject, 0, 1)
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     const form = formRef.current
     if (busy.current || !form) return
 
-    for (const f of form.querySelectorAll<HTMLInputElement>(
-      'input, select, textarea',
-    )) {
-      if (!f.checkValidity()) {
-        f.reportValidity()
-        return
-      }
+    const invalid = Array.from(
+      form.querySelectorAll<HTMLInputElement>('input, select, textarea'),
+    ).filter((f) => !f.checkValidity())
+    if (invalid.length) {
+      track('form_validation_error', {
+        ...base(),
+        step: 1,
+        fields: [...new Set(invalid.map((f) => f.name || f.id).filter(Boolean))],
+      })
+      invalid[0].reportValidity()
+      return
     }
 
     busy.current = true
@@ -340,10 +431,13 @@ export function SingleLeadForm({
       if (result.ok) {
         verstuurd = true
         setStatus('sent')
+        track('form_submit_success', base())
       } else {
         setFailure(failureFrom(result))
+        track('form_submit_fail', { ...base(), reason: result.mailto ? 'mailto_fallback' : 'error' })
       }
     } catch {
+      track('form_submit_fail', { ...base(), reason: 'error' })
       setFailure({
         error: `Je aanvraag is niet automatisch verstuurd. Mail direct naar ${LEAD_CONTACT.mail}.`,
       })
