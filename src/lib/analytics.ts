@@ -6,7 +6,7 @@
  */
 import type { PostHog } from 'posthog-js'
 
-export const POSTHOG_KEY = ''
+export const POSTHOG_KEY = "phc_mkPhVY7ETCZn89DFwyrhGYLcem6Q5nBzkRMBfRg4QbzK"
 
 let ph: PostHog | null = null
 let loading: Promise<void> | null = null
