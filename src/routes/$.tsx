@@ -1,5 +1,5 @@
 import { Link, createFileRoute, notFound, redirect } from '@tanstack/react-router'
-import { findRedirect } from '@/lib/legacy-urls'
+import { findRedirect, SHORT_LINKS } from '@/lib/legacy-urls'
 
 /**
  * Catch-all: vangt de oude `.html`-paden af en stuurt permanent door naar de
@@ -10,6 +10,12 @@ import { findRedirect } from '@/lib/legacy-urls'
  */
 export const Route = createFileRoute('/$')({
   beforeLoad: ({ location }) => {
+    // Korte bio-links: 302 met href, zodat de UTM-query in de doel-URL
+    // meekomt (een `to`-redirect zou de querystring laten vallen).
+    const short = SHORT_LINKS[location.pathname]
+    if (short) {
+      throw redirect({ href: short, statusCode: 302, throw: true })
+    }
     const target = findRedirect(location.pathname)
     if (target) {
       throw redirect({ to: target, statusCode: 301, throw: true })
