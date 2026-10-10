@@ -89,6 +89,20 @@ function canonicalRedirect(request: Request): Response | null {
   const canonical = canonicalPathname(url.pathname);
   const search = url.search;
 
+  // Korte links voor social bio's. Bewust 302 (tijdelijk): het doel kan later
+  // wijzigen zonder dat browsers of zoekmachines de oude bestemming vasthouden.
+  const SHORT_LINKS: Record<string, string> = {
+    "/ig": "/?utm_source=instagram&utm_medium=social&utm_campaign=bio",
+    "/li": "/?utm_source=linkedin&utm_medium=social&utm_campaign=profiel",
+  };
+  const shortTarget = SHORT_LINKS[canonical];
+  if (shortTarget) {
+    const [path, query] = shortTarget.split("?");
+    const location = sameOriginLocation(url.origin, path, query ? `?${query}` : "");
+    if (!location) return null;
+    return new Response(null, { status: 302, headers: { Location: location } });
+  }
+
   if (canonical === "/gratis-websitescan") {
     const location = sameOriginLocation(url.origin, "/gratis-websiteconcept", search);
     if (!location) return null;
