@@ -51,6 +51,16 @@ export const REDIRECTS: Record<string, string> = (() => {
 })()
 
 /**
+ * Korte links voor social bio's. Doel bevat UTM-parameters en kan later
+ * wijzigen, dus deze gaan met een 302 (tijdelijk) in plaats van 301.
+ * Server-side afgevangen in `src/server.ts`; dit is de client-side fallback.
+ */
+export const SHORT_LINKS: Record<string, string> = {
+  '/ig': '/?utm_source=instagram&utm_medium=social&utm_campaign=bio',
+  '/li': '/?utm_source=linkedin&utm_medium=social&utm_campaign=profiel',
+}
+
+/**
  * Zoekt de nieuwe route bij een oud pad. Ongevoelig voor URL-encoding
  * (`%20` vs spatie) en een eventuele trailing slash.
  */
