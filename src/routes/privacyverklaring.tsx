@@ -135,7 +135,11 @@ function Privacyverklaring() {
                 </p>
                 {' '}
                 <p>
-                  <strong>Statistieken.</strong> Op dit moment gebruiken we geen statistiekcookies. Voegen we die later toe, dan alleen met je toestemming, en dan noemen we de dienst hier.
+                  <strong>Statistieken.</strong> Alleen als je hiervoor kiest, gebruiken we PostHog om te meten hoe bezoekers de website gebruiken. PostHog slaat de gegevens op servers in de EU (Frankfurt) op.
+                </p>
+                {' '}
+                <p>
+                  We meten paginabezoeken, klikken, scrollgedrag en hoe ver je door de stappen van een formulier komt. Ook maken we sessie-opnames, waarin alle invoervelden zijn afgeschermd. Wat je in een formulier typt, leggen we via PostHog nooit vast. Je kunt je toestemming altijd intrekken via Cookie-instellingen onderaan de site.
                 </p>
                 {' '}
                 <p>
