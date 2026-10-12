@@ -8,9 +8,9 @@ export const Route = createFileRoute('/over-megaonline')({
   head: () => ({
     meta: [
       { title: "Over MegaOnline | Websites die bijdragen aan groei" },
-      { name: 'description', content: "Achter iedere website zit een bedrijf met een verhaal. Ontdek waarom MegaOnline bestaat, hoe wij naar websites kijken en waarom klanten met ons samenwerken." },
+      { name: 'description', content: "Achter iedere website zit een bedrijf met een verhaal. Ontdek waarom MegaOnline bestaat, welke kijk op websites erachter zit en waarom klanten ermee samenwerken." },
       { property: 'og:title', content: "Over MegaOnline | Websites die bijdragen aan groei" },
-      { property: 'og:description', content: "Achter iedere website zit een bedrijf met een verhaal. Ontdek waarom MegaOnline bestaat, hoe wij naar websites kijken en waarom klanten met ons samenwerken." },
+      { property: 'og:description', content: "Achter iedere website zit een bedrijf met een verhaal. Ontdek waarom MegaOnline bestaat, welke kijk op websites erachter zit en waarom klanten ermee samenwerken." },
       { property: 'og:url', content: "https://megaonline.io/over-megaonline" },
     ],
     links: [
@@ -71,12 +71,10 @@ function OverMegaonline() {
       <section className="section section--tight" id="bestaan" data-theme="paper" data-screen-label="Waarom MegaOnline bestaat">
         <div className="wrap">
           <Reveal as="div" className="shead reveal">
-            <span className="label">Waarom wij bestaan</span>
+            <span className="label">Waarom MegaOnline bestaat</span>
             {' '}
             <h2 className="h2">
-              Wij geloven dat websites meer moeten doen dan alleen online
-              {' '}
-              <em>staan.</em>
+              MegaOnline gelooft dat websites meer moeten doen dan alleen online <em>staan.</em>
             </h2>
           </Reveal>
           {' '}
@@ -89,7 +87,7 @@ function OverMegaonline() {
               </h3>
               {' '}
               <p>
-                Veel bedrijven hebben een website. Maar te vaak staat die er vooral mooi bij, zonder bezoekers verder te helpen. Wij geloven dat het anders kan en moet.
+                Veel bedrijven hebben een website. Maar te vaak staat die er vooral mooi bij, zonder bezoekers verder te helpen. MegaOnline gelooft dat het anders kan en moet.
               </p>
               {' '}
               <div className="ethos__pull">
@@ -142,12 +140,10 @@ function OverMegaonline() {
       <section className="section" id="werkwijze" data-theme="dark" data-screen-label="Hoe wij naar websites kijken">
         <div className="wrap">
           <Reveal as="div" className="shead reveal">
-            <span className="label">Hoe wij kijken</span>
+            <span className="label">Hoe MegaOnline kijkt</span>
             {' '}
             <h2 className="h2">
-              Wij beginnen niet met
-              {' '}
-              <em>bouwen.</em>
+              MegaOnline begint niet met <em>bouwen.</em>
             </h2>
             {' '}
             <p className="lead">
@@ -159,7 +155,7 @@ function OverMegaonline() {
             <Reveal as="div" className="pstep reveal">
               <h3>Begrijpen</h3>
               <p>
-                Eerst leren we het bedrijf kennen: wat je doet, waar je voor staat en wat je wilt bereiken.
+                Eerst leert MegaOnline het bedrijf kennen: wat je doet, waar je voor staat en wat je wilt bereiken.
               </p>
               <span className="pstep__arrow">→</span>
             </Reveal>
@@ -167,7 +163,7 @@ function OverMegaonline() {
             <Reveal as="div" className="pstep reveal" data-d="1">
               <h3>Doelgroep</h3>
               <p>
-                Daarna verdiepen we ons in de klant. Wat zoekt een bezoeker en waar twijfelt hij?
+                Daarna verdiept MegaOnline zich in de klant. Wat zoekt een bezoeker en waar twijfelt hij?
               </p>
               <span className="pstep__arrow">→</span>
             </Reveal>
@@ -175,7 +171,7 @@ function OverMegaonline() {
             <Reveal as="div" className="pstep reveal" data-d="2">
               <h3>Structuur</h3>
               <p>
-                Dan bepalen we wat bezoekers moeten zien en hoe zij naar contact bewegen.
+                Dan bepaalt MegaOnline wat bezoekers moeten zien en hoe zij naar contact bewegen.
               </p>
               <span className="pstep__arrow">→</span>
             </Reveal>
@@ -183,7 +179,7 @@ function OverMegaonline() {
             <Reveal as="div" className="pstep reveal" data-d="3">
               <h3>Ontwikkeling</h3>
               <p>
-                Pas daarna bouwen we de website. Snel, veilig en eenvoudig zelf te beheren.
+                Pas daarna bouwt MegaOnline de website. Snel, veilig en eenvoudig zelf te beheren.
               </p>
               <span className="pstep__arrow">→</span>
             </Reveal>
@@ -191,7 +187,7 @@ function OverMegaonline() {
           {' '}
           <Reveal as="div" className="process__note reveal">
             <div className="pullnote">
-              Wij kijken verder dan design. We bouwen pas als helder is wat een bezoeker écht nodig heeft.
+              MegaOnline kijkt verder dan design. MegaOnline bouwt pas als helder is wat een bezoeker écht nodig heeft.
             </div>
           </Reveal>
         </div>
@@ -201,7 +197,7 @@ function OverMegaonline() {
       <section className="section section--tight" data-theme="light" data-screen-label="Waar wij het verschil maken">
         <div className="wrap">
           <Reveal as="div" className="shead reveal">
-            <span className="label">Waar wij het verschil maken</span>
+            <span className="label">Waar MegaOnline het verschil maakt</span>
             {' '}
             <h2 className="h2">
               Geen techniek.
@@ -210,7 +206,7 @@ function OverMegaonline() {
             </h2>
             {' '}
             <p className="lead">
-              Waar wij ons op richten, vertaalt zich niet in features, maar in wat het jouw bedrijf oplevert.
+              Waar MegaOnline zich op richt, vertaalt zich niet in features, maar in wat het jouw bedrijf oplevert.
             </p>
           </Reveal>
           {' '}
@@ -261,7 +257,7 @@ function OverMegaonline() {
               </span>
               <h4>Groei na livegang</h4>
               <p>
-                We blijven kijken waar kansen liggen, ook nadat de site live is.
+                MegaOnline blijft kijken waar kansen liggen, ook nadat de site live is.
               </p>
             </Reveal>
             {' '}
@@ -291,7 +287,7 @@ function OverMegaonline() {
             </h2>
             {' '}
             <p className="lead">
-              Het verschil zit niet in de techniek, maar in hoe wij naar jouw bedrijf en je bezoekers kijken.
+              Het verschil zit niet in de techniek, maar in hoe MegaOnline naar jouw bedrijf en je bezoekers kijkt.
             </p>
           </Reveal>
           {' '}
@@ -320,7 +316,7 @@ function OverMegaonline() {
             </Reveal>
             {' '}
             <Reveal as="div" className="cmp cmp--us reveal" data-d="1">
-              <span className="cmp__badge">Onze aanpak</span>
+              <span className="cmp__badge">De aanpak</span>
               {' '}
               <span className="cmp__tag">MegaOnline</span>
               {' '}
@@ -356,23 +352,21 @@ function OverMegaonline() {
       <section className="section" id="visie" data-theme="dark" data-screen-label="Onze visie">
         <div className="wrap">
           <Reveal as="div" className="shead reveal">
-            <span className="label">Onze visie</span>
+            <span className="label">De visie van MegaOnline</span>
             {' '}
             <h2 className="h2">
-              Waar we naartoe
-              {' '}
-              <em>groeien.</em>
+              Waar MegaOnline naartoe <em>groeit.</em>
             </h2>
           </Reveal>
           {' '}
           <div className="vision">
             <Reveal as="div" className="vision__txt reveal">
               <h3>
-                Vandaag helpen we bedrijven met websites. Maar onze visie reikt verder.
+                Vandaag helpt MegaOnline bedrijven met websites. Maar de visie reikt verder.
               </h3>
               {' '}
               <p>
-                We willen bedrijven helpen groeien met alles wat een sterke online aanwezigheid raakt, met de website altijd als fundament.
+                MegaOnline wil bedrijven helpen groeien met alles wat een sterke online aanwezigheid raakt, met de website altijd als fundament.
               </p>
               {' '}
               <p className="honest">
@@ -387,7 +381,7 @@ function OverMegaonline() {
                 </span>
                 <span className="vrow__txt">
                   <h4>Websites</h4>
-                  <p>Onze kern. Het fundament onder alles.</p>
+                  <p>De kern. Het fundament onder alles.</p>
                 </span>
                 <span className="vrow__when nu">Nu</span>
               </div>
@@ -477,7 +471,7 @@ function OverMegaonline() {
               </p>
               {' '}
               <p>
-                Met een technische achtergrond en een continue interesse in online groei is er altijd dezelfde reflex: hoe kan dit beter? Niet om de techniek, maar omdat een betere website meer klanten voor jou betekent. En dat begint bij betrokkenheid bij elk bedrijf waar we mee werken.
+                Met een technische achtergrond en een continue interesse in online groei is er altijd dezelfde reflex: hoe kan dit beter? Niet om de techniek, maar omdat een betere website meer klanten voor jou betekent. En dat begint bij betrokkenheid bij elk bedrijf waar MegaOnline mee werkt.
               </p>
               {' '}
               <div className="traits">
@@ -535,7 +529,7 @@ function OverMegaonline() {
               </span>
               <span className="jnode__step">Stap 1</span>
               <h4>Kennismaking</h4>
-              <p>We leren elkaar kennen en kijken of er een klik is.</p>
+              <p>Jij en MegaOnline leren elkaar kennen en kijken of er een klik is.</p>
               <span className="jnode__arrow">→</span>
             </Reveal>
             {' '}
@@ -545,7 +539,7 @@ function OverMegaonline() {
               </span>
               <span className="jnode__step">Stap 2</span>
               <h4>Strategie</h4>
-              <p>We bepalen wat de website moet doen en voor wie.</p>
+              <p>MegaOnline bepaalt wat de website moet doen en voor wie.</p>
               <span className="jnode__arrow">→</span>
             </Reveal>
             {' '}
@@ -555,7 +549,7 @@ function OverMegaonline() {
               </span>
               <span className="jnode__step">Stap 3</span>
               <h4>Website</h4>
-              <p>We bouwen een site die vertrouwen wekt en helpt.</p>
+              <p>MegaOnline bouwt een site die vertrouwen wekt en helpt.</p>
               <span className="jnode__arrow">→</span>
             </Reveal>
             {' '}
@@ -584,7 +578,7 @@ function OverMegaonline() {
             <span className="iconbox iconbox--sm">
               <Icon name="repeat" />
             </span>
-            De echte winst zit in wat er ná livegang gebeurt. Daar blijven we aan werken.
+            De echte winst zit in wat er ná livegang gebeurt. Daar blijft MegaOnline aan werken.
           </Reveal>
           {' '}
           <div className="photoduo">
@@ -604,7 +598,7 @@ function OverMegaonline() {
         <div className="wrap">
           <Reveal as="div" className="shead shead--split reveal">
             <div className="shead">
-              <span className="label">Ons werk</span>
+              <span className="label">Werk van MegaOnline</span>
               {' '}
               <h2 className="h2">
                 Echte uitdagingen.
@@ -728,7 +722,7 @@ function OverMegaonline() {
                   <div className="case__step">
                     <span className="k">Aanpak</span>
                     <p>
-                      We brachten agenda, nieuws en activiteiten samen in een duidelijke structuur.
+                      MegaOnline bracht agenda, nieuws en activiteiten samen in een duidelijke structuur.
                     </p>
                   </div>
                 </div>
@@ -767,7 +761,7 @@ function OverMegaonline() {
                   <div className="case__step">
                     <span className="k">Aanpak</span>
                     <p>
-                      We ontwikkelden een website waarin projecten, verhalen en betrokkenheid centraal staan.
+                      MegaOnline ontwikkelde een website waarin projecten, verhalen en betrokkenheid centraal staan.
                     </p>
                   </div>
                 </div>
