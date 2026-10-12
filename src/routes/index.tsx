@@ -527,31 +527,33 @@ function Home() {
             {' '}
             <Reveal as="article" className="case reveal">
               <div className="case__media">
-                <Media id="case-kerk" fit="cover" placeholder="[ Ontmoetingskerk ]" alt="Screenshot van de website die we voor Ontmoetingskerk bouwden" />
+                <Media id="case-enevents" fit="cover" placeholder="[ enevents.nl ]" alt="website van enevents gebouwd door MegaOnline" />
               </div>
               {' '}
               <div className="case__body">
-                <h3 className="case__name">Ontmoetingskerk</h3>
+                <h3 className="case__name">enevents.nl</h3>
                 {' '}
                 <div className="case__meta">
-                  <span className="tag">Non-profit</span>
-                  <span className="tag">Gemeenschap</span>
+                  <span className="tag">B2C</span>
+                  <span className="tag">Eventplanning</span>
                 </div>
                 {' '}
                 <p className="case__context">
-                  Een levendige gemeenschap met veel activiteiten en informatie.
+                  Persoonlijke event- en weddingplanning, met Eva als vast aanspreekpunt.
                 </p>
                 {' '}
                 <div className="case__steps">
                   <div className="case__step">
                     <span className="k">Uitdaging</span>
-                    <p>Veel informatie, maar weinig overzicht.</p>
+                    <p>
+                      Bruiloften, particuliere feesten en private dining staan naast elkaar, met een kennismaking als vervolgstap.
+                    </p>
                   </div>
                   {' '}
                   <div className="case__step">
                     <span className="k">Wat we deden</span>
                     <p>
-                      We brachten agenda, nieuws en activiteiten samen in een duidelijke structuur.
+                      We bouwden pagina’s voor die drie belevingen, plus portfolio, traject, prijzen en pakketten, veelgestelde vragen en een contactformulier.
                     </p>
                   </div>
                 </div>
@@ -559,9 +561,9 @@ function Home() {
                 <div className="case__chips">
                   <span className="k">Resultaat</span>
                   {' '}
-                  <span className="chip">Meer overzicht</span>
+                  <span className="chip">Drie belevingen apart</span>
                   {' '}
-                  <span className="chip">Eenvoudiger beheer</span>
+                  <span className="chip">Kennismaking via het formulier</span>
                 </div>
               </div>
             </Reveal>
