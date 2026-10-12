@@ -95,14 +95,14 @@ export const ARTIKELEN: Artikel[] = [
         alineas: [
           "Een website die geen klanten oplevert heeft zelden een bezoekersprobleem. Twee sites met precies evenveel bezoek kunnen een heel verschillend aantal aanvragen opleveren. Het verkeer is dan niet het verschil, de pagina is het verschil. Wie op bezoekers stuurt, stuurt dus op een getal dat niets zegt over wat er onder de streep bij komt.",
           "Reken het voor jezelf eens door. Stel dat er 500 mensen per maand op je site komen en je krijgt twee aanvragen. Verdubbel je het bezoek naar 1.000, dan levert dezelfde pagina vier aanvragen op. Dat verdubbelen kost maanden werk of advertentiebudget. Zorg je in plaats daarvan dat vier op de honderd bezoekers aanvraagt in plaats van vier op de duizend, dan werkt die verbetering door op al het bezoek dat je nu al hebt. Dit is een rekenvoorbeeld en geen belofte, maar het laat zien welke kant van de rekensom meestal het goedkoopst is. Dat is precies waar [website optimalisatie](/diensten/website-optimalisatie) over gaat.",
-          "Daarom begint elke websitescan bij ons met één getal: hoeveel aanvragen kreeg je de afgelopen drie maanden. Zolang dat getal ontbreekt is elke verbetering een gevoel in plaats van een uitkomst.",
+          "Begin daarom met één getal: hoeveel aanvragen kreeg je de afgelopen drie maanden? Zolang dat getal ontbreekt is elke verbetering een gevoel in plaats van een uitkomst.",
         ],
       },
       {
         kop: "Zes plekken waar het in de praktijk weglekt",
         accent: "in de praktijk",
         alineas: [
-          "In scans zien we vrijwel altijd een combinatie van deze zes. Zelden ligt het aan één ding. Bijna nooit aan de techniek alleen.",
+          "Op websites ziet MegaOnline vrijwel altijd een combinatie van deze zes. Zelden ligt het aan één ding. Bijna nooit aan de techniek alleen.",
         ],
         punten: [
           {
@@ -113,7 +113,7 @@ export const ARTIKELEN: Artikel[] = [
           {
             titel: "2. Er staat te weinig op de site om je te durven vertrouwen",
             tekst:
-              "Geen gezicht, geen echte foto's van eigen werk, geen adres of inschrijvingsnummer, geen enkele klant die iets zegt. Wie jou niet kent heeft dan geen reden om aan te nemen dat het goed komt. Vertrouwen komt vóór techniek: een snelle website die niets bewijst levert nog steeds niets op. Dit is het eerste dat we aanpakken bij een [conversiegerichte website](/diensten/conversie-website).",
+              "Geen gezicht, geen echte foto's van eigen werk, geen adres of inschrijvingsnummer, geen enkele klant die iets zegt. Wie jou niet kent heeft dan geen reden om aan te nemen dat het goed komt. Vertrouwen komt vóór techniek: een snelle website die niets bewijst levert nog steeds niets op. Dit pakt MegaOnline als eerste aan bij een [conversiegerichte website](/diensten/conversie-website).",
           },
           {
             titel: "3. De prijs staat er nergens",
@@ -167,7 +167,7 @@ export const ARTIKELEN: Artikel[] = [
         ],
       },
       {
-        kop: "Wat we hierin het vaakst terugzien",
+        kop: "Wat MegaOnline hierin het vaakst terugziet",
         accent: "het vaakst",
         alineas: [
           "Twee patronen komen zo vaak voorbij dat ze bijna standaard zijn. Het eerste: een pagina die veel vertoningen krijgt in Google en nauwelijks klikken. Dat is geen vindbaarheidsprobleem, dat is een titelprobleem. De pagina staat er wel, alleen belooft de titel niet wat de zoeker zocht.",
@@ -254,7 +254,7 @@ export const ARTIKELEN: Artikel[] = [
         accent: "een lijstje",
         alineas: [
           "Iemand die jouw website voor het eerst opent doet in stilte een risicocontrole. Bestaat dit bedrijf echt. Werkt hier een mens. Weet die persoon waar hij over praat. Wat gaat dit ongeveer kosten. Wat gebeurt er als het misgaat. Pas als die vragen genoeg antwoord hebben gehad, vult iemand een formulier in.",
-          "Het lastige is dat bijna elke zakelijke website precies hetzelfde zegt. Kwaliteit, maatwerk, korte lijnen, jarenlange ervaring. Die woorden zijn gratis, dus ze bewijzen niets. Bewijs is alles wat iemand kan controleren zonder jou te bellen: een naam, een gezicht, een prijs, een project dat echt bestaat. Daarom begint een [conversiegerichte website](/diensten/conversie-website) bij ons met bewijs en niet bij een ontwerp.",
+          "Het lastige is dat bijna elke zakelijke website precies hetzelfde zegt. Kwaliteit, maatwerk, korte lijnen, jarenlange ervaring. Die woorden zijn gratis, dus ze bewijzen niets. Bewijs is alles wat iemand kan controleren zonder jou te bellen: een naam, een gezicht, een prijs, een project dat echt bestaat. Daarom begint een [conversiegerichte website](/diensten/conversie-website) bij MegaOnline met bewijs en niet bij een ontwerp.",
           "Dit geldt sterker naarmate de opdracht groter is. Wie een offerte aanvraagt voor een installatie van tienduizend euro neemt een risico met zijn eigen naam eraan. Zie ook wat dat betekent voor [dienstverleners](/branches/dienstverleners), waar de site het vertrouwen moet wekken dat jij in een gesprek vanzelf wekt.",
         ],
       },
@@ -262,7 +262,7 @@ export const ARTIKELEN: Artikel[] = [
         kop: "Zeven dingen die een zakelijke bezoeker zoekt",
         accent: "zeven dingen",
         alineas: [
-          "Dit is geen wensenlijst, dit is wat we in websitescans het vaakst missen. Hoe meer ervan klopt, hoe minder reden iemand heeft om af te haken.",
+          "Dit is geen wensenlijst, dit is wat MegaOnline op websites het vaakst mist. Hoe meer ervan klopt, hoe minder reden iemand heeft om af te haken.",
         ],
         punten: [
           {
@@ -306,7 +306,7 @@ export const ARTIKELEN: Artikel[] = [
         kop: "Vier dingen die vertrouwen juist onderuit halen",
         accent: "onderuit halen",
         alineas: [
-          "Net zo belangrijk als toevoegen: weghalen. Deze vier zien we vaak op sites die inhoudelijk prima zijn.",
+          "Net zo belangrijk als toevoegen: weghalen. Deze vier ziet MegaOnline vaak op sites die inhoudelijk prima zijn.",
         ],
         punten: [
           {
@@ -335,7 +335,7 @@ export const ARTIKELEN: Artikel[] = [
         kop: "Waarom dit vóór snelheid en vindbaarheid komt",
         accent: "vóór snelheid",
         alineas: [
-          "Een snelle website die niets bewijst levert nog steeds niets op. Techniek bepaalt of iemand je pagina ziet, vertrouwen bepaalt of hij iets doet. Dat is ook waarom we bij een scan eerst naar vertrouwen kijken en pas daarna naar laadtijd.",
+          "Een snelle website die niets bewijst levert nog steeds niets op. Techniek bepaalt of iemand je pagina ziet, vertrouwen bepaalt of hij iets doet. Dat is ook waarom MegaOnline bij een website eerst naar vertrouwen kijkt en pas daarna naar laadtijd.",
           "Het loont daarna dubbel. Elke bezoeker die je met [betere vindbaarheid in Google](/diensten/seo) binnenhaalt komt op een pagina die de twijfel al heeft weggenomen. Andersom werkt het niet: meer bezoek op een pagina die geen bewijs levert betekent alleen meer mensen die weer weggaan.",
         ],
       },
@@ -420,7 +420,7 @@ export const ARTIKELEN: Artikel[] = [
         kop: "Wat er in de praktijk gebeurt als de prijs er niet staat",
         accent: "in de praktijk",
         alineas: [
-          "Deze vier gevolgen komen we in scans steeds tegen bij verhuurders zonder tarieven op de site.",
+          "Deze vier gevolgen komt MegaOnline steeds tegen bij verhuurders zonder tarieven op de site.",
         ],
         punten: [
           {

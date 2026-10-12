@@ -184,7 +184,7 @@ function ArtikelPagina() {
               Wat je <em>morgen</em> kunt doen.
             </h2>{" "}
             <p className="lead">
-              Vijf dingen die je zonder ons kunt uitvoeren. Werkt het, dan weet je waar de winst
+              Vijf dingen die je zelf kunt uitvoeren. Werkt het, dan weet je waar de winst
               zit.
             </p>
           </Reveal>{" "}
@@ -253,8 +253,7 @@ function ArtikelPagina() {
             <span className="label">Aan de slag</span>{" "}
             <h2 className="display">Wil je een gratis websiteconcept voor je bedrijf?</h2>{" "}
             <p className="lead">
-              Beantwoord zes korte vragen. Daarna kijken we persoonlijk naar je bedrijf en laten
-              we zien hoe je website meer aanvragen en boekingen kan opleveren.
+              Beantwoord zes korte vragen. Daarna kijkt MegaOnline persoonlijk naar je bedrijf en zie je hoe je website meer aanvragen en boekingen kan opleveren.
             </p>{" "}
             <Reveal
               as="div"

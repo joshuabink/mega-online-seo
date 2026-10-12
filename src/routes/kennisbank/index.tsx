@@ -6,7 +6,7 @@ import "@/styles/pages/kennisbank.css";
 
 const TITLE = "Kennisbank: uitleg over websites die aanvragen opleveren | MegaOnline.io";
 const DESCRIPTION =
-  "Wat we tegenkomen in websitescans, uitgelegd zodat je er zelf mee aan de slag kunt. Over aanvragen, vertrouwen, formulieren en vindbaarheid.";
+  "Wat MegaOnline op websites tegenkomt, uitgelegd zodat je er zelf mee aan de slag kunt. Over aanvragen, vertrouwen, formulieren en vindbaarheid.";
 
 export const Route = createFileRoute("/kennisbank/")({
   head: () => ({
@@ -46,11 +46,10 @@ function Kennisbank() {
                 </span>
               </Reveal>{" "}
               <Reveal as="h1" className="display reveal" data-d="1">
-                Wat we in websitescans zien, <em>zonder eromheen te draaien.</em>
+                Wat MegaOnline op websites ziet, <em>zonder eromheen te draaien.</em>
               </Reveal>{" "}
               <Reveal as="p" className="lead svc-hero__sub reveal" data-d="2">
-                We beoordelen websites op tien onderdelen. Wat daarin steeds terugkomt schrijven we
-                hier op, met genoeg detail om er zelf mee aan de slag te gaan. Ook als je nooit
+                Hieronder lees je waar MegaOnline bij websites op let. Wat daarin steeds terugkomt schrijft MegaOnline hier op, met genoeg detail om er zelf mee aan de slag te gaan. Ook als je nooit
                 klant wordt.
               </Reveal>
             </div>
@@ -112,7 +111,7 @@ function Kennisbank() {
               Hier komt <em>elke maand</em> iets bij.
             </h2>{" "}
             <p className="lead">
-              We werken per branche: twee artikelen die de pijn van die branche uitdiepen.
+              MegaOnline werkt per branche: twee artikelen die de pijn van die branche uitdiepen.
               Onderwerpen die al op de lijst staan.
             </p>
           </Reveal>{" "}
@@ -142,8 +141,7 @@ function Kennisbank() {
             <span className="label">Aan de slag</span>{" "}
             <h2 className="display">Liever eerst een websiteconcept zien?</h2>{" "}
             <p className="lead">
-              Beantwoord zes korte vragen. Daarna kijken we persoonlijk naar je bedrijf en laten
-              we zien hoe je website meer aanvragen en boekingen kan opleveren.
+              Beantwoord zes korte vragen. Daarna kijkt MegaOnline persoonlijk naar je bedrijf en zie je hoe je website meer aanvragen en boekingen kan opleveren.
             </p>{" "}
             <Reveal
               as="div"
