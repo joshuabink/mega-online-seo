@@ -175,6 +175,18 @@ export function trackGenerateLead(formName: string): void {
   })
 }
 
+/**
+ * Sollicitaties zijn geen leads. Alleen bij analytics-consent, en alleen
+ * page_path: geen naam, e-mail, telefoon, rol of motivatie.
+ */
+export function trackSollicitatieVerzonden(): void {
+  if (!gaActive || typeof window === "undefined") return
+  const w = gaWindow()
+  w?.gtag?.("event", "sollicitatie_verzonden", {
+    page_path: location.pathname,
+  })
+}
+
 export function track(event: string, props?: Record<string, unknown>): void {
   if (!ph) return
   ph.capture(event, props)
