@@ -9,7 +9,7 @@ import {
   Scripts,
   type ErrorComponentProps,
 } from "@tanstack/react-router";
-import { useEffect, useMemo, type ReactNode } from "react";
+import { useEffect, useMemo, useRef, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -17,6 +17,7 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter, FunnelFooter } from "@/components/SiteFooter";
 import { CookieBanner } from "@/components/CookieBanner";
+import { GA_CONSENT_DEFAULT_SNIPPET, trackPageView } from "@/lib/analytics";
 import { SITE_GRAPH, buildPageSchema } from "@/lib/schema";
 
 // MegaOnline design system uit de Claude Design-handoff. De volgorde is de
@@ -143,6 +144,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:image:alt", content: "MegaOnline.io, websites die aanvragen en boekingen opleveren" },
       { name: "twitter:image", content: "https://megaonline.io/og-image.png" },
     ],
+    scripts: [{ children: GA_CONSENT_DEFAULT_SNIPPET }],
     links: [
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -225,6 +227,23 @@ function useActivePage() {
   });
 }
 
+function GaPageViews() {
+  const href = useRouterState({
+    select: (s) => s.location.pathname + s.location.searchStr,
+  });
+  const seen = useRef<string | null>(null);
+  useEffect(() => {
+    if (seen.current === null) {
+      seen.current = href;
+      return;
+    }
+    if (seen.current === href) return;
+    seen.current = href;
+    trackPageView(href);
+  }, [href]);
+  return null;
+}
+
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const meta = useRouterState({
@@ -239,6 +258,7 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <CookieBanner />
+      <GaPageViews />
       {meta.bare ? (
         // Concept-pagina's brengen hun eigen chrome en stijl mee.
         <Outlet />
