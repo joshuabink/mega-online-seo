@@ -443,7 +443,7 @@ function Home() {
           <div className="cases">
             <Reveal as="article" className="case reveal">
               <div className="case__media">
-                <Media id="case-kerk" fit="cover" placeholder="[ Ontmoetingskerk ]" alt="Screenshot van de website die we voor Ontmoetingskerk bouwden" />
+                <Media id="case-kerk" fit="cover" placeholder="[ Ontmoetingskerk ]" alt="website van Ontmoetingskerk gebouwd door MegaOnline" />
               </div>
               {' '}
               <div className="case__body">
@@ -465,10 +465,8 @@ function Home() {
                   </div>
                   {' '}
                   <div className="case__step">
-                    <span className="k">Wat we deden</span>
-                    <p>
-                      We brachten agenda, nieuws en activiteiten samen in een duidelijke structuur.
-                    </p>
+                    <span className="k">Wat er gedaan is</span>
+                    <p>Gebouwd: een website met agenda, nieuws en activiteiten in een duidelijke structuur.</p>
                   </div>
                 </div>
               </div>
@@ -476,7 +474,7 @@ function Home() {
             {' '}
             <Reveal as="article" className="case reveal" data-d="1">
               <div className="case__media">
-                <Media id="case-africa" fit="cover" placeholder="[ LoveForAfrica ]" alt="Screenshot van de website die we voor LoveForAfrica bouwden" />
+                <Media id="case-africa" fit="cover" placeholder="[ LoveForAfrica ]" alt="website van LoveForAfrica gebouwd door MegaOnline" />
               </div>
               {' '}
               <div className="case__body">
@@ -498,10 +496,8 @@ function Home() {
                   </div>
                   {' '}
                   <div className="case__step">
-                    <span className="k">Wat we deden</span>
-                    <p>
-                      We ontwikkelden een website waarin projecten, verhalen en betrokkenheid centraal staan.
-                    </p>
+                    <span className="k">Wat er gedaan is</span>
+                    <p>Gebouwd: een website waarin projecten, verhalen en betrokkenheid centraal staan.</p>
                   </div>
                 </div>
               </div>
