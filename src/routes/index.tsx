@@ -527,7 +527,7 @@ function Home() {
             {' '}
             <Reveal as="article" className="case reveal">
               <div className="case__media">
-                <Media id="case-enevents" fit="cover" placeholder="[ enevents.nl ]" alt="website van enevents gebouwd door MegaOnline" />
+                <Media id="case-enevents" fit="cover" placeholder="[ enevents.nl ]" alt="Homepage van enevents.nl, website voor event- en weddingplanning gebouwd door MegaOnline" />
               </div>
               {' '}
               <div className="case__body">
@@ -539,31 +539,31 @@ function Home() {
                 </div>
                 {' '}
                 <p className="case__context">
-                  Persoonlijke event- en weddingplanning, met Eva als vast aanspreekpunt.
+                  Persoonlijke event- en weddingplanning door Eva, met één vast aanspreekpunt.
                 </p>
                 {' '}
                 <div className="case__steps">
                   <div className="case__step">
                     <span className="k">Uitdaging</span>
                     <p>
-                      Bruiloften, particuliere feesten en private dining staan naast elkaar, met een kennismaking als vervolgstap.
+                      Bruiloften, particuliere feesten en private dining vragen elk een eigen plek, met een kennismakingsgesprek als vervolgstap.
                     </p>
                   </div>
                   {' '}
                   <div className="case__step">
                     <span className="k">Wat we deden</span>
                     <p>
-                      We bouwden pagina’s voor die drie belevingen, plus portfolio, traject, prijzen en pakketten, veelgestelde vragen en een contactformulier.
+                      Gebouwd door MegaOnline: aparte pagina's voor de drie belevingen, plus portfolio, traject, prijzen, veelgestelde vragen en contact.
                     </p>
                   </div>
                 </div>
                 {' '}
                 <div className="case__chips">
-                  <span className="k">Resultaat</span>
+                  <span className="k">Opgeleverd</span>
                   {' '}
                   <span className="chip">Drie belevingen apart</span>
                   {' '}
-                  <span className="chip">Kennismaking via het formulier</span>
+                  <span className="chip">Kennismaking plannen</span>
                 </div>
               </div>
             </Reveal>
