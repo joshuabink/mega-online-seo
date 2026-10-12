@@ -280,7 +280,7 @@ function Contact() {
               <h3>Korte kennismaking</h3>
               {' '}
               <p>
-                In 20 tot 30 minuten bespreken we je situatie, je doelen en je vragen. Op locatie of via een videocall, net wat jij prettig vindt.
+                In 20 tot 30 minuten bespreken we je situatie, je doelen en je vragen. Telefonisch of via een videocall, net wat jij prettig vindt.
               </p>
             </Reveal>
             {' '}
