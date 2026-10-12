@@ -12,6 +12,10 @@ import "@/styles/cookieconsent.css";
  *
  * Voorbeeld: een script-tag met type="text/plain" en
  * data-category="statistieken" of data-category="marketing".
+ *
+ * Google Analytics doet dit niet via zo'n tag. Een src in de HTML zou
+ * zonder toestemming al googletagmanager.com aanroepen. initAnalytics
+ * hangt gtag.js pas ná "statistieken" in de head; optOut zet de meting uit.
  */
 const LEADINFO_SNIPPET = `(function(l,e,a,d,i,n,f,o){if(!l[i]){l.GlobalLeadinfoNamespace=l.GlobalLeadinfoNamespace||[];l.GlobalLeadinfoNamespace.push(i);l[i]=function(){(l[i].q=l[i].q||[]).push(arguments)};l[i].t=l[i].t||n;l[i].q=l[i].q||[];o=e.createElement(a);f=e.getElementsByTagName(a)[0];o.async=1;o.src=d;f.parentNode.insertBefore(o,f);}}(window,document,'script','https://cdn.leadinfo.net/ping.js','leadinfo','LI-6AAEB0E23B183'));`;
 
@@ -67,6 +71,9 @@ export function CookieBanner() {
           },
           statistieken: {
             enabled: false,
+            autoClear: {
+              cookies: [{ name: /^_ga/ }, { name: "_gid" }],
+            },
           },
           marketing: {
             enabled: false,

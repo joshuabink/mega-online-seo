@@ -25,6 +25,19 @@ function check(name, ok, detail = '') {
   if (!ok) failed++
 }
 
+function isGaUrl(url) {
+  return /googletagmanager\.com|google-analytics\.com|analytics\.google\.com/i.test(url)
+}
+
+function collectGaUrls(pg) {
+  const urls = []
+  pg.on('request', (req) => {
+    const url = req.url()
+    if (isGaUrl(url)) urls.push(url)
+  })
+  return urls
+}
+
 // De vooraf geïnstalleerde Chromium gebruiken i.p.v. een download.
 const EXECUTABLE =
   process.env.CHROMIUM_PATH ?? '/opt/pw-browsers/chromium-1194/chrome-linux/chrome'
@@ -32,6 +45,7 @@ const browser = await chromium.launch({ executablePath: EXECUTABLE })
 
 /* ---------------- Desktop ---------------- */
 const page = await browser.newPage({ viewport: { width: 1440, height: 900 } })
+const mainGaUrls = collectGaUrls(page)
 
 const consoleErrors = []
 page.on('console', (m) => {
@@ -1016,6 +1030,93 @@ async function conceptFallback(pg) {
   })
   await narrow.close()
 }
+
+/* --- GA4: geen request zonder statistieken-toestemming, wel erna --- */
+{
+  const gaPage = await browser.newPage({ viewport: { width: 1440, height: 900 } })
+  const gaUrls = collectGaUrls(gaPage)
+  gaPage.on('pageerror', (e) => consoleErrors.push('ga: ' + String(e)))
+  await gaPage.route('**/*', async (route) => {
+    const url = route.request().url()
+    if (url.includes('localhost') || url.includes('127.0.0.1')) return route.continue()
+    if (isGaUrl(url)) return route.continue()
+    return route.abort()
+  })
+  await gaPage.goto(BASE + '/', { waitUntil: 'load' })
+  await waitHydrated(gaPage)
+  await gaPage.locator('[data-cc="accept-all"]').waitFor({ timeout: 10000 })
+  const beforeChoice = await gaPage.evaluate(() => ({
+    consentDefault: window.__moGaConsentDefault === true,
+    analyticsDenied: (window.dataLayer ?? []).some(
+      (entry) => entry && entry[0] === 'consent' && entry[1] === 'default' && entry[2]?.analytics_storage === 'denied',
+    ),
+    gtagScripts: document.querySelectorAll('script[src*="googletagmanager.com"]').length,
+  }))
+  check(
+    'zonder toestemming geen GA-request',
+    gaUrls.length === 0 && beforeChoice.gtagScripts === 0 && beforeChoice.consentDefault && beforeChoice.analyticsDenied,
+    `requests=${gaUrls.length} scripts=${beforeChoice.gtagScripts} default=${beforeChoice.consentDefault} denied=${beforeChoice.analyticsDenied}`,
+  )
+
+  await gaPage.click('[data-cc="accept-necessary"]')
+  await gaPage.waitForTimeout(1200)
+  check(
+    'alleen essentiële cookies: geen GA-request',
+    gaUrls.length === 0 && (await gaPage.locator('script[src*="googletagmanager.com"]').count()) === 0,
+    gaUrls.join(' '),
+  )
+
+  await gaPage.context().clearCookies()
+  await gaPage.goto(BASE + '/contact', { waitUntil: 'load' })
+  await waitHydrated(gaPage)
+  await gaPage.locator('[data-cc="accept-all"]').waitFor({ timeout: 10000 })
+  check('na wissen van de keuze nog steeds geen GA-request', gaUrls.length === 0, gaUrls.join(' '))
+  await gaPage.click('[data-cc="accept-all"]')
+  await gaPage.waitForRequest(
+    (req) => req.url().includes('googletagmanager.com/gtag/js?id=G-DCZS4D0PFM'),
+    { timeout: 8000 },
+  )
+  const placed = await gaPage.evaluate(() => {
+    const nodes = [...document.head.querySelectorAll('script[src*="googletagmanager.com/gtag/js"]')]
+    return { count: nodes.length, src: nodes.map((n) => n.src) }
+  })
+  check(
+    'met toestemming laadt gtag.js één keer in de head',
+    placed.count === 1 && placed.src[0]?.includes('id=G-DCZS4D0PFM') && gaUrls.some((u) => u.includes('googletagmanager.com/gtag/js?id=G-DCZS4D0PFM')),
+    `${placed.count} ${placed.src.join(' ')} | ${gaUrls.join(' ')}`,
+  )
+
+  await gaPage.locator('.footer__cookie').click()
+  await gaPage.locator('#cc-main [data-role="save"]').waitFor({ timeout: 8000 })
+  const toggled = await gaPage.evaluate(() => {
+    const title = [...document.querySelectorAll('.section-title')].find((el) =>
+      (el.textContent ?? '').includes('Statistieken'),
+    )
+    const toggle = title?.parentElement?.querySelector('input.section__toggle')
+    if (!(toggle instanceof HTMLInputElement)) return 'missing'
+    if (toggle.checked) toggle.click()
+    return toggle.checked ? 'still-on' : 'off'
+  })
+  const beforeRevoke = gaUrls.length
+  await gaPage.locator('#cc-main [data-role="save"]').click()
+  await gaPage.waitForTimeout(400)
+  await gaPage.reload({ waitUntil: 'load' })
+  await waitHydrated(gaPage)
+  await gaPage.waitForTimeout(1200)
+  const afterRevoke = gaUrls.slice(beforeRevoke).filter(isGaUrl)
+  check(
+    'na intrekken geen nieuw GA-request',
+    toggled === 'off' && afterRevoke.length === 0,
+    `toggle=${toggled} nieuw=${afterRevoke.join(' ')}`,
+  )
+  await gaPage.close()
+}
+
+check(
+  'smoketest zonder cookietoestemming doet geen GA-request',
+  mainGaUrls.length === 0,
+  mainGaUrls.join(' '),
+)
 
 /* ---------------- Resultaat ---------------- */
 const realErrors = consoleErrors.filter(
