@@ -41,7 +41,13 @@ function collectGaUrls(pg) {
 // De vooraf geïnstalleerde Chromium gebruiken i.p.v. een download.
 const EXECUTABLE =
   process.env.CHROMIUM_PATH ?? '/opt/pw-browsers/chromium-1194/chrome-linux/chrome'
-const browser = await chromium.launch({ executablePath: EXECUTABLE })
+// Zonder --enable-automation blijft navigator.webdriver uit. cookieconsent
+// verbergt de banner anders voor de browser en de GA4-checks zien hem niet.
+const browser = await chromium.launch({
+  executablePath: EXECUTABLE,
+  ignoreDefaultArgs: ['--enable-automation'],
+  args: ['--disable-blink-features=AutomationControlled'],
+})
 
 /* ---------------- Desktop ---------------- */
 const page = await browser.newPage({ viewport: { width: 1440, height: 900 } })
@@ -95,6 +101,10 @@ await installRoutes(page)
 
 await page.goto(BASE + '/', { waitUntil: 'load' })
 await waitHydrated(page)
+// De banner dekt anders klikken af. Alleen essentiële cookies, geen statistieken.
+const necessary = page.locator('[data-role="necessary"]')
+await necessary.waitFor({ timeout: 10000 })
+await necessary.click()
 
 /* --- scroll reveals --- */
 const revealed = await page.evaluate(
@@ -1042,9 +1052,11 @@ async function conceptFallback(pg) {
     if (isGaUrl(url)) return route.continue()
     return route.abort()
   })
+  // De rest van de test heeft de banner al weggeklikt in dezelfde context.
+  await gaPage.context().clearCookies()
   await gaPage.goto(BASE + '/', { waitUntil: 'load' })
   await waitHydrated(gaPage)
-  await gaPage.locator('[data-cc="accept-all"]').waitFor({ timeout: 10000 })
+  await gaPage.locator('[data-role="all"]').waitFor({ timeout: 10000 })
   const beforeChoice = await gaPage.evaluate(() => ({
     consentDefault: window.__moGaConsentDefault === true,
     analyticsDenied: (window.dataLayer ?? []).some(
@@ -1058,7 +1070,7 @@ async function conceptFallback(pg) {
     `requests=${gaUrls.length} scripts=${beforeChoice.gtagScripts} default=${beforeChoice.consentDefault} denied=${beforeChoice.analyticsDenied}`,
   )
 
-  await gaPage.click('[data-cc="accept-necessary"]')
+  await gaPage.click('[data-role="necessary"]')
   await gaPage.waitForTimeout(1200)
   check(
     'alleen essentiële cookies: geen GA-request',
@@ -1069,13 +1081,14 @@ async function conceptFallback(pg) {
   await gaPage.context().clearCookies()
   await gaPage.goto(BASE + '/contact', { waitUntil: 'load' })
   await waitHydrated(gaPage)
-  await gaPage.locator('[data-cc="accept-all"]').waitFor({ timeout: 10000 })
+  await gaPage.locator('[data-role="all"]').waitFor({ timeout: 10000 })
   check('na wissen van de keuze nog steeds geen GA-request', gaUrls.length === 0, gaUrls.join(' '))
-  await gaPage.click('[data-cc="accept-all"]')
-  await gaPage.waitForRequest(
+  const gtagRequest = gaPage.waitForRequest(
     (req) => req.url().includes('googletagmanager.com/gtag/js?id=G-DCZS4D0PFM'),
     { timeout: 8000 },
   )
+  await gaPage.click('[data-role="all"]')
+  await gtagRequest
   const placed = await gaPage.evaluate(() => {
     const nodes = [...document.head.querySelectorAll('script[src*="googletagmanager.com/gtag/js"]')]
     return { count: nodes.length, src: nodes.map((n) => n.src) }
@@ -1089,10 +1102,10 @@ async function conceptFallback(pg) {
   await gaPage.locator('.footer__cookie').click()
   await gaPage.locator('#cc-main [data-role="save"]').waitFor({ timeout: 8000 })
   const toggled = await gaPage.evaluate(() => {
-    const title = [...document.querySelectorAll('.section-title')].find((el) =>
+    const title = [...document.querySelectorAll('.pm__section-title')].find((el) =>
       (el.textContent ?? '').includes('Statistieken'),
     )
-    const toggle = title?.parentElement?.querySelector('input.section__toggle')
+    const toggle = title?.closest('.pm__section--toggle')?.querySelector('input.section__toggle')
     if (!(toggle instanceof HTMLInputElement)) return 'missing'
     if (toggle.checked) toggle.click()
     return toggle.checked ? 'still-on' : 'off'
