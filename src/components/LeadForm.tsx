@@ -1,6 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 'react'
 import { sendLead, type LeadResult } from '@/lib/lead'
-import { track } from '@/lib/analytics'
+import { track, trackGenerateLead } from '@/lib/analytics'
 import { LEAD_CONTACT } from '@/lib/lead-contact'
 import { useReveal } from './Reveal'
 
@@ -135,6 +135,7 @@ export function SteppedLeadForm({
   children,
   className = '',
   subject,
+  formName,
   ok,
 }: {
   head?: ReactNode
@@ -143,6 +144,8 @@ export function SteppedLeadForm({
   children: ReactNode | ((step: number) => ReactNode)
   className?: string
   subject?: string
+  /** Vaste GA4-naam. Geen vrije tekst en geen veldwaarden. */
+  formName: string
 } & OkProps) {
   const formRef = useRef<HTMLFormElement>(null)
   const reveal = useReveal(className)
@@ -334,6 +337,7 @@ export function SteppedLeadForm({
         verstuurd = true
         setStatus('sent')
         track('form_submit_success', base())
+        if (result.via === 'server') trackGenerateLead(formName)
       } else {
         setFailure(failureFrom(result))
         track('form_submit_fail', { ...base(), reason: result.mailto ? 'mailto_fallback' : 'error' })
@@ -390,12 +394,15 @@ export function SingleLeadForm({
   children,
   className = '',
   subject,
+  formName,
   ok,
 }: {
   head?: ReactNode
   children: ReactNode
   className?: string
   subject?: string
+  /** Vaste GA4-naam. Geen vrije tekst en geen veldwaarden. */
+  formName: string
 } & OkProps) {
   const formRef = useRef<HTMLFormElement>(null)
   const reveal = useReveal(className)
@@ -432,6 +439,7 @@ export function SingleLeadForm({
         verstuurd = true
         setStatus('sent')
         track('form_submit_success', base())
+        if (result.via === 'server') trackGenerateLead(formName)
       } else {
         setFailure(failureFrom(result))
         track('form_submit_fail', { ...base(), reason: result.mailto ? 'mailto_fallback' : 'error' })

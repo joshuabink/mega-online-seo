@@ -36,7 +36,7 @@ export function canonicalFormUrl(pathname?: string): string {
 const VALIDATION_ERROR = 'Vul een e-mailadres of telefoonnummer in.'
 
 export type LeadResult =
-  | { ok: true }
+  | { ok: true; via: 'server' | 'client' }
   | { ok: false; error: string; mailto?: string }
 
 export { leadMailto } from './lead-mailto'
@@ -120,13 +120,13 @@ export async function sendLead(
 
   try {
     const result = await submitLead({ data: params.toString() })
-    if (result.ok) return { ok: true }
+    if (result.ok) return { ok: true, via: 'server' }
 
     // Alleen als de server zeker weet dat er geen mail is verstuurd.
     // Eén poging, daarna niet nog eens: anders kan dezelfde aanvraag dubbel gaan.
     if (result.retry === 'client') {
       const viaBrowser = await postFormSubmitFromBrowser(params)
-      if (viaBrowser) return { ok: true }
+      if (viaBrowser) return { ok: true, via: 'client' }
     }
 
     return {

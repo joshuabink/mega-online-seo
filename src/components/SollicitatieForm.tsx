@@ -70,6 +70,7 @@ export function SollicitatieSectie({
           <SingleLeadForm
             className="sol__form reveal"
             subject="Nieuwe sollicitatie - MegaOnline.io"
+            formName="sollicitatie"
             head={
               <>
                 <span className="form__head-note">
