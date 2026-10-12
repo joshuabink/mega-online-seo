@@ -79,7 +79,7 @@ export function CookieBanner() {
               consentModal: {
                 title: "Cookies",
                 description:
-                  'We gebruiken noodzakelijke cookies om de site te laten werken. Met jouw toestemming gebruiken we ook cookies voor statistieken en marketing. Je keuze kun je altijd wijzigen via Cookie-instellingen onderaan de site. <a href="/privacyverklaring">Privacyverklaring</a>',
+                  'MegaOnline gebruikt noodzakelijke cookies om de site te laten werken. Met jouw toestemming gebruikt MegaOnline ook cookies voor statistieken en marketing. Je keuze kun je altijd wijzigen via Cookie-instellingen onderaan de site. <a href="/privacyverklaring">Privacyverklaring</a>',
                 acceptAllBtn: "Alles accepteren",
                 acceptNecessaryBtn: "Alleen essentiële cookies",
                 showPreferencesBtn: "Instellingen",
@@ -106,7 +106,7 @@ export function CookieBanner() {
                   {
                     title: "Marketing",
                     description:
-                      "Herkent aan de hand van het IP-adres welke bedrijven onze website bezoeken en welke pagina's zij bekijken, zodat we zakelijke bezoekers beter kunnen helpen.",
+                      "Herkent aan de hand van het IP-adres welke bedrijven deze website bezoeken en welke pagina's zij bekijken, zodat MegaOnline zakelijke bezoekers beter kan helpen.",
                     linkedCategory: "marketing",
                   },
                 ],

@@ -207,7 +207,7 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
                     <span className="mlink__name">
                       Conversie Website <span className="mtag">Kerndienst</span>
                     </span>
-                    <span className="mlink__sub">Onze hoofddienst</span>
+                    <span className="mlink__sub">Hoofddienst</span>
                   </span>
                 </Link>
                 <Link className="mlink" to="/diensten/website-redesign">
@@ -313,7 +313,7 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
                 <aside className="mfeat mfeat--compact">
                   <span className="mfeat__eyebrow">
                     <span className="gdot" />
-                    Onze kerndienst
+                    Kerndienst
                   </span>
                   <h4 className="mfeat__title">Conversie Website</h4>
                   <p className="mfeat__desc">
@@ -329,7 +329,7 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
                 <aside className="mfeat mfeat--soft mfeat--compact">
                   <span className="mfeat__eyebrow">
                     <span className="gdot" />
-                    Nieuw - onze software
+                    Nieuw: eigen software
                   </span>
                   <h4 className="mfeat__title">MegaSmart</h4>
                   <p className="mfeat__desc">
@@ -343,8 +343,7 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
 
               <div className="mega__foot">
                 <span>
-                  Websites zijn onze kern: SEO, content en integraties versterken het
-                  resultaat.
+                  Websites vormen de kern: SEO, content en integraties versterken het resultaat.
                 </span>
                 <Link to="/gratis-websiteconcept">
                   Niet zeker welke oplossing past? Vraag je gratis websiteconcept aan{' '}
@@ -369,7 +368,7 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
                   </span>
                   <span className="mlink__txt">
                     <span className="mlink__name">Alle Cases</span>
-                    <span className="mlink__sub">Bekijk ons werk</span>
+                    <span className="mlink__sub">Bekijk de cases</span>
                   </span>
                 </Link>
                 {[
@@ -404,8 +403,7 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
                 </span>
                 <h4 className="mfeat__title">Werk per branche</h4>
                 <p className="mfeat__desc">
-                  We bouwen dit menu uit met cases en landingspagina's per type bedrijf,
-                  zodat klanten precies vinden wat bij hen past.
+                  Dit menu groeit met cases en landingspagina's per type bedrijf, zodat klanten precies vinden wat bij hen past.
                 </p>
                 <Link className="mfeat__link" to="/" hash="werk">
                   Bekijk alle cases                </Link>
@@ -429,7 +427,7 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
                     <Icon name="users" />
                   </span>
                   <span className="mlink__txt">
-                    <span className="mlink__name">Over Ons</span>
+                    <span className="mlink__name">Over MegaOnline</span>
                   </span>
                 </Link>
                 {[
@@ -459,12 +457,11 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
               <aside className="mfeat mfeat--soft">
                 <span className="mfeat__eyebrow">
                   <span className="gdot" />
-                  De mensen
+                  Wie je spreekt
                 </span>
-                <h4 className="mfeat__title">Klein team, grote betrokkenheid</h4>
+                <h4 className="mfeat__title">Direct contact, grote betrokkenheid</h4>
                 <p className="mfeat__desc">
-                  Geen fabriek die websites uitspuugt. Je werkt direct met de mensen die
-                  de strategie bepalen en je site bouwen.
+                  Geen fabriek die websites uitspuugt. Je werkt direct met wie de strategie bepaalt en je site bouwt.
                 </p>
                 <Link className="mfeat__link" to="/over-megaonline" hash="waarom">
                   Lees waarom MegaOnline                </Link>
@@ -533,10 +530,9 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
                   <span className="gdot" />
                   Kenniscentrum
                 </span>
-                <h4 className="mfeat__title">Wat we in scans zien</h4>
+                <h4 className="mfeat__title">Wat MegaOnline op websites tegenkomt</h4>
                 <p className="mfeat__desc">
-                  Wat er steeds terugkomt in onze websitescans, uitgewerkt zodat je er
-                  zelf mee aan de slag kunt.
+                  Wat MegaOnline steeds tegenkomt op websites, uitgewerkt zodat je er zelf mee aan de slag kunt.
                 </p>
                 <span className="mfeat__foot">
                   <Link to="/kennisbank" style={{ color: 'var(--accent)', fontWeight: 600 }}>
@@ -565,7 +561,7 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
                     <span className="mlink__name">
                       Gratis websiteconcept <span className="mtag">Gratis</span>
                     </span>
-                    <span className="mlink__sub">Onze belangrijkste eerste stap</span>
+                    <span className="mlink__sub">De belangrijkste eerste stap</span>
                   </span>
                 </Link>
                 <Link className="mlink" to="/contact">

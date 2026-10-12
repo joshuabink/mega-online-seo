@@ -188,8 +188,7 @@ export function ConceptForm({
             </span>
             <h3>Ontvang een gratis websiteconcept met persoonlijk advies</h3>
             <p>
-              Beantwoord zes korte vragen. Daarna kijken we persoonlijk naar je bedrijf en laten we
-              zien hoe je website meer aanvragen en boekingen kan opleveren.
+              Beantwoord zes korte vragen. Daarna kijkt MegaOnline persoonlijk naar je bedrijf en zie je hoe je website meer aanvragen en boekingen kan opleveren.
             </p>
             <ul className="concept__ticks">
               <li>Persoonlijk advies</li>
@@ -202,9 +201,9 @@ export function ConceptForm({
       ok={
         <>
           <div className="ic">✓</div>
-          <h3>Bedankt. We gaan aan de slag.</h3>
+          <h3>Bedankt. Je aanvraag is binnen.</h3>
           <p>
-            We maken een eerste websiteconcept voor je bedrijf. Binnen 2 werkdagen nemen we contact
+            Je krijgt een eerste websiteconcept voor je bedrijf. Binnen 2 werkdagen nemen we contact
             met je op om het concept en ons advies te bespreken. Vragen in de tussentijd? Mail naar{' '}
             <a href="mailto:info@megaonline.io">info@megaonline.io</a>.
           </p>
@@ -365,7 +364,7 @@ export function ConceptForm({
 
       <div className="fstep" data-step="6" hidden={current !== 5}>
         <h3 className="fstep__title" tabIndex={-1} data-step-focus>
-          Waar sturen we het concept heen?
+          Waar mag het concept heen?
         </h3>
         <div className="field">
           <label htmlFor={id('naam')}>Je naam</label>
@@ -421,7 +420,7 @@ export function ConceptForm({
           <a href={LEAD_CONTACT.whatsappUrl} target="_blank" rel="noopener">WhatsApp</a>.
         </p>
         <p className="form__disc">
-          We gebruiken je gegevens alleen voor je concept en advies. Je komt niet op een
+          MegaOnline gebruikt je gegevens alleen voor je concept en advies. Je komt niet op een
           mailinglijst.{' '}
           <Link to="/privacyverklaring">Privacyverklaring</Link>
         </p>
