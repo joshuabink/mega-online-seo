@@ -49,7 +49,7 @@ function Verhuurbedrijven() {
               </Reveal>
               {' '}
               <Reveal as="p" className="lead svc-hero__sub reveal" data-d="2">
-                Of je nu materieel, voertuigen, fietsen of feestbenodigdheden verhuurt: de meeste tijd gaat zitten in vragen over beschikbaarheid en prijzen. Wij bouwen een website die dat werk uit handen neemt.
+                Of je nu materieel, voertuigen, fietsen of feestbenodigdheden verhuurt: de meeste tijd gaat zitten in vragen over beschikbaarheid en prijzen. MegaOnline bouwt een website die dat werk uit handen neemt.
               </Reveal>
               {' '}
               <Reveal as="div" className="svc-hero__ctas reveal" data-d="2">
@@ -70,7 +70,7 @@ function Verhuurbedrijven() {
       <section className="section section--tight" data-theme="paper" data-screen-label="We kennen jouw markt">
         <div className="wrap">
           <Reveal as="div" className="shead reveal">
-            <span className="label">We kennen jouw markt</span>
+            <span className="label">MegaOnline kent jouw markt</span>
             {' '}
             <h2 className="h2">
               Verhuur draait om
@@ -81,7 +81,7 @@ function Verhuurbedrijven() {
             </h2>
             {' '}
             <p className="lead">
-              We werken voor bedrijven die spullen per periode verhuren. Die markt heeft eigen knelpunten, en die kennen we.
+              MegaOnline werkt voor bedrijven die spullen per periode verhuren. Die markt heeft eigen knelpunten. MegaOnline kent ze.
             </p>
           </Reveal>
           {' '}
@@ -136,14 +136,10 @@ function Verhuurbedrijven() {
       <section className="section" data-theme="light" data-screen-label="Onze oplossing">
         <div className="wrap">
           <Reveal as="div" className="shead reveal">
-            <span className="label">Onze oplossing</span>
+            <span className="label">De oplossing</span>
             {' '}
             <h2 className="h2">
-              We halen het
-              {' '}
-              <em>uitzoekwerk</em>
-              {' '}
-              bij je weg.
+              MegaOnline haalt het <em>uitzoekwerk</em> bij je weg.
             </h2>
             {' '}
             <p className="lead">
@@ -248,7 +244,7 @@ function Verhuurbedrijven() {
             </h2>
             {' '}
             <p className="lead">
-              Gericht op minder administratie en meer bevestigde boekingen. Dat begint bij een <Link to="/diensten/conversie-website">conversiegerichte website</Link> die de bezoeker naar een complete aanvraag leidt. Wil je dat huurders je vinden voordat ze de concurrent bellen, dan werken we daarna aan je <Link to="/diensten/seo">vindbaarheid in Google</Link>.
+              Gericht op minder administratie en meer bevestigde boekingen. Dat begint bij een <Link to="/diensten/conversie-website">conversiegerichte website</Link> die de bezoeker naar een complete aanvraag leidt. Wil je dat huurders je vinden voordat ze de concurrent bellen, dan werkt MegaOnline daarna aan je <Link to="/diensten/seo">vindbaarheid in Google</Link>.
             </p>
           </Reveal>
           {' '}
@@ -325,11 +321,11 @@ function Verhuurbedrijven() {
           {' '}
           <div className="faq">
             <Qa question="Kunnen klanten direct online reserveren of alleen aanvragen?" className="reveal">
-                Beide kan. Voor sommige verhuurbedrijven werkt direct reserveren het best, voor andere een aanvraag die jij bevestigt. We kiezen wat bij jouw werkwijze past.
+                Beide kan. Voor sommige verhuurbedrijven werkt direct reserveren het best, voor andere een aanvraag die jij bevestigt. MegaOnline kiest wat bij jouw werkwijze past.
             </Qa>
             {' '}
             <Qa question="Kan ik mijn voorraad en prijzen zelf beheren?" className="reveal">
-                Ja. Je past artikelen, tarieven en beschikbaarheid zelf aan. We richten het zo in dat het simpel blijft.
+                Ja. Je past artikelen, tarieven en beschikbaarheid zelf aan. MegaOnline richt het zo in dat het simpel blijft.
             </Qa>
             {' '}
             <Qa question="Kan het gekoppeld worden aan mijn verhuursoftware?" className="reveal">
@@ -337,7 +333,7 @@ function Verhuurbedrijven() {
             </Qa>
             {' '}
             <Qa question="Wat kost zo'n website?" className="reveal">
-                Dat hangt af van je assortiment en de gewenste koppelingen. Met een gratis websiteconcept brengen we het vrijblijvend in kaart.
+                Dat hangt af van je assortiment en de gewenste koppelingen. Met een gratis websiteconcept brengt MegaOnline het vrijblijvend in kaart.
             </Qa>
           </div>
         </div>
@@ -351,7 +347,7 @@ function Verhuurbedrijven() {
             <h2 className="display">Laat je website de beschikbaarheid uitleggen.</h2>
             {' '}
             <p className="lead">
-              Vraag een gratis websiteconcept aan. We laten zien hoeveel handwerk je website kan overnemen.
+              Vraag een gratis websiteconcept aan. Je ziet hoeveel handwerk je website kan overnemen.
             </p>
             {' '}
             <Reveal as="div" className="svc-hero__ctas reveal" data-d="1" style={{ justifyContent: "center", marginTop: "28px" }}>
