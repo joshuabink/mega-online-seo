@@ -948,9 +948,15 @@ function ConversieWebsite() {
         <div className="wrap">
           <Reveal as="div" className="shead shead--split reveal">
             <div className="shead">
-              <span className="label">Projecten</span>
+              <span className="label">Ons werk</span>
               {' '}
-              <h2 className="h2">Recente projecten.</h2>
+              <h2 className="h2">
+                Echte uitdagingen.
+                {' '}
+                <em>Echt</em>
+                {' '}
+                opgelost.
+              </h2>
             </div>
             {' '}
             <Link className="tlink" to="/gratis-websiteconcept" style={{ paddingBottom: "6px" }}>
@@ -962,62 +968,84 @@ function ConversieWebsite() {
           <div className="cases">
             <Reveal as="article" className="case reveal">
               <div className="case__media">
-                <Media id="case-kerk" fit="cover" placeholder="[ Ontmoetingskerk ]" alt="website van Ontmoetingskerk gebouwd door MegaOnline" />
+                <Media id="case-qteam" fit="cover" placeholder="[ Q-Team Solutions ]" alt="Q-Team Solutions" />
               </div>
               {' '}
               <div className="case__body">
-                <h3 className="case__name">Ontmoetingskerk</h3>
+                <h3 className="case__name">Q-Team Solutions</h3>
                 {' '}
                 <div className="case__meta">
-                  <span className="tag">Non-profit</span>
-                  <span className="tag">Gemeenschap</span>
+                  <span className="tag">B2B</span>
+                  <span className="tag">Softwarebedrijf</span>
                 </div>
                 {' '}
                 <p className="case__context">
-                  Een levendige gemeenschap met veel activiteiten en informatie.
+                  Een bedrijf dat eigen apps ontwikkelt voor zakelijke klanten.
                 </p>
                 {' '}
                 <div className="case__steps">
                   <div className="case__step">
                     <span className="k">Uitdaging</span>
-                    <p>Veel informatie, maar weinig overzicht.</p>
+                    <p>
+                      De website liet onvoldoende zien welke apps het bedrijf ontwikkelt en welke waarde die bieden aan klanten.
+                    </p>
                   </div>
                   {' '}
                   <div className="case__step">
-                    <span className="k">Wat er gedaan is</span>
-                    <p>Gebouwd: een website met agenda, nieuws en activiteiten in een duidelijke structuur.</p>
+                    <span className="k">Wat we deden</span>
+                    <p>
+                      We brachten de propositie terug naar een duidelijke boodschap en bouwden een structuur die bezoekers sneller naar de juiste informatie leidt.
+                    </p>
                   </div>
+                </div>
+                {' '}
+                <div className="case__chips">
+                  <span className="k">Resultaat</span>
+                  {' '}
+                  <span className="chip">Duidelijkere propositie</span>
+                  {' '}
+                  <span className="chip">Professionelere uitstraling</span>
                 </div>
               </div>
             </Reveal>
             {' '}
             <Reveal as="article" className="case reveal" data-d="1">
               <div className="case__media">
-                <Media id="case-africa" fit="cover" placeholder="[ LoveForAfrica ]" alt="website van LoveForAfrica gebouwd door MegaOnline" />
+                <Media id="case-guestroom" fit="cover" placeholder="[ GuestRoomUtrecht ]" alt="GuestRoomUtrecht" />
               </div>
               {' '}
               <div className="case__body">
-                <h3 className="case__name">LoveForAfrica</h3>
+                <h3 className="case__name">GuestRoomUtrecht</h3>
                 {' '}
                 <div className="case__meta">
-                  <span className="tag">Non-profit</span>
-                  <span className="tag">Goede doelen</span>
+                  <span className="tag">B2C</span>
+                  <span className="tag">Bed & Breakfast</span>
                 </div>
                 {' '}
-                <p className="case__context">Een organisatie met projecten en verhalen die ertoe doen.</p>
+                <p className="case__context">Een verblijf dat draait op sfeer en de ervaring van gasten.</p>
                 {' '}
                 <div className="case__steps">
                   <div className="case__step">
                     <span className="k">Uitdaging</span>
                     <p>
-                      Het verhaal en de impact van de organisatie kwamen onvoldoende naar voren.
+                      De website bracht de sfeer van het verblijf onvoldoende over.
                     </p>
                   </div>
                   {' '}
                   <div className="case__step">
-                    <span className="k">Wat er gedaan is</span>
-                    <p>Gebouwd: een website waarin projecten, verhalen en betrokkenheid centraal staan.</p>
+                    <span className="k">Wat we deden</span>
+                    <p>
+                      We ontwikkelden een visuele website met een duidelijke boekingsroute en focus op beleving.
+                    </p>
                   </div>
+                </div>
+                {' '}
+                <div className="case__chips">
+                  <span className="k">Resultaat</span>
+                  {' '}
+                  <span className="chip">Sterker verhaal</span>
+                  {' '}
+                  <span className="chip">Betere gebruikerservaring</span>
                 </div>
               </div>
             </Reveal>
