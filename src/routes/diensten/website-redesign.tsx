@@ -10,9 +10,9 @@ export const Route = createFileRoute('/diensten/website-redesign')({
   head: () => ({
     meta: [
       { title: "Website Redesign | MegaOnline.io" },
-      { name: 'description', content: "Je bedrijf is gegroeid, je website niet. Wij stemmen je online uitstraling opnieuw af op waar je vandaag staat en waar je naartoe wilt." },
+      { name: 'description', content: "Je bedrijf is gegroeid, je website niet. MegaOnline stemt je online uitstraling opnieuw af op waar je vandaag staat en waar je naartoe wilt." },
       { property: 'og:title', content: "Website Redesign | MegaOnline.io" },
-      { property: 'og:description', content: "Je bedrijf is gegroeid, je website niet. Wij stemmen je online uitstraling opnieuw af op waar je vandaag staat en waar je naartoe wilt." },
+      { property: 'og:description', content: "Je bedrijf is gegroeid, je website niet. MegaOnline stemt je online uitstraling opnieuw af op waar je vandaag staat en waar je naartoe wilt." },
       { property: 'og:url', content: "https://megaonline.io/diensten/website-redesign" },
     ],
     links: [
@@ -50,7 +50,7 @@ function WebsiteRedesign() {
               </Reveal>
               {' '}
               <Reveal as="p" className="lead svc-hero__sub reveal" data-d="2">
-                Veel websites zijn gebouwd voor het bedrijf dat je jaren geleden was. Wij helpen bedrijven hun online uitstraling opnieuw af te stemmen op waar ze vandaag staan en waar ze naartoe willen.
+                Veel websites zijn gebouwd voor het bedrijf dat je jaren geleden was. MegaOnline helpt bedrijven hun online uitstraling opnieuw af te stemmen op waar ze vandaag staan en waar ze naartoe willen.
               </Reveal>
               {' '}
               <Reveal as="div" className="svc-hero__ctas reveal" data-d="2">
@@ -168,15 +168,13 @@ function WebsiteRedesign() {
             <span className="label">Meer dan een nieuw jasje</span>
             {' '}
             <h2 className="h2">
-              We vervangen niet alleen de uitstraling.
+              MegaOnline vervangt niet alleen de uitstraling.
               <br />
-              We verbeteren de
-              {' '}
-              <em>ervaring.</em>
+              MegaOnline verbetert de <em>ervaring.</em>
             </h2>
             {' '}
             <p className="lead">
-              Een redesign die alleen mooier is, lost weinig op. Wij grijpen het moment aan om je hele online presentatie scherper en sterker te maken.
+              Een redesign die alleen mooier is, lost weinig op. MegaOnline grijpt het moment aan om je hele online presentatie scherper en sterker te maken.
             </p>
           </Reveal>
           {' '}
@@ -310,13 +308,11 @@ function WebsiteRedesign() {
             <span className="label">Eerst kijken, dan bouwen</span>
             {' '}
             <h2 className="h2">
-              Wat we tijdens een redesign
-              {' '}
-              <em>bekijken.</em>
+              Wat MegaOnline tijdens een redesign <em>bekijkt.</em>
             </h2>
             {' '}
             <p className="lead">
-              We beginnen nooit bij het ontwerp. Eerst brengen we in kaart wat er is, wat werkt en wat beter moet. Pas als dat helder is, bouwen we.
+              MegaOnline begint nooit bij het ontwerp. Eerst brengt MegaOnline in kaart wat er is, wat werkt en wat beter moet. Pas als dat helder is, bouwt MegaOnline.
             </p>
           </Reveal>
           {' '}
@@ -443,7 +439,7 @@ function WebsiteRedesign() {
                 </div>
                 {' '}
                 <p>
-                  We kijken wat er nu staat: wat werkt, wat haakt af en wat absoluut behouden moet blijven.
+                  MegaOnline kijkt wat er nu staat: wat werkt, wat haakt af en wat absoluut behouden moet blijven.
                 </p>
               </div>
             </div>
@@ -475,7 +471,7 @@ function WebsiteRedesign() {
                 </div>
                 {' '}
                 <p>
-                  We onderzoeken wie je wilt bereiken en hoe je je onderscheidt van de bedrijven om je heen.
+                  MegaOnline onderzoekt wie je wilt bereiken en hoe je je onderscheidt van de bedrijven om je heen.
                 </p>
               </div>
             </div>
@@ -491,7 +487,7 @@ function WebsiteRedesign() {
                 </div>
                 {' '}
                 <p>
-                  We bepalen welke informatie waar komt en hoe bezoekers richting contact bewegen.
+                  MegaOnline bepaalt welke informatie waar komt en hoe bezoekers richting contact bewegen.
                 </p>
               </div>
             </div>
@@ -507,7 +503,7 @@ function WebsiteRedesign() {
                 </div>
                 {' '}
                 <p>
-                  We ontwerpen de nieuwe uitstraling en bouwen die uit: modern, snel en zelf te beheren.
+                  MegaOnline ontwerpt de nieuwe uitstraling en bouwt die uit: modern, snel en zelf te beheren.
                 </p>
               </div>
             </div>
@@ -794,27 +790,27 @@ function WebsiteRedesign() {
           {' '}
           <div className="faq">
             <Qa question="Moet mijn website volledig opnieuw gebouwd worden?" className="reveal">
-                Niet altijd. Soms volstaat een grondige restyling op de bestaande basis, soms is het slimmer om opnieuw op te bouwen. Dat hangt af van de technische en strategische staat van je huidige website. We bepalen dat samen tijdens het advies en zijn daar eerlijk over.
+                Niet altijd. Soms volstaat een grondige restyling op de bestaande basis, soms is het slimmer om opnieuw op te bouwen. Dat hangt af van de technische en strategische staat van je huidige website. Dat bepaal je samen met MegaOnline tijdens het advies. MegaOnline is daar eerlijk over.
             </Qa>
             {' '}
-            <Qa question="Kunnen jullie bestaande content overnemen?" className="reveal">
-                Ja. Goede teksten, foto's en pagina's nemen we mee. Vaak scherpen we ze aan zodat ze beter aansluiten bij je huidige bedrijf, maar je begint zelden vanaf nul.
+            <Qa question="Kan MegaOnline bestaande content overnemen?" className="reveal">
+                Ja. Goede teksten, foto's en pagina's neemt MegaOnline mee. Vaak scherpt MegaOnline ze aan zodat ze beter aansluiten bij je huidige bedrijf, maar je begint zelden vanaf nul.
             </Qa>
             {' '}
             <Qa question="Wat gebeurt er met SEO?" className="reveal">
-                Daar letten we bewust op. We behouden wat goed scoort, zetten redirects waar nodig en houden de SEO-basis op orde, zodat je vindbaarheid niet inzakt na de livegang maar juist een gezonde basis houdt.
+                Daar let MegaOnline bewust op. We behouden wat goed scoort, zetten redirects waar nodig en houden de SEO-basis op orde, zodat je vindbaarheid niet inzakt na de livegang maar juist een gezonde basis houdt.
             </Qa>
             {' '}
             <Qa question="Hoe lang duurt een redesign?" className="reveal">
-                Dat hangt af van de omvang en hoe snel content en feedback rond zijn. Een redesign is doorgaans een traject van enkele weken. Na het concept en de kennismaking geven we een realistische inschatting voor jouw situatie.
+                Dat hangt af van de omvang en hoe snel content en feedback rond zijn. Een redesign is doorgaans een traject van enkele weken. Na het concept en de kennismaking geeft MegaOnline een realistische inschatting voor jouw situatie.
             </Qa>
             {' '}
             <Qa question="Is een redesign altijd beter dan optimaliseren?" className="reveal">
-                Nee, en dat zeggen we ook eerlijk. Als je website technisch in orde is en er nog goed uitziet, zijn gerichte verbeteringen vaak slimmer en goedkoper. Een redesign is bedoeld voor websites die echt zijn achtergelopen op het bedrijf. Twijfel je? Bekijk dan ook onze pagina over Website Optimalisatie.
+                Nee. Dat zegt MegaOnline ook eerlijk. Als je website technisch in orde is en er nog goed uitziet, zijn gerichte verbeteringen vaak slimmer en goedkoper. Een redesign is bedoeld voor websites die echt zijn achtergelopen op het bedrijf. Twijfel je? Bekijk dan ook de pagina over Website Optimalisatie.
             </Qa>
             {' '}
             <Qa question="Kan ik mijn website straks zelf beheren?" className="reveal">
-                Ja. We bouwen redesigns die flexibel, veilig, schaalbaar en eenvoudig zelf te beheren zijn. Je zit nooit vast aan één leverancier, want je website blijft van jou.
+                Ja. MegaOnline bouwt redesigns die flexibel, veilig, schaalbaar en eenvoudig zelf te beheren zijn. Je zit nooit vast aan één leverancier, want je website blijft van jou.
             </Qa>
           </div>
         </div>
@@ -828,7 +824,7 @@ function WebsiteRedesign() {
             <h2 className="h2">Voor wie een redesign het verschil maakt.</h2>
             {' '}
             <p className="lead">
-              Je bedrijf is gegroeid, je website niet meegegroeid. Dat zien we het vaakst bij deze groepen.
+              Je bedrijf is gegroeid, je website niet meegegroeid. Dat ziet MegaOnline het vaakst bij deze groepen.
             </p>
           </Reveal>
           {' '}

@@ -129,7 +129,7 @@ function Integraties() {
       <section className="section" data-theme="light" data-screen-label="Onze aanpak">
         <div className="wrap">
           <Reveal as="div" className="shead reveal">
-            <span className="label">Onze aanpak</span>
+            <span className="label">De aanpak</span>
             {' '}
             <h2 className="h2">
               Één soepel geheel,
@@ -289,7 +289,7 @@ function Integraties() {
                 <Icon name="plug" />
               </span>
               <h4>Maatwerkkoppelingen</h4>
-              <p>Een specifiek systeem? We kijken naar de mogelijkheden.</p>
+              <p>Een specifiek systeem? MegaOnline kijkt naar de mogelijkheden.</p>
             </Reveal>
           </div>
         </div>
@@ -309,15 +309,15 @@ function Integraties() {
             </Qa>
             {' '}
             <Qa question="Wat als mijn systeem geen standaardkoppeling heeft?" className="reveal">
-                Dan zoeken we naar een maatwerkoplossing. Niet alles kan, maar vaak is er meer mogelijk dan je denkt. We zijn er eerlijk over wat haalbaar en zinvol is.
+                Dan zoekt MegaOnline naar een maatwerkoplossing. Niet alles kan, maar vaak is er meer mogelijk dan je denkt. MegaOnline is eerlijk over wat haalbaar en zinvol is.
             </Qa>
             {' '}
             <Qa question="Kan ik koppelingen later toevoegen?" className="reveal">
-                Zeker. Je hoeft niet alles in één keer te koppelen. We beginnen met wat het meeste oplevert en breiden uit wanneer jij daar klaar voor bent.
+                Zeker. Je hoeft niet alles in één keer te koppelen. MegaOnline begint met wat het meeste oplevert en breidt uit wanneer jij daar klaar voor bent.
             </Qa>
             {' '}
             <Qa question="Is een integratie los van een website af te nemen?" className="reveal">
-                Ja. We kunnen koppelingen ook toevoegen aan je bestaande website. Begin met een gratis websiteconcept, dan kijken we waar je het meeste handwerk kunt wegnemen.
+                Ja. We kunnen koppelingen ook toevoegen aan je bestaande website. Begin met een gratis websiteconcept, dan kijkt MegaOnline waar je het meeste handwerk kunt wegnemen.
             </Qa>
           </div>
         </div>
@@ -362,7 +362,7 @@ function Integraties() {
             <h2 className="display">Dit hoef je niet zelf te blijven overtypen.</h2>
             {' '}
             <p className="lead">
-              Vraag een gratis websiteconcept aan. We laten zien welke koppelingen jou het meeste tijd besparen.
+              Vraag een gratis websiteconcept aan. Je ziet welke koppelingen jou het meeste tijd besparen.
             </p>
             {' '}
             <Reveal as="div" className="svc-hero__ctas reveal" data-d="1" style={{ justifyContent: "center", marginTop: "28px" }}>

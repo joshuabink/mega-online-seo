@@ -30,7 +30,7 @@ export const Route = createFileRoute('/diensten/seo')({
 const FAQ_ITEMS: { q: string; a: string }[] = [
   {
     q: "Hoe lang duurt het voordat ik iets merk van SEO?",
-    a: "SEO is geen knop die je omzet. De eerste verbeteringen zijn vaak binnen enkele weken zichtbaar, maar serieuze, blijvende posities bouw je op over maanden. Daarom werken we met een contentplan voor twaalf maanden in plaats van losse acties.",
+    a: "SEO is geen knop die je omzet. De eerste verbeteringen zijn vaak binnen enkele weken zichtbaar, maar serieuze, blijvende posities bouw je op over maanden. Daarom werkt MegaOnline met een contentplan voor twaalf maanden in plaats van losse acties.",
   },
   {
     q: "Is lokale vindbaarheid ook zinvol voor een klein bedrijf?",
@@ -46,15 +46,15 @@ const FAQ_ITEMS: { q: string; a: string }[] = [
   },
   {
     q: "Kan ik meer dan één pagina per maand krijgen?",
-    a: "Ja. Het abonnement is gebouwd rond één nieuwe pagina per maand. Wil je sneller opschalen, dan kost elke extra pagina in die maand 75 euro. We kijken samen wat past bij wat je wilt bereiken.",
+    a: "Ja. Het abonnement is gebouwd rond één nieuwe pagina per maand. Wil je sneller opschalen, dan kost elke extra pagina in die maand 75 euro. Je kijkt samen met MegaOnline wat past bij wat je wilt bereiken.",
   },
   {
     q: "Moet mijn website door MegaOnline gebouwd zijn?",
-    a: "In de basis wel. Goed gevonden worden begint bij de techniek van je website. Zit die verkeerd in elkaar, dan kun je nog zulke goede pagina's maken, maar dan worden ze niet gevonden. Daarom draait het partnership op een website die wij hebben gebouwd.",
+    a: "In de basis wel. Goed gevonden worden begint bij de techniek van je website. Zit die verkeerd in elkaar, dan kun je nog zulke goede pagina's maken, maar dan worden ze niet gevonden. Daarom draait het partnership op een website die MegaOnline heeft gebouwd.",
   },
   {
     q: "Ik heb al een website. Kan het dan ook?",
-    a: "Dat kijken we eerst na. We beoordelen je bestaande website technisch en laten je weten wat er nodig is. Is de basis in orde, dan kunnen we gewoon starten. Zo niet, dan brengen we die eerst op orde en daarna loopt het partnership normaal door.",
+    a: "Dat kijkt MegaOnline eerst na. MegaOnline beoordeelt je bestaande website technisch en laat je weten wat er nodig is. Is de basis in orde, dan kan MegaOnline gewoon starten. Zo niet, dan brengt MegaOnline die eerst op orde en daarna loopt het partnership normaal door.",
   },
   {
     q: "Hoe vaak hebben we contact?",
@@ -62,19 +62,19 @@ const FAQ_ITEMS: { q: string; a: string }[] = [
   },
   {
     q: "Wat gebeurt er iedere maand?",
-    a: "We publiceren de pagina die voor die maand in het contentplan staat, controleren de website technisch op SEO en GEO en kijken wat de eerder geplaatste pagina's doen. Waar nodig sturen we het plan bij.",
+    a: "MegaOnline publiceert de pagina die voor die maand in het contentplan staat, controleert de website technisch op SEO en GEO en kijkt wat de eerder geplaatste pagina's doen. Waar nodig stuurt MegaOnline het plan bij.",
   },
   {
     q: "Kan ik opzeggen?",
     a: "Het partnership loopt twaalf maanden en is daarna maandelijks opzegbaar. Die eerste periode is nodig omdat vindbaarheid zich over maanden opbouwt: na twee maanden is er nog weinig te zien, na acht maanden wel.",
   },
   {
-    q: "Doen jullie ook technische ondersteuning?",
-    a: "Zeker. Updates, beveiliging, back-ups en snelheid horen er gewoon bij. Binnen het Groei Partnership gaat dat samen met actieve optimalisatie. Heb je alleen het technische deel nodig, dan kan dat ook via onze lichtere onderhoudsoptie.",
+    q: "Doet MegaOnline ook technische ondersteuning?",
+    a: "Zeker. Updates, beveiliging, back-ups en snelheid horen er gewoon bij. Binnen het Groei Partnership gaat dat samen met actieve optimalisatie. Heb je alleen het technische deel nodig, dan kan dat ook via de lichtere onderhoudsoptie.",
   },
   {
     q: "Wat als ik alleen onderhoud wil?",
-    a: "Dat kan. We bieden een lichtere onderhoudsoptie vanaf € 50 per maand, waarbij we je website veilig en up-to-date houden zonder actieve doorontwikkeling. Goed om te weten: dat is bewust iets anders dan het Groei Partnership, waarbij we je website juist maand na maand verbeteren.",
+    a: "Dat kan. MegaOnline biedt een lichtere onderhoudsoptie vanaf € 50 per maand. Daarmee blijft je website veilig en up-to-date, zonder actieve doorontwikkeling. Goed om te weten: dat is bewust iets anders dan het Groei Partnership, waarbij we je website juist maand na maand verbeteren.",
   },
   {
     q: "Wat is GEO en wat is het verschil met SEO?",
@@ -127,7 +127,7 @@ function Seo() {
               </Reveal>
               {' '}
               <Reveal as="p" className="lead svc-hero__sub reveal" data-d="2">
-                Elke maand publiceren we een nieuwe pagina die je beter vindbaar maakt, in Google en in AI-zoekmachines zoals ChatGPT en Gemini. Welke pagina's dat worden ligt vooraf vast in je contentplan. 250 euro eenmalig voor het onderzoek en het plan, daarna 150 euro per maand.
+                Elke maand publiceert MegaOnline een nieuwe pagina die je beter vindbaar maakt, in Google en in AI-zoekmachines zoals ChatGPT en Gemini. Welke pagina's dat worden ligt vooraf vast in je contentplan. 250 euro eenmalig voor het onderzoek en het plan, daarna 150 euro per maand.
               </Reveal>
               {' '}
               <Reveal as="div" className="svc-hero__ctas reveal" data-d="2">
@@ -303,7 +303,7 @@ function Seo() {
               </p>
               {' '}
               <p className="lead">
-                Vanaf dat moment hoeven we niet meer te gokken. We kunnen kijken, leren en gericht verbeteren.
+                Vanaf dat moment hoeft MegaOnline niet meer te gokken. MegaOnline kan kijken, leren en gericht verbeteren.
               </p>
             </Reveal>
             {' '}
@@ -317,7 +317,7 @@ function Seo() {
               </p>
               {' '}
               <p className="panel__support">
-                Zodra bezoekers de website gebruiken, zien we wat er werkelijk gebeurt:
+                Zodra bezoekers de website gebruiken, ziet MegaOnline wat er werkelijk gebeurt:
               </p>
               {' '}
               <ul className="considlist" style={{ gridTemplateColumns: "1fr", marginTop: "18px" }}>
@@ -343,13 +343,11 @@ function Seo() {
             <span className="label">In het partnership</span>
             {' '}
             <h2 className="h2">
-              Wat we binnen het traject
-              {' '}
-              <em>doen.</em>
+              Wat MegaOnline binnen het traject <em>doet.</em>
             </h2>
             {' '}
             <p className="lead">
-              Geen los lijstje diensten, maar één traject: het contentplan bepaalt waar we op inzetten, de nieuwe pagina's brengen bezoekers binnen en de website zorgt dat er wat uitkomt.
+              Geen los lijstje diensten, maar één traject: het contentplan bepaalt waar MegaOnline op inzet, de nieuwe pagina's brengen bezoekers binnen en de website zorgt dat er wat uitkomt.
             </p>
           </Reveal>
           {' '}
@@ -359,7 +357,7 @@ function Seo() {
                 <Icon name="compass" />
               </span>
               <h4>Strategie en plan</h4>
-              <p>Bij de start doen we zoekwoordenonderzoek en leggen we een contentplan voor twaalf maanden vast.</p>
+              <p>Bij de start doet MegaOnline zoekwoordenonderzoek en legt het een contentplan voor twaalf maanden vast.</p>
             </Reveal>
             {' '}
             <Reveal as="div" className="feat reveal" data-d="1">
@@ -442,7 +440,7 @@ function Seo() {
             </h2>
             {' '}
             <p className="lead">
-              Verbeteringen voeren we niet door omdat ze ons een goed idee lijken. We nemen beslissingen op basis van wat we daadwerkelijk zien gebeuren.
+              Verbeteringen voert MegaOnline niet door omdat ze een goed idee lijken. MegaOnline neemt beslissingen op basis van wat er daadwerkelijk gebeurt.
             </p>
           </Reveal>
           {' '}
@@ -472,7 +470,7 @@ function Seo() {
               <span className="iconbox iconbox--sm">
                 <Icon name="lightbulb" />
               </span>
-              Inzichten: de conclusies die we trekken
+              Inzichten: de conclusies uit de cijfers
             </div>
           </Reveal>
         </div>
@@ -509,7 +507,7 @@ function Seo() {
             <div className="cyclestep">
               <h4>Meten</h4>
               {' '}
-              <p>We verzamelen data over bezoekers, zoekverkeer en campagnes.</p>
+              <p>MegaOnline verzamelt data over bezoekers, zoekverkeer en campagnes.</p>
               {' '}
               <span className="cyclestep__arr">
                 <Icon name="arrow-right" />
@@ -519,7 +517,7 @@ function Seo() {
             <div className="cyclestep">
               <h4>Kansen zoeken</h4>
               {' '}
-              <p>We zetten de grootste kansen op een rij en kiezen waar we deze maand op inzetten.</p>
+              <p>MegaOnline zet de grootste kansen op een rij en kiest waar het deze maand op inzet.</p>
               {' '}
               <span className="cyclestep__arr">
                 <Icon name="arrow-right" />
@@ -529,7 +527,7 @@ function Seo() {
             <div className="cyclestep">
               <h4>Uitvoeren</h4>
               {' '}
-              <p>We pakken die kans aan, of dat nu SEO, een campagne of de website is.</p>
+              <p>MegaOnline pakt die kans aan, of dat nu SEO, een campagne of de website is.</p>
               {' '}
               <span className="cyclestep__arr">
                 <Icon name="arrow-right" />
@@ -539,7 +537,7 @@ function Seo() {
             <div className="cyclestep">
               <h4>Herhalen</h4>
               {' '}
-              <p>Volgende maand opnieuw, met wat we geleerd hebben van de vorige.</p>
+              <p>Volgende maand opnieuw, met de lessen van de vorige.</p>
             </div>
           </Reveal>
           {' '}
@@ -662,7 +660,7 @@ function Seo() {
             </h2>
             {' '}
             <p className="lead">
-              Bij de start doen we het zoekwoordenonderzoek, bekijken we je website technisch en stellen we een contentplan op voor twaalf maanden. Daarna publiceren we elke maand een nieuwe pagina uit dat plan.
+              Bij de start doet MegaOnline het zoekwoordenonderzoek, bekijkt je website technisch en stelt een contentplan op voor twaalf maanden. Daarna publiceert MegaOnline elke maand een nieuwe pagina uit dat plan.
             </p>
           </Reveal>
           {' '}
@@ -670,7 +668,7 @@ function Seo() {
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: "clamp(24px,3vw,40px)", alignItems: "center" }}>
               <div>
                 <p style={{ color: "var(--muted)", lineHeight: "1.6" }}>
-                  Elke maand maken we een nieuwe pagina die gericht is op vindbaarheid. Dat kan een blog zijn of een landingspagina. Welk type het wordt staat vooraf in je contentplan, zodat je weet wat eraan komt. Wil je sneller opschalen, dan kost een extra pagina in dezelfde maand 75 euro.
+                  Elke maand maakt MegaOnline een nieuwe pagina die gericht is op vindbaarheid. Dat kan een blog zijn of een landingspagina. Welk type het wordt staat vooraf in je contentplan, zodat je weet wat eraan komt. Wil je sneller opschalen, dan kost een extra pagina in dezelfde maand 75 euro.
                 </p>
                 {' '}
                 <ul className="considlist" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(160px,1fr))", marginTop: "20px" }}>
@@ -728,7 +726,7 @@ function Seo() {
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: "clamp(24px,3vw,40px)", alignItems: "center" }}>
               <div>
                 <p style={{ color: "var(--muted)", lineHeight: "1.6" }}>
-                  Niet ieder bedrijf heeft behoefte aan doorlopende optimalisatie. Daarom bieden we ook een lichtere onderhoudsoptie, zodat je website veilig en up-to-date blijft, zonder actieve doorontwikkeling.
+                  Niet ieder bedrijf heeft behoefte aan doorlopende optimalisatie. Daarom biedt MegaOnline ook een lichtere onderhoudsoptie, zodat je website veilig en up-to-date blijft, zonder actieve doorontwikkeling.
                 </p>
                 {' '}
                 <ul className="considlist" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(160px,1fr))", marginTop: "20px" }}>
@@ -744,7 +742,7 @@ function Seo() {
                 </ul>
                 {' '}
                 <p className="brand__tag" style={{ marginTop: "22px", paddingTop: "0" }}>
-                  Let op: dit is niet hetzelfde als het Groei Partnership. Bij onderhoud houden we je website draaiend, maar verbeteren we niet actief. Voor groei blijft het partnership de aanbevolen route.
+                  Let op: dit is niet hetzelfde als het Groei Partnership. Bij onderhoud houdt MegaOnline je website draaiend, maar verbetert het niet actief. Voor groei blijft het partnership de aanbevolen route.
                 </p>
               </div>
               {' '}
@@ -819,7 +817,7 @@ function Seo() {
               </span>
               <h4>Minder zorgen</h4>
               <p>
-                Techniek, veiligheid en updates regelen wij op de achtergrond.
+                Techniek, veiligheid en updates regelt MegaOnline op de achtergrond.
               </p>
             </Reveal>
             {' '}
@@ -866,10 +864,10 @@ function Seo() {
           <Reveal as="div" className="shead reveal">
             <span className="label">Voor wie</span>
             {' '}
-            <h2 className="h2">Voor wie we aan vindbaarheid werken.</h2>
+            <h2 className="h2">Voor wie MegaOnline aan vindbaarheid werkt.</h2>
             {' '}
             <p className="lead">
-              Vindbaarheid levert pas iets op als de bezoeker daarna ook aanvraagt. Daarom werken we het liefst voor deze branches.
+              Vindbaarheid levert pas iets op als de bezoeker daarna ook aanvraagt. Daarom werkt MegaOnline het liefst voor deze branches.
             </p>
           </Reveal>
           {' '}

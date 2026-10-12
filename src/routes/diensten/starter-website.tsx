@@ -53,7 +53,7 @@ function StarterWebsite() {
               </Reveal>
               {' '}
               <Reveal as="p" className="lead svc-hero__sub reveal" data-d="2">
-                De Starter Website is onze bewust voordeligere optie. Sneller gebouwd op beproefde, herbruikbare bouwblokken, zodat je als startende ondernemer professioneel online staat zonder een groot budget.
+                De Starter Website is de bewust voordeligere optie. Sneller gebouwd op beproefde, herbruikbare bouwblokken, zodat je als startende ondernemer professioneel online staat zonder een groot budget.
               </Reveal>
               {' '}
               <Reveal as="div" className="svc-hero__ctas reveal" data-d="2">
@@ -105,11 +105,11 @@ function StarterWebsite() {
               {' '}
               <em>bewust voordeligere</em>
               {' '}
-              optie. En dat zeggen we ook gewoon.
+              optie. En dat zegt MegaOnline ook gewoon.
             </h2>
             {' '}
             <p className="lead">
-              De Starter Website is geen uitgekleed product, maar wél een andere keuze dan onze volledige Conversie Website. Goedkoper en sneller, omdat we slim hergebruiken wat zich al bewezen heeft. We zijn er open over waar dat verschil zit.
+              De Starter Website is geen uitgekleed product, maar wél een andere keuze dan de volledige Conversie Website. Goedkoper en sneller, omdat MegaOnline slim hergebruikt wat zich al bewezen heeft. MegaOnline is er open over waar dat verschil zit.
             </p>
           </Reveal>
           {' '}
@@ -190,7 +190,7 @@ function StarterWebsite() {
             </h2>
             {' '}
             <p className="lead">
-              Een lagere prijs betekent niet minder zorg. Het betekent dat we niet elke keer het wiel opnieuw uitvinden. We werken met beproefde, herbruikbare bouwblokken en een vaste, efficiënte aanpak.
+              Een lagere prijs betekent niet minder zorg. Het betekent dat MegaOnline niet elke keer het wiel opnieuw uitvindt. MegaOnline werkt met beproefde, herbruikbare bouwblokken en een vaste, efficiënte aanpak.
             </p>
           </Reveal>
           {' '}
@@ -208,7 +208,7 @@ function StarterWebsite() {
                 <h3 style={{ marginTop: "18px" }}>Herbruikbare bouwblokken</h3>
                 {' '}
                 <p style={{ marginTop: "14px" }}>
-                  In plaats van elke website vanaf nul te ontwerpen, stellen we hem samen uit beproefde onderdelen: een sterke hero, een dienstenblok, een contactsectie. Stuk voor stuk al verfijnd op eerdere projecten en afgestemd op jouw kleuren, teksten en logo.
+                  In plaats van elke website vanaf nul te ontwerpen, stelt MegaOnline hem samen uit beproefde onderdelen: een sterke hero, een dienstenblok, een contactsectie. Stuk voor stuk al verfijnd op eerdere projecten en afgestemd op jouw kleuren, teksten en logo.
                 </p>
               </div>
               {' '}
@@ -318,7 +318,7 @@ function StarterWebsite() {
               </span>
               <h4>Eigen kleuren & logo</h4>
               <p>
-                We stemmen de bouwblokken af op jouw huisstijl en uitstraling.
+                MegaOnline stemt de bouwblokken af op jouw huisstijl en uitstraling.
               </p>
             </Reveal>
             {' '}
@@ -394,7 +394,7 @@ function StarterWebsite() {
             </h2>
             {' '}
             <p className="lead">
-              Doordat we met vaste bouwblokken en een beproefde opzet werken, hoeft er veel minder bedacht te worden. Dat scheelt tijd, en dus geld.
+              Doordat MegaOnline met vaste bouwblokken en een beproefde opzet werkt, is er veel minder bedenkwerk nodig. Dat scheelt tijd, en dus geld.
             </p>
           </Reveal>
           {' '}
@@ -410,7 +410,7 @@ function StarterWebsite() {
                 </div>
                 {' '}
                 <p>
-                  We bespreken wat je doet, wat je nodig hebt en welke pagina's er moeten komen. Helder en to-the-point.
+                  Je bespreekt met MegaOnline wat je doet, wat je nodig hebt en welke pagina's er moeten komen. Helder en to-the-point.
                 </p>
               </div>
             </div>
@@ -426,7 +426,7 @@ function StarterWebsite() {
                 </div>
                 {' '}
                 <p>
-                  Jij levert de basis aan: je teksten, je logo en een paar foto's. Wij denken mee waar dat nodig is.
+                  Jij levert de basis aan: je teksten, je logo en een paar foto's. MegaOnline denkt mee waar dat nodig is.
                 </p>
               </div>
             </div>
@@ -442,7 +442,7 @@ function StarterWebsite() {
                 </div>
                 {' '}
                 <p>
-                  We stellen je website samen uit de beproefde bouwblokken en stemmen alles af op jouw huisstijl en inhoud.
+                  MegaOnline stelt je website samen uit de beproefde bouwblokken en stemt alles af op jouw huisstijl en inhoud.
                 </p>
               </div>
             </div>
@@ -458,7 +458,7 @@ function StarterWebsite() {
                 </div>
                 {' '}
                 <p>
-                  Je bekijkt het resultaat en we verwerken je opmerkingen in één gerichte ronde. Kort en doelgericht.
+                  Je bekijkt het resultaat en MegaOnline verwerkt je opmerkingen in één gerichte ronde. Kort en doelgericht.
                 </p>
               </div>
             </div>
@@ -487,7 +487,7 @@ function StarterWebsite() {
             </h2>
             {' '}
             <p className="lead">
-              De Starter Website is goedkoper omdat we andere keuzes maken dan bij onze volledige Conversie Website. Hieronder zie je precies waar dat verschil zit, zonder mooie praatjes.
+              De Starter Website is goedkoper omdat MegaOnline andere keuzes maakt dan bij de volledige Conversie Website. Hieronder zie je precies waar dat verschil zit, zonder mooie praatjes.
             </p>
           </Reveal>
           {' '}
@@ -536,7 +536,7 @@ function StarterWebsite() {
             </Reveal>
             {' '}
             <Reveal as="div" className="cmp cmp--us reveal" data-d="1">
-              <span className="cmp__badge">Onze kerndienst</span>
+              <span className="cmp__badge">Kerndienst</span>
               {' '}
               <span className="cmp__tag">Conversie Website · maatwerk</span>
               {' '}
@@ -581,7 +581,7 @@ function StarterWebsite() {
               Twijfel je welke optie bij je past? Begin met een Starter Website en groei later door, of
               {' '}
               <Link to="/diensten/conversie-website" style={{ color: "var(--accent-text)" }}>bekijk meteen de Conversie Website</Link>
-              . We adviseren je er eerlijk in.
+              . MegaOnline adviseert je er eerlijk in.
             </p>
           </Reveal>
         </div>
@@ -689,15 +689,15 @@ function StarterWebsite() {
           {' '}
           <div className="faq">
             <Qa question="Waarom is een Starter Website goedkoper?" className="reveal">
-                Omdat we niet elke website vanaf nul ontwerpen. We werken met beproefde, herbruikbare bouwblokken en een vaste opzet die zich al heeft bewezen. Dat scheelt veel ontwerp- en bouwuren, en dat voordeel geven we door in de prijs. De kwaliteit van de basis blijft hetzelfde, alleen het proces is sneller.
+                Omdat MegaOnline niet elke website vanaf nul ontwerpt. MegaOnline werkt met beproefde, herbruikbare bouwblokken en een vaste opzet die zich al heeft bewezen. Dat scheelt veel ontwerp- en bouwuren. Dat voordeel geeft MegaOnline door in de prijs. De kwaliteit van de basis blijft hetzelfde, alleen het proces is sneller.
             </Qa>
             {' '}
             <Qa question="Wordt mijn website dan hetzelfde als die van anderen?" className="reveal">
-                Nee. De bouwblokken zijn herbruikbaar, maar jouw kleuren, logo, teksten en foto's zijn dat niet. We stemmen alles af op jouw huisstijl en bedrijf, zodat de website herkenbaar van jou is. Het is geen kant-en-klaar sjabloontje, maar een op maat ingerichte website op een slimme basis.
+                Nee. De bouwblokken zijn herbruikbaar, maar jouw kleuren, logo, teksten en foto's zijn dat niet. MegaOnline stemt alles af op jouw huisstijl en bedrijf, zodat de website herkenbaar van jou is. Het is geen kant-en-klaar sjabloontje, maar een op maat ingerichte website op een slimme basis.
             </Qa>
             {' '}
             <Qa question="Wat kost een Starter Website precies?" className="reveal">
-                De Starter Website begint vanaf € 1.500. De exacte prijs hangt af van het aantal pagina's en wat je zelf aanlevert aan teksten en beeld. Omdat we met een vaste opzet werken, weet je vooraf waar je aan toe bent. Geen verrassingen achteraf.
+                De Starter Website begint vanaf € 1.500. De exacte prijs hangt af van het aantal pagina's en wat je zelf aanlevert aan teksten en beeld. Omdat MegaOnline met een vaste opzet werkt, weet je vooraf waar je aan toe bent. Geen verrassingen achteraf.
             </Qa>
             {' '}
             <Qa question="Kan ik later uitbreiden of doorgroeien?" className="reveal">
@@ -705,11 +705,11 @@ function StarterWebsite() {
             </Qa>
             {' '}
             <Qa question="Voor wie is de Starter Website bedoeld?" className="reveal">
-                Vooral voor startende ondernemers en zzp'ers die professioneel online willen, maar nog geen groot budget hebben. Heb je een overzichtelijk aanbod en wil je vooral goed gevonden en bereikt worden, dan past deze optie goed. Wil je echt sturen op groei en conversie, dan is de Conversie Website een betere keuze. We zijn daar eerlijk over.
+                Vooral voor startende ondernemers en zzp'ers die professioneel online willen, maar nog geen groot budget hebben. Heb je een overzichtelijk aanbod en wil je vooral goed gevonden en bereikt worden, dan past deze optie goed. Wil je echt sturen op groei en conversie, dan is de Conversie Website een betere keuze. MegaOnline is daar eerlijk over.
             </Qa>
             {' '}
             <Qa question="Hoe snel staat mijn website online?" className="reveal">
-                Doordat we met vaste bouwblokken werken, gaat het bouwen een stuk sneller dan bij een maatwerktraject. Zodra je teksten, logo en beeld zijn aangeleverd, kunnen we vlot samenstellen. In de praktijk sta je doorgaans binnen enkele weken live.
+                Doordat MegaOnline met vaste bouwblokken werkt, gaat het bouwen een stuk sneller dan bij een maatwerktraject. Zodra je teksten, logo en beeld hebt aangeleverd, kan MegaOnline vlot samenstellen. In de praktijk sta je doorgaans binnen enkele weken live.
             </Qa>
           </div>
         </div>
@@ -753,7 +753,7 @@ function StarterWebsite() {
               <Reveal as="h2" className="display reveal">Je eerste website hoeft geen gok te zijn.</Reveal>
               {' '}
               <Reveal as="p" className="lead reveal" data-d="1">
-                Vraag een gratis websiteconcept aan of plan een korte kennismaking. We kijken samen of de Starter Website bij je past, of dat een andere optie slimmer is.
+                Vraag een gratis websiteconcept aan of plan een korte kennismaking. Je kijkt samen met MegaOnline of de Starter Website bij je past, of dat een andere optie slimmer is.
               </Reveal>
               {' '}
               <Reveal as="div" className="svc-hero__ctas reveal" data-d="2" style={{ marginTop: "28px" }}>

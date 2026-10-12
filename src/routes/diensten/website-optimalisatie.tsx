@@ -173,12 +173,10 @@ function WebsiteOptimalisatie() {
       <section className="section" data-theme="light" data-screen-label="Wat we optimaliseren">
         <div className="wrap">
           <Reveal as="div" className="shead reveal">
-            <span className="label">Waar we naar kijken</span>
+            <span className="label">Waar MegaOnline naar kijkt</span>
             {' '}
             <h2 className="h2">
-              Wat we
-              {' '}
-              <em>optimaliseren.</em>
+              Wat MegaOnline <em>optimaliseert.</em>
             </h2>
             {' '}
             <p className="lead">
@@ -291,7 +289,7 @@ function WebsiteOptimalisatie() {
             </h2>
             {' '}
             <p className="lead">
-              We passen niet zomaar dingen aan. Lukraak knoppen verschuiven levert niets op. We beginnen altijd met analyseren: pas als helder is wáár het misgaat, weten we wat verbeteren oplevert.
+              MegaOnline past niet zomaar dingen aan. Lukraak knoppen verschuiven levert niets op. MegaOnline begint altijd met analyseren: pas als helder is wáár het misgaat, weet het wat verbeteren oplevert.
             </p>
           </Reveal>
           {' '}
@@ -330,17 +328,17 @@ function WebsiteOptimalisatie() {
               <h3>Verbeteren op basis van inzicht, niet op gevoel</h3>
               {' '}
               <p>
-                Een aanpassing die op de ene website wonderen doet, kan op de andere niets opleveren. Daarom rusten onze keuzes op wat bezoekers daadwerkelijk doen, niet op aannames.
+                Een aanpassing die op de ene website wonderen doet, kan op de andere niets opleveren. Daarom rusten de keuzes van MegaOnline op wat bezoekers daadwerkelijk doen, niet op aannames.
               </p>
               {' '}
               <ul className="considlist" style={{ gridTemplateColumns: "1fr" }}>
-                <li>We analyseren het werkelijke bezoekersgedrag</li>
+                <li>MegaOnline analyseert het werkelijke bezoekersgedrag</li>
                 {' '}
-                <li>We leggen de knelpunten bloot</li>
+                <li>MegaOnline legt de knelpunten bloot</li>
                 {' '}
-                <li>We brengen de grootste kansen in kaart</li>
+                <li>MegaOnline brengt de grootste kansen in kaart</li>
                 {' '}
-                <li>Pas daarna verbeteren we gericht</li>
+                <li>Pas daarna verbetert MegaOnline gericht</li>
               </ul>
             </Reveal>
           </div>
@@ -416,7 +414,7 @@ function WebsiteOptimalisatie() {
       <section className="section section--tight" id="aanpak" data-theme="dark" data-screen-label="Hoe wij werken">
         <div className="wrap">
           <Reveal as="div" className="shead reveal">
-            <span className="label">Onze aanpak</span>
+            <span className="label">De aanpak</span>
             {' '}
             <h2 className="h2">
               Van
@@ -445,7 +443,7 @@ function WebsiteOptimalisatie() {
                 <h3 style={{ marginTop: "18px" }}>Analyse</h3>
                 {' '}
                 <p style={{ marginTop: "14px" }}>
-                  We brengen in kaart wat bezoekers op je website doen: waar ze binnenkomen, waar ze afhaken en welke kansen blijven liggen. De basis voor elke verbetering die volgt.
+                  MegaOnline brengt in kaart wat bezoekers op je website doen: waar ze binnenkomen, waar ze afhaken en welke kansen blijven liggen. De basis voor elke verbetering die volgt.
                 </p>
               </div>
               {' '}
@@ -469,7 +467,7 @@ function WebsiteOptimalisatie() {
               <h3>Verbeterpunten</h3>
               {' '}
               <p>
-                We benoemen concreet welke knelpunten en kansen we zien op je website.
+                MegaOnline benoemt concreet welke knelpunten en kansen het op je website ziet.
               </p>
             </Reveal>
             {' '}
@@ -484,7 +482,7 @@ function WebsiteOptimalisatie() {
               <h3>Prioriteiten bepalen</h3>
               {' '}
               <p>
-                We beginnen bij wat de meeste impact heeft voor de minste moeite.
+                MegaOnline begint bij wat de meeste impact heeft voor de minste moeite.
               </p>
             </Reveal>
             {' '}
@@ -499,7 +497,7 @@ function WebsiteOptimalisatie() {
               <h3>Optimaliseren</h3>
               {' '}
               <p>
-                We voeren de verbeteringen gericht door, zonder je website overhoop te halen.
+                MegaOnline voert de verbeteringen gericht door, zonder je website overhoop te halen.
               </p>
             </Reveal>
             {' '}
@@ -514,7 +512,7 @@ function WebsiteOptimalisatie() {
               <h3>Meten</h3>
               {' '}
               <p>
-                We kijken wat de aanpassingen opleveren en sturen bij waar dat nodig is.
+                MegaOnline kijkt wat de aanpassingen opleveren en stuurt bij waar dat nodig is.
               </p>
             </Reveal>
           </div>
@@ -531,7 +529,7 @@ function WebsiteOptimalisatie() {
               <h2 className="h2" style={{ marginTop: "18px", fontSize: "clamp(1.7rem,2.8vw,2.6rem)" }}>Soms is optimaliseren niet genoeg.</h2>
               {' '}
               <p className="lead" style={{ marginTop: "16px", fontSize: "1.05rem" }}>
-                We zeggen het liever eerlijk: niet elke website is het verbeteren waard. Soms is een site technisch of strategisch zo verouderd dat een nieuwe website simpelweg de betere investering is.
+                MegaOnline zegt het liever eerlijk: niet elke website is het verbeteren waard. Soms is een site technisch of strategisch zo verouderd dat een nieuwe website simpelweg de betere investering is.
               </p>
               {' '}
               <div className="pullnote">
@@ -598,7 +596,7 @@ function WebsiteOptimalisatie() {
         <div className="wrap">
           <Reveal as="div" className="shead shead--split reveal">
             <div className="shead">
-              <span className="label">Ons werk</span>
+              <span className="label">Werk van MegaOnline</span>
               {' '}
               <h2 className="h2">
                 Kleine ingrepen,
@@ -642,7 +640,7 @@ function WebsiteOptimalisatie() {
                   </div>
                   {' '}
                   <div className="case__step">
-                    <span className="k">Wat we deden</span>
+                    <span className="k">Wat MegaOnline deed</span>
                     <p>
                       We brachten de propositie terug naar een duidelijke boodschap en bouwden een structuur die bezoekers sneller naar de juiste informatie leidt.
                     </p>
@@ -683,7 +681,7 @@ function WebsiteOptimalisatie() {
                   </div>
                   {' '}
                   <div className="case__step">
-                    <span className="k">Wat we deden</span>
+                    <span className="k">Wat MegaOnline deed</span>
                     <p>
                       We ontwikkelden een visuele website met een duidelijke boekingsroute en focus op beleving.
                     </p>
@@ -718,19 +716,19 @@ function WebsiteOptimalisatie() {
             </Qa>
             {' '}
             <Qa question="Hoe weet ik of optimalisatie genoeg is?" className="reveal">
-                Dat begint met een analyse. We kijken naar bezoekersgedrag, knelpunten en kansen. Op basis daarvan zien we of gerichte verbeteringen voldoende zijn, of dat de basis te veel beperkingen heeft. We zijn daar eerlijk over: we adviseren geen nieuwe website als het niet nodig is.
+                Dat begint met een analyse. MegaOnline kijkt naar bezoekersgedrag, knelpunten en kansen. Op basis daarvan ziet MegaOnline of gerichte verbeteringen voldoende zijn, of dat de basis te veel beperkingen heeft. MegaOnline is daar eerlijk over: het adviseert geen nieuwe website als het niet nodig is.
             </Qa>
             {' '}
-            <Qa question="Kunnen jullie ook mijn bestaande website verbeteren?" className="reveal">
-                Ja. De meeste websites zijn uitstekend te optimaliseren. We kunnen structuur, formulieren, snelheid, de mobiele ervaring en de SEO-basis verbeteren zonder dat je website helemaal opnieuw gebouwd hoeft te worden.
+            <Qa question="Kan MegaOnline ook mijn bestaande website verbeteren?" className="reveal">
+                Ja. De meeste websites zijn uitstekend te optimaliseren. MegaOnline kan structuur, formulieren, snelheid, de mobiele ervaring en de SEO-basis verbeteren zonder je website helemaal opnieuw te bouwen.
             </Qa>
             {' '}
             <Qa question="Hoe snel zie ik resultaat?" className="reveal">
-                Sommige verbeteringen, zoals een duidelijkere call-to-action of een eenvoudiger formulier, kunnen al snel merkbaar zijn. Andere, zoals de SEO-basis, hebben wat meer tijd nodig. We sturen op basis van wat we meten, zodat verbetering onderbouwd is en niet op gevoel.
+                Sommige verbeteringen, zoals een duidelijkere call-to-action of een eenvoudiger formulier, kunnen al snel merkbaar zijn. Andere, zoals de SEO-basis, hebben wat meer tijd nodig. MegaOnline stuurt op basis van wat het meet, zodat verbetering onderbouwd is en niet op gevoel.
             </Qa>
             {' '}
-            <Qa question="Werken jullie ook met websites die jullie niet gebouwd hebben?" className="reveal">
-                Zeker. Veel optimalisatietrajecten gaan juist over bestaande websites die door iemand anders zijn gebouwd. We kijken eerst wat er staat en bepalen daarna wat de slimste verbeteringen zijn.
+            <Qa question="Werkt MegaOnline ook met websites die het niet zelf gebouwd heeft?" className="reveal">
+                Zeker. Veel optimalisatietrajecten gaan juist over bestaande websites die door iemand anders zijn gebouwd. MegaOnline kijkt eerst wat er staat en bepaalt daarna wat de slimste verbeteringen zijn.
             </Qa>
           </div>
         </div>
