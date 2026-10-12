@@ -1099,6 +1099,15 @@ async function conceptFallback(pg) {
     `${placed.count} ${placed.src.join(' ')} | ${gaUrls.join(' ')}`,
   )
 
+  // De page_view na toestemming komt soms pas seconden later binnen.
+  // Die hoort niet bij het intrekken hieronder.
+  if (!gaUrls.some((u) => u.includes('/g/collect'))) {
+    await gaPage.waitForRequest(
+      (req) => req.url().includes('/g/collect'),
+      { timeout: 8000 },
+    ).catch(() => {})
+  }
+
   await gaPage.locator('.footer__cookie').click()
   await gaPage.locator('#cc-main [data-role="save"]').waitFor({ timeout: 8000 })
   const toggled = await gaPage.evaluate(() => {
