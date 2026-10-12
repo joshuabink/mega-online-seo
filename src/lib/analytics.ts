@@ -159,6 +159,34 @@ export function initAnalytics(): void {
   })
 }
 
+/**
+ * GA4-aanbevolen event na een geslaagde lead. Alleen bij analytics-consent
+ * (`gaActive`). Zonder toestemming komt het event niet in de dataLayer, zodat
+ * het ook niet alsnog verstuurd wordt als de bezoeker later toestemt.
+ * Alleen form_name en page_path: geen naam, e-mail, telefoon of vrije tekst.
+ */
+export function trackGenerateLead(formName: string): void {
+  if (!gaActive || typeof window === "undefined") return
+  if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(formName)) return
+  const w = gaWindow()
+  w?.gtag?.("event", "generate_lead", {
+    form_name: formName,
+    page_path: location.pathname,
+  })
+}
+
+/**
+ * Sollicitaties zijn geen leads. Alleen bij analytics-consent, en alleen
+ * page_path: geen naam, e-mail, telefoon, rol of motivatie.
+ */
+export function trackSollicitatieVerzonden(): void {
+  if (!gaActive || typeof window === "undefined") return
+  const w = gaWindow()
+  w?.gtag?.("event", "sollicitatie_verzonden", {
+    page_path: location.pathname,
+  })
+}
+
 export function track(event: string, props?: Record<string, unknown>): void {
   if (!ph) return
   ph.capture(event, props)

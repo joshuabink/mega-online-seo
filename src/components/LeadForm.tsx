@@ -1,6 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 'react'
 import { sendLead, type LeadResult } from '@/lib/lead'
-import { track } from '@/lib/analytics'
+import { track, trackGenerateLead, trackSollicitatieVerzonden } from '@/lib/analytics'
 import { LEAD_CONTACT } from '@/lib/lead-contact'
 import { useReveal } from './Reveal'
 
@@ -135,6 +135,7 @@ export function SteppedLeadForm({
   children,
   className = '',
   subject,
+  formName,
   ok,
 }: {
   head?: ReactNode
@@ -143,6 +144,8 @@ export function SteppedLeadForm({
   children: ReactNode | ((step: number) => ReactNode)
   className?: string
   subject?: string
+  /** Vaste GA4-naam. Geen vrije tekst en geen veldwaarden. */
+  formName: string
 } & OkProps) {
   const formRef = useRef<HTMLFormElement>(null)
   const reveal = useReveal(className)
@@ -334,6 +337,7 @@ export function SteppedLeadForm({
         verstuurd = true
         setStatus('sent')
         track('form_submit_success', base())
+        if (result.via === 'server') trackGenerateLead(formName)
       } else {
         setFailure(failureFrom(result))
         track('form_submit_fail', { ...base(), reason: result.mailto ? 'mailto_fallback' : 'error' })
@@ -385,18 +389,33 @@ export function SteppedLeadForm({
  * Enkelstaps formulier (was `.js-leadform` binnen `.scanform`, uit funnel.js
  * en de inline handler op Contact). Meerdere per pagina is ondersteund.
  */
+type SingleLeadAnalytics =
+  | {
+      /** Vaste GA4-naam voor generate_lead. Geen vrije tekst en geen veldwaarden. */
+      formName: string
+      gaEvent?: 'generate_lead'
+    }
+  | {
+      formName?: never
+      /** Sollicitatie: sollicitatie_verzonden, alleen page_path. */
+      gaEvent: 'sollicitatie_verzonden'
+    }
+
 export function SingleLeadForm({
   head,
   children,
   className = '',
   subject,
+  formName,
+  gaEvent = 'generate_lead',
   ok,
 }: {
   head?: ReactNode
   children: ReactNode
   className?: string
   subject?: string
-} & OkProps) {
+} & SingleLeadAnalytics &
+  OkProps) {
   const formRef = useRef<HTMLFormElement>(null)
   const reveal = useReveal(className)
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent'>('idle')
@@ -432,6 +451,10 @@ export function SingleLeadForm({
         verstuurd = true
         setStatus('sent')
         track('form_submit_success', base())
+        if (result.via === 'server') {
+          if (gaEvent === 'sollicitatie_verzonden') trackSollicitatieVerzonden()
+          else if (formName) trackGenerateLead(formName)
+        }
       } else {
         setFailure(failureFrom(result))
         track('form_submit_fail', { ...base(), reason: result.mailto ? 'mailto_fallback' : 'error' })

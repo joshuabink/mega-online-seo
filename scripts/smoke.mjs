@@ -29,6 +29,37 @@ function isGaUrl(url) {
   return /googletagmanager\.com|google-analytics\.com|analytics\.google\.com/i.test(url)
 }
 
+function dataLayerEvents(pg, eventName) {
+  return pg.evaluate((name) =>
+    (window.dataLayer ?? [])
+      .filter((entry) => entry && entry[0] === 'event' && entry[1] === name)
+      .map((entry) => {
+        const params = entry[2] && typeof entry[2] === 'object' ? entry[2] : {}
+        return {
+          form_name: params.form_name ?? '',
+          page_path: params.page_path ?? '',
+          keys: Object.keys(params).sort(),
+          raw: JSON.stringify(params),
+        }
+      }),
+  eventName)
+}
+
+function generateLeadEvents(pg) {
+  return dataLayerEvents(pg, 'generate_lead')
+}
+
+async function fillSollicitatie(pg, email, naam) {
+  await pg.fill('#s-naam', naam)
+  await pg.fill('#s-email', email)
+  await pg.fill('#s-tel', '0611111111')
+  await pg.selectOption('#s-rol', 'SEO Stage')
+  await pg.fill('#s-link', 'linkedin.com/in/testpersoon')
+  await pg.fill('#s-motivatie', 'Ik wil graag meelopen met SEO.')
+}
+
+const SOLLICITATIE_PII = /sol-geen@example.com|sol-lead@example.com|client-lukt@example.com|Zonder Consent|Sollicitant Event|Client Sol|0611111111|linkedin.com\/in\/testpersoon|meelopen met SEO|SEO Stage/
+
 function collectGaUrls(pg) {
   const urls = []
   pg.on('request', (req) => {
@@ -222,6 +253,13 @@ const sent = await page.evaluate(
   () => document.querySelector('.form')?.classList.contains('sent') ?? false,
 )
 check('geslaagde mail is ok', sent, sent ? 'bedankt-staat' : 'formulier niet verzonden')
+
+const leadsZonderConsent = await generateLeadEvents(page)
+check(
+  'geslaagd conceptformulier zonder consent stuurt geen generate_lead',
+  leadsZonderConsent.length === 0,
+  JSON.stringify(leadsZonderConsent),
+)
 
 const leads = readLeads()
 const lead = leads[leads.length - 1]
@@ -1046,11 +1084,12 @@ async function conceptFallback(pg) {
   const gaPage = await browser.newPage({ viewport: { width: 1440, height: 900 } })
   const gaUrls = collectGaUrls(gaPage)
   gaPage.on('pageerror', (e) => consoleErrors.push('ga: ' + String(e)))
+  // Zelfde afhandeling als de rest van de smoketest (FormSubmit-mock), maar
+  // GA-requests laten doorlopen zodat de page_view na toestemming zichtbaar is.
+  await installRoutes(gaPage)
   await gaPage.route('**/*', async (route) => {
-    const url = route.request().url()
-    if (url.includes('localhost') || url.includes('127.0.0.1')) return route.continue()
-    if (isGaUrl(url)) return route.continue()
-    return route.abort()
+    if (isGaUrl(route.request().url())) return route.continue()
+    return route.fallback()
   })
   // De rest van de test heeft de banner al weggeklikt in dezelfde context.
   await gaPage.context().clearCookies()
@@ -1076,6 +1115,23 @@ async function conceptFallback(pg) {
     'alleen essentiële cookies: geen GA-request',
     gaUrls.length === 0 && (await gaPage.locator('script[src*="googletagmanager.com"]').count()) === 0,
     gaUrls.join(' '),
+  )
+
+  await gaPage.goto(BASE + '/werken-bij', { waitUntil: 'load' })
+  await waitHydrated(gaPage)
+  await fillSollicitatie(gaPage, 'sol-geen@example.com', 'Zonder Consent')
+  await gaPage.click('.sol__form button[type="submit"]')
+  await gaPage.waitForFunction(
+    () => document.querySelector('.sol__form')?.classList.contains('sent'),
+    null,
+    { timeout: 8000 },
+  )
+  const solZonder = await dataLayerEvents(gaPage, 'sollicitatie_verzonden')
+  const leadZonderSol = await generateLeadEvents(gaPage)
+  check(
+    'sollicitatie zonder analytics-consent stuurt geen event',
+    solZonder.length === 0 && leadZonderSol.length === 0,
+    JSON.stringify({ sollicitatie_verzonden: solZonder, generate_lead: leadZonderSol }),
   )
 
   await gaPage.context().clearCookies()
@@ -1107,6 +1163,109 @@ async function conceptFallback(pg) {
       { timeout: 8000 },
     ).catch(() => {})
   }
+
+  await gaPage.fill('#c-naam', 'Lead Event')
+  await gaPage.fill('#c-email', 'lead-ga@example.com')
+  await gaPage.fill('#c-tel', '0610101010')
+  await gaPage.selectOption('#c-onderwerp', 'Iets anders')
+  await gaPage.fill('#c-bericht', 'Graag een kennismaking over een nieuwe site.')
+  await gaPage.click('.fhero__form button[type="submit"]')
+  await gaPage.waitForFunction(
+    () => document.querySelector('.fhero__form')?.classList.contains('sent'),
+    null,
+    { timeout: 8000 },
+  )
+  const contactEvents = await generateLeadEvents(gaPage)
+  const contactEvent = contactEvents[0]
+  check(
+    'met consent stuurt contact generate_lead zonder persoonsgegevens',
+    contactEvents.length === 1 &&
+      contactEvent?.form_name === 'contact' &&
+      contactEvent?.page_path === '/contact' &&
+      contactEvent?.keys.join(',') === 'form_name,page_path' &&
+      !/lead-ga@example.com|Lead Event|0610101010|kennismaking over een nieuwe site/.test(contactEvent?.raw ?? ''),
+    JSON.stringify(contactEvents),
+  )
+
+  await gaPage.goto(BASE + '/contact', { waitUntil: 'load' })
+  await waitHydrated(gaPage)
+  await gaPage.fill('#c-naam', 'Client Lukt')
+  await gaPage.fill('#c-email', 'client-lukt@example.com')
+  await gaPage.fill('#c-tel', '0610101010')
+  await gaPage.selectOption('#c-onderwerp', 'Iets anders')
+  await gaPage.fill('#c-bericht', 'Deze mail gaat via de browser.')
+  await gaPage.click('.fhero__form button[type="submit"]')
+  await gaPage.waitForFunction(
+    () => document.querySelector('.fhero__form')?.classList.contains('sent'),
+    null,
+    { timeout: 8000 },
+  )
+  const naBrowser = await generateLeadEvents(gaPage)
+  check(
+    'browser-fallback na een serverweigering stuurt geen generate_lead',
+    naBrowser.length === 0,
+    JSON.stringify(naBrowser),
+  )
+
+  await gaPage.goto(BASE + '/gratis-websiteconcept', { waitUntil: 'load' })
+  await waitHydrated(gaPage)
+  await fillConcept(gaPage, 'concept-lead@example.com', 'Concept Lead')
+  await gaPage.click('.fstep[data-step="6"] button[type="submit"]')
+  await gaPage.waitForFunction(
+    () => document.querySelector('.concept.form')?.classList.contains('sent'),
+    null,
+    { timeout: 8000 },
+  )
+  const conceptEvents = await generateLeadEvents(gaPage)
+  const conceptEvent = conceptEvents[0]
+  check(
+    'met consent stuurt het conceptformulier generate_lead',
+    conceptEvents.length === 1 &&
+      conceptEvent?.form_name === 'gratis-websiteconcept' &&
+      conceptEvent?.page_path === '/gratis-websiteconcept' &&
+      conceptEvent?.keys.join(',') === 'form_name,page_path' &&
+      !/concept-lead@example.com|Concept Lead/.test(conceptEvent?.raw ?? ''),
+    JSON.stringify(conceptEvents),
+  )
+
+  await gaPage.goto(BASE + '/werken-bij', { waitUntil: 'load' })
+  await waitHydrated(gaPage)
+  await fillSollicitatie(gaPage, 'sol-lead@example.com', 'Sollicitant Event')
+  await gaPage.click('.sol__form button[type="submit"]')
+  await gaPage.waitForFunction(
+    () => document.querySelector('.sol__form')?.classList.contains('sent'),
+    null,
+    { timeout: 8000 },
+  )
+  const solEvents = await dataLayerEvents(gaPage, 'sollicitatie_verzonden')
+  const solEvent = solEvents[0]
+  const leadOpSollicitatie = await generateLeadEvents(gaPage)
+  check(
+    'met consent stuurt sollicitatie sollicitatie_verzonden zonder persoonsgegevens',
+    solEvents.length === 1 &&
+      leadOpSollicitatie.length === 0 &&
+      solEvent?.page_path === '/werken-bij' &&
+      solEvent?.keys.join(',') === 'page_path' &&
+      !SOLLICITATIE_PII.test(solEvent?.raw ?? ''),
+    JSON.stringify({ sollicitatie_verzonden: solEvents, generate_lead: leadOpSollicitatie }),
+  )
+
+  await gaPage.goto(BASE + '/werken-bij', { waitUntil: 'load' })
+  await waitHydrated(gaPage)
+  await fillSollicitatie(gaPage, 'client-lukt@example.com', 'Client Sol')
+  await gaPage.click('.sol__form button[type="submit"]')
+  await gaPage.waitForFunction(
+    () => document.querySelector('.sol__form')?.classList.contains('sent'),
+    null,
+    { timeout: 8000 },
+  )
+  const solNaBrowser = await dataLayerEvents(gaPage, 'sollicitatie_verzonden')
+  const leadNaSolBrowser = await generateLeadEvents(gaPage)
+  check(
+    'browser-fallback van sollicitatie stuurt geen event',
+    solNaBrowser.length === 0 && leadNaSolBrowser.length === 0,
+    JSON.stringify({ sollicitatie_verzonden: solNaBrowser, generate_lead: leadNaSolBrowser }),
+  )
 
   await gaPage.locator('.footer__cookie').click()
   await gaPage.locator('#cc-main [data-role="save"]').waitFor({ timeout: 8000 })

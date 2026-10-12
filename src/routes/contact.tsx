@@ -78,6 +78,7 @@ function Contact() {
             <SingleLeadForm
               className="fhero__form reveal"
               subject="Nieuw contactverzoek - MegaOnline.io"
+              formName="contact"
               head={
                 <>
                   <span className="form__head-note">
