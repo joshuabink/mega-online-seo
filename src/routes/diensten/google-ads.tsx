@@ -10,7 +10,7 @@ import '@/styles/pages/diensten-google-ads.css'
 
 const TITLE = 'Google Ads beheer | Zichtbaar op het moment dat je klant zoekt | MegaOnline.io'
 const DESC =
-  'Google Ads die gemeten worden op aanvragen en boekingen, niet op klikken. We richten je campagnes in, stemmen de pagina erachter af en sturen elke maand bij.'
+  'Google Ads gemeten op aanvragen en boekingen, niet op klikken. MegaOnline richt je campagnes in, stemt de pagina erachter af en stuurt elke maand bij.'
 
 export const Route = createFileRoute('/diensten/google-ads')({
   head: () => ({
@@ -50,8 +50,7 @@ function GoogleAds() {
                 <em>Niet pas over een half jaar.</em>
               </Reveal>{' '}
               <Reveal as="p" className="lead svc-hero__sub reveal" data-d="2">
-                Vindbaarheid via SEO bouw je op over maanden. Met Google Ads sta je in beeld
-                zodra de campagne draait, bij precies de zoekopdrachten die we kiezen. We richten
+                Vindbaarheid via SEO bouw je op over maanden. Met Google Ads sta je in beeld zodra de campagne draait, bij precies de zoekopdrachten die MegaOnline kiest. We richten
                 de campagnes in, zorgen dat de pagina erachter aanvragen oplevert en sturen elke
                 maand bij op wat het echt opbrengt.
               </Reveal>{' '}
@@ -132,8 +131,7 @@ function GoogleAds() {
                 ook is ingericht. Kortom: <Link to="/kennisbank/$slug" params={{ slug: 'website-levert-geen-aanvragen-op' }}>eerst je pagina, dan pas adverteren</Link>.
               </p>{' '}
               <p className="lead">
-                Daarom kijken we vóór de eerste euro naar de pagina waar de advertentie naartoe
-                gaat. Soms is dat een bestaande pagina die een paar aanpassingen nodig heeft. Soms
+                Daarom kijkt MegaOnline vóór de eerste euro naar de pagina waar de advertentie naartoe gaat. Soms is dat een bestaande pagina die een paar aanpassingen nodig heeft. Soms
                 is een aparte landingspagina de betere keuze.
               </p>
             </Reveal>{' '}
@@ -141,7 +139,7 @@ function GoogleAds() {
               <p className="panel__quote">
                 Een klik kost geld. <em>Een aanvraag</em> levert het op.
               </p>{' '}
-              <p className="panel__support">Voordat een campagne live gaat, controleren we:</p>{' '}
+              <p className="panel__support">Voordat een campagne live gaat, controleert MegaOnline:</p>{' '}
               <ul className="considlist" style={{ gridTemplateColumns: '1fr', marginTop: '18px' }}>
                 <li>Of in één oogopslag duidelijk is wat je doet en voor wie</li>{' '}
                 <li>Of de pagina aansluit op de zoekopdracht</li>{' '}
@@ -158,20 +156,19 @@ function GoogleAds() {
       <section className="section section--tight" data-theme="light" data-screen-label="Wat we doen">
         <div className="wrap">
           <Reveal as="div" className="shead reveal">
-            <span className="label">Wat we doen</span>{' '}
+            <span className="label">Wat MegaOnline doet</span>{' '}
             <h2 className="h2">
               Van zoekwoord tot <em>aanvraag.</em>
             </h2>{' '}
             <p className="lead">
-              Geen losse campagne die we aanzetten en overdragen. We beheren het geheel: wat je
-              adverteert, waar het naartoe leidt en wat het oplevert.
+              Geen losse campagne die MegaOnline aanzet en overdraagt. MegaOnline beheert het geheel: wat je adverteert, waar het naartoe leidt en wat het oplevert.
             </p>
           </Reveal>{' '}
           <div className="featgrid">
             <Reveal as="div" className="feat reveal">
               <span className="iconbox"><Icon name="compass" /></span>
               <h4>Zoekwoorden en plan</h4>
-              <p>We zoeken uit waar jouw klanten op zoeken als ze klaar zijn om aan te vragen of te boeken.</p>
+              <p>MegaOnline zoekt uit waar jouw klanten op zoeken als ze klaar zijn om aan te vragen of te boeken.</p>
             </Reveal>{' '}
             <Reveal as="div" className="feat reveal" data-d="1">
               <span className="iconbox"><Icon name="settings" /></span>
@@ -191,12 +188,12 @@ function GoogleAds() {
             <Reveal as="div" className="feat reveal">
               <span className="iconbox"><Icon name="calendar-check" /></span>
               <h4>Aanvragen meten</h4>
-              <p>We meten formulieren, telefoontjes en boekingen. Niet alleen klikken.</p>
+              <p>MegaOnline meet formulieren, telefoontjes en boekingen. Niet alleen klikken.</p>
             </Reveal>{' '}
             <Reveal as="div" className="feat reveal" data-d="1">
               <span className="iconbox"><Icon name="filter" /></span>
               <h4>Verspilling uitsluiten</h4>
-              <p>Zoekopdrachten die geld kosten maar niets opleveren sluiten we elke maand uit.</p>
+              <p>Zoekopdrachten die geld kosten maar niets opleveren sluit MegaOnline elke maand uit.</p>
             </Reveal>{' '}
             <Reveal as="div" className="feat reveal" data-d="2">
               <span className="iconbox"><Icon name="map-pin" /></span>
@@ -226,7 +223,7 @@ function GoogleAds() {
               Elke maand een stukje <em>minder verspilling.</em>
             </h2>{' '}
             <p className="lead">
-              De eerste weken leren we wat werkt. Daarna wordt het beheer steeds preciezer: minder
+              De eerste weken leert MegaOnline wat werkt. Daarna wordt het beheer steeds preciezer: minder
               budget naar zoekopdrachten die niets doen, meer naar de zoekopdrachten die aanvragen
               opleveren.
             </p>
@@ -254,7 +251,7 @@ function GoogleAds() {
             </div>{' '}
             <div className="cyclestep">
               <h4>Herhalen</h4>
-              <p>Volgende maand opnieuw, met wat de vorige maand ons leerde.</p>
+              <p>Volgende maand opnieuw, met de lessen van de vorige maand.</p>
             </div>
           </Reveal>{' '}
           <Reveal as="div" className="cycle__return reveal" data-d="1">
@@ -281,12 +278,10 @@ function GoogleAds() {
               </p>{' '}
               <p>
                 Samen werken ze het beste. Ads brengen direct aanvragen binnen en laten zien welke
-                zoekopdrachten echt klanten opleveren. Die kennis gebruiken we om te bepalen welke
-                pagina's we voor SEO als eerste maken.
+                zoekopdrachten echt klanten opleveren. Die kennis gebruikt MegaOnline om te bepalen welke pagina's het voor SEO als eerste maakt.
               </p>{' '}
               <div className="pullnote" style={{ marginTop: '24px' }}>
-                Wat vandaag aanvragen oplevert via Ads, bouwen we morgen op via{' '}
-                <Link to="/diensten/seo"><em>SEO.</em></Link>
+                Wat vandaag aanvragen oplevert via Ads, bouwt MegaOnline morgen op via <Link to="/diensten/seo"><em>SEO.</em></Link>
               </div>
             </Reveal>
           </div>
@@ -344,8 +339,7 @@ function GoogleAds() {
               Beheer per maand. <em>Budget apart.</em>
             </h2>{' '}
             <p className="lead">
-              Je betaalt twee dingen: ons beheer en je advertentiebudget. Het budget betaal je
-              rechtstreeks aan Google, zonder opslag van ons. Zo zie je altijd precies waar elke
+              Je betaalt twee dingen: ons beheer en je advertentiebudget. Het budget betaal je rechtstreeks aan Google, zonder opslag van MegaOnline. Zo zie je altijd precies waar elke
               euro naartoe gaat.
             </p>
           </Reveal>{' '}
@@ -355,9 +349,7 @@ function GoogleAds() {
                 <p style={{ color: 'var(--muted)', lineHeight: '1.6' }}>
                   Hoeveel budget zinvol is hangt af van je branche, je regio en hoeveel
                   concurrenten op dezelfde zoekopdrachten adverteren. Een klik voor een
-                  installateur kost iets heel anders dan een klik voor een escaperoom. Daarom
-                  noemen we geen standaardbedrag, maar kijken we eerst wat er in jouw markt
-                  gezocht wordt.
+                  installateur kost iets heel anders dan een klik voor een escaperoom. Daarom noemt MegaOnline geen standaardbedrag, maar kijkt eerst wat mensen in jouw markt zoeken.
                 </p>{' '}
                 <ul className="considlist" style={{ gridTemplateColumns: 'repeat(auto-fit,minmax(160px,1fr))', marginTop: '20px' }}>
                   <li>Campagnes inrichten</li>{' '}
@@ -367,8 +359,7 @@ function GoogleAds() {
                   <li>Maandelijkse rapportage</li>
                 </ul>{' '}
                 <p className="brand__tag" style={{ marginTop: '22px', paddingTop: '0' }}>
-                  Het advertentieaccount staat op jouw naam. Stoppen we ooit met samenwerken, dan
-                  houd je alle campagnes en alle gegevens.
+                  Het advertentieaccount staat op jouw naam. Stopt de samenwerking ooit, dan houd je alle campagnes en alle gegevens.
                 </p>
               </div>{' '}
               <div style={{ border: '1px solid var(--line)', borderRadius: '16px', background: 'var(--card-2)', boxShadow: 'var(--elev)', padding: 'clamp(24px,2.6vw,32px)', textAlign: 'center' }}>
@@ -399,15 +390,10 @@ function GoogleAds() {
           <div className="faq">
             <Qa question="Hoeveel advertentiebudget heb ik nodig?" className="reveal">
               Dat verschilt per branche en regio. Wat een klik kost hangt af van hoeveel bedrijven
-              op dezelfde zoekopdracht adverteren. We kijken eerst wat er in jouw markt gezocht
-              wordt en wat een klik daar ongeveer kost. Op basis daarvan adviseren we een
-              startbudget dat groot genoeg is om te leren wat werkt.
+              op dezelfde zoekopdracht adverteren. MegaOnline kijkt eerst wat mensen in jouw markt zoeken en wat een klik daar ongeveer kost. Op basis daarvan adviseert MegaOnline een startbudget dat groot genoeg is om te leren wat werkt.
             </Qa>{' '}
             <Qa question="Hoe snel zie ik resultaat?" className="reveal">
-              Je advertenties zijn zichtbaar zodra de campagne is goedgekeurd. De eerste weken
-              gebruiken we om te leren welke zoekopdrachten aanvragen opleveren. Daarna sturen we
-              gericht bij. Hoeveel aanvragen het oplevert kunnen we vooraf niet beloven, wel dat je
-              elke maand ziet wat het deed.
+              Je advertenties zijn zichtbaar zodra de campagne is goedgekeurd. De eerste weken gebruikt MegaOnline om te leren welke zoekopdrachten aanvragen opleveren. Daarna stuurt MegaOnline gericht bij. Hoeveel aanvragen het oplevert kan MegaOnline vooraf niet beloven, wel dat je elke maand ziet wat het deed.
             </Qa>{' '}
             <Qa question="Wat is het verschil met SEO?" className="reveal">
               Met Google Ads betaal je per klik en ben je direct zichtbaar. Met SEO betaal je niet
@@ -416,21 +402,18 @@ function GoogleAds() {
             </Qa>{' '}
             <Qa question="Van wie is het advertentieaccount?" className="reveal">
               Van jou. Het account staat op jouw naam en het budget betaal je rechtstreeks aan
-              Google. Wij krijgen toegang om het te beheren. Stop je met de samenwerking, dan houd
+              Google. MegaOnline krijgt toegang om het te beheren. Stop je met de samenwerking, dan houd
               je alles.
             </Qa>{' '}
-            <Qa question="Ik adverteer al zelf. Kunnen jullie meekijken?" className="reveal">
-              Ja. We beginnen dan met een blik op je huidige campagnes: waar gaat het budget
-              naartoe, wordt een aanvraag gemeten en klopt de pagina erachter. Vaak zit de
+            <Qa question="Ik adverteer al zelf. Kan MegaOnline meekijken?" className="reveal">
+              Ja. MegaOnline begint dan met een blik op je huidige campagnes: waar gaat het budget naartoe, meet het account aanvragen en klopt de pagina erachter? Vaak zit de
               grootste winst in wat je nu betaalt zonder dat het iets oplevert.
             </Qa>{' '}
             <Qa question="Moet mijn website door MegaOnline gebouwd zijn?" className="reveal">
-              Nee. Wel kijken we eerst of de pagina waar de advertentie naartoe gaat goed genoeg
-              is. Een campagne op een pagina die geen aanvragen oplevert is weggegooid geld. Is
-              daar werk nodig, dan laten we je weten wat en waarom.
+              Nee. Wel kijkt MegaOnline eerst of de pagina waar de advertentie naartoe gaat goed genoeg is. Een campagne op een pagina die geen aanvragen oplevert is weggegooid geld. Is daar werk nodig, dan laat MegaOnline je weten wat en waarom.
             </Qa>{' '}
             <Qa question="Hoe weet ik wat het oplevert?" className="reveal">
-              We meten aanvragen, telefoontjes en boekingen die via je advertenties binnenkomen.
+              MegaOnline meet aanvragen, telefoontjes en boekingen die via je advertenties binnenkomen.
               Elke maand krijg je een overzicht van wat het kostte, wat het opleverde en wat we
               de volgende maand aanpassen.
             </Qa>
@@ -448,7 +431,7 @@ function GoogleAds() {
               </Reveal>{' '}
               <Reveal as="p" className="lead reveal" data-d="1">
                 Wil je weten of Google Ads voor jouw bedrijf zinvol is? Begin met een gratis websiteconcept.
-                We kijken of je website klaar is om advertentiebezoekers om te zetten in aanvragen.
+                MegaOnline kijkt of je website klaar is om advertentiebezoekers om te zetten in aanvragen.
               </Reveal>{' '}
               <Reveal as="div" className="svc-hero__ctas reveal" data-d="2" style={{ marginTop: '28px' }}>
                 <Link className="btn btn-primary" to="/contact">

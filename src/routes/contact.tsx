@@ -54,7 +54,7 @@ function Contact() {
               </Reveal>
               {' '}
               <Reveal as="p" className="lead fhero__sub reveal" data-d="2">
-                Of je nu een concrete vraag hebt of gewoon wilt sparren over je website, we denken graag mee. Je krijgt eerlijk advies, ook als dat betekent dat je ons (nog) niet nodig hebt.
+                Of je nu een concrete vraag hebt of gewoon wilt sparren over je website, MegaOnline denkt graag mee. Je krijgt eerlijk advies, ook als dat betekent dat je (nog) geen hulp nodig hebt.
               </Reveal>
               {' '}
               <Reveal as="div" className="hero__ticks reveal" data-d="2" style={{ display: "flex", flexWrap: "wrap", gap: "10px 22px", marginTop: "26px" }}>
@@ -89,7 +89,7 @@ function Contact() {
                   <h3>Laat je gegevens achter</h3>
                   {' '}
                   <p>
-                    We nemen contact op om een kort, vrijblijvend gesprek in te plannen op een moment dat jou uitkomt.
+                    MegaOnline neemt contact op om een kort, vrijblijvend gesprek in te plannen op een moment dat jou uitkomt.
                   </p>
                   {' '}
                   <span className="form__person">
@@ -104,7 +104,7 @@ function Contact() {
                 <>
                 <div className="ic">✓</div>
                 {' '}
-                <h3>Bedankt. We nemen contact op.</h3>
+                <h3>Bedankt. MegaOnline neemt contact op.</h3>
                 {' '}
                 <p>
                   Je aanvraag is ontvangen. We reageren gemiddeld binnen 2 werkdagen om samen een moment te prikken.
@@ -173,7 +173,7 @@ function Contact() {
               <div className="field">
                 <label htmlFor="c-bericht">Je bericht (optioneel)</label>
                 {' '}
-                <textarea id="c-bericht" name="bericht" placeholder="Vertel kort waar we je mee kunnen helpen" />
+                <textarea id="c-bericht" name="bericht" placeholder="Vertel kort waar je hulp bij zoekt" />
               </div>
               {' '}
               <button className="btn btn-primary" type="submit" style={{ width: "100%", justifyContent: "center" }}>
@@ -195,7 +195,7 @@ function Contact() {
           <Reveal as="div" className="shead reveal">
             <span className="label">Liever direct</span>
             {' '}
-            <h2 className="h2">Bereik ons rechtstreeks.</h2>
+            <h2 className="h2">Bereik MegaOnline rechtstreeks.</h2>
             {' '}
             <p className="lead">
               Een korte vraag of liever even bellen? Kies wat jou het beste uitkomt. Je krijgt altijd een mens aan de lijn, geen callcenter.
@@ -264,15 +264,11 @@ function Contact() {
             <span className="label">Wat je kunt verwachten</span>
             {' '}
             <h2 className="h2">
-              Een kennismaking bij ons is
-              {' '}
-              <em>geen</em>
-              {' '}
-              verkoopgesprek.
+              Een kennismaking met MegaOnline is <em>geen</em> verkoopgesprek.
             </h2>
             {' '}
             <p className="lead">
-              We willen eerst begrijpen wat je doet en wat je wilt bereiken. Pas daarna kijken we of, en hoe, we kunnen helpen.
+              MegaOnline wil eerst begrijpen wat je doet en wat je wilt bereiken. Pas daarna kijkt MegaOnline of en hoe het kan helpen.
             </p>
           </Reveal>
           {' '}
@@ -281,7 +277,7 @@ function Contact() {
               <h3>Korte kennismaking</h3>
               {' '}
               <p>
-                In 20 tot 30 minuten bespreken we je situatie, je doelen en je vragen. Op locatie of via een videocall, net wat jij prettig vindt.
+                In 20 tot 30 minuten bespreek je met MegaOnline je situatie, je doelen en je vragen. Op locatie of via een videocall, net wat jij prettig vindt.
               </p>
             </Reveal>
             {' '}
@@ -289,7 +285,7 @@ function Contact() {
               <h3>Eerlijk advies</h3>
               {' '}
               <p>
-                Je krijgt concrete input over wat er beter kan en wat dat oplevert. Ook als de conclusie is dat je ons (nog) niet nodig hebt.
+                Je krijgt concrete input over wat er beter kan en wat dat oplevert. Ook als de conclusie is dat je (nog) geen hulp nodig hebt.
               </p>
             </Reveal>
             {' '}
@@ -297,7 +293,7 @@ function Contact() {
               <h3>Geen druk</h3>
               {' '}
               <p>
-                Past het? Mooi, dan zetten we samen de volgende stap. Past het niet? Ook prima. Je zit nergens aan vast.
+                Past het? Mooi, dan zet je samen met MegaOnline de volgende stap. Past het niet? Ook prima. Je zit nergens aan vast.
               </p>
             </Reveal>
           </div>
@@ -323,11 +319,11 @@ function Contact() {
             </Qa>
             {' '}
             <Qa question="Moet ik al precies weten wat ik wil?" className="reveal">
-                Nee. Ook met een vaag idee of alleen een onderbuikgevoel denken we graag mee. Vaak ontstaat in het gesprek juist de scherpte.
+                Nee. Ook met een vaag idee of alleen een onderbuikgevoel denkt MegaOnline graag mee. Vaak ontstaat in het gesprek juist de scherpte.
             </Qa>
             {' '}
             <Qa question="Met wie heb ik dan contact?" className="reveal">
-                Direct met de mensen die ook je website bouwen. Geen tussenlagen, geen accountmanagers, gewoon de maker zelf.
+                Direct met wie ook je website bouwt. Geen tussenlagen, geen accountmanagers, gewoon de maker zelf.
             </Qa>
           </div>
         </div>

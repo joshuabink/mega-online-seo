@@ -50,7 +50,7 @@ function Activiteitenbedrijven() {
               </Reveal>
               {' '}
               <Reveal as="p" className="lead svc-hero__sub reveal" data-d="2">
-                Of je nu een escaperoom, klimhal, indoor speeltuin of kartbaan runt: je verdient aan de momenten dat het druk is. Wij bouwen een website die ook de stille doordeweekse dagen helpt vullen.
+                Of je nu een escaperoom, klimhal, indoor speeltuin of kartbaan runt: je verdient aan de momenten dat het druk is. MegaOnline bouwt een website die ook de stille doordeweekse dagen helpt vullen.
               </Reveal>
               {' '}
               <Reveal as="div" className="svc-hero__ctas reveal" data-d="2">
@@ -71,7 +71,7 @@ function Activiteitenbedrijven() {
       <section className="section section--tight" data-theme="paper" data-screen-label="We kennen jouw markt">
         <div className="wrap">
           <Reveal as="div" className="shead reveal">
-            <span className="label">We kennen jouw markt</span>
+            <span className="label">MegaOnline kent jouw markt</span>
             {' '}
             <h2 className="h2">
               Bij activiteiten draait alles om
@@ -82,7 +82,7 @@ function Activiteitenbedrijven() {
             </h2>
             {' '}
             <p className="lead">
-              We werken voor bedrijven waar mensen komen voor een ervaring. Die markt kent z'n eigen ritme, en daar bouwen we omheen.
+              MegaOnline werkt voor bedrijven waar mensen komen voor een ervaring. Die markt kent z'n eigen ritme. MegaOnline bouwt daar omheen.
             </p>
           </Reveal>
           {' '}
@@ -137,12 +137,10 @@ function Activiteitenbedrijven() {
       <section className="section" data-theme="light" data-screen-label="Onze oplossing">
         <div className="wrap">
           <Reveal as="div" className="shead reveal">
-            <span className="label">Onze oplossing</span>
+            <span className="label">De oplossing</span>
             {' '}
             <h2 className="h2">
-              We vertalen jouw beleving naar
-              {' '}
-              <em>boekingen.</em>
+              MegaOnline vertaalt jouw beleving naar <em>boekingen.</em>
             </h2>
             {' '}
             <p className="lead">
@@ -251,7 +249,7 @@ function Activiteitenbedrijven() {
             </h2>
             {' '}
             <p className="lead">
-              Geen overbodige toeters, wel alles wat bezoekers nodig hebben om te boeken. De basis is een <Link to="/diensten/conversie-website">conversiegerichte website</Link> waarop boeken op de telefoon in een paar stappen lukt. Daarna zorgen we dat je gevonden wordt door wie een uitje zoekt, met <Link to="/diensten/seo">SEO en GEO</Link>.
+              Geen overbodige toeters, wel alles wat bezoekers nodig hebben om te boeken. De basis is een <Link to="/diensten/conversie-website">conversiegerichte website</Link> waarop boeken op de telefoon in een paar stappen lukt. Daarna zorgt MegaOnline dat mensen die een uitje zoeken je vinden, met <Link to="/diensten/seo">SEO en GEO</Link>.
             </p>
           </Reveal>
           {' '}
@@ -299,7 +297,7 @@ function Activiteitenbedrijven() {
               </span>
               <h4>Mobiel-first</h4>
               <p>
-                De meeste boekingen komen via de telefoon. Daar bouwen we op.
+                De meeste boekingen komen via de telefoon. Daar bouwt MegaOnline op.
               </p>
             </Reveal>
             {' '}
@@ -315,7 +313,7 @@ function Activiteitenbedrijven() {
       </section>
       {' '}
       <MegaSmartBridge
-        text="Je website haalt de boeking binnen. Wat daarna gebeurt bepaalt of je agenda ook op de rustige dagen vol komt. MegaSmart is ons boekings- en CRM-platform voor activiteitenbedrijven: online boeken, betalen, bevestigen en opvolgen in een omgeving, gekoppeld aan de website die wij bouwen."
+        text="Je website haalt de boeking binnen. Wat daarna gebeurt bepaalt of je agenda ook op de rustige dagen vol komt. MegaSmart is het boekings- en CRM-platform van MegaOnline voor activiteitenbedrijven: online boeken, betalen, bevestigen en opvolgen in een omgeving, gekoppeld aan je website."
         bullets={[
                 'Online boeken en betalen',
                 'Automatische bevestiging en herinnering',
@@ -337,15 +335,15 @@ function Activiteitenbedrijven() {
             </Qa>
             {' '}
             <Qa question="Kan ik zelf acties en prijzen aanpassen?" className="reveal">
-                Ja. Je beheert zelf eenvoudig je prijzen, arrangementen en doordeweekse acties, zonder dat je ons daarvoor nodig hebt.
+                Ja. Je beheert zelf eenvoudig je prijzen, arrangementen en doordeweekse acties, zonder hulp van buitenaf.
             </Qa>
             {' '}
             <Qa question="Verkopen cadeaubonnen echt?" className="reveal">
-                Voor veel activiteitenbedrijven zijn online cadeaubonnen een vaste, jaarrond inkomstenbron, juist rond feestdagen. We zetten ze prominent en makkelijk vindbaar neer.
+                Voor veel activiteitenbedrijven zijn online cadeaubonnen een vaste, jaarrond inkomstenbron, juist rond feestdagen. MegaOnline zet ze prominent en makkelijk vindbaar neer.
             </Qa>
             {' '}
             <Qa question="Wat kost zo'n website?" className="reveal">
-                Dat hangt af van wat je nodig hebt aan reserveringen en koppelingen. Begin met een gratis websiteconcept, dan brengen we het vrijblijvend voor je in kaart.
+                Dat hangt af van wat je nodig hebt aan reserveringen en koppelingen. Begin met een gratis websiteconcept, dan brengt MegaOnline het vrijblijvend voor je in kaart.
             </Qa>
           </div>
         </div>
@@ -359,7 +357,7 @@ function Activiteitenbedrijven() {
             <h2 className="display">De drukke dagen lopen vanzelf. De stille niet.</h2>
             {' '}
             <p className="lead">
-              Vraag een gratis websiteconcept aan. We laten zien waar je nu boekingen misloopt en hoe je dat omdraait.
+              Vraag een gratis websiteconcept aan. Je ziet waar je nu boekingen misloopt en hoe je dat omdraait.
             </p>
             {' '}
             <Reveal as="div" className="svc-hero__ctas reveal" data-d="1" style={{ justifyContent: "center", marginTop: "28px" }}>

@@ -58,7 +58,7 @@ function NsConcept() {
                 Wat als NS abonnementen het belangrijkste doel van de site maakt?
               </Reveal>
               <Reveal as="p" className="lead svc-hero__sub reveal" data-d="2">
-                Dit is geen opdracht. Het is een vraag die ik mezelf stelde: wat verandert er aan een website als je één doel kiest en de hele pagina daarop afstemt? Bij NS koos ik voor abonnementen. Dit is hoe ik het zou aanpakken.
+                Dit is geen opdracht. Het begon met een vraag: wat verandert er aan een website als je één doel kiest en de hele pagina daarop afstemt? Bij NS koos MegaOnline voor abonnementen. Zo zou MegaOnline het aanpakken.
               </Reveal>
             </div>
           </div>
@@ -71,11 +71,11 @@ function NsConcept() {
       <section className="section section--tight" data-theme="paper" data-screen-label="Waar ik begon">
         <div className="wrap">
           <Reveal as="div" className="shead reveal">
-            <h2 className="h2">Waar ik begon</h2>
+            <h2 className="h2">Het startpunt</h2>
           </Reveal>
           <Reveal as="div" className="concept-copy reveal" data-d="1">
-            <p>Op ns.nl vind je de abonnementen via het menu, netjes ingedeeld per doelgroep. Toen ik keek stond er op de homepage één aanbieding uitgelicht. Wie wil weten welk abonnement bij hem past, moet dus zelf gaan zoeken.</p>
-            <p>Terwijl iemand op de homepage al aan het nadenken is over reizen. Hij plant een rit, ziet wat het kost en vraagt zich af of het goedkoper kan. Dat is het moment. Mijn vraag was: wat als de homepage dat antwoord meteen geeft?</p>
+            <p>Op ns.nl vind je de abonnementen via het menu, netjes ingedeeld per doelgroep. Op het moment van kijken stond er op de homepage één aanbieding uitgelicht. Wie wil weten welk abonnement bij hem past, moet dus zelf gaan zoeken.</p>
+            <p>Terwijl iemand op de homepage al aan het nadenken is over reizen. Hij plant een rit, ziet wat het kost en vraagt zich af of het goedkoper kan. Dat is het moment. De vraag was: wat als de homepage dat antwoord meteen geeft?</p>
           </Reveal>
         </div>
       </section>
@@ -83,7 +83,7 @@ function NsConcept() {
       <section className="section" data-theme="light" data-screen-label="Welke keuzes ik maakte">
         <div className="wrap">
           <Reveal as="div" className="shead reveal">
-            <h2 className="h2">Welke keuzes ik maakte</h2>
+            <h2 className="h2">Welke keuzes MegaOnline maakte</h2>
           </Reveal>
 
           <div className="concept-layout">
@@ -132,7 +132,7 @@ function NsConcept() {
           <Reveal as="div" className="concept-copy reveal" data-d="1">
             <p>NS is groot, maar het principe is hetzelfde voor een kartbaan, een verhuurbedrijf of een installateur. De meeste websites proberen alles tegelijk te doen. Daardoor helpen ze niemand echt verder.</p>
             <p>Kies één doel. Zoek het moment waarop een bezoeker er het dichtst bij is. Zet de volgende stap precies daar neer, in zijn woorden en met de prijs erbij.</p>
-            <p><Link className="btn btn-primary" to="/gratis-websiteconcept">Wil je weten waar dat moment op jouw site zit? Ik kijk er kosteloos naar en stuur je de punten die ik zie.</Link></p>
+            <p><Link className="btn btn-primary" to="/gratis-websiteconcept">Wil je weten waar dat moment op jouw site zit? MegaOnline kijkt er kosteloos naar en stuurt je de punten die opvallen.</Link></p>
             <p className="concept-disclaimer">Dit concept is gemaakt op eigen initiatief en niet in opdracht van of in samenwerking met NS. De naam NS is eigendom van NS. Prijzen zoals op ns.nl op 27 september 2026. Het ontwerp is een studie en geen bestaande of geplande website.</p>
           </Reveal>
         </div>

@@ -33,31 +33,31 @@ export const Route = createFileRoute('/')({
 const FAQ_ITEMS: { q: string; a: string }[] = [
   {
     q: "Wat kost een website bij MegaOnline?",
-    a: "Een Conversie Website begint vanaf € 2.500. De uiteindelijke prijs hangt af van het aantal pagina's en de complexiteit. En van welke extra functionaliteiten je nodig hebt. In het gratis websiteconcept geven we je een eerlijke indicatie op basis van jouw situatie.",
+    a: "Een Conversie Website begint vanaf € 2.500. De uiteindelijke prijs hangt af van het aantal pagina's en de complexiteit. En van welke extra functionaliteiten je nodig hebt. In het gratis websiteconcept geeft MegaOnline je een eerlijke indicatie op basis van jouw situatie.",
   },
   {
     q: "Waarom niet kiezen voor een goedkope webbouwer?",
-    a: "Een website bouwen is meer dan pagina's online zetten. Wij kijken naar vertrouwen, gebruiksgemak en hoe bezoekers daadwerkelijk actie ondernemen.",
+    a: "Een website bouwen is meer dan pagina's online zetten. MegaOnline kijkt naar vertrouwen, gebruiksgemak en hoe bezoekers daadwerkelijk actie ondernemen.",
   },
   {
     q: "Wat gebeurt er na livegang?",
-    a: "Na livegang kunnen we blijven helpen met onderhoud, verbeteringen en het optimaliseren van de website.",
+    a: "Na livegang kan MegaOnline blijven helpen met onderhoud, verbeteringen en het optimaliseren van de website.",
   },
   {
-    q: "Hoe weten jullie of een website beter presteert?",
-    a: "Door analytics en bezoekersgedrag te meten, krijgen we inzicht in wat werkt en waar kansen liggen.",
+    q: "Hoe weet MegaOnline of een website beter presteert?",
+    a: "Door analytics en bezoekersgedrag te meten, krijgt MegaOnline inzicht in wat werkt en waar kansen liggen.",
   },
   {
     q: "Kan ik mijn website straks zelf beheren?",
-    a: "Ja. We bouwen je website zo op dat je teksten en foto’s eenvoudig zelf kunt aanpassen, zonder technische kennis.",
+    a: "Ja. MegaOnline bouwt je website zo op dat je teksten en foto’s eenvoudig zelf kunt aanpassen, zonder technische kennis.",
   },
   {
     q: "Hoe lang duurt het bouwen van een website?",
-    a: "Een gemiddeld websiteproject duurt 4 tot 8 weken. Dit hangt af van hoe snel we samen de intake kunnen afronden, en van hoe snel de teksten en foto's beschikbaar zijn. We werken altijd met een duidelijke planning.",
+    a: "Een gemiddeld websiteproject duurt 4 tot 8 weken. Dit hangt af van hoe snel jij en MegaOnline samen de intake kunnen afronden en van hoe snel de teksten en foto's beschikbaar zijn. MegaOnline werkt altijd met een duidelijke planning.",
   },
   {
-    q: "Wij hebben al een website. Kunnen jullie die verbeteren?",
-    a: "Ja. In sommige gevallen is een volledig nieuwe website de beste keuze. In andere gevallen kunnen gerichte verbeteringen al veel effect hebben. Het gratis websiteconcept helpt ons om te bepalen wat voor jou de slimste aanpak is.",
+    q: "Wij hebben al een website. Kan MegaOnline die verbeteren?",
+    a: "Ja. In sommige gevallen is een volledig nieuwe website de beste keuze. In andere gevallen kunnen gerichte verbeteringen al veel effect hebben. Het gratis websiteconcept helpt MegaOnline om te bepalen wat voor jou de slimste aanpak is.",
   },
   {
     q: "Wat als ik na livegang iets wil aanpassen?",
@@ -69,7 +69,7 @@ const FAQ_ITEMS: { q: string; a: string }[] = [
   },
   {
     q: "Voor welke bedrijven werkt MegaOnline?",
-    a: "We werken het liefst voor groeiende bedrijven, waarbij de website een directe rol speelt in het binnenhalen van aanvragen, reserveringen of boekingen. Denk aan activiteitenbedrijven, verhuurders, zakelijke dienstverleners, rijscholen en transportbedrijven. De branche is minder belangrijk dan het bedrijfsmodel.",
+    a: "MegaOnline werkt het liefst voor groeiende bedrijven, waarbij de website een directe rol speelt in het binnenhalen van aanvragen, reserveringen of boekingen. Denk aan activiteitenbedrijven, verhuurders, zakelijke dienstverleners, rijscholen en transportbedrijven. De branche is minder belangrijk dan het bedrijfsmodel.",
   },
 ]
 
@@ -265,12 +265,12 @@ function Home() {
       <section className="section" id="werkwijze" data-theme="dark" data-screen-label="Werkwijze">
         <div className="wrap">
           <Reveal as="div" className="shead reveal">
-            <span className="label" style={{ padding: "6px 12px" }}>ONZE AANPAK</span>
+            <span className="label" style={{ padding: "6px 12px" }}>DE AANPAK</span>
             {' '}
             <h2 className="h2">Van eerste indruk tot meer aanvragen</h2>
             {' '}
             <p className="lead">
-              Geen standaard webbureau dat een website bouwt en verdwijnt. Wij beginnen met begrijpen. We bouwen met een doel en blijven betrokken.
+              Geen standaard webbureau dat een website bouwt en verdwijnt. MegaOnline begint met begrijpen. MegaOnline bouwt met een doel en blijft betrokken.
             </p>
           </Reveal>
           {' '}
@@ -285,7 +285,7 @@ function Home() {
               <div className="step__body">
                 <h3>Begrijpen</h3>
                 <p>
-                  We leren jouw bedrijf, klanten en doelen kennen. Alleen zo kunnen we een website bouwen die aansluit bij wat bezoekers nodig hebben.
+                  MegaOnline leert jouw bedrijf, klanten en doelen kennen. Alleen zo kan MegaOnline een website bouwen die aansluit bij wat bezoekers nodig hebben.
                 </p>
               </div>
             </Reveal>
@@ -296,7 +296,7 @@ function Home() {
               <div className="step__body">
                 <h3>Bouwen</h3>
                 <p>
-                  We ontwerpen en ontwikkelen een website die vertrouwen opbouwt en bezoekers makkelijker richting contact, aanvraag of boeking stuurt.
+                  MegaOnline ontwerpt en ontwikkelt een website die vertrouwen opbouwt en bezoekers makkelijker richting contact, aanvraag of boeking stuurt.
                 </p>
               </div>
             </Reveal>
@@ -307,7 +307,7 @@ function Home() {
               <div className="step__body">
                 <h3>Verbeteren</h3>
                 <p>
-                  Na livegang blijven we kijken wat bezoekers doen. Waar kansen liggen en hoe de website verder kan verbeteren.
+                  Na livegang blijft MegaOnline kijken wat bezoekers doen. Waar kansen liggen en hoe de website verder kan verbeteren.
                 </p>
               </div>
             </Reveal>
@@ -328,7 +328,7 @@ function Home() {
             </h2>
             {' '}
             <p className="lead">
-              Een website kan er fantastisch uitzien en alsnog weinig opleveren. Daarom kijken we verder dan design alleen.
+              Een website kan er fantastisch uitzien en alsnog weinig opleveren. Daarom kijkt MegaOnline verder dan design alleen.
             </p>
           </Reveal>
           {' '}
@@ -367,7 +367,7 @@ function Home() {
             {' '}
             <Reveal as="aside" className="panel reveal" data-d="1">
               <p className="panel__quote">
-                Wij snappen dat je geen website wilt om een website te hebben. Je wilt dat jouw online aanwezigheid
+                MegaOnline snapt dat je geen website wilt om een website te hebben. Je wilt dat jouw online aanwezigheid
                 {' '}
                 <em>beter werkt</em>
                 {' '}
@@ -411,9 +411,7 @@ function Home() {
             <span className="label">Het verschil</span>
             {' '}
             <h2 className="h2">
-              Een websitebouwer maakt wat je vraagt. Wij bouwen wat je klant laat
-              {' '}
-              <em>aanvragen.</em>
+              Een websitebouwer maakt wat je vraagt. MegaOnline bouwt wat je klant laat <em>aanvragen.</em>
             </h2>
           </Reveal>
           {' '}
@@ -442,7 +440,7 @@ function Home() {
           </Reveal>
           {' '}
           <Reveal as="div" className="cmp__foot reveal">
-            <p>Wil je zien hoe dit voor jouw bedrijf kan werken? We maken een gratis websiteconcept met persoonlijk advies.</p>
+            <p>Wil je zien hoe dit voor jouw bedrijf kan werken? MegaOnline maakt een gratis websiteconcept met persoonlijk advies.</p>
             {' '}
             <Link className="tlink" to="/gratis-websiteconcept">
               {CTA_CONCEPT}
@@ -458,9 +456,9 @@ function Home() {
         <div className="wrap">
           <Reveal as="div" className="shead shead--split reveal">
             <div className="shead">
-              <span className="label">ONS WERK</span>
+              <span className="label">PROJECTEN</span>
               {' '}
-              <h2 className="h2">Wat we voor deze bedrijven oplosten.</h2>
+              <h2 className="h2">Wat MegaOnline voor deze bedrijven oploste.</h2>
             </div>
             {' '}
             <Link className="tlink" to="/gratis-websiteconcept" style={{ paddingBottom: "6px" }}>
@@ -496,7 +494,7 @@ function Home() {
                   </div>
                   {' '}
                   <div className="case__step">
-                    <span className="k">Wat we deden</span>
+                    <span className="k">Wat MegaOnline deed</span>
                     <p>
                       We brachten de propositie terug naar een duidelijke boodschap en bouwden een structuur die bezoekers sneller naar de juiste informatie leidt.
                     </p>
@@ -537,7 +535,7 @@ function Home() {
                   </div>
                   {' '}
                   <div className="case__step">
-                    <span className="k">Wat we deden</span>
+                    <span className="k">Wat MegaOnline deed</span>
                     <p>
                       We ontwikkelden een visuele website met een duidelijke boekingsroute en focus op beleving.
                     </p>
@@ -580,7 +578,7 @@ function Home() {
                   </div>
                   {' '}
                   <div className="case__step">
-                    <span className="k">Wat we deden</span>
+                    <span className="k">Wat MegaOnline deed</span>
                     <p>
                       Gebouwd door MegaOnline: aparte pagina's voor de drie belevingen, plus portfolio, traject, prijzen, veelgestelde vragen en contact.
                     </p>
@@ -599,7 +597,7 @@ function Home() {
             {' '}
             <Reveal as="article" className="case reveal" data-d="1">
               <div className="case__media">
-                <Media id="case-africa" fit="cover" placeholder="[ LoveForAfrica ]" alt="Screenshot van de website die we voor LoveForAfrica bouwden" />
+                <Media id="case-africa" fit="cover" placeholder="[ LoveForAfrica ]" alt="Screenshot van de website die MegaOnline voor LoveForAfrica bouwde" />
               </div>
               {' '}
               <div className="case__body">
@@ -621,9 +619,9 @@ function Home() {
                   </div>
                   {' '}
                   <div className="case__step">
-                    <span className="k">Wat we deden</span>
+                    <span className="k">Wat MegaOnline deed</span>
                     <p>
-                      We ontwikkelden een website waarin projecten, verhalen en betrokkenheid centraal staan.
+                      MegaOnline ontwikkelde een website waarin projecten, verhalen en betrokkenheid centraal staan.
                     </p>
                   </div>
                 </div>
@@ -654,7 +652,7 @@ function Home() {
             </h2>
             {' '}
             <p className="lead">
-              Een website is het startpunt. Daarna begint het echte optimaliseren. Je begint met een Conversie Website en kiest na livegang hoe betrokken we blijven.
+              Een website is het startpunt. Daarna begint het echte optimaliseren. Je begint met een Conversie Website en kiest na livegang hoe betrokken MegaOnline blijft.
             </p>
           </Reveal>
           {' '}
@@ -713,7 +711,7 @@ function Home() {
               <span className="svcname rm__name">Groei Partnership</span>
               {' '}
               <p>
-                Na livegang begint het echte werk. Elke maand publiceren we een nieuwe pagina die je beter vindbaar maakt, in Google en in AI-zoekmachines. Hier zit de meeste waarde voor jouw bedrijf.
+                Na livegang begint het echte werk. Elke maand publiceert MegaOnline een nieuwe pagina die je beter vindbaar maakt, in Google en in AI-zoekmachines. Hier zit de meeste waarde voor jouw bedrijf.
               </p>
               {' '}
               <div className="svc__when">Ideaal wanneer</div>
@@ -745,8 +743,7 @@ function Home() {
             <div className="maint__txt">
               <b>Kleiner beginnen?</b>
               {' '}
-              Voor starters en kleinere bedrijven bouwen we een compactere website, met
-              dezelfde aandacht voor vertrouwen en een makkelijke aanvraag.
+              Voor starters en kleinere bedrijven bouwt MegaOnline een compactere website, met dezelfde aandacht voor vertrouwen en een makkelijke aanvraag.
               {' '}
               <Link className="flow-cta" to="/diensten/starter-website">Bekijk de Starter Website</Link>
             </div>
@@ -758,7 +755,7 @@ function Home() {
             <div className="maint__txt">
               <b>Niet op zoek naar actieve optimalisatie?</b>
               {' '}
-              Ook onderhoud en technische support is mogelijk. We houden je website veilig en up-to-date.
+              Ook onderhoud en technische support is mogelijk. MegaOnline houdt je website veilig en up-to-date.
             </div>
             {' '}
             <div className="maint__price">Onderhoud & Support · vanaf € 50 / mnd</div>
@@ -831,7 +828,7 @@ function Home() {
             </Reveal>
             {' '}
             <Reveal as="div" className="vision__body reveal" data-d="1">
-              <span className="label">Zo werken we</span>
+              <span className="label">Zo werkt MegaOnline</span>
               {' '}
               <h2 className="h2">
                 Klein van opzet.
@@ -842,15 +839,15 @@ function Home() {
               </h2>
               {' '}
               <p>
-                MegaOnline is geen fabriek die websites uitspuugt. We werken met een beperkt aantal bedrijven tegelijk. Zo begrijpen we écht waar jouw klanten op afhaken en wat ze juist over de streep trekt.
+                MegaOnline is geen fabriek die websites uitspuugt. MegaOnline werkt met een beperkt aantal bedrijven tegelijk. Zo begrijpt MegaOnline écht waar jouw klanten op afhaken en wat ze juist over de streep trekt.
               </p>
               {' '}
               <p>
-                Geen accountmanagers en geen tussenlagen. Je werkt direct met de mensen die de strategie bepalen en de site bouwen. Dat houdt het scherp en eerlijk.
+                Geen accountmanagers en geen tussenlagen. Je werkt direct met wie de strategie bepaalt en de site bouwt. Dat houdt het scherp en eerlijk.
               </p>
               {' '}
               <p>
-                Wij geloven dat de beste websites ontstaan wanneer je een bedrijf echt begrijpt. Daarom werken we niet als een anoniem bureau, maar als een betrokken partner die meedenkt over de lange termijn.
+                MegaOnline gelooft dat de beste websites ontstaan wanneer je een bedrijf echt begrijpt. Daarom werkt MegaOnline niet als een anoniem bureau, maar als een betrokken partner die meedenkt over de lange termijn.
               </p>
               {' '}
               <div className="vision__sign">
@@ -896,7 +893,7 @@ function Home() {
       {' '}
       <section className="section final" data-theme="dark" data-screen-label="Afsluitende CTA">
         <div className="wrap">
-          <Reveal as="h2" className="display reveal">Zullen we eens naar je website kijken?</Reveal>
+          <Reveal as="h2" className="display reveal">Benieuwd wat er beter kan aan je website?</Reveal>
           {' '}
           <Reveal as="p" className="lead reveal" data-d="1">
             Vraag een gratis websiteconcept aan en ontdek wat er beter kan. Zonder verplichtingen.

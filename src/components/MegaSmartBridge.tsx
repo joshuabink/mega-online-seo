@@ -18,7 +18,7 @@ type Props = {
 export function MegaSmartBridge({
   text,
   bullets = [],
-  eyebrow = 'Onze software',
+  eyebrow = 'Eigen software',
   title = 'Boeken en opvolgen met MegaSmart',
 }: Props) {
   return (

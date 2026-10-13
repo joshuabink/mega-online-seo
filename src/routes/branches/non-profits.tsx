@@ -49,7 +49,7 @@ function NonProfits() {
               </Reveal>
               {' '}
               <Reveal as="p" className="lead svc-hero__sub reveal" data-d="2">
-                Stichting, goed doel, vereniging of kerk: jouw werk draait op vertrouwen en betrokkenheid. Wij bouwen een website die je verhaal overbrengt en bezoekers aanzet tot doneren, aanmelden of meedoen.
+                Stichting, goed doel, vereniging of kerk: jouw werk draait op vertrouwen en betrokkenheid. MegaOnline bouwt een website die je verhaal overbrengt en bezoekers aanzet tot doneren, aanmelden of meedoen.
               </Reveal>
               {' '}
               <Reveal as="div" className="svc-hero__ctas reveal" data-d="2">
@@ -70,7 +70,7 @@ function NonProfits() {
       <section className="section section--tight" data-theme="paper" data-screen-label="We kennen jouw markt">
         <div className="wrap">
           <Reveal as="div" className="shead reveal">
-            <span className="label">We kennen jouw markt</span>
+            <span className="label">MegaOnline kent jouw markt</span>
             {' '}
             <h2 className="h2">
               Een non-profit runt op
@@ -80,7 +80,7 @@ function NonProfits() {
             </h2>
             {' '}
             <p className="lead">
-              We werken voor organisaties met een maatschappelijk doel. Die wereld heeft eigen uitdagingen, en daar bouwen we de website omheen.
+              MegaOnline werkt voor organisaties met een maatschappelijk doel. Die wereld heeft eigen uitdagingen. MegaOnline bouwt de website daaromheen.
             </p>
           </Reveal>
           {' '}
@@ -133,12 +133,10 @@ function NonProfits() {
       <section className="section" data-theme="light" data-screen-label="Onze oplossing">
         <div className="wrap">
           <Reveal as="div" className="shead reveal">
-            <span className="label">Onze oplossing</span>
+            <span className="label">De oplossing</span>
             {' '}
             <h2 className="h2">
-              We zetten je verhaal om in
-              {' '}
-              <em>concrete steun.</em>
+              MegaOnline zet je verhaal om in <em>concrete steun.</em>
             </h2>
             {' '}
             <p className="lead">
@@ -159,7 +157,7 @@ function NonProfits() {
                 <h3 style={{ marginTop: "18px" }}>Een website die raakt én aanzet tot actie</h3>
                 {' '}
                 <p style={{ marginTop: "14px" }}>
-                  We brengen je missie en impact helder in beeld en leiden bezoekers naar de stap die past: een donatie, een aanmelding of contact. Vertrouwen en eenvoud staan centraal.
+                  MegaOnline brengt je missie en impact helder in beeld en leidt bezoekers naar de stap die past: een donatie, een aanmelding of contact. Vertrouwen en eenvoud staan centraal.
                 </p>
               </div>
               {' '}
@@ -312,12 +310,12 @@ function NonProfits() {
           </Reveal>
           {' '}
           <div className="faq">
-            <Qa question="Hebben jullie ervaring met non-profits?" className="reveal">
-                Ja. We bouwden onder meer voor LoveForAfrica, de Ontmoetingskerk en De Nieuwe Westerkerk. We snappen dat het bij non-profits om vertrouwen, betrokkenheid en zorgvuldig omgaan met middelen draait.
+            <Qa question="Heeft MegaOnline ervaring met non-profits?" className="reveal">
+                Ja. MegaOnline bouwde onder meer voor LoveForAfrica, de Ontmoetingskerk en De Nieuwe Westerkerk. MegaOnline snapt dat het bij non-profits om vertrouwen, betrokkenheid en zorgvuldig omgaan met middelen draait.
             </Qa>
             {' '}
-            <Qa question="Kunnen jullie rekening houden met een beperkt budget?" className="reveal">
-                Zeker. Voor veel non-profits is onze Starter Website een goede, voordelige start. We kijken eerlijk mee wat echt nodig is en wat kan wachten.
+            <Qa question="Kan MegaOnline rekening houden met een beperkt budget?" className="reveal">
+                Zeker. Voor veel non-profits is de Starter Website een goede, voordelige start. MegaOnline kijkt eerlijk mee wat echt nodig is en wat kan wachten.
             </Qa>
             {' '}
             <Qa question="Kunnen donateurs online doneren?" className="reveal">
@@ -325,7 +323,7 @@ function NonProfits() {
             </Qa>
             {' '}
             <Qa question="Kunnen vrijwilligers de website zelf bijhouden?" className="reveal">
-                Ja. We bouwen de site zo op dat nieuws, agenda en teksten eenvoudig zelf bij te werken zijn, ook zonder technische kennis.
+                Ja. MegaOnline bouwt de site zo op dat je nieuws, agenda en teksten eenvoudig zelf bijwerkt, ook zonder technische kennis.
             </Qa>
           </div>
         </div>
@@ -339,7 +337,7 @@ function NonProfits() {
             <h2 className="display">Mensen willen best helpen. Maak het ze makkelijk.</h2>
             {' '}
             <p className="lead">
-              Vraag een gratis websiteconcept aan. We laten zien hoe je website meer donaties, vrijwilligers en betrokkenheid kan opleveren.
+              Vraag een gratis websiteconcept aan. Je ziet hoe je website meer donaties, vrijwilligers en betrokkenheid kan opleveren.
             </p>
             {' '}
             <Reveal as="div" className="svc-hero__ctas reveal" data-d="1" style={{ justifyContent: "center", marginTop: "28px" }}>

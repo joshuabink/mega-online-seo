@@ -49,7 +49,7 @@ function Dienstverleners() {
               </Reveal>
               {' '}
               <Reveal as="p" className="lead svc-hero__sub reveal" data-d="2">
-                Als dienstverlener verkoop je geen product, maar jezelf en je expertise. Wij bouwen een website die in één oogopslag duidelijk maakt wat je doet, voor wie, en waarom mensen juist jou moeten kiezen.
+                Als dienstverlener verkoop je geen product, maar jezelf en je expertise. MegaOnline bouwt een website die in één oogopslag duidelijk maakt wat je doet, voor wie en waarom mensen juist jou moeten kiezen.
               </Reveal>
               {' '}
               <Reveal as="div" className="svc-hero__ctas reveal" data-d="2">
@@ -70,7 +70,7 @@ function Dienstverleners() {
       <section className="section section--tight" data-theme="paper" data-screen-label="We kennen jouw markt">
         <div className="wrap">
           <Reveal as="div" className="shead reveal">
-            <span className="label">We kennen jouw markt</span>
+            <span className="label">MegaOnline kent jouw markt</span>
             {' '}
             <h2 className="h2">
               Een dienst is
@@ -81,7 +81,7 @@ function Dienstverleners() {
             </h2>
             {' '}
             <p className="lead">
-              We werken voor adviseurs, bureaus en specialisten. Die markt verkoopt op vertrouwen, en daar richten we de hele website op in.
+              MegaOnline werkt voor adviseurs, bureaus en specialisten. Die markt verkoopt op vertrouwen. Daar richt MegaOnline de hele website op in.
             </p>
           </Reveal>
           {' '}
@@ -136,14 +136,10 @@ function Dienstverleners() {
       <section className="section" data-theme="light" data-screen-label="Onze oplossing">
         <div className="wrap">
           <Reveal as="div" className="shead reveal">
-            <span className="label">Onze oplossing</span>
+            <span className="label">De oplossing</span>
             {' '}
             <h2 className="h2">
-              We maken je
-              {' '}
-              <em>waarde</em>
-              {' '}
-              meteen duidelijk.
+              MegaOnline maakt je <em>waarde</em> meteen duidelijk.
             </h2>
             {' '}
             <p className="lead">
@@ -244,7 +240,7 @@ function Dienstverleners() {
             </h2>
             {' '}
             <p className="lead">
-              Gericht op vertrouwen en kwalitatieve aanvragen, niet op zoveel mogelijk klikken. Vertrouwen komt vóór techniek, dus bouwen we eerst een <Link to="/diensten/conversie-website">conversiegerichte website</Link> die laat zien wie er achter je bedrijf zit. Pas daarna heeft het zin om te werken aan je <Link to="/diensten/seo">vindbaarheid in Google en in AI</Link>. Lees <Link to="/kennisbank/$slug" params={{ slug: 'vertrouwen-wekken-zakelijke-website' }}>wat een bezoeker wil controleren voordat hij een dienstverlener belt</Link>.
+              Gericht op vertrouwen en kwalitatieve aanvragen, niet op zoveel mogelijk klikken. Vertrouwen komt vóór techniek. Daarom bouwt MegaOnline eerst een <Link to="/diensten/conversie-website">conversiegerichte website</Link> die laat zien wie er achter je bedrijf zit. Pas daarna heeft het zin om te werken aan je <Link to="/diensten/seo">vindbaarheid in Google en in AI</Link>. Lees <Link to="/kennisbank/$slug" params={{ slug: 'vertrouwen-wekken-zakelijke-website' }}>wat een bezoeker wil controleren voordat hij een dienstverlener belt</Link>.
             </p>
           </Reveal>
           {' '}
@@ -310,19 +306,19 @@ function Dienstverleners() {
           {' '}
           <div className="faq">
             <Qa question="Ik heb geen tastbaar product. Hoe maak je dat aantrekkelijk?" className="reveal">
-                Door te focussen op het probleem dat je oplost en het resultaat dat je levert. We vertalen je expertise naar herkenbare situaties en concreet bewijs, zodat de waarde meteen voelbaar is.
+                Door te focussen op het probleem dat je oplost en het resultaat dat je levert. MegaOnline vertaalt je expertise naar herkenbare situaties en concreet bewijs, zodat de waarde meteen voelbaar is.
             </Qa>
             {' '}
             <Qa question="Heb ik cases nodig als ik net begin?" className="reveal">
-                Niet per se. Ook zonder uitgebreide cases bouwen we vertrouwen op met een sterke propositie, een helder verhaal en de juiste vertrouwenssignalen. Cases voegen we later eenvoudig toe.
+                Niet per se. Ook zonder uitgebreide cases bouwt MegaOnline vertrouwen op met een sterke propositie, een helder verhaal en de juiste vertrouwenssignalen. Cases voegt MegaOnline later eenvoudig toe.
             </Qa>
             {' '}
             <Qa question="Levert dit echt meer aanvragen op?" className="reveal">
-                Een website die vertrouwen wekt en een duidelijke volgende stap biedt, verlaagt de drempel om contact op te nemen. Met een gratis websiteconcept laten we zien waar je nu aanvragen misloopt.
+                Een website die vertrouwen wekt en een duidelijke volgende stap biedt, verlaagt de drempel om contact op te nemen. Met een gratis websiteconcept laat MegaOnline zien waar je nu aanvragen misloopt.
             </Qa>
             {' '}
             <Qa question="Wat kost zo'n website?" className="reveal">
-                Dat hangt af van de omvang en je wensen. Begin vrijblijvend met een gratis websiteconcept, dan brengen we het samen in kaart.
+                Dat hangt af van de omvang en je wensen. Begin vrijblijvend met een gratis websiteconcept, dan breng je het samen met MegaOnline in kaart.
             </Qa>
           </div>
         </div>
@@ -336,7 +332,7 @@ function Dienstverleners() {
             <h2 className="display">Vertrouwen win je voordat de telefoon gaat.</h2>
             {' '}
             <p className="lead">
-              Vraag een gratis websiteconcept aan. We laten zien hoe je website meer van de juiste klanten kan aantrekken.
+              Vraag een gratis websiteconcept aan. Je ziet hoe je website meer van de juiste klanten kan aantrekken.
             </p>
             {' '}
             <Reveal as="div" className="svc-hero__ctas reveal" data-d="1" style={{ justifyContent: "center", marginTop: "28px" }}>

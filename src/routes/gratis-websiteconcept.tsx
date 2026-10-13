@@ -75,8 +75,7 @@ function GratisWebsiteconcept() {
                 Ontvang een gratis websiteconcept met <em>persoonlijk advies</em>
               </Reveal>
               <Reveal as="p" className="lead reveal" data-d="2">
-                Beantwoord zes korte vragen. Daarna kijken we persoonlijk naar je bedrijf en laten we
-                zien hoe je website meer aanvragen en boekingen kan opleveren.
+                Beantwoord zes korte vragen. Daarna kijkt MegaOnline persoonlijk naar je bedrijf en zie je hoe je website meer aanvragen en boekingen kan opleveren.
               </Reveal>
               <Reveal as="ul" className="concept__ticks reveal" data-d="2">
                 <li>Persoonlijk advies</li>

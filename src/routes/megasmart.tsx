@@ -51,7 +51,7 @@ function MegaSmart() {
               </Reveal>
               {' '}
               <Reveal as="p" className="lead svc-hero__sub reveal" data-d="2">
-                MegaSmart is ons eigen systeem voor bedrijven die draaien op aanvragen, afspraken en reserveringen. Agenda, online boeken, klantcontact en opvolging zitten in één omgeving, zodat je niet meer heen en weer springt tussen mailbox, agenda en Excel.
+                MegaSmart is het eigen systeem van MegaOnline voor bedrijven die draaien op aanvragen, afspraken en reserveringen. Agenda, online boeken, klantcontact en opvolging zitten in één omgeving, zodat je niet meer heen en weer springt tussen mailbox, agenda en Excel.
               </Reveal>
               {' '}
               <Reveal as="div" className="svc-hero__ctas reveal" data-d="2">
@@ -381,7 +381,7 @@ function MegaSmart() {
             <Reveal as="div" className="consider reveal" data-d="1">
               <h3>Past het bij jouw manier van werken?</h3>
               <p>
-                MegaSmart is het sterkst als je het volgende herkent. Twijfel je, dan kijken we in een demo gewoon mee naar je huidige proces.
+                MegaSmart is het sterkst als je het volgende herkent. Twijfel je, dan kijkt MegaOnline in een demo gewoon mee naar je huidige proces.
               </p>
               <ul className="considlist">
                 <li>Je werkt op afspraak of op reservering</li>
@@ -594,7 +594,7 @@ function MegaSmart() {
           </div>
           {' '}
           <Reveal as="p" className="price-fine reveal" data-d="1">
-            Prijzen zijn exclusief btw. De eenmalige inrichting hangt af van je situatie: welke koppelingen je nodig hebt en hoeveel er overgezet moet worden. Dat rekenen we in de demo gewoon voor je uit.
+            Prijzen zijn exclusief btw. De eenmalige inrichting hangt af van je situatie: welke koppelingen je nodig hebt en hoeveel er overgezet moet worden. Dat rekent MegaOnline in de demo gewoon voor je uit.
           </Reveal>
         </div>
       </section>
@@ -617,15 +617,15 @@ function MegaSmart() {
             </Qa>
             {' '}
             <Qa question="Hoe lang duurt het voordat we ermee kunnen werken?" className="reveal">
-                Een basisinrichting met agenda, boekingspagina en bevestigingen staat meestal binnen enkele weken. Koppelingen met een administratiesysteem duren langer, omdat we eerst willen weten welk systeem waarvoor leidend is.
+                Een basisinrichting met agenda, boekingspagina en bevestigingen staat meestal binnen enkele weken. Koppelingen met een administratiesysteem duren langer, omdat MegaOnline eerst wil weten welk systeem waarvoor leidend is.
             </Qa>
             {' '}
             <Qa question="Moeten mijn collega’s hier veel voor leren?" className="reveal">
-                We richten het systeem zo in dat iedereen alleen ziet wat hij nodig heeft. De inrichting en uitleg horen bij het abonnement, en je krijgt bij ons een vast aanspreekpunt in plaats van een supportformulier.
+                MegaOnline richt het systeem zo in dat iedereen alleen ziet wat hij nodig heeft. De inrichting en uitleg horen bij het abonnement, en je krijgt bij ons een vast aanspreekpunt in plaats van een supportformulier.
             </Qa>
             {' '}
             <Qa question="Wat gebeurt er met mijn klantgegevens?" className="reveal">
-                Je gegevens blijven van jou en je kunt ze exporteren. We leggen in een verwerkersovereenkomst vast waar de gegevens staan en wie erbij kan. In de demo lopen we dit punt met je door.
+                Je gegevens blijven van jou en je kunt ze exporteren. MegaOnline legt in een verwerkersovereenkomst vast waar de gegevens staan en wie erbij kan. In de demo loopt MegaOnline dit punt met je door.
             </Qa>
             {' '}
             <Qa question="Kan ik klein beginnen en later uitbreiden?" className="reveal">
@@ -643,7 +643,7 @@ function MegaSmart() {
             <h2 className="display">Bekijk in 30 minuten hoe MegaSmart voor jouw bedrijf zou werken.</h2>
             {' '}
             <p className="lead">
-              We nemen je agenda, je aanvragen en je opvolging door en laten zien wat er in jouw situatie automatisch kan. Geen verkooppraat, wel een eerlijk beeld.
+              MegaOnline neemt je agenda, je aanvragen en je opvolging door en laat zien wat er in jouw situatie automatisch kan. Geen verkooppraat, wel een eerlijk beeld.
             </p>
             {' '}
             <Reveal as="div" className="svc-hero__ctas reveal" data-d="1" style={{ justifyContent: "center", marginTop: "28px" }}>

@@ -31,7 +31,7 @@ export const Route = createFileRoute('/diensten/conversie-website')({
 const FAQ_ITEMS: { q: string; a: ReactNode }[] = [
   {
     q: "Waarom niet kiezen voor een goedkope webbouwer?",
-    a: "Een website bouwen is meer dan pagina's online zetten. Een goedkope website ziet er soms prima uit, maar denkt niet na over vertrouwen, gebruiksgemak en hoe bezoekers daadwerkelijk tot een aanvraag komen. Wij bouwen vanuit dat doel. Dat is precies waar het verschil zit tussen een website die bestaat en een website die klanten oplevert.",
+    a: "Een website bouwen is meer dan pagina's online zetten. Een goedkope website ziet er soms prima uit, maar denkt niet na over vertrouwen, gebruiksgemak en hoe bezoekers daadwerkelijk tot een aanvraag komen. MegaOnline bouwt vanuit dat doel. Dat is precies waar het verschil zit tussen een website die bestaat en een website die klanten oplevert.",
   },
   {
     q: "Kan ik mijn website zelf beheren?",
@@ -43,23 +43,23 @@ const FAQ_ITEMS: { q: string; a: ReactNode }[] = [
   },
   {
     q: "Kan mijn website gekoppeld worden aan bestaande software?",
-    a: "In de meeste gevallen wel. Denk aan CRM-systemen, boekingssystemen, agenda's, WhatsApp, e-mailsoftware en betaalsystemen. Zo wordt je website een onderdeel van je bedrijf in plaats van een los eiland. Werk je met iets specifieks? Dan kijken we samen wat mogelijk is.",
+    a: "In de meeste gevallen wel. Denk aan CRM-systemen, boekingssystemen, agenda's, WhatsApp, e-mailsoftware en betaalsystemen. Zo wordt je website een onderdeel van je bedrijf in plaats van een los eiland. Werk je met iets specifieks? Dan kijk je samen met MegaOnline wat mogelijk is.",
   },
   {
-    q: "Werken jullie ook met bestaande websites?",
-    a: "Soms is een volledig nieuwe website de beste keuze, soms hebben gerichte verbeteringen al veel effect. Het gratis websiteconcept helpt ons bepalen wat voor jouw situatie de slimste aanpak is.",
+    q: "Werkt MegaOnline ook met bestaande websites?",
+    a: "Soms is een volledig nieuwe website de beste keuze, soms hebben gerichte verbeteringen al veel effect. Het gratis websiteconcept helpt MegaOnline bepalen wat voor jouw situatie de slimste aanpak is.",
   },
   {
     q: "Is een Groei Partnership verplicht?",
     a: "Nee. Sommige klanten kiezen voor een eenmalige website en regelen het beheer zelf of via een andere partij. We raden het Partnership wel aan, omdat websites die regelmatig verbeterd worden structureel beter presteren.",
   },
   {
-    q: "Helpen jullie ook met foto's en video's?",
+    q: "Helpt MegaOnline ook met foto's en video's?",
     a: "Ja. Goede beelden maken vaak het verschil tussen afhaken of vertrouwen krijgen. We kunnen helpen met fotografie op locatie, content shoots, bedrijfsvideo's en dronebeelden. Eenmalig bij de bouw, of periodiek via contentdagen om je content vers te houden.",
   },
   {
-    q: "Kunnen jullie ook helpen met een logo of huisstijl?",
-    a: "Heb je al een sterke huisstijl, dan bouwen we daarop verder. Heb je die nog niet, dan kunnen we samen met gespecialiseerde ontwerpers helpen met een logo, lettertypes, kleuren en een eenvoudig brandbook. Wij zijn geen brandingbureau, maar we bieden het aan omdat een sterke huisstijl bijna altijd tot een betere website leidt.",
+    q: "Kan MegaOnline ook helpen met een logo of huisstijl?",
+    a: "Heb je al een sterke huisstijl, dan bouwt MegaOnline daarop verder. Heb je die nog niet, dan kan MegaOnline samen met gespecialiseerde ontwerpers helpen met een logo, lettertypes, kleuren en een eenvoudig brandbook. MegaOnline is geen brandingbureau, maar biedt het aan omdat een sterke huisstijl bijna altijd tot een betere website leidt.",
   },
   {
     q: "Wat kost een Conversie Website?",
@@ -111,7 +111,7 @@ function ConversieWebsite() {
               <Reveal as="div" className="hero__badge reveal" data-d="1">
                 <span className="badge">
                   <span className="gdot" />
-                  Onze kerndienst
+                  Kerndienst
                 </span>
               </Reveal>
               {' '}
@@ -122,7 +122,7 @@ function ConversieWebsite() {
               </Reveal>
               {' '}
               <Reveal as="p" className="lead svc-hero__sub reveal" data-d="2">
-                Voor bedrijven die afhankelijk zijn van aanvragen, reserveringen en boekingen. Wij bouwen websites die vertrouwen uitstralen, bezoekers helpen en klaar zijn voor groei.
+                Voor bedrijven die afhankelijk zijn van aanvragen, reserveringen en boekingen. MegaOnline bouwt websites die vertrouwen uitstralen, bezoekers helpen en klaar zijn voor groei.
               </Reveal>
               {' '}
               <Reveal as="div" className="svc-hero__ctas reveal" data-d="2">
@@ -131,7 +131,7 @@ function ConversieWebsite() {
                 </Link>
                 {' '}
                 <a className="tlink" href="#aanpak">
-                  Zo bouwen wij
+                  Zo bouwt MegaOnline
                   {' '}
                 </a>
               </Reveal>
@@ -246,7 +246,7 @@ function ConversieWebsite() {
       <section className="section" id="aanpak" data-theme="dark" data-screen-label="Hoe wij websites bouwen">
         <div className="wrap">
           <Reveal as="div" className="shead reveal">
-            <span className="label">Onze aanpak</span>
+            <span className="label">De aanpak</span>
             {' '}
             <h2 className="h2">
               Een goede website begint met
@@ -257,7 +257,7 @@ function ConversieWebsite() {
             </h2>
             {' '}
             <p className="lead">
-              Wij beginnen nooit bij het ontwerp. We beginnen bij jouw bedrijf, je klanten en wat een bezoeker nodig heeft om in actie te komen.
+              MegaOnline begint nooit bij het ontwerp. MegaOnline begint bij jouw bedrijf, je klanten en wat een bezoeker nodig heeft om in actie te komen.
             </p>
           </Reveal>
           {' '}
@@ -275,7 +275,7 @@ function ConversieWebsite() {
                 <h3 style={{ marginTop: "18px" }}>Begrijpen</h3>
                 {' '}
                 <p style={{ marginTop: "14px" }}>
-                  We leren jouw bedrijf, doelgroep en doelen kennen. Wat moeten bezoekers weten? Waar twijfelen ze? Waarom kiezen klanten voor jou? Pas als dat helder is, weten we wat de website moet doen.
+                  MegaOnline leert jouw bedrijf, doelgroep en doelen kennen. Wat moeten bezoekers weten? Waar twijfelen ze? Waarom kiezen klanten voor jou? Pas als dat helder is, weet MegaOnline wat de website moet doen.
                 </p>
               </div>
               {' '}
@@ -299,7 +299,7 @@ function ConversieWebsite() {
               <h3>Structureren</h3>
               {' '}
               <p>
-                We bepalen welke informatie bezoekers nodig hebben en hoe ze door de website bewegen richting contact.
+                MegaOnline bepaalt welke informatie bezoekers nodig hebben en hoe ze door de website bewegen richting contact.
               </p>
             </Reveal>
             {' '}
@@ -314,7 +314,7 @@ function ConversieWebsite() {
               <h3>Ontwerpen</h3>
               {' '}
               <p>
-                We creëren een ontwerp dat vertrouwen uitstraalt en past bij hoe jouw bedrijf gezien wil worden.
+                MegaOnline maakt een ontwerp dat vertrouwen uitstraalt en past bij hoe jouw bedrijf over wil komen.
               </p>
             </Reveal>
             {' '}
@@ -329,7 +329,7 @@ function ConversieWebsite() {
               <h3>Ontwikkelen</h3>
               {' '}
               <p>
-                We bouwen de website technisch uit: snel, veilig en eenvoudig zelf te beheren.
+                MegaOnline bouwt de website technisch uit: snel, veilig en eenvoudig zelf te beheren.
               </p>
             </Reveal>
             {' '}
@@ -344,7 +344,7 @@ function ConversieWebsite() {
               <h3>Verbeteren</h3>
               {' '}
               <p>
-                Na livegang blijven we kijken waar bezoekers afhaken en waar nog kansen liggen.
+                Na livegang blijft MegaOnline kijken waar bezoekers afhaken en waar nog kansen liggen.
               </p>
             </Reveal>
           </div>
@@ -454,7 +454,7 @@ function ConversieWebsite() {
       <section className="section" data-theme="dark" data-screen-label="Gebouwd voor aanvragen">
         <div className="wrap">
           <Reveal as="div" className="shead reveal">
-            <span className="label">Voor wie we bouwen</span>
+            <span className="label">Voor wie MegaOnline bouwt</span>
             {' '}
             <h2 className="h2">
               Gebouwd voor bedrijven die afhankelijk zijn van
@@ -463,7 +463,7 @@ function ConversieWebsite() {
             </h2>
             {' '}
             <p className="lead">
-              Voor sommige bedrijven is de website een visitekaartje. Voor onze klanten is het een belangrijke bron van nieuwe klanten. Daar ontwerpen we naartoe.
+              Voor sommige bedrijven is de website een visitekaartje. Voor klanten van MegaOnline is het een belangrijke bron van nieuwe klanten. Daar ontwerpt MegaOnline naartoe.
             </p>
           </Reveal>
           {' '}
@@ -527,7 +527,7 @@ function ConversieWebsite() {
             </div>
             {' '}
             <Reveal as="div" className="consider reveal" data-d="1">
-              <h3>Waar wij over nadenken bij elke website</h3>
+              <h3>Waar MegaOnline over nadenkt bij elke website</h3>
               {' '}
               <p>
                 Een aanvraag of boeking ontstaat niet vanzelf. Het is het resultaat van een bezoeker die zich op zijn gemak voelt en precies weet wat de volgende stap is. Meer over <Link to="/kennisbank/$slug" params={{ slug: 'vertrouwen-wekken-zakelijke-website' }}>vertrouwen wekken op je zakelijke website</Link>.
@@ -632,7 +632,7 @@ function ConversieWebsite() {
                 <Icon name="plus" />
               </span>
               <h4>En meer</h4>
-              <p>Werk je met iets specifieks? We kijken wat mogelijk is.</p>
+              <p>Werk je met iets specifieks? MegaOnline kijkt wat mogelijk is.</p>
             </Reveal>
           </div>
           {' '}
@@ -661,19 +661,19 @@ function ConversieWebsite() {
           <div className="media">
             <Reveal as="div" className="mediagal reveal">
               <div className="mslot">
-                <Media id="cw-media-1" fit="cover" placeholder="[ WEBSITE ]" alt="Voorbeeld van een website die wij bouwden" />
+                <Media id="cw-media-1" fit="cover" placeholder="[ WEBSITE ]" alt="Voorbeeld van een website die MegaOnline bouwde" />
               </div>
               {' '}
               <div className="mslot">
-                <Media id="cw-media-2" fit="cover" placeholder="[ WEBSITE ]" alt="Voorbeeld van een website die wij bouwden" />
+                <Media id="cw-media-2" fit="cover" placeholder="[ WEBSITE ]" alt="Voorbeeld van een website die MegaOnline bouwde" />
               </div>
               {' '}
               <div className="mslot">
-                <Media id="cw-media-3" fit="cover" placeholder="[ WEBSITE ]" alt="Voorbeeld van een website die wij bouwden" />
+                <Media id="cw-media-3" fit="cover" placeholder="[ WEBSITE ]" alt="Voorbeeld van een website die MegaOnline bouwde" />
               </div>
               {' '}
               <div className="mslot">
-                <Media id="cw-media-4" fit="cover" placeholder="[ WEBSITE ]" alt="Voorbeeld van een website die wij bouwden" />
+                <Media id="cw-media-4" fit="cover" placeholder="[ WEBSITE ]" alt="Voorbeeld van een website die MegaOnline bouwde" />
               </div>
             </Reveal>
             {' '}
@@ -700,7 +700,7 @@ function ConversieWebsite() {
                 </div>
                 {' '}
                 <div>
-                  <div className="ttl">Daarom helpen wij met</div>
+                  <div className="ttl">Daarom helpt MegaOnline met</div>
                   {' '}
                   <ul className="minilist minilist--do">
                     <li>Fotografie op locatie</li>
@@ -731,20 +731,18 @@ function ConversieWebsite() {
             <span className="label">Optionele uitbreiding</span>
             {' '}
             <h2 className="h2">
-              Geen sterke huisstijl? Daar kunnen we bij
-              {' '}
-              <em>helpen.</em>
+              Geen sterke huisstijl? Daar kan MegaOnline bij <em>helpen.</em>
             </h2>
           </Reveal>
           {' '}
           <div className="brand">
             <Reveal as="div" className="brand__txt reveal">
               <h3>
-                Heb je al een sterke huisstijl? Dan bouwen we daarop verder.
+                Heb je al een sterke huisstijl? Dan bouwt MegaOnline daarop verder.
               </h3>
               {' '}
               <p>
-                Heb je die nog niet? Dan kunnen we samen met gespecialiseerde ontwerpers helpen om een professionele basis neer te zetten. Eentje die niet alleen op je website werkt, maar ook op je andere uitingen.
+                Heb je die nog niet? Dan kan MegaOnline samen met gespecialiseerde ontwerpers helpen om een professionele basis neer te zetten. Eentje die niet alleen op je website werkt, maar ook op je andere uitingen.
               </p>
               {' '}
               <p>
@@ -766,7 +764,7 @@ function ConversieWebsite() {
               </ul>
               {' '}
               <p className="brand__tag">
-                Let op: wij zijn geen brandingbureau. We bieden dit aan omdat een sterke huisstijl bijna altijd tot een betere website leidt.
+                Let op: MegaOnline is geen brandingbureau. MegaOnline biedt dit aan omdat een sterke huisstijl bijna altijd tot een betere website leidt.
               </p>
             </Reveal>
             {' '}
@@ -848,7 +846,7 @@ function ConversieWebsite() {
             </h2>
             {' '}
             <p className="lead">
-              Een website is geen eindpunt, maar een startpunt. De meeste klanten beginnen met een nieuwe website. Daarna blijven we helpen met analyses, verbeteringen en doorontwikkeling.
+              Een website is geen eindpunt, maar een startpunt. De meeste klanten beginnen met een nieuwe website. Daarna blijft MegaOnline helpen met analyses, verbeteringen en doorontwikkeling.
             </p>
           </Reveal>
           {' '}
@@ -903,7 +901,7 @@ function ConversieWebsite() {
               <span className="svcname rm__name">Groei Partnership</span>
               {' '}
               <p>
-                Na livegang begint het echte werk. Elke maand publiceren we een nieuwe pagina die je beter vindbaar maakt, in Google en in AI-zoekmachines. Hier zit de meeste waarde voor jouw bedrijf.
+                Na livegang begint het echte werk. Elke maand publiceert MegaOnline een nieuwe pagina die je beter vindbaar maakt, in Google en in AI-zoekmachines. Hier zit de meeste waarde voor jouw bedrijf.
               </p>
               {' '}
               <div className="svc__when">Ideaal wanneer</div>
@@ -934,7 +932,7 @@ function ConversieWebsite() {
             <div className="maint__txt">
               <b>Alleen onderhoud en support nodig?</b>
               {' '}
-              Dat kan ook. We houden je website veilig en up-to-date, zonder actieve optimalisatie. Een lichtere optie dan het Groei Partnership.
+              Dat kan ook. MegaOnline houdt je website veilig en up-to-date, zonder actieve optimalisatie. Een lichtere optie dan het Groei Partnership.
             </div>
             {' '}
             <div className="maint__price">Onderhoud & Support · vanaf € 50 / mnd</div>
@@ -947,7 +945,7 @@ function ConversieWebsite() {
         <div className="wrap">
           <Reveal as="div" className="shead shead--split reveal">
             <div className="shead">
-              <span className="label">Ons werk</span>
+              <span className="label">Werk van MegaOnline</span>
               {' '}
               <h2 className="h2">
                 Echte uitdagingen.
@@ -991,7 +989,7 @@ function ConversieWebsite() {
                   </div>
                   {' '}
                   <div className="case__step">
-                    <span className="k">Wat we deden</span>
+                    <span className="k">Wat MegaOnline deed</span>
                     <p>
                       We brachten de propositie terug naar een duidelijke boodschap en bouwden een structuur die bezoekers sneller naar de juiste informatie leidt.
                     </p>
@@ -1032,7 +1030,7 @@ function ConversieWebsite() {
                   </div>
                   {' '}
                   <div className="case__step">
-                    <span className="k">Wat we deden</span>
+                    <span className="k">Wat MegaOnline deed</span>
                     <p>
                       We ontwikkelden een visuele website met een duidelijke boekingsroute en focus op beleving.
                     </p>
@@ -1076,10 +1074,10 @@ function ConversieWebsite() {
           <Reveal as="div" className="shead reveal">
             <span className="label">Voor wie</span>
             {' '}
-            <h2 className="h2">Voor wie we deze websites bouwen.</h2>
+            <h2 className="h2">Voor wie MegaOnline deze websites bouwt.</h2>
             {' '}
             <p className="lead">
-              Een conversiegerichte website levert het meeste op bij bedrijven die leven van aanvragen en boekingen. Dit zijn de branches waarvoor we het vaakst bouwen.
+              Een conversiegerichte website levert het meeste op bij bedrijven die leven van aanvragen en boekingen. Dit zijn de branches waarvoor MegaOnline het vaakst bouwt.
             </p>
           </Reveal>
           {' '}

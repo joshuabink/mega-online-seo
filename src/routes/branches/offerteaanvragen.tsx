@@ -49,7 +49,7 @@ function Offerteaanvragen() {
               </Reveal>
               {' '}
               <Reveal as="p" className="lead svc-hero__sub reveal" data-d="2">
-                Installateur, aannemer of B2B-specialist: je leeft van offerteaanvragen, maar niet elke aanvraag is er één om blij van te worden. Wij bouwen een website die de juiste leads aantrekt en meteen de informatie uitvraagt die je nodig hebt.
+                Installateur, aannemer of B2B-specialist: je leeft van offerteaanvragen, maar niet elke aanvraag is er één om blij van te worden. MegaOnline bouwt een website die de juiste leads aantrekt en meteen de informatie uitvraagt die je nodig hebt.
               </Reveal>
               {' '}
               <Reveal as="div" className="svc-hero__ctas reveal" data-d="2">
@@ -70,7 +70,7 @@ function Offerteaanvragen() {
       <section className="section section--tight" data-theme="paper" data-screen-label="We kennen jouw markt">
         <div className="wrap">
           <Reveal as="div" className="shead reveal">
-            <span className="label">We kennen jouw markt</span>
+            <span className="label">MegaOnline kent jouw markt</span>
             {' '}
             <h2 className="h2">
               Niet méér aanvragen, maar de
@@ -81,7 +81,7 @@ function Offerteaanvragen() {
             </h2>
             {' '}
             <p className="lead">
-              We werken voor bedrijven die op offertebasis verkopen. Die markt heeft een terugkerend probleem, en daar lossen we de website omheen op.
+              MegaOnline werkt voor bedrijven die op offertebasis verkopen. Die markt heeft een terugkerend probleem. MegaOnline bouwt de website daaromheen.
             </p>
           </Reveal>
           {' '}
@@ -136,14 +136,10 @@ function Offerteaanvragen() {
       <section className="section" data-theme="light" data-screen-label="Onze oplossing">
         <div className="wrap">
           <Reveal as="div" className="shead reveal">
-            <span className="label">Onze oplossing</span>
+            <span className="label">De oplossing</span>
             {' '}
             <h2 className="h2">
-              We laten je website het
-              {' '}
-              <em>voorwerk</em>
-              {' '}
-              doen.
+              MegaOnline laat je website het <em>voorwerk</em> doen.
             </h2>
             {' '}
             <p className="lead">
@@ -248,7 +244,7 @@ function Offerteaanvragen() {
             </h2>
             {' '}
             <p className="lead">
-              Gericht op kwalitatieve leads en minder tijd aan aanvragen die toch niks worden. Een formulier dat kwalificeert hoort bij een <Link to="/diensten/conversie-website">conversiegerichte website</Link> die de bezoeker eerst overtuigt. Staat je site er al, dan kijken we met <Link to="/diensten/website-optimalisatie">website optimalisatie</Link> waar de aanvragen nu weglopen. Lees <Link to="/kennisbank/$slug" params={{ slug: 'website-levert-geen-aanvragen-op' }}>waar offerteaanvragen weglekken</Link>.
+              Gericht op kwalitatieve leads en minder tijd aan aanvragen die toch niks worden. Een formulier dat kwalificeert hoort bij een <Link to="/diensten/conversie-website">conversiegerichte website</Link> die de bezoeker eerst overtuigt. Staat je site er al, dan kijkt MegaOnline met <Link to="/diensten/website-optimalisatie">website optimalisatie</Link> waar de aanvragen nu weglopen. Lees <Link to="/kennisbank/$slug" params={{ slug: 'website-levert-geen-aanvragen-op' }}>waar offerteaanvragen weglekken</Link>.
             </p>
           </Reveal>
           {' '}
@@ -318,7 +314,7 @@ function Offerteaanvragen() {
             </Qa>
             {' '}
             <Qa question="Kan ik aanvragen buiten mijn werkgebied eruit filteren?" className="reveal">
-                Ja. We kunnen het formulier zo inrichten dat het op postcode, regio of type klus voorsorteert, zodat je vooral relevante aanvragen ontvangt.
+                Ja. MegaOnline kan het formulier zo inrichten dat het op postcode, regio of type klus voorsorteert, zodat je vooral relevante aanvragen ontvangt.
             </Qa>
             {' '}
             <Qa question="Helpt dit om uit een prijzenvergelijking te blijven?" className="reveal">
@@ -326,7 +322,7 @@ function Offerteaanvragen() {
             </Qa>
             {' '}
             <Qa question="Wat kost zo'n website?" className="reveal">
-                Dat hangt af van de complexiteit van je aanvraagproces en koppelingen. Met een gratis websiteconcept brengen we het vrijblijvend in kaart.
+                Dat hangt af van de complexiteit van je aanvraagproces en koppelingen. Met een gratis websiteconcept brengt MegaOnline het vrijblijvend in kaart.
             </Qa>
           </div>
         </div>
@@ -340,7 +336,7 @@ function Offerteaanvragen() {
             <h2 className="display">Minder offertes schrijven, meer opdrachten binnenhalen.</h2>
             {' '}
             <p className="lead">
-              Vraag een gratis websiteconcept aan. We laten zien hoe je website betere leads kan binnenhalen.
+              Vraag een gratis websiteconcept aan. Je ziet hoe je website betere leads kan binnenhalen.
             </p>
             {' '}
             <Reveal as="div" className="svc-hero__ctas reveal" data-d="1" style={{ justifyContent: "center", marginTop: "28px" }}>
