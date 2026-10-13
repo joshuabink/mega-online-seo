@@ -262,7 +262,8 @@ function Activiteitenbedrijven() {
               </span>
               <h4>Online reserveringssysteem</h4>
               <p>
-                Direct een tijdslot boeken, gekoppeld aan je beschikbaarheid.
+                Direct een tijdslot boeken, gekoppeld aan je beschikbaarheid. Zo werkt een{' '}
+                <Link to="/branches/reserveringen">website met online reserveringssysteem</Link>.
               </p>
             </Reveal>
             {' '}
