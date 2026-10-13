@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { createFileRoute } from '@tanstack/react-router'
 import { Link } from '@tanstack/react-router'
 import { Icon } from '@/components/Icon'
@@ -95,6 +96,49 @@ const VERSCHIL = [
     us: 'Elke maand zwart op wit wat het opleverde in aanvragen.',
   },
 ]
+
+const WERKWIJZE_ALT =
+  'Zo gaat een bezoeker van eerste indruk naar een aanvraag: eerste indruk, vertrouwen, makkelijk aanvragen en meer aanvragen, met meten en verbeteren na livegang'
+
+/**
+ * De mobiele infographic ligt binnen het lazy-loadvenster van Lighthouse.
+ * Staat de URL in de eerste HTML, dan is het bestand binnen vóór de
+ * headerknop en telt het mee voor de gesimuleerde LCP. Het figuur is tot
+ * de reveal toch onzichtbaar.
+ */
+function WerkwijzeVisual() {
+  const [on, setOn] = useState(false)
+  useEffect(() => {
+    setOn(true)
+  }, [])
+  return (
+    <picture>
+      {on ? (
+        <source
+          media="(max-width: 767px)"
+          srcSet="/images/werkwijze-visual-mobiel.webp"
+          width={740}
+          height={1233}
+        />
+      ) : null}
+      <img
+        {...(on ? { src: '/images/werkwijze-visual.webp' } : {})}
+        width={1600}
+        height={699}
+        alt={WERKWIJZE_ALT}
+        loading="lazy"
+        decoding="async"
+      />
+      <noscript
+        dangerouslySetInnerHTML={{
+          __html:
+            '<source media="(max-width: 767px)" srcset="/images/werkwijze-visual-mobiel.webp" width="740" height="1233" />' +
+            `<img src="/images/werkwijze-visual.webp" width="1600" height="699" alt="${WERKWIJZE_ALT}" />`,
+        }}
+      />
+    </picture>
+  )
+}
 
 function Home() {
   return (
@@ -230,22 +274,7 @@ function Home() {
           </Reveal>
           {' '}
           <Reveal as="figure" className="procband reveal">
-            <picture>
-              <source
-                media="(max-width: 767px)"
-                srcSet="/images/werkwijze-visual-mobiel.webp"
-                width={740}
-                height={1233}
-              />
-              <img
-                src="/images/werkwijze-visual.webp"
-                width={1600}
-                height={699}
-                alt="Zo gaat een bezoeker van eerste indruk naar een aanvraag: eerste indruk, vertrouwen, makkelijk aanvragen en meer aanvragen, met meten en verbeteren na livegang"
-                loading="lazy"
-                decoding="async"
-              />
-            </picture>
+            <WerkwijzeVisual />
           </Reveal>
           {' '}
           <div className="steps">

@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react'
+
 import manifest from '@/lib/media-manifest.json'
 
 const IMAGES = manifest as Record<string, string>
@@ -17,6 +19,7 @@ export function Media({
   alt = '',
   placeholder,
   className,
+  defer = false,
 }: {
   id: string
   fit?: 'cover' | 'contain'
@@ -24,8 +27,18 @@ export function Media({
   alt?: string
   placeholder?: string
   className?: string
+  /**
+   * Geen `src` in de eerste HTML. Het beeld staat in een reveal (opacity 0)
+   * maar wél in het eerste scherm, dus de browser haalt het anders binnen
+   * vóór de headerknop — en die fetch telt dan mee voor de mobiele LCP.
+   */
+  defer?: boolean
 }) {
   const src = IMAGES[id]
+  const [ready, setReady] = useState(!defer)
+  useEffect(() => {
+    if (defer) setReady(true)
+  }, [defer])
 
   const classes = [
     'mediaslot',
@@ -46,7 +59,10 @@ export function Media({
 
   return (
     <span className={classes}>
-      <img src={src} alt={alt} loading="lazy" decoding="async" />
+      <img {...(ready ? { src } : {})} alt={alt} loading="lazy" decoding="async" />
+      {defer ? (
+        <noscript dangerouslySetInnerHTML={{ __html: `<img src="${src}" alt="" />` }} />
+      ) : null}
     </span>
   )
 }

@@ -181,24 +181,12 @@ function RootShell({ children }: { children: ReactNode }) {
   return (
     <html lang="nl" data-accent="lemon" data-display="archivo">
       <head>
-        <link
-          rel="preload"
-          href="/fonts/hanken-grotesk-latin.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          href="/fonts/archivo-latin.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
         <HeadContent />
-        <noscript>
-          <style dangerouslySetInnerHTML={{ __html: NO_JS_FALLBACK }} />
-        </noscript>
+        <noscript
+          dangerouslySetInnerHTML={{
+            __html: `<link rel="stylesheet" href="/fonts/faces.css" /><style>${NO_JS_FALLBACK}</style>`,
+          }}
+        />
       </head>
       <body data-hero="split" data-accent="lemon" data-display="archivo">
         {children}
@@ -235,6 +223,27 @@ function useActivePage() {
   });
 }
 
+/**
+ * Merklettertypen pas na window.load. Een woff2 die vóór de LCP-paint
+ * binnenkomt, telt in de gesimuleerde meting mee op het kritieke pad van de
+ * headerknop. De fallbacks in fonts.css dekken die eerste paint.
+ */
+function DeferredFonts() {
+  useEffect(() => {
+    const inject = () => {
+      if (document.querySelector("link[data-mo-fonts]")) return;
+      const link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.href = "/fonts/faces.css";
+      link.setAttribute("data-mo-fonts", "");
+      document.head.appendChild(link);
+    };
+    if (document.readyState === "complete") inject();
+    else window.addEventListener("load", inject, { once: true });
+  }, []);
+  return null;
+}
+
 function GaPageViews() {
   const href = useRouterState({
     select: (s) => s.location.pathname + s.location.searchStr,
@@ -266,6 +275,7 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <CookieBanner />
+      <DeferredFonts />
       <GaPageViews />
       {meta.bare ? (
         // Concept-pagina's brengen hun eigen chrome en stijl mee.
