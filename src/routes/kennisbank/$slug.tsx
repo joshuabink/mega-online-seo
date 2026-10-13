@@ -60,22 +60,71 @@ function datumNl(iso: string): string {
 }
 
 /**
- * Rendert [ankertekst](/pad) uit de artikelteksten als een echte interne link.
- * Zo kunnen links in de lopende tekst staan in plaats van alleen in een blok
- * eronder, wat voor de lezer en voor Google het meeste waard is. Alleen interne
- * paden worden herkend, dus een artikel kan er geen externe link mee smokkelen.
+ * Rendert opmaak uit de artikelteksten: interne links, https-bronvermeldingen
+ * en vetgedrukte labels. Interne links blijven een router-link. Een https-link
+ * is alleen een bronverwijzing, zoals Google Search Central of web.dev.
+ * Andere protocollen worden niet herkend.
  */
+const RIJKE_TEKST = /(\[[^\]]+\]\((?:\/[^)\s]*|https:\/\/[^)\s]+)\)|\*\*[^*]+\*\*)/g;
+
 function RichTekst({ tekst }: { tekst: string }) {
-  const delen = tekst.split(/(\[[^\]]+\]\(\/[^)]*\))/g);
+  const delen = tekst.split(RIJKE_TEKST);
   return (
     <>
       {delen.map((deel, i) => {
-        const link = deel.match(/^\[([^\]]+)\]\((\/[^)]*)\)$/);
-        if (!link) return deel;
+        const link = deel.match(/^\[([^\]]+)\]\((\/[^)\s]*|https:\/\/[^)\s]+)\)$/);
+        if (link) {
+          const href = link[2];
+          if (href.startsWith("/")) {
+            return (
+              <Link to={href} key={`${href}-${i}`}>
+                {link[1]}
+              </Link>
+            );
+          }
+          return (
+            <a href={href} key={`${href}-${i}`} target="_blank" rel="noreferrer">
+              {link[1]}
+            </a>
+          );
+        }
+        const vet = deel.match(/^\*\*([^*]+)\*\*$/);
+        if (vet) return <strong key={`vet-${i}`}>{vet[1]}</strong>;
+        return deel;
+      })}
+    </>
+  );
+}
+
+/** Alinea's, met een genummerde lijst waar de bron die ook heeft. */
+function RichBlokken({ tekst }: { tekst: string }) {
+  const blokken = tekst.split(/\n\n+/).filter((blok) => blok.trim().length > 0);
+  return (
+    <>
+      {blokken.map((blok) => {
+        const regels = blok
+          .split("\n")
+          .map((regel) => regel.trim())
+          .filter(Boolean);
+        const lijst = regels.length > 1 && regels.every((regel) => /^\d+\.\s+/.test(regel));
+        if (lijst) {
+          return (
+            <ol key={regels[0].slice(0, 32)}>
+              {regels.map((regel) => {
+                const item = regel.replace(/^\d+\.\s+/, "");
+                return (
+                  <li key={item.slice(0, 48)}>
+                    <RichTekst tekst={item} />
+                  </li>
+                );
+              })}
+            </ol>
+          );
+        }
         return (
-          <Link to={link[2]} key={`${link[2]}-${i}`}>
-            {link[1]}
-          </Link>
+          <p key={blok.slice(0, 48)}>
+            <RichTekst tekst={blok.replace(/\n/g, " ")} />
+          </p>
         );
       })}
     </>
@@ -102,6 +151,7 @@ function ArtikelPagina() {
 
   const faq = a.faq ?? [];
   const anderen = artikelenNieuwsteEerst().filter((x) => x.slug !== a.slug);
+  const leadAlineas = a.antwoord.split(/\n\n+/);
 
   return (
     <main id="top" data-page="artikel">
@@ -127,9 +177,19 @@ function ArtikelPagina() {
               <Reveal as="h1" className="display reveal" data-d="1">
                 {a.vraag}
               </Reveal>{" "}
-              <Reveal as="p" className="lead svc-hero__sub reveal" data-d="2">
-                {a.antwoord}
-              </Reveal>{" "}
+              {leadAlineas.length === 1 ? (
+                <Reveal as="p" className="lead svc-hero__sub reveal" data-d="2">
+                  <RichTekst tekst={leadAlineas[0]} />
+                </Reveal>
+              ) : (
+                <Reveal as="div" className="svc-hero__sub reveal" data-d="2">
+                  {leadAlineas.map((alinea) => (
+                    <p className="lead" key={alinea.slice(0, 48)}>
+                      <RichTekst tekst={alinea} />
+                    </p>
+                  ))}
+                </Reveal>
+              )}{" "}
               <Reveal as="p" className="art__meta reveal" data-d="2">
                 {a.leestijd} lezen · Bijgewerkt op {datumNl(a.gewijzigd)}
               </Reveal>
@@ -151,20 +211,32 @@ function ArtikelPagina() {
               </h2>
             </Reveal>{" "}
             <div className="art__body">
-              {s.alineas.map((p) => (
-                <Reveal as="p" className="reveal" key={p.slice(0, 40)}>
-                  <RichTekst tekst={p} />
-                </Reveal>
-              ))}
+              {s.alineas.map((p) =>
+                p.includes("\n") ? (
+                  <Reveal as="div" className="reveal art__blok" key={p.slice(0, 40)}>
+                    <RichBlokken tekst={p} />
+                  </Reveal>
+                ) : (
+                  <Reveal as="p" className="reveal" key={p.slice(0, 40)}>
+                    <RichTekst tekst={p} />
+                  </Reveal>
+                ),
+              )}
             </div>
             {s.punten ? (
               <div className="featgrid art__punten">
                 {s.punten.map((p, j) => (
                   <Reveal as="div" className="feat reveal" data-d={String(j % 3)} key={p.titel}>
                     <h4>{p.titel}</h4>
-                    <p>
-                      <RichTekst tekst={p.tekst} />
-                    </p>
+                    {p.tekst.includes("\n") ? (
+                      <div className="art__punt">
+                        <RichBlokken tekst={p.tekst} />
+                      </div>
+                    ) : (
+                      <p>
+                        <RichTekst tekst={p.tekst} />
+                      </p>
+                    )}
                   </Reveal>
                 ))}
               </div>
