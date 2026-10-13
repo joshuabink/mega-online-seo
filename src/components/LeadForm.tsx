@@ -1,6 +1,13 @@
 import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 'react'
 import { sendLead, type LeadResult } from '@/lib/lead'
-import { track, trackGenerateLead, trackSollicitatieVerzonden } from '@/lib/analytics'
+import {
+  GENERATE_LEAD_BIJ_BROWSER_FALLBACK,
+  track,
+  trackGenerateLead,
+  trackLeadBrowserFallback,
+  trackLeadFallbackGetoond,
+  trackSollicitatieVerzonden,
+} from '@/lib/analytics'
 import { LEAD_CONTACT } from '@/lib/lead-contact'
 import { useReveal } from './Reveal'
 
@@ -49,6 +56,67 @@ function LeadSendNotice({ failure }: { failure: LeadFailure | null }) {
 function failureFrom(result: LeadResult): LeadFailure | null {
   if (result.ok) return null
   return { error: result.error, mailto: result.mailto }
+}
+
+const BEDANK_HASH = '#aanvraag-verstuurd'
+
+/**
+ * Alleen het adres wijzigen. history.replaceState op het venster is door de
+ * router gepatcht en telt als navigatie, met een scroll naar de hash.
+ * Het prototype laat de bedankstaat staan waar hij is.
+ */
+function zetBedankAnker() {
+  if (typeof history === 'undefined' || typeof location === 'undefined') return
+  if (location.hash === BEDANK_HASH) return
+  const next = `${location.pathname}${location.search}${BEDANK_HASH}`
+  const x = window.scrollX
+  const y = window.scrollY
+  History.prototype.replaceState.call(history, history.state, '', next)
+  if (window.scrollX !== x || window.scrollY !== y) window.scrollTo(x, y)
+}
+
+function bedankInBeeld(root: HTMLElement | null) {
+  const ok = root?.querySelector<HTMLElement>('.form__ok')
+  if (!ok) return
+  const r = ok.getBoundingClientRect()
+  const zichtbaar = r.height > 0 && r.bottom > 0 && r.top < window.innerHeight
+  if (zichtbaar) return
+  // scroll-behavior op html is smooth. Zonder deze override animeert de sprong
+  // en staat de bedankstaat even buiten beeld.
+  const doc = document.documentElement
+  const previous = doc.style.scrollBehavior
+  doc.style.scrollBehavior = 'auto'
+  ok.scrollIntoView({ block: 'center', behavior: 'auto' })
+  doc.style.scrollBehavior = previous
+}
+
+function useBedankAnker(status: 'idle' | 'sending' | 'sent', rootRef: React.RefObject<HTMLElement | null>) {
+  useLayoutEffect(() => {
+    if (status !== 'sent') return
+    const x = window.scrollX
+    const y = window.scrollY
+    zetBedankAnker()
+    if (window.scrollX !== x || window.scrollY !== y) window.scrollTo(x, y)
+    bedankInBeeld(rootRef.current)
+  }, [status, rootRef])
+}
+
+function verwerkMeting(result: LeadResult, formName: string, soort: 'lead' | 'sollicitatie') {
+  const naam = soort === 'sollicitatie' ? 'sollicitatie' : formName
+  if (!result.ok) {
+    if (result.mailto) trackLeadFallbackGetoond(naam)
+    return
+  }
+  if (result.via === 'server') {
+    if (soort === 'sollicitatie') trackSollicitatieVerzonden()
+    else trackGenerateLead(formName)
+    return
+  }
+  if (result.route !== 'FormSubmit') return
+  trackLeadBrowserFallback(naam)
+  if (soort === 'lead' && GENERATE_LEAD_BIJ_BROWSER_FALLBACK) {
+    trackGenerateLead(formName, { route: 'fallback' })
+  }
 }
 
 type OkProps = { ok?: ReactNode }
@@ -151,6 +219,7 @@ export function SteppedLeadForm({
   const reveal = useReveal(className)
   const [step, setStep] = useState(0)
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent'>('idle')
+  useBedankAnker(status, reveal.ref)
   const [failure, setFailure] = useState<LeadFailure | null>(null)
   const vorigeStap = useRef<number | null>(null)
   const busy = useRef(false)
@@ -333,11 +402,12 @@ export function SteppedLeadForm({
     let verstuurd = false
     try {
       const result = await sendLead(formRef.current, { subject })
+      verwerkMeting(result, formName, 'lead')
       if (result.ok) {
         verstuurd = true
+        zetBedankAnker()
         setStatus('sent')
         track('form_submit_success', base())
-        if (result.via === 'server') trackGenerateLead(formName)
       } else {
         setFailure(failureFrom(result))
         track('form_submit_fail', { ...base(), reason: result.mailto ? 'mailto_fallback' : 'error' })
@@ -419,6 +489,7 @@ export function SingleLeadForm({
   const formRef = useRef<HTMLFormElement>(null)
   const reveal = useReveal(className)
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent'>('idle')
+  useBedankAnker(status, reveal.ref)
   const [failure, setFailure] = useState<LeadFailure | null>(null)
   const busy = useRef(false)
   const base = useFormTracking(formRef, subject, 0, 1)
@@ -447,14 +518,13 @@ export function SingleLeadForm({
     let verstuurd = false
     try {
       const result = await sendLead(form, { subject })
+      if (gaEvent === 'sollicitatie_verzonden') verwerkMeting(result, 'sollicitatie', 'sollicitatie')
+      else if (formName) verwerkMeting(result, formName, 'lead')
       if (result.ok) {
         verstuurd = true
+        zetBedankAnker()
         setStatus('sent')
         track('form_submit_success', base())
-        if (result.via === 'server') {
-          if (gaEvent === 'sollicitatie_verzonden') trackSollicitatieVerzonden()
-          else if (formName) trackGenerateLead(formName)
-        }
       } else {
         setFailure(failureFrom(result))
         track('form_submit_fail', { ...base(), reason: result.mailto ? 'mailto_fallback' : 'error' })

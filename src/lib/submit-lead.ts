@@ -114,6 +114,41 @@ function paginaPad(value: string | null): string {
   }
 }
 
+function formulierUitSubject(subject: string | null): 'concept' | 'contact' | 'sollicitatie' {
+  const s = (subject ?? '').toLowerCase()
+  if (s.includes('sollicitatie')) return 'sollicitatie'
+  if (s.includes('websiteconcept')) return 'concept'
+  return 'contact'
+}
+
+/** Alleen een korte code. Vrije tekst of een adres hoort hier niet in. */
+function korteReden(reden: string): string {
+  const code = reden.trim()
+  if (!code) return ''
+  return /^[a-z0-9-]{1,80}$/.test(code) ? code : 'onbekend'
+}
+
+/**
+ * Eén regel per serverinzending, geslaagd of mislukt. Geen naam, e-mail,
+ * telefoon of vrije tekst: alleen pad, formuliertype en de mailroute.
+ */
+function schrijfLeadLog(
+  params: URLSearchParams,
+  route: 'Resend' | 'FormSubmit',
+  gelukt: boolean,
+  reden: string,
+) {
+  const regel = {
+    datum: new Date().toISOString(),
+    pagina: paginaPad(params.get('_pagina')),
+    formulier: formulierUitSubject(params.get('_subject')),
+    route,
+    gelukt,
+    reden: korteReden(reden),
+  }
+  console.info(`[lead-log] ${JSON.stringify(regel)}`)
+}
+
 type MailResult = { ok: true } | { ok: false; reason: string; retry: 'client' | 'none' }
 
 function httpWeigering(status: number, body: string): { reason: string; retry: 'client' | 'none' } {
@@ -298,11 +333,25 @@ export const submitLead = createServerFn({ method: 'POST' })
     // Zelfde trim en maximum als de browser-retry. De spamval valt eruit.
     const params = schoneVelden(incoming)
 
+    // Via globalThis, zodat dit bestand geen @types/node nodig heeft — de
+    // Lovable-repo heeft die niet in zijn tsconfig staan.
+    const env = (globalThis as { process?: { env?: Record<string, string | undefined> } })
+      .process?.env
+    const mailRoute: 'Resend' | 'FormSubmit' = env?.MO_RESEND_API_KEY ? 'Resend' : 'FormSubmit'
+    const afronden = (gelukt: boolean, reden: string, response: LeadResponse): LeadResponse => {
+      schrijfLeadLog(params, mailRoute, gelukt, reden)
+      return response
+    }
+
     // Minimale inhoudscheck: zonder contactgegevens is het geen lead.
     const phone = params.get('telefoon') ?? params.get('tel')
     if (!params.get('email') && !phone) {
       log(`afgekeurd: geen e-mail of telefoon (pagina: ${paginaPad(params.get('_pagina'))})`)
-      return { ok: false, error: 'Vul een e-mailadres of telefoonnummer in.', retry: 'none' }
+      return afronden(false, 'geen-contact', {
+        ok: false,
+        error: 'Vul een e-mailadres of telefoonnummer in.',
+        retry: 'none',
+      })
     }
 
     log(
@@ -310,10 +359,6 @@ export const submitLead = createServerFn({ method: 'POST' })
         `(pagina: ${paginaPad(params.get('_pagina'))}, velden: ${[...params.keys()].join(', ')})`,
     )
 
-    // Via globalThis, zodat dit bestand geen @types/node nodig heeft — de
-    // Lovable-repo heeft die niet in zijn tsconfig staan.
-    const env = (globalThis as { process?: { env?: Record<string, string | undefined> } })
-      .process?.env
     const mailEndpoint = env?.MO_LEAD_MAIL_ENDPOINT ?? DEFAULT_MAIL_ENDPOINT
 
     // E-mailvariant: zelfde velden, plus FormSubmit-opties voor een leesbare
@@ -369,7 +414,6 @@ export const submitLead = createServerFn({ method: 'POST' })
     // Resend zodra de sleutel er is; anders blijft FormSubmit de mailroute.
     // Er is geen tweede bestemming. De bezoeker wacht alleen op deze mail.
     const resendKey = env?.MO_RESEND_API_KEY
-    const mailRoute = resendKey ? 'Resend' : 'FormSubmit'
     const mailOk = resendKey
       ? await mailViaResend(resendKey, params, env)
       : await post(mailEndpoint, mailParams.toString(), 'e-mail (FormSubmit)', {
@@ -382,14 +426,14 @@ export const submitLead = createServerFn({ method: 'POST' })
       // mail in de Lovable-logs op één regel te vinden is.
       console.error(`[lead-failed] id=${leadId} route=${mailRoute} reason=${mailOk.reason}`)
       logError(`mail (${mailRoute}) ✗`)
-      return {
+      return afronden(false, mailOk.reason, {
         ok: false,
         error: `Je aanvraag is niet automatisch verstuurd. Mail direct naar ${LEAD_CONTACT.mail}.`,
         retry: mailOk.retry,
-      }
+      })
     }
 
     log(`mail (${mailRoute}) verstuurd ✓`)
-    return { ok: true }
+    return afronden(true, '', { ok: true })
 
   })
