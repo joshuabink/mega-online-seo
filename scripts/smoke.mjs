@@ -358,7 +358,7 @@ const ZOEKTAAL_PAGINAS = [
   },
   {
     path: '/branches/reserveringen',
-    title: 'Website met reserveringen laten maken | MegaOnline',
+    title: 'Website met reserveringssysteem laten maken | MegaOnline',
     h1: 'Website laten maken met online reserveren',
   },
   {

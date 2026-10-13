@@ -10,7 +10,7 @@ import { CTA_CONCEPT } from "@/lib/cta"
 export const Route = createFileRoute("/branches/reserveringen")({
   head: () => ({
     meta: [
-      { title: "Website met reserveringen laten maken | MegaOnline" },
+      { title: "Website met reserveringssysteem laten maken | MegaOnline" },
       {
         name: "description",
         content:
@@ -18,7 +18,7 @@ export const Route = createFileRoute("/branches/reserveringen")({
       },
       {
         property: "og:title",
-        content: "Website met reserveringen laten maken | MegaOnline",
+        content: "Website met reserveringssysteem laten maken | MegaOnline",
       },
       {
         property: "og:description",
