@@ -69,6 +69,126 @@ function collectGaUrls(pg) {
   return urls
 }
 
+/**
+ * TK-203: title en precies één H1 in de server-HTML van de negen
+ * dienst- en branchepagina's. Witruimte in de H1 telt niet mee.
+ */
+const ZOEKTAAL_PAGINAS = [
+  {
+    path: '/diensten/conversie-website',
+    title: 'Website laten maken gericht op aanvragen | MegaOnline',
+    h1: 'Website laten maken gericht op aanvragen en boekingen',
+  },
+  {
+    path: '/diensten/starter-website',
+    title: 'Website laten maken voor starters | MegaOnline',
+    h1: 'Website laten maken als je net begint',
+  },
+  {
+    path: '/diensten/website-redesign',
+    title: 'Website laten vernieuwen | MegaOnline',
+    h1: 'Website vernieuwen als je bedrijf is gegroeid',
+  },
+  {
+    path: '/diensten/website-optimalisatie',
+    title: 'Bestaande website laten optimaliseren | MegaOnline',
+    h1: 'Bestaande website laten optimaliseren',
+  },
+  {
+    path: '/branches/verhuurbedrijven',
+    title: 'Website laten maken voor verhuurbedrijf | MegaOnline',
+    h1: 'Website laten maken voor je verhuurbedrijf',
+  },
+  {
+    path: '/branches/dienstverleners',
+    title: 'Website laten maken voor dienstverleners | MegaOnline',
+    h1: 'Website laten maken voor dienstverleners',
+  },
+  {
+    path: '/branches/activiteitenbedrijven',
+    title: 'Website laten maken voor activiteitenbedrijven | MegaOnline',
+    h1: 'Website laten maken voor activiteitenbedrijven',
+  },
+  {
+    path: '/branches/reserveringen',
+    title: 'Website met reserveringen laten maken | MegaOnline',
+    h1: 'Website laten maken met online reserveren',
+  },
+  {
+    path: '/branches/offerteaanvragen',
+    title: 'Website laten maken voor offerteaanvragen | MegaOnline',
+    h1: 'Website voor bedrijven die werken met offerteaanvragen',
+  },
+]
+
+function decodeHtml(value) {
+  return value
+    .replaceAll('&amp;', '&')
+    .replaceAll('&lt;', '<')
+    .replaceAll('&gt;', '>')
+    .replaceAll('&quot;', '"')
+    .replaceAll('&#39;', "'")
+    .replaceAll('&apos;', "'")
+    .replaceAll('&nbsp;', ' ')
+}
+
+function zichtbareTekst(html) {
+  return decodeHtml(html.replace(/<!--[\s\S]*?-->/g, ' ').replace(/<[^>]+>/g, ' '))
+    .replace(/\s+/g, ' ')
+    .trim()
+}
+
+function metaContent(html, attr, name) {
+  const tags = html.match(/<meta\b[^>]*>/gi) ?? []
+  return tags.flatMap((tag) => {
+    if (!new RegExp(`\\b${attr}=["']${name}["']`, 'i').test(tag)) return []
+    const content = tag.match(/\bcontent=["']([^"']*)["']/i)
+    return content ? [decodeHtml(content[1])] : ['']
+  })
+}
+
+for (const pagina of ZOEKTAAL_PAGINAS) {
+  let status = 0
+  let html = ''
+  try {
+    const response = await fetch(BASE + pagina.path)
+    status = response.status
+    html = await response.text()
+  } catch (error) {
+    check(`${pagina.path} SSR title en H1`, false, String(error))
+    continue
+  }
+  const zonderScripts = html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, '')
+  const titles = [...zonderScripts.matchAll(/<title>([^<]*)<\/title>/gi)].map((match) =>
+    decodeHtml(match[1]).replace(/\s+/g, ' ').trim(),
+  )
+  const h1s = [...zonderScripts.matchAll(/<h1\b[^>]*>([\s\S]*?)<\/h1>/gi)].map((match) =>
+    zichtbareTekst(match[1]),
+  )
+  const ogTitles = metaContent(zonderScripts, 'property', 'og:title')
+  const twitterTitles = metaContent(zonderScripts, 'name', 'twitter:title')
+  const verboden = 'die aanvragen oplevert'
+  const ok =
+    status === 200 &&
+    titles.length === 1 &&
+    titles[0] === pagina.title &&
+    pagina.title.length <= 60 &&
+    !titles[0].includes(verboden) &&
+    h1s.length === 1 &&
+    h1s[0] === pagina.h1 &&
+    !h1s[0].includes(verboden) &&
+    ogTitles.length === 1 &&
+    ogTitles[0] === pagina.title &&
+    twitterTitles.every((title) => title === pagina.title)
+  check(
+    `${pagina.path} SSR title en H1`,
+    ok,
+    ok
+      ? `${pagina.title.length} tekens`
+      : `status=${status} titles=${JSON.stringify(titles)} h1s=${JSON.stringify(h1s)} og=${JSON.stringify(ogTitles)} twitter=${JSON.stringify(twitterTitles)}`,
+  )
+}
+
 // De vooraf geïnstalleerde Chromium gebruiken i.p.v. een download.
 const EXECUTABLE =
   process.env.CHROMIUM_PATH ?? '/opt/pw-browsers/chromium-1194/chrome-linux/chrome'

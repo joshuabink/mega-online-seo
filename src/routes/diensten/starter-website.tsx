@@ -10,9 +10,9 @@ import '@/styles/pages/diensten-starter-website.css'
 export const Route = createFileRoute('/diensten/starter-website')({
   head: () => ({
     meta: [
-      { title: "Starter Website | MegaOnline.io" },
+      { title: "Website laten maken voor starters | MegaOnline" },
       { name: 'description', content: "Een professionele website voor starters. Sneller gebouwd en voordeliger, dankzij beproefde, herbruikbare bouwblokken. Een eerlijke instapoptie vanaf €1.500." },
-      { property: 'og:title', content: "Starter Website | MegaOnline.io" },
+      { property: 'og:title', content: "Website laten maken voor starters | MegaOnline" },
       { property: 'og:description', content: "Een professionele website voor starters. Sneller gebouwd en voordeliger, dankzij beproefde, herbruikbare bouwblokken. Een eerlijke instapoptie vanaf €1.500." },
       { property: 'og:url', content: "https://megaonline.io/diensten/starter-website" },
     ],
@@ -45,11 +45,9 @@ function StarterWebsite() {
               </Reveal>
               {' '}
               <Reveal as="h1" className="display reveal" data-d="1">
-                Net begonnen? Een nette website hoeft
+                Website laten maken als je
                 {' '}
-                <em>niet duur</em>
-                {' '}
-                te zijn.
+                <em>net begint</em>
               </Reveal>
               {' '}
               <Reveal as="p" className="lead svc-hero__sub reveal" data-d="2">

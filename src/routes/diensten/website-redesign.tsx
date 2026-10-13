@@ -9,9 +9,9 @@ import { ConceptForm } from '@/components/ConceptForm'
 export const Route = createFileRoute('/diensten/website-redesign')({
   head: () => ({
     meta: [
-      { title: "Website Redesign | MegaOnline.io" },
+      { title: "Website laten vernieuwen | MegaOnline" },
       { name: 'description', content: "Je bedrijf is gegroeid, je website niet. Wij stemmen je online uitstraling opnieuw af op waar je vandaag staat en waar je naartoe wilt." },
-      { property: 'og:title', content: "Website Redesign | MegaOnline.io" },
+      { property: 'og:title', content: "Website laten vernieuwen | MegaOnline" },
       { property: 'og:description', content: "Je bedrijf is gegroeid, je website niet. Wij stemmen je online uitstraling opnieuw af op waar je vandaag staat en waar je naartoe wilt." },
       { property: 'og:url', content: "https://megaonline.io/diensten/website-redesign" },
     ],
@@ -44,9 +44,9 @@ function WebsiteRedesign() {
               </Reveal>
               {' '}
               <Reveal as="h1" className="display reveal" data-d="1">
-                Je bedrijf is gegroeid. Is je website
+                Website vernieuwen als je bedrijf is
                 {' '}
-                <em>meegegroeid?</em>
+                <em>gegroeid</em>
               </Reveal>
               {' '}
               <Reveal as="p" className="lead svc-hero__sub reveal" data-d="2">

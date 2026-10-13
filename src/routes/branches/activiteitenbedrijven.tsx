@@ -8,9 +8,9 @@ import { MegaSmartBridge } from '@/components/MegaSmartBridge'
 export const Route = createFileRoute('/branches/activiteitenbedrijven')({
   head: () => ({
     meta: [
-      { title: "Websites voor activiteitenbedrijven | MegaOnline.io" },
+      { title: "Website laten maken voor activiteitenbedrijven | MegaOnline" },
       { name: 'description', content: "Een website voor activiteitenbedrijven die ook op rustige dagen vol boekt: online reserveren, arrangementen, groepen en cadeaubonnen die verkopen." },
-      { property: 'og:title', content: "Websites voor activiteitenbedrijven | MegaOnline.io" },
+      { property: 'og:title', content: "Website laten maken voor activiteitenbedrijven | MegaOnline" },
       { property: 'og:description', content: "Een website voor activiteitenbedrijven die ook op rustige dagen vol boekt: online reserveren, arrangementen, groepen en cadeaubonnen die verkopen." },
       { property: 'og:url', content: "https://megaonline.io/branches/activiteitenbedrijven" },
     ],
@@ -43,9 +43,9 @@ function Activiteitenbedrijven() {
               </Reveal>
               {' '}
               <Reveal as="h1" className="display reveal" data-d="1">
-                Vol geboekt, ook op de
+                Website laten maken voor
                 {' '}
-                <em>rustige dagen.</em>
+                <em>activiteitenbedrijven</em>
               </Reveal>
               {' '}
               <Reveal as="p" className="lead svc-hero__sub reveal" data-d="2">

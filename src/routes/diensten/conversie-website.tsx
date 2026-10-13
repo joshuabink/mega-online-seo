@@ -10,9 +10,9 @@ import { ConceptForm } from '@/components/ConceptForm'
 export const Route = createFileRoute('/diensten/conversie-website')({
   head: () => ({
     meta: [
-      { title: "Conversie Website | MegaOnline.io" },
+      { title: "Website laten maken gericht op aanvragen | MegaOnline" },
       { name: 'description', content: "Een website die niet alleen mooi is, maar ook zijn werk doet. Voor bedrijven die afhankelijk zijn van aanvragen, reserveringen en boekingen." },
-      { property: 'og:title', content: "Conversie Website | MegaOnline.io" },
+      { property: 'og:title', content: "Website laten maken gericht op aanvragen | MegaOnline" },
       { property: 'og:description', content: "Een website die niet alleen mooi is, maar ook zijn werk doet. Voor bedrijven die afhankelijk zijn van aanvragen, reserveringen en boekingen." },
       { property: 'og:url', content: "https://megaonline.io/diensten/conversie-website" },
     ],
@@ -115,11 +115,9 @@ function ConversieWebsite() {
               </Reveal>
               {' '}
               <Reveal as="h1" className="display reveal" data-d="1">
-                Een website die niet alleen mooi is, maar ook zijn
+                Website laten maken gericht op
                 {' '}
-                <em>werk</em>
-                {' '}
-                doet.
+                <em>aanvragen en boekingen</em>
               </Reveal>
               {' '}
               <Reveal as="p" className="lead svc-hero__sub reveal" data-d="2">
