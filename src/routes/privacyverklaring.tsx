@@ -135,11 +135,11 @@ function Privacyverklaring() {
                 </p>
                 {' '}
                 <p>
-                  <strong>Statistieken.</strong> Alleen als je hiervoor kiest, gebruiken we PostHog om te meten hoe bezoekers de website gebruiken. PostHog slaat de gegevens op servers in de EU (Frankfurt) op.
+                  <strong>Statistieken.</strong> Alleen als je hiervoor kiest, gebruikt MegaOnline PostHog om te meten hoe bezoekers de website gebruiken. PostHog slaat de gegevens op servers in de EU (Frankfurt) op.
                 </p>
                 {' '}
                 <p>
-                  We meten paginabezoeken, klikken, scrollgedrag en hoe ver je door de stappen van een formulier komt. Ook maken we sessie-opnames, waarin alle invoervelden zijn afgeschermd. Wat je in een formulier typt, leggen we via PostHog nooit vast. Je kunt je toestemming altijd intrekken via Cookie-instellingen onderaan de site.
+                  MegaOnline meet paginabezoeken, klikken, scrollgedrag en hoe ver je door de stappen van een formulier komt. Ook maakt MegaOnline sessie-opnames, waarin alle invoervelden zijn afgeschermd. Wat je in een formulier typt, legt MegaOnline via PostHog nooit vast. Je kunt je toestemming altijd intrekken via Cookie-instellingen onderaan de site.
                 </p>
                 {' '}
                 <p>

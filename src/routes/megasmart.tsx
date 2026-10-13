@@ -616,7 +616,7 @@ function MegaSmart() {
                 Ja. MegaSmart is los af te nemen en werkt naast je bestaande website. Heb je wel een website van ons, dan komen aanvragen en boekingen er rechtstreeks in binnen zonder tussenstap.
             </Qa>
             {' '}
-            <Qa question="Hoe lang duurt het voordat we ermee kunnen werken?" className="reveal">
+            <Qa question="Hoe lang duurt het voordat je ermee kunt werken?" className="reveal">
                 Een basisinrichting met agenda, boekingspagina en bevestigingen staat meestal binnen enkele weken. Koppelingen met een administratiesysteem duren langer, omdat MegaOnline eerst wil weten welk systeem waarvoor leidend is.
             </Qa>
             {' '}
