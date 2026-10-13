@@ -1,3 +1,5 @@
+import { CTA_CONCEPT, CTA_SCAN } from "@/lib/cta";
+
 /**
  * Kennisbankartikelen voor /kennisbank.
  *
@@ -12,6 +14,9 @@
  *
  * `auteur` is optioneel. Laat het weg of laat het leeg als Joshua Bink de
  * auteur blijft. Alleen een gevulde naam komt in het Article-schema terecht.
+ *
+ * `cta` kiest de eindknop. Weglaten betekent `scan`. `conceptForm` toont het
+ * bestaande conceptformulier na de uitleg, vóór "Wat je morgen kunt doen".
  *
  * `faq` mag leeg zijn of ontbreken. Dan toont de pagina geen FAQ-blok en
  * komt er geen FAQPage in het schema. De tekst "Vijf dingen" in het blok
@@ -59,6 +64,14 @@ export type Artikel = {
    * dezelfde persoon als `#joshua-bink`. Een gevulde naam vervangt die verwijzing.
    */
   auteur?: string;
+  /**
+   * Eindknop. `scan` is techniek, de eigen site of de inhoud.
+   * `nieuw ontwerp` is uitstraling of een nieuwe website.
+   * Weglaten betekent `scan`.
+   */
+  cta?: "scan" | "nieuw ontwerp";
+  /** Conceptformulier na de laatste uitlegsectie, vóór "Wat je morgen kunt doen". */
+  conceptForm?: boolean;
   secties: ArtikelSectie[];
   /** Wat de lezer morgen zelf kan doen, ook als hij nooit klant wordt. */
   doen: string[];
@@ -88,6 +101,8 @@ export const ARTIKELEN: Artikel[] = [
     leestijd: "7 minuten",
     gepubliceerd: "2026-09-21",
     gewijzigd: "2026-09-21",
+    cta: "scan",
+    conceptForm: true,
     secties: [
       {
         kop: "Bezoekers, aanvragen en klanten zijn drie verschillende getallen",
@@ -248,6 +263,7 @@ export const ARTIKELEN: Artikel[] = [
     leestijd: "7 minuten",
     gepubliceerd: "2026-09-21",
     gewijzigd: "2026-09-21",
+    cta: "nieuw ontwerp",
     secties: [
       {
         kop: "Vertrouwen is geen gevoel, het is een lijstje dat de bezoeker afvinkt",
@@ -405,6 +421,7 @@ export const ARTIKELEN: Artikel[] = [
     leestijd: "6 minuten",
     gepubliceerd: "2026-09-21",
     gewijzigd: "2026-09-21",
+    cta: "scan",
     secties: [
       {
         kop: "De drie redenen om ze weg te laten en wat ervan waar is",
@@ -822,6 +839,11 @@ const SMOKE_ARTIKELEN: Artikel[] = import.meta.env.DEV
       },
     ]
   : [];
+
+/** Eindknoptekst. Ontbrekend veld betekent de scan-tekst. */
+export function eindCta(artikel: Pick<Artikel, "cta">): string {
+  return artikel.cta === "nieuw ontwerp" ? CTA_CONCEPT : CTA_SCAN;
+}
 
 /** Het artikel bij een slug, of `undefined` als die slug niet bestaat. */
 export function artikelBySlug(slug: string): Artikel | undefined {

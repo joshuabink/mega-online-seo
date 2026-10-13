@@ -1,10 +1,10 @@
 import { createFileRoute, Link, notFound, redirect } from "@tanstack/react-router";
+import { ConceptForm } from "@/components/ConceptForm";
 import { Icon } from "@/components/Icon";
 import { Qa } from "@/components/Qa";
 import { Reveal } from "@/components/Reveal";
-import { artikelBySlug, artikelenNieuwsteEerst, type ArtikelSectie } from "@/lib/kennisbank";
+import { artikelBySlug, artikelenNieuwsteEerst, eindCta, type ArtikelSectie } from "@/lib/kennisbank";
 import "@/styles/pages/kennisbank.css";
-import { CTA_SCAN } from "@/lib/cta"
 
 /**
  * Eén route voor alle kennisbankartikelen. De inhoud komt uit
@@ -245,6 +245,17 @@ function ArtikelPagina() {
           </div>
         </section>
       ))}{" "}
+      {a.conceptForm ? (
+        <section
+          className="section section--tight"
+          data-theme="light"
+          data-screen-label="Conceptformulier"
+        >
+          <div className="wrap art__concept">
+            <ConceptForm className="reveal" />
+          </div>
+        </section>
+      ) : null}{" "}
       <section
         className="section section--tight"
         data-theme="paper"
@@ -336,7 +347,7 @@ function ArtikelPagina() {
               style={{ justifyContent: "center", marginTop: "28px" }}
             >
               <Link className="btn btn-primary" to="/gratis-websiteconcept">
-                {CTA_SCAN}
+                {eindCta(a)}
               </Link>
             </Reveal>
           </Reveal>

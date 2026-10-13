@@ -122,11 +122,20 @@ async function controleerCtaTeksten(browser) {
         tekst: norm(b.textContent),
       }))
       const eindEl = document.querySelector('#scan a.btn')
+      const form = document.querySelector('[data-screen-label="Conceptformulier"]')
+      const morgen = document.querySelector('[data-screen-label="Wat je morgen kunt doen"]')
+      const formVoorMorgen = !!(
+        form &&
+        morgen &&
+        (form.compareDocumentPosition(morgen) & Node.DOCUMENT_POSITION_FOLLOWING)
+      )
       return {
         links,
         submits,
         eind: eindEl ? norm(eindEl.textContent) : '',
         lichaam: document.body?.textContent ?? '',
+        heeftForm: !!document.querySelector('.concept'),
+        formVoorMorgen,
       }
     })
 
@@ -146,9 +155,24 @@ async function controleerCtaTeksten(browser) {
       if (!oordeel.ok || oordeel.soort !== 'exact') fouten.push(`${pad} submit "${submit.tekst}"`)
       else if (submit.tekst === CTA_CONCEPT) zagConcept = true
     }
-    if (pad === '/kennisbank' || pad.startsWith('/kennisbank/')) {
-      if (data.eind !== CTA_SCAN) fouten.push(`${pad} eind-CTA "${data.eind}" hoort "${CTA_SCAN}" te zijn`)
-      else zagScan = true
+    const kennisbankCta = {
+      '/kennisbank': { eind: CTA_SCAN, form: false },
+      '/kennisbank/website-levert-geen-aanvragen-op': { eind: CTA_SCAN, form: true },
+      '/kennisbank/prijzen-op-website-verhuurbedrijf': { eind: CTA_SCAN, form: false },
+      '/kennisbank/vertrouwen-wekken-zakelijke-website': { eind: CTA_CONCEPT, form: false },
+      '/kennisbank/waar-boekingen-weglekken': { eind: CTA_SCAN, form: false },
+    }[pad]
+    if (kennisbankCta) {
+      if (data.eind !== kennisbankCta.eind) {
+        fouten.push(`${pad} eind-CTA "${data.eind}" hoort "${kennisbankCta.eind}" te zijn`)
+      } else if (kennisbankCta.eind === CTA_SCAN) zagScan = true
+      else zagConcept = true
+      if (data.heeftForm !== kennisbankCta.form) {
+        fouten.push(`${pad} formulier=${data.heeftForm}, verwacht ${kennisbankCta.form}`)
+      }
+      if (kennisbankCta.form && !data.formVoorMorgen) {
+        fouten.push(`${pad} formulier staat niet vóór "Wat je morgen kunt doen"`)
+      }
     }
   }
 
@@ -193,7 +217,7 @@ function generateLeadEvents(pg) {
 const DEV_LOG = process.env.DEV_SERVER_LOG ?? '/tmp/dev-server.log'
 const LEAD_LOG_KEYS = 'datum,formulier,gelukt,pagina,reden,route'
 const LEAD_LOG_PII =
-  /@|\b06\d{8}\b|example\.com|Test Persoon|Testbedrijf|Mail Faalt|Client Lukt|Concept Faalt|Concept Lead|Lead Event|Sollicitant|Zonder Consent|Client Sol|springkussens|kennismaking|meelopen|linkedin|Graag een/i
+  /@|\b06\d{8}\b|example\.com|Test Persoon|Testbedrijf|Mail Faalt|Client Lukt|Concept Faalt|Concept Lead|Artikel Lead|Lead Event|Sollicitant|Zonder Consent|Client Sol|springkussens|kennismaking|meelopen|linkedin|Graag een/i
 
 function stripAnsi(value) {
   return value.replace(/\u001b\[[0-9;]*m/g, '')
@@ -1235,7 +1259,7 @@ for (const pad of [
   check(
     'waar-boekingen-weglekken gebruikt de standaard eind-CTA',
     artikel.ctaHref.includes('/gratis-websiteconcept') &&
-      artikel.ctaTekst === 'Vraag je gratis concept aan' &&
+      artikel.ctaTekst === CTA_SCAN &&
       artikel.ctaKop === 'Wil je een gratis websiteconcept voor je bedrijf?',
     `${artikel.ctaHref} / ${artikel.ctaTekst} / ${artikel.ctaKop}`,
   )
@@ -1286,6 +1310,49 @@ check(
   overzichtHrefs.some((href) => href.includes('/kennisbank/waar-boekingen-weglekken')),
   overzichtHrefs.filter((href) => href.includes('kennisbank')).join(' '),
 )
+const overzichtEind = await page.evaluate(() =>
+  (document.querySelector('#scan a.btn')?.textContent || '').replace(/\s+/g, ' ').trim(),
+)
+check('kennisbankoverzicht toont de scan-tekst', overzichtEind === CTA_SCAN, overzichtEind)
+
+async function leesArtikelForm(pad) {
+  await page.goto(BASE + pad, { waitUntil: 'load' })
+  await waitHydrated(page)
+  return page.evaluate(() => {
+    const norm = (s) => String(s ?? '').replace(/\s+/g, ' ').trim()
+    const form = document.querySelector('[data-screen-label="Conceptformulier"]')
+    const morgen = document.querySelector('[data-screen-label="Wat je morgen kunt doen"]')
+    const eind = document.querySelector('#scan a.btn')
+    return {
+      heeftForm: !!document.querySelector('.concept'),
+      formVoorMorgen: !!(
+        form &&
+        morgen &&
+        (form.compareDocumentPosition(morgen) & Node.DOCUMENT_POSITION_FOLLOWING)
+      ),
+      eind: eind ? norm(eind.textContent) : '',
+      href: eind?.getAttribute('href') || '',
+    }
+  })
+}
+
+for (const [pad, eind, form] of [
+  ['/kennisbank/website-levert-geen-aanvragen-op', CTA_SCAN, true],
+  ['/kennisbank/prijzen-op-website-verhuurbedrijf', CTA_SCAN, false],
+  ['/kennisbank/vertrouwen-wekken-zakelijke-website', CTA_CONCEPT, false],
+  ['/kennisbank/waar-boekingen-weglekken', CTA_SCAN, false],
+  ['/kennisbank/smoke-zonder-faq', CTA_SCAN, false],
+]) {
+  const artikel = await leesArtikelForm(pad)
+  check(
+    `${pad} eind-CTA en formulier volgen het artikelveld`,
+    artikel.eind === eind &&
+      artikel.href === '/gratis-websiteconcept' &&
+      artikel.heeftForm === form &&
+      (!form || artikel.formVoorMorgen),
+    `eind=${artikel.eind} href=${artikel.href} form=${artikel.heeftForm} voorMorgen=${artikel.formVoorMorgen}`,
+  )
+}
 
 /* --- sitemap lastmod --- */
 {
@@ -1728,6 +1795,38 @@ async function conceptFallback(pg) {
   )
   check(
     'geslaagd conceptformulier met consent zet het bedank-anker',
+    heeftBedankAnker(gaPage.url()) && (await bedankZichtbaar(gaPage, '.concept.form.sent .form__ok')),
+    gaPage.url(),
+  )
+
+  await gaPage.goto(BASE + '/kennisbank/website-levert-geen-aanvragen-op', { waitUntil: 'load' })
+  await waitHydrated(gaPage)
+  await gaPage.evaluate(() => document.querySelector('.concept')?.scrollIntoView({ block: 'center' }))
+  await gaPage.waitForFunction(
+    () => document.querySelector('.concept')?.classList.contains('in'),
+    null,
+    { timeout: 8000 },
+  )
+  await fillConcept(gaPage, 'artikel-lead@example.com', 'Artikel Lead')
+  await gaPage.click('.concept .fstep[data-step="6"] button[type="submit"]')
+  await gaPage.waitForFunction(
+    () => document.querySelector('.concept.form')?.classList.contains('sent'),
+    null,
+    { timeout: 8000 },
+  )
+  const artikelEvents = await generateLeadEvents(gaPage)
+  const artikelEvent = artikelEvents[0]
+  check(
+    'inzending via het kennisbankartikel stuurt generate_lead',
+    artikelEvents.length === 1 &&
+      artikelEvent?.form_name === 'gratis-websiteconcept' &&
+      artikelEvent?.page_path === '/kennisbank/website-levert-geen-aanvragen-op' &&
+      artikelEvent?.keys.join(',') === 'form_name,page_path' &&
+      !/artikel-lead@example.com|Artikel Lead/.test(artikelEvent?.raw ?? ''),
+    JSON.stringify(artikelEvents),
+  )
+  check(
+    'geslaagd kennisbankformulier zet het bedank-anker',
     heeftBedankAnker(gaPage.url()) && (await bedankZichtbaar(gaPage, '.concept.form.sent .form__ok')),
     gaPage.url(),
   )
