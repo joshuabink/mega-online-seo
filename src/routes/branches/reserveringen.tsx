@@ -9,7 +9,7 @@ import { MegaSmartBridge } from "@/components/MegaSmartBridge";
 export const Route = createFileRoute("/branches/reserveringen")({
   head: () => ({
     meta: [
-      { title: "Website met reserveringssysteem laten maken | MegaOnline.io" },
+      { title: "Website met reserveringen laten maken | MegaOnline" },
       {
         name: "description",
         content:
@@ -17,7 +17,7 @@ export const Route = createFileRoute("/branches/reserveringen")({
       },
       {
         property: "og:title",
-        content: "Website met reserveringssysteem laten maken | MegaOnline.io",
+        content: "Website met reserveringen laten maken | MegaOnline",
       },
       {
         property: "og:description",

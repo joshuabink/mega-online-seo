@@ -9,9 +9,9 @@ import { ConceptForm } from '@/components/ConceptForm'
 export const Route = createFileRoute('/diensten/website-optimalisatie')({
   head: () => ({
     meta: [
-      { title: "Website Optimalisatie | MegaOnline.io" },
+      { title: "Bestaande website laten optimaliseren | MegaOnline" },
       { name: 'description', content: "Je website staat online, maar haalt er nog niet alles uit. Ontdek waar bezoekers afhaken en welke verbeteringen meer aanvragen opleveren." },
-      { property: 'og:title', content: "Website Optimalisatie | MegaOnline.io" },
+      { property: 'og:title', content: "Bestaande website laten optimaliseren | MegaOnline" },
       { property: 'og:description', content: "Je website staat online, maar haalt er nog niet alles uit. Ontdek waar bezoekers afhaken en welke verbeteringen meer aanvragen opleveren." },
       { property: 'og:url', content: "https://megaonline.io/diensten/website-optimalisatie" },
     ],
@@ -44,9 +44,9 @@ function WebsiteOptimalisatie() {
               </Reveal>
               {' '}
               <Reveal as="h1" className="display reveal" data-d="1">
-                Je website werkt. Maar werkt hij ook
+                Bestaande website laten
                 {' '}
-                <em>optimaal?</em>
+                <em>optimaliseren</em>
               </Reveal>
               {' '}
               <Reveal as="p" className="lead svc-hero__sub reveal" data-d="2">

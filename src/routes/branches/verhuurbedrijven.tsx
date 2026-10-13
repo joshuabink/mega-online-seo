@@ -8,9 +8,9 @@ import { MegaSmartBridge } from '@/components/MegaSmartBridge'
 export const Route = createFileRoute('/branches/verhuurbedrijven')({
   head: () => ({
     meta: [
-      { title: "Websites voor verhuurbedrijven | MegaOnline.io" },
+      { title: "Website laten maken voor verhuurbedrijf | MegaOnline" },
       { name: 'description', content: "Een website voor verhuurbedrijven die het bel- en mailverkeer vermindert: beschikbaarheid, periodes en voorwaarden helder, en snellere bevestigde verhuur." },
-      { property: 'og:title', content: "Websites voor verhuurbedrijven | MegaOnline.io" },
+      { property: 'og:title', content: "Website laten maken voor verhuurbedrijf | MegaOnline" },
       { property: 'og:description', content: "Een website voor verhuurbedrijven die het bel- en mailverkeer vermindert: beschikbaarheid, periodes en voorwaarden helder, en snellere bevestigde verhuur." },
       { property: 'og:url', content: "https://megaonline.io/branches/verhuurbedrijven" },
     ],
@@ -43,9 +43,9 @@ function Verhuurbedrijven() {
               </Reveal>
               {' '}
               <Reveal as="h1" className="display reveal" data-d="1">
-                Minder bel- en mailverkeer. Meer
+                Website laten maken voor je
                 {' '}
-                <em>bevestigde verhuur.</em>
+                <em>verhuurbedrijf</em>
               </Reveal>
               {' '}
               <Reveal as="p" className="lead svc-hero__sub reveal" data-d="2">

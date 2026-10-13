@@ -7,9 +7,9 @@ import { Reveal } from '@/components/Reveal'
 export const Route = createFileRoute('/branches/dienstverleners')({
   head: () => ({
     meta: [
-      { title: "Websites voor dienstverleners | MegaOnline.io" },
+      { title: "Website laten maken voor dienstverleners | MegaOnline" },
       { name: 'description', content: "Een website voor dienstverleners die vertrouwen wekt en aanvragen oplevert: heldere propositie, bewezen expertise en een duidelijke route naar contact." },
-      { property: 'og:title', content: "Websites voor dienstverleners | MegaOnline.io" },
+      { property: 'og:title', content: "Website laten maken voor dienstverleners | MegaOnline" },
       { property: 'og:description', content: "Een website voor dienstverleners die vertrouwen wekt en aanvragen oplevert: heldere propositie, bewezen expertise en een duidelijke route naar contact." },
       { property: 'og:url', content: "https://megaonline.io/branches/dienstverleners" },
     ],
@@ -42,11 +42,9 @@ function Dienstverleners() {
               </Reveal>
               {' '}
               <Reveal as="h1" className="display reveal" data-d="1">
-                Laat je website het
+                Website laten maken voor
                 {' '}
-                <em>vertrouwen</em>
-                {' '}
-                wekken dat jij verdient.
+                <em>dienstverleners</em>
               </Reveal>
               {' '}
               <Reveal as="p" className="lead svc-hero__sub reveal" data-d="2">
