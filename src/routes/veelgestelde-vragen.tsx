@@ -166,7 +166,7 @@ function VeelgesteldeVragen() {
             {' '}
             <div className="faq">
               <Qa question="Hoe zorgt een website voor meer aanvragen?" className="reveal">
-                  Door bezoekers gericht te begeleiden naar één duidelijke volgende stap: een aanvraag, reservering of boeking. We werken aan vertrouwen, een heldere structuur en sterke call-to-actions, zodat meer bezoekers ook echt klant worden.
+                  Door bezoekers gericht te begeleiden naar één duidelijke volgende stap: een aanvraag, reservering of boeking. We werken aan vertrouwen, een heldere structuur en sterke call-to-actions, zodat meer bezoekers ook echt klant worden. Lees over <Link to="/kennisbank/$slug" params={{ slug: 'website-levert-geen-aanvragen-op' }}>zes plekken waar een website aanvragen laat liggen</Link>.
               </Qa>
               {' '}
               <Qa question="Doen jullie ook SEO?" className="reveal">

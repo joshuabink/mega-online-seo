@@ -129,7 +129,7 @@ function GoogleAds() {
               <p className="lead">
                 Google brengt de bezoeker tot aan je voordeur. Of hij binnenkomt, beslist je
                 website. Een onduidelijke pagina maakt elke klik duurder, hoe goed de campagne
-                ook is ingericht.
+                ook is ingericht. Kortom: <Link to="/kennisbank/$slug" params={{ slug: 'website-levert-geen-aanvragen-op' }}>eerst je pagina, dan pas adverteren</Link>.
               </p>{' '}
               <p className="lead">
                 Daarom kijken we vóór de eerste euro naar de pagina waar de advertentie naartoe

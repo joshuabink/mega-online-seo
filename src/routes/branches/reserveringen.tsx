@@ -234,7 +234,15 @@ function Reserveringen() {
           </Reveal>
           <Reveal as="p" className="lead reveal" style={{ marginTop: "clamp(22px, 2.4vw, 32px)" }}>
             Klopt een van deze punten niet, dan is dat een moment waarop een gast afhaakt of alsnog
-            moet bellen.
+            moet bellen. Waarom dat telt, lees je in{" "}
+            <Link
+              to="/kennisbank/$slug"
+              params={{ slug: "website-levert-geen-aanvragen-op" }}
+              style={tekstLink}
+            >
+              elke extra stap kost boekingen
+            </Link>
+            .
           </Reveal>
         </div>
       </section>

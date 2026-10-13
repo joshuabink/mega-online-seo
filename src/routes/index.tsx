@@ -221,7 +221,7 @@ function Home() {
             <h2 className="h2">Waarom je bezoekers afhaken.</h2>
             {' '}
             <p className="lead">
-              Veel bedrijven hebben een website die online staat, maar niet actief bijdraagt aan groei. Bezoekers haken af. Ze twijfelen of nemen geen contact op. Daardoor blijven aanvragen en boekingen liggen.
+              Veel bedrijven hebben een website die online staat, maar niet actief bijdraagt aan groei. Bezoekers haken af. Ze twijfelen of nemen geen contact op. Daardoor blijven aanvragen en boekingen liggen. Lees <Link to="/kennisbank/$slug" params={{ slug: 'website-levert-geen-aanvragen-op' }}>waarom je website geen aanvragen oplevert</Link>.
             </p>
           </Reveal>
           {' '}
@@ -238,7 +238,7 @@ function Home() {
               <h3>Je website straalt weinig vertrouwen uit</h3>
               {' '}
               <p>
-                Bezoekers vergelijken je direct met concurrenten. Een verouderde uitstraling kost vertrouwen.
+                Bezoekers vergelijken je direct met concurrenten. Een verouderde uitstraling kost vertrouwen. Lees <Link to="/kennisbank/$slug" params={{ slug: 'vertrouwen-wekken-zakelijke-website' }}>hoe je vertrouwen wekt op een zakelijke website</Link>.
               </p>
             </Reveal>
             {' '}

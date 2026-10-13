@@ -96,7 +96,7 @@ function NonProfits() {
               <Reveal as="div" className="miniprob reveal" data-d="1">
                 <h4>Vertrouwen eerst</h4>
                 <p>
-                  Mensen geven en doen mee als ze zien dat hun steun goed terechtkomt.
+                  Mensen geven en doen mee als ze zien dat hun steun goed terechtkomt. Meer over <Link to="/kennisbank/$slug" params={{ slug: 'vertrouwen-wekken-zakelijke-website' }}>vertrouwen wekken op je website</Link>.
                 </p>
               </Reveal>
               {' '}
