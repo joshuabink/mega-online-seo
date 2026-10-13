@@ -93,6 +93,11 @@
   margin-top: clamp(22px, 2.4vw, 32px);
 }
 
+/* Het formulier volgt de artikelkolom. Op een smal scherm blijft het de volle wrap. */
+[data-page="artikel"] .art__concept .concept {
+  max-width: 40rem;
+}
+
 .art__andere {
   margin-top: clamp(28px, 3vw, 40px);
 }
