@@ -163,16 +163,46 @@ export function initAnalytics(): void {
  * GA4-aanbevolen event na een geslaagde lead. Alleen bij analytics-consent
  * (`gaActive`). Zonder toestemming komt het event niet in de dataLayer, zodat
  * het ook niet alsnog verstuurd wordt als de bezoeker later toestemt.
- * Alleen form_name en page_path: geen naam, e-mail, telefoon of vrije tekst.
+ * Alleen form_name, page_path en — bij een browser-terugval — route "fallback".
+ * Geen naam, e-mail, telefoon of vrije tekst.
+ *
+ * Open vraag voor de review: telt een geslaagde browser-terugval als lead?
+ * true: ook `generate_lead` met parameter route "fallback".
+ * false: alleen het aparte event `lead_browser_fallback`, geen `generate_lead`.
+ * Sollicitaties tellen nooit als lead, ook niet via deze constante.
  */
-export function trackGenerateLead(formName: string): void {
+export const GENERATE_LEAD_BIJ_BROWSER_FALLBACK = true
+
+export function trackGenerateLead(formName: string, extra?: { route?: "fallback" }): void {
+  if (!gaActive || typeof window === "undefined") return
+  if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(formName)) return
+  const params: Record<string, string> = {
+    form_name: formName,
+    page_path: location.pathname,
+  }
+  if (extra?.route === "fallback") params.route = "fallback"
+  const w = gaWindow()
+  w?.gtag?.("event", "generate_lead", params)
+}
+
+function trackLeadSignaal(event: "lead_browser_fallback" | "lead_fallback_getoond", formName: string): void {
   if (!gaActive || typeof window === "undefined") return
   if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(formName)) return
   const w = gaWindow()
-  w?.gtag?.("event", "generate_lead", {
+  w?.gtag?.("event", event, {
     form_name: formName,
     page_path: location.pathname,
   })
+}
+
+/** Tweede poging vanuit de browser is geslaagd. Alleen form_name en page_path. */
+export function trackLeadBrowserFallback(formName: string): void {
+  trackLeadSignaal("lead_browser_fallback", formName)
+}
+
+/** De mailto-knop is getoond nadat automatisch versturen niet lukte. */
+export function trackLeadFallbackGetoond(formName: string): void {
+  trackLeadSignaal("lead_fallback_getoond", formName)
 }
 
 /**

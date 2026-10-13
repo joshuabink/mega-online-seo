@@ -38,6 +38,7 @@ function dataLayerEvents(pg, eventName) {
         return {
           form_name: params.form_name ?? '',
           page_path: params.page_path ?? '',
+          route: params.route ?? '',
           keys: Object.keys(params).sort(),
           raw: JSON.stringify(params),
         }
@@ -47,6 +48,88 @@ function dataLayerEvents(pg, eventName) {
 
 function generateLeadEvents(pg) {
   return dataLayerEvents(pg, 'generate_lead')
+}
+
+const DEV_LOG = process.env.DEV_SERVER_LOG ?? '/tmp/dev-server.log'
+const LEAD_LOG_KEYS = 'datum,formulier,gelukt,pagina,reden,route'
+const LEAD_LOG_PII =
+  /@|\b06\d{8}\b|example\.com|Test Persoon|Testbedrijf|Mail Faalt|Client Lukt|Concept Faalt|Concept Lead|Lead Event|Sollicitant|Zonder Consent|Client Sol|springkussens|kennismaking|meelopen|linkedin|Graag een/i
+
+function stripAnsi(value) {
+  return value.replace(/\u001b\[[0-9;]*m/g, '')
+}
+
+function readLeadLogs() {
+  let text = ''
+  try {
+    text = fs.readFileSync(DEV_LOG, 'utf8')
+  } catch {
+    return []
+  }
+  const regs = []
+  for (const line of stripAnsi(text).split('\n')) {
+    const at = line.indexOf('[lead-log]')
+    if (at === -1) continue
+    const raw = line.slice(at).trim()
+    const jsonText = raw.slice('[lead-log]'.length).trim()
+    try {
+      regs.push({ raw, json: JSON.parse(jsonText) })
+    } catch {
+      regs.push({ raw, json: null })
+    }
+  }
+  return regs
+}
+
+async function wachtLeadLogs(minCount, timeout = 5000) {
+  const start = Date.now()
+  let regs = readLeadLogs()
+  while (regs.length < minCount && Date.now() - start < timeout) {
+    await new Promise((r) => setTimeout(r, 50))
+    regs = readLeadLogs()
+  }
+  return regs
+}
+
+function leadLogGeldig(entry) {
+  const j = entry?.json
+  if (!j || typeof j !== 'object') return false
+  if (Object.keys(j).sort().join(',') !== LEAD_LOG_KEYS) return false
+  if (!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/.test(j.datum)) return false
+  if (!['concept', 'contact', 'sollicitatie'].includes(j.formulier)) return false
+  if (!['Resend', 'FormSubmit'].includes(j.route)) return false
+  if (typeof j.gelukt !== 'boolean') return false
+  if (typeof j.pagina !== 'string' || !/^\/[a-z0-9/_-]*$/.test(j.pagina)) return false
+  if (typeof j.reden !== 'string' || !/^[a-z0-9-]*$/.test(j.reden)) return false
+  if (j.gelukt ? j.reden !== '' : j.reden === '') return false
+  if (LEAD_LOG_PII.test(entry.raw)) return false
+  return true
+}
+
+function heeftBedankAnker(url) {
+  try {
+    return new URL(url).hash === '#aanvraag-verstuurd'
+  } catch {
+    return false
+  }
+}
+
+function browserFallbackTeltAlsLead() {
+  const src = fs.readFileSync(new URL('../src/lib/analytics.ts', import.meta.url), 'utf8')
+  const match = src.match(/export const GENERATE_LEAD_BIJ_BROWSER_FALLBACK\s*=\s*(true|false)/)
+  if (!match) throw new Error('GENERATE_LEAD_BIJ_BROWSER_FALLBACK ontbreekt')
+  return match[1] === 'true'
+}
+
+async function bedankZichtbaar(pg, selector) {
+  return pg.evaluate((sel) => {
+    const ok = document.querySelector(sel)
+    if (!(ok instanceof HTMLElement)) return false
+    const style = getComputedStyle(ok)
+    if (style.display === 'none' || style.visibility === 'hidden') return false
+    const r = ok.getBoundingClientRect()
+    return r.height > 0 && r.bottom > 0 && r.top < window.innerHeight
+  }, selector)
 }
 
 async function fillSollicitatie(pg, email, naam) {
@@ -246,6 +329,7 @@ check(
 await page.fill('[name="naam"]', 'Test Persoon')
 await page.fill('[name="email"]', 'test@example.com')
 await page.fill('[name="telefoon"]', '0612345678')
+const logsVoorConcept = readLeadLogs().length
 await page.click('.fstep[data-step="6"] button[type="submit"]')
 await page.waitForTimeout(1500)
 
@@ -253,6 +337,25 @@ const sent = await page.evaluate(
   () => document.querySelector('.form')?.classList.contains('sent') ?? false,
 )
 check('geslaagde mail is ok', sent, sent ? 'bedankt-staat' : 'formulier niet verzonden')
+const conceptBedank = await bedankZichtbaar(page, '.form.sent .form__ok')
+check(
+  'geslaagd conceptformulier zet het bedank-anker',
+  heeftBedankAnker(page.url()) && conceptBedank,
+  page.url(),
+)
+const conceptLogs = await wachtLeadLogs(logsVoorConcept + 1)
+const conceptLog = conceptLogs[logsVoorConcept]
+check(
+  'lead-log bij geslaagd concept zonder persoonsgegevens',
+  conceptLogs.length === logsVoorConcept + 1 &&
+    leadLogGeldig(conceptLog) &&
+    conceptLog.json.pagina === '/' &&
+    conceptLog.json.formulier === 'concept' &&
+    conceptLog.json.route === 'FormSubmit' &&
+    conceptLog.json.gelukt === true &&
+    conceptLog.json.reden === '',
+  conceptLog?.raw ?? `geen [lead-log] in ${DEV_LOG}`,
+)
 
 const leadsZonderConsent = await generateLeadEvents(page)
 check(
@@ -299,6 +402,7 @@ await page.selectOption('#c-onderwerp', 'Iets anders')
 await page.fill('#c-bericht', 'Graag een kennismaking.')
 const postsBeforeFail = clientPosts.length
 const leadsBeforeFail = readLeads().length
+const logsVoorFail = readLeadLogs().length
 await page.click('.fhero__form button[type="submit"]')
 await page.locator('.fhero__form [data-lead-fallback]').waitFor({ timeout: 8000 })
 const mailFout = await page.evaluate(() => {
@@ -360,6 +464,25 @@ check('server en browser elk één keer bij een weigering',
   failLeads.length === 1 && failPosts.length === 1 &&
     failPosts[0].body.includes('mail-faalt'),
   `server=${failLeads.length} browser=${failPosts.length}`)
+const failLogs = await wachtLeadLogs(logsVoorFail + 1)
+const failLog = failLogs[logsVoorFail]
+const fallbackZonderConsent = await dataLayerEvents(page, 'lead_fallback_getoond')
+check(
+  'mislukte mail logt één regel zonder persoonsgegevens',
+  failLogs.length === logsVoorFail + 1 &&
+    leadLogGeldig(failLog) &&
+    failLog.json.pagina === '/contact' &&
+    failLog.json.formulier === 'contact' &&
+    failLog.json.route === 'FormSubmit' &&
+    failLog.json.gelukt === false &&
+    failLog.json.reden === 'referer-refused',
+  failLog?.raw ?? `geen [lead-log] in ${DEV_LOG}`,
+)
+check(
+  'zonder consent geen lead_fallback_getoond en geen bedank-anker',
+  fallbackZonderConsent.length === 0 && !heeftBedankAnker(page.url()) && mainGaUrls.length === 0,
+  JSON.stringify({ events: fallbackZonderConsent, url: page.url(), ga: mainGaUrls.length }),
+)
 
 /* --- server faalt, browser-poging lukt: bedankt, en niet nog een serverpost --- */
 await page.fill('#c-naam', 'Client Lukt')
@@ -381,6 +504,19 @@ check('browser-fallback telt als verstuurd', clientSent)
 check('geen dubbele serverpost als de browser het overneemt',
   clientLeadAdds === 1 && clientPostAdds === 1,
   `server=${clientLeadAdds} browser=${clientPostAdds}`)
+const clientBedank = await bedankZichtbaar(page, '.fhero__form.sent .form__ok')
+const clientFallbackEvents = await dataLayerEvents(page, 'lead_browser_fallback')
+const clientLeadEvents = await generateLeadEvents(page)
+check(
+  'browser-fallback zonder consent zet het anker en stuurt geen event',
+  clientSent &&
+    clientBedank &&
+    heeftBedankAnker(page.url()) &&
+    clientFallbackEvents.length === 0 &&
+    clientLeadEvents.length === 0 &&
+    mainGaUrls.length === 0,
+  JSON.stringify({ url: page.url(), lead_browser_fallback: clientFallbackEvents, generate_lead: clientLeadEvents }),
+)
 
 async function verstuurContact(email, naam) {
   await page.goto(BASE + '/contact', { waitUntil: 'load' })
@@ -1133,6 +1269,11 @@ async function conceptFallback(pg) {
     solZonder.length === 0 && leadZonderSol.length === 0,
     JSON.stringify({ sollicitatie_verzonden: solZonder, generate_lead: leadZonderSol }),
   )
+  check(
+    'geslaagde sollicitatie zonder consent zet het bedank-anker',
+    heeftBedankAnker(gaPage.url()),
+    gaPage.url(),
+  )
 
   await gaPage.context().clearCookies()
   await gaPage.goto(BASE + '/contact', { waitUntil: 'load' })
@@ -1186,6 +1327,12 @@ async function conceptFallback(pg) {
       !/lead-ga@example.com|Lead Event|0610101010|kennismaking over een nieuwe site/.test(contactEvent?.raw ?? ''),
     JSON.stringify(contactEvents),
   )
+  const contactBedank = await bedankZichtbaar(gaPage, '.fhero__form.sent .form__ok')
+  check(
+    'geslaagd contactformulier zet het bedank-anker',
+    contactBedank && heeftBedankAnker(gaPage.url()) && contactEvent?.route === '',
+    gaPage.url(),
+  )
 
   await gaPage.goto(BASE + '/contact', { waitUntil: 'load' })
   await waitHydrated(gaPage)
@@ -1200,11 +1347,36 @@ async function conceptFallback(pg) {
     null,
     { timeout: 8000 },
   )
+  const teltAlsLead = browserFallbackTeltAlsLead()
   const naBrowser = await generateLeadEvents(gaPage)
+  const naBrowserEvent = naBrowser[0]
+  const browserSignaal = await dataLayerEvents(gaPage, 'lead_browser_fallback')
+  const geenFallbackPii = (raw) => !/@|Client Lukt|0610101010|via de browser/.test(raw ?? '')
+  const browserSignaalOk =
+    browserSignaal.length === 1 &&
+    browserSignaal[0].form_name === 'contact' &&
+    browserSignaal[0].page_path === '/contact' &&
+    browserSignaal[0].keys.join(',') === 'form_name,page_path' &&
+    geenFallbackPii(browserSignaal[0].raw)
+  const leadViaFallbackOk = teltAlsLead
+    ? naBrowser.length === 1 &&
+      naBrowserEvent?.form_name === 'contact' &&
+      naBrowserEvent?.page_path === '/contact' &&
+      naBrowserEvent?.route === 'fallback' &&
+      naBrowserEvent?.keys.join(',') === 'form_name,page_path,route' &&
+      geenFallbackPii(naBrowserEvent?.raw)
+    : naBrowser.length === 0
   check(
-    'browser-fallback na een serverweigering stuurt geen generate_lead',
-    naBrowser.length === 0,
-    JSON.stringify(naBrowser),
+    teltAlsLead
+      ? 'browser-fallback telt als generate_lead met route fallback'
+      : 'browser-fallback na een serverweigering stuurt geen generate_lead',
+    leadViaFallbackOk && browserSignaalOk && heeftBedankAnker(gaPage.url()),
+    JSON.stringify({
+      generate_lead: naBrowser,
+      lead_browser_fallback: browserSignaal,
+      url: gaPage.url(),
+      teltAlsLead,
+    }),
   )
 
   await gaPage.goto(BASE + '/gratis-websiteconcept', { waitUntil: 'load' })
@@ -1226,6 +1398,11 @@ async function conceptFallback(pg) {
       conceptEvent?.keys.join(',') === 'form_name,page_path' &&
       !/concept-lead@example.com|Concept Lead/.test(conceptEvent?.raw ?? ''),
     JSON.stringify(conceptEvents),
+  )
+  check(
+    'geslaagd conceptformulier met consent zet het bedank-anker',
+    heeftBedankAnker(gaPage.url()) && (await bedankZichtbaar(gaPage, '.concept.form.sent .form__ok')),
+    gaPage.url(),
   )
 
   await gaPage.goto(BASE + '/werken-bij', { waitUntil: 'load' })
@@ -1249,6 +1426,11 @@ async function conceptFallback(pg) {
       !SOLLICITATIE_PII.test(solEvent?.raw ?? ''),
     JSON.stringify({ sollicitatie_verzonden: solEvents, generate_lead: leadOpSollicitatie }),
   )
+  check(
+    'geslaagde sollicitatie met consent zet het bedank-anker',
+    heeftBedankAnker(gaPage.url()),
+    gaPage.url(),
+  )
 
   await gaPage.goto(BASE + '/werken-bij', { waitUntil: 'load' })
   await waitHydrated(gaPage)
@@ -1265,6 +1447,42 @@ async function conceptFallback(pg) {
     'browser-fallback van sollicitatie stuurt geen event',
     solNaBrowser.length === 0 && leadNaSolBrowser.length === 0,
     JSON.stringify({ sollicitatie_verzonden: solNaBrowser, generate_lead: leadNaSolBrowser }),
+  )
+  const solBrowserSignaal = await dataLayerEvents(gaPage, 'lead_browser_fallback')
+  check(
+    'browser-fallback van sollicitatie is apart zichtbaar zonder persoonsgegevens',
+    solBrowserSignaal.length === 1 &&
+      solBrowserSignaal[0].form_name === 'sollicitatie' &&
+      solBrowserSignaal[0].page_path === '/werken-bij' &&
+      solBrowserSignaal[0].keys.join(',') === 'form_name,page_path' &&
+      !SOLLICITATIE_PII.test(solBrowserSignaal[0].raw ?? '') &&
+      heeftBedankAnker(gaPage.url()),
+    JSON.stringify({ lead_browser_fallback: solBrowserSignaal, url: gaPage.url() }),
+  )
+
+  await gaPage.goto(BASE + '/contact', { waitUntil: 'load' })
+  await waitHydrated(gaPage)
+  await gaPage.fill('#c-naam', 'Mail Faalt')
+  await gaPage.fill('#c-email', 'mail-faalt@example.com')
+  await gaPage.fill('#c-tel', '0611111111')
+  await gaPage.selectOption('#c-onderwerp', 'Iets anders')
+  await gaPage.fill('#c-bericht', 'Graag een kennismaking.')
+  await gaPage.click('.fhero__form button[type="submit"]')
+  await gaPage.locator('.fhero__form [data-lead-fallback]').waitFor({ timeout: 8000 })
+  const getoond = await dataLayerEvents(gaPage, 'lead_fallback_getoond')
+  const leadBijGetoond = await generateLeadEvents(gaPage)
+  const browserBijGetoond = await dataLayerEvents(gaPage, 'lead_browser_fallback')
+  check(
+    'met consent komt lead_fallback_getoond in de dataLayer zonder persoonsgegevens',
+    getoond.length === 1 &&
+      getoond[0].form_name === 'contact' &&
+      getoond[0].page_path === '/contact' &&
+      getoond[0].keys.join(',') === 'form_name,page_path' &&
+      leadBijGetoond.length === 0 &&
+      browserBijGetoond.length === 0 &&
+      !heeftBedankAnker(gaPage.url()) &&
+      !/@|Mail Faalt|0611111111|kennismaking/.test(getoond[0].raw ?? ''),
+    JSON.stringify({ lead_fallback_getoond: getoond, generate_lead: leadBijGetoond, url: gaPage.url() }),
   )
 
   await gaPage.locator('.footer__cookie').click()
@@ -1304,6 +1522,21 @@ const realErrors = consoleErrors.filter(
   (e) => !/favicon|React DevTools|net::ERR_FAILED|Failed to load resource/i.test(e),
 )
 check('geen console-fouten', realErrors.length === 0, realErrors.slice(0, 3).join(' | '))
+
+const serverPosts = readLeads().length
+const alleLeadLogs = await wachtLeadLogs(serverPosts)
+const ongeldigeLogs = alleLeadLogs.filter((entry) => !leadLogGeldig(entry))
+// Een inzending zonder e-mail of telefoon wordt afgekeurd vóór de mailroute
+// en komt dus niet in de mock terecht, maar hoort wel één logregel te krijgen.
+const afgekeurd = alleLeadLogs.filter((entry) => entry.json?.reden === 'geen-contact').length
+check(
+  'elke serverinzending heeft precies één lead-log zonder persoonsgegevens',
+  alleLeadLogs.length === serverPosts + afgekeurd &&
+    serverPosts > 0 &&
+    afgekeurd >= 1 &&
+    ongeldigeLogs.length === 0,
+  `logs=${alleLeadLogs.length} server=${serverPosts} afgekeurd=${afgekeurd} ongeldig=${ongeldigeLogs.map((entry) => entry.raw).slice(0, 2).join(' | ')}`,
+)
 
 await browser.close()
 console.table(results)
