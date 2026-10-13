@@ -5,6 +5,7 @@ import { Media } from '@/components/Media'
 import { Qa } from '@/components/Qa'
 import { Reveal } from '@/components/Reveal'
 import { ConceptForm } from '@/components/ConceptForm'
+import { CTA_CONCEPT } from '@/lib/cta'
 import '@/styles/pages/diensten-seo.css'
 
 export const Route = createFileRoute('/diensten/seo')({
@@ -137,7 +138,7 @@ function Seo() {
                 </Link>
                 {' '}
                 <Link className="tlink" to="/gratis-websiteconcept">
-                  Vraag je gratis websiteconcept aan
+                  {CTA_CONCEPT}
                   {' '}
                 </Link>
               </Reveal>
@@ -909,7 +910,7 @@ function Seo() {
                 </Link>
                 {' '}
                 <Link className="tlink" to="/gratis-websiteconcept">
-                  Vraag je gratis websiteconcept aan
+                  {CTA_CONCEPT}
                   {' '}
                 </Link>
               </Reveal>

@@ -6,6 +6,7 @@ import { Media } from '@/components/Media'
 import { Qa } from '@/components/Qa'
 import { Reveal } from '@/components/Reveal'
 import { ConceptForm } from '@/components/ConceptForm'
+import { CTA_CONCEPT } from '@/lib/cta'
 
 export const Route = createFileRoute('/diensten/conversie-website')({
   head: () => ({
@@ -126,7 +127,7 @@ function ConversieWebsite() {
               {' '}
               <Reveal as="div" className="svc-hero__ctas reveal" data-d="2">
                 <Link className="btn btn-primary" to="/gratis-websiteconcept">
-                  Vraag je gratis websiteconcept aan
+                  {CTA_CONCEPT}
                 </Link>
                 {' '}
                 <a className="tlink" href="#aanpak">
@@ -878,7 +879,7 @@ function ConversieWebsite() {
               <div className="rm__foot">
                 <span className="svcprice">Vanaf € 2.500</span>
                 {' '}
-                <Link className="flow-cta" to="/gratis-websiteconcept">Vraag je gratis websiteconcept aan</Link>
+                <Link className="flow-cta" to="/gratis-websiteconcept">{CTA_CONCEPT}</Link>
               </div>
             </div>
             {' '}

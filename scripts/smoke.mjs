@@ -25,6 +25,146 @@ function check(name, ok, detail = '') {
   if (!ok) failed++
 }
 
+function leesCtaConstante(naam) {
+  const src = fs.readFileSync(new URL('../src/lib/cta.ts', import.meta.url), 'utf8')
+  const m = src.match(new RegExp(`export const ${naam} = '([^']*)'`))
+  if (!m) throw new Error(`${naam} ontbreekt in src/lib/cta.ts`)
+  return m[1]
+}
+
+const CTA_CONCEPT = leesCtaConstante('CTA_CONCEPT')
+const CTA_SCAN = leesCtaConstante('CTA_SCAN')
+const CTA_TOEGESTAAN = [CTA_CONCEPT, CTA_SCAN]
+
+/** Oude knopzinnen. De korte headertekst "Gratis concept" hoort hier niet bij. */
+const OUDE_CTA_VARIANTEN = [
+  'Vraag je gratis concept aan',
+  'Vraag gratis concept aan',
+  'Vraag een gratis concept aan',
+  'Vraag je gratis websitescan aan',
+  'Vraag je gratis website-scan aan',
+  'Gratis concept aanvragen',
+]
+
+function normCta(s) {
+  return String(s ?? '').replace(/\s+/g, ' ').replace(/\s*→\s*$/u, '').trim()
+}
+
+/**
+ * Een aanvraagknop hoort exact in CTA_TOEGESTAAN te staan.
+ * De headerknop (kort label, TK-151) en linkteksten die niet om een concept
+ * of scan vragen, blijven buiten die eis: die copy wijzigt deze opdracht niet.
+ */
+function beoordeelCtaTekst(tekst, headerKort = false) {
+  const t = normCta(tekst)
+  const oud = OUDE_CTA_VARIANTEN.find((v) => t.includes(v))
+  if (oud) return { ok: false, reden: `oude variant: ${oud}`, tekst: t, soort: 'fout' }
+  if (CTA_TOEGESTAAN.includes(t)) return { ok: true, tekst: t, soort: 'exact' }
+  if (headerKort) return { ok: true, tekst: t, soort: 'header-kort' }
+  if (CTA_TOEGESTAAN.some((c) => t.includes(c))) return { ok: true, tekst: t, soort: 'zin' }
+  if (/vraag\s+(je\s+|een\s+)?gratis/i.test(t)) {
+    return { ok: false, reden: 'niet in CTA_TOEGESTAAN', tekst: t, soort: 'fout' }
+  }
+  return { ok: true, tekst: t, soort: 'andere-copy' }
+}
+
+async function controleerCtaTeksten(browser) {
+  const proef = [
+    beoordeelCtaTekst('Vraag je gratis concept aan'),
+    beoordeelCtaTekst('Vraag gratis concept aan'),
+    beoordeelCtaTekst('Vraag een gratis concept aan'),
+  ]
+  check(
+    'ingebouwde foute CTA-variant wordt geweigerd',
+    proef.every((r) => !r.ok) &&
+      beoordeelCtaTekst(CTA_CONCEPT).soort === 'exact' &&
+      beoordeelCtaTekst(CTA_SCAN).soort === 'exact',
+    proef.map((r) => `${r.tekst} → ${r.reden}`).join('; '),
+  )
+
+  const pg = await browser.newPage({ viewport: { width: 1440, height: 900 } })
+  await installRoutes(pg)
+  const sitemap = await pg.request.get(BASE + '/sitemap.xml')
+  const xml = await sitemap.text()
+  const paden = [...xml.matchAll(/<loc>https:\/\/megaonline\.io([^<]*)<\/loc>/g)].map((m) => m[1] || '/')
+  check('sitemap-paden voor CTA-controle', sitemap.status() === 200 && paden.length > 0, String(paden.length))
+
+  const fouten = []
+  const andere = new Set()
+  const header = new Set()
+  let zagConcept = false
+  let zagScan = false
+
+  for (const pad of paden) {
+    const res = await pg.goto(BASE + pad, { waitUntil: 'domcontentloaded', timeout: 30000 })
+    if (!res || res.status() >= 400) {
+      fouten.push(`${pad} status ${res ? res.status() : 'geen'}`)
+      continue
+    }
+    const data = await pg.evaluate(() => {
+      const norm = (s) => String(s ?? '').replace(/\s+/g, ' ').replace(/\s*→\s*$/u, '').trim()
+      const isConcept = (href) => {
+        if (!href) return false
+        try {
+          const u = new URL(href, location.origin)
+          return u.pathname.replace(/\/$/, '') === '/gratis-websiteconcept'
+        } catch {
+          return false
+        }
+      }
+      const links = [...document.querySelectorAll('a')]
+        .filter((a) => isConcept(a.getAttribute('href')))
+        .map((a) => ({
+          tekst: norm(a.textContent),
+          headerKort: !!a.querySelector('.nav__scan-short'),
+        }))
+      const submits = [...document.querySelectorAll('.concept button[type="submit"]')].map((b) => ({
+        tekst: norm(b.textContent),
+      }))
+      const eindEl = document.querySelector('#scan a.btn')
+      return {
+        links,
+        submits,
+        eind: eindEl ? norm(eindEl.textContent) : '',
+        lichaam: document.body?.textContent ?? '',
+      }
+    })
+
+    for (const oud of OUDE_CTA_VARIANTEN) {
+      if (data.lichaam.includes(oud)) fouten.push(`${pad} bevat "${oud}"`)
+    }
+    for (const link of data.links) {
+      const oordeel = beoordeelCtaTekst(link.tekst, link.headerKort)
+      if (!oordeel.ok) fouten.push(`${pad} link "${oordeel.tekst}": ${oordeel.reden}`)
+      else if (oordeel.soort === 'header-kort') header.add(oordeel.tekst)
+      else if (oordeel.soort !== 'exact') andere.add(oordeel.tekst)
+      if (oordeel.tekst === CTA_CONCEPT || (oordeel.soort === 'exact' && oordeel.tekst === CTA_CONCEPT)) zagConcept = true
+      if (oordeel.soort === 'exact' && oordeel.tekst === CTA_SCAN) zagScan = true
+    }
+    for (const submit of data.submits) {
+      const oordeel = beoordeelCtaTekst(submit.tekst)
+      if (!oordeel.ok || oordeel.soort !== 'exact') fouten.push(`${pad} submit "${submit.tekst}"`)
+      else if (submit.tekst === CTA_CONCEPT) zagConcept = true
+    }
+    if (pad === '/kennisbank' || pad.startsWith('/kennisbank/')) {
+      if (data.eind !== CTA_SCAN) fouten.push(`${pad} eind-CTA "${data.eind}" hoort "${CTA_SCAN}" te zijn`)
+      else zagScan = true
+    }
+  }
+
+  check(
+    'CTA-teksten op sitemap-pagina\'s zijn toegestaan',
+    fouten.length === 0 && zagConcept && zagScan,
+    fouten.slice(0, 6).join(' | ') || `concept=${zagConcept} scan=${zagScan} pagina's=${paden.length}`,
+  )
+  check(
+    'korte headerknop en andere linkteksten geïnventariseerd',
+    header.size > 0,
+    `header=${[...header].join(' || ')} overig=${[...andere].sort().join(' || ')}`,
+  )
+  await pg.close()
+}
+
 function isGaUrl(url) {
   return /googletagmanager\.com|google-analytics\.com|analytics\.google\.com/i.test(url)
 }
@@ -282,6 +422,14 @@ const browser = await chromium.launch({
   ignoreDefaultArgs: ['--enable-automation'],
   args: ['--disable-blink-features=AutomationControlled'],
 })
+
+if (process.argv.includes('--alleen-cta')) {
+  await controleerCtaTeksten(browser)
+  await browser.close()
+  console.table(results)
+  console.log(failed ? `${failed} test(s) gefaald.` : 'Alle CTA-controles geslaagd.')
+  process.exit(failed ? 1 : 0)
+}
 
 /* ---------------- Desktop ---------------- */
 const page = await browser.newPage({ viewport: { width: 1440, height: 900 } })
@@ -1695,6 +1843,8 @@ check(
   mainGaUrls.length === 0,
   mainGaUrls.join(' '),
 )
+
+await controleerCtaTeksten(browser)
 
 /* ---------------- Resultaat ---------------- */
 const realErrors = consoleErrors.filter(

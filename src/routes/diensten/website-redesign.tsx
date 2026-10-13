@@ -5,6 +5,7 @@ import { Media } from '@/components/Media'
 import { Qa } from '@/components/Qa'
 import { Reveal } from '@/components/Reveal'
 import { ConceptForm } from '@/components/ConceptForm'
+import { CTA_CONCEPT } from '@/lib/cta'
 
 export const Route = createFileRoute('/diensten/website-redesign')({
   head: () => ({
@@ -55,7 +56,7 @@ function WebsiteRedesign() {
               {' '}
               <Reveal as="div" className="svc-hero__ctas reveal" data-d="2">
                 <Link className="btn btn-primary" to="/gratis-websiteconcept">
-                  Vraag je gratis websiteconcept aan
+                  {CTA_CONCEPT}
                 </Link>
                 {' '}
                 <Link className="tlink" to="/contact">
@@ -865,7 +866,7 @@ function WebsiteRedesign() {
               {' '}
               <Reveal as="div" className="svc-hero__ctas reveal" data-d="2" style={{ marginTop: "28px" }}>
                 <Link className="btn btn-primary" to="/gratis-websiteconcept">
-                  Vraag je gratis websiteconcept aan
+                  {CTA_CONCEPT}
                 </Link>
                 {' '}
                 <Link className="tlink" to="/contact">

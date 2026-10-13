@@ -3,6 +3,7 @@ import { Link } from '@tanstack/react-router'
 import { Icon } from '@/components/Icon'
 import { Qa } from '@/components/Qa'
 import { Reveal } from '@/components/Reveal'
+import { CTA_CONCEPT } from '@/lib/cta'
 import '@/styles/pages/megasmart.css'
 
 export const Route = createFileRoute('/megasmart')({
@@ -651,7 +652,7 @@ function MegaSmart() {
               </Link>
               {' '}
               <Link className="tlink" to="/gratis-websiteconcept">
-                Vraag je gratis websiteconcept aan
+                {CTA_CONCEPT}
                 {' '}
               </Link>
             </Reveal>

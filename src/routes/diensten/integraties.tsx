@@ -3,6 +3,7 @@ import { Link } from '@tanstack/react-router'
 import { Icon } from '@/components/Icon'
 import { Qa } from '@/components/Qa'
 import { Reveal } from '@/components/Reveal'
+import { CTA_CONCEPT } from '@/lib/cta'
 
 export const Route = createFileRoute('/diensten/integraties')({
   head: () => ({
@@ -55,7 +56,7 @@ function Integraties() {
               {' '}
               <Reveal as="div" className="svc-hero__ctas reveal" data-d="2">
                 <Link className="btn btn-primary" to="/gratis-websiteconcept">
-                  Vraag je gratis websiteconcept aan
+                  {CTA_CONCEPT}
                 </Link>
                 {' '}
                 <Link className="tlink" to="/contact">
@@ -367,7 +368,7 @@ function Integraties() {
             {' '}
             <Reveal as="div" className="svc-hero__ctas reveal" data-d="1" style={{ justifyContent: "center", marginTop: "28px" }}>
               <Link className="btn btn-primary" to="/gratis-websiteconcept">
-                Vraag je gratis websiteconcept aan
+                {CTA_CONCEPT}
               </Link>
               {' '}
               <Link className="tlink" to="/contact">
