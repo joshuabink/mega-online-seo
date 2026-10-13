@@ -539,6 +539,220 @@ export const ARTIKELEN: Artikel[] = [
     metaDescription:
       "Wel of geen tarieven op je verhuurwebsite? De drie bezwaren, wat er gebeurt als de prijs er niet staat en hoe je hem noemt zonder je vast te leggen.",
   },
+  {
+    slug: "waar-boekingen-weglekken",
+    naam: "Boekingen die weglekken",
+    vraag: "Waar lekken boekingen weg op je website?",
+    pijler: "Zo werkt het echt",
+    icoon: "calendar-check",
+    branche: "Bedrijven met reserveringen",
+    teaser:
+      "Bezoekers die willen boeken en toch afhaken. Tien plekken waar het misgaat en hoe je elk lek in vijf minuten zelf checkt.",
+    antwoord:
+      "Boekingen lekken weg op plekken waar een bezoeker die wil boeken vastloopt: een knop die nergens heen leidt, een pad met te veel stappen, een prijs die ontbreekt of een site die op de telefoon hapert. Deze gids laat per lek zien wat de bezoeker ziet, waarom het boekingen kost en hoe je het in vijf minuten zelf checkt.\n\nVoor het bredere plaatje over aanvragen in het algemeen is er [waarom je website geen aanvragen oplevert](/kennisbank/website-levert-geen-aanvragen-op). Deze gids zoomt in op boeken en reserveren.",
+    leestijd: "8 minuten",
+    gepubliceerd: "2026-10-13",
+    gewijzigd: "2026-10-13",
+    secties: [
+      {
+        kop: "Eerst meten, dan repareren",
+        accent: "dan repareren",
+        alineas: [
+          "Zonder meting blijft het gokken. Kijk eerst waar bezoekers stoppen: pagina's met veel bezoek zonder boeking of een boekingsproces waarin mensen afhaken.",
+          "Meet één week en noteer drie getallen: hoeveel mensen de boekingspagina openen, hoeveel de boekingsstap starten en hoeveel afronden. Mist één van de drie, dan is nog niet duidelijk of het aan het bezoek, de knop of het afronden ligt.",
+        ],
+      },
+      {
+        kop: "Tien plekken waar boekingen weglekken",
+        accent: "weglekken",
+        alineas: [
+          "Elk lek volgt hetzelfde format: wat de bezoeker ziet, waarom het boekingen kost en een zelfcheck van vijf minuten.",
+        ],
+        punten: [
+          {
+            titel: "1. Je bent niet vindbaar op de woorden waarmee mensen boeken",
+            tekst: `**Wat de bezoeker ziet.** Iemand zoekt "[dienst] [plaats] boeken" of "[dienst] reserveren" en vindt een concurrent. Je homepage bestaat, alleen niet de pagina die bij die zoekvraag past.
+
+**Waarom het boekingen kost.** Wie niet gevonden wordt, komt nooit bij de knop. Een zoeker die wil boeken verwacht een pagina die meteen over boeken, data of beschikbaarheid gaat.
+
+**Zelfcheck (5 minuten).**
+
+1. Schrijf drie zoektermen op waarmee een ideale klant je zou moeten vinden.
+2. Zoek ze op je telefoon in een privévenster.
+3. Staat je site niet op de eerste pagina? Dan mist die term waarschijnlijk een eigen, duidelijke pagina.`,
+          },
+          {
+            titel: "2. De site werkt slecht op de telefoon",
+            tekst: `**Wat de bezoeker ziet.** Knoppen die te klein zijn, horizontaal scrollen, een datumkiezer die niet werkt of tekst die van het scherm valt.
+
+**Waarom het boekingen kost.** Google gebruikt vooral de mobiele versie van een site om pagina's te indexeren en te rangschikken ([Google Search Central](https://developers.google.com/search/docs/crawling-indexing/mobile/mobile-sites-mobile-first-indexing)). Een goede pagina-ervaring omvat volgens Google onder meer goed weergeven op mobiel, een beveiligde verbinding en geen opdringerige tussenschermen ([Google Search Central](https://developers.google.com/search/docs/appearance/page-experience)). Wie op de telefoon niet verder komt, kan niet boeken.
+
+**Zelfcheck (5 minuten).**
+
+1. Open je site op je eigen telefoon.
+2. Loop het pad van homepage tot boeken of aanvragen.
+3. Noteer elke plek waar je moet inzoomen, opzij scrollen of opnieuw beginnen.`,
+          },
+          {
+            titel: "3. De pagina laadt te traag",
+            tekst: `**Wat de bezoeker ziet.** Een wit scherm, een trage openingsfoto of een knop die pas na seconden verschijnt.
+
+**Waarom het boekingen kost.** Snelheid beïnvloedt hoe lang bezoekers blijven en of ze verder gaan ([web.dev](https://web.dev/articles/why-speed-matters)). Google noemt een pagina snel genoeg als het grootste zichtbare element binnen 2,5 seconden in beeld staat ([web.dev](https://web.dev/articles/vitals)). Goede scores garanderen geen hogere positie in Google ([Google Search Central](https://developers.google.com/search/docs/appearance/page-experience)).
+
+**Zelfcheck (5 minuten).**
+
+1. Zet wifi uit en open de boekingspagina via mobiele data.
+2. Tel tot de belangrijkste foto, titel of knop zichtbaar is.
+3. Duurt dat duidelijk langer dan 2,5 seconden? Noteer welke afbeeldingen of scripts de pagina zwaar maken. Dat is een startpunt voor [je bestaande website verbeteren](/diensten/website-optimalisatie).`,
+          },
+          {
+            titel: "4. De boekingsknop is onduidelijk of ontbreekt",
+            tekst: `**Wat de bezoeker ziet.** "Meer info", "Lees verder" of helemaal geen hoofdknop. Of drie knoppen die evenveel aandacht vragen.
+
+**Waarom het boekingen kost.** Zonder duidelijke volgende stap begint het boeken niet. Een knoptekst die zegt wat er gebeurt, zoals "Bekijk beschikbaarheid" of "Reserveer nu", laat de bezoeker niet raden.
+
+**Zelfcheck (5 minuten).**
+
+1. Open de homepage op je telefoon.
+2. Kijk vijf seconden. Is duidelijk hoe je boekt?
+3. Staat de knop in beeld zonder scrollen en is de tekst specifiek? Zo nee: herschrijf de knoptekst en geef hem één vaste plek.`,
+          },
+          {
+            titel: "5. Te veel stappen tot de bevestiging",
+            tekst: `**Wat de bezoeker ziet.** Klik na klik: een account aanmaken, tussenschermen, dezelfde gegevens opnieuw invullen, zonder zicht op het einde.
+
+**Waarom het boekingen kost.** Elk scherm is een moment om te stoppen. Niet elk scherm is nodig.
+
+**Zelfcheck (5 minuten).**
+
+1. Tel de kliks van homepage tot "boeking bevestigd" of "aanvraag verzonden".
+2. Vraag per scherm: is dit echt nodig?
+3. Kan één stap weg of samen met een andere zonder dat de boeking onduidelijk wordt? Begin daar.`,
+          },
+          {
+            titel: "6. Prijzen of beschikbaarheid ontbreken",
+            tekst: `**Wat de bezoeker ziet.** Eerst naam, e-mail en telefoon invullen. Pas daarna een prijs of een vrije datum. Of helemaal geen vanafprijs.
+
+**Waarom het boekingen kost.** Wie de prijs of een vrije datum niet ziet, moet gegevens afgeven zonder te weten of het past. In eigen onderzoek naar boekingssites kwamen steeds dezelfde patronen terug, waaronder een prijs die pas na het formulier zichtbaar is of een lege reserveringspagina zonder datum of tarief. Meer hierover staat in [prijzen op je website zetten](/kennisbank/prijzen-op-website-verhuurbedrijf).
+
+**Zelfcheck (5 minuten).**
+
+1. Open de boekings- of dienstpagina zonder iets in te vullen.
+2. Zie je een vanafprijs, een tarieftabel of beschikbare data?
+3. Zo nee: zet minstens een richtprijs of een link naar vrije data vóór het formulier.`,
+          },
+          {
+            titel: "7. Weinig vertrouwen op het beslismoment",
+            tekst: `**Wat de bezoeker ziet.** Twijfel bij het invullen van gegevens of het betalen. Geen recente reviews bij de knop, geen adres, geen annuleringsinformatie en geen uitleg over wat er na het boeken gebeurt.
+
+**Waarom het boekingen kost.** Op het moment van boeken zoekt de bezoeker bevestiging dat het goed komt. Signalen die alleen op de homepage staan, ziet hij op dat moment niet. Meer hierover: [vertrouwen wekken op een zakelijke website](/kennisbank/vertrouwen-wekken-zakelijke-website).
+
+**Zelfcheck (5 minuten).**
+
+1. Scroll naar de boekingsknop of het formulier.
+2. Staat er binnen één schermhoogte een review, je adres of je annuleringsbeleid?
+3. Ontbreekt dat: zet die informatie ook daar, niet alleen op de homepage.`,
+          },
+          {
+            titel: "8. Het formulier of de boekingsstap werkt niet",
+            tekst: `**Wat de bezoeker ziet.** "Reserveer" leidt naar een foutpagina, een leeg formulier of alleen een WhatsApp-nummer. Of de knop doet niets.
+
+**Waarom het boekingen kost.** Een knop die nergens heen leidt, maakt boeken onmogelijk. In eigen onderzoek naar boekingssites was dit een van de patronen die steeds terugkwamen: een Reserveer-knop zonder werkende bestemming, alleen bellen of WhatsApp, of een lege reserveringspagina.
+
+**Zelfcheck (5 minuten).**
+
+1. Klik elke knop met "Boek", "Reserveer" of "Plan" op homepage, menu en dienstpagina's.
+2. Kom je uit op een werkend scherm tot bevestiging of "verzonden"?
+3. Werkt het niet: repareer die knop eerst, vóór de rest.`,
+          },
+          {
+            titel: "9. Geen opvolging na een bijna-boeking",
+            tekst: `**Wat de bezoeker ziet.** Een verzonden aanvraag zonder bevestiging of een belpoging buiten openingstijden. Er komt niets zichtbaars terug.
+
+**Waarom het boekingen kost.** Zonder bevestiging weet de bezoeker niet of de aanvraag is aangekomen. Dan is de kans groot dat hij verder zoekt. Een website die een aanvraag doorzet naar de plek waar je al werkt, zoals je mail of agenda, helpt dat gat te dichten. Lees meer over [je website koppelen aan je eigen systemen](/diensten/integraties).
+
+**Zelfcheck (5 minuten).**
+
+1. Vul je eigen formulier in.
+2. Wat gebeurt er direct na verzenden? Staat er een bevestiging en een termijn?
+3. Staat er wanneer iemand wordt teruggebeld? Maak dat zichtbaar op de pagina.`,
+          },
+          {
+            titel: "10. Je meet niet waar het misgaat",
+            tekst: `**Wat de bezoeker ziet.** Niets. Jij ziet alleen "weinig boekingen", zonder te weten of het aan het bezoek, de knop of het formulier ligt.
+
+**Waarom het boekingen kost.** Zonder meting is niet te zien welk lek het grootste is. Dan gaat tijd naar teksten terwijl de knop kapot is.
+
+**Zelfcheck (5 minuten).**
+
+1. Open je bezoekersstatistieken van de afgelopen 30 dagen.
+2. Is te zien hoeveel bezoekers de boekingspagina bereiken en hoeveel afronden?
+3. Zo nee: zet die twee metingen eerst aan.`,
+          },
+        ],
+      },
+      {
+        kop: "Waar begin je?",
+        accent: "begin",
+        alineas: [
+          "Pak niet alles tegelijk aan. Een logische volgorde:",
+          `1. **Telefoon en een werkende knop.** Faalt boeken op de telefoon of doet de knop niets, dan helpt de rest weinig.
+2. **Stappen, prijzen en beschikbaarheid.** Maak het pad korter en de prijs eerder zichtbaar.
+3. **Vindbaarheid en meten.** Zodat nieuwe bezoekers binnenkomen en zichtbaar wordt of een aanpassing werkt.`,
+          "Eén lek per week afmaken werkt beter dan tien half. Schrijf op wat er veranderde en kijk na een week opnieuw naar de drie getallen: bereik, start en afronding.",
+        ],
+      },
+      {
+        kop: "Wanneer de site zelf het probleem is",
+        accent: "het probleem",
+        alineas: [
+          "Zitten de lekken in de opbouw van de site zelf, dan is repareren soms minder zinvol dan opnieuw kijken naar hoe een [website met reserveringssysteem](/branches/reserveringen) is ingericht. Op die pagina staat wat een [reserveringswebsite](/branches/reserveringen) anders doet dan een gewone bedrijfssite. Voor specifieke branches zijn er ook [websites voor activiteitenbedrijven](/branches/activiteitenbedrijven) en [websites voor verhuurbedrijven](/branches/verhuurbedrijven).",
+        ],
+      },
+    ],
+    doen: [
+      "Klik elke boek- of reserveerknop op je site en noteer welke niet werkt.",
+      "Loop het boekingspad op je telefoon en tel de stappen.",
+      "Zet een vanafprijs of beschikbare data vóór het formulier.",
+      "Zet een review en je annuleringsbeleid binnen één schermhoogte van de knop.",
+      "Noteer een week lang bereik, start en afronding van je boekingspagina.",
+    ],
+    faq: [
+      {
+        q: "Hoe check je of de boekingsknop op je website werkt?",
+        a: 'Open de site op je telefoon en klik elke "Boek", "Reserveer" of "Plan"-knop. Kom je uit op een scherm waar je kunt afronden of verzenden? Werkt één knop niet, repareer die dan eerst.',
+      },
+      {
+        q: "Eerst meer bezoekers of eerst het boekingsproces verbeteren?",
+        a: "Eerst het proces. Meer bezoek op een kapotte knop of een te lang pad levert vooral meer afhakers op. Kijk daarna of er genoeg bezoek binnenkomt op de woorden waarmee mensen boeken.",
+      },
+      {
+        q: "Heb je een volledig boekingssysteem nodig?",
+        a: "Dat hangt af van hoe je nu werkt. Sommige bedrijven werken met een kort formulier en een terugbelafspraak, andere hebben live beschikbaarheid nodig. Deze gids gaat over lekken in het pad, niet over welk systeem je kiest.",
+      },
+    ],
+    links: [
+      {
+        to: "/branches/reserveringen",
+        label: "Website met reserveringssysteem",
+        tekst:
+          "Wat een website voor bedrijven met reserveringen anders inricht dan een gewone bedrijfssite.",
+      },
+      {
+        to: "/diensten/integraties",
+        label: "Website koppelen aan je systemen",
+        tekst: "Aanvragen komen terecht op de plek waar je al werkt.",
+      },
+      {
+        to: "/diensten/website-optimalisatie",
+        label: "Website optimalisatie",
+        tekst: "Meer halen uit de website die je al hebt, zonder opnieuw te beginnen.",
+      },
+    ],
+    metaTitle: "Waar boekingen weglekken op je website | MegaOnline.io",
+    metaDescription:
+      "Bezoekers willen boeken en haken toch af. Tien plekken waar boekingen weglekken, waarom dat gebeurt en per lek een zelfcheck van vijf minuten.",
+  },
 ];
 
 /**

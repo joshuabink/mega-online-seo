@@ -149,9 +149,10 @@
 /* ---------- Artikel: links in de lopende tekst ----------
    Zonder deze regels erft een link de kleur van de tekst en is hij niet van
    gewone tekst te onderscheiden. Bosgroen op een lichte grond, want citroen
-   is daar onleesbaar. */
+   is daar onleesbaar. Op de donkere hero is het accent juist de lichte kleur. */
 [data-page="artikel"] .art__body a,
-[data-page="artikel"] .art__punten p a,
+[data-page="artikel"] .art__punten a,
+[data-page="artikel"] .svc-hero__sub a,
 [data-page="artikel"] .feat h4 a {
   color: var(--accent-text);
   font-weight: 500;
@@ -163,9 +164,54 @@
 }
 
 [data-page="artikel"] .art__body a:hover,
-[data-page="artikel"] .art__punten p a:hover,
+[data-page="artikel"] .art__punten a:hover,
+[data-page="artikel"] .svc-hero__sub a:hover,
 [data-page="artikel"] .feat h4 a:hover {
   text-decoration-color: var(--accent-text);
+}
+
+[data-page="artikel"] .svc-hero__sub p + p {
+  margin-top: 0.85em;
+}
+
+[data-page="artikel"] .art__body > .art__blok {
+  margin-top: 1.1em;
+}
+
+[data-page="artikel"] .art__body > .art__blok + .reveal {
+  margin-top: 1.1em;
+}
+
+[data-page="artikel"] .art__body .art__blok ol,
+[data-page="artikel"] .art__punten .art__punt ol {
+  margin: 0.55em 0 0;
+  padding-left: 1.25em;
+  display: grid;
+  gap: 0.4em;
+}
+
+[data-page="artikel"] .art__body .art__blok li {
+  font-size: 1.04rem;
+  line-height: 1.7;
+}
+
+[data-page="artikel"] .art__punten .art__punt p,
+[data-page="artikel"] .art__punten .art__punt li {
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+[data-page="artikel"] .art__punten .art__punt p + p,
+[data-page="artikel"] .art__punten .art__punt p + ol,
+[data-page="artikel"] .art__punten .art__punt ol + p {
+  margin-top: 0.75em;
+}
+
+[data-page="artikel"] .art__body strong,
+[data-page="artikel"] .art__punten strong {
+  font-weight: 650;
+  color: var(--fg);
 }
 
 /* Drie kolommen in plaats van vier: deze blokken bevatten lopende tekst,

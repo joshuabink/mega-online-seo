@@ -903,6 +903,7 @@ for (const pad of [
   '/kennisbank/website-levert-geen-aanvragen-op',
   '/kennisbank/vertrouwen-wekken-zakelijke-website',
   '/kennisbank/prijzen-op-website-verhuurbedrijf',
+  '/kennisbank/waar-boekingen-weglekken',
 ]) {
   const data = await openKennisbank(pad)
   const schemaVragen = (data.faqVragen[0] ?? []).map(normTekst)
@@ -916,6 +917,43 @@ for (const pad of [
     `${pad} toont FAQ-blok en FAQPage`,
     data.faqBlok && gelijk && data.vijf && auteurIsJoshua(data.author) && data.joshua,
     `blok=${data.faqBlok} vragen=${zichtbaar.length} schema=${data.faqVragen.length} vijf=${data.vijf} auteur=${JSON.stringify(data.author)} joshua=${data.joshua}`,
+  )
+}
+
+{
+  await page.goto(BASE + '/kennisbank/waar-boekingen-weglekken', { waitUntil: 'load' })
+  await waitHydrated(page)
+  const artikel = await page.evaluate(() => ({
+    h1: (document.querySelector('h1')?.textContent || '').replace(/\s+/g, ' ').trim(),
+    title: document.title,
+    description: document.querySelector('meta[name="description"]')?.getAttribute('content') || '',
+    vragen: [...document.querySelectorAll('section#faq .qa .qa__q')].map((el) =>
+      (el.textContent || '').replace(/\s+/g, ' ').trim(),
+    ),
+    ctaHref: document.querySelector('#scan a')?.getAttribute('href') || '',
+    ctaTekst: (document.querySelector('#scan a')?.textContent || '').replace(/\s+/g, ' ').trim(),
+    ctaKop: (document.querySelector('#scan h2')?.textContent || '').replace(/\s+/g, ' ').trim(),
+    canonical: document.querySelector('link[rel="canonical"]')?.getAttribute('href') || '',
+  }))
+  check(
+    'waar-boekingen-weglekken houdt slug, title, meta en H1',
+    artikel.h1 === 'Waar lekken boekingen weg op je website?' &&
+      artikel.title === 'Waar boekingen weglekken op je website | MegaOnline.io' &&
+      artikel.description ===
+        'Bezoekers willen boeken en haken toch af. Tien plekken waar boekingen weglekken, waarom dat gebeurt en per lek een zelfcheck van vijf minuten.' &&
+      artikel.canonical === 'https://megaonline.io/kennisbank/waar-boekingen-weglekken' &&
+      artikel.vragen.length === 3 &&
+      artikel.vragen[0] === 'Hoe check je of de boekingsknop op je website werkt?' &&
+      artikel.vragen[1] === 'Eerst meer bezoekers of eerst het boekingsproces verbeteren?' &&
+      artikel.vragen[2] === 'Heb je een volledig boekingssysteem nodig?',
+    `h1=${artikel.h1} title=${artikel.title} vragen=${artikel.vragen.length}`,
+  )
+  check(
+    'waar-boekingen-weglekken gebruikt de standaard eind-CTA',
+    artikel.ctaHref.includes('/gratis-websiteconcept') &&
+      artikel.ctaTekst === 'Vraag je gratis concept aan' &&
+      artikel.ctaKop === 'Wil je een gratis websiteconcept voor je bedrijf?',
+    `${artikel.ctaHref} / ${artikel.ctaTekst} / ${artikel.ctaKop}`,
   )
 }
 
@@ -959,6 +997,11 @@ check(
   !overzichtHrefs.some((href) => href.includes('smoke-')),
   overzichtHrefs.filter((href) => href.includes('kennisbank')).join(' '),
 )
+check(
+  'artikel waar-boekingen-weglekken staat in het kennisbankoverzicht',
+  overzichtHrefs.some((href) => href.includes('/kennisbank/waar-boekingen-weglekken')),
+  overzichtHrefs.filter((href) => href.includes('kennisbank')).join(' '),
+)
 
 /* --- sitemap lastmod --- */
 {
@@ -970,7 +1013,23 @@ check(
   );
   const dates = lastmods.map((list) => list[0] ?? "");
   check("sitemap 200", res.status() === 200, String(res.status()));
-  check("sitemap heeft 37 urls", blocks.length === 37, String(blocks.length));
+  check("sitemap heeft 38 urls", blocks.length === 38, String(blocks.length));
+  const boekingen = blocks.find((block) =>
+    block.includes("https://megaonline.io/kennisbank/waar-boekingen-weglekken"),
+  );
+  check(
+    "sitemap bevat waar-boekingen-weglekken met lastmod 2026-10-13",
+    !!boekingen && /<lastmod>2026-10-13<\/lastmod>/.test(boekingen),
+    boekingen ?? "ontbreekt",
+  );
+  const kennisbankOverzicht = blocks.find((block) =>
+    /<loc>https:\/\/megaonline\.io\/kennisbank<\/loc>/.test(block),
+  );
+  check(
+    "kennisbankoverzicht lastmod volgt de nieuwste gewijzigd",
+    !!kennisbankOverzicht && /<lastmod>2026-10-13<\/lastmod>/.test(kennisbankOverzicht),
+    kennisbankOverzicht ?? "ontbreekt",
+  );
   check(
     "elke url heeft precies één lastmod",
     lastmods.every((list) => list.length === 1 && /^\d{4}-\d{2}-\d{2}$/.test(list[0])),
