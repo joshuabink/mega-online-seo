@@ -418,7 +418,7 @@ export function ConceptForm({
         <p className="form__direct">
           Liever direct contact? Mail{' '}
           <a href={`mailto:${LEAD_CONTACT.mail}`}>{LEAD_CONTACT.mail}</a>, bel{' '}
-          <a href={`tel:${LEAD_CONTACT.phone}`}>{LEAD_CONTACT.phoneText}</a> of stuur een{' '}
+          {LEAD_CONTACT.phoneText} of stuur een{' '}
           <a href={LEAD_CONTACT.whatsappUrl} target="_blank" rel="noopener">WhatsApp</a>.
         </p>
         <p className="form__disc">

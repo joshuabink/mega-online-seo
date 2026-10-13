@@ -231,10 +231,10 @@ function Contact() {
                 Liever even sparren? Bel ons gerust tijdens kantooruren (ma–vr, 9–17 uur).
               </p>
               {' '}
-              <a className="ccard__val" href={`tel:${LEAD_CONTACT.phone}`}>
+              <span className="ccard__val">
                 {LEAD_CONTACT.phoneText}
                 {' '}
-              </a>
+              </span>
             </Reveal>
             {' '}
             <Reveal as="div" className="ccard reveal" data-d="2">

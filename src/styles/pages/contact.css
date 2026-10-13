@@ -5,7 +5,7 @@
 [data-page="contact"] .ccard:hover { transform: translateY(-3px); border-color: var(--line-strong); }
 [data-page="contact"] .ccard h3 { font-family: var(--display); font-weight: 600; font-size: 1.14rem; letter-spacing: -0.02em; }
 [data-page="contact"] .ccard p { color: var(--muted); font-size: 0.92rem; line-height: 1.5; }
-[data-page="contact"] .ccard a.ccard__val { font-family: var(--mono); font-size: 0.92rem; color: var(--accent-text); text-decoration: none; margin-top: auto; display: inline-flex; align-items: center; gap: 8px; }
+[data-page="contact"] .ccard .ccard__val { font-family: var(--mono); font-size: 0.92rem; color: var(--accent-text); text-decoration: none; margin-top: auto; display: inline-flex; align-items: center; gap: 8px; }
 [data-page="contact"] .ccard a.ccard__val:hover { text-decoration: underline; }
 [data-page="contact"] .expect { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(16px, 2vw, 26px); margin-top: clamp(38px, 4vw, 52px); }
 [data-page="contact"] .estep { display: flex; flex-direction: column; gap: 10px; }
