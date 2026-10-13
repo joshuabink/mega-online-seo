@@ -1162,7 +1162,7 @@ async function leesKennisbank(pg) {
       ? [...blok.querySelectorAll('.qa .qa__q')].map((el) => (el.textContent || '').replace(/\s+/g, ' ').trim())
       : []
     const vijf = (document.body.innerText || '').includes(
-      'Vijf dingen die je zonder ons kunt uitvoeren',
+      'Vijf dingen die je zelf kunt uitvoeren',
     )
     const found = []
     const walk = (value) => {

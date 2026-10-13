@@ -86,7 +86,7 @@ export function SollicitatieSectie({
             }
             ok={
               <>
-                <div className="ic">✓</div> <h3>Bedankt. We hebben je bericht.</h3>{" "}
+                <div className="ic">✓</div> <h3>Bedankt. MegaOnline heeft je bericht.</h3>{" "}
                 <p>
                   Je sollicitatie is binnen. We reageren gemiddeld binnen twee werkdagen, ook als
                   het een nee is.
@@ -149,8 +149,7 @@ export function SollicitatieSectie({
               Verstuur je sollicitatie
             </button>{" "}
             <p className="form__disc">
-              Je gegevens gebruiken we alleen voor deze sollicitatie en bewaren we niet langer dan
-              nodig.
+              MegaOnline gebruikt je gegevens alleen voor deze sollicitatie en bewaart ze niet langer dan nodig.
             </p>
           </SingleLeadForm>
         </div>
