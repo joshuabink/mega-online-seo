@@ -1,6 +1,7 @@
 import { Link } from '@tanstack/react-router'
 import { CookieSettingsButton } from '@/components/CookieBanner'
 import { Logo } from './Logo'
+import { CTA_CONCEPT } from '@/lib/cta'
 
 const DIENSTEN = [
   ['/diensten/conversie-website', 'Conversie Website'],
@@ -47,7 +48,7 @@ export function SiteFooter() {
               jouw bedrijf.
             </p>
             <Link className="footer__scan" to="/gratis-websiteconcept">
-              Vraag je gratis websiteconcept aan            </Link>
+              {CTA_CONCEPT}            </Link>
           </div>
 
           <div className="footer__col">

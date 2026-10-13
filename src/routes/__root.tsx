@@ -19,6 +19,7 @@ import { SiteFooter, FunnelFooter } from "@/components/SiteFooter";
 import { CookieBanner } from "@/components/CookieBanner";
 import { GA_CONSENT_DEFAULT_SNIPPET, trackPageView } from "@/lib/analytics";
 import { SITE_GRAPH, buildPageSchema } from "@/lib/schema";
+import { CTA_CONCEPT } from "@/lib/cta"
 
 // MegaOnline design system uit de Claude Design-handoff. De volgorde is de
 // bron van waarheid: styles → concepts → conversie → over → funnel → megamenu.
@@ -69,7 +70,7 @@ function NotFoundComponent() {
               Naar de homepage
             </Link>
             <Link className="btn btn-outline" to="/gratis-websiteconcept">
-              Vraag je gratis websiteconcept aan
+              {CTA_CONCEPT}
             </Link>
           </div>
         </div>

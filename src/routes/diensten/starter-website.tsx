@@ -5,6 +5,7 @@ import { Media } from '@/components/Media'
 import { Qa } from '@/components/Qa'
 import { Reveal } from '@/components/Reveal'
 import { ConceptForm } from '@/components/ConceptForm'
+import { CTA_CONCEPT } from '@/lib/cta'
 import '@/styles/pages/diensten-starter-website.css'
 
 export const Route = createFileRoute('/diensten/starter-website')({
@@ -668,7 +669,7 @@ function StarterWebsite() {
               </ul>
               {' '}
               <Link className="btn btn-primary" to="/gratis-websiteconcept">
-                Vraag je gratis websiteconcept aan
+                {CTA_CONCEPT}
                 {' '}
               </Link>
               {' '}
@@ -758,7 +759,7 @@ function StarterWebsite() {
               {' '}
               <Reveal as="div" className="svc-hero__ctas reveal" data-d="2" style={{ marginTop: "28px" }}>
                 <Link className="btn btn-primary" to="/gratis-websiteconcept">
-                  Vraag je gratis websiteconcept aan
+                  {CTA_CONCEPT}
                   {' '}
                 </Link>
                 {' '}

@@ -3,6 +3,7 @@ import { Icon } from "@/components/Icon";
 import { Reveal } from "@/components/Reveal";
 import { artikelenNieuwsteEerst } from "@/lib/kennisbank";
 import "@/styles/pages/kennisbank.css";
+import { CTA_SCAN } from "@/lib/cta"
 
 const TITLE = "Kennisbank: uitleg over websites die aanvragen opleveren | MegaOnline.io";
 const DESCRIPTION =
@@ -152,7 +153,7 @@ function Kennisbank() {
               style={{ justifyContent: "center", marginTop: "28px" }}
             >
               <Link className="btn btn-primary" to="/gratis-websiteconcept">
-                Vraag je gratis concept aan
+                {CTA_SCAN}
               </Link>
             </Reveal>
           </Reveal>

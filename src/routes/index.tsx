@@ -5,6 +5,7 @@ import { Media } from '@/components/Media'
 import { Qa } from '@/components/Qa'
 import { Reveal } from '@/components/Reveal'
 import { ConceptForm } from '@/components/ConceptForm'
+import { CTA_CONCEPT } from '@/lib/cta'
 import '@/styles/pages/index.css'
 
 export const Route = createFileRoute('/')({
@@ -416,7 +417,7 @@ function Home() {
             <p>Wil je zien hoe dit voor jouw bedrijf kan werken? We maken een gratis websiteconcept met persoonlijk advies.</p>
             {' '}
             <Link className="tlink" to="/gratis-websiteconcept">
-              Vraag je gratis websiteconcept aan
+              {CTA_CONCEPT}
               {' '}
               <span className="arr">&rarr;</span>
             </Link>
@@ -656,7 +657,7 @@ function Home() {
               <div className="rm__foot">
                 <span className="svcprice">Vanaf € 2.500</span>
                 {' '}
-                <Link className="flow-cta" to="/gratis-websiteconcept">Vraag je gratis websiteconcept aan</Link>
+                <Link className="flow-cta" to="/gratis-websiteconcept">{CTA_CONCEPT}</Link>
               </div>
             </div>
             {' '}
@@ -874,7 +875,7 @@ function Home() {
           </Reveal>
           {' '}
           <Reveal as={Link} className="btn btn-primary reveal" data-d="2" to="/gratis-websiteconcept">
-            Vraag je gratis websiteconcept aan
+            {CTA_CONCEPT}
           </Reveal>
         </div>
       </section>

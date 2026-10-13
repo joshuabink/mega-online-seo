@@ -4,6 +4,7 @@ import { Qa } from "@/components/Qa";
 import { Reveal } from "@/components/Reveal";
 import { artikelBySlug, artikelenNieuwsteEerst, type ArtikelSectie } from "@/lib/kennisbank";
 import "@/styles/pages/kennisbank.css";
+import { CTA_SCAN } from "@/lib/cta"
 
 /**
  * Eén route voor alle kennisbankartikelen. De inhoud komt uit
@@ -263,7 +264,7 @@ function ArtikelPagina() {
               style={{ justifyContent: "center", marginTop: "28px" }}
             >
               <Link className="btn btn-primary" to="/gratis-websiteconcept">
-                Vraag je gratis concept aan
+                {CTA_SCAN}
               </Link>
             </Reveal>
           </Reveal>

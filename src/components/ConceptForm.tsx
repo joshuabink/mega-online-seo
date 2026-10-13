@@ -2,6 +2,7 @@ import { useEffect, useId, useRef, useState } from 'react'
 import { Link } from '@tanstack/react-router'
 import { LEAD_CONTACT } from '@/lib/lead-contact'
 import { SteppedLeadForm } from './LeadForm'
+import { CTA_CONCEPT } from '@/lib/cta'
 
 /**
  * Klikformulier voor het gratis websiteconcept.
@@ -412,7 +413,7 @@ export function ConceptForm({
             ← Terug
           </button>
           <button className="btn btn-primary" type="submit">
-            Vraag je gratis websiteconcept aan
+            {CTA_CONCEPT}
           </button>
         </div>
         <p className="form__direct">

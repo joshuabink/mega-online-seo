@@ -3,6 +3,7 @@ import { Link, useRouterState } from '@tanstack/react-router'
 import { Icon } from './Icon'
 import { Logo } from './Logo'
 import { artikelenNieuwsteEerst } from '@/lib/kennisbank'
+import { CTA_CONCEPT } from '@/lib/cta'
 
 type Panel = 'diensten' | 'cases' | 'over' | 'kennis' | 'contact'
 
@@ -323,7 +324,7 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
                   <Link className="mfeat__cta" to="/diensten/conversie-website">
                     Bekijk de dienst                  </Link>
                   <Link className="mfeat__link" to="/gratis-websiteconcept">
-                    Vraag je gratis websiteconcept aan                  </Link>
+                    {CTA_CONCEPT}                  </Link>
                 </aside>
 
                 <aside className="mfeat mfeat--soft mfeat--compact">
@@ -347,7 +348,7 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
                   resultaat.
                 </span>
                 <Link to="/gratis-websiteconcept">
-                  Niet zeker welke oplossing past? Vraag je gratis websiteconcept aan{' '}
+                  Niet zeker welke oplossing past? {CTA_CONCEPT}{' '}
                 </Link>
               </div>
             </div>
@@ -596,7 +597,7 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
                   binnen 2 werkdagen.
                 </p>
                 <Link className="mfeat__cta" to="/gratis-websiteconcept">
-                  Vraag je gratis websiteconcept aan                </Link>
+                  {CTA_CONCEPT}                </Link>
               </aside>
             </div>
           </div>

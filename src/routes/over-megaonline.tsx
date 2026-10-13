@@ -3,6 +3,7 @@ import { Link } from '@tanstack/react-router'
 import { Icon } from '@/components/Icon'
 import { Media } from '@/components/Media'
 import { Reveal } from '@/components/Reveal'
+import { CTA_CONCEPT } from '@/lib/cta'
 
 export const Route = createFileRoute('/over-megaonline')({
   head: () => ({
@@ -58,7 +59,7 @@ function OverMegaonline() {
                 </Link>
                 {' '}
                 <Link className="tlink" to="/gratis-websiteconcept">
-                  Vraag je gratis websiteconcept aan
+                  {CTA_CONCEPT}
                   {' '}
                 </Link>
               </Reveal>
@@ -797,7 +798,7 @@ function OverMegaonline() {
             {' '}
             <div className="overcta__ctas">
               <Link className="btn btn-primary" to="/gratis-websiteconcept">
-                Vraag je gratis websiteconcept aan
+                {CTA_CONCEPT}
               </Link>
               {' '}
               <Link className="btn btn-outline" to="/contact">Plan een kennismaking</Link>

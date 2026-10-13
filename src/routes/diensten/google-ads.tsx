@@ -5,6 +5,7 @@ import { Media } from '@/components/Media'
 import { Qa } from '@/components/Qa'
 import { Reveal } from '@/components/Reveal'
 import { ConceptForm } from '@/components/ConceptForm'
+import { CTA_CONCEPT } from '@/lib/cta'
 import '@/styles/pages/diensten-google-ads.css'
 
 const TITLE = 'Google Ads beheer | Zichtbaar op het moment dat je klant zoekt | MegaOnline.io'
@@ -59,7 +60,7 @@ function GoogleAds() {
                   Plan een kennismaking
                 </Link>{' '}
                 <Link className="tlink" to="/gratis-websiteconcept">
-                  Vraag je gratis websiteconcept aan
+                  {CTA_CONCEPT}
                 </Link>
               </Reveal>
             </div>{' '}
@@ -454,7 +455,7 @@ function GoogleAds() {
                   Plan een kennismaking
                 </Link>{' '}
                 <Link className="tlink" to="/gratis-websiteconcept">
-                  Vraag je gratis websiteconcept aan
+                  {CTA_CONCEPT}
                 </Link>
               </Reveal>{' '}
               <Reveal as="div" className="endcta__trust reveal" data-d="2" style={{ marginTop: '24px' }}>
