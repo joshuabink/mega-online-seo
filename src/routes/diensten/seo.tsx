@@ -870,7 +870,7 @@ function Seo() {
             <h2 className="h2">Voor wie we aan vindbaarheid werken.</h2>
             {' '}
             <p className="lead">
-              Vindbaarheid levert pas iets op als de bezoeker daarna ook aanvraagt. Daarom werken we het liefst voor deze branches.
+              Vindbaarheid levert pas iets op als de bezoeker daarna ook aanvraagt. Daarom werken we het liefst voor deze branches. Lees <Link to="/kennisbank/$slug" params={{ slug: 'website-levert-geen-aanvragen-op' }}>waarom meer bezoek pas helpt als je website al aanvragen oplevert</Link>.
             </p>
           </Reveal>
           {' '}

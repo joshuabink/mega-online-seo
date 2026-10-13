@@ -195,7 +195,7 @@ function ConversieWebsite() {
               </p>
               {' '}
               <p>
-                Het zijn zelden grote dingen. Het zijn de kleine momenten waarop een bezoeker afhaakt. En die kosten je elke maand klanten zonder dat je het merkt.
+                Het zijn zelden grote dingen. Het zijn de kleine momenten waarop een bezoeker afhaakt. En die kosten je elke maand klanten zonder dat je het merkt. Lees <Link to="/kennisbank/$slug" params={{ slug: 'website-levert-geen-aanvragen-op' }}>waar een website aanvragen laat weglekken</Link>.
               </p>
             </Reveal>
             {' '}
@@ -530,7 +530,7 @@ function ConversieWebsite() {
               <h3>Waar wij over nadenken bij elke website</h3>
               {' '}
               <p>
-                Een aanvraag of boeking ontstaat niet vanzelf. Het is het resultaat van een bezoeker die zich op zijn gemak voelt en precies weet wat de volgende stap is.
+                Een aanvraag of boeking ontstaat niet vanzelf. Het is het resultaat van een bezoeker die zich op zijn gemak voelt en precies weet wat de volgende stap is. Meer over <Link to="/kennisbank/$slug" params={{ slug: 'vertrouwen-wekken-zakelijke-website' }}>vertrouwen wekken op je zakelijke website</Link>.
               </p>
               {' '}
               <ul className="considlist">

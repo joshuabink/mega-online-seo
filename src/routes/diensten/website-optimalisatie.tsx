@@ -244,7 +244,7 @@ function WebsiteOptimalisatie() {
               </span>
               <h4>Vertrouwen</h4>
               <p>
-                Signalen die bezoekers het laatste duwtje geven om contact op te nemen.
+                <Link to="/kennisbank/$slug" params={{ slug: 'vertrouwen-wekken-zakelijke-website' }}>Signalen die bezoekers het laatste duwtje geven</Link> om contact op te nemen.
               </p>
             </Reveal>
             {' '}
@@ -406,7 +406,7 @@ function WebsiteOptimalisatie() {
               </div>
               {' '}
               <p style={{ marginTop: "22px", fontSize: "0.94rem" }}>
-                Stuk voor stuk verbeterpunten die je zelden hoeven te leiden tot een volledig nieuwe website.
+                Stuk voor stuk verbeterpunten die je zelden hoeven te leiden tot een volledig nieuwe website. Je kunt <Link to="/kennisbank/$slug" params={{ slug: 'website-levert-geen-aanvragen-op' }}>zelf in een uur nagaan waar je website aanvragen mist</Link>.
               </p>
             </Reveal>
           </div>

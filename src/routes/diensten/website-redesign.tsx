@@ -267,7 +267,7 @@ function WebsiteRedesign() {
               </h2>
               {' '}
               <p className="lead">
-                Nog voordat iemand één zin leest, is de eerste indruk al gevormd. Een website die niet aansluit bij het niveau van je bedrijf kan vertrouwen kosten. Niet omdat je bedrijf slecht is, maar omdat de presentatie achterloopt.
+                Nog voordat iemand één zin leest, is de eerste indruk al gevormd. Een website die niet aansluit bij het niveau van je bedrijf kan vertrouwen kosten. Niet omdat je bedrijf slecht is, maar omdat de presentatie achterloopt. Lees <Link to="/kennisbank/$slug" params={{ slug: 'vertrouwen-wekken-zakelijke-website' }}>waar bezoekers op letten voordat ze contact opnemen</Link>.
               </p>
               {' '}
               <p className="lead">

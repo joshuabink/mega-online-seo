@@ -202,7 +202,7 @@ function Offerteaanvragen() {
               {' '}
               <h3>Vertrouwen met cases</h3>
               {' '}
-              <p>Bewijs van eerder werk dat je uit de prijzenstrijd haalt.</p>
+              <p><Link to="/kennisbank/$slug" params={{ slug: 'vertrouwen-wekken-zakelijke-website' }}>Bewijs van eerder werk</Link> dat je uit de prijzenstrijd haalt.</p>
             </Reveal>
             {' '}
             <Reveal as="div" className="bcell reveal" data-d="1">
@@ -248,7 +248,7 @@ function Offerteaanvragen() {
             </h2>
             {' '}
             <p className="lead">
-              Gericht op kwalitatieve leads en minder tijd aan aanvragen die toch niks worden. Een formulier dat kwalificeert hoort bij een <Link to="/diensten/conversie-website">conversiegerichte website</Link> die de bezoeker eerst overtuigt. Staat je site er al, dan kijken we met <Link to="/diensten/website-optimalisatie">website optimalisatie</Link> waar de aanvragen nu weglopen.
+              Gericht op kwalitatieve leads en minder tijd aan aanvragen die toch niks worden. Een formulier dat kwalificeert hoort bij een <Link to="/diensten/conversie-website">conversiegerichte website</Link> die de bezoeker eerst overtuigt. Staat je site er al, dan kijken we met <Link to="/diensten/website-optimalisatie">website optimalisatie</Link> waar de aanvragen nu weglopen. Lees <Link to="/kennisbank/$slug" params={{ slug: 'website-levert-geen-aanvragen-op' }}>waar offerteaanvragen weglekken</Link>.
             </p>
           </Reveal>
           {' '}
