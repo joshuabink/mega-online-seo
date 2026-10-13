@@ -784,10 +784,10 @@ function OverMegaonline() {
       <section className="section" id="contact" data-theme="dark" data-screen-label="Eind-CTA">
         <div className="wrap">
           <Reveal as="div" className="overcta reveal">
-            <h2 className="display">Laten we een keer kennismaken.</h2>
+            <h2 className="display">Kennismaken met MegaOnline.</h2>
             {' '}
             <p className="lead">
-              Laten we kijken waar jouw grootste online kansen liggen. Zonder verplichtingen.
+              MegaOnline kijkt waar jouw grootste online kansen liggen. Zonder verplichtingen.
             </p>
             {' '}
             <div className="overcta__ctas">

@@ -48,7 +48,7 @@ const FAQ_ITEMS: { q: string; a: ReactNode }[] = [
     a: 'Ja. In het formulier kun je aangeven dat je nog geen website hebt.',
   },
   {
-    q: 'Wat doen jullie met mijn gegevens?',
+    q: 'Wat doet MegaOnline met mijn gegevens?',
     a: (
       <>
         MegaOnline gebruikt je gegevens alleen voor je concept en advies. Meer lees je in de{' '}

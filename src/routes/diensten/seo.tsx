@@ -58,7 +58,7 @@ const FAQ_ITEMS: { q: string; a: string }[] = [
     a: "Dat kijkt MegaOnline eerst na. MegaOnline beoordeelt je bestaande website technisch en laat je weten wat er nodig is. Is de basis in orde, dan kan MegaOnline gewoon starten. Zo niet, dan brengt MegaOnline die eerst op orde en daarna loopt het partnership normaal door.",
   },
   {
-    q: "Hoe vaak hebben we contact?",
+    q: "Hoe vaak is er contact?",
     a: "In de basis spreken we elke maand de analyse en verbeterpunten door. Daarnaast zijn de lijnen kort: heb je tussendoor een vraag of een wijziging, dan staan we voor je klaar. Je hebt één vast aanspreekpunt dat je bedrijf kent.",
   },
   {
@@ -86,7 +86,7 @@ const FAQ_ITEMS: { q: string; a: string }[] = [
     a: "Je betaalt € 250 eenmalig voor het zoekwoordenonderzoek en het contentplan. Daarna kost het € 150 per maand. Daarvoor komt er elke maand een nieuwe pagina bij: een blog of een landingspagina.",
   },
   {
-    q: "Kunnen jullie een plek bovenaan in Google garanderen?",
+    q: "Kan MegaOnline een plek bovenaan in Google garanderen?",
     a: "Nee. Een plek bovenaan in Google of een vermelding in AI-antwoorden kan niemand garanderen. Wat wel vastligt: welke pagina's er komen, staat in je contentplan en elke maand gaat er een nieuwe pagina live. Je ziet welke pagina's live zijn gegaan en wat ze hebben opgeleverd.",
   },
   {

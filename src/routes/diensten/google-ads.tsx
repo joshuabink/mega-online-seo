@@ -414,8 +414,8 @@ function GoogleAds() {
             </Qa>{' '}
             <Qa question="Hoe weet ik wat het oplevert?" className="reveal">
               MegaOnline meet aanvragen, telefoontjes en boekingen die via je advertenties binnenkomen.
-              Elke maand krijg je een overzicht van wat het kostte, wat het opleverde en wat we
-              de volgende maand aanpassen.
+              Elke maand krijg je een overzicht van wat het kostte, wat het opleverde en wat MegaOnline
+              de volgende maand aanpast.
             </Qa>
           </div>
         </div>
