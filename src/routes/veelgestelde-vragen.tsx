@@ -109,7 +109,7 @@ function VeelgesteldeVragen() {
             </Reveal>
             {' '}
             <div className="faq">
-              <Qa question="Wat kost een website bij jullie?" className="reveal">
+              <Qa question="Wat kost een website bij MegaOnline?" className="reveal">
                   Dat hangt af van wat je nodig hebt. De Starter Website begint vanaf €1.500 en is bedoeld voor starters die voordelig en snel online willen. Een volledige Conversie Website is maatwerk en wordt geprijsd op basis van omvang, strategie en koppelingen. In een gratis websiteconcept brengt MegaOnline het vrijblijvend voor je in kaart.
               </Qa>
               {' '}

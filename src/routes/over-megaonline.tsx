@@ -723,7 +723,7 @@ function OverMegaonline() {
                   </div>
                   {' '}
                   <div className="case__step">
-                    <span className="k">Wat we deden</span>
+                    <span className="k">Wat MegaOnline deed</span>
                     <p>
                       Gebouwd door MegaOnline: aparte pagina's voor de drie belevingen, plus portfolio, traject, prijzen, veelgestelde vragen en contact.
                     </p>
