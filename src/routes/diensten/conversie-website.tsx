@@ -139,7 +139,7 @@ function ConversieWebsite() {
             {' '}
             <Reveal as="div" className="hvis reveal" data-d="2">
               <div className="hvis__frame">
-                <Media id="cw-hero" fit="cover" placeholder="[ WEBSITE MOCKUP ]" alt="Ontwerpvoorbeeld van een conversiegerichte website" />
+                <Media id="cw-hero" defer fit="cover" placeholder="[ WEBSITE MOCKUP ]" alt="Ontwerpvoorbeeld van een conversiegerichte website" />
               </div>
               {' '}
               <div className="hvis__card hvis__toast">

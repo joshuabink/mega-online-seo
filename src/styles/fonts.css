@@ -1,0 +1,23 @@
+/* Zelf gehoste latin-subsets van Archivo en Hanken Grotesk.
+   De bestanden zelf staan in public/fonts/ en worden pas na window.load
+   aangevraagd (zie DeferredFonts). Hier alleen de size-adjust fallbacks, zodat
+   de eerste paint — inclusief de headerknop, het LCP-element op mobiel —
+   niet op een woff2 wacht en niet verschuift als het merklettertype wisselt. */
+
+@font-face {
+  font-family: "Archivo Fallback";
+  src: local("Arial"), local("Arimo"), local("Liberation Sans");
+  size-adjust: 90.79%;
+  ascent-override: 96.7%;
+  descent-override: 23.13%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: "Hanken Grotesk Fallback";
+  src: local("Arial"), local("Arimo"), local("Liberation Sans");
+  size-adjust: 93.72%;
+  ascent-override: 106.71%;
+  descent-override: 32.33%;
+  line-gap-override: 0%;
+}

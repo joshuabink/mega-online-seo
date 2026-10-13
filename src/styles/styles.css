@@ -13,8 +13,8 @@
   --dot:           oklch(0.74 0.165 150);
 
   --display: "Geist", system-ui, -apple-system, sans-serif;
-  --sans:    "Hanken Grotesk", system-ui, -apple-system, sans-serif;
-  --mono:    "Hanken Grotesk", system-ui, -apple-system, sans-serif;
+  --sans:    "Hanken Grotesk", "Hanken Grotesk Fallback", system-ui, -apple-system, sans-serif;
+  --mono:    "Hanken Grotesk", "Hanken Grotesk Fallback", system-ui, -apple-system, sans-serif;
 
   --focus: var(--accent);
   /* Focusring van het conceptformulier. Bestaande huisstijl, heather. */

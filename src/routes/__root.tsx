@@ -11,7 +11,6 @@ import {
 } from "@tanstack/react-router";
 import { useEffect, useMemo, useRef, type ReactNode } from "react";
 
-import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
 import { SiteHeader } from "@/components/SiteHeader";
@@ -22,9 +21,11 @@ import { SITE_GRAPH, buildPageSchema } from "@/lib/schema";
 import { CTA_CONCEPT } from "@/lib/cta"
 
 // MegaOnline design system uit de Claude Design-handoff. De volgorde is de
-// bron van waarheid: styles → concepts → conversie → over → funnel → megamenu.
-// Deze imports komen ná Tailwind (../styles.css wordt hierboven als <link>
-// geladen), zodat de huisstijl wint waar beide iets over hetzelfde zeggen.
+// bron van waarheid: fonts → styles → concepts → conversie → over → funnel →
+// megamenu. Tailwind (src/styles.css) wordt hier niet geladen: de marketing-
+// pagina's gebruiken het niet, en een tweede render-blocking stylesheet
+// vertraagt de eerste paint.
+import "@/styles/fonts.css";
 import "@/styles/styles.css";
 import "@/styles/concepts.css";
 import "@/styles/conversie.css";
@@ -147,13 +148,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
     scripts: [{ children: GA_CONSENT_DEFAULT_SNIPPET }],
     links: [
-      { rel: "stylesheet", href: appCss },
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap",
-      },
       { rel: "manifest", href: "/site.webmanifest" },
       { rel: "icon", href: "/favicon.ico", sizes: "48x48" },
       { rel: "icon", href: "/icon-96.png", type: "image/png", sizes: "96x96" },
@@ -189,9 +183,11 @@ function RootShell({ children }: { children: ReactNode }) {
     <html lang="nl" data-accent="lemon" data-display="archivo">
       <head>
         <HeadContent />
-        <noscript>
-          <style dangerouslySetInnerHTML={{ __html: NO_JS_FALLBACK }} />
-        </noscript>
+        <noscript
+          dangerouslySetInnerHTML={{
+            __html: `<link rel="stylesheet" href="/fonts/faces.css" /><style>${NO_JS_FALLBACK}</style>`,
+          }}
+        />
       </head>
       <body data-hero="split" data-accent="lemon" data-display="archivo">
         {children}
@@ -228,6 +224,27 @@ function useActivePage() {
   });
 }
 
+/**
+ * Merklettertypen pas na window.load. Een woff2 die vóór de LCP-paint
+ * binnenkomt, telt in de gesimuleerde meting mee op het kritieke pad van de
+ * headerknop. De fallbacks in fonts.css dekken die eerste paint.
+ */
+function DeferredFonts() {
+  useEffect(() => {
+    const inject = () => {
+      if (document.querySelector("link[data-mo-fonts]")) return;
+      const link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.href = "/fonts/faces.css";
+      link.setAttribute("data-mo-fonts", "");
+      document.head.appendChild(link);
+    };
+    if (document.readyState === "complete") inject();
+    else window.addEventListener("load", inject, { once: true });
+  }, []);
+  return null;
+}
+
 function GaPageViews() {
   const href = useRouterState({
     select: (s) => s.location.pathname + s.location.searchStr,
@@ -259,6 +276,7 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <CookieBanner />
+      <DeferredFonts />
       <GaPageViews />
       {meta.bare ? (
         // Concept-pagina's brengen hun eigen chrome en stijl mee.
