@@ -160,7 +160,7 @@ async function controleerCtaTeksten(browser) {
       '/kennisbank/website-levert-geen-aanvragen-op': { eind: CTA_SCAN, form: true },
       '/kennisbank/prijzen-op-website-verhuurbedrijf': { eind: CTA_SCAN, form: false },
       '/kennisbank/vertrouwen-wekken-zakelijke-website': { eind: CTA_CONCEPT, form: false },
-      '/kennisbank/waar-boekingen-weglekken': { eind: CTA_SCAN, form: false },
+      '/kennisbank/waar-boekingen-weglekken': { eind: CTA_CONCEPT, form: false },
     }[pad]
     if (kennisbankCta) {
       if (data.eind !== kennisbankCta.eind) {
@@ -1257,9 +1257,9 @@ for (const pad of [
     `h1=${artikel.h1} title=${artikel.title} vragen=${artikel.vragen.length}`,
   )
   check(
-    'waar-boekingen-weglekken gebruikt de standaard eind-CTA',
+    'waar-boekingen-weglekken vraagt een nieuw ontwerp',
     artikel.ctaHref.includes('/gratis-websiteconcept') &&
-      artikel.ctaTekst === CTA_SCAN &&
+      artikel.ctaTekst === CTA_CONCEPT &&
       artikel.ctaKop === 'Wil je een gratis websiteconcept voor je bedrijf?',
     `${artikel.ctaHref} / ${artikel.ctaTekst} / ${artikel.ctaKop}`,
   )
@@ -1340,7 +1340,7 @@ for (const [pad, eind, form] of [
   ['/kennisbank/website-levert-geen-aanvragen-op', CTA_SCAN, true],
   ['/kennisbank/prijzen-op-website-verhuurbedrijf', CTA_SCAN, false],
   ['/kennisbank/vertrouwen-wekken-zakelijke-website', CTA_CONCEPT, false],
-  ['/kennisbank/waar-boekingen-weglekken', CTA_SCAN, false],
+  ['/kennisbank/waar-boekingen-weglekken', CTA_CONCEPT, false],
   ['/kennisbank/smoke-zonder-faq', CTA_SCAN, false],
 ]) {
   const artikel = await leesArtikelForm(pad)

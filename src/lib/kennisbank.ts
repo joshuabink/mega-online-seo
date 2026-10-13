@@ -570,6 +570,7 @@ export const ARTIKELEN: Artikel[] = [
     leestijd: "8 minuten",
     gepubliceerd: "2026-10-13",
     gewijzigd: "2026-10-13",
+    cta: "nieuw ontwerp",
     secties: [
       {
         kop: "Eerst meten, dan repareren",
