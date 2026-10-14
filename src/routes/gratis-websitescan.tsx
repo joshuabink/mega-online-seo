@@ -130,11 +130,10 @@ function GratisWebsitescan() {
             {SCAN_H1}
           </Reveal>
           <Reveal as="p" className="lead reveal" data-d="1">
-            Vraag je gratis website scan aan. We bekijken je site en vertellen je eerlijk wat je nu
-            aanvragen en boekingen kost, en wat het eerst moet.
+            We bekijken je site en vertellen je eerlijk wat je nu aanvragen en boekingen kost, en wat het eerst moet.
           </Reveal>
           <Reveal as="div" className="scan-hero__actions reveal" data-d="2">
-            <a className="btn btn-primary" href="#scan">
+            <a className="btn btn-primary" href="#formulier">
               {CTA_SCAN}
             </a>
             <a className="tlink" href="#werk">
@@ -235,7 +234,7 @@ function GratisWebsitescan() {
             ))}
           </ol>
           <Reveal as="div" className="reveal">
-            <a className="tlink" href="#scan">
+            <a className="tlink" href="#formulier">
               Begin met de gratis website scan
             </a>
           </Reveal>

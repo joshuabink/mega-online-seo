@@ -16,6 +16,7 @@
 }
 
 [data-page="scan"] #scan,
+[data-page="scan"] #formulier,
 [data-page="scan"] #werk,
 [data-page="scan"] #werkwijze,
 [data-page="scan"] #waarom,

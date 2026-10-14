@@ -53,8 +53,8 @@ function normCta(s) {
  * CTA-bewaker. Een CTA-knop is een bediening waarvan de zichtbare tekst
  * exact CTA_SCAN is, of een .btn die naar de scanpagina wijst, of de
  * verstuurknop van het scan- of conceptformulier. Die tekst moet CTA_SCAN
- * zijn. Een link daarbij gaat naar /gratis-websitescan, of naar #scan op
- * de scanpagina zelf. Het woord websiteconcept mag niet zichtbaar zijn.
+ * zijn. Een link daarbij gaat naar /gratis-websitescan, of naar #formulier
+ * of #scan op de scanpagina zelf. Het woord websiteconcept mag niet zichtbaar zijn.
  * Script en style tellen niet: het oude pad blijft daar als redirect staan.
  */
 async function controleerCtaTeksten(browser) {
@@ -86,7 +86,7 @@ async function controleerCtaTeksten(browser) {
           const u = new URL(href, location.href)
           const path = u.pathname.replace(/\/$/, '') || '/'
           const hier = location.pathname.replace(/\/$/, '') || '/'
-          if (u.hash === '#scan' && path === hier) return { soort: 'anker' }
+          if ((u.hash === '#formulier' || u.hash === '#scan') && path === hier) return { soort: 'anker' }
           if (path === '/gratis-websitescan') return { soort: 'scan' }
           return { soort: 'anders', pad: `${path}${u.search}${u.hash}` }
         } catch {
@@ -970,6 +970,10 @@ check(
       canonical: document.querySelector('link[rel="canonical"]')?.getAttribute('href') || '',
       robots: document.querySelector('meta[name="robots"]')?.getAttribute('content') || '',
       h1: norm(document.querySelector('h1')?.textContent),
+      lead: norm(document.querySelector('.scan-hero .lead')?.textContent),
+      formTag: document.getElementById('formulier')?.tagName || '',
+      heroHref: document.querySelector('.scan-hero a.btn-primary')?.getAttribute('href') || '',
+      tekstHref: [...document.querySelectorAll('a.tlink')].find((a) => norm(a.textContent) === 'Begin met de gratis website scan')?.getAttribute('href') || '',
       faqs: [...document.querySelectorAll('#vragen .qa__q')].map((el) => norm(el.textContent)),
       velden: ['site', 'mis', 'toelichting', 'doel', 'naam', 'mail'].map((naam) => ({
         naam,
@@ -1001,6 +1005,10 @@ check(
       scanPagina.canonical === 'https://megaonline.io/gratis-websitescan' &&
       !/noindex/i.test(scanPagina.robots) &&
       scanPagina.h1 === 'Vraag een gratis website scan aan' &&
+      scanPagina.lead === 'We bekijken je site en vertellen je eerlijk wat je nu aanvragen en boekingen kost, en wat het eerst moet.' &&
+      scanPagina.formTag === 'FORM' &&
+      scanPagina.heroHref === '#formulier' &&
+      scanPagina.tekstHref === '#formulier' &&
       scanPagina.faqs.length === 5 &&
       scanPagina.faqs[0] === 'Wat is de gratis website scan?' &&
       scanPagina.faqs[4] === 'Hoe snel ontvang ik de uitkomst?' &&
@@ -1012,6 +1020,55 @@ check(
       scanPagina.privacy &&
       scanPagina.schema,
     JSON.stringify(scanPagina).slice(0, 400),
+  )
+
+  async function sprongNaarFormulier(selector) {
+    const origin = await page.evaluate(() => {
+      window.__scanBlijft = 'ja'
+      history.replaceState(history.state, '', `${location.pathname}${location.search}`)
+      window.scrollTo(0, 0)
+      return performance.timeOrigin
+    })
+    await page.locator(selector).click()
+    await page.waitForFunction(() => location.hash === '#formulier', null, { timeout: 5000 })
+    await page.waitForFunction(() => {
+      const form = document.getElementById('formulier')
+      if (!form) return false
+      const r = form.getBoundingClientRect()
+      return r.top < window.innerHeight && r.bottom > 0
+    }, null, { timeout: 5000 })
+    return page.evaluate((vorige) => {
+      const form = document.getElementById('formulier')
+      const r = form.getBoundingClientRect()
+      return {
+        hash: location.hash,
+        path: location.pathname,
+        mark: window.__scanBlijft || '',
+        zelfdeDocument: performance.timeOrigin === vorige,
+        inView: r.top < window.innerHeight && r.bottom > 0,
+      }
+    }, origin)
+  }
+
+  const heroSprong = await sprongNaarFormulier('.scan-hero a.btn-primary[href="#formulier"]')
+  check(
+    'hero-knop springt naar #formulier zonder herladen',
+    heroSprong.hash === '#formulier' &&
+      heroSprong.path === '/gratis-websitescan' &&
+      heroSprong.mark === 'ja' &&
+      heroSprong.zelfdeDocument &&
+      heroSprong.inView,
+    JSON.stringify(heroSprong),
+  )
+  const tekstSprong = await sprongNaarFormulier('a.tlink[href="#formulier"]')
+  check(
+    'tekstlink springt naar #formulier zonder herladen',
+    tekstSprong.hash === '#formulier' &&
+      tekstSprong.path === '/gratis-websitescan' &&
+      tekstSprong.mark === 'ja' &&
+      tekstSprong.zelfdeDocument &&
+      tekstSprong.inView,
+    JSON.stringify(tekstSprong),
   )
 
   await page.fill('[name="site"]', 'jouwbedrijf.nl')

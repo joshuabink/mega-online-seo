@@ -152,7 +152,7 @@ export function ScanForm() {
       data-scan-form=""
     >
       <div className="form__inner">
-        <form ref={formRef} noValidate onSubmit={onSubmit} aria-busy={status === 'sending'}>
+        <form id="formulier" ref={formRef} noValidate onSubmit={onSubmit} aria-busy={status === 'sending'}>
           <input
             type="text"
             name="company_hp"
