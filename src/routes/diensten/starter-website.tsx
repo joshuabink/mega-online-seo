@@ -58,15 +58,15 @@ function StarterWebsite() {
               </Reveal>
               {' '}
               <Reveal as="div" className="svc-hero__ctas reveal" data-d="2">
-                <a className="btn btn-primary" href="#prijs">
+                <Link className="btn btn-primary" to="/gratis-websitescan">
+                  {CTA_SCAN}
+                  {' '}
+                </Link>
+                {' '}
+                <a className="tlink" href="#prijs">
                   Bekijk wat het kost
                   {' '}
                 </a>
-                {' '}
-                <Link className="tlink" to="/contact">
-                  Plan een kennismaking
-                  {' '}
-                </Link>
               </Reveal>
             </div>
             {' '}
