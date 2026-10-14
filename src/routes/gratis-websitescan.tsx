@@ -4,7 +4,7 @@ import { Qa } from '@/components/Qa'
 import { Reveal } from '@/components/Reveal'
 import { ScanForm } from '@/components/ScanForm'
 import { CTA_SCAN } from '@/lib/cta'
-import { PLACEHOLDER_SCAN_OPLEVERING, SCAN_DESCRIPTION, SCAN_FAQ, SCAN_H1, SCAN_TITLE } from '@/lib/scan'
+import { SCAN_DESCRIPTION, SCAN_FAQ, SCAN_H1, SCAN_OPLEVERING, SCAN_TITLE } from '@/lib/scan'
 import '@/styles/pages/scan.css'
 
 export const Route = createFileRoute('/gratis-websitescan')({
@@ -162,7 +162,7 @@ function GratisWebsitescan() {
             </Reveal>
             <Reveal as="aside" className="scan-side reveal" data-d="2">
               <h3>Wat je na de scan ontvangt</h3>
-              <p>{PLACEHOLDER_SCAN_OPLEVERING}</p>
+              <p>{SCAN_OPLEVERING}</p>
               <p className="scan-side__mail">
                 Liever eerst mailen?{' '}
                 <a href="mailto:info@megaonline.io">info@megaonline.io</a>

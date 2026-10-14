@@ -977,6 +977,7 @@ check(
       faqs: [...document.querySelectorAll('#vragen .qa__q')].map((el) => norm(el.textContent)),
       faq5antwoord: norm(document.querySelectorAll('#vragen .qa__a')[4]?.textContent),
       bedank: norm(document.querySelector('.scanform .form__ok')?.textContent),
+      oplevering: norm(document.querySelector('.scan-side p')?.textContent),
       schemaReactie: [...document.querySelectorAll('script[type="application/ld+json"]')].some((node) => {
         const raw = node.textContent || ''
         return raw.includes('FAQPage') && raw.includes('Je ontvangt de uitkomst van de scan binnen 5 werkdagen na je aanvraag.')
@@ -1033,6 +1034,13 @@ check(
       scanPagina.schemaReactie &&
       scanPagina.bedank.includes('binnen 5 werkdagen'),
     `faq=${scanPagina.faq5antwoord} schema=${scanPagina.schemaReactie} bedank=${scanPagina.bedank}`,
+  )
+  check(
+    'zijblok noemt rapport en videogesprek',
+    scanPagina.oplevering.includes('rapport') &&
+      scanPagina.oplevering.includes('videogesprek') &&
+      scanPagina.oplevering === 'Binnen 5 werkdagen ontvang je een rapport over je site. In een persoonlijk videogesprek lichten we het rapport toe.',
+    scanPagina.oplevering,
   )
 
   async function sprongNaarFormulier(selector) {

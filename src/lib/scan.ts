@@ -9,10 +9,11 @@ export const SCAN_DESCRIPTION =
 export const SCAN_H1 = 'Vraag een gratis website scan aan'
 export const SCAN_SUBJECT = 'Gratis website scan aanvraag'
 
-/** TODO: inhoud en vorm volgen van Joshua (TK-304) */
-export const PLACEHOLDER_SCAN_OPLEVERING = 'Je ontvangt persoonlijk advies over je site.'
-
 export const SCAN_REACTIETIJD = 'binnen 5 werkdagen'
+
+const opleveringStart = SCAN_REACTIETIJD.charAt(0).toUpperCase() + SCAN_REACTIETIJD.slice(1)
+export const SCAN_OPLEVERING =
+  `${opleveringStart} ontvang je een rapport over je site. In een persoonlijk videogesprek lichten we het rapport toe.`
 
 export const SCAN_FAQ: { q: string; a: string }[] = [
   {
