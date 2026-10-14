@@ -769,6 +769,149 @@ export const ARTIKELEN: Artikel[] = [
     metaDescription:
       "Bezoekers willen boeken en haken toch af. Tien plekken waar boekingen weglekken, waarom dat gebeurt en per lek een zelfcheck van vijf minuten.",
   },
+  {
+    slug: "wat-is-seo",
+    naam: "Wat is SEO",
+    vraag: "Wat is zoekmachineoptimalisatie (SEO)?",
+    pijler: "Zo werkt het echt",
+    icoon: "search",
+    branche: "Algemeen",
+    teaser:
+      "SEO betekent zoekmachineoptimalisatie. Wat het is volgens Google, hoe zoeken werkt in drie stappen en een zelfcheck van vijf minuten.",
+    antwoord:
+      "SEO staat voor search engine optimization, in het Nederlands zoekmachineoptimalisatie. Volgens Google gaat SEO erom zoekmachines te helpen je content te begrijpen en bezoekers te helpen je site te vinden en te beoordelen of een bezoek de moeite waard is ([Google Search Central, SEO Starter Guide](https://developers.google.com/search/docs/fundamentals/seo-starter-guide)).\n\nDit artikel legt uit wat SEO is, hoe Google Search in grote lijnen werkt en wat je zelf kunt checken. Voor doorlopend werk aan vindbaarheid staat de dienst [SEO en GEO](/diensten/seo).",
+    leestijd: "7 minuten",
+    gepubliceerd: "2026-10-14",
+    gewijzigd: "2026-10-14",
+    cta: "scan",
+    secties: [
+      {
+        kop: "Wat SEO wél is (en wat niet)",
+        accent: "wél",
+        alineas: [
+          "SEO is het verbeteren van je aanwezigheid in zoekresultaten: content die nuttig is, een site die crawlbaar is en signalen die laten zien waar een pagina over gaat. Google noemt dat de stap ná de basisregels om überhaupt in aanmerking te komen voor zoekresultaten ([SEO Starter Guide](https://developers.google.com/search/docs/fundamentals/seo-starter-guide)).",
+          "SEO is geen knop die je omzet naar plaats één. Google schrijft expliciet dat er geen geheimen zijn die een site automatisch bovenaan zetten ([SEO Starter Guide](https://developers.google.com/search/docs/fundamentals/seo-starter-guide)). Google accepteert geen betaling om een site vaker te crawlen of hoger te ranken ([How Search works](https://developers.google.com/search/docs/fundamentals/how-search-works)).",
+          "Ook indexing is niet gegarandeerd: niet elke pagina die Google verwerkt komt in de index ([How Search works](https://developers.google.com/search/docs/fundamentals/how-search-works)).",
+        ],
+      },
+      {
+        kop: "Hoe Google Search werkt (drie stappen)",
+        accent: "drie stappen",
+        alineas: [
+          "Google beschrijft Search in drie fases. Niet elke pagina haalt elke fase ([How Search works](https://developers.google.com/search/docs/fundamentals/how-search-works)):",
+          `1. **Crawlen.** Programma's (crawlers) ontdekken URL's en downloaden pagina's. Nieuwe pagina's komen vaak via links vanaf pagina's die Google al kent of via een sitemap.
+2. **Indexeren.** Google analyseert tekst, afbeeldingen en video's en slaat informatie op in de index. Daarbij wordt ook gekeken welke URL de canonieke versie is bij overlappende content.
+3. **Resultaten tonen.** Bij een zoekopdracht selecteert Google relevante resultaten. Relevantie hangt van veel factoren af, onder meer locatie, taal en apparaat van de zoeker.`,
+          "Voor de praktijk betekent dit: een pagina moet vindbaar zijn (links of sitemap), leesbaar voor de crawler (geen blokkade in robots of loginmuur) en inhoudelijk duidelijk over het onderwerp.",
+        ],
+      },
+      {
+        kop: "Waar SEO in de praktijk over gaat",
+        accent: "in de praktijk",
+        alineas: [
+          "Uit de Starter Guide van Google komen terugkerende thema's die geen trucs zijn maar basiswerk:",
+        ],
+      },
+      {
+        kop: "Content die mensen helpt",
+        accent: "mensen helpt",
+        alineas: [
+          "Tekst die helder is, uniek en bijgewerkt. Content die voor mensen geschreven is, niet door woorden eindeloos te herhalen. Keyword stuffing valt onder Googles spambeleid ([SEO Starter Guide](https://developers.google.com/search/docs/fundamentals/seo-starter-guide)).",
+        ],
+      },
+      {
+        kop: "Techniek die crawlen niet in de weg zit",
+        accent: "niet in de weg",
+        alineas: [
+          "Google moet de pagina kunnen zien zoals een bezoeker die ziet, inclusief CSS en JavaScript waar die inhoud tonen. De URL-inspectietool in Search Console helpt om te checken wat Google ziet ([SEO Starter Guide](https://developers.google.com/search/docs/fundamentals/seo-starter-guide)).",
+        ],
+      },
+      {
+        kop: "Hoe de site eruitziet in de resultaten",
+        accent: "in de resultaten",
+        alineas: [
+          "De title-link en de snippet helpen iemand te beslissen of een klik zinvol is. Goede titles zijn uniek, duidelijk en beschrijven de pagina. De meta description kan meewerken aan de snippet ([SEO Starter Guide](https://developers.google.com/search/docs/fundamentals/seo-starter-guide)).",
+        ],
+      },
+      {
+        kop: "Links die ontdekking mogelijk maken",
+        accent: "ontdekking",
+        alineas: [
+          "Google vindt de meeste nieuwe pagina's via links. Interne links helpen bezoekers én crawlers. Ankertekst die zegt waar de link naartoe gaat, maakt dat duidelijker ([SEO Starter Guide](https://developers.google.com/search/docs/fundamentals/seo-starter-guide)).",
+        ],
+      },
+      {
+        kop: "Hoe lang duurt het voor je iets merkt?",
+        accent: "iets merkt",
+        alineas: [
+          "Google schrijft dat sommige wijzigingen binnen enkele uren zichtbaar zijn en andere maanden kunnen duren. Als richtlijn: vaak een paar weken wachten voordat je beoordeelt of iets in de zoekresultaten hielp ([SEO Starter Guide](https://developers.google.com/search/docs/fundamentals/seo-starter-guide)). Niet elke wijziging levert een zichtbaar verschil op.",
+          "Dat is waarom doorlopend werken aan pagina's en meten in Search Console hoort bij serieus SEO-werk en niet een eenmalige optimalisatie zonder opvolging.",
+        ],
+      },
+      {
+        kop: "Zelfcheck (5 minuten)",
+        accent: "5 minuten",
+        alineas: [
+          `1. Zoek op Google met \`site:jouwdomein.nl\` of je site überhaupt in de index staat ([SEO Starter Guide](https://developers.google.com/search/docs/fundamentals/seo-starter-guide)).
+2. Open één belangrijke dienstpagina op je telefoon. Is binnen enkele seconden duidelijk wat je doet en wat de volgende stap is?
+3. Lees de title in het browsertabblad. Beschrijft die deze ene pagina, of is het een generieke bedrijfsnaam op elke URL?
+4. Check of die pagina vanaf de homepage of een menu bereikbaar is (zonder dat je de URL al kent).
+5. Noteer één zoekvraag waarmee een ideale klant je zou moeten vinden. Past er een pagina bij die die vraag beantwoordt?`,
+        ],
+      },
+      {
+        kop: "Wanneer de basis niet genoeg is",
+        accent: "niet genoeg",
+        alineas: [
+          "Zit de winst in structureel betere vindbaarheid (juiste zoektermen, maandelijkse nieuwe pagina's, meten), dan past doorlopend werk beter dan alleen een definitie lezen. Op [SEO en GEO](/diensten/seo) staat hoe MegaOnline dat als traject inricht. Voor lekken in aanvragen of boekingen op de site zelf zijn er ook [waarom je website geen aanvragen oplevert](/kennisbank/website-levert-geen-aanvragen-op) en [waar boekingen weglekken](/kennisbank/waar-boekingen-weglekken).",
+        ],
+      },
+    ],
+    doen: [
+      "Doe de `site:`-zoekopdracht en noteer of je kernpagina's zichtbaar zijn.",
+      "Schrijf drie zoektermen van klanten op en check of er een passende pagina voor bestaat.",
+      "Verbeter één title die nu te vaag of te lang is.",
+      "Zet één interne link van een drukke pagina naar een belangrijke dienstpagina, met een ankertekst die het onderwerp noemt.",
+    ],
+    faq: [
+      {
+        q: "Wat betekent SEO precies?",
+        a: "SEO is de Engelse afkorting van search engine optimization. In het Nederlands: zoekmachineoptimalisatie. Het gaat erom zoekmachines je content te laten begrijpen en mensen te helpen je site te vinden ([Google Search Central](https://developers.google.com/search/docs/fundamentals/seo-starter-guide)).",
+      },
+      {
+        q: "Is SEO hetzelfde als Google Ads?",
+        a: "Nee. SEO gaat over organische (niet-betaalde) zichtbaarheid in zoekresultaten. Google Ads is betaalde advertentieruimte. Google accepteert geen betaling om organische ranking te kopen ([How Search works](https://developers.google.com/search/docs/fundamentals/how-search-works)).",
+      },
+      {
+        q: "Kan iemand een plek bovenaan in Google garanderen?",
+        a: "Nee. Google garandeert geen crawl, index of weergave van een pagina, ook niet als je de basisregels volgt ([How Search works](https://developers.google.com/search/docs/fundamentals/how-search-works)). Wie een vaste toppositie belooft, belooft iets dat Google zelf niet toezegt.",
+      },
+      {
+        q: "Wat is het verschil tussen SEO en GEO?",
+        a: "SEO gaat over vindbaarheid in klassieke zoekmachines zoals Google. GEO (generative engine optimization) gaat over zichtbaarheid in antwoorden van AI-zoekmachines. Op MegaOnline horen beide bij hetzelfde traject op [SEO en GEO](/diensten/seo). Dit artikel blijft bij de definitie van SEO.",
+      },
+    ],
+    links: [
+      {
+        to: "/diensten/seo",
+        label: "SEO en GEO",
+        tekst: "Doorlopend werken aan vindbaarheid in Google en AI, met een vast contentplan.",
+      },
+      {
+        to: "/kennisbank/website-levert-geen-aanvragen-op",
+        label: "Website levert geen aanvragen op",
+        tekst: "Als bezoekers wel komen maar niet aanvragen.",
+      },
+      {
+        to: "/diensten/conversie-website",
+        label: "Conversie Website",
+        tekst: "Een website die bezoekers naar aanvraag of boeking begeleidt.",
+      },
+    ],
+    metaTitle: "Wat is zoekmachineoptimalisatie (SEO)? | MegaOnline",
+    metaDescription:
+      "SEO is zoekmachineoptimalisatie: zoekmachines helpen je content te begrijpen zodat mensen je site vinden. Wat het is, hoe Google werkt en wat je zelf checkt.",
+  },
 ];
 
 /**
