@@ -4,6 +4,7 @@ import { Icon } from './Icon'
 import { Logo } from './Logo'
 import { artikelenNieuwsteEerst } from '@/lib/kennisbank'
 import { CTA_SCAN } from '@/lib/cta'
+import { SCAN_REACTIETIJD } from '@/lib/scan'
 
 type Panel = 'diensten' | 'cases' | 'over' | 'kennis' | 'contact'
 
@@ -587,8 +588,7 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
                 </span>
                 <h4 className="mfeat__title">Gratis website scan</h4>
                 <p className="mfeat__desc">
-                  Een gratis website scan met persoonlijk advies. Vrijblijvend en reactie
-                  binnen 2 werkdagen.
+                  Een gratis website scan met persoonlijk advies. Vrijblijvend en reactie {SCAN_REACTIETIJD}.
                 </p>
                 <Link className="mfeat__cta" to="/gratis-websitescan">
                   {CTA_SCAN}                </Link>

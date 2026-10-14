@@ -54,8 +54,9 @@ function normCta(s) {
  * exact CTA_SCAN is, of een .btn die naar de scanpagina wijst, of de
  * verstuurknop van het scan- of conceptformulier. Die tekst moet CTA_SCAN
  * zijn. Een link daarbij gaat naar /gratis-websitescan, of naar #formulier
- * of #scan op de scanpagina zelf. Het woord websiteconcept mag niet zichtbaar zijn.
- * Script en style tellen niet: het oude pad blijft daar als redirect staan.
+ * of #scan op de scanpagina zelf. De gebouwde HTML mag nergens websiteconcept,
+ * 2 werkdagen of href="tel: bevatten. Een telefoonnummer als tekst of in
+ * JSON-LD mag blijven.
  */
 async function controleerCtaTeksten(browser) {
   const pg = await browser.newPage({ viewport: { width: 1440, height: 900 } })
@@ -116,9 +117,13 @@ async function controleerCtaTeksten(browser) {
           morgen &&
           (form.compareDocumentPosition(morgen) & Node.DOCUMENT_POSITION_FOLLOWING)
         ),
+        html: document.documentElement.outerHTML,
       }
     }, CTA_SCAN)
 
+    if (/websiteconcept/i.test(data.html)) fouten.push(`${pad} HTML bevat websiteconcept`)
+    if (data.html.includes('2 werkdagen')) fouten.push(`${pad} HTML bevat 2 werkdagen`)
+    if (/href=["']tel:/i.test(data.html)) fouten.push(`${pad} HTML bevat href="tel:`)
     if (/websiteconcept/i.test(data.zichtbaar)) fouten.push(`${pad} toont websiteconcept`)
     for (const oud of OUDE_CTA_VARIANTEN) {
       if (data.zichtbaar.includes(oud)) fouten.push(`${pad} bevat "${oud}"`)
@@ -607,7 +612,7 @@ check(
   conceptLogs.length === logsVoorConcept + 1 &&
     leadLogGeldig(conceptLog) &&
     conceptLog.json.pagina === '/' &&
-    conceptLog.json.formulier === 'concept' &&
+    conceptLog.json.formulier === 'scan' &&
     conceptLog.json.route === 'FormSubmit' &&
     conceptLog.json.gelukt === true &&
     conceptLog.json.reden === '',
@@ -638,7 +643,7 @@ check('velden komen correct door',
 check('url wordt genormaliseerd naar https://',
   lead?.url === 'https://mijnbedrijf.nl', `url=${lead?.url}`)
 check('_subject en _pagina gaan mee',
-  lead?._subject === 'Nieuwe aanvraag gratis websiteconcept - MegaOnline.io' && !!lead?._pagina,
+  lead?._subject === 'Gratis website scan aanvraag' && !!lead?._pagina,
   `${lead?._subject}`)
 check('honeypot wordt niet doorgestuurd', !('website_hp' in (lead ?? {})))
 check('lege optionele velden gaan niet mee', !lead?.geen_website)
@@ -1932,7 +1937,7 @@ async function conceptFallback(pg) {
   check(
     'met consent stuurt het conceptformulier generate_lead',
     conceptEvents.length === 1 &&
-      conceptEvent?.form_name === 'gratis-websiteconcept' &&
+      conceptEvent?.form_name === 'scan' &&
       conceptEvent?.page_path === '/' &&
       conceptEvent?.keys.join(',') === 'form_name,page_path' &&
       !/concept-lead@example.com|Concept Lead/.test(conceptEvent?.raw ?? ''),
@@ -1964,7 +1969,7 @@ async function conceptFallback(pg) {
   check(
     'inzending via het kennisbankartikel stuurt generate_lead',
     artikelEvents.length === 1 &&
-      artikelEvent?.form_name === 'gratis-websiteconcept' &&
+      artikelEvent?.form_name === 'scan' &&
       artikelEvent?.page_path === '/kennisbank/website-levert-geen-aanvragen-op' &&
       artikelEvent?.keys.join(',') === 'form_name,page_path' &&
       !/artikel-lead@example.com|Artikel Lead/.test(artikelEvent?.raw ?? ''),

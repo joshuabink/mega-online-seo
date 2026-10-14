@@ -6,6 +6,7 @@ import { Qa } from '@/components/Qa'
 import { Reveal } from '@/components/Reveal'
 import { ConceptForm } from '@/components/ConceptForm'
 import { CTA_SCAN } from '@/lib/cta'
+import { SCAN_REACTIETIJD } from '@/lib/scan'
 
 export const Route = createFileRoute('/diensten/website-optimalisatie')({
   head: () => ({
@@ -781,7 +782,7 @@ function WebsiteOptimalisatie() {
                 {' '}
                 <span>Eerlijk advies</span>
                 {' '}
-                <span>Reactie binnen 2 werkdagen</span>
+                <span>Reactie {SCAN_REACTIETIJD}</span>
               </Reveal>
             </div>
             {' '}

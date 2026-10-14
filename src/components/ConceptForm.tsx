@@ -3,6 +3,7 @@ import { Link } from '@tanstack/react-router'
 import { LEAD_CONTACT } from '@/lib/lead-contact'
 import { SteppedLeadForm } from './LeadForm'
 import { CTA_SCAN } from '@/lib/cta'
+import { SCAN_OPLEVERING, SCAN_REACTIETIJD, SCAN_SUBJECT } from '@/lib/scan'
 
 /**
  * Klikformulier voor de gratis website scan.
@@ -12,7 +13,7 @@ import { CTA_SCAN } from '@/lib/cta'
  * zodat honeypot, stapnavigatie en Enter-gedrag hetzelfde blijven.
  */
 
-const SUBJECT = 'Nieuwe aanvraag gratis websiteconcept - MegaOnline.io'
+const SUBJECT = SCAN_SUBJECT
 
 const GEEN_WEBSITE = 'Ik heb nog geen website'
 
@@ -180,7 +181,7 @@ export function ConceptForm({
     <SteppedLeadForm
       className={`concept ${className}`.trim()}
       subject={subject}
-      formName="gratis-websiteconcept"
+      formName="scan"
       head={
         showIntro ? (
           <>
@@ -195,7 +196,7 @@ export function ConceptForm({
             <ul className="concept__ticks">
               <li>Persoonlijk advies</li>
               <li>Vrijblijvend</li>
-              <li>Reactie binnen 2 werkdagen</li>
+              <li>Reactie {SCAN_REACTIETIJD}</li>
             </ul>
           </>
         ) : null
@@ -205,8 +206,7 @@ export function ConceptForm({
           <div className="ic">✓</div>
           <h3>Bedankt. Je aanvraag is binnen.</h3>
           <p>
-            Je krijgt een eerste website scan voor je bedrijf. Binnen 2 werkdagen nemen we contact
-            met je op om het concept en ons advies te bespreken. Vragen in de tussentijd? Mail naar{' '}
+            {SCAN_OPLEVERING} Vragen in de tussentijd? Mail naar{' '}
             <a href="mailto:info@megaonline.io">info@megaonline.io</a>.
           </p>
         </>
