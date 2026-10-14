@@ -289,7 +289,7 @@ function ArtikelPagina() {
             <div className="faq">
               {faq.map(({ q, a: antw }) => (
                 <Qa key={q} question={q} className="reveal">
-                  {antw}
+                  <RichTekst tekst={antw} />
                 </Qa>
               ))}
             </div>

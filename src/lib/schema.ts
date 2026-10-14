@@ -409,6 +409,11 @@ function artikelAuteur(a: Artikel): Record<string, unknown> {
   return { "@type": "Person", name: naam };
 }
 
+/** Zelfde woorden als op de pagina: de markdown-link wordt de zichtbare ankertekst. */
+function zichtbareFaqTekst(tekst: string): string {
+  return tekst.replace(/\[([^\]]+)\]\((?:\/[^)\s]*|https:\/\/[^)\s]+)\)/g, "$1");
+}
+
 /**
  * Article plus FAQPage per kennisbankartikel. De FAQ-node komt uit dezelfde
  * vragen die op de pagina staan, want markup die iets anders zegt dan de
@@ -446,7 +451,7 @@ function buildArtikel(a: Artikel, url: string, pageId: string) {
       mainEntity: faq.map(({ q, a: antwoord }) => ({
         "@type": "Question",
         name: q,
-        acceptedAnswer: { "@type": "Answer", text: antwoord },
+        acceptedAnswer: { "@type": "Answer", text: zichtbareFaqTekst(antwoord) },
       })),
     });
   }

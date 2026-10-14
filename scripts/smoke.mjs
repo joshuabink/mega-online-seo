@@ -165,6 +165,7 @@ async function controleerCtaTeksten(browser) {
       '/kennisbank/prijzen-op-website-verhuurbedrijf': { form: false },
       '/kennisbank/vertrouwen-wekken-zakelijke-website': { form: false },
       '/kennisbank/waar-boekingen-weglekken': { form: false },
+      '/kennisbank/wat-is-seo': { form: false },
     }[pad]
     if (kennisbankCta) {
       if (data.eind !== CTA_SCAN) fouten.push(`${pad} eind-CTA "${data.eind}"`)
@@ -1390,6 +1391,7 @@ for (const pad of [
   '/kennisbank/vertrouwen-wekken-zakelijke-website',
   '/kennisbank/prijzen-op-website-verhuurbedrijf',
   '/kennisbank/waar-boekingen-weglekken',
+  '/kennisbank/wat-is-seo',
 ]) {
   const data = await openKennisbank(pad)
   const schemaVragen = (data.faqVragen[0] ?? []).map(normTekst)
@@ -1440,6 +1442,61 @@ for (const pad of [
       artikel.ctaTekst === CTA_SCAN &&
       artikel.ctaKop === 'Wil je weten wat je site laat liggen?',
     `${artikel.ctaHref} / ${artikel.ctaTekst} / ${artikel.ctaKop}`,
+  )
+}
+
+{
+  const res = await page.goto(BASE + '/kennisbank/wat-is-seo', { waitUntil: 'load' })
+  await waitHydrated(page)
+  const artikel = await page.evaluate(() => ({
+    h1: (document.querySelector('h1')?.textContent || '').replace(/\s+/g, ' ').trim(),
+    title: document.title,
+    vragen: [...document.querySelectorAll('section#faq .qa .qa__q')].map((el) =>
+      (el.textContent || '').replace(/\s+/g, ' ').trim(),
+    ),
+    ctaHref: document.querySelector('#scan a')?.getAttribute('href') || '',
+    ctaTekst: (document.querySelector('#scan a')?.textContent || '').replace(/\s+/g, ' ').trim(),
+    ctaKop: (document.querySelector('#scan h2')?.textContent || '').replace(/\s+/g, ' ').trim(),
+    interne: [...new Set(
+      [...document.querySelectorAll('main a[href]')]
+        .map((a) => a.getAttribute('href') || '')
+        .filter((href) => href.startsWith('/') && !href.startsWith('//'))
+        .map((href) => href.split('#')[0] || '/'),
+    )],
+  }))
+  check('wat-is-seo geeft 200', res?.status() === 200, String(res?.status()))
+  check(
+    'wat-is-seo title en H1',
+    artikel.h1 === 'Wat is zoekmachineoptimalisatie (SEO)?' &&
+      artikel.title === 'Wat is zoekmachineoptimalisatie (SEO)? | MegaOnline',
+    `h1=${artikel.h1} title=${artikel.title}`,
+  )
+  check(
+    'wat-is-seo toont de vier FAQ-vragen',
+    artikel.vragen.length === 4 &&
+      artikel.vragen[0] === 'Wat betekent SEO precies?' &&
+      artikel.vragen[1] === 'Is SEO hetzelfde als Google Ads?' &&
+      artikel.vragen[2] === 'Kan iemand een plek bovenaan in Google garanderen?' &&
+      artikel.vragen[3] === 'Wat is het verschil tussen SEO en GEO?',
+    artikel.vragen.join(' | '),
+  )
+  check(
+    'wat-is-seo eindknop toont de scan-tekst',
+    artikel.ctaTekst === CTA_SCAN &&
+      artikel.ctaHref === '/gratis-websitescan' &&
+      artikel.ctaKop === 'Wil je weten wat je site laat liggen?' &&
+      !/nieuw ontwerp|websiteconcept/i.test(artikel.ctaTekst),
+    `${artikel.ctaHref} / ${artikel.ctaTekst}`,
+  )
+  const kapot = []
+  for (const href of artikel.interne) {
+    const antwoord = await page.request.get(BASE + href)
+    if (antwoord.status() !== 200) kapot.push(`${href} ${antwoord.status()}`)
+  }
+  check(
+    'interne links van wat-is-seo geven 200',
+    kapot.length === 0 && artikel.interne.includes('/diensten/seo'),
+    kapot.join(', ') || artikel.interne.join(' '),
   )
 }
 
@@ -1519,6 +1576,7 @@ for (const [pad, eind, form] of [
   ['/kennisbank/prijzen-op-website-verhuurbedrijf', CTA_SCAN, false],
   ['/kennisbank/vertrouwen-wekken-zakelijke-website', CTA_SCAN, false],
   ['/kennisbank/waar-boekingen-weglekken', CTA_SCAN, false],
+  ['/kennisbank/wat-is-seo', CTA_SCAN, false],
   ['/kennisbank/smoke-zonder-faq', CTA_SCAN, false],
 ]) {
   const artikel = await leesArtikelForm(pad)
@@ -1542,7 +1600,7 @@ for (const [pad, eind, form] of [
   );
   const dates = lastmods.map((list) => list[0] ?? "");
   check("sitemap 200", res.status() === 200, String(res.status()));
-  check("sitemap heeft 38 urls", blocks.length === 38, String(blocks.length));
+  check("sitemap heeft 39 urls", blocks.length === 39, String(blocks.length));
   const scanInSitemap = blocks.find((block) => block.includes("https://megaonline.io/gratis-websitescan"));
   check(
     "sitemap bevat de scan van vandaag en niet het oude conceptadres",
@@ -1559,12 +1617,20 @@ for (const [pad, eind, form] of [
     !!boekingen && /<lastmod>2026-10-13<\/lastmod>/.test(boekingen),
     boekingen ?? "ontbreekt",
   );
+  const watIsSeo = blocks.find((block) =>
+    block.includes("https://megaonline.io/kennisbank/wat-is-seo"),
+  );
+  check(
+    "sitemap bevat wat-is-seo met lastmod 2026-10-14",
+    !!watIsSeo && /<lastmod>2026-10-14<\/lastmod>/.test(watIsSeo),
+    watIsSeo ?? "ontbreekt",
+  );
   const kennisbankOverzicht = blocks.find((block) =>
     /<loc>https:\/\/megaonline\.io\/kennisbank<\/loc>/.test(block),
   );
   check(
     "kennisbankoverzicht lastmod volgt de nieuwste gewijzigd",
-    !!kennisbankOverzicht && /<lastmod>2026-10-13<\/lastmod>/.test(kennisbankOverzicht),
+    !!kennisbankOverzicht && /<lastmod>2026-10-14<\/lastmod>/.test(kennisbankOverzicht),
     kennisbankOverzicht ?? "ontbreekt",
   );
   check(
