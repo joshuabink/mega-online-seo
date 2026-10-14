@@ -28,7 +28,7 @@ const FORMSUBMIT_AJAX = `https://formsubmit.co/ajax/${LEAD_CONTACT.mail}`
 export function canonicalFormUrl(pathname?: string): string {
   const path =
     pathname ??
-    (typeof location !== 'undefined' && location.pathname ? location.pathname : '/gratis-websiteconcept')
+    (typeof location !== 'undefined' && location.pathname ? location.pathname : '/gratis-websitescan')
   const clean = path.startsWith('/') ? path : `/${path}`
   return `https://megaonline.io${clean}`
 }
@@ -65,7 +65,7 @@ async function postFormSubmitFromBrowser(params: URLSearchParams): Promise<boole
   body.set('_template', 'table')
   body.set('_captcha', 'false')
   body.set('_url', canonicalFormUrl())
-  const email = body.get('email')
+  const email = body.get('email') ?? body.get('mail')
   if (email) body.set('_replyto', email)
 
   try {
@@ -94,6 +94,7 @@ export async function sendLead(
   const data = new FormData(form)
 
   if (data.has('url')) data.set('url', normalizeUrl(String(data.get('url'))))
+  if (data.has('site')) data.set('site', normalizeUrl(String(data.get('site'))))
 
   const subject = opts.subject ?? 'Nieuwe aanvraag via MegaOnline.io'
   data.append('_subject', subject)

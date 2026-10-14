@@ -5,7 +5,8 @@ import { Media } from '@/components/Media'
 import { Qa } from '@/components/Qa'
 import { Reveal } from '@/components/Reveal'
 import { ConceptForm } from '@/components/ConceptForm'
-import { CTA_CONCEPT } from '@/lib/cta'
+import { CTA_SCAN } from '@/lib/cta'
+import { CONTACT_REACTIETIJD } from '@/lib/lead-contact'
 
 export const Route = createFileRoute('/diensten/website-optimalisatie')({
   head: () => ({
@@ -55,8 +56,8 @@ function WebsiteOptimalisatie() {
               </Reveal>
               {' '}
               <Reveal as="div" className="svc-hero__ctas reveal" data-d="2">
-                <Link className="btn btn-primary" to="/gratis-websiteconcept">
-                  {CTA_CONCEPT}
+                <Link className="btn btn-primary" to="/gratis-websitescan">
+                  {CTA_SCAN}
                 </Link>
                 {' '}
                 <Link className="tlink" to="/contact">
@@ -608,8 +609,8 @@ function WebsiteOptimalisatie() {
               </h2>
             </div>
             {' '}
-            <Link className="tlink" to="/gratis-websiteconcept" style={{ paddingBottom: "6px" }}>
-              {CTA_CONCEPT}
+            <Link className="tlink" to="/gratis-websitescan" style={{ paddingBottom: "6px" }}>
+              {CTA_SCAN}
               {' '}
             </Link>
           </Reveal>
@@ -713,7 +714,7 @@ function WebsiteOptimalisatie() {
           {' '}
           <div className="faq">
             <Qa question="Heb ik een nieuwe website nodig?" className="reveal">
-                Vaak niet. Als je website er nog goed uitziet en technisch in orde is, zit de winst meestal in gerichte verbeteringen, niet in opnieuw beginnen. Een nieuwe website is alleen slimmer wanneer het fundament technisch of strategisch echt verouderd is. Het gratis websiteconcept maakt dat onderscheid voor je helder.
+                Vaak niet. Als je website er nog goed uitziet en technisch in orde is, zit de winst meestal in gerichte verbeteringen, niet in opnieuw beginnen. Een nieuwe website is alleen slimmer wanneer het fundament technisch of strategisch echt verouderd is. De gratis website scan maakt dat onderscheid voor je helder.
             </Qa>
             {' '}
             <Qa question="Hoe weet ik of optimalisatie genoeg is?" className="reveal">
@@ -773,7 +774,7 @@ function WebsiteOptimalisatie() {
               <Reveal as="h2" className="display reveal">Benieuwd hoeveel potentie er nog in je website zit?</Reveal>
               {' '}
               <Reveal as="p" className="lead reveal" data-d="1">
-                Vraag een gratis websiteconcept aan en ontdek waar de winst in je huidige website zit, zonder meteen opnieuw te beginnen.
+                Vraag een gratis website scan aan en ontdek waar de winst in je huidige website zit, zonder meteen opnieuw te beginnen.
               </Reveal>
               {' '}
               <Reveal as="div" className="endcta__trust reveal" data-d="2">
@@ -781,7 +782,7 @@ function WebsiteOptimalisatie() {
                 {' '}
                 <span>Eerlijk advies</span>
                 {' '}
-                <span>Reactie binnen 2 werkdagen</span>
+                <span>Reactie {CONTACT_REACTIETIJD}</span>
               </Reveal>
             </div>
             {' '}

@@ -6,7 +6,8 @@ import { Media } from '@/components/Media'
 import { Qa } from '@/components/Qa'
 import { Reveal } from '@/components/Reveal'
 import { ConceptForm } from '@/components/ConceptForm'
-import { CTA_CONCEPT } from '@/lib/cta'
+import { CTA_SCAN } from '@/lib/cta'
+import { CONTACT_REACTIETIJD } from '@/lib/lead-contact'
 
 export const Route = createFileRoute('/diensten/conversie-website')({
   head: () => ({
@@ -47,7 +48,7 @@ const FAQ_ITEMS: { q: string; a: ReactNode }[] = [
   },
   {
     q: "Werkt MegaOnline ook met bestaande websites?",
-    a: "Soms is een volledig nieuwe website de beste keuze, soms hebben gerichte verbeteringen al veel effect. Het gratis websiteconcept helpt MegaOnline bepalen wat voor jouw situatie de slimste aanpak is.",
+    a: "Soms is een volledig nieuwe website de beste keuze, soms hebben gerichte verbeteringen al veel effect. De gratis website scan helpt MegaOnline bepalen wat voor jouw situatie de slimste aanpak is.",
   },
   {
     q: "Is een Groei Partnership verplicht?",
@@ -65,7 +66,7 @@ const FAQ_ITEMS: { q: string; a: ReactNode }[] = [
     q: "Wat kost een Conversie Website?",
     a: (
       <>
-        De prijs van een Conversie Website hangt af van het aantal pagina's, de complexiteit en de extra functies die je nodig hebt. In het gratis websiteconcept krijg je een eerlijke indicatie voor jouw situatie.
+        De prijs van een Conversie Website hangt af van het aantal pagina's, de complexiteit en de extra functies die je nodig hebt. In de gratis website scan krijg je een eerlijke indicatie voor jouw situatie.
         {/* [prijs: Beslissing Joshua (TK-166 punt 5 / TK-85 vraag 1)] */}
       </>
     ),
@@ -87,7 +88,7 @@ const FAQ_ITEMS: { q: string; a: ReactNode }[] = [
     q: "Hoe begin ik met een Conversie Website?",
     a: (
       <>
-        Je begint met een <Link to="/gratis-websiteconcept">gratis websiteconcept</Link>. Je vult het formulier in. Daarna neemt MegaOnline contact met je op om het concept en het advies te bespreken. Het traject zelf heeft vijf stappen: begrijpen, structureren, ontwerpen, ontwikkelen en verbeteren.
+        Je begint met een <Link to="/gratis-websitescan">gratis website scan</Link>. Je vult het formulier in. Daarna neemt MegaOnline contact met je op om het concept en het advies te bespreken. Het traject zelf heeft vijf stappen: begrijpen, structureren, ontwerpen, ontwikkelen en verbeteren.
       </>
     ),
   },
@@ -126,8 +127,8 @@ function ConversieWebsite() {
               </Reveal>
               {' '}
               <Reveal as="div" className="svc-hero__ctas reveal" data-d="2">
-                <Link className="btn btn-primary" to="/gratis-websiteconcept">
-                  {CTA_CONCEPT}
+                <Link className="btn btn-primary" to="/gratis-websitescan">
+                  {CTA_SCAN}
                 </Link>
                 {' '}
                 <a className="tlink" href="#aanpak">
@@ -877,7 +878,7 @@ function ConversieWebsite() {
               <div className="rm__foot">
                 <span className="svcprice">Vanaf € 2.500</span>
                 {' '}
-                <Link className="flow-cta" to="/gratis-websiteconcept">{CTA_CONCEPT}</Link>
+                <Link className="flow-cta" to="/gratis-websitescan">{CTA_SCAN}</Link>
               </div>
             </div>
             {' '}
@@ -923,7 +924,7 @@ function ConversieWebsite() {
                   </small>
                 </span>
                 {' '}
-                <Link className="flow-cta" to="/gratis-websiteconcept">Start het partnership</Link>
+                <Link className="flow-cta" to="/gratis-websitescan">Start het partnership</Link>
               </div>
             </div>
           </Reveal>
@@ -956,7 +957,7 @@ function ConversieWebsite() {
               </h2>
             </div>
             {' '}
-            <Link className="tlink" to="/gratis-websiteconcept" style={{ paddingBottom: "6px" }}>
+            <Link className="tlink" to="/gratis-websitescan" style={{ paddingBottom: "6px" }}>
               Start jouw project
               {' '}
             </Link>
@@ -1109,7 +1110,7 @@ function ConversieWebsite() {
               </Reveal>
               {' '}
               <Reveal as="p" className="lead reveal" data-d="1">
-                Vraag een gratis websiteconcept aan en ontdek waar jouw grootste online kansen liggen.
+                Vraag een gratis website scan aan en ontdek waar jouw grootste online kansen liggen.
               </Reveal>
               {' '}
               <Reveal as="div" className="endcta__trust reveal" data-d="2">
@@ -1117,7 +1118,7 @@ function ConversieWebsite() {
                 {' '}
                 <span>Geen automatisch rapport</span>
                 {' '}
-                <span>Reactie binnen 2 werkdagen</span>
+                <span>Reactie {CONTACT_REACTIETIJD}</span>
               </Reveal>
             </div>
             {' '}

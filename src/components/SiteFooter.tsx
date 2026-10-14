@@ -1,7 +1,7 @@
 import { Link } from '@tanstack/react-router'
 import { CookieSettingsButton } from '@/components/CookieBanner'
 import { Logo } from './Logo'
-import { CTA_CONCEPT } from '@/lib/cta'
+import { CTA_SCAN } from '@/lib/cta'
 
 const DIENSTEN = [
   ['/diensten/conversie-website', 'Conversie Website'],
@@ -30,7 +30,7 @@ const BEDRIJF = [
   ['/over-megaonline', 'Over MegaOnline'],
   ['/concepten', 'Concepten'],
   ['/werken-bij', 'Werken bij'],
-  ['/gratis-websiteconcept', 'Gratis websiteconcept'],
+  ['/gratis-websitescan', 'Gratis website scan'],
   ['/contact', 'Contact'],
 ] as const
 
@@ -47,8 +47,8 @@ export function SiteFooter() {
               Websites die zorgen voor meer aanvragen, reserveringen en boekingen voor
               jouw bedrijf.
             </p>
-            <Link className="footer__scan" to="/gratis-websiteconcept">
-              {CTA_CONCEPT}            </Link>
+            <Link className="footer__scan" to="/gratis-websitescan">
+              {CTA_SCAN}            </Link>
           </div>
 
           <div className="footer__col">
@@ -118,7 +118,7 @@ export function FunnelFooter() {
         <Link to="/" className="logo" aria-label="MegaOnline home">
           <Logo />
         </Link>
-        <span className="ffooter__copy">© 2026 MegaOnline.io · Gratis websiteconcept</span>
+        <span className="ffooter__copy">© 2026 MegaOnline.io · Gratis website scan</span>
         <CookieSettingsButton className="footer__cookie" />
       </div>
     </footer>

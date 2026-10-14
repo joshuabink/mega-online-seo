@@ -8,7 +8,7 @@ import {
   trackLeadFallbackGetoond,
   trackSollicitatieVerzonden,
 } from '@/lib/analytics'
-import { LEAD_CONTACT } from '@/lib/lead-contact'
+import { CONTACT_REACTIETIJD, LEAD_CONTACT } from '@/lib/lead-contact'
 import { useReveal } from './Reveal'
 
 type LeadFailure = { error: string; mailto?: string }
@@ -184,7 +184,7 @@ function DefaultOk() {
       <div className="ic">✓</div>
       <h3>Bedankt. Aanvraag ontvangen.</h3>
       <p style={{ color: 'var(--muted)', marginTop: 10 }}>
-        We nemen gemiddeld binnen 2 werkdagen contact met je op.
+        We nemen gemiddeld {CONTACT_REACTIETIJD} contact met je op.
       </p>
     </>
   )

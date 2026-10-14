@@ -36,7 +36,7 @@ http
       all.push(fields)
       fs.writeFileSync(FILE, JSON.stringify(all, null, 2))
 
-      const email = (fields.email ?? '').trim()
+      const email = (fields.email ?? fields.mail ?? '').trim()
       if (email === 'hangt@example.com') {
         // Geen antwoord. De server moet op zijn eigen timeout terugvallen.
         return

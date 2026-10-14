@@ -5,7 +5,8 @@ import { Media } from '@/components/Media'
 import { Qa } from '@/components/Qa'
 import { Reveal } from '@/components/Reveal'
 import { ConceptForm } from '@/components/ConceptForm'
-import { CTA_CONCEPT } from '@/lib/cta'
+import { CTA_SCAN } from '@/lib/cta'
+import { CONTACT_REACTIETIJD } from '@/lib/lead-contact'
 
 export const Route = createFileRoute('/diensten/website-redesign')({
   head: () => ({
@@ -55,8 +56,8 @@ function WebsiteRedesign() {
               </Reveal>
               {' '}
               <Reveal as="div" className="svc-hero__ctas reveal" data-d="2">
-                <Link className="btn btn-primary" to="/gratis-websiteconcept">
-                  {CTA_CONCEPT}
+                <Link className="btn btn-primary" to="/gratis-websitescan">
+                  {CTA_SCAN}
                 </Link>
                 {' '}
                 <Link className="tlink" to="/contact">
@@ -600,7 +601,7 @@ function WebsiteRedesign() {
               </h2>
             </div>
             {' '}
-            <Link className="tlink" to="/gratis-websiteconcept" style={{ paddingBottom: "6px" }}>
+            <Link className="tlink" to="/gratis-websitescan" style={{ paddingBottom: "6px" }}>
               Start jouw redesign
               {' '}
             </Link>
@@ -857,12 +858,12 @@ function WebsiteRedesign() {
               </Reveal>
               {' '}
               <Reveal as="p" className="lead reveal" data-d="1">
-                Ontdek met een gratis websiteconcept of een redesign de juiste volgende stap is.
+                Ontdek met een gratis website scan of een redesign de juiste volgende stap is.
               </Reveal>
               {' '}
               <Reveal as="div" className="svc-hero__ctas reveal" data-d="2" style={{ marginTop: "28px" }}>
-                <Link className="btn btn-primary" to="/gratis-websiteconcept">
-                  {CTA_CONCEPT}
+                <Link className="btn btn-primary" to="/gratis-websitescan">
+                  {CTA_SCAN}
                 </Link>
                 {' '}
                 <Link className="tlink" to="/contact">
@@ -876,7 +877,7 @@ function WebsiteRedesign() {
                 {' '}
                 <span>Eerlijk advies</span>
                 {' '}
-                <span>Reactie binnen 2 werkdagen</span>
+                <span>Reactie {CONTACT_REACTIETIJD}</span>
               </Reveal>
             </div>
             {' '}

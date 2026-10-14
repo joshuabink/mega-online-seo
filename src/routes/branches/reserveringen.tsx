@@ -5,7 +5,7 @@ import { Icon } from "@/components/Icon";
 import { Qa } from "@/components/Qa";
 import { Reveal } from "@/components/Reveal";
 import { MegaSmartBridge } from "@/components/MegaSmartBridge";
-import { CTA_CONCEPT } from "@/lib/cta"
+import { CTA_SCAN } from "@/lib/cta"
 
 export const Route = createFileRoute("/branches/reserveringen")({
   head: () => ({
@@ -36,11 +36,11 @@ export const Route = createFileRoute("/branches/reserveringen")({
 const FAQ_ITEMS: { q: string; a: string }[] = [
   {
     q: "Kan ik mijn huidige reserveringssysteem houden?",
-    a: "Dat hangt af van het systeem. Kan het op een eigen website worden geplaatst, met een module, een knop naar een boekingspagina of een koppeling, dan kan de nieuwe website eromheen worden gebouwd. In het gratis websiteconcept kijkt MegaOnline wat bij jouw systeem kan.",
+    a: "Dat hangt af van het systeem. Kan het op een eigen website worden geplaatst, met een module, een knop naar een boekingspagina of een koppeling, dan kan de nieuwe website eromheen worden gebouwd. In de gratis website scan kijkt MegaOnline wat bij jouw systeem kan.",
   },
   {
     q: "Moet ik voor online reserveren een nieuwe website laten maken?",
-    a: "Niet altijd. Soms is een reserveringsknop op je huidige website genoeg. Een nieuwe website is zinvol als bezoekers afhaken voordat ze bij die knop zijn, bijvoorbeeld omdat informatie ontbreekt of de site slecht werkt op mobiel. Het gratis websiteconcept helpt bepalen wat voor jou de slimste aanpak is.",
+    a: "Niet altijd. Soms is een reserveringsknop op je huidige website genoeg. Een nieuwe website is zinvol als bezoekers afhaken voordat ze bij die knop zijn, bijvoorbeeld omdat informatie ontbreekt of de site slecht werkt op mobiel. De gratis website scan helpt bepalen wat voor jou de slimste aanpak is.",
   },
   {
     q: "Kunnen gasten direct online betalen of aanbetalen?",
@@ -119,8 +119,8 @@ function Reserveringen() {
                 praktijken en andere bedrijven waar een plek of moment wordt gereserveerd.
               </Reveal>
               <Reveal as="div" className="svc-hero__ctas reveal" data-d="2">
-                <Link className="btn btn-primary" to="/gratis-websiteconcept">
-                  {CTA_CONCEPT}
+                <Link className="btn btn-primary" to="/gratis-websitescan">
+                  {CTA_SCAN}
                 </Link>
                 <Link className="tlink" to="/contact">
                   Plan een kennismaking
@@ -346,8 +346,8 @@ function Reserveringen() {
             {/* [prijs: Beslissing Joshua (TK-166 punt 5 / TK-85 vraag 1)] */}
             <p className="lead">
               Wat er bijkomt, hangt af van het reserveringssysteem en de koppeling die je wilt. De
-              kosten van het reserveringssysteem zelf hangen af van de leverancier. In het gratis
-              websiteconcept krijg je advies voor jouw situatie.
+              kosten van het reserveringssysteem zelf hangen af van de leverancier. In de gratis
+              website scan krijg je advies voor jouw situatie.
             </p>
           </Reveal>
         </div>
@@ -380,10 +380,10 @@ function Reserveringen() {
       <section className="section" id="scan" data-theme="paper" data-screen-label="Eind-CTA">
         <div className="wrap">
           <Reveal as="div" className="shead shead--center reveal">
-            <h2 className="display">Gratis websiteconcept voor je reserveringen</h2>
+            <h2 className="display">Gratis website scan voor je reserveringen</h2>
             <p className="lead">
               Wil je weten hoe online reserveren op jouw website kan werken? Ontvang een gratis
-              websiteconcept met persoonlijk advies. Beantwoord zes korte vragen. Vrijblijvend.
+              website scan met persoonlijk advies. Beantwoord zes korte vragen. Vrijblijvend.
             </p>
             <Reveal
               as="div"
@@ -391,8 +391,8 @@ function Reserveringen() {
               data-d="1"
               style={{ justifyContent: "center", marginTop: "28px" }}
             >
-              <Link className="btn btn-primary" to="/gratis-websiteconcept">
-                {CTA_CONCEPT}
+              <Link className="btn btn-primary" to="/gratis-websitescan">
+                {CTA_SCAN}
               </Link>
               <Link className="tlink" to="/contact">
                 Plan een kennismaking

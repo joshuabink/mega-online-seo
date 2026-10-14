@@ -21,6 +21,7 @@
  */
 
 import { artikelBySlug, type Artikel } from "./kennisbank";
+import { SCAN_FAQ } from "./scan";
 import { GELDIG_TOT, GEPLAATST_OP, VOORWAARDEN, vacatureBySlug, type Vacature } from "./vacatures";
 
 export const SITE_URL = "https://megaonline.io";
@@ -216,7 +217,7 @@ const CRUMB_LABEL: Record<string, string> = {
   "/diensten/website-optimalisatie": "Website Optimalisatie",
   "/diensten/website-redesign": "Website Redesign",
   "/diensten/werken-bij-websites": "Werken-bij Websites",
-  "/gratis-websiteconcept": "Gratis websiteconcept",
+  "/gratis-websitescan": "Gratis website scan",
   "/kennisbank": "Kennisbank",
   "/megasmart": "MegaSmart",
   "/over-megaonline": "Over MegaOnline",
@@ -329,6 +330,28 @@ export function buildPageSchema({ pathname, title, description }: PageSchemaInpu
   }
 
   nodes.unshift(webPage);
+
+  if (path === "/gratis-websitescan") {
+    nodes.push({
+      "@type": "Service",
+      "@id": `${url}#service`,
+      name: "Gratis website scan",
+      serviceType: "Website scan",
+      description,
+      provider: { "@id": ORG_ID },
+      areaServed: { "@type": "Country", name: "Nederland" },
+      mainEntityOfPage: { "@id": pageId },
+    });
+    nodes.push({
+      "@type": "FAQPage",
+      "@id": `${url}#faq`,
+      mainEntity: SCAN_FAQ.map(({ q, a }) => ({
+        "@type": "Question",
+        name: q,
+        acceptedAnswer: { "@type": "Answer", text: a },
+      })),
+    });
+  }
 
   const service = SERVICES[path];
   if (service) {

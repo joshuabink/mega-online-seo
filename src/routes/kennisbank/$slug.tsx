@@ -335,7 +335,7 @@ function ArtikelPagina() {
         <div className="wrap">
           <Reveal as="div" className="shead shead--center reveal">
             <span className="label">Aan de slag</span>{" "}
-            <h2 className="display">Wil je een gratis websiteconcept voor je bedrijf?</h2>{" "}
+            <h2 className="display">Wil je weten wat je site laat liggen?</h2>{" "}
             <p className="lead">
               Beantwoord zes korte vragen. Daarna kijkt MegaOnline persoonlijk naar je bedrijf en zie je hoe je website meer aanvragen en boekingen kan opleveren.
             </p>{" "}
@@ -345,7 +345,7 @@ function ArtikelPagina() {
               data-d="1"
               style={{ justifyContent: "center", marginTop: "28px" }}
             >
-              <Link className="btn btn-primary" to="/gratis-websiteconcept">
+              <Link className="btn btn-primary" to="/gratis-websitescan">
                 {eindCta(a)}
               </Link>
             </Reveal>

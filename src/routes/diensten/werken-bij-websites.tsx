@@ -6,7 +6,7 @@ import { Icon } from "@/components/Icon";
 import { Media } from "@/components/Media";
 import { Qa } from "@/components/Qa";
 import { Reveal } from "@/components/Reveal";
-import { CTA_CONCEPT } from "@/lib/cta"
+import { CTA_SCAN } from "@/lib/cta"
 
 export const Route = createFileRoute("/diensten/werken-bij-websites")({
   head: () => ({
@@ -34,7 +34,7 @@ export const Route = createFileRoute("/diensten/werken-bij-websites")({
 const FAQ_ITEMS: { q: string; a: string }[] = [
   {
     q: "Heb ik een aparte werken-bij website nodig?",
-    a: "Niet per se. Soms is een werken-bij sectie op je bestaande website genoeg, soms werkt een aparte website beter omdat die volledig om sfeer, mensen en solliciteren draait. In het gratis websiteconcept kijkt MegaOnline wat voor jouw situatie het slimst is.",
+    a: "Niet per se. Soms is een werken-bij sectie op je bestaande website genoeg, soms werkt een aparte website beter omdat die volledig om sfeer, mensen en solliciteren draait. In de gratis website scan kijkt MegaOnline wat voor jouw situatie het slimst is.",
   },
   {
     q: "Kunnen vacatures automatisch worden bijgewerkt?",
@@ -120,8 +120,8 @@ function WerkenBijWebsites() {
                 je misschien niet alleen klanten, maar ook medewerkers.
               </Reveal>
               <Reveal as="div" className="svc-hero__ctas reveal" data-d="2">
-                <Link className="btn btn-primary" to="/gratis-websiteconcept">
-                  {CTA_CONCEPT}
+                <Link className="btn btn-primary" to="/gratis-websitescan">
+                  {CTA_SCAN}
                 </Link>
                 <Link className="tlink" to="/contact">
                   Plan een kennismaking
@@ -177,7 +177,7 @@ function WerkenBijWebsites() {
             </Reveal>
           </div>
           <Reveal as="p" className="lead reveal" style={vervolg}>
-            In het gratis websiteconcept kijkt MegaOnline wat voor jouw situatie het slimst is.
+            In de gratis website scan kijkt MegaOnline wat voor jouw situatie het slimst is.
           </Reveal>
         </div>
       </section>
@@ -516,7 +516,7 @@ function WerkenBijWebsites() {
               Dat hangt af van de vorm (een sectie of een aparte website), het aantal vacatures en
               of de vacatures uit een wervingssysteem moeten komen.{" "}
               {/* [prijs: Beslissing Joshua (TK-166 punt 5 / TK-85 vraag 1)] */}
-              In het gratis websiteconcept krijg je advies voor jouw situatie.
+              In de gratis website scan krijg je advies voor jouw situatie.
             </p>
           </Reveal>
         </div>
@@ -547,11 +547,11 @@ function WerkenBijWebsites() {
           <div className="endcta__grid">
             <div className="endcta__copy">
               <Reveal as="h2" className="display reveal">
-                Gratis websiteconcept voor je werken-bij website
+                Gratis website scan voor je werken-bij website
               </Reveal>
               <Reveal as="p" className="lead reveal" data-d="1">
                 Wil je weten hoe jouw werken-bij website eruit kan zien? Ontvang een gratis
-                websiteconcept met persoonlijk advies. Beantwoord zes korte vragen. Vrijblijvend.
+                website scan met persoonlijk advies. Beantwoord zes korte vragen. Vrijblijvend.
               </Reveal>
               <Reveal
                 as="div"
@@ -559,8 +559,8 @@ function WerkenBijWebsites() {
                 data-d="2"
                 style={{ marginTop: "28px" }}
               >
-                <Link className="btn btn-primary" to="/gratis-websiteconcept">
-                  {CTA_CONCEPT}
+                <Link className="btn btn-primary" to="/gratis-websitescan">
+                  {CTA_SCAN}
                 </Link>
                 <Link className="tlink" to="/contact">
                   Plan een kennismaking

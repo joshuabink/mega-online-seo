@@ -1,4 +1,4 @@
-import { CTA_CONCEPT, CTA_SCAN } from "@/lib/cta";
+import { CTA_SCAN } from "@/lib/cta";
 
 /**
  * Kennisbankartikelen voor /kennisbank.
@@ -65,11 +65,9 @@ export type Artikel = {
    */
   auteur?: string;
   /**
-   * Eindknop. `scan` is techniek, de eigen site of de inhoud.
-   * `nieuw ontwerp` is uitstraling of een nieuwe website.
-   * Weglaten betekent `scan`.
+   * Eindknop. Alleen `scan`, of weglaten: dat is hetzelfde.
    */
-  cta?: "scan" | "nieuw ontwerp";
+  cta?: "scan";
   /** Conceptformulier na de laatste uitlegsectie, vóór "Wat je morgen kunt doen". */
   conceptForm?: boolean;
   secties: ArtikelSectie[];
@@ -263,7 +261,7 @@ export const ARTIKELEN: Artikel[] = [
     leestijd: "7 minuten",
     gepubliceerd: "2026-09-21",
     gewijzigd: "2026-09-21",
-    cta: "nieuw ontwerp",
+    cta: "scan",
     secties: [
       {
         kop: "Vertrouwen is geen gevoel, het is een lijstje dat de bezoeker afvinkt",
@@ -570,7 +568,7 @@ export const ARTIKELEN: Artikel[] = [
     leestijd: "8 minuten",
     gepubliceerd: "2026-10-13",
     gewijzigd: "2026-10-13",
-    cta: "nieuw ontwerp",
+    cta: "scan",
     secties: [
       {
         kop: "Eerst meten, dan repareren",
@@ -841,9 +839,9 @@ const SMOKE_ARTIKELEN: Artikel[] = import.meta.env.DEV
     ]
   : [];
 
-/** Eindknoptekst. Ontbrekend veld betekent de scan-tekst. */
-export function eindCta(artikel: Pick<Artikel, "cta">): string {
-  return artikel.cta === "nieuw ontwerp" ? CTA_CONCEPT : CTA_SCAN;
+/** Eindknoptekst. Het veld is scan, of het ontbreekt: allebei dezelfde knop. */
+export function eindCta(_artikel: Pick<Artikel, "cta">): string {
+  return CTA_SCAN;
 }
 
 /** Het artikel bij een slug, of `undefined` als die slug niet bestaat. */

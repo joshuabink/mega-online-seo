@@ -3,7 +3,7 @@ import { Link } from '@tanstack/react-router'
 import { Icon } from '@/components/Icon'
 import { Qa } from '@/components/Qa'
 import { Reveal } from '@/components/Reveal'
-import { CTA_CONCEPT } from '@/lib/cta'
+import { CTA_SCAN } from '@/lib/cta'
 import '@/styles/pages/veelgestelde-vragen.css'
 
 export const Route = createFileRoute('/veelgestelde-vragen')({
@@ -110,7 +110,7 @@ function VeelgesteldeVragen() {
             {' '}
             <div className="faq">
               <Qa question="Wat kost een website bij MegaOnline?" className="reveal">
-                  Dat hangt af van wat je nodig hebt. De Starter Website begint vanaf €1.500 en is bedoeld voor starters die voordelig en snel online willen. Een volledige Conversie Website is maatwerk en wordt geprijsd op basis van omvang, strategie en koppelingen. In een gratis websiteconcept brengt MegaOnline het vrijblijvend voor je in kaart.
+                  Dat hangt af van wat je nodig hebt. De Starter Website begint vanaf €1.500 en is bedoeld voor starters die voordelig en snel online willen. Een volledige Conversie Website is maatwerk en wordt geprijsd op basis van omvang, strategie en koppelingen. In een gratis website scan brengt MegaOnline het vrijblijvend voor je in kaart.
               </Qa>
               {' '}
               <Qa question="Waarom is de Starter Website goedkoper?" className="reveal">
@@ -217,12 +217,12 @@ function VeelgesteldeVragen() {
             <h2 className="display">MegaOnline denkt graag met je mee.</h2>
             {' '}
             <p className="lead">
-              Geen verkooppraat, gewoon eerlijk advies. Plan een vrijblijvende kennismaking of vraag een gratis websiteconcept aan.
+              Geen verkooppraat, gewoon eerlijk advies. Plan een vrijblijvende kennismaking of vraag een gratis website scan aan.
             </p>
             {' '}
             <Reveal as="div" className="svc-hero__ctas reveal" data-d="1" style={{ justifyContent: "center", marginTop: "28px" }}>
-              <Link className="btn btn-primary" to="/gratis-websiteconcept">
-                {CTA_CONCEPT}
+              <Link className="btn btn-primary" to="/gratis-websitescan">
+                {CTA_SCAN}
               </Link>
               {' '}
               <Link className="tlink" to="/contact">

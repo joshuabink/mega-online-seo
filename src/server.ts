@@ -44,8 +44,8 @@ async function normalizeCatastrophicSsrResponse(response: Response): Promise<Res
  * protocol-relatieve Location. Hier normaliseren we eerst: backslashes
  * worden slashes, herhaalde slashes vallen samen, een trailing slash gaat
  * eraf. De Location is altijd een same-origin pad met precies één leidende
- * `/`. `/gratis-websitescan` gaat in dezelfde hop met 301 door, inclusief
- * de querystring.
+ * `/`. `/gratis-websiteconcept` gaat in dezelfde hop met 301 door naar
+ * `/gratis-websitescan`, inclusief de querystring.
  */
 function canonicalPathname(pathname: string): string {
   const collapsed = pathname.replace(/\\/g, "/").replace(/\/{2,}/g, "/");
@@ -103,8 +103,8 @@ function canonicalRedirect(request: Request): Response | null {
     return new Response(null, { status: 302, headers: { Location: location } });
   }
 
-  if (canonical === "/gratis-websitescan") {
-    const location = sameOriginLocation(url.origin, "/gratis-websiteconcept", search);
+  if (canonical === "/gratis-websiteconcept") {
+    const location = sameOriginLocation(url.origin, "/gratis-websitescan", search);
     if (!location) return null;
     return new Response(null, { status: 301, headers: { Location: location } });
   }

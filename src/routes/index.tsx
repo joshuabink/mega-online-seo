@@ -6,16 +6,16 @@ import { Media } from '@/components/Media'
 import { Qa } from '@/components/Qa'
 import { Reveal } from '@/components/Reveal'
 import { ConceptForm } from '@/components/ConceptForm'
-import { CTA_CONCEPT } from '@/lib/cta'
+import { CTA_SCAN } from '@/lib/cta'
 import '@/styles/pages/index.css'
 
 export const Route = createFileRoute('/')({
   head: () => ({
     meta: [
       { title: "MegaOnline.io | Websites die werken voor jouw bedrijf" },
-      { name: 'description', content: "MegaOnline bouwt websites die vertrouwen uitstralen en bezoekers richting aanvraag of boeking brengen. Vraag een gratis websiteconcept aan." },
+      { name: 'description', content: "MegaOnline bouwt websites die vertrouwen uitstralen en bezoekers richting aanvraag of boeking brengen. Vraag een gratis website scan aan." },
       { property: 'og:title', content: "MegaOnline.io | Websites die werken voor jouw bedrijf" },
-      { property: 'og:description', content: "MegaOnline bouwt websites die vertrouwen uitstralen en bezoekers richting aanvraag of boeking brengen. Vraag een gratis websiteconcept aan." },
+      { property: 'og:description', content: "MegaOnline bouwt websites die vertrouwen uitstralen en bezoekers richting aanvraag of boeking brengen. Vraag een gratis website scan aan." },
       { property: 'og:url', content: "https://megaonline.io/" },
       { name: 'msvalidate.01', content: 'F3537383AE304C7D373DB9D77878E50E' },
     ],
@@ -33,7 +33,7 @@ export const Route = createFileRoute('/')({
 const FAQ_ITEMS: { q: string; a: string }[] = [
   {
     q: "Wat kost een website bij MegaOnline?",
-    a: "Een Conversie Website begint vanaf € 2.500. De uiteindelijke prijs hangt af van het aantal pagina's en de complexiteit. En van welke extra functionaliteiten je nodig hebt. In het gratis websiteconcept geeft MegaOnline je een eerlijke indicatie op basis van jouw situatie.",
+    a: "Een Conversie Website begint vanaf € 2.500. De uiteindelijke prijs hangt af van het aantal pagina's en de complexiteit. En van welke extra functionaliteiten je nodig hebt. In de gratis website scan geeft MegaOnline je een eerlijke indicatie op basis van jouw situatie.",
   },
   {
     q: "Waarom niet kiezen voor een goedkope webbouwer?",
@@ -57,7 +57,7 @@ const FAQ_ITEMS: { q: string; a: string }[] = [
   },
   {
     q: "Wij hebben al een website. Kan MegaOnline die verbeteren?",
-    a: "Ja. In sommige gevallen is een volledig nieuwe website de beste keuze. In andere gevallen kunnen gerichte verbeteringen al veel effect hebben. Het gratis websiteconcept helpt MegaOnline om te bepalen wat voor jou de slimste aanpak is.",
+    a: "Ja. In sommige gevallen is een volledig nieuwe website de beste keuze. In andere gevallen kunnen gerichte verbeteringen al veel effect hebben. De gratis website scan helpt MegaOnline om te bepalen wat voor jou de slimste aanpak is.",
   },
   {
     q: "Wat als ik na livegang iets wil aanpassen?",
@@ -440,10 +440,10 @@ function Home() {
           </Reveal>
           {' '}
           <Reveal as="div" className="cmp__foot reveal">
-            <p>Wil je zien hoe dit voor jouw bedrijf kan werken? MegaOnline maakt een gratis websiteconcept met persoonlijk advies.</p>
+            <p>Wil je zien hoe dit voor jouw bedrijf kan werken? MegaOnline maakt een gratis website scan met persoonlijk advies.</p>
             {' '}
-            <Link className="tlink" to="/gratis-websiteconcept">
-              {CTA_CONCEPT}
+            <Link className="tlink" to="/gratis-websitescan">
+              {CTA_SCAN}
               {' '}
               <span className="arr">&rarr;</span>
             </Link>
@@ -461,7 +461,7 @@ function Home() {
               <h2 className="h2">Wat MegaOnline voor deze bedrijven oploste.</h2>
             </div>
             {' '}
-            <Link className="tlink" to="/gratis-websiteconcept" style={{ paddingBottom: "6px" }}>
+            <Link className="tlink" to="/gratis-websitescan" style={{ paddingBottom: "6px" }}>
               Start jouw project
               {' '}
             </Link>
@@ -683,7 +683,7 @@ function Home() {
               <div className="rm__foot">
                 <span className="svcprice">Vanaf € 2.500</span>
                 {' '}
-                <Link className="flow-cta" to="/gratis-websiteconcept">{CTA_CONCEPT}</Link>
+                <Link className="flow-cta" to="/gratis-websitescan">{CTA_SCAN}</Link>
               </div>
             </div>
             {' '}
@@ -733,7 +733,7 @@ function Home() {
                   </small>
                 </span>
                 {' '}
-                <Link className="flow-cta" to="/gratis-websiteconcept">Start het partnership</Link>
+                <Link className="flow-cta" to="/gratis-websitescan">Start het partnership</Link>
               </div>
             </div>
           </Reveal>
@@ -896,11 +896,11 @@ function Home() {
           <Reveal as="h2" className="display reveal">Benieuwd wat er beter kan aan je website?</Reveal>
           {' '}
           <Reveal as="p" className="lead reveal" data-d="1">
-            Vraag een gratis websiteconcept aan en ontdek wat er beter kan. Zonder verplichtingen.
+            Vraag een gratis website scan aan en ontdek wat er beter kan. Zonder verplichtingen.
           </Reveal>
           {' '}
-          <Reveal as={Link} className="btn btn-primary reveal" data-d="2" to="/gratis-websiteconcept">
-            {CTA_CONCEPT}
+          <Reveal as={Link} className="btn btn-primary reveal" data-d="2" to="/gratis-websitescan">
+            {CTA_SCAN}
           </Reveal>
         </div>
       </section>

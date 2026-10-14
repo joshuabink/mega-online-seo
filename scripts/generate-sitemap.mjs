@@ -55,7 +55,7 @@ const ROUTE_FILES = {
   "/diensten/website-optimalisatie": "src/routes/diensten/website-optimalisatie.tsx",
   "/diensten/website-redesign": "src/routes/diensten/website-redesign.tsx",
   "/diensten/werken-bij-websites": "src/routes/diensten/werken-bij-websites.tsx",
-  "/gratis-websiteconcept": "src/routes/gratis-websiteconcept.tsx",
+  "/gratis-websitescan": "src/routes/gratis-websitescan.tsx",
   "/kennisbank": "src/routes/kennisbank/index.tsx",
   "/megasmart": "src/routes/megasmart.tsx",
   "/over-megaonline": "src/routes/over-megaonline.tsx",

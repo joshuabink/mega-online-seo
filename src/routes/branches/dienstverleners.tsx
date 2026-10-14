@@ -3,7 +3,7 @@ import { Link } from '@tanstack/react-router'
 import { Icon } from '@/components/Icon'
 import { Qa } from '@/components/Qa'
 import { Reveal } from '@/components/Reveal'
-import { CTA_CONCEPT } from '@/lib/cta'
+import { CTA_SCAN } from '@/lib/cta'
 
 export const Route = createFileRoute('/branches/dienstverleners')({
   head: () => ({
@@ -53,8 +53,8 @@ function Dienstverleners() {
               </Reveal>
               {' '}
               <Reveal as="div" className="svc-hero__ctas reveal" data-d="2">
-                <Link className="btn btn-primary" to="/gratis-websiteconcept">
-                  {CTA_CONCEPT}
+                <Link className="btn btn-primary" to="/gratis-websitescan">
+                  {CTA_SCAN}
                 </Link>
                 {' '}
                 <Link className="tlink" to="/contact">
@@ -314,11 +314,11 @@ function Dienstverleners() {
             </Qa>
             {' '}
             <Qa question="Levert dit echt meer aanvragen op?" className="reveal">
-                Een website die vertrouwen wekt en een duidelijke volgende stap biedt, verlaagt de drempel om contact op te nemen. Met een gratis websiteconcept laat MegaOnline zien waar je nu aanvragen misloopt.
+                Een website die vertrouwen wekt en een duidelijke volgende stap biedt, verlaagt de drempel om contact op te nemen. Met een gratis website scan laat MegaOnline zien waar je nu aanvragen misloopt.
             </Qa>
             {' '}
             <Qa question="Wat kost zo'n website?" className="reveal">
-                Dat hangt af van de omvang en je wensen. Begin vrijblijvend met een gratis websiteconcept, dan breng je het samen met MegaOnline in kaart.
+                Dat hangt af van de omvang en je wensen. Begin vrijblijvend met een gratis website scan, dan breng je het samen met MegaOnline in kaart.
             </Qa>
           </div>
         </div>
@@ -332,12 +332,12 @@ function Dienstverleners() {
             <h2 className="display">Vertrouwen win je voordat de telefoon gaat.</h2>
             {' '}
             <p className="lead">
-              Vraag een gratis websiteconcept aan. Je ziet hoe je website meer van de juiste klanten kan aantrekken.
+              Vraag een gratis website scan aan. Je ziet hoe je website meer van de juiste klanten kan aantrekken.
             </p>
             {' '}
             <Reveal as="div" className="svc-hero__ctas reveal" data-d="1" style={{ justifyContent: "center", marginTop: "28px" }}>
-              <Link className="btn btn-primary" to="/gratis-websiteconcept">
-                {CTA_CONCEPT}
+              <Link className="btn btn-primary" to="/gratis-websitescan">
+                {CTA_SCAN}
               </Link>
               {' '}
               <Link className="tlink" to="/contact">

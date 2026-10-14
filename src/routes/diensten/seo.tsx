@@ -5,7 +5,7 @@ import { Media } from '@/components/Media'
 import { Qa } from '@/components/Qa'
 import { Reveal } from '@/components/Reveal'
 import { ConceptForm } from '@/components/ConceptForm'
-import { CTA_CONCEPT } from '@/lib/cta'
+import { CTA_SCAN } from '@/lib/cta'
 import '@/styles/pages/diensten-seo.css'
 
 export const Route = createFileRoute('/diensten/seo')({
@@ -137,8 +137,8 @@ function Seo() {
                   {' '}
                 </Link>
                 {' '}
-                <Link className="tlink" to="/gratis-websiteconcept">
-                  {CTA_CONCEPT}
+                <Link className="tlink" to="/gratis-websitescan">
+                  {CTA_SCAN}
                   {' '}
                 </Link>
               </Reveal>
@@ -762,7 +762,7 @@ function Seo() {
                   Veilig, up-to-date en in goede handen. Zonder actieve optimalisatie.
                 </p>
                 {' '}
-                <Link className="tlink" to="/gratis-websiteconcept" style={{ marginTop: "18px", justifyContent: "center" }}>
+                <Link className="tlink" to="/gratis-websitescan" style={{ marginTop: "18px", justifyContent: "center" }}>
                   Meer weten
                   {' '}
                 </Link>
@@ -907,8 +907,8 @@ function Seo() {
                   {' '}
                 </Link>
                 {' '}
-                <Link className="tlink" to="/gratis-websiteconcept">
-                  {CTA_CONCEPT}
+                <Link className="tlink" to="/gratis-websitescan">
+                  {CTA_SCAN}
                   {' '}
                 </Link>
               </Reveal>

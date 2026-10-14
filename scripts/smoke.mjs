@@ -32,11 +32,9 @@ function leesCtaConstante(naam) {
   return m[1]
 }
 
-const CTA_CONCEPT = leesCtaConstante('CTA_CONCEPT')
 const CTA_SCAN = leesCtaConstante('CTA_SCAN')
-const CTA_TOEGESTAAN = [CTA_CONCEPT, CTA_SCAN]
 
-/** Oude knopzinnen. De korte headertekst "Gratis concept" hoort hier niet bij. */
+/** Oude knopzinnen. Geen van deze mag nog op een knop staan. */
 const OUDE_CTA_VARIANTEN = [
   'Vraag je gratis concept aan',
   'Vraag gratis concept aan',
@@ -44,6 +42,7 @@ const OUDE_CTA_VARIANTEN = [
   'Vraag je gratis websitescan aan',
   'Vraag je gratis website-scan aan',
   'Gratis concept aanvragen',
+  'Vraag je gratis websiteconcept aan',
 ]
 
 function normCta(s) {
@@ -51,48 +50,24 @@ function normCta(s) {
 }
 
 /**
- * Een aanvraagknop hoort exact in CTA_TOEGESTAAN te staan.
- * De headerknop (kort label, TK-151) en linkteksten die niet om een concept
- * of scan vragen, blijven buiten die eis: die copy wijzigt deze opdracht niet.
+ * CTA-bewaker. Een CTA-knop is een bediening waarvan de zichtbare tekst
+ * exact CTA_SCAN is, of een .btn die naar de scanpagina wijst, of de
+ * verstuurknop van het scan- of conceptformulier. Die tekst moet CTA_SCAN
+ * zijn. Een link daarbij gaat naar /gratis-websitescan, of naar #formulier
+ * of #scan op de scanpagina zelf. De gebouwde HTML mag nergens websiteconcept
+ * of href="tel: bevatten. '2 werkdagen' mag, behalve in hetzelfde element,
+ * dezelfde zin of dezelfde kaart als het woord scan. Een telefoonnummer als
+ * tekst of in JSON-LD mag blijven.
  */
-function beoordeelCtaTekst(tekst, headerKort = false) {
-  const t = normCta(tekst)
-  const oud = OUDE_CTA_VARIANTEN.find((v) => t.includes(v))
-  if (oud) return { ok: false, reden: `oude variant: ${oud}`, tekst: t, soort: 'fout' }
-  if (CTA_TOEGESTAAN.includes(t)) return { ok: true, tekst: t, soort: 'exact' }
-  if (headerKort) return { ok: true, tekst: t, soort: 'header-kort' }
-  if (CTA_TOEGESTAAN.some((c) => t.includes(c))) return { ok: true, tekst: t, soort: 'zin' }
-  if (/vraag\s+(je\s+|een\s+)?gratis/i.test(t)) {
-    return { ok: false, reden: 'niet in CTA_TOEGESTAAN', tekst: t, soort: 'fout' }
-  }
-  return { ok: true, tekst: t, soort: 'andere-copy' }
-}
-
 async function controleerCtaTeksten(browser) {
-  const proef = [
-    beoordeelCtaTekst('Vraag je gratis concept aan'),
-    beoordeelCtaTekst('Vraag gratis concept aan'),
-    beoordeelCtaTekst('Vraag een gratis concept aan'),
-  ]
-  check(
-    'ingebouwde foute CTA-variant wordt geweigerd',
-    proef.every((r) => !r.ok) &&
-      beoordeelCtaTekst(CTA_CONCEPT).soort === 'exact' &&
-      beoordeelCtaTekst(CTA_SCAN).soort === 'exact',
-    proef.map((r) => `${r.tekst} → ${r.reden}`).join('; '),
-  )
-
   const pg = await browser.newPage({ viewport: { width: 1440, height: 900 } })
   await installRoutes(pg)
   const sitemap = await pg.request.get(BASE + '/sitemap.xml')
   const xml = await sitemap.text()
   const paden = [...xml.matchAll(/<loc>https:\/\/megaonline\.io([^<]*)<\/loc>/g)].map((m) => m[1] || '/')
-  check('sitemap-paden voor CTA-controle', sitemap.status() === 200 && paden.length > 0, String(paden.length))
+  check('sitemap-paden voor CTA-controle', sitemap.status() === 200 && paden.length > 0 && !paden.includes('/gratis-websiteconcept'), String(paden.length))
 
   const fouten = []
-  const andere = new Set()
-  const header = new Set()
-  let zagConcept = false
   let zagScan = false
 
   for (const pad of paden) {
@@ -101,72 +76,98 @@ async function controleerCtaTeksten(browser) {
       fouten.push(`${pad} status ${res ? res.status() : 'geen'}`)
       continue
     }
-    const data = await pg.evaluate(() => {
+    const data = await pg.evaluate((scan) => {
       const norm = (s) => String(s ?? '').replace(/\s+/g, ' ').replace(/\s*→\s*$/u, '').trim()
-      const isConcept = (href) => {
-        if (!href) return false
+      const kloon = document.body.cloneNode(true)
+      kloon.querySelectorAll('script, style, noscript').forEach((n) => n.remove())
+      const meta = (sel) => document.querySelector(sel)?.getAttribute('content') ?? ''
+      const zichtbaar = [kloon.innerText, document.title, meta('meta[name="description"]'), meta('meta[property="og:title"]'), meta('meta[property="og:description"]')].join('\n')
+      const bestemming = (href) => {
+        if (!href) return { soort: 'geen' }
         try {
-          const u = new URL(href, location.origin)
-          return u.pathname.replace(/\/$/, '') === '/gratis-websiteconcept'
+          const u = new URL(href, location.href)
+          const path = u.pathname.replace(/\/$/, '') || '/'
+          const hier = location.pathname.replace(/\/$/, '') || '/'
+          if ((u.hash === '#formulier' || u.hash === '#scan') && path === hier) return { soort: 'anker' }
+          if (path === '/gratis-websitescan') return { soort: 'scan' }
+          return { soort: 'anders', pad: `${path}${u.search}${u.hash}` }
         } catch {
-          return false
+          return { soort: 'anders', pad: href }
         }
       }
-      const links = [...document.querySelectorAll('a')]
-        .filter((a) => isConcept(a.getAttribute('href')))
-        .map((a) => ({
-          tekst: norm(a.textContent),
-          headerKort: !!a.querySelector('.nav__scan-short'),
-        }))
-      const submits = [...document.querySelectorAll('.concept button[type="submit"]')].map((b) => ({
-        tekst: norm(b.textContent),
-      }))
+      const knoppen = []
+      for (const el of document.querySelectorAll('a, button')) {
+        const tekst = norm(el.innerText)
+        if (!tekst) continue
+        const isBtn = el.classList.contains('btn')
+        const isSubmit = el.matches('button[type="submit"]') && !!el.closest('.concept, [data-scan-form]')
+        const href = el.tagName === 'A' ? bestemming(el.getAttribute('href')) : { soort: 'geen' }
+        if (tekst !== scan && !(isBtn && href.soort === 'scan') && !isSubmit) continue
+        knoppen.push({ tekst, href: href.soort, hrefPad: href.pad || '' })
+      }
       const eindEl = document.querySelector('#scan a.btn')
       const form = document.querySelector('[data-screen-label="Conceptformulier"]')
       const morgen = document.querySelector('[data-screen-label="Wat je morgen kunt doen"]')
-      const formVoorMorgen = !!(
-        form &&
-        morgen &&
-        (form.compareDocumentPosition(morgen) & Node.DOCUMENT_POSITION_FOLLOWING)
-      )
       return {
-        links,
-        submits,
-        eind: eindEl ? norm(eindEl.textContent) : '',
-        lichaam: document.body?.textContent ?? '',
+        knoppen,
+        zichtbaar,
+        eind: eindEl ? norm(eindEl.innerText) : '',
         heeftForm: !!document.querySelector('.concept'),
-        formVoorMorgen,
+        formVoorMorgen: !!(
+          form &&
+          morgen &&
+          (form.compareDocumentPosition(morgen) & Node.DOCUMENT_POSITION_FOLLOWING)
+        ),
+        html: document.documentElement.outerHTML,
+        gemengd: (() => {
+          const tekstVan = (el) => norm(el.innerText || el.textContent || '')
+          const beide = (tekst) => /2 werkdagen/.test(tekst) && /scan/i.test(tekst)
+          const eenheid = 'p, li, h1, h2, h3, h4, h5, h6, td, th, dd, figcaption, a, button, span, label'
+          const treffers = []
+          for (const el of document.querySelectorAll(eenheid)) {
+            const tekst = tekstVan(el)
+            if (!beide(tekst)) continue
+            const kindHeeftBeide = [...el.children].some(
+              (kind) => kind.matches(eenheid) && beide(tekstVan(kind)),
+            )
+            if (kindHeeftBeide) continue
+            treffers.push(tekst.slice(0, 160))
+          }
+          for (const el of document.querySelectorAll('.ccard, .price-card, .card')) {
+            const tekst = tekstVan(el)
+            if (beide(tekst)) treffers.push(`kaart ${tekst.slice(0, 160)}`)
+          }
+          for (const el of document.querySelectorAll('p, li, h1, h2, h3, h4, h5, h6, td, dd, figcaption')) {
+            for (const zin of tekstVan(el).split(/(?<=[.!?])\s+/)) {
+              if (beide(zin)) treffers.push(`zin ${zin.slice(0, 160)}`)
+            }
+          }
+          return treffers
+        })(),
       }
-    })
+    }, CTA_SCAN)
 
+    if (/websiteconcept/i.test(data.html)) fouten.push(`${pad} HTML bevat websiteconcept`)
+    if (data.gemengd.length) fouten.push(`${pad} koppelt 2 werkdagen aan scan: ${data.gemengd[0]}`)
+    if (/href=["']tel:/i.test(data.html)) fouten.push(`${pad} HTML bevat href="tel:`)
+    if (/websiteconcept/i.test(data.zichtbaar)) fouten.push(`${pad} toont websiteconcept`)
     for (const oud of OUDE_CTA_VARIANTEN) {
-      if (data.lichaam.includes(oud)) fouten.push(`${pad} bevat "${oud}"`)
+      if (data.zichtbaar.includes(oud)) fouten.push(`${pad} bevat "${oud}"`)
     }
-    for (const link of data.links) {
-      const oordeel = beoordeelCtaTekst(link.tekst, link.headerKort)
-      if (!oordeel.ok) fouten.push(`${pad} link "${oordeel.tekst}": ${oordeel.reden}`)
-      else if (oordeel.soort === 'header-kort') header.add(oordeel.tekst)
-      else if (oordeel.soort !== 'exact') andere.add(oordeel.tekst)
-      if (oordeel.tekst === CTA_CONCEPT || (oordeel.soort === 'exact' && oordeel.tekst === CTA_CONCEPT)) zagConcept = true
-      if (oordeel.soort === 'exact' && oordeel.tekst === CTA_SCAN) zagScan = true
-    }
-    for (const submit of data.submits) {
-      const oordeel = beoordeelCtaTekst(submit.tekst)
-      if (!oordeel.ok || oordeel.soort !== 'exact') fouten.push(`${pad} submit "${submit.tekst}"`)
-      else if (submit.tekst === CTA_CONCEPT) zagConcept = true
+    for (const knop of data.knoppen) {
+      if (knop.tekst !== CTA_SCAN) fouten.push(`${pad} CTA-tekst "${knop.tekst}"`)
+      else zagScan = true
+      if (knop.href === 'anders') fouten.push(`${pad} CTA-link ${knop.hrefPad}`)
     }
     const kennisbankCta = {
-      '/kennisbank': { eind: CTA_SCAN, form: false },
-      '/kennisbank/website-levert-geen-aanvragen-op': { eind: CTA_SCAN, form: true },
-      '/kennisbank/prijzen-op-website-verhuurbedrijf': { eind: CTA_SCAN, form: false },
-      '/kennisbank/vertrouwen-wekken-zakelijke-website': { eind: CTA_CONCEPT, form: false },
-      '/kennisbank/waar-boekingen-weglekken': { eind: CTA_CONCEPT, form: false },
+      '/kennisbank': { form: false },
+      '/kennisbank/website-levert-geen-aanvragen-op': { form: true },
+      '/kennisbank/prijzen-op-website-verhuurbedrijf': { form: false },
+      '/kennisbank/vertrouwen-wekken-zakelijke-website': { form: false },
+      '/kennisbank/waar-boekingen-weglekken': { form: false },
     }[pad]
     if (kennisbankCta) {
-      if (data.eind !== kennisbankCta.eind) {
-        fouten.push(`${pad} eind-CTA "${data.eind}" hoort "${kennisbankCta.eind}" te zijn`)
-      } else if (kennisbankCta.eind === CTA_SCAN) zagScan = true
-      else zagConcept = true
+      if (data.eind !== CTA_SCAN) fouten.push(`${pad} eind-CTA "${data.eind}"`)
       if (data.heeftForm !== kennisbankCta.form) {
         fouten.push(`${pad} formulier=${data.heeftForm}, verwacht ${kennisbankCta.form}`)
       }
@@ -177,14 +178,9 @@ async function controleerCtaTeksten(browser) {
   }
 
   check(
-    'CTA-teksten op sitemap-pagina\'s zijn toegestaan',
-    fouten.length === 0 && zagConcept && zagScan,
-    fouten.slice(0, 6).join(' | ') || `concept=${zagConcept} scan=${zagScan} pagina's=${paden.length}`,
-  )
-  check(
-    'korte headerknop en andere linkteksten geïnventariseerd',
-    header.size > 0,
-    `header=${[...header].join(' || ')} overig=${[...andere].sort().join(' || ')}`,
+    'CTA-bewaker: alleen de scanknop, alleen de scanpagina, geen websiteconcept',
+    fouten.length === 0 && zagScan,
+    fouten.slice(0, 8).join(' | ') || `scan=${zagScan} pagina's=${paden.length}`,
   )
   await pg.close()
 }
@@ -260,7 +256,7 @@ function leadLogGeldig(entry) {
   if (!j || typeof j !== 'object') return false
   if (Object.keys(j).sort().join(',') !== LEAD_LOG_KEYS) return false
   if (!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/.test(j.datum)) return false
-  if (!['concept', 'contact', 'sollicitatie'].includes(j.formulier)) return false
+  if (!['concept', 'contact', 'sollicitatie', 'scan'].includes(j.formulier)) return false
   if (!['Resend', 'FormSubmit'].includes(j.route)) return false
   if (typeof j.gelukt !== 'boolean') return false
   if (typeof j.pagina !== 'string' || !/^\/[a-z0-9/_-]*$/.test(j.pagina)) return false
@@ -642,7 +638,7 @@ check(
   conceptLogs.length === logsVoorConcept + 1 &&
     leadLogGeldig(conceptLog) &&
     conceptLog.json.pagina === '/' &&
-    conceptLog.json.formulier === 'concept' &&
+    conceptLog.json.formulier === 'scan' &&
     conceptLog.json.route === 'FormSubmit' &&
     conceptLog.json.gelukt === true &&
     conceptLog.json.reden === '',
@@ -673,7 +669,7 @@ check('velden komen correct door',
 check('url wordt genormaliseerd naar https://',
   lead?.url === 'https://mijnbedrijf.nl', `url=${lead?.url}`)
 check('_subject en _pagina gaan mee',
-  lead?._subject === 'Nieuwe aanvraag gratis websiteconcept - MegaOnline.io' && !!lead?._pagina,
+  lead?._subject === 'Gratis website scan aanvraag' && !!lead?._pagina,
   `${lead?._subject}`)
 check('honeypot wordt niet doorgestuurd', !('website_hp' in (lead ?? {})))
 check('lege optionele velden gaan niet mee', !lead?.geen_website)
@@ -982,12 +978,194 @@ check(
   `aan=${geenAan} urlDicht=${urlDicht} uit=${geenUit} urlOpen=${urlOpen}`,
 )
 
-/* --- oude scan-URL en canonieke redirects --- */
+/* --- oude concept-URL en canonieke redirects --- */
 {
-  const res = await page.request.get(BASE + '/gratis-websitescan', { maxRedirects: 0 })
+  const res = await page.request.get(BASE + '/gratis-websiteconcept', { maxRedirects: 0 })
   const loc = res.headers()['location'] ?? ''
-  check('301 /gratis-websitescan', res.status() === 301 && loc.includes('/gratis-websiteconcept'),
+  check('301 /gratis-websiteconcept', res.status() === 301 && loc.includes('/gratis-websitescan'),
     `${res.status()} → ${loc}`)
+  const scan = await page.request.get(BASE + '/gratis-websitescan', { maxRedirects: 0 })
+  check('200 /gratis-websitescan', scan.status() === 200, String(scan.status()))
+}
+
+{
+  await page.goto(BASE + '/gratis-websitescan', { waitUntil: 'load' })
+  await waitHydrated(page)
+  const scanPagina = await page.evaluate((scanKnop) => {
+    const norm = (s) => String(s ?? '').replace(/\s+/g, ' ').trim()
+    const veld = (naam) => document.querySelector(`[name="${naam}"]`)
+    const tel = document.querySelectorAll('a[href^="tel:"]').length
+    return {
+      title: document.title,
+      description: document.querySelector('meta[name="description"]')?.getAttribute('content') || '',
+      canonical: document.querySelector('link[rel="canonical"]')?.getAttribute('href') || '',
+      robots: document.querySelector('meta[name="robots"]')?.getAttribute('content') || '',
+      h1: norm(document.querySelector('h1')?.textContent),
+      lead: norm(document.querySelector('.scan-hero .lead')?.textContent),
+      formTag: document.getElementById('formulier')?.tagName || '',
+      heroHref: document.querySelector('.scan-hero a.btn-primary')?.getAttribute('href') || '',
+      tekstHref: [...document.querySelectorAll('a.tlink')].find((a) => norm(a.textContent) === 'Begin met de gratis website scan')?.getAttribute('href') || '',
+      faqs: [...document.querySelectorAll('#vragen .qa__q')].map((el) => norm(el.textContent)),
+      faq5antwoord: norm(document.querySelectorAll('#vragen .qa__a')[4]?.textContent),
+      bedank: norm(document.querySelector('.scanform .form__ok')?.textContent),
+      oplevering: norm(document.querySelector('.scan-side p')?.textContent),
+      schemaReactie: [...document.querySelectorAll('script[type="application/ld+json"]')].some((node) => {
+        const raw = node.textContent || ''
+        return raw.includes('FAQPage') && raw.includes('Je ontvangt de uitkomst van de scan binnen 5 werkdagen na je aanvraag.')
+      }),
+      velden: ['site', 'mis', 'toelichting', 'doel', 'naam', 'mail'].map((naam) => ({
+        naam,
+        aantal: document.querySelectorAll(`[name="${naam}"]`).length,
+        required: veld(naam)?.required ?? false,
+      })),
+      knop: norm(document.querySelector('.scanform button[type="submit"]')?.textContent),
+      honeypot: !!document.querySelector('[name="company_hp"]'),
+      oudeHoneypot: !!document.querySelector('.scanform [name="website_hp"]'),
+      tel,
+      privacy: document.querySelector('.scanform a[href="/privacyverklaring"]') ? true : false,
+      schema: [...document.querySelectorAll('script[type="application/ld+json"]')].some((node) => {
+        const raw = node.textContent || ''
+        return raw.includes('FAQPage') && raw.includes('Service') && raw.includes('Wat is de gratis website scan?')
+      }),
+    }
+  }, CTA_SCAN)
+  const veldenOk =
+    scanPagina.velden[0].aantal === 1 && scanPagina.velden[0].required &&
+    scanPagina.velden[1].aantal === 6 &&
+    scanPagina.velden[2].aantal === 1 && !scanPagina.velden[2].required &&
+    scanPagina.velden[3].aantal === 4 && scanPagina.velden[3].required &&
+    scanPagina.velden[4].aantal === 1 && scanPagina.velden[4].required &&
+    scanPagina.velden[5].aantal === 1 && scanPagina.velden[5].required
+  check(
+    'scanpagina heeft title, H1, vijf vragen, zes velden en de scanknop',
+    scanPagina.title === 'Gratis website scan voor je bedrijfswebsite | MegaOnline' &&
+      scanPagina.description.startsWith('Vraag een gratis website scan aan.') &&
+      scanPagina.canonical === 'https://megaonline.io/gratis-websitescan' &&
+      !/noindex/i.test(scanPagina.robots) &&
+      scanPagina.h1 === 'Vraag een gratis website scan aan' &&
+      scanPagina.lead === 'We bekijken je site en vertellen je eerlijk wat je nu aanvragen en boekingen kost, en wat het eerst moet.' &&
+      scanPagina.formTag === 'FORM' &&
+      scanPagina.heroHref === '#formulier' &&
+      scanPagina.tekstHref === '#formulier' &&
+      scanPagina.faqs.length === 5 &&
+      scanPagina.faqs[0] === 'Wat is de gratis website scan?' &&
+      scanPagina.faqs[4] === 'Hoe snel ontvang ik de uitkomst?' &&
+      veldenOk &&
+      scanPagina.knop === CTA_SCAN &&
+      scanPagina.honeypot &&
+      !scanPagina.oudeHoneypot &&
+      scanPagina.tel === 0 &&
+      scanPagina.privacy &&
+      scanPagina.schema,
+    JSON.stringify(scanPagina).slice(0, 400),
+  )
+  check(
+    'scan noemt binnen 5 werkdagen in de FAQ, de FAQPage en de bedankmelding',
+    scanPagina.faq5antwoord === 'Je ontvangt de uitkomst van de scan binnen 5 werkdagen na je aanvraag.' &&
+      scanPagina.schemaReactie &&
+      scanPagina.bedank.includes('binnen 5 werkdagen'),
+    `faq=${scanPagina.faq5antwoord} schema=${scanPagina.schemaReactie} bedank=${scanPagina.bedank}`,
+  )
+  check(
+    'zijblok noemt rapport en videogesprek',
+    scanPagina.oplevering.includes('rapport') &&
+      scanPagina.oplevering.includes('videogesprek') &&
+      scanPagina.oplevering === 'Binnen 5 werkdagen ontvang je een rapport over je site. In een persoonlijk videogesprek lichten we het rapport toe.',
+    scanPagina.oplevering,
+  )
+
+  async function sprongNaarFormulier(selector) {
+    const origin = await page.evaluate(() => {
+      window.__scanBlijft = 'ja'
+      history.replaceState(history.state, '', `${location.pathname}${location.search}`)
+      window.scrollTo(0, 0)
+      return performance.timeOrigin
+    })
+    await page.locator(selector).click()
+    await page.waitForFunction(() => location.hash === '#formulier', null, { timeout: 5000 })
+    await page.waitForFunction(() => {
+      const form = document.getElementById('formulier')
+      if (!form) return false
+      const r = form.getBoundingClientRect()
+      return r.top < window.innerHeight && r.bottom > 0
+    }, null, { timeout: 5000 })
+    return page.evaluate((vorige) => {
+      const form = document.getElementById('formulier')
+      const r = form.getBoundingClientRect()
+      return {
+        hash: location.hash,
+        path: location.pathname,
+        mark: window.__scanBlijft || '',
+        zelfdeDocument: performance.timeOrigin === vorige,
+        inView: r.top < window.innerHeight && r.bottom > 0,
+      }
+    }, origin)
+  }
+
+  const heroSprong = await sprongNaarFormulier('.scan-hero a.btn-primary[href="#formulier"]')
+  check(
+    'hero-knop springt naar #formulier zonder herladen',
+    heroSprong.hash === '#formulier' &&
+      heroSprong.path === '/gratis-websitescan' &&
+      heroSprong.mark === 'ja' &&
+      heroSprong.zelfdeDocument &&
+      heroSprong.inView,
+    JSON.stringify(heroSprong),
+  )
+  const tekstSprong = await sprongNaarFormulier('a.tlink[href="#formulier"]')
+  check(
+    'tekstlink springt naar #formulier zonder herladen',
+    tekstSprong.hash === '#formulier' &&
+      tekstSprong.path === '/gratis-websitescan' &&
+      tekstSprong.mark === 'ja' &&
+      tekstSprong.zelfdeDocument &&
+      tekstSprong.inView,
+    JSON.stringify(tekstSprong),
+  )
+
+  await page.fill('[name="site"]', 'jouwbedrijf.nl')
+  await page.locator('[name="mis"]').first().check()
+  await page.locator('[name="doel"]').first().check()
+  await page.fill('[name="naam"]', 'Scan Persoon')
+  await page.fill('[name="mail"]', 'scan-lead@example.com')
+  const logsVoorScan = readLeadLogs().length
+  const leadsVoorScan = readLeads().length
+  await page.click('.scanform button[type="submit"]')
+  await page.waitForFunction(
+    () => document.querySelector('.scanform')?.classList.contains('sent'),
+    null,
+    { timeout: 8000 },
+  )
+  const scanLogs = await wachtLeadLogs(logsVoorScan + 1)
+  const scanLog = scanLogs[logsVoorScan]
+  const scanLead = readLeads().at(-1)
+  check(
+    'scanformulier telt apart in de lead-log',
+    readLeads().length === leadsVoorScan + 1 &&
+      scanLead?.mail === 'scan-lead@example.com' &&
+      scanLead?.site === 'https://jouwbedrijf.nl' &&
+      scanLead?.naam === 'Scan Persoon' &&
+      scanLead?._subject === 'Gratis website scan aanvraag' &&
+      !('company_hp' in (scanLead ?? {})) &&
+      !('branche' in (scanLead ?? {})) &&
+      !('telefoon' in (scanLead ?? {})) &&
+      leadLogGeldig(scanLog) &&
+      scanLog.json.formulier === 'scan' &&
+      scanLog.json.pagina === '/gratis-websitescan' &&
+      scanLog.json.gelukt === true &&
+      page.url().includes('#aanvraag-verstuurd'),
+    `${scanLog?.raw ?? 'geen log'} | ${JSON.stringify(scanLead ?? {}).slice(0, 240)} | ${page.url()}`,
+  )
+
+  const scanToontVijf = await page.evaluate(() => document.body.innerText.includes('binnen 5 werkdagen'))
+  await page.goto(BASE + '/contact', { waitUntil: 'load' })
+  await waitHydrated(page)
+  const contactToontTwee = await page.evaluate(() => document.body.innerText.includes('binnen 2 werkdagen'))
+  check(
+    'contact toont binnen 2 werkdagen en de scanpagina binnen 5 werkdagen',
+    scanToontVijf && contactToontTwee,
+    `scan=${scanToontVijf} contact=${contactToontTwee}`,
+  )
 }
 
 // node:http stuurt het pad ongewijzigd. fetch en Playwright normaliseren
@@ -1020,16 +1198,16 @@ function rawGet(requestPath) {
 
 const canonicalRedirects = [
   ['/', 200, ''],
-  ['/gratis-websiteconcept/', 308, '/gratis-websiteconcept'],
+  ['/gratis-websitescan/', 308, '/gratis-websitescan'],
   ['/diensten/seo/', 308, '/diensten/seo'],
-  ['/gratis-websitescan/', 301, '/gratis-websiteconcept'],
+  ['/gratis-websiteconcept/', 301, '/gratis-websitescan'],
   ['/diensten/seo/?utm_source=test&x=1', 308, '/diensten/seo?utm_source=test&x=1'],
   ['//evil.com/', 308, '/evil.com'],
   ['/\\evil.com/', 308, '/evil.com'],
   ['///evil.com', 308, '/evil.com'],
   ['/diensten//seo/', 308, '/diensten/seo'],
-  ['/gratis-websitescan?utm=mail', 301, '/gratis-websiteconcept?utm=mail'],
-  ['/gratis-websitescan/?utm=mail', 301, '/gratis-websiteconcept?utm=mail'],
+  ['/gratis-websiteconcept?utm=mail', 301, '/gratis-websitescan?utm=mail'],
+  ['/gratis-websiteconcept/?utm=mail', 301, '/gratis-websitescan?utm=mail'],
 ]
 for (const [from, status, location] of canonicalRedirects) {
   const res = await rawGet(from)
@@ -1257,10 +1435,10 @@ for (const pad of [
     `h1=${artikel.h1} title=${artikel.title} vragen=${artikel.vragen.length}`,
   )
   check(
-    'waar-boekingen-weglekken vraagt een nieuw ontwerp',
-    artikel.ctaHref.includes('/gratis-websiteconcept') &&
-      artikel.ctaTekst === CTA_CONCEPT &&
-      artikel.ctaKop === 'Wil je een gratis websiteconcept voor je bedrijf?',
+    'waar-boekingen-weglekken eindigt op de scan',
+    artikel.ctaHref.includes('/gratis-websitescan') &&
+      artikel.ctaTekst === CTA_SCAN &&
+      artikel.ctaKop === 'Wil je weten wat je site laat liggen?',
     `${artikel.ctaHref} / ${artikel.ctaTekst} / ${artikel.ctaKop}`,
   )
 }
@@ -1339,15 +1517,15 @@ async function leesArtikelForm(pad) {
 for (const [pad, eind, form] of [
   ['/kennisbank/website-levert-geen-aanvragen-op', CTA_SCAN, true],
   ['/kennisbank/prijzen-op-website-verhuurbedrijf', CTA_SCAN, false],
-  ['/kennisbank/vertrouwen-wekken-zakelijke-website', CTA_CONCEPT, false],
-  ['/kennisbank/waar-boekingen-weglekken', CTA_CONCEPT, false],
+  ['/kennisbank/vertrouwen-wekken-zakelijke-website', CTA_SCAN, false],
+  ['/kennisbank/waar-boekingen-weglekken', CTA_SCAN, false],
   ['/kennisbank/smoke-zonder-faq', CTA_SCAN, false],
 ]) {
   const artikel = await leesArtikelForm(pad)
   check(
     `${pad} eind-CTA en formulier volgen het artikelveld`,
     artikel.eind === eind &&
-      artikel.href === '/gratis-websiteconcept' &&
+      artikel.href === '/gratis-websitescan' &&
       artikel.heeftForm === form &&
       (!form || artikel.formVoorMorgen),
     `eind=${artikel.eind} href=${artikel.href} form=${artikel.heeftForm} voorMorgen=${artikel.formVoorMorgen}`,
@@ -1365,6 +1543,14 @@ for (const [pad, eind, form] of [
   const dates = lastmods.map((list) => list[0] ?? "");
   check("sitemap 200", res.status() === 200, String(res.status()));
   check("sitemap heeft 38 urls", blocks.length === 38, String(blocks.length));
+  const scanInSitemap = blocks.find((block) => block.includes("https://megaonline.io/gratis-websitescan"));
+  check(
+    "sitemap bevat de scan van vandaag en niet het oude conceptadres",
+    !!scanInSitemap &&
+      /<lastmod>2026-10-14<\/lastmod>/.test(scanInSitemap) &&
+      !xml.includes("gratis-websiteconcept"),
+    scanInSitemap ?? "ontbreekt",
+  );
   const boekingen = blocks.find((block) =>
     block.includes("https://megaonline.io/kennisbank/waar-boekingen-weglekken"),
   );
@@ -1545,7 +1731,7 @@ async function fillConcept(pg, email, naam) {
 }
 
 async function conceptFallback(pg) {
-  await pg.goto(BASE + '/gratis-websiteconcept', { waitUntil: 'load' })
+  await pg.goto(BASE + '/', { waitUntil: 'load' })
   await waitHydrated(pg)
   await fillConcept(pg, 'concept-faalt@example.com', 'Concept Faalt')
   const beforeLeads = readLeads().filter((l) => l.email === 'concept-faalt@example.com').length
@@ -1773,7 +1959,7 @@ async function conceptFallback(pg) {
     }),
   )
 
-  await gaPage.goto(BASE + '/gratis-websiteconcept', { waitUntil: 'load' })
+  await gaPage.goto(BASE + '/', { waitUntil: 'load' })
   await waitHydrated(gaPage)
   await fillConcept(gaPage, 'concept-lead@example.com', 'Concept Lead')
   await gaPage.click('.fstep[data-step="6"] button[type="submit"]')
@@ -1787,8 +1973,8 @@ async function conceptFallback(pg) {
   check(
     'met consent stuurt het conceptformulier generate_lead',
     conceptEvents.length === 1 &&
-      conceptEvent?.form_name === 'gratis-websiteconcept' &&
-      conceptEvent?.page_path === '/gratis-websiteconcept' &&
+      conceptEvent?.form_name === 'scan' &&
+      conceptEvent?.page_path === '/' &&
       conceptEvent?.keys.join(',') === 'form_name,page_path' &&
       !/concept-lead@example.com|Concept Lead/.test(conceptEvent?.raw ?? ''),
     JSON.stringify(conceptEvents),
@@ -1819,7 +2005,7 @@ async function conceptFallback(pg) {
   check(
     'inzending via het kennisbankartikel stuurt generate_lead',
     artikelEvents.length === 1 &&
-      artikelEvent?.form_name === 'gratis-websiteconcept' &&
+      artikelEvent?.form_name === 'scan' &&
       artikelEvent?.page_path === '/kennisbank/website-levert-geen-aanvragen-op' &&
       artikelEvent?.keys.join(',') === 'form_name,page_path' &&
       !/artikel-lead@example.com|Artikel Lead/.test(artikelEvent?.raw ?? ''),
