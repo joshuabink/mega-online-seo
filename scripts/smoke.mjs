@@ -975,6 +975,12 @@ check(
       heroHref: document.querySelector('.scan-hero a.btn-primary')?.getAttribute('href') || '',
       tekstHref: [...document.querySelectorAll('a.tlink')].find((a) => norm(a.textContent) === 'Begin met de gratis website scan')?.getAttribute('href') || '',
       faqs: [...document.querySelectorAll('#vragen .qa__q')].map((el) => norm(el.textContent)),
+      faq5antwoord: norm(document.querySelectorAll('#vragen .qa__a')[4]?.textContent),
+      bedank: norm(document.querySelector('.scanform .form__ok')?.textContent),
+      schemaReactie: [...document.querySelectorAll('script[type="application/ld+json"]')].some((node) => {
+        const raw = node.textContent || ''
+        return raw.includes('FAQPage') && raw.includes('Je ontvangt de uitkomst van de scan binnen 5 werkdagen na je aanvraag.')
+      }),
       velden: ['site', 'mis', 'toelichting', 'doel', 'naam', 'mail'].map((naam) => ({
         naam,
         aantal: document.querySelectorAll(`[name="${naam}"]`).length,
@@ -1020,6 +1026,13 @@ check(
       scanPagina.privacy &&
       scanPagina.schema,
     JSON.stringify(scanPagina).slice(0, 400),
+  )
+  check(
+    'scan noemt binnen 5 werkdagen in de FAQ, de FAQPage en de bedankmelding',
+    scanPagina.faq5antwoord === 'Je ontvangt de uitkomst van de scan binnen 5 werkdagen na je aanvraag.' &&
+      scanPagina.schemaReactie &&
+      scanPagina.bedank.includes('binnen 5 werkdagen'),
+    `faq=${scanPagina.faq5antwoord} schema=${scanPagina.schemaReactie} bedank=${scanPagina.bedank}`,
   )
 
   async function sprongNaarFormulier(selector) {

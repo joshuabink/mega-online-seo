@@ -11,7 +11,7 @@ import {
   trackLeadFallbackGetoond,
 } from '@/lib/analytics'
 import { CTA_SCAN } from '@/lib/cta'
-import { SCAN_SUBJECT } from '@/lib/scan'
+import { SCAN_REACTIETIJD, SCAN_SUBJECT } from '@/lib/scan'
 
 const FORM_NAME = 'scan'
 const BEDANK_HASH = '#aanvraag-verstuurd'
@@ -299,7 +299,10 @@ export function ScanForm() {
       <div className="form__ok" role="status" aria-live="polite">
         <div className="ic">✓</div>
         <h3>Bedankt. Je aanvraag is binnen.</h3>
-        <p>We gebruiken je antwoorden in het gesprek over je site.</p>
+        <p>
+          We gebruiken je antwoorden in het gesprek over je site. Je ontvangt de uitkomst van de scan{' '}
+          {SCAN_REACTIETIJD} na je aanvraag.
+        </p>
       </div>
     </div>
   )
