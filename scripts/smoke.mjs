@@ -1167,6 +1167,66 @@ check(
     scanToontVijf && contactToontTwee,
     `scan=${scanToontVijf} contact=${contactToontTwee}`,
   )
+
+  await page.goto(BASE + '/diensten/starter-website', { waitUntil: 'load' })
+  await waitHydrated(page)
+  const starterEind = await page.evaluate(() => {
+    const norm = (s) => String(s ?? '').replace(/\s+/g, ' ').trim()
+    const kop = document.querySelector('[data-screen-label="Eind-CTA + scan-formulier"] .endcta__copy')
+    const links = [...(kop?.querySelectorAll('a') ?? [])].map((a) => ({
+      tekst: norm(a.textContent),
+      href: a.getAttribute('href') || '',
+    }))
+    return {
+      links,
+      kennismaking: norm(kop?.innerText).includes('Plan een kennismaking'),
+    }
+  })
+  check(
+    'starterpagina heeft precies één eind-CTA',
+    starterEind.links.length === 1 &&
+      starterEind.links[0].tekst === CTA_SCAN &&
+      starterEind.links[0].href === '/gratis-websitescan' &&
+      !starterEind.kennismaking,
+    JSON.stringify(starterEind),
+  )
+
+  const starterPagina = await page.evaluate(() => {
+    const norm = (s) => String(s ?? '').replace(/\s+/g, ' ').trim()
+    const main = document.querySelector('main')
+    const hero = document.querySelector('[data-screen-label="Hero — Starter Website"]')
+    const knoppen = [...(hero?.querySelectorAll('a.btn, button') ?? [])].map((el) => ({
+      tekst: norm(el.textContent),
+      href: el.getAttribute('href') || '',
+    }))
+    const prijs = [...(hero?.querySelectorAll('a') ?? [])].find((a) => norm(a.textContent) === 'Bekijk wat het kost')
+    return {
+      kennismaking: norm(main?.innerText).includes('Plan een kennismaking'),
+      knoppen,
+      prijs: prijs
+        ? {
+            href: prijs.getAttribute('href') || '',
+            knop: prijs.classList.contains('btn'),
+            tlink: prijs.classList.contains('tlink'),
+          }
+        : null,
+    }
+  })
+  check(
+    'starterpagina noemt geen kennismaking',
+    !starterPagina.kennismaking,
+    JSON.stringify(starterPagina),
+  )
+  check(
+    'starterhero heeft precies één knop',
+    starterPagina.knoppen.length === 1 &&
+      starterPagina.knoppen[0].tekst === CTA_SCAN &&
+      starterPagina.knoppen[0].href === '/gratis-websitescan' &&
+      starterPagina.prijs?.href === '#prijs' &&
+      starterPagina.prijs.tlink === true &&
+      starterPagina.prijs.knop === false,
+    JSON.stringify(starterPagina),
+  )
 }
 
 // node:http stuurt het pad ongewijzigd. fetch en Playwright normaliseren
