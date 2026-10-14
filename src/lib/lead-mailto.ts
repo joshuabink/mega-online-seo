@@ -3,12 +3,16 @@ import { LEAD_CONTACT } from './lead-contact.ts'
 /** Zelfde grens als de server: trim, daarna maximaal dit aantal tekens. */
 export const MAX_FIELD_LENGTH = 5000
 
-const BLOCKED = new Set(['website_hp'])
+const BLOCKED = new Set(['website_hp', 'company_hp'])
 
 const VELD_LABELS: Record<string, string> = {
   naam: 'Naam',
   bedrijf: 'Bedrijf',
   email: 'E-mailadres',
+  mail: 'E-mailadres',
+  site: 'Website',
+  mis: 'Wat er niet goed loopt',
+  toelichting: 'Toelichting',
   telefoon: 'Telefoonnummer',
   tel: 'Telefoonnummer',
   url: 'Website',
@@ -86,7 +90,7 @@ function truncateEncoded(text: string, budget: number): string {
 export function leadMailto(subject: string, params: URLSearchParams): string {
   const lines: string[] = []
   for (const [key, value] of params) {
-    if (!value || key.startsWith('_') || key === 'website_hp') continue
+    if (!value || key.startsWith('_') || BLOCKED.has(key)) continue
     lines.push(`${VELD_LABELS[key] ?? key}: ${value}`)
   }
   const pagina = params.get('_pagina')

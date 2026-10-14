@@ -3,7 +3,7 @@ import { Link } from '@tanstack/react-router'
 import { Icon } from '@/components/Icon'
 import { Qa } from '@/components/Qa'
 import { Reveal } from '@/components/Reveal'
-import { CTA_CONCEPT } from '@/lib/cta'
+import { CTA_SCAN } from '@/lib/cta'
 
 export const Route = createFileRoute('/diensten/integraties')({
   head: () => ({
@@ -55,8 +55,8 @@ function Integraties() {
               </Reveal>
               {' '}
               <Reveal as="div" className="svc-hero__ctas reveal" data-d="2">
-                <Link className="btn btn-primary" to="/gratis-websiteconcept">
-                  {CTA_CONCEPT}
+                <Link className="btn btn-primary" to="/gratis-websitescan">
+                  {CTA_SCAN}
                 </Link>
                 {' '}
                 <Link className="tlink" to="/contact">
@@ -318,7 +318,7 @@ function Integraties() {
             </Qa>
             {' '}
             <Qa question="Is een integratie los van een website af te nemen?" className="reveal">
-                Ja. We kunnen koppelingen ook toevoegen aan je bestaande website. Begin met een gratis websiteconcept, dan kijkt MegaOnline waar je het meeste handwerk kunt wegnemen.
+                Ja. We kunnen koppelingen ook toevoegen aan je bestaande website. Begin met een gratis website scan, dan kijkt MegaOnline waar je het meeste handwerk kunt wegnemen.
             </Qa>
           </div>
         </div>
@@ -363,12 +363,12 @@ function Integraties() {
             <h2 className="display">Dit hoef je niet zelf te blijven overtypen.</h2>
             {' '}
             <p className="lead">
-              Vraag een gratis websiteconcept aan. Je ziet welke koppelingen jou het meeste tijd besparen.
+              Vraag een gratis website scan aan. Je ziet welke koppelingen jou het meeste tijd besparen.
             </p>
             {' '}
             <Reveal as="div" className="svc-hero__ctas reveal" data-d="1" style={{ justifyContent: "center", marginTop: "28px" }}>
-              <Link className="btn btn-primary" to="/gratis-websiteconcept">
-                {CTA_CONCEPT}
+              <Link className="btn btn-primary" to="/gratis-websitescan">
+                {CTA_SCAN}
               </Link>
               {' '}
               <Link className="tlink" to="/contact">

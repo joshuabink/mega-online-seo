@@ -31,7 +31,7 @@ export const PAGE_ROUTES: Record<string, string> = {
   // Bedrijf & conversie
   'Over MegaOnline.html': '/over-megaonline',
   'Contact.html': '/contact',
-  'Gratis Websitescan.html': '/gratis-websiteconcept',
+  'Gratis Websitescan.html': '/gratis-websitescan',
   'Veelgestelde Vragen.html': '/veelgestelde-vragen',
 
   // Juridisch

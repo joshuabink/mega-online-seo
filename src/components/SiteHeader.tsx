@@ -3,7 +3,7 @@ import { Link, useRouterState } from '@tanstack/react-router'
 import { Icon } from './Icon'
 import { Logo } from './Logo'
 import { artikelenNieuwsteEerst } from '@/lib/kennisbank'
-import { CTA_CONCEPT } from '@/lib/cta'
+import { CTA_SCAN } from '@/lib/cta'
 
 type Panel = 'diensten' | 'cases' | 'over' | 'kennis' | 'contact'
 
@@ -154,9 +154,8 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
             {trigger('contact', 'Contact')}
           </nav>
           <div className="nav__cta">
-            <Link className="btn btn-primary" to="/gratis-websiteconcept">
-              <span className="nav__scan-long">Gratis websiteconcept</span>
-              <span className="nav__scan-short">Gratis concept</span>
+            <Link className="btn btn-primary" to="/gratis-websitescan">
+              {CTA_SCAN}
             </Link>
             <button
               className="btn btn-outline nav__menu-btn"
@@ -323,8 +322,8 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
                   </p>
                   <Link className="mfeat__cta" to="/diensten/conversie-website">
                     Bekijk de dienst                  </Link>
-                  <Link className="mfeat__link" to="/gratis-websiteconcept">
-                    {CTA_CONCEPT}                  </Link>
+                  <Link className="mfeat__link" to="/gratis-websitescan">
+                    {CTA_SCAN}                  </Link>
                 </aside>
 
                 <aside className="mfeat mfeat--soft mfeat--compact">
@@ -345,10 +344,9 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
               <div className="mega__foot">
                 <span>
                   Websites vormen de kern: SEO, content en integraties versterken het resultaat.
+                  Niet zeker welke oplossing past?
                 </span>
-                <Link to="/gratis-websiteconcept">
-                  Niet zeker welke oplossing past? {CTA_CONCEPT}{' '}
-                </Link>
+                <Link to="/gratis-websitescan">{CTA_SCAN}</Link>
               </div>
             </div>
 
@@ -554,13 +552,13 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
             >
               <div className="mcol">
                 <span className="mcol__head">Contact</span>
-                <Link className="mlink mlink--star" to="/gratis-websiteconcept">
+                <Link className="mlink mlink--star" to="/gratis-websitescan">
                   <span className="mlink__ico">
                     <Icon name="layout" />
                   </span>
                   <span className="mlink__txt">
                     <span className="mlink__name">
-                      Gratis websiteconcept <span className="mtag">Gratis</span>
+                      Gratis website scan <span className="mtag">Gratis</span>
                     </span>
                     <span className="mlink__sub">De belangrijkste eerste stap</span>
                   </span>
@@ -587,13 +585,13 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
                   <span className="gdot" />
                   Begin hier
                 </span>
-                <h4 className="mfeat__title">Gratis websiteconcept</h4>
+                <h4 className="mfeat__title">Gratis website scan</h4>
                 <p className="mfeat__desc">
-                  Een gratis websiteconcept met persoonlijk advies. Vrijblijvend en reactie
+                  Een gratis website scan met persoonlijk advies. Vrijblijvend en reactie
                   binnen 2 werkdagen.
                 </p>
-                <Link className="mfeat__cta" to="/gratis-websiteconcept">
-                  {CTA_CONCEPT}                </Link>
+                <Link className="mfeat__cta" to="/gratis-websitescan">
+                  {CTA_SCAN}                </Link>
               </aside>
             </div>
           </div>

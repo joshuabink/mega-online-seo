@@ -4,7 +4,7 @@ import { Icon } from '@/components/Icon'
 import { Qa } from '@/components/Qa'
 import { Reveal } from '@/components/Reveal'
 import { MegaSmartBridge } from '@/components/MegaSmartBridge'
-import { CTA_CONCEPT } from '@/lib/cta'
+import { CTA_SCAN } from '@/lib/cta'
 
 export const Route = createFileRoute('/branches/verhuurbedrijven')({
   head: () => ({
@@ -54,8 +54,8 @@ function Verhuurbedrijven() {
               </Reveal>
               {' '}
               <Reveal as="div" className="svc-hero__ctas reveal" data-d="2">
-                <Link className="btn btn-primary" to="/gratis-websiteconcept">
-                  {CTA_CONCEPT}
+                <Link className="btn btn-primary" to="/gratis-websitescan">
+                  {CTA_SCAN}
                 </Link>
                 {' '}
                 <Link className="tlink" to="/contact">
@@ -334,7 +334,7 @@ function Verhuurbedrijven() {
             </Qa>
             {' '}
             <Qa question="Wat kost zo'n website?" className="reveal">
-                Dat hangt af van je assortiment en de gewenste koppelingen. Met een gratis websiteconcept brengt MegaOnline het vrijblijvend in kaart.
+                Dat hangt af van je assortiment en de gewenste koppelingen. Met een gratis website scan brengt MegaOnline het vrijblijvend in kaart.
             </Qa>
           </div>
         </div>
@@ -348,12 +348,12 @@ function Verhuurbedrijven() {
             <h2 className="display">Laat je website de beschikbaarheid uitleggen.</h2>
             {' '}
             <p className="lead">
-              Vraag een gratis websiteconcept aan. Je ziet hoeveel handwerk je website kan overnemen.
+              Vraag een gratis website scan aan. Je ziet hoeveel handwerk je website kan overnemen.
             </p>
             {' '}
             <Reveal as="div" className="svc-hero__ctas reveal" data-d="1" style={{ justifyContent: "center", marginTop: "28px" }}>
-              <Link className="btn btn-primary" to="/gratis-websiteconcept">
-                {CTA_CONCEPT}
+              <Link className="btn btn-primary" to="/gratis-websitescan">
+                {CTA_SCAN}
               </Link>
               {' '}
               <Link className="tlink" to="/contact">

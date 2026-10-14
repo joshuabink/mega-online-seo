@@ -1,6 +1,6 @@
 import { Link, createFileRoute, notFound, redirect } from '@tanstack/react-router'
 import { findRedirect, SHORT_LINKS } from '@/lib/legacy-urls'
-import { CTA_CONCEPT } from '@/lib/cta'
+import { CTA_SCAN } from '@/lib/cta'
 
 /**
  * Catch-all: vangt de oude `.html`-paden af en stuurt permanent door naar de
@@ -60,8 +60,8 @@ function NotFound() {
           >
             <Link className="btn btn-primary" to="/">
               Naar de homepage            </Link>
-            <Link className="btn btn-outline" to="/gratis-websiteconcept">
-              {CTA_CONCEPT}
+            <Link className="btn btn-outline" to="/gratis-websitescan">
+              {CTA_SCAN}
             </Link>
             <Link className="btn btn-ghost" to="/contact">
               Contact

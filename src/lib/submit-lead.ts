@@ -114,9 +114,12 @@ function paginaPad(value: string | null): string {
   }
 }
 
-function formulierUitSubject(subject: string | null): 'concept' | 'contact' | 'sollicitatie' {
+function formulierUitSubject(
+  subject: string | null,
+): 'concept' | 'contact' | 'sollicitatie' | 'scan' {
   const s = (subject ?? '').toLowerCase()
   if (s.includes('sollicitatie')) return 'sollicitatie'
+  if (s.includes('website scan')) return 'scan'
   if (s.includes('websiteconcept')) return 'concept'
   return 'contact'
 }
@@ -324,7 +327,8 @@ export const submitLead = createServerFn({ method: 'POST' })
     const incoming = new URLSearchParams(data)
 
     // Honeypot: bots vullen dit verborgen veld wel in, mensen niet.
-    if ((incoming.get('website_hp') ?? '').trim()) {
+    const honeypot = (incoming.get('website_hp') ?? incoming.get('company_hp') ?? '').trim()
+    if (honeypot) {
       log('honeypot geraakt — inzending genegeerd (bot)')
       // Doe alsof het gelukt is, maar stuur niets door.
       return { ok: true }
@@ -344,8 +348,9 @@ export const submitLead = createServerFn({ method: 'POST' })
     }
 
     // Minimale inhoudscheck: zonder contactgegevens is het geen lead.
+    const email = params.get('email') ?? params.get('mail')
     const phone = params.get('telefoon') ?? params.get('tel')
-    if (!params.get('email') && !phone) {
+    if (!email && !phone) {
       log(`afgekeurd: geen e-mail of telefoon (pagina: ${paginaPad(params.get('_pagina'))})`)
       return afronden(false, 'geen-contact', {
         ok: false,
@@ -355,7 +360,7 @@ export const submitLead = createServerFn({ method: 'POST' })
     }
 
     log(
-      `inzending ontvangen van ${maskContact(params.get('email') ?? phone ?? '')} ` +
+      `inzending ontvangen van ${maskContact(email ?? phone ?? '')} ` +
         `(pagina: ${paginaPad(params.get('_pagina'))}, velden: ${[...params.keys()].join(', ')})`,
     )
 
@@ -370,7 +375,7 @@ export const submitLead = createServerFn({ method: 'POST' })
     // onderweg wordt gestript. Zelfde vaste oorsprong als MAIL_REFERER, zodat
     // een preview-URL geen tweede, niet-geactiveerd formulier wordt.
     mailParams.set('_url', MAIL_REFERER)
-    if (params.get('email')) mailParams.set('_replyto', params.get('email')!)
+    if (email) mailParams.set('_replyto', email)
 
     async function post(
       url: string,

@@ -2,10 +2,10 @@ import { useEffect, useId, useRef, useState } from 'react'
 import { Link } from '@tanstack/react-router'
 import { LEAD_CONTACT } from '@/lib/lead-contact'
 import { SteppedLeadForm } from './LeadForm'
-import { CTA_CONCEPT } from '@/lib/cta'
+import { CTA_SCAN } from '@/lib/cta'
 
 /**
- * Klikformulier voor het gratis websiteconcept.
+ * Klikformulier voor de gratis website scan.
  *
  * Stap 1 tot en met 3 en stap 5 zijn alleen klikken. Typen begint bij het
  * bedrijf en eindigt bij de contactgegevens. Gebouwd op SteppedLeadForm,
@@ -186,9 +186,9 @@ export function ConceptForm({
           <>
             <span className="form__head-note">
               <span className="form__dot" />
-              Gratis websiteconcept
+              Gratis website scan
             </span>
-            <h3>Ontvang een gratis websiteconcept met persoonlijk advies</h3>
+            <h3>Ontvang een gratis website scan met persoonlijk advies</h3>
             <p>
               Beantwoord zes korte vragen. Daarna kijkt MegaOnline persoonlijk naar je bedrijf en zie je hoe je website meer aanvragen en boekingen kan opleveren.
             </p>
@@ -205,7 +205,7 @@ export function ConceptForm({
           <div className="ic">✓</div>
           <h3>Bedankt. Je aanvraag is binnen.</h3>
           <p>
-            Je krijgt een eerste websiteconcept voor je bedrijf. Binnen 2 werkdagen nemen we contact
+            Je krijgt een eerste website scan voor je bedrijf. Binnen 2 werkdagen nemen we contact
             met je op om het concept en ons advies te bespreken. Vragen in de tussentijd? Mail naar{' '}
             <a href="mailto:info@megaonline.io">info@megaonline.io</a>.
           </p>
@@ -412,7 +412,7 @@ export function ConceptForm({
             ← Terug
           </button>
           <button className="btn btn-primary" type="submit">
-            {CTA_CONCEPT}
+            {CTA_SCAN}
           </button>
         </div>
         <p className="form__direct">

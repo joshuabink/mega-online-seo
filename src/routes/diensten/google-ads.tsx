@@ -5,7 +5,7 @@ import { Media } from '@/components/Media'
 import { Qa } from '@/components/Qa'
 import { Reveal } from '@/components/Reveal'
 import { ConceptForm } from '@/components/ConceptForm'
-import { CTA_CONCEPT } from '@/lib/cta'
+import { CTA_SCAN } from '@/lib/cta'
 import '@/styles/pages/diensten-google-ads.css'
 
 const TITLE = 'Google Ads beheer | Zichtbaar op het moment dat je klant zoekt | MegaOnline.io'
@@ -58,8 +58,8 @@ function GoogleAds() {
                 <Link className="btn btn-primary" to="/contact">
                   Plan een kennismaking
                 </Link>{' '}
-                <Link className="tlink" to="/gratis-websiteconcept">
-                  {CTA_CONCEPT}
+                <Link className="tlink" to="/gratis-websitescan">
+                  {CTA_SCAN}
                 </Link>
               </Reveal>
             </div>{' '}
@@ -430,15 +430,15 @@ function GoogleAds() {
                 Betaal voor aanvragen. Niet voor klikken die nergens heen gaan.
               </Reveal>{' '}
               <Reveal as="p" className="lead reveal" data-d="1">
-                Wil je weten of Google Ads voor jouw bedrijf zinvol is? Begin met een gratis websiteconcept.
+                Wil je weten of Google Ads voor jouw bedrijf zinvol is? Begin met een gratis website scan.
                 MegaOnline kijkt of je website klaar is om advertentiebezoekers om te zetten in aanvragen.
               </Reveal>{' '}
               <Reveal as="div" className="svc-hero__ctas reveal" data-d="2" style={{ marginTop: '28px' }}>
                 <Link className="btn btn-primary" to="/contact">
                   Plan een kennismaking
                 </Link>{' '}
-                <Link className="tlink" to="/gratis-websiteconcept">
-                  {CTA_CONCEPT}
+                <Link className="tlink" to="/gratis-websitescan">
+                  {CTA_SCAN}
                 </Link>
               </Reveal>{' '}
               <Reveal as="div" className="endcta__trust reveal" data-d="2" style={{ marginTop: '24px' }}>

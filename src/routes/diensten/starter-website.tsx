@@ -5,7 +5,7 @@ import { Media } from '@/components/Media'
 import { Qa } from '@/components/Qa'
 import { Reveal } from '@/components/Reveal'
 import { ConceptForm } from '@/components/ConceptForm'
-import { CTA_CONCEPT } from '@/lib/cta'
+import { CTA_SCAN } from '@/lib/cta'
 import '@/styles/pages/diensten-starter-website.css'
 
 export const Route = createFileRoute('/diensten/starter-website')({
@@ -666,8 +666,8 @@ function StarterWebsite() {
                 </li>
               </ul>
               {' '}
-              <Link className="btn btn-primary" to="/gratis-websiteconcept">
-                {CTA_CONCEPT}
+              <Link className="btn btn-primary" to="/gratis-websitescan">
+                {CTA_SCAN}
                 {' '}
               </Link>
               {' '}
@@ -752,12 +752,12 @@ function StarterWebsite() {
               <Reveal as="h2" className="display reveal">Je eerste website hoeft geen gok te zijn.</Reveal>
               {' '}
               <Reveal as="p" className="lead reveal" data-d="1">
-                Vraag een gratis websiteconcept aan of plan een korte kennismaking. Je kijkt samen met MegaOnline of de Starter Website bij je past, of dat een andere optie slimmer is.
+                Vraag een gratis website scan aan of plan een korte kennismaking. Je kijkt samen met MegaOnline of de Starter Website bij je past, of dat een andere optie slimmer is.
               </Reveal>
               {' '}
               <Reveal as="div" className="svc-hero__ctas reveal" data-d="2" style={{ marginTop: "28px" }}>
-                <Link className="btn btn-primary" to="/gratis-websiteconcept">
-                  {CTA_CONCEPT}
+                <Link className="btn btn-primary" to="/gratis-websitescan">
+                  {CTA_SCAN}
                   {' '}
                 </Link>
                 {' '}

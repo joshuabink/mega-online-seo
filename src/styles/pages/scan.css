@@ -1,0 +1,232 @@
+/* Pagina /gratis-websitescan. Alleen tokens uit het designsysteem. */
+
+[data-page="scan"] .scan-hero .display {
+  max-width: 16ch;
+}
+[data-page="scan"] .scan-hero .lead {
+  margin-top: 18px;
+  max-width: 46ch;
+}
+[data-page="scan"] .scan-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px 28px;
+  margin-top: 28px;
+}
+
+[data-page="scan"] #scan,
+[data-page="scan"] #werk,
+[data-page="scan"] #werkwijze,
+[data-page="scan"] #waarom,
+[data-page="scan"] #vragen,
+[data-page="scan"] #kennis {
+  scroll-margin-top: calc(var(--nav-h, 80px) + 16px);
+}
+
+[data-page="scan"] .scan-layout {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: clamp(28px, 4vw, 56px);
+  align-items: start;
+  margin-top: clamp(28px, 3vw, 40px);
+}
+[data-page="scan"] .scan-layout .h2 {
+  font-size: clamp(1.6rem, 2.4vw, 2.2rem);
+}
+[data-page="scan"] .scan-layout .lead {
+  margin: 12px 0 22px;
+}
+
+[data-page="scan"] .scan-side {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--card);
+  padding: clamp(22px, 2.4vw, 32px);
+}
+[data-page="scan"] .scan-side h3 {
+  font-family: var(--sans);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.35;
+}
+[data-page="scan"] .scan-side p {
+  margin-top: 12px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+[data-page="scan"] .scan-side__mail a {
+  color: var(--accent-text);
+}
+
+[data-page="scan"] .scan-hint {
+  margin: 6px 0 12px;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+[data-page="scan"] .scan-group {
+  border: 0;
+  margin: 0 0 18px;
+  padding: 0;
+}
+[data-page="scan"] .scan-group legend {
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--faint);
+  margin-bottom: 7px;
+}
+[data-page="scan"] .scanform .btn-primary {
+  width: auto;
+  max-width: 100%;
+  white-space: nowrap;
+  margin-top: 8px;
+}
+[data-page="scan"] .scanform .form__disc a {
+  color: var(--accent-text);
+}
+
+[data-page="scan"] .scan-cases {
+  grid-template-columns: repeat(3, 1fr);
+}
+[data-page="scan"] .scan-cases .tlink {
+  margin-top: 18px;
+}
+
+[data-page="scan"] .scan-steps {
+  list-style: none;
+  margin: clamp(28px, 3vw, 42px) 0 8px;
+  padding: 0;
+  display: grid;
+  gap: 22px;
+}
+[data-page="scan"] .scan-steps li {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 16px 22px;
+  align-items: start;
+}
+[data-page="scan"] .scan-steps__no {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  color: var(--accent-text);
+  width: 2.2em;
+  height: 2.2em;
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+}
+[data-page="scan"] .scan-steps h3 {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: clamp(1.25rem, 1.8vw, 1.6rem);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+[data-page="scan"] .scan-steps p {
+  margin-top: 8px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+[data-page="scan"] .scan-steps ul {
+  margin: 12px 0 0;
+  padding-left: 1.1em;
+  color: var(--fg);
+  line-height: 1.5;
+}
+[data-page="scan"] #werkwijze .tlink {
+  margin-top: 8px;
+}
+
+[data-page="scan"] .scan-table-wrap {
+  margin-top: clamp(28px, 3vw, 42px);
+  overflow-x: auto;
+}
+[data-page="scan"] .scan-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+[data-page="scan"] .scan-table th,
+[data-page="scan"] .scan-table td {
+  text-align: left;
+  vertical-align: top;
+  padding: 16px 18px;
+  border-bottom: 1px solid var(--line);
+  line-height: 1.45;
+}
+[data-page="scan"] .scan-table thead th {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 1.15rem;
+  letter-spacing: -0.02em;
+}
+[data-page="scan"] .scan-table tbody th {
+  font-weight: 600;
+  width: 18%;
+}
+[data-page="scan"] .scan-table td {
+  color: var(--muted);
+}
+[data-page="scan"] .scan-table td:last-child {
+  color: var(--fg);
+}
+
+[data-page="scan"] .scan-kennis__kop {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: clamp(1.6rem, 2.4vw, 2.2rem);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+[data-page="scan"] .scan-kennis {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(18px, 2vw, 28px);
+  margin-top: 22px;
+}
+[data-page="scan"] .scan-kennis h4 {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+[data-page="scan"] .scan-kennis a {
+  color: var(--fg);
+  text-decoration: none;
+}
+[data-page="scan"] .scan-kennis a:hover {
+  color: var(--accent-text);
+}
+[data-page="scan"] .scan-kennis p {
+  margin-top: 8px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+[data-page="scan"] .company_hp,
+[data-page="scan"] input[name="company_hp"] {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+@media (max-width: 900px) {
+  [data-page="scan"] .scan-layout,
+  [data-page="scan"] .scan-cases,
+  [data-page="scan"] .scan-kennis {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 599px) {
+  [data-page="scan"] .scanform .btn-primary {
+    width: 100%;
+  }
+}
