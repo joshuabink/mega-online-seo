@@ -1166,6 +1166,29 @@ check(
     scanToontVijf && contactToontTwee,
     `scan=${scanToontVijf} contact=${contactToontTwee}`,
   )
+
+  await page.goto(BASE + '/diensten/starter-website', { waitUntil: 'load' })
+  await waitHydrated(page)
+  const starterEind = await page.evaluate(() => {
+    const norm = (s) => String(s ?? '').replace(/\s+/g, ' ').trim()
+    const kop = document.querySelector('[data-screen-label="Eind-CTA + scan-formulier"] .endcta__copy')
+    const links = [...(kop?.querySelectorAll('a') ?? [])].map((a) => ({
+      tekst: norm(a.textContent),
+      href: a.getAttribute('href') || '',
+    }))
+    return {
+      links,
+      kennismaking: norm(kop?.innerText).includes('Plan een kennismaking'),
+    }
+  })
+  check(
+    'starterpagina heeft precies één eind-CTA',
+    starterEind.links.length === 1 &&
+      starterEind.links[0].tekst === CTA_SCAN &&
+      starterEind.links[0].href === '/gratis-websitescan' &&
+      !starterEind.kennismaking,
+    JSON.stringify(starterEind),
+  )
 }
 
 // node:http stuurt het pad ongewijzigd. fetch en Playwright normaliseren

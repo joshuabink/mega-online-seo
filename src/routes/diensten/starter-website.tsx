@@ -762,11 +762,6 @@ function StarterWebsite() {
                   {CTA_SCAN}
                   {' '}
                 </Link>
-                {' '}
-                <Link className="tlink" to="/contact">
-                  Plan een kennismaking
-                  {' '}
-                </Link>
               </Reveal>
               {' '}
               <Reveal as="div" className="endcta__trust reveal" data-d="2" style={{ marginTop: "24px" }}>
