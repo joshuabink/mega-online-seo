@@ -6,6 +6,7 @@ import { Qa } from '@/components/Qa'
 import { Reveal } from '@/components/Reveal'
 import { ConceptForm } from '@/components/ConceptForm'
 import { CTA_SCAN } from '@/lib/cta'
+import { CONTACT_REACTIETIJD } from '@/lib/lead-contact'
 import { SCAN_OPLEVERING, SCAN_REACTIETIJD } from '@/lib/scan'
 import '@/styles/pages/diensten-starter-website.css'
 
@@ -773,7 +774,7 @@ function StarterWebsite() {
                 {' '}
                 <span>Eerlijk advies</span>
                 {' '}
-                <span>Reactie {SCAN_REACTIETIJD}</span>
+                <span>Reactie {CONTACT_REACTIETIJD}</span>
               </Reveal>
             </div>
             {' '}

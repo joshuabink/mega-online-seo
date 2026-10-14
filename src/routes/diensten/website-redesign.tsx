@@ -6,7 +6,7 @@ import { Qa } from '@/components/Qa'
 import { Reveal } from '@/components/Reveal'
 import { ConceptForm } from '@/components/ConceptForm'
 import { CTA_SCAN } from '@/lib/cta'
-import { SCAN_REACTIETIJD } from '@/lib/scan'
+import { CONTACT_REACTIETIJD } from '@/lib/lead-contact'
 
 export const Route = createFileRoute('/diensten/website-redesign')({
   head: () => ({
@@ -877,7 +877,7 @@ function WebsiteRedesign() {
                 {' '}
                 <span>Eerlijk advies</span>
                 {' '}
-                <span>Reactie {SCAN_REACTIETIJD}</span>
+                <span>Reactie {CONTACT_REACTIETIJD}</span>
               </Reveal>
             </div>
             {' '}

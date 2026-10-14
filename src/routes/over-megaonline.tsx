@@ -4,7 +4,7 @@ import { Icon } from '@/components/Icon'
 import { Media } from '@/components/Media'
 import { Reveal } from '@/components/Reveal'
 import { CTA_SCAN } from '@/lib/cta'
-import { SCAN_REACTIETIJD } from '@/lib/scan'
+import { CONTACT_REACTIETIJD } from '@/lib/lead-contact'
 
 export const Route = createFileRoute('/over-megaonline')({
   head: () => ({
@@ -804,7 +804,7 @@ function OverMegaonline() {
               {' '}
               <span>Persoonlijk contact</span>
               {' '}
-              <span>Reactie {SCAN_REACTIETIJD}</span>
+              <span>Reactie {CONTACT_REACTIETIJD}</span>
             </div>
           </Reveal>
         </div>

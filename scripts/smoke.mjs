@@ -54,9 +54,10 @@ function normCta(s) {
  * exact CTA_SCAN is, of een .btn die naar de scanpagina wijst, of de
  * verstuurknop van het scan- of conceptformulier. Die tekst moet CTA_SCAN
  * zijn. Een link daarbij gaat naar /gratis-websitescan, of naar #formulier
- * of #scan op de scanpagina zelf. De gebouwde HTML mag nergens websiteconcept,
- * 2 werkdagen of href="tel: bevatten. Een telefoonnummer als tekst of in
- * JSON-LD mag blijven.
+ * of #scan op de scanpagina zelf. De gebouwde HTML mag nergens websiteconcept
+ * of href="tel: bevatten. '2 werkdagen' mag, behalve in hetzelfde element,
+ * dezelfde zin of dezelfde kaart als het woord scan. Een telefoonnummer als
+ * tekst of in JSON-LD mag blijven.
  */
 async function controleerCtaTeksten(browser) {
   const pg = await browser.newPage({ viewport: { width: 1440, height: 900 } })
@@ -118,11 +119,36 @@ async function controleerCtaTeksten(browser) {
           (form.compareDocumentPosition(morgen) & Node.DOCUMENT_POSITION_FOLLOWING)
         ),
         html: document.documentElement.outerHTML,
+        gemengd: (() => {
+          const tekstVan = (el) => norm(el.innerText || el.textContent || '')
+          const beide = (tekst) => /2 werkdagen/.test(tekst) && /scan/i.test(tekst)
+          const eenheid = 'p, li, h1, h2, h3, h4, h5, h6, td, th, dd, figcaption, a, button, span, label'
+          const treffers = []
+          for (const el of document.querySelectorAll(eenheid)) {
+            const tekst = tekstVan(el)
+            if (!beide(tekst)) continue
+            const kindHeeftBeide = [...el.children].some(
+              (kind) => kind.matches(eenheid) && beide(tekstVan(kind)),
+            )
+            if (kindHeeftBeide) continue
+            treffers.push(tekst.slice(0, 160))
+          }
+          for (const el of document.querySelectorAll('.ccard, .price-card, .card')) {
+            const tekst = tekstVan(el)
+            if (beide(tekst)) treffers.push(`kaart ${tekst.slice(0, 160)}`)
+          }
+          for (const el of document.querySelectorAll('p, li, h1, h2, h3, h4, h5, h6, td, dd, figcaption')) {
+            for (const zin of tekstVan(el).split(/(?<=[.!?])\s+/)) {
+              if (beide(zin)) treffers.push(`zin ${zin.slice(0, 160)}`)
+            }
+          }
+          return treffers
+        })(),
       }
     }, CTA_SCAN)
 
     if (/websiteconcept/i.test(data.html)) fouten.push(`${pad} HTML bevat websiteconcept`)
-    if (data.html.includes('2 werkdagen')) fouten.push(`${pad} HTML bevat 2 werkdagen`)
+    if (data.gemengd.length) fouten.push(`${pad} koppelt 2 werkdagen aan scan: ${data.gemengd[0]}`)
     if (/href=["']tel:/i.test(data.html)) fouten.push(`${pad} HTML bevat href="tel:`)
     if (/websiteconcept/i.test(data.zichtbaar)) fouten.push(`${pad} toont websiteconcept`)
     for (const oud of OUDE_CTA_VARIANTEN) {
@@ -1129,6 +1155,16 @@ check(
       scanLog.json.gelukt === true &&
       page.url().includes('#aanvraag-verstuurd'),
     `${scanLog?.raw ?? 'geen log'} | ${JSON.stringify(scanLead ?? {}).slice(0, 240)} | ${page.url()}`,
+  )
+
+  const scanToontVijf = await page.evaluate(() => document.body.innerText.includes('binnen 5 werkdagen'))
+  await page.goto(BASE + '/contact', { waitUntil: 'load' })
+  await waitHydrated(page)
+  const contactToontTwee = await page.evaluate(() => document.body.innerText.includes('binnen 2 werkdagen'))
+  check(
+    'contact toont binnen 2 werkdagen en de scanpagina binnen 5 werkdagen',
+    scanToontVijf && contactToontTwee,
+    `scan=${scanToontVijf} contact=${contactToontTwee}`,
   )
 }
 
