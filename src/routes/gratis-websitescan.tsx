@@ -176,7 +176,7 @@ function GratisWebsitescan() {
         <div className="wrap">
           <Reveal as="div" className="shead reveal">
             <h2 className="h2">Werk dat live staat.</h2>
-            <p className="lead">Drie sites die we bouwden. Klik door en kijk zelf.</p>
+            <p className="lead">Drie sites die MegaOnline bouwde. Klik door en kijk zelf.</p>
           </Reveal>
           <div className="cases scan-cases">
             {CASES.map((c, i) => (

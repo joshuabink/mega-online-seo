@@ -644,7 +644,7 @@ function WebsiteOptimalisatie() {
                   <div className="case__step">
                     <span className="k">Wat MegaOnline deed</span>
                     <p>
-                      We brachten de propositie terug naar een duidelijke boodschap en bouwden een structuur die bezoekers sneller naar de juiste informatie leidt.
+                      MegaOnline bracht de propositie terug naar een duidelijke boodschap en bouwde een structuur die bezoekers sneller naar de juiste informatie leidt.
                     </p>
                   </div>
                 </div>
@@ -685,7 +685,7 @@ function WebsiteOptimalisatie() {
                   <div className="case__step">
                     <span className="k">Wat MegaOnline deed</span>
                     <p>
-                      We ontwikkelden een visuele website met een duidelijke boekingsroute en focus op beleving.
+                      MegaOnline ontwikkelde een visuele website met een duidelijke boekingsroute en focus op beleving.
                     </p>
                   </div>
                 </div>
