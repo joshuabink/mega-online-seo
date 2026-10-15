@@ -83,9 +83,9 @@ function WebsiteRedesign() {
               </div>
               {' '}
               <div className="hvis__card hvis__stat">
-                <span className="n">8 sec</span>
+                <span className="n">Eerste indruk</span>
                 {' '}
-                <span className="l">eerste indruk</span>
+                <span className="l">telt mee in de keuze om contact op te nemen</span>
               </div>
             </Reveal>
           </div>
@@ -211,7 +211,7 @@ function WebsiteRedesign() {
               </span>
               <h4>Betere mobiele ervaring</h4>
               <p>
-                Soepel en logisch op het scherm waar de meesten binnenkomen.
+                Bijna iedereen gaat ook met de telefoon online.
               </p>
             </Reveal>
             {' '}
@@ -290,12 +290,18 @@ function WebsiteRedesign() {
               <div className="panel__stats">
                 <div>
                   <span className="n">1ste</span>
-                  <span className="l">indruk telt het zwaarst</span>
+                  <span className="l">indruk telt meteen mee</span>
                 </div>
                 {' '}
                 <div>
-                  <span className="n">Mobiel</span>
-                  <span className="l">waar de meesten binnenkomen</span>
+                  <div className="n">96%</div>
+                  <div className="l">
+                    van de Nederlanders (12+) gaat online met de telefoon (
+                    <a href="https://www.cbs.nl/nl-nl/longread/rapportages/2026/digitalisering-en-kenniseconomie-2025/4-ict-gebruik-personen" target="_blank" rel="noopener" style={{ textDecoration: "underline", textUnderlineOffset: "2px" }}>
+                      CBS, 2025
+                    </a>
+                    )
+                  </div>
                 </div>
               </div>
             </Reveal>

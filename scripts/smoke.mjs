@@ -1230,6 +1230,19 @@ check(
       starterPagina.prijs.knop === false,
     JSON.stringify(starterPagina),
   )
+
+  const verbodenClaims = ['3 sec', '8 sec', 'om te overtuigen', 'waar de meesten binnenkomen']
+  for (const pad of ['/diensten/conversie-website', '/diensten/website-redesign']) {
+    await page.goto(BASE + pad, { waitUntil: 'load' })
+    await waitHydrated(page)
+    const tekst = await page.evaluate(() => (document.querySelector('main')?.textContent || '').replace(/\s+/g, ' '))
+    const geraakt = verbodenClaims.filter((zin) => tekst.includes(zin))
+    check(
+      `${pad} bevat de oude claimteksten niet`,
+      geraakt.length === 0,
+      geraakt.join(' | ') || 'geen',
+    )
+  }
 }
 
 // node:http stuurt het pad ongewijzigd. fetch en Playwright normaliseren

@@ -158,9 +158,9 @@ function ConversieWebsite() {
               </div>
               {' '}
               <div className="hvis__card hvis__stat">
-                <span className="n">3 sec</span>
+                <span className="n">Eerste indruk</span>
                 {' '}
-                <span className="l">om te overtuigen</span>
+                <span className="l">telt mee in de keuze om contact op te nemen</span>
               </div>
             </Reveal>
           </div>
@@ -227,7 +227,7 @@ function ConversieWebsite() {
               <Reveal as="div" className="miniprob reveal" data-d="1">
                 <h4>Slechte mobiele ervaring</h4>
                 <p>
-                  Het grootste deel komt mobiel binnen. Werkt dat stroef, dan verlies je ze.
+                  Bijna iedereen gaat ook met de telefoon online. Werkt dat stroef, dan verlies je ze.
                 </p>
               </Reveal>
               {' '}
@@ -380,7 +380,7 @@ function ConversieWebsite() {
               </span>
               <h4>Werkt perfect op mobiel</h4>
               <p>
-                De meeste bezoekers komen mobiel binnen. Daar voelt alles soepel en logisch aan.
+                Bijna iedereen gaat ook met de telefoon online. Daar voelt alles soepel en logisch aan.
               </p>
             </Reveal>
             {' '}
