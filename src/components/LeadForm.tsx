@@ -33,11 +33,8 @@ function LeadFallback({ mailto }: { mailto: string }) {
         Verstuur via je eigen mail
       </a>
       <p className="form__fallback-alt">
-        Of bel {LEAD_CONTACT.phoneText}, stuur een{' '}
-        <a href={LEAD_CONTACT.whatsappUrl} target="_blank" rel="noopener">
-          WhatsApp
-        </a>{' '}
-        of mail direct naar <a href={`mailto:${LEAD_CONTACT.mail}`}>{LEAD_CONTACT.mail}</a>.
+        Of bel {LEAD_CONTACT.phoneText}, stuur een WhatsApp of mail direct naar{' '}
+        <a href={`mailto:${LEAD_CONTACT.mail}`}>{LEAD_CONTACT.mail}</a>.
       </p>
     </div>
   )

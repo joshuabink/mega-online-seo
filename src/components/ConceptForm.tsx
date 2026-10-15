@@ -418,8 +418,7 @@ export function ConceptForm({
         <p className="form__direct">
           Liever direct contact? Mail{' '}
           <a href={`mailto:${LEAD_CONTACT.mail}`}>{LEAD_CONTACT.mail}</a>, bel{' '}
-          {LEAD_CONTACT.phoneText} of stuur een{' '}
-          <a href={LEAD_CONTACT.whatsappUrl} target="_blank" rel="noopener">WhatsApp</a>.
+          {LEAD_CONTACT.phoneText} of stuur een WhatsApp.
         </p>
         <p className="form__disc">
           MegaOnline gebruikt je gegevens alleen voor je concept en advies. Je komt niet op een

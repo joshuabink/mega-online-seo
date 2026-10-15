@@ -48,8 +48,6 @@ export const VOORWAARDEN = {
   bedrijf: "MegaOnline.io",
   plaats: "Gouda",
   mail: "joshua@megaonline.io",
-  whatsapp: "+31634388938",
-  whatsappUrl: "https://wa.me/31634388938",
 };
 
 /**

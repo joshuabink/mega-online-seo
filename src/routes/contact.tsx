@@ -238,20 +238,16 @@ function Contact() {
             </Reveal>
             {' '}
             <Reveal as="div" className="ccard reveal" data-d="2">
-              <span className="iconbox">
-                <Icon name="message-circle" />
-              </span>
-              {' '}
               <h3>WhatsApp</h3>
               {' '}
               <p>
                 Snel en laagdrempelig een bericht sturen kan ook. Handig voor korte vragen.
               </p>
               {' '}
-              <a className="ccard__val" href="https://wa.me/31634388938">
-                Stuur een bericht
+              <span className="ccard__val">
+                {LEAD_CONTACT.phoneText}
                 {' '}
-              </a>
+              </span>
             </Reveal>
           </div>
         </div>

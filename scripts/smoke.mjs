@@ -55,7 +55,7 @@ function normCta(s) {
  * verstuurknop van het scan- of conceptformulier. Die tekst moet CTA_SCAN
  * zijn. Een link daarbij gaat naar /gratis-websitescan, of naar #formulier
  * of #scan op de scanpagina zelf. De gebouwde HTML mag nergens websiteconcept
- * of href="tel: bevatten. '2 werkdagen' mag, behalve in hetzelfde element,
+ * of href="tel:", of een href met wa.me of whatsapp bevatten. '2 werkdagen' mag, behalve in hetzelfde element,
  * dezelfde zin of dezelfde kaart als het woord scan. Een telefoonnummer als
  * tekst of in JSON-LD mag blijven.
  */
@@ -150,6 +150,7 @@ async function controleerCtaTeksten(browser) {
     if (/websiteconcept/i.test(data.html)) fouten.push(`${pad} HTML bevat websiteconcept`)
     if (data.gemengd.length) fouten.push(`${pad} koppelt 2 werkdagen aan scan: ${data.gemengd[0]}`)
     if (/href=["']tel:/i.test(data.html)) fouten.push(`${pad} HTML bevat href="tel:`)
+    if (/href=["'][^"']*(?:wa\.me|whatsapp)/i.test(data.html)) fouten.push(`${pad} HTML bevat een WhatsApp-link`)
     if (/websiteconcept/i.test(data.zichtbaar)) fouten.push(`${pad} toont websiteconcept`)
     for (const oud of OUDE_CTA_VARIANTEN) {
       if (data.zichtbaar.includes(oud)) fouten.push(`${pad} bevat "${oud}"`)
@@ -602,7 +603,7 @@ check('formulier stap 5 → 6', await stepVisible(6))
 const direct = await page.locator('.form__direct').innerText()
 const directMail = await page.locator('.form__direct a[href^="mailto:"]').getAttribute('href')
 const directTelLinks = await page.locator('.form__direct a[href^="tel:"]').count()
-const directWa = await page.locator('.form__direct a[href*="wa.me"]').getAttribute('href')
+const directWa = await page.locator('.form__direct a[href*="wa.me"], .form__direct a[href*="whatsapp"]').count()
 check(
   'contactregel staat onder de verzendknop',
   /Liever direct contact/.test(direct) &&
@@ -611,7 +612,7 @@ check(
     /WhatsApp/.test(direct) &&
     directMail === 'mailto:zakelijk@joshuabink.nl' &&
     directTelLinks === 0 &&
-    directWa === 'https://wa.me/31634388938',
+    directWa === 0,
   direct,
 )
 
@@ -702,9 +703,7 @@ const mailFout = await page.evaluate(() => {
     text: fallback?.textContent?.replace(/\s+/g, ' ').trim() ?? '',
     mailto: fallback?.querySelector('a.btn')?.getAttribute('href') ?? '',
     telLinks: fallback?.querySelectorAll('a[href^="tel:"]').length ?? 0,
-    wa: fallback?.querySelector('a[href*="wa.me"]')?.getAttribute('href') ?? '',
-    waTarget: fallback?.querySelector('a[href*="wa.me"]')?.getAttribute('target') ?? '',
-    waRel: fallback?.querySelector('a[href*="wa.me"]')?.getAttribute('rel') ?? '',
+    waLinks: fallback?.querySelectorAll('a[href*="wa.me"], a[href*="whatsapp"]').length ?? 0,
     naam: form?.querySelector('#c-naam')?.value ?? '',
     email: form?.querySelector('#c-email')?.value ?? '',
     bericht: form?.querySelector('#c-bericht')?.value ?? '',
@@ -736,11 +735,10 @@ check(
 )
 check('telefoon en WhatsApp staan in de fallback',
   /06 34 38 89 38/.test(mailFout.text) &&
+    /WhatsApp/.test(mailFout.text) &&
     mailFout.telLinks === 0 &&
-    mailFout.wa === 'https://wa.me/31634388938' &&
-    mailFout.waTarget === '_blank' &&
-    mailFout.waRel.includes('noopener'),
-  `${mailFout.telLinks} ${mailFout.wa} ${mailFout.waTarget}`)
+    mailFout.waLinks === 0,
+  `${mailFout.telLinks} ${mailFout.waLinks}`)
 check('browserpost zonder honeypot en met vast _url',
   failPosts.length === 1 &&
     !failPosts[0].body.includes('website_hp') &&

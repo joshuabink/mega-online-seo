@@ -10,5 +10,4 @@ export const LEAD_CONTACT = {
   /** Zichtbare tekst. Het nummer is geen link. */
   phoneText: '06 34 38 89 38',
   phone: '+31634388938',
-  whatsappUrl: 'https://wa.me/31634388938',
 } as const
