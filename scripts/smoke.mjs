@@ -55,9 +55,10 @@ function normCta(s) {
  * verstuurknop van het scan- of conceptformulier. Die tekst moet CTA_SCAN
  * zijn. Een link daarbij gaat naar /gratis-websitescan, of naar #formulier
  * of #scan op de scanpagina zelf. De gebouwde HTML mag nergens websiteconcept
- * of href="tel:", of een href met wa.me of whatsapp bevatten. '2 werkdagen' mag, behalve in hetzelfde element,
- * dezelfde zin of dezelfde kaart als het woord scan. Een telefoonnummer als
- * tekst of in JSON-LD mag blijven.
+ * of href="tel:", of een href met wa.me of whatsapp bevatten, of het
+ * telefoonnummer van MegaOnline in welke notatie dan ook. '2 werkdagen' mag,
+ * behalve in hetzelfde element, dezelfde zin of dezelfde kaart als het woord
+ * scan. Het telefoonveld van de bezoeker mag blijven.
  */
 async function controleerCtaTeksten(browser) {
   const pg = await browser.newPage({ viewport: { width: 1440, height: 900 } })
@@ -151,6 +152,10 @@ async function controleerCtaTeksten(browser) {
     if (data.gemengd.length) fouten.push(`${pad} koppelt 2 werkdagen aan scan: ${data.gemengd[0]}`)
     if (/href=["']tel:/i.test(data.html)) fouten.push(`${pad} HTML bevat href="tel:`)
     if (/href=["'][^"']*(?:wa\.me|whatsapp)/i.test(data.html)) fouten.push(`${pad} HTML bevat een WhatsApp-link`)
+    if (/wa\.me/i.test(data.html)) fouten.push(`${pad} HTML bevat wa.me`)
+    for (const notatie of ['31634388938', '0634388938', '06-34388938', '6 34388938', '06 34 38 89 38', '+31 6 34388938']) {
+      if (data.html.includes(notatie)) fouten.push(`${pad} HTML bevat ${notatie}`)
+    }
     if (/websiteconcept/i.test(data.zichtbaar)) fouten.push(`${pad} toont websiteconcept`)
     for (const oud of OUDE_CTA_VARIANTEN) {
       if (data.zichtbaar.includes(oud)) fouten.push(`${pad} bevat "${oud}"`)
@@ -608,8 +613,7 @@ check(
   'contactregel staat onder de verzendknop',
   /Liever direct contact/.test(direct) &&
     /zakelijk@joshuabink\.nl/.test(direct) &&
-    /06 34 38 89 38/.test(direct) &&
-    /WhatsApp/.test(direct) &&
+    !/06 34 38 89 38|31634388938|0634388938/.test(direct) &&
     directMail === 'mailto:zakelijk@joshuabink.nl' &&
     directTelLinks === 0 &&
     directWa === 0,
@@ -733,12 +737,11 @@ check(
     mailFout.mailto.includes('%0D%0A'),
   mailtoSubject,
 )
-check('telefoon en WhatsApp staan in de fallback',
-  /06 34 38 89 38/.test(mailFout.text) &&
-    /WhatsApp/.test(mailFout.text) &&
+check('fallback noemt het nummer niet en heeft geen bel- of WhatsApp-link',
+  !/06 34 38 89 38|31634388938|0634388938|06-34388938/.test(mailFout.text) &&
     mailFout.telLinks === 0 &&
     mailFout.waLinks === 0,
-  `${mailFout.telLinks} ${mailFout.waLinks}`)
+  `${mailFout.telLinks} ${mailFout.waLinks} ${mailFout.text}`)
 check('browserpost zonder honeypot en met vast _url',
   failPosts.length === 1 &&
     !failPosts[0].body.includes('website_hp') &&

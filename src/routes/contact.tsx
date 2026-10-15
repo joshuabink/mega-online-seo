@@ -5,7 +5,7 @@ import { Qa } from '@/components/Qa'
 import { Media } from '@/components/Media'
 import { Reveal } from '@/components/Reveal'
 import { SingleLeadForm } from '@/components/LeadForm'
-import { CONTACT_REACTIETIJD, LEAD_CONTACT } from '@/lib/lead-contact'
+import { CONTACT_REACTIETIJD } from '@/lib/lead-contact'
 import '@/styles/pages/contact.css'
 
 export const Route = createFileRoute('/contact')({
@@ -136,7 +136,7 @@ function Contact() {
                 <div className="field">
                   <label htmlFor="c-tel">Telefoonnummer</label>
                   {' '}
-                  <input id="c-tel" name="tel" type="tel" placeholder="06-34388938" />
+                  <input id="c-tel" name="tel" type="tel" placeholder="06 12345678" />
                 </div>
                 {' '}
                 <div className="field">
@@ -220,35 +220,6 @@ function Contact() {
               </a>
             </Reveal>
             {' '}
-            <Reveal as="div" className="ccard reveal" data-d="1">
-              <span className="iconbox">
-                <Icon name="phone" />
-              </span>
-              {' '}
-              <h3>Telefoon</h3>
-              {' '}
-              <p>
-                Liever even sparren? Bel ons gerust tijdens kantooruren (ma–vr, 9–17 uur).
-              </p>
-              {' '}
-              <span className="ccard__val">
-                {LEAD_CONTACT.phoneText}
-                {' '}
-              </span>
-            </Reveal>
-            {' '}
-            <Reveal as="div" className="ccard reveal" data-d="2">
-              <h3>WhatsApp</h3>
-              {' '}
-              <p>
-                Snel en laagdrempelig een bericht sturen kan ook. Handig voor korte vragen.
-              </p>
-              {' '}
-              <span className="ccard__val">
-                {LEAD_CONTACT.phoneText}
-                {' '}
-              </span>
-            </Reveal>
           </div>
         </div>
       </section>

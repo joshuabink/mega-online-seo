@@ -7,7 +7,4 @@ export const CONTACT_REACTIETIJD = 'binnen 2 werkdagen'
 
 export const LEAD_CONTACT = {
   mail: 'zakelijk@joshuabink.nl',
-  /** Zichtbare tekst. Het nummer is geen link. */
-  phoneText: '06 34 38 89 38',
-  phone: '+31634388938',
 } as const
