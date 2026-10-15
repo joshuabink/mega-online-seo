@@ -348,7 +348,7 @@ function Seo() {
             </h2>
             {' '}
             <p className="lead">
-              Geen los lijstje diensten, maar één traject: het contentplan bepaalt waar MegaOnline op inzet, de nieuwe pagina's brengen bezoekers binnen en de website zorgt dat er wat uitkomt.
+              Geen los lijstje diensten, maar één traject: het contentplan bepaalt waar MegaOnline op inzet, de nieuwe pagina's brengen bezoekers binnen en de website zorgt dat er wat uitkomt. Hoe AI-zoekmachines bedrijven kiezen om te noemen, lees je in <Link to="/kennisbank/$slug" params={{ slug: 'gevonden-worden-in-chatgpt' }}>gevonden worden in ChatGPT als mkb'er</Link>.
             </p>
           </Reveal>
           {' '}
