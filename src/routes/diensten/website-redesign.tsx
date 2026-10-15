@@ -635,8 +635,8 @@ function WebsiteRedesign() {
                   </div>
                 {' '}
                   <div className="case__step">
-                    <span className="k">Wat we veranderden</span>
-                    <p>We brachten de propositie terug naar een duidelijke boodschap en bouwden een structuur die bezoekers sneller naar de juiste informatie leidt.</p>
+                    <span className="k">Wat MegaOnline veranderde</span>
+                    <p>MegaOnline bracht de propositie terug naar een duidelijke boodschap en bouwde een structuur die bezoekers sneller naar de juiste informatie leidt.</p>
                   </div>
                 </div>
                 {' '}
@@ -677,8 +677,8 @@ function WebsiteRedesign() {
                   </div>
                 {' '}
                   <div className="case__step">
-                    <span className="k">Wat we veranderden</span>
-                    <p>We ontwikkelden een visuele website met een duidelijke boekingsroute en focus op beleving.</p>
+                    <span className="k">Wat MegaOnline veranderde</span>
+                    <p>MegaOnline ontwikkelde een visuele website met een duidelijke boekingsroute en focus op beleving.</p>
                   </div>
                 </div>
                 {' '}
@@ -804,7 +804,7 @@ function WebsiteRedesign() {
             </Qa>
             {' '}
             <Qa question="Hoe lang duurt een redesign?" className="reveal">
-                Dat hangt af van de omvang en hoe snel content en feedback rond zijn. Een redesign is doorgaans een traject van enkele weken. Na het concept en de kennismaking geeft MegaOnline een realistische inschatting voor jouw situatie.
+                Dat hangt af van de omvang en hoe snel content en feedback rond zijn. Een redesign is doorgaans een traject van enkele weken. Na de website scan en de kennismaking geeft MegaOnline een realistische inschatting voor jouw situatie.
             </Qa>
             {' '}
             <Qa question="Is een redesign altijd beter dan optimaliseren?" className="reveal">

@@ -366,7 +366,7 @@ export function ConceptForm({
 
       <div className="fstep" data-step="6" hidden={current !== 5}>
         <h3 className="fstep__title" tabIndex={-1} data-step-focus>
-          Waar mag het concept heen?
+          Waar mag de website scan heen?
         </h3>
         <div className="field">
           <label htmlFor={id('naam')}>Je naam</label>
@@ -420,7 +420,7 @@ export function ConceptForm({
           <a href={`mailto:${LEAD_CONTACT.mail}`}>{LEAD_CONTACT.mail}</a>.
         </p>
         <p className="form__disc">
-          MegaOnline gebruikt je gegevens alleen voor je concept en advies. Je komt niet op een
+          MegaOnline gebruikt je gegevens alleen voor je website scan en advies. Je komt niet op een
           mailinglijst.{' '}
           <Link to="/privacyverklaring">Privacyverklaring</Link>
         </p>

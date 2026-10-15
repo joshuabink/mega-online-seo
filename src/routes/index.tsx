@@ -470,7 +470,7 @@ function Home() {
           <div className="cases">
             <Reveal as="article" className="case reveal">
               <div className="case__media">
-                <Media id="case-qteam" fit="cover" placeholder="[ Q-Team Solutions ]" alt="Screenshot van de website die we voor Q-Team Solutions bouwden" />
+                <Media id="case-qteam" fit="cover" placeholder="[ Q-Team Solutions ]" alt="Screenshot van de website die MegaOnline voor Q-Team Solutions bouwde" />
               </div>
               {' '}
               <div className="case__body">
@@ -496,7 +496,7 @@ function Home() {
                   <div className="case__step">
                     <span className="k">Wat MegaOnline deed</span>
                     <p>
-                      We brachten de propositie terug naar een duidelijke boodschap en bouwden een structuur die bezoekers sneller naar de juiste informatie leidt.
+                      MegaOnline bracht de propositie terug naar een duidelijke boodschap en bouwde een structuur die bezoekers sneller naar de juiste informatie leidt.
                     </p>
                   </div>
                 </div>
@@ -513,7 +513,7 @@ function Home() {
             {' '}
             <Reveal as="article" className="case reveal" data-d="1">
               <div className="case__media">
-                <Media id="case-guestroom" fit="cover" placeholder="[ GuestRoomUtrecht ]" alt="Screenshot van de website die we voor GuestRoomUtrecht bouwden" />
+                <Media id="case-guestroom" fit="cover" placeholder="[ GuestRoomUtrecht ]" alt="Screenshot van de website die MegaOnline voor GuestRoomUtrecht bouwde" />
               </div>
               {' '}
               <div className="case__body">
@@ -537,7 +537,7 @@ function Home() {
                   <div className="case__step">
                     <span className="k">Wat MegaOnline deed</span>
                     <p>
-                      We ontwikkelden een visuele website met een duidelijke boekingsroute en focus op beleving.
+                      MegaOnline ontwikkelde een visuele website met een duidelijke boekingsroute en focus op beleving.
                     </p>
                   </div>
                 </div>

@@ -92,7 +92,7 @@ const FAQ_ITEMS: { q: string; a: ReactNode }[] = [
     q: "Hoe begin ik met een Conversie Website?",
     a: (
       <>
-        Je begint met een <Link to="/gratis-websitescan">gratis website scan</Link>. Je vult het formulier in. Daarna neemt MegaOnline contact met je op om het concept en het advies te bespreken. Het traject zelf heeft vijf stappen: begrijpen, structureren, ontwerpen, ontwikkelen en verbeteren.
+        Je begint met een <Link to="/gratis-websitescan">gratis website scan</Link>. Je vult het formulier in. Daarna neemt MegaOnline contact met je op om de website scan en het advies te bespreken. Het traject zelf heeft vijf stappen: begrijpen, structureren, ontwerpen, ontwikkelen en verbeteren.
       </>
     ),
   },
@@ -996,7 +996,7 @@ function ConversieWebsite() {
                   <div className="case__step">
                     <span className="k">Wat MegaOnline deed</span>
                     <p>
-                      We brachten de propositie terug naar een duidelijke boodschap en bouwden een structuur die bezoekers sneller naar de juiste informatie leidt.
+                      MegaOnline bracht de propositie terug naar een duidelijke boodschap en bouwde een structuur die bezoekers sneller naar de juiste informatie leidt.
                     </p>
                   </div>
                 </div>
@@ -1037,7 +1037,7 @@ function ConversieWebsite() {
                   <div className="case__step">
                     <span className="k">Wat MegaOnline deed</span>
                     <p>
-                      We ontwikkelden een visuele website met een duidelijke boekingsroute en focus op beleving.
+                      MegaOnline ontwikkelde een visuele website met een duidelijke boekingsroute en focus op beleving.
                     </p>
                   </div>
                 </div>
