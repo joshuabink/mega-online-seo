@@ -102,7 +102,6 @@ const ORGANIZATION = {
     caption: "MegaOnline.io",
   },
   email: "info@megaonline.io",
-  telephone: "+31634388938",
   priceRange: "€€",
   address: {
     "@type": "PostalAddress",
@@ -116,8 +115,7 @@ const ORGANIZATION = {
   contactPoint: [
     {
       "@type": "ContactPoint",
-      contactType: "sales",
-      telephone: "+31634388938",
+      contactType: "customer service",
       email: "info@megaonline.io",
       availableLanguage: ["nl", "en"],
       areaServed: "NL",

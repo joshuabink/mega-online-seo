@@ -38,5 +38,5 @@ test('website_hp gaat niet mee en velden worden getrimd en begrensd', () => {
 
 test('e-mail en telefoon worden gemaskeerd', () => {
   assert.equal(maskContact('janna@domain.nl'), 'j***@domain.nl')
-  assert.equal(maskContact('+31634388938'), '***38')
+  assert.equal(maskContact('+31612345678'), '***78')
 })

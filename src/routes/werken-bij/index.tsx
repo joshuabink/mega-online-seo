@@ -3,7 +3,7 @@ import { Icon } from "@/components/Icon";
 import { Qa } from "@/components/Qa";
 import { Reveal } from "@/components/Reveal";
 import { SollicitatieSectie } from "@/components/SollicitatieForm";
-import { VACATURES, VOORWAARDEN } from "@/lib/vacatures";
+import { VACATURES } from "@/lib/vacatures";
 import "@/styles/pages/werken-bij.css";
 
 const TITEL = "Werken bij MegaOnline | Stages, freelance en parttime";
@@ -57,9 +57,6 @@ function WerkenBij() {
               <Reveal as="div" className="svc-hero__ctas reveal" data-d="2">
                 <a className="btn btn-primary" href="#rollen">
                   Bekijk de open rollen
-                </a>{" "}
-                <a className="tlink" href={VOORWAARDEN.whatsappUrl} target="_blank" rel="noopener">
-                  Even appen kan ook
                 </a>
               </Reveal>
             </div>

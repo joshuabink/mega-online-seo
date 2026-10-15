@@ -44,16 +44,6 @@ export function SollicitatieSectie({
             </Reveal>
             <Reveal as="div" className="sol__direct reveal" data-d="1">
               <span className="sol__direct-head">Liever direct</span>
-              <a className="sol__row" href={VOORWAARDEN.whatsappUrl} target="_blank" rel="noopener">
-                <span className="vrow__ico">
-                  <Icon name="message-circle" />
-                </span>
-                <span className="vrow__txt">
-                  <h4>WhatsApp</h4>
-                  <p>{VOORWAARDEN.whatsapp}</p>
-                </span>
-                <Icon name="arrow-up-right" />
-              </a>
               <a className="sol__row" href={`mailto:${VOORWAARDEN.mail}?subject=Sollicitatie`}>
                 <span className="vrow__ico">
                   <Icon name="mail" />
