@@ -121,7 +121,7 @@ function StarterWebsite() {
               </h3>
               {' '}
               <p>
-                Als je net begint, heb je vaak nog geen ruimte voor een volledig maatwerktraject. Maar een rommelige doe-het-zelf-site of een gratis bouwertje doet je net zo goed tekort.
+                Als je net begint, heb je vaak nog geen ruimte voor een volledig maatwerktraject. Maar een rommelige doe-het-zelf-site of een gratis bouwertje doet je net zo goed tekort. Twijfel je ook tussen een freelancer en een bureau? Lees <Link to="/kennisbank/$slug" params={{ slug: 'freelance-webdesigner-of-webbureau' }}>freelance webdesigner of webbureau</Link>.
               </p>
               {' '}
               <p>
