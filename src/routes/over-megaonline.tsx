@@ -289,7 +289,7 @@ function OverMegaonline() {
             </h2>
             {' '}
             <p className="lead">
-              Het verschil zit niet in de techniek, maar in hoe MegaOnline naar jouw bedrijf en je bezoekers kijkt.
+              Het verschil zit niet in de techniek, maar in hoe MegaOnline naar jouw bedrijf en je bezoekers kijkt. Twijfel je tussen een freelancer en een bureau? Lees <Link to="/kennisbank/$slug" params={{ slug: 'freelance-webdesigner-of-webbureau' }}>freelance webdesigner of webbureau: wat past bij jou?</Link>.
             </p>
           </Reveal>
           {' '}

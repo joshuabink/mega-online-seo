@@ -32,7 +32,11 @@ export const Route = createFileRoute('/diensten/conversie-website')({
 const FAQ_ITEMS: { q: string; a: ReactNode }[] = [
   {
     q: "Waarom niet kiezen voor een goedkope webbouwer?",
-    a: "Een website bouwen is meer dan pagina's online zetten. Een goedkope website ziet er soms prima uit, maar denkt niet na over vertrouwen, gebruiksgemak en hoe bezoekers daadwerkelijk tot een aanvraag komen. MegaOnline bouwt vanuit dat doel. Dat is precies waar het verschil zit tussen een website die bestaat en een website die klanten oplevert.",
+    a: (
+      <>
+        Een website bouwen is meer dan pagina's online zetten. Een goedkope website ziet er soms prima uit, maar denkt niet na over vertrouwen, gebruiksgemak en hoe bezoekers daadwerkelijk tot een aanvraag komen. MegaOnline bouwt vanuit dat doel. Dat is precies waar het verschil zit tussen een website die bestaat en een website die klanten oplevert. Wat het verschil is tussen een freelancer en een bureau, lees je in <Link to="/kennisbank/$slug" params={{ slug: "freelance-webdesigner-of-webbureau" }}>freelancer of webbureau: wat past bij jou?</Link>.
+      </>
+    ),
   },
   {
     q: "Kan ik mijn website zelf beheren?",

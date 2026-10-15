@@ -37,7 +37,7 @@ const FAQ_ITEMS: { q: string; a: string }[] = [
   },
   {
     q: "Waarom niet kiezen voor een goedkope webbouwer?",
-    a: "Een website bouwen is meer dan pagina's online zetten. MegaOnline kijkt naar vertrouwen, gebruiksgemak en hoe bezoekers daadwerkelijk actie ondernemen.",
+    a: "Een website bouwen is meer dan pagina's online zetten. MegaOnline kijkt naar vertrouwen, gebruiksgemak en hoe bezoekers daadwerkelijk actie ondernemen. Twijfel je tussen een freelancer en een bureau? Lees de eerlijke vergelijking tussen een freelancer en een webbureau.",
   },
   {
     q: "Wat gebeurt er na livegang?",
@@ -878,7 +878,13 @@ function Home() {
           <div className="faq">
             {FAQ_ITEMS.map(({ q, a }) => (
               <Qa key={q} question={q} className="reveal">
-                {a}
+                {q === "Waarom niet kiezen voor een goedkope webbouwer?" ? (
+                  <>
+                    Een website bouwen is meer dan pagina's online zetten. MegaOnline kijkt naar vertrouwen, gebruiksgemak en hoe bezoekers daadwerkelijk actie ondernemen. Twijfel je tussen een freelancer en een bureau? Lees <Link to="/kennisbank/$slug" params={{ slug: 'freelance-webdesigner-of-webbureau' }}>de eerlijke vergelijking tussen een freelancer en een webbureau</Link>.
+                  </>
+                ) : (
+                  a
+                )}
               </Qa>
             ))}
           </div>

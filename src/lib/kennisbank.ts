@@ -912,6 +912,247 @@ export const ARTIKELEN: Artikel[] = [
     metaDescription:
       "SEO is zoekmachineoptimalisatie: zoekmachines helpen je content te begrijpen zodat mensen je site vinden. Wat het is, hoe Google werkt en wat je zelf checkt.",
   },
+  {
+    slug: "freelance-webdesigner-of-webbureau",
+    naam: "Freelance webdesigner of webbureau",
+    vraag: "Freelance webdesigner of webbureau: wat past bij jouw bedrijf?",
+    pijler: "Zo werkt het echt",
+    icoon: "users",
+    branche: "Algemeen",
+    teaser:
+      "Freelancer of webbureau? De eerlijke voor- en nadelen, wanneer welke keuze past en een checklist om zelf te kiezen.",
+    antwoord:
+      "Kies een freelance webdesigner als je project overzichtelijk is, je één vast aanspreekpunt wilt en je site na oplevering weinig verandert. Kies een webbureau als je meerdere vakgebieden nodig hebt, je site je belangrijkste bron van aanvragen is of uitval je direct klanten kost. Kwaliteit hangt aan mensen, niet aan de bedrijfsvorm.",
+    leestijd: "8 minuten",
+    gepubliceerd: "2026-10-15",
+    gewijzigd: "2026-10-15",
+    cta: "scan",
+    secties: [
+      {
+        kop: "Wat is het verschil tussen een freelancer en een webbureau?",
+        accent: "verschil",
+        alineas: [
+          "Een freelance webdesigner is één zelfstandige. Hij voert het gesprek, maakt het ontwerp, bouwt de site en doet meestal ook de nazorg. Soms werkt hij met een vaste tekstschrijver of fotograaf, maar de verantwoordelijkheid ligt bij één persoon.",
+          "Een webbureau is een bedrijf met meerdere mensen die elk een eigen rol hebben. Denk aan een ontwerper, een bouwer en iemand voor teksten of vindbaarheid. Bij grotere bureaus komen daar een projectleider en een accountmanager bij.",
+          '"Bureau" is een breed begrip. Het kan gaan om twee mensen of om een groot bedrijf met een eigen afdeling voor strategie. Vraag dus altijd hoe groot de partij is en wie er aan jouw site werkt.',
+        ],
+      },
+      {
+        kop: "Wat zijn de voordelen van een freelance webdesigner?",
+        accent: "voordelen",
+        alineas: [],
+        punten: [
+          {
+            titel: "Je praat met de maker.",
+            tekst: "Wat je bespreekt, hoeft niet via iemand anders te worden doorgegeven.",
+          },
+          {
+            titel: "Snel schakelen.",
+            tekst: "Er is weinig intern overleg. Een kleine wijziging is vaak snel geregeld.",
+          },
+          {
+            titel: "Minder organisatie in de prijs.",
+            tekst:
+              "Een freelancer hoeft geen kantoor, projectleider of accountmanager door te berekenen. Daardoor ligt het tarief vaak lager. Hoe groot dat verschil is, verschilt per partij.",
+          },
+          {
+            titel: "Geschikt voor afgebakende klussen.",
+            tekst:
+              "Een paar pagina's erbij of een nieuwe uitstraling voor een bestaande site vraagt geen grote organisatie.",
+          },
+        ],
+      },
+      {
+        kop: "Wat zijn de nadelen van een freelancer?",
+        accent: "nadelen",
+        alineas: [],
+        punten: [
+          {
+            titel: "Alles hangt aan één persoon.",
+            tekst: "Bij ziekte, vakantie of drukte ligt je project of je onderhoud stil.",
+          },
+          {
+            titel: "Een volle agenda.",
+            tekst: "Komt er een groter project tussendoor, dan kan het jouwe opschuiven.",
+          },
+          {
+            titel: "Eén persoon is zelden overal even sterk in.",
+            tekst: "Ontwerp, techniek, teksten en vindbaarheid in Google zijn vier verschillende vakken.",
+          },
+          {
+            titel: "Afspraken regel je vaker zelf.",
+            tekst: "Denk aan overdracht, documentatie en wie de site overneemt als het nodig is.",
+          },
+        ],
+      },
+      {
+        kop: "Wat zijn de voordelen van een webbureau?",
+        accent: "webbureau",
+        alineas: [],
+        punten: [
+          {
+            titel: "Meerdere vakgebieden onder één dak.",
+            tekst: "Ontwerp, bouw, teksten en vindbaarheid worden door verschillende mensen gedaan.",
+          },
+          {
+            titel: "Opvang bij uitval.",
+            tekst:
+              "Valt iemand weg, dan kan een ander verder. Dat werkt alleen als het werk intern goed is vastgelegd.",
+          },
+          {
+            titel: "Planbaarheid.",
+            tekst:
+              "Meerdere mensen kunnen tegelijk aan je site werken. Bij een harde deadline is dat prettig.",
+          },
+          {
+            titel: "Vaker een vaste afspraak voor onderhoud.",
+            tekst: "Updates, back-ups en kleine wijzigingen zijn dan geregeld.",
+          },
+        ],
+      },
+      {
+        kop: "En wat zijn de nadelen van een bureau?",
+        accent: "nadelen",
+        alineas: [],
+        punten: [
+          {
+            titel: "Een hogere prijs.",
+            tekst: "Je betaalt mee aan de organisatie: projectbegeleiding, vervanging en beschikbaarheid.",
+          },
+          {
+            titel: "Contact via een tussenpersoon.",
+            tekst:
+              "Bij veel bureaus spreek je een projectleider of accountmanager en niet degene die bouwt.",
+          },
+          {
+            titel: "Meer proces.",
+            tekst: "Een extra wens loopt vaak via een vaste route met een nieuwe offerte.",
+          },
+          {
+            titel: "Je kunt een kleine klant zijn.",
+            tekst:
+              "Bij een groot bureau krijgt een klein project niet altijd dezelfde aandacht als een groot.",
+          },
+        ],
+      },
+      {
+        kop: "Wat kost een freelancer of een bureau?",
+        accent: "kost",
+        alineas: [
+          "Dat verschilt sterk per persoon, ervaring en opdracht. Vergelijkingssites noemen bedragen die flink van elkaar afwijken, vaak zonder bron. Daarom staan hier geen tarieven.",
+          "Belangrijker dan het bedrag is wat erin zit. Een lage offerte zonder teksten, zonder basis voor vindbaarheid en zonder nazorg is niet goedkoper. Hij is alleen minder compleet. Vergelijk daarom altijd wat er af is bij oplevering en wat je daarna nog moet betalen.",
+        ],
+      },
+      {
+        kop: "Wanneer past een freelancer beter?",
+        accent: "freelancer",
+        alineas: [
+          `1. Je site heeft een beperkt aantal pagina's en geen zware koppelingen.
+2. Je levert zelf teksten en foto's aan.
+3. Je wilt één vast aanspreekpunt dat het hele project doet.
+4. Je site verandert na oplevering weinig.
+5. Je zoekt iemand voor één ding, zoals alleen het ontwerp.`,
+        ],
+      },
+      {
+        kop: "Wanneer past een webbureau beter?",
+        accent: "webbureau",
+        alineas: [
+          `1. Je project vraagt ontwerp, techniek, teksten en vindbaarheid tegelijk en je wilt dat niet zelf coördineren.
+2. Je website is je belangrijkste bron van aanvragen of boekingen. Stilstand kost je klanten.
+3. Je wilt de komende jaren doorbouwen, bijvoorbeeld met een boekingssysteem of een koppeling met je planning.
+4. Je hebt een harde deadline en planbaarheid weegt zwaarder dan snelheid.
+5. Er praten meerdere mensen in je bedrijf mee over de site.`,
+        ],
+      },
+      {
+        kop: "Waar let je op, wie je ook kiest?",
+        accent: "let je op",
+        alineas: [
+          "Deze punten gelden voor een freelancer en een bureau. Ook voor MegaOnline.",
+          `1. **Eigendom.** De domeinnaam staat op jouw naam. Je hebt zelf toegang tot hosting en beheer. Leg vast dat de site na betaling van jou is.
+2. **Dezelfde inhoud vergelijken.** Zet offertes naast elkaar op teksten, vindbaarheid, testen, nazorg en de prijs van latere wijzigingen.
+3. **Wie doet het werk?** Vraag wie je aanspreekpunt is, wie bouwt en wie het overneemt bij uitval.
+4. **Echt werk bekijken.** Kijk naar live websites, niet alleen naar ontwerpen. Vraag een klant die al een tijd met de partij werkt naar zijn ervaring. Waar je op een site op let, lees je in [hoe je vertrouwen wekt op een zakelijke website](/kennisbank/vertrouwen-wekken-zakelijke-website).
+5. **Na livegang.** Vraag wat er gebeurt als de site online staat. Wie houdt hem veilig en bijgewerkt? Wie werkt aan vindbaarheid?`,
+        ],
+      },
+      {
+        kop: "Beslischecklist: freelancer of bureau?",
+        accent: "Beslischecklist",
+        alineas: [
+          "Beantwoord deze zes vragen met ja of nee.",
+          `1. Is je website de belangrijkste plek waar aanvragen of boekingen binnenkomen?
+2. Heb je naast ontwerp en bouw ook hulp nodig bij teksten of vindbaarheid?
+3. Wil je de site de komende jaren uitbreiden?
+4. Kost een week stilstand je klanten?
+5. Wil je na oplevering iemand die de site bijhoudt en verbetert?
+6. Praten er meerdere mensen in je bedrijf mee?`,
+          "Vooral nee? Dan is een goede freelancer met heldere afspraken over overdracht een prima keuze. Vooral ja? Kijk dan naar een partij die meerdere vakgebieden in huis heeft en ook na livegang betrokken blijft.",
+        ],
+      },
+      {
+        kop: "Waar staat MegaOnline in dit verhaal?",
+        accent: "MegaOnline",
+        alineas: [
+          "Eerlijk vooraf: MegaOnline is geen neutrale partij. MegaOnline is opgericht door Joshua Bink en is klein van opzet. Je spreekt direct met Joshua, zonder accountmanagers of tussenlagen. MegaOnline werkt met een beperkt aantal bedrijven tegelijk.",
+          "MegaOnline bouwt vooral voor bedrijven die afhankelijk zijn van aanvragen, reserveringen en boekingen. Na livegang kun je blijven voor onderhoud en voor [vindbaarheid in Google en AI-zoekmachines](/diensten/seo). Dat is geen verplichting. Na oplevering en betaling is de website van jou, dus je zit niet vast aan MegaOnline.",
+          "In contact lijkt MegaOnline dus op een freelancer: je spreekt de maker zelf. Stel daarom dezelfde vragen als aan iedere andere partij, ook wie het werk doet en wat er gebeurt bij ziekte of vakantie. Meer over de werkwijze lees je op [Over MegaOnline](/over-megaonline).",
+          "Wil je weten waar jouw huidige site staat voordat je kiest? Vraag een [gratis website scan](/gratis-websitescan) aan. Binnen 5 werkdagen krijg je een rapport. Dat wordt daarna toegelicht in een persoonlijk videogesprek. Je krijgt eerlijk advies, ook als de conclusie is dat je MegaOnline (nog) niet nodig hebt.",
+        ],
+      },
+    ],
+    doen: [
+      "Zet de domeinnaam op jouw naam en controleer of je zelf in hosting en beheer kunt.",
+      "Leg offertes naast elkaar op dezelfde inhoud: teksten, vindbaarheid, testen, nazorg en de prijs van latere wijzigingen.",
+      "Vraag wie bouwt, wie je aanspreekpunt is en wie het overneemt bij ziekte of vakantie.",
+      "Bekijk live websites van de partij en vraag een bestaande klant naar zijn ervaring.",
+      "Beantwoord de zes vragen uit de checklist. Vooral nee wijst naar een freelancer, vooral ja naar een partij met meerdere vakgebieden.",
+    ],
+    faq: [
+      {
+        q: "Is een freelancer altijd goedkoper dan een bureau?",
+        a: "Per uur vaak wel, omdat er minder organisatie omheen zit. Per project kan het verschil kleiner zijn. Een offerte waar teksten, vindbaarheid of nazorg ontbreken lijkt goedkoper, maar die onderdelen betaal je later alsnog. Vergelijk daarom op dezelfde inhoud.",
+      },
+      {
+        q: "Levert een bureau betere kwaliteit?",
+        a: "Niet per definitie. Een ervaren freelancer kan beter werk leveren dan een middelmatig bureau. Beoordeel live werk, referenties en de manier van werken, niet de bedrijfsvorm.",
+      },
+      {
+        q: "Wat gebeurt er als je freelancer stopt of ziek wordt?",
+        a: "Dan kan je project vertragen tot er een oplossing is. Je beperkt dat risico als de domeinnaam en accounts op jouw naam staan, je toegang hebt tot hosting en beheer en belangrijke keuzes zijn vastgelegd.",
+      },
+      {
+        q: "Kun je later overstappen naar een andere partij?",
+        a: "Meestal wel, als je site in een gangbaar systeem is gebouwd en je alle toegangen hebt. Ontbreekt dat, dan kan een overstap uitlopen op gedeeltelijke herbouw. Regel dit dus aan het begin.",
+      },
+    ],
+    links: [
+      {
+        to: "/kennisbank/vertrouwen-wekken-zakelijke-website",
+        label: "Vertrouwen wekken op je website",
+        tekst: "Waar je op een zakelijke website op let voordat je een partij kiest.",
+      },
+      {
+        to: "/over-megaonline",
+        label: "Over MegaOnline",
+        tekst: "Hoe MegaOnline werkt en wie je spreekt.",
+      },
+      {
+        to: "/diensten/seo",
+        label: "SEO en GEO",
+        tekst: "Vindbaarheid in Google en AI-zoekmachines, als je daar na livegang mee verder wilt.",
+      },
+      {
+        to: "/gratis-websitescan",
+        label: "Gratis website scan",
+        tekst: "Een rapport over je huidige site, voordat je een freelancer of bureau kiest.",
+      },
+    ],
+    metaTitle: "Freelance webdesigner of webbureau: wat past? | MegaOnline",
+    metaDescription:
+      "Freelancer of webbureau voor je website? De eerlijke voor- en nadelen van allebei, wanneer welke keuze past en een korte checklist om zelf te kiezen.",
+  },
 ];
 
 /**

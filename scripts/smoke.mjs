@@ -166,6 +166,7 @@ async function controleerCtaTeksten(browser) {
       '/kennisbank/vertrouwen-wekken-zakelijke-website': { form: false },
       '/kennisbank/waar-boekingen-weglekken': { form: false },
       '/kennisbank/wat-is-seo': { form: false },
+      '/kennisbank/freelance-webdesigner-of-webbureau': { form: false },
     }[pad]
     if (kennisbankCta) {
       if (data.eind !== CTA_SCAN) fouten.push(`${pad} eind-CTA "${data.eind}"`)
@@ -1452,6 +1453,7 @@ for (const pad of [
   '/kennisbank/prijzen-op-website-verhuurbedrijf',
   '/kennisbank/waar-boekingen-weglekken',
   '/kennisbank/wat-is-seo',
+  '/kennisbank/freelance-webdesigner-of-webbureau',
 ]) {
   const data = await openKennisbank(pad)
   const schemaVragen = (data.faqVragen[0] ?? []).map(normTekst)
@@ -1561,6 +1563,141 @@ for (const pad of [
 }
 
 {
+  const res = await page.goto(BASE + '/kennisbank/freelance-webdesigner-of-webbureau', { waitUntil: 'load' })
+  await waitHydrated(page)
+  const artikel = await page.evaluate(() => {
+    const nodes = []
+    for (const el of document.querySelectorAll('script[type="application/ld+json"]')) {
+      try {
+        const data = JSON.parse(el.textContent || '')
+        const list = Array.isArray(data) ? data : data['@graph'] ? data['@graph'] : [data]
+        nodes.push(...list)
+      } catch {
+        /* ongeldige markup telt hieronder als ontbrekend schema */
+      }
+    }
+    const article = nodes.find((n) => n['@type'] === 'Article')
+    const faq = nodes.find((n) => n['@type'] === 'FAQPage')
+    const crumb = nodes.find((n) => n['@type'] === 'BreadcrumbList')
+    return {
+      h1: (document.querySelector('h1')?.textContent || '').replace(/\s+/g, ' ').trim(),
+      title: document.title,
+      description: document.querySelector('meta[name="description"]')?.getAttribute('content') || '',
+      vragen: [...document.querySelectorAll('section#faq .qa .qa__q')].map((el) =>
+        (el.textContent || '').replace(/\s+/g, ' ').trim(),
+      ),
+      ctaHref: document.querySelector('#scan a')?.getAttribute('href') || '',
+      ctaTekst: (document.querySelector('#scan a')?.textContent || '').replace(/\s+/g, ' ').trim(),
+      ctaKop: (document.querySelector('#scan h2')?.textContent || '').replace(/\s+/g, ' ').trim(),
+      checklist: (document.body.innerText || '').includes('Beantwoord deze zes vragen met ja of nee.'),
+      headline: article?.headline || '',
+      auteurNaam: article?.author?.name || '',
+      faqNamen: (faq?.mainEntity || []).map((q) => q.name),
+      kruimels: (crumb?.itemListElement || []).map((item) => item.name),
+      interne: [...new Set(
+        [...document.querySelectorAll('main a[href]')]
+          .map((a) => a.getAttribute('href') || '')
+          .filter((href) => href.startsWith('/') && !href.startsWith('//'))
+          .map((href) => href.split('#')[0] || '/'),
+      )],
+    }
+  })
+  check(
+    'freelancer-of-bureau geeft 200',
+    res?.status() === 200,
+    String(res?.status()),
+  )
+  check(
+    'freelancer-of-bureau title, meta en H1',
+    artikel.h1 === 'Freelance webdesigner of webbureau: wat past bij jouw bedrijf?' &&
+      artikel.title === 'Freelance webdesigner of webbureau: wat past? | MegaOnline' &&
+      artikel.description ===
+        'Freelancer of webbureau voor je website? De eerlijke voor- en nadelen van allebei, wanneer welke keuze past en een korte checklist om zelf te kiezen.',
+    `h1=${artikel.h1} title=${artikel.title}`,
+  )
+  check(
+    'freelancer-of-bureau toont de vier FAQ-vragen',
+    artikel.vragen.length === 4 &&
+      artikel.vragen[0] === 'Is een freelancer altijd goedkoper dan een bureau?' &&
+      artikel.vragen[1] === 'Levert een bureau betere kwaliteit?' &&
+      artikel.vragen[2] === 'Wat gebeurt er als je freelancer stopt of ziek wordt?' &&
+      artikel.vragen[3] === 'Kun je later overstappen naar een andere partij?' &&
+      artikel.faqNamen.join('|') === artikel.vragen.join('|'),
+    artikel.vragen.join(' | '),
+  )
+  check(
+    'freelancer-of-bureau heeft Article, FAQPage en kruimelpad',
+    artikel.headline === artikel.h1 &&
+      !artikel.auteurNaam &&
+      artikel.kruimels[0] === 'Home' &&
+      artikel.kruimels[1] === 'Kennisbank' &&
+      artikel.kruimels[2] === 'Freelance webdesigner of webbureau' &&
+      artikel.checklist,
+    `headline=${artikel.headline} kruimels=${artikel.kruimels.join(' > ')}`,
+  )
+  check(
+    'freelancer-of-bureau eindknop toont de scan-tekst',
+    artikel.ctaTekst === CTA_SCAN &&
+      artikel.ctaHref === '/gratis-websitescan' &&
+      artikel.ctaKop === 'Wil je weten wat je site laat liggen?' &&
+      !/nieuw ontwerp|websiteconcept/i.test(artikel.ctaTekst),
+    `${artikel.ctaHref} / ${artikel.ctaTekst}`,
+  )
+  const kapotBureau = []
+  for (const href of artikel.interne) {
+    const antwoord = await page.request.get(BASE + href)
+    if (antwoord.status() !== 200) kapotBureau.push(`${href} ${antwoord.status()}`)
+  }
+  check(
+    'interne links van freelancer-of-bureau geven 200',
+    kapotBureau.length === 0 &&
+      artikel.interne.includes('/gratis-websitescan') &&
+      artikel.interne.includes('/diensten/seo') &&
+      artikel.interne.includes('/over-megaonline') &&
+      artikel.interne.includes('/kennisbank/vertrouwen-wekken-zakelijke-website'),
+    kapotBureau.join(', ') || artikel.interne.join(' '),
+  )
+}
+
+{
+  const bronnen = [
+    {
+      pad: '/',
+      stuk: 'hoe bezoekers daadwerkelijk actie ondernemen. Twijfel je tussen een freelancer en een bureau? Lees de eerlijke vergelijking tussen een freelancer en een webbureau.',
+    },
+    {
+      pad: '/diensten/conversie-website',
+      stuk: 'een website die klanten oplevert. Wat het verschil is tussen een freelancer en een bureau, lees je in freelancer of webbureau: wat past bij jou?.',
+    },
+    {
+      pad: '/diensten/starter-website',
+      stuk: 'doet je net zo goed tekort. Twijfel je ook tussen een freelancer en een bureau? Lees freelance webdesigner of webbureau.',
+    },
+    {
+      pad: '/over-megaonline',
+      stuk: 'Het verschil zit niet in de techniek, maar in hoe MegaOnline naar jouw bedrijf en je bezoekers kijkt. Twijfel je tussen een freelancer en een bureau? Lees freelance webdesigner of webbureau: wat past bij jou?.',
+    },
+  ]
+  for (const bron of bronnen) {
+    await page.goto(BASE + bron.pad, { waitUntil: 'load' })
+    await waitHydrated(page)
+    const gevonden = await page.evaluate((stuk) => {
+      const tekst = (document.body.textContent || '').replace(/\s+/g, ' ')
+      const hrefs = [...document.querySelectorAll('a')].map((a) => a.getAttribute('href') || '')
+      return {
+        stuk: tekst.includes(stuk),
+        href: hrefs.includes('/kennisbank/freelance-webdesigner-of-webbureau'),
+      }
+    }, bron.stuk)
+    check(
+      `${bron.pad} linkt naar freelancer of webbureau`,
+      gevonden.stuk && gevonden.href,
+      `stuk=${gevonden.stuk} href=${gevonden.href}`,
+    )
+  }
+}
+
+{
   const data = await openKennisbank('/kennisbank/smoke-zonder-faq')
   check(
     'artikel zonder FAQ toont geen FAQ-blok en geen FAQPage',
@@ -1637,6 +1774,7 @@ for (const [pad, eind, form] of [
   ['/kennisbank/vertrouwen-wekken-zakelijke-website', CTA_SCAN, false],
   ['/kennisbank/waar-boekingen-weglekken', CTA_SCAN, false],
   ['/kennisbank/wat-is-seo', CTA_SCAN, false],
+  ['/kennisbank/freelance-webdesigner-of-webbureau', CTA_SCAN, false],
   ['/kennisbank/smoke-zonder-faq', CTA_SCAN, false],
 ]) {
   const artikel = await leesArtikelForm(pad)
@@ -1660,7 +1798,7 @@ for (const [pad, eind, form] of [
   );
   const dates = lastmods.map((list) => list[0] ?? "");
   check("sitemap 200", res.status() === 200, String(res.status()));
-  check("sitemap heeft 39 urls", blocks.length === 39, String(blocks.length));
+  check("sitemap heeft 40 urls", blocks.length === 40, String(blocks.length));
   const scanInSitemap = blocks.find((block) => block.includes("https://megaonline.io/gratis-websitescan"));
   check(
     "sitemap bevat de scan van vandaag en niet het oude conceptadres",
@@ -1685,12 +1823,20 @@ for (const [pad, eind, form] of [
     !!watIsSeo && /<lastmod>2026-10-14<\/lastmod>/.test(watIsSeo),
     watIsSeo ?? "ontbreekt",
   );
+  const freelancerBureau = blocks.find((block) =>
+    block.includes("https://megaonline.io/kennisbank/freelance-webdesigner-of-webbureau"),
+  );
+  check(
+    "sitemap bevat freelance-webdesigner-of-webbureau met lastmod 2026-10-15",
+    !!freelancerBureau && /<lastmod>2026-10-15<\/lastmod>/.test(freelancerBureau),
+    freelancerBureau ?? "ontbreekt",
+  );
   const kennisbankOverzicht = blocks.find((block) =>
     /<loc>https:\/\/megaonline\.io\/kennisbank<\/loc>/.test(block),
   );
   check(
     "kennisbankoverzicht lastmod volgt de nieuwste gewijzigd",
-    !!kennisbankOverzicht && /<lastmod>2026-10-14<\/lastmod>/.test(kennisbankOverzicht),
+    !!kennisbankOverzicht && /<lastmod>2026-10-15<\/lastmod>/.test(kennisbankOverzicht),
     kennisbankOverzicht ?? "ontbreekt",
   );
   check(
