@@ -765,61 +765,6 @@ function Home() {
       </section>
       {' '}
       {' '}
-      <section className="section section--tight" data-theme="paper" data-screen-label="Testimonials">
-        <div className="wrap">
-          <Reveal as="div" className="shead reveal">
-            <span className="label">Referenties</span>
-            {' '}
-            <h2 className="h2">Wat klanten ervan merkten.</h2>
-          </Reveal>
-          {' '}
-          <div className="quotes">
-            <Reveal as="figure" className="quote reveal">
-              <div className="quote__mark">”</div>
-              {' '}
-              <blockquote>
-                <p>
-                  Voor het eerst komen er aanvragen binnen waar we niets voor hoeven te doen. De site doet eindelijk het werk.
-                </p>
-              </blockquote>
-              {' '}
-              <figcaption className="quote__by">
-                <span className="quote__logo">
-                  <Media id="t1-logo" fit="contain" placeholder="LOGO" alt="" />
-                </span>
-                {' '}
-                <span>
-                  <span className="nm">Hennie</span>
-                  <span className="rl">Eigenaar · Zakelijke dienstverlening</span>
-                </span>
-              </figcaption>
-            </Reveal>
-            {' '}
-            <Reveal as="figure" className="quote reveal" data-d="1">
-              <div className="quote__mark">”</div>
-              {' '}
-              <blockquote>
-                <p>
-                  Gasten boeken nu direct via de site. Ook 's avonds laat. Precies wat we nodig hadden.
-                </p>
-              </blockquote>
-              {' '}
-              <figcaption className="quote__by">
-                <span className="quote__logo">
-                  <Media id="t2-logo" fit="contain" placeholder="LOGO" alt="" />
-                </span>
-                {' '}
-                <span>
-                  <span className="nm">Margriet</span>
-                  <span className="rl">Eigenaar · Bed & Breakfast</span>
-                </span>
-              </figcaption>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-      {' '}
-      {' '}
       <section className="section" data-theme="light" data-screen-label="Team / Visie">
         <div className="wrap">
           <div className="vision">
