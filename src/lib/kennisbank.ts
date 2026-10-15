@@ -37,6 +37,8 @@ export type ArtikelSectie = {
   alineas: string[];
   /** Optionele opsomming met korte kop per punt. */
   punten?: { titel: string; tekst: string }[];
+  /** Alinea's die ná de opsomming komen, bijvoorbeeld een conclusie. */
+  daarna?: string[];
 };
 
 export type Artikel = {
@@ -68,6 +70,10 @@ export type Artikel = {
    * Eindknop. Alleen `scan`, of weglaten: dat is hetzelfde.
    */
   cta?: "scan";
+  /** Kop van de eind-CTA. Weglaten houdt de standaardvraag. */
+  eindKop?: string;
+  /** Tekst onder die kop. Weglaten houdt de standaardzin. Links als [label](/pad). */
+  eindLead?: string;
   /** Conceptformulier na de laatste uitlegsectie, vóór "Wat je morgen kunt doen". */
   conceptForm?: boolean;
   secties: ArtikelSectie[];
@@ -1152,6 +1158,192 @@ export const ARTIKELEN: Artikel[] = [
     metaTitle: "Freelance webdesigner of webbureau: wat past? | MegaOnline",
     metaDescription:
       "Freelancer of webbureau voor je website? De eerlijke voor- en nadelen van allebei, wanneer welke keuze past en een korte checklist om zelf te kiezen.",
+  },
+  {
+    slug: "gevonden-worden-in-chatgpt",
+    naam: "Gevonden worden in ChatGPT",
+    vraag: "Hoe word je als mkb'er gevonden in ChatGPT?",
+    pijler: "Zo werkt het echt",
+    icoon: "search",
+    branche: "Algemeen",
+    teaser:
+      "Hoe word je als mkb'er genoemd in ChatGPT en het AI-overzicht van Google? Eigen metingen en wat je vandaag kunt doen.",
+    antwoord:
+      "Door eerst goed vindbaar te zijn in zoekmachines en daarnaast op meer plekken dan je eigen website te staan. ChatGPT kan live op het web zoeken en het AI-overzicht van Google haalt pagina's uit de zoekindex van Google. Wie daar niet in staat, wordt minder snel genoemd.\n\n\"Ik vroeg het even aan ChatGPT.\" Zegt een klant dat, dan heeft een installateur in Gouda of een verhuurbedrijf in Utrecht een nieuwe vraag: hoe kom je in dat ene antwoord terecht? Hieronder lees je wat eigen metingen laten zien, wat Google en OpenAI erover zeggen en wat je vandaag kunt doen. Zonder trucs en zonder beloftes, want niemand kan garanderen dat een AI jouw bedrijf noemt.",
+    leestijd: "7 minuten",
+    gepubliceerd: "2026-10-15",
+    gewijzigd: "2026-10-15",
+    cta: "scan",
+    eindKop: "Wil je weten hoe jouw website ervoor staat, ook voor AI-zoekmachines?",
+    eindLead:
+      "Vraag de [gratis website scan](/gratis-websitescan) aan. Binnen 5 werkdagen krijg je een rapport en wordt de uitkomst met je besproken in een persoonlijk videogesprek.",
+    secties: [
+      {
+        kop: "Hoe kiest een AI-zoekmachine welke bedrijven hij noemt?",
+        accent: "kiest",
+        alineas: [
+          "Een AI-zoekmachine zet je vraag om in een of meer zoekopdrachten, leest de pagina's die daaruit komen en schrijft een samenvatting met links. Google noemt dat query fan-out. OpenAI schrijft dat ChatGPT je vraag herschrijft tot zoekopdrachten en daarvoor samenwerkt met zoekpartners, waaronder Microsoft (OpenAI Help, gelezen 15-10-2026).",
+          "Voor een link in AI Overviews of AI Mode moet een pagina in de index van Google staan en met een tekstfragment getoond kunnen worden (Google Search Central). Een AI noemt dus vooral bedrijven die hij op het web tegenkomt: op je eigen site en op plekken waar anderen over je schrijven.",
+        ],
+      },
+      {
+        kop: "Zoekt ChatGPT bij elke vraag op het web?",
+        accent: "ChatGPT",
+        alineas: [
+          "Nee. Het Amerikaanse marketingbureau Nectiv liet in oktober 2025 ruim 8.500 koopgerichte vragen door zijn eigen meettool lopen. ChatGPT zocht bij 31% daarvan op het web, gemiddeld 2,17 keer per vraag. Bij lokale vragen was dat 59%. Het gaat om data van één bureau, niet om Nederlands onderzoek. Toch wijst het erop dat een vraag als 'goede installateur in Gouda' vaak tot een zoekopdracht leidt.",
+        ],
+      },
+      {
+        kop: "Wat twee kleine steekproeven laten zien",
+        accent: "steekproeven",
+        alineas: [
+          "MegaOnline test dit sinds september ook voor de eigen site. Het gaat om kleine steekproeven, elk op één dag. AI-antwoorden verschillen per persoon, moment en formulering. Zie het als momentopname, niet als bewijs.",
+        ],
+        punten: [
+          {
+            titel: "Steekproef 1: webbureaus (1 oktober 2026).",
+            tekst:
+              '10 vragen aan ChatGPT, uitgelogd, elke vraag in een nieuw gesprek. Bijvoorbeeld: "Wat is een goed klein webbureau voor mkb-bedrijven met reserveringen in de buurt van Gouda?" MegaOnline werd in 0 van de 10 antwoorden genoemd (één antwoord bleef leeg). Dat past bij een controle op 26 september: MegaOnline stond toen in geen van de 12 bekeken gidsen. Dat is het gat dat dit artikel beschrijft en het nulpunt voor de eigen metingen. Bij vragen over boekingswebsites noemde ChatGPT naast bureaus ook softwareleveranciers met een eigen pagina per branche.',
+          },
+          {
+            titel: "Steekproef 2: een nieuwe Nederlandse vergelijkingssite (5 oktober 2026).",
+            tekst:
+              "8 vragen in ChatGPT (uitgelogd, nieuw gesprek per vraag), Gemini en Google (allebei ingelogd, dus mogelijk persoonlijk gekleurd). Samen 24 antwoorden. De site stond toen nog niet aantoonbaar in Google of Bing en werd in 1 antwoord genoemd. Het AI-overzicht van Google verscheen bij alle 8 vragen. Vaak terugkerende bronnen: Bedrijfssoftwaregids, Appwiki en SoftwareKiezer.",
+          },
+        ],
+        daarna: [
+          "De voorzichtige conclusie: alleen een eigen website was in deze twee tests niet genoeg om genoemd te worden. De antwoorden leunden zichtbaar op gidsen, vergelijkingssites en leveranciers met een pagina per branche. Een richting, geen regel.",
+        ],
+      },
+      {
+        kop: "Wat Google zelf zegt over AI-zoekresultaten",
+        accent: "Google",
+        alineas: [],
+        punten: [
+          {
+            titel: "Gewone vindbaarheid blijft de basis.",
+            tekst:
+              "Volgens Google is optimaliseren voor AI in Google Search gewoon SEO: laat zoekmachines je pagina's lezen, link je pagina's goed onderling en zet belangrijke inhoud als tekst op de pagina (AI-optimalisatiegids, bijgewerkt 10-07-2026).",
+          },
+          {
+            titel: "Eén instelling in Search Console.",
+            tekst:
+              "Je site moet bij de instelling voor generatieve AI op 'opnemen' staan. Dat is de standaard, dus meestal hoef je niets te doen (Search Console Help, uitgerold per 31-08-2026).",
+          },
+          {
+            titel: "Schrijf wat alleen jij kunt schrijven.",
+            tekst: "Google waardeert een eigen invalshoek en praktijkervaring boven algemene tips.",
+          },
+          {
+            titel: "Maak niet voor elke zoekvariant een pagina.",
+            tekst:
+              "Veel bijna gelijke pagina's om AI-antwoorden te sturen valt onder misbruik door massaal gemaakte content.",
+          },
+          {
+            titel: "Houd je Bedrijfsprofiel actueel.",
+            tekst:
+              "Google noemt het als hulp voor zichtbaarheid in AI-antwoorden. Het kan alleen als je klanten persoonlijk contact biedt; bedrijven die alleen online werken komen niet in aanmerking.",
+          },
+          {
+            titel: "Nepvermeldingen leveren weinig op.",
+            tekst: "Het najagen van onechte vermeldingen helpt volgens Google minder dan het lijkt.",
+          },
+        ],
+      },
+      {
+        kop: "Zo vergroot je je kans, stap voor stap",
+        accent: "stap voor stap",
+        alineas: [],
+        punten: [
+          {
+            titel: "1. Laat zoekmachines en AI-crawlers binnen.",
+            tekst:
+              "Controleer je robots.txt. OpenAI raadt aan OAI-SearchBot toe te laten als je in de zoekresultaten van ChatGPT wilt verschijnen. Vraag je webbouwer of een beveiligingsinstelling geen bots tegenhoudt.",
+          },
+          {
+            titel: "2. Meld je site aan bij Google en Bing.",
+            tekst:
+              "Gebruik Google Search Console en Bing Webmaster Tools en dien je sitemap in. Kijk in Search Console of de instelling voor generatieve AI op 'opnemen' staat.",
+          },
+          {
+            titel: "3. Beantwoord de vraag bovenaan.",
+            tekst:
+              "Begin elke pagina met het antwoord in één of twee zinnen. Noem daarna concrete feiten: wat je doet, voor wie, in welk gebied en hoe het werkt.",
+          },
+          {
+            titel: "4. Zorg dat je bedrijf overal hetzelfde heet.",
+            tekst:
+              "Gebruik dezelfde naam, contactgegevens en omschrijving op je site, LinkedIn, de KvK en in gidsen. Lijkt je naam op die van een ander bedrijf? Noem dan ook je domeinnaam. Dat helpt om het verschil duidelijk te maken.",
+          },
+          {
+            titel: "5. Sta ook op andere plekken dan je eigen site.",
+            tekst:
+              "Een actueel Bedrijfsprofiel als je daarvoor in aanmerking komt, een paar relevante gidsen of branchesites, je brancheorganisatie. In de tweede steekproef kwamen vooral gidsen en vergelijkingssites terug als bron. Vraag tevreden klanten om een eerlijke review. Meer daarover in [Hoe wek je vertrouwen op een zakelijke website?](/kennisbank/vertrouwen-wekken-zakelijke-website)",
+          },
+          {
+            titel: "6. Meet het zelf, op een vaste manier.",
+            tekst:
+              "Kies 10 vragen die je klanten zouden stellen. Stel ze elke maand opnieuw, uitgelogd en in een nieuw gesprek. Noteer of je genoemd wordt en welke bronnen erbij staan. Kijk naar het patroon over maanden.",
+          },
+        ],
+      },
+      {
+        kop: "En je aanvragen dan?",
+        accent: "aanvragen",
+        alineas: [
+          "Genoemd worden is pas de eerste stap. Wie via ChatGPT op je site komt, moet snel zien wat je doet en hoe hij contact opneemt. Waar het daarna vaak misgaat lees je in [Waarom levert je website geen aanvragen of klanten op?](/kennisbank/website-levert-geen-aanvragen-op) Meer over vindbaarheid in Google en AI lees je bij [SEO en GEO](/diensten/seo).",
+        ],
+      },
+    ],
+    doen: [
+      "robots.txt blokkeert geen zoekmachines of AI-zoekcrawlers",
+      "Site aangemeld in Google Search Console en Bing Webmaster Tools, sitemap ingediend, instelling voor generatieve AI op 'opnemen'",
+      "Elke dienstpagina begint met een direct antwoord en concrete feiten",
+      "Naam, contactgegevens en omschrijving overal gelijk",
+      "Elke maand dezelfde 10 vragen getest en genoteerd",
+    ],
+    faq: [
+      {
+        q: "Kan een bureau garanderen dat ChatGPT mijn bedrijf noemt?",
+        a: "Nee. OpenAI schrijft zelf dat zoekresultaten en bronvermeldingen in ChatGPT onvolledig, verouderd of onjuist kunnen zijn. Je kunt je kans vergroten met goede vindbaarheid en vermeldingen op andere sites, maar niemand bepaalt wat een AI antwoordt.",
+      },
+      {
+        q: "Moet ik een llms.txt-bestand maken?",
+        a: "Voor Google niet. Google schreef op 15 juni 2026 dat een llms.txt-bestand je zichtbaarheid in Google Search niet helpt en niet schaadt. Speciale opmaak voor AI is volgens Google ook niet nodig.",
+      },
+      {
+        q: "Moet ik iets instellen in Google Search Console?",
+        a: "Meestal niet. Je site moet bij de instelling voor generatieve AI op 'opnemen' staan. Dat is de standaard. Sinds 31 augustus 2026 is die instelling voor alle sites beschikbaar. Kijk het één keer na.",
+      },
+      {
+        q: "Helpt een FAQ-blok om door AI geciteerd te worden?",
+        a: "Alleen met echte antwoorden. In een nog niet door vakgenoten beoordeeld onderzoek naar ruim 21.000 citaties in ChatGPT, Google en Perplexity (Zhang e.a., april 2026) hadden pagina's met alleen een vraag-en-antwoordopmaak geen voordeel. Pagina's met definities, cijfers, vergelijkingen en stappen hadden meer invloed op het antwoord.",
+      },
+      {
+        q: "Hoe meet ik of ik genoemd word?",
+        a: "Stel elke maand dezelfde 10 klantvragen, uitgelogd en in een nieuw gesprek. Noteer of je genoemd wordt en welke bronnen erbij staan. In Search Console zie je daarnaast vertoningen in de AI-functies van Google per pagina, maar niet de losse vragen.",
+      },
+    ],
+    links: [
+      {
+        to: "/kennisbank/vertrouwen-wekken-zakelijke-website",
+        label: "Vertrouwen wekken op je website",
+        tekst: "Waar je op een zakelijke website op let, ook als een AI je noemt.",
+      },
+      {
+        to: "/kennisbank/website-levert-geen-aanvragen-op",
+        label: "Website levert geen aanvragen op",
+        tekst: "Waar het misgaat nadat iemand via ChatGPT op je site komt.",
+      },
+      {
+        to: "/diensten/seo",
+        label: "SEO en GEO",
+        tekst: "Vindbaarheid in Google en in AI-zoekmachines, als doorlopend traject.",
+      },
+    ],
+    metaTitle: "Gevonden worden in ChatGPT als mkb'er | MegaOnline",
+    metaDescription:
+      "Hoe word je als mkb'er genoemd in ChatGPT en het AI-overzicht van Google? Eigen metingen, wat Google en OpenAI zeggen en wat je vandaag kunt doen.",
   },
 ];
 

@@ -242,6 +242,11 @@ function ArtikelPagina() {
                 ))}
               </div>
             ) : null}
+            {s.daarna?.map((p) => (
+              <Reveal as="p" className="reveal" key={p.slice(0, 40)}>
+                <RichTekst tekst={p} />
+              </Reveal>
+            ))}
           </div>
         </section>
       ))}{" "}
@@ -335,9 +340,15 @@ function ArtikelPagina() {
         <div className="wrap">
           <Reveal as="div" className="shead shead--center reveal">
             <span className="label">Aan de slag</span>{" "}
-            <h2 className="display">Wil je weten wat je site laat liggen?</h2>{" "}
+            <h2 className="display">
+              {a.eindKop ?? "Wil je weten wat je site laat liggen?"}
+            </h2>{" "}
             <p className="lead">
-              Beantwoord zes korte vragen. Daarna kijkt MegaOnline persoonlijk naar je bedrijf en zie je hoe je website meer aanvragen en boekingen kan opleveren.
+              {a.eindLead ? (
+                <RichTekst tekst={a.eindLead} />
+              ) : (
+                "Beantwoord zes korte vragen. Daarna kijkt MegaOnline persoonlijk naar je bedrijf en zie je hoe je website meer aanvragen en boekingen kan opleveren."
+              )}
             </p>{" "}
             <Reveal
               as="div"

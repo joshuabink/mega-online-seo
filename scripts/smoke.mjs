@@ -173,6 +173,7 @@ async function controleerCtaTeksten(browser) {
       '/kennisbank/waar-boekingen-weglekken': { form: false },
       '/kennisbank/wat-is-seo': { form: false },
       '/kennisbank/freelance-webdesigner-of-webbureau': { form: false },
+      '/kennisbank/gevonden-worden-in-chatgpt': { form: false },
     }[pad]
     if (kennisbankCta) {
       if (data.eind !== CTA_SCAN) fouten.push(`${pad} eind-CTA "${data.eind}"`)
@@ -1455,6 +1456,7 @@ for (const pad of [
   '/kennisbank/waar-boekingen-weglekken',
   '/kennisbank/wat-is-seo',
   '/kennisbank/freelance-webdesigner-of-webbureau',
+  '/kennisbank/gevonden-worden-in-chatgpt',
 ]) {
   const data = await openKennisbank(pad)
   const schemaVragen = (data.faqVragen[0] ?? []).map(normTekst)
@@ -1699,6 +1701,131 @@ for (const pad of [
 }
 
 {
+  const res = await page.goto(BASE + '/kennisbank/gevonden-worden-in-chatgpt', { waitUntil: 'load' })
+  await waitHydrated(page)
+  const artikel = await page.evaluate(() => {
+    const nodes = []
+    for (const el of document.querySelectorAll('script[type="application/ld+json"]')) {
+      try {
+        const data = JSON.parse(el.textContent || '')
+        const list = Array.isArray(data) ? data : data['@graph'] ? data['@graph'] : [data]
+        nodes.push(...list)
+      } catch {
+        /* ongeldige markup telt hieronder als ontbrekend schema */
+      }
+    }
+    const article = nodes.find((n) => n['@type'] === 'Article')
+    const faq = nodes.find((n) => n['@type'] === 'FAQPage')
+    const crumb = nodes.find((n) => n['@type'] === 'BreadcrumbList')
+    return {
+      h1: (document.querySelector('h1')?.textContent || '').replace(/\s+/g, ' ').trim(),
+      title: document.title,
+      description: document.querySelector('meta[name="description"]')?.getAttribute('content') || '',
+      leestijd: (document.querySelector('.art__meta')?.textContent || '').replace(/\s+/g, ' ').trim(),
+      vragen: [...document.querySelectorAll('section#faq .qa .qa__q')].map((el) =>
+        (el.textContent || '').replace(/\s+/g, ' ').trim(),
+      ),
+      doen: [...document.querySelectorAll('.art__doen li')].map((el) =>
+        (el.textContent || '').replace(/\s+/g, ' ').trim(),
+      ),
+      ctaHref: document.querySelector('#scan a.btn')?.getAttribute('href') || '',
+      ctaTekst: (document.querySelector('#scan a.btn')?.textContent || '').replace(/\s+/g, ' ').trim(),
+      ctaKop: (document.querySelector('#scan h2')?.textContent || '').replace(/\s+/g, ' ').trim(),
+      ctaLead: (document.querySelector('#scan .lead')?.textContent || '').replace(/\s+/g, ' ').trim(),
+      headline: article?.headline || '',
+      auteurNaam: article?.author?.name || '',
+      auteurId: article?.author?.['@id'] || '',
+      publisherId: article?.publisher?.['@id'] || '',
+      faqNamen: (faq?.mainEntity || []).map((q) => q.name),
+      kruimels: (crumb?.itemListElement || []).map((item) => item.name),
+      interne: [...new Set(
+        [...document.querySelectorAll('main a[href]')]
+          .map((a) => a.getAttribute('href') || '')
+          .filter((href) => href.startsWith('/') && !href.startsWith('//'))
+          .map((href) => href.split('#')[0] || '/'),
+      )],
+    }
+  })
+  check('chatgpt-mkb geeft 200', res?.status() === 200, String(res?.status()))
+  check(
+    'chatgpt-mkb title, meta en H1',
+    artikel.h1 === "Hoe word je als mkb'er gevonden in ChatGPT?" &&
+      artikel.title === "Gevonden worden in ChatGPT als mkb'er | MegaOnline" &&
+      artikel.description ===
+        "Hoe word je als mkb'er genoemd in ChatGPT en het AI-overzicht van Google? Eigen metingen, wat Google en OpenAI zeggen en wat je vandaag kunt doen." &&
+      artikel.leestijd.startsWith('7 minuten lezen'),
+    `h1=${artikel.h1} title=${artikel.title} leestijd=${artikel.leestijd}`,
+  )
+  check(
+    'chatgpt-mkb toont de vijf FAQ-vragen',
+    artikel.vragen.length === 5 &&
+      artikel.vragen[0] === 'Kan een bureau garanderen dat ChatGPT mijn bedrijf noemt?' &&
+      artikel.vragen[1] === 'Moet ik een llms.txt-bestand maken?' &&
+      artikel.vragen[2] === 'Moet ik iets instellen in Google Search Console?' &&
+      artikel.vragen[3] === 'Helpt een FAQ-blok om door AI geciteerd te worden?' &&
+      artikel.vragen[4] === 'Hoe meet ik of ik genoemd word?' &&
+      artikel.faqNamen.join('|') === artikel.vragen.join('|'),
+    artikel.vragen.join(' | '),
+  )
+  check(
+    'chatgpt-mkb heeft Article, FAQPage en kruimelpad',
+    artikel.headline === artikel.h1 &&
+      !artikel.auteurNaam &&
+      artikel.auteurId === 'https://megaonline.io/#joshua-bink' &&
+      artikel.publisherId === 'https://megaonline.io/#organization' &&
+      artikel.kruimels[0] === 'Home' &&
+      artikel.kruimels[1] === 'Kennisbank' &&
+      artikel.kruimels[2] === 'Gevonden worden in ChatGPT',
+    `headline=${artikel.headline} auteur=${artikel.auteurId} kruimels=${artikel.kruimels.join(' > ')}`,
+  )
+  check(
+    'chatgpt-mkb eindigt op de scan met de slottekst',
+    artikel.ctaTekst === CTA_SCAN &&
+      artikel.ctaHref === '/gratis-websitescan' &&
+      artikel.ctaKop === 'Wil je weten hoe jouw website ervoor staat, ook voor AI-zoekmachines?' &&
+      artikel.ctaLead ===
+        'Vraag de gratis website scan aan. Binnen 5 werkdagen krijg je een rapport en wordt de uitkomst met je besproken in een persoonlijk videogesprek.' &&
+      artikel.doen.length === 5 &&
+      artikel.doen[0] === 'robots.txt blokkeert geen zoekmachines of AI-zoekcrawlers',
+    `${artikel.ctaHref} / ${artikel.ctaKop}`,
+  )
+  const kapotChat = []
+  for (const href of artikel.interne) {
+    const antwoord = await page.request.get(BASE + href)
+    if (antwoord.status() !== 200) kapotChat.push(`${href} ${antwoord.status()}`)
+  }
+  check(
+    'interne links van chatgpt-mkb geven 200',
+    kapotChat.length === 0 &&
+      artikel.interne.includes('/gratis-websitescan') &&
+      artikel.interne.includes('/diensten/seo') &&
+      artikel.interne.includes('/kennisbank/vertrouwen-wekken-zakelijke-website') &&
+      artikel.interne.includes('/kennisbank/website-levert-geen-aanvragen-op'),
+    kapotChat.join(', ') || artikel.interne.join(' '),
+  )
+}
+
+{
+  await page.goto(BASE + '/diensten/seo', { waitUntil: 'load' })
+  await waitHydrated(page)
+  const seoBron = await page.evaluate(() => {
+    const tekst = (document.body.textContent || '').replace(/\s+/g, ' ')
+    const hrefs = [...document.querySelectorAll('a')].map((a) => a.getAttribute('href') || '')
+    return {
+      stuk: tekst.includes(
+        "en de website zorgt dat er wat uitkomt. Hoe AI-zoekmachines bedrijven kiezen om te noemen, lees je in gevonden worden in ChatGPT als mkb'er.",
+      ),
+      href: hrefs.includes('/kennisbank/gevonden-worden-in-chatgpt'),
+    }
+  })
+  check(
+    '/diensten/seo linkt naar gevonden worden in ChatGPT',
+    seoBron.stuk && seoBron.href,
+    `stuk=${seoBron.stuk} href=${seoBron.href}`,
+  )
+}
+
+{
   const data = await openKennisbank('/kennisbank/smoke-zonder-faq')
   check(
     'artikel zonder FAQ toont geen FAQ-blok en geen FAQPage',
@@ -1776,6 +1903,7 @@ for (const [pad, eind, form] of [
   ['/kennisbank/waar-boekingen-weglekken', CTA_SCAN, false],
   ['/kennisbank/wat-is-seo', CTA_SCAN, false],
   ['/kennisbank/freelance-webdesigner-of-webbureau', CTA_SCAN, false],
+  ['/kennisbank/gevonden-worden-in-chatgpt', CTA_SCAN, false],
   ['/kennisbank/smoke-zonder-faq', CTA_SCAN, false],
 ]) {
   const artikel = await leesArtikelForm(pad)
@@ -1799,7 +1927,7 @@ for (const [pad, eind, form] of [
   );
   const dates = lastmods.map((list) => list[0] ?? "");
   check("sitemap 200", res.status() === 200, String(res.status()));
-  check("sitemap heeft 40 urls", blocks.length === 40, String(blocks.length));
+  check("sitemap heeft 41 urls", blocks.length === 41, String(blocks.length));
   const scanInSitemap = blocks.find((block) => block.includes("https://megaonline.io/gratis-websitescan"));
   check(
     "sitemap bevat de scan van vandaag en niet het oude conceptadres",
@@ -1831,6 +1959,14 @@ for (const [pad, eind, form] of [
     "sitemap bevat freelance-webdesigner-of-webbureau met lastmod 2026-10-15",
     !!freelancerBureau && /<lastmod>2026-10-15<\/lastmod>/.test(freelancerBureau),
     freelancerBureau ?? "ontbreekt",
+  );
+  const chatgpt = blocks.find((block) =>
+    block.includes("https://megaonline.io/kennisbank/gevonden-worden-in-chatgpt"),
+  );
+  check(
+    "sitemap bevat gevonden-worden-in-chatgpt met lastmod 2026-10-15",
+    !!chatgpt && /<lastmod>2026-10-15<\/lastmod>/.test(chatgpt),
+    chatgpt ?? "ontbreekt",
   );
   const kennisbankOverzicht = blocks.find((block) =>
     /<loc>https:\/\/megaonline\.io\/kennisbank<\/loc>/.test(block),
