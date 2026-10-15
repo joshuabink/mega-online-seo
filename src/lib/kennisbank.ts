@@ -923,7 +923,7 @@ export const ARTIKELEN: Artikel[] = [
       "Freelancer of webbureau? De eerlijke voor- en nadelen, wanneer welke keuze past en een checklist om zelf te kiezen.",
     antwoord:
       "Kies een freelance webdesigner als je project overzichtelijk is, je één vast aanspreekpunt wilt en je site na oplevering weinig verandert. Kies een webbureau als je meerdere vakgebieden nodig hebt, je site je belangrijkste bron van aanvragen is of uitval je direct klanten kost. Kwaliteit hangt aan mensen, niet aan de bedrijfsvorm.",
-    leestijd: "8 minuten",
+    leestijd: "7 minuten",
     gepubliceerd: "2026-10-15",
     gewijzigd: "2026-10-15",
     cta: "scan",
