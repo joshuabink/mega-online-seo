@@ -6,7 +6,6 @@ import { Qa } from '@/components/Qa'
 import { Reveal } from '@/components/Reveal'
 import { ConceptForm } from '@/components/ConceptForm'
 import { CTA_SCAN } from '@/lib/cta'
-import { CONTACT_REACTIETIJD } from '@/lib/lead-contact'
 
 export const Route = createFileRoute('/diensten/website-redesign')({
   head: () => ({
@@ -806,11 +805,11 @@ function WebsiteRedesign() {
             </Qa>
             {' '}
             <Qa question="Wat gebeurt er met SEO?" className="reveal">
-                Daar let MegaOnline bewust op. We behouden wat goed scoort, zetten redirects waar nodig en houden de SEO-basis op orde, zodat je vindbaarheid niet inzakt na de livegang maar juist een gezonde basis houdt.
+                Daar let MegaOnline bewust op. MegaOnline behoudt wat goed scoort, zet redirects waar nodig en houdt de SEO-basis op orde, zodat je vindbaarheid niet inzakt na de livegang maar juist een gezonde basis houdt.
             </Qa>
             {' '}
             <Qa question="Hoe lang duurt een redesign?" className="reveal">
-                Dat hangt af van de omvang en hoe snel content en feedback rond zijn. Een redesign is doorgaans een traject van enkele weken. Na de website scan en de kennismaking geeft MegaOnline een realistische inschatting voor jouw situatie.
+                Dat hangt af van de omvang en hoe snel content en feedback rond zijn. Na de website scan en de kennismaking geeft MegaOnline een realistische inschatting voor jouw situatie.
             </Qa>
             {' '}
             <Qa question="Is een redesign altijd beter dan optimaliseren?" className="reveal">
@@ -883,7 +882,7 @@ function WebsiteRedesign() {
                 {' '}
                 <span>Eerlijk advies</span>
                 {' '}
-                <span>Reactie {CONTACT_REACTIETIJD}</span>
+                <span>Persoonlijk antwoord</span>
               </Reveal>
             </div>
             {' '}

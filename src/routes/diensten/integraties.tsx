@@ -51,7 +51,7 @@ function Integraties() {
               </Reveal>
               {' '}
               <Reveal as="p" className="lead svc-hero__sub reveal" data-d="2">
-                Een aanvraag die in je mailbox blijft hangen, een boeking die je handmatig overtypt: dat kost tijd en levert fouten op. Wij koppelen je website aan de systemen waar je al mee werkt, zodat alles automatisch op z’n plek komt.
+                Een aanvraag die in je mailbox blijft hangen, een boeking die je handmatig overtypt: dat kost tijd en levert fouten op. MegaOnline koppelt je website aan de systemen waar je al mee werkt, zodat alles automatisch op z’n plek komt.
               </Reveal>
               {' '}
               <Reveal as="div" className="svc-hero__ctas reveal" data-d="2">
@@ -141,7 +141,7 @@ function Integraties() {
             </h2>
             {' '}
             <p className="lead">
-              We verbinden je website met de tools die je al gebruikt, zodat gegevens vanzelf op de juiste plek belanden en niets meer blijft liggen.
+              MegaOnline verbindt je website met de tools die je al gebruikt, zodat gegevens vanzelf op de juiste plek belanden en niets meer blijft liggen.
             </p>
           </Reveal>
           {' '}
@@ -229,7 +229,7 @@ function Integraties() {
       <section className="section section--tight" data-theme="paper" data-screen-label="Wat je krijgt">
         <div className="wrap">
           <Reveal as="div" className="shead reveal">
-            <span className="label">Wat we koppelen</span>
+            <span className="label">Wat MegaOnline koppelt</span>
             {' '}
             <h2 className="h2">
               Koppelingen die je
@@ -240,7 +240,7 @@ function Integraties() {
             </h2>
             {' '}
             <p className="lead">
-              We sluiten aan op de tools die je al gebruikt, of adviseren wat het beste past.
+              MegaOnline sluit aan op de tools die je al gebruikt, of adviseert wat het beste past.
             </p>
           </Reveal>
           {' '}
@@ -306,7 +306,7 @@ function Integraties() {
           {' '}
           <div className="faq">
             <Qa question="Werkt dit met de systemen die ik nu gebruik?" className="reveal">
-                Vaak wel. We sluiten aan op veelgebruikte CRM-, boekings- en betaalsystemen, en kijken per situatie wat de slimste koppeling is. Soms via een directe integratie, soms via een tussenstap.
+                Vaak wel. MegaOnline sluit aan op veelgebruikte CRM-, boekings- en betaalsystemen, en kijkt per situatie wat de slimste koppeling is. Soms via een directe integratie, soms via een tussenstap.
             </Qa>
             {' '}
             <Qa question="Wat als mijn systeem geen standaardkoppeling heeft?" className="reveal">
@@ -318,7 +318,7 @@ function Integraties() {
             </Qa>
             {' '}
             <Qa question="Is een integratie los van een website af te nemen?" className="reveal">
-                Ja. We kunnen koppelingen ook toevoegen aan je bestaande website. Begin met een gratis website scan, dan kijkt MegaOnline waar je het meeste handwerk kunt wegnemen.
+                Ja. MegaOnline kan koppelingen ook toevoegen aan je bestaande website. Begin met een gratis website scan, dan kijkt MegaOnline waar je het meeste handwerk kunt wegnemen.
             </Qa>
           </div>
         </div>

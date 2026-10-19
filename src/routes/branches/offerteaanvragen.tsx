@@ -160,7 +160,7 @@ function Offerteaanvragen() {
                 <h3 style={{ marginTop: "18px" }}>Een slim aanvraagformulier</h3>
                 {' '}
                 <p style={{ marginTop: "14px" }}>
-                  In plaats van 'stuur ons een bericht' vraagt je formulier stap voor stap de juiste informatie uit. Jij ontvangt complete aanvragen die je direct kunt beoordelen en oppakken.
+                  In plaats van 'stuur een bericht' vraagt je formulier stap voor stap de juiste informatie uit. Jij ontvangt complete aanvragen die je direct kunt beoordelen en oppakken.
                 </p>
               </div>
               {' '}

@@ -56,9 +56,13 @@ function normCta(s) {
  * zijn. Een link daarbij gaat naar /gratis-websitescan, of naar #formulier
  * of #scan op de scanpagina zelf. De gebouwde HTML mag nergens websiteconcept
  * of href="tel:", of een href met wa.me of whatsapp bevatten, of het
- * telefoonnummer van MegaOnline in welke notatie dan ook. '2 werkdagen' mag,
- * behalve in hetzelfde element, dezelfde zin of dezelfde kaart als het woord
- * scan. Het telefoonveld van de bezoeker mag blijven.
+ * telefoonnummer van MegaOnline in welke notatie dan ook. Een doorlooptijd
+ * voor websitebouw of een reactie mag niet: '4 tot 8 weken', 'enkele weken'
+ * en 'twee werkdagen' laten de controle falen. Losse woorden we, wij, ons en
+ * onze in de zichtbare tekst ook, behalve in een blockquote van een klant.
+ * '2 werkdagen' mag nog steeds niet in hetzelfde element, dezelfde zin of
+ * dezelfde kaart als het woord scan. De scanlevering 'binnen 5 werkdagen'
+ * blijft staan. Het telefoonveld van de bezoeker mag blijven.
  */
 async function controleerCtaTeksten(browser) {
   const pg = await browser.newPage({ viewport: { width: 1440, height: 900 } })
@@ -81,8 +85,11 @@ async function controleerCtaTeksten(browser) {
       const norm = (s) => String(s ?? '').replace(/\s+/g, ' ').replace(/\s*→\s*$/u, '').trim()
       const kloon = document.body.cloneNode(true)
       kloon.querySelectorAll('script, style, noscript').forEach((n) => n.remove())
+      const zonderQuote = document.body.cloneNode(true)
+      zonderQuote.querySelectorAll('script, style, noscript, blockquote').forEach((n) => n.remove())
       const meta = (sel) => document.querySelector(sel)?.getAttribute('content') ?? ''
       const zichtbaar = [kloon.innerText, document.title, meta('meta[name="description"]'), meta('meta[property="og:title"]'), meta('meta[property="og:description"]')].join('\n')
+      const stem = [zonderQuote.innerText, document.title, meta('meta[name="description"]'), meta('meta[property="og:title"]'), meta('meta[property="og:description"]')].join('\n')
       const bestemming = (href) => {
         if (!href) return { soort: 'geen' }
         try {
@@ -112,6 +119,7 @@ async function controleerCtaTeksten(browser) {
       return {
         knoppen,
         zichtbaar,
+        stem,
         eind: eindEl ? norm(eindEl.innerText) : '',
         heeftForm: !!document.querySelector('.concept'),
         formVoorMorgen: !!(
@@ -157,6 +165,14 @@ async function controleerCtaTeksten(browser) {
       if (data.html.includes(notatie)) fouten.push(`${pad} HTML bevat ${notatie}`)
     }
     if (/websiteconcept/i.test(data.zichtbaar)) fouten.push(`${pad} toont websiteconcept`)
+    for (const verboden of ['4 tot 8 weken', 'enkele weken', 'twee werkdagen']) {
+      if (data.zichtbaar.toLowerCase().includes(verboden)) fouten.push(`${pad} bevat "${verboden}"`)
+    }
+    const stemTreffer = data.stem.match(/(^|[^\p{L}])(we|wij|ons|onze)(?=[^\p{L}]|$)/iu)
+    if (stemTreffer) {
+      const van = Math.max(0, stemTreffer.index - 30)
+      fouten.push(`${pad} bevat "${stemTreffer[2]}" in "${data.stem.slice(van, stemTreffer.index + 70).replace(/\s+/g, ' ')}"`)
+    }
     for (const oud of OUDE_CTA_VARIANTEN) {
       if (data.zichtbaar.includes(oud)) fouten.push(`${pad} bevat "${oud}"`)
     }
@@ -1047,7 +1063,7 @@ check(
       scanPagina.canonical === 'https://megaonline.io/gratis-websitescan' &&
       !/noindex/i.test(scanPagina.robots) &&
       scanPagina.h1 === 'Vraag een gratis website scan aan' &&
-      scanPagina.lead === 'We bekijken je site en vertellen je eerlijk wat je nu aanvragen en boekingen kost, en wat het eerst moet.' &&
+      scanPagina.lead === 'MegaOnline bekijkt je site en vertelt je eerlijk wat je nu aanvragen en boekingen kost, en wat het eerst moet.' &&
       scanPagina.formTag === 'FORM' &&
       scanPagina.heroHref === '#formulier' &&
       scanPagina.tekstHref === '#formulier' &&
@@ -1074,7 +1090,7 @@ check(
     'zijblok noemt rapport en videogesprek',
     scanPagina.oplevering.includes('rapport') &&
       scanPagina.oplevering.includes('videogesprek') &&
-      scanPagina.oplevering === 'Binnen 5 werkdagen ontvang je een rapport over je site. In een persoonlijk videogesprek lichten we het rapport toe.',
+      scanPagina.oplevering === 'Binnen 5 werkdagen ontvang je een rapport over je site. In een persoonlijk videogesprek licht MegaOnline het rapport toe.',
     scanPagina.oplevering,
   )
 
@@ -1164,11 +1180,11 @@ check(
   const scanToontVijf = await page.evaluate(() => document.body.innerText.includes('binnen 5 werkdagen'))
   await page.goto(BASE + '/contact', { waitUntil: 'load' })
   await waitHydrated(page)
-  const contactToontTwee = await page.evaluate(() => document.body.innerText.includes('binnen 2 werkdagen'))
+  const contactToontTermijn = await page.evaluate(() => /2 werkdagen|twee werkdagen/i.test(document.body.innerText))
   check(
-    'contact toont binnen 2 werkdagen en de scanpagina binnen 5 werkdagen',
-    scanToontVijf && contactToontTwee,
-    `scan=${scanToontVijf} contact=${contactToontTwee}`,
+    'contact noemt geen reactietermijn en de scanpagina wel binnen 5 werkdagen',
+    scanToontVijf && !contactToontTermijn,
+    `scan=${scanToontVijf} contactTermijn=${contactToontTermijn}`,
   )
 
   await page.goto(BASE + '/diensten/starter-website', { waitUntil: 'load' })

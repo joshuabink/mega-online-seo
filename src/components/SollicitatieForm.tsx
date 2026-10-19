@@ -78,7 +78,7 @@ export function SollicitatieSectie({
               <>
                 <div className="ic">✓</div> <h3>Bedankt. MegaOnline heeft je bericht.</h3>{" "}
                 <p>
-                  Je sollicitatie is binnen. We reageren gemiddeld binnen twee werkdagen, ook als
+                  Je sollicitatie is binnen. MegaOnline reageert persoonlijk, ook als
                   het een nee is.
                 </p>
               </>

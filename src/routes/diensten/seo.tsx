@@ -31,15 +31,15 @@ export const Route = createFileRoute('/diensten/seo')({
 const FAQ_ITEMS: { q: string; a: string }[] = [
   {
     q: "Hoe lang duurt het voordat ik iets merk van SEO?",
-    a: "SEO is geen knop die je omzet. De eerste verbeteringen zijn vaak binnen enkele weken zichtbaar, maar serieuze, blijvende posities bouw je op over maanden. Daarom werkt MegaOnline met een contentplan voor twaalf maanden in plaats van losse acties.",
+    a: "SEO is geen knop die je omzet. Serieuze, blijvende posities bouw je op over maanden. Daarom werkt MegaOnline met een contentplan voor twaalf maanden in plaats van losse acties.",
   },
   {
     q: "Is lokale vindbaarheid ook zinvol voor een klein bedrijf?",
-    a: "Juist dan. Lokaal is vaak de snelste winst: je concurreert in je eigen regio in plaats van met heel Nederland. We zorgen dat je verschijnt wanneer iemand in de buurt zoekt naar wat jij doet.",
+    a: "Juist dan. Lokaal is vaak de snelste winst: je concurreert in je eigen regio in plaats van met heel Nederland. MegaOnline zorgt dat je verschijnt wanneer iemand in de buurt zoekt naar wat jij doet.",
   },
   {
     q: "Is het Groei Partnership verplicht?",
-    a: "Nee. Sommige klanten kiezen voor een eenmalige website en regelen het beheer zelf of via een andere partij. We raden het partnership wel aan, omdat websites die regelmatig verbeterd worden structureel beter presteren dan websites die blijven stilstaan.",
+    a: "Nee. Sommige klanten kiezen voor een eenmalige website en regelen het beheer zelf of via een andere partij. MegaOnline raadt het partnership wel aan, omdat websites die regelmatig verbeterd worden structureel beter presteren dan websites die blijven stilstaan.",
   },
   {
     q: "Wat krijg ik voor 150 euro per maand?",
@@ -59,7 +59,7 @@ const FAQ_ITEMS: { q: string; a: string }[] = [
   },
   {
     q: "Hoe vaak is er contact?",
-    a: "In de basis spreken we elke maand de analyse en verbeterpunten door. Daarnaast zijn de lijnen kort: heb je tussendoor een vraag of een wijziging, dan staan we voor je klaar. Je hebt één vast aanspreekpunt dat je bedrijf kent.",
+    a: "In de basis spreekt MegaOnline elke maand de analyse en verbeterpunten met je door. Daarnaast zijn de lijnen kort: heb je tussendoor een vraag of een wijziging, dan staat MegaOnline voor je klaar. Je hebt één vast aanspreekpunt dat je bedrijf kent.",
   },
   {
     q: "Wat gebeurt er iedere maand?",
@@ -75,7 +75,7 @@ const FAQ_ITEMS: { q: string; a: string }[] = [
   },
   {
     q: "Wat als ik alleen onderhoud wil?",
-    a: "Dat kan. MegaOnline biedt een lichtere onderhoudsoptie vanaf € 50 per maand. Daarmee blijft je website veilig en up-to-date, zonder actieve doorontwikkeling. Goed om te weten: dat is bewust iets anders dan het Groei Partnership, waarbij we je website juist maand na maand verbeteren.",
+    a: "Dat kan. MegaOnline biedt een lichtere onderhoudsoptie vanaf € 50 per maand. Daarmee blijft je website veilig en up-to-date, zonder actieve doorontwikkeling. Goed om te weten: dat is bewust iets anders dan het Groei Partnership, waarbij MegaOnline je website juist maand na maand verbetert.",
   },
   {
     q: "Wat is GEO en wat is het verschil met SEO?",
@@ -398,7 +398,7 @@ function Seo() {
                 <Icon name="activity" />
               </span>
               <h4>Meten en analyseren</h4>
-              <p>We kijken elke maand wat bezoekers doen en wat dat oplevert.</p>
+              <p>MegaOnline kijkt elke maand wat bezoekers doen en wat dat oplevert.</p>
             </Reveal>
             {' '}
             <Reveal as="div" className="feat reveal" data-d="2">
@@ -490,7 +490,7 @@ function Seo() {
             </h2>
             {' '}
             <p className="lead">
-              We kijken elke maand opnieuw waar de meeste winst te halen valt, kiezen daar één of twee dingen uit en voeren die uit. Geen lijst met taken die nooit afkomt, maar steeds de stap die op dat moment het meeste oplevert.
+              MegaOnline kijkt elke maand opnieuw waar de meeste winst te halen valt, kiest daar één of twee dingen uit en voert die uit. Geen lijst met taken die nooit afkomt, maar steeds de stap die op dat moment het meeste oplevert.
             </p>
           </Reveal>
           {' '}

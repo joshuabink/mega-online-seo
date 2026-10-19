@@ -225,7 +225,7 @@ export const ARTIKELEN: Artikel[] = [
       },
       {
         q: "Hoe lang duurt het voordat je verschil ziet?",
-        a: "Aanpassingen aan teksten, formulieren en vertrouwen werken direct op het bezoek dat je al hebt, dus daar kun je binnen enkele weken iets van zien als je genoeg verkeer hebt. Werk aan je vindbaarheid duurt langer, vaak maanden. Dat is de tweede reden om met de pagina te beginnen.",
+        a: "Aanpassingen aan teksten, formulieren en vertrouwen werken direct op het bezoek dat je al hebt, dus daar kun je iets van zien als je genoeg verkeer hebt. Werk aan je vindbaarheid duurt langer, vaak maanden. Dat is de tweede reden om met de pagina te beginnen.",
       },
       {
         q: "Wat als ik geen idee heb hoeveel aanvragen ik nu krijg?",
@@ -318,7 +318,7 @@ export const ARTIKELEN: Artikel[] = [
           {
             titel: "7. Wat er gebeurt nadat iemand op verzenden drukt",
             tekst:
-              "Eén zin bij je formulier: je krijgt binnen twee werkdagen antwoord. Je zit nergens aan vast. Onzekerheid over wat er daarna gebeurt is een van de goedkoopst op te lossen redenen om niet te versturen.",
+              "Eén zin bij je formulier: je krijgt persoonlijk antwoord. Je zit nergens aan vast. Onzekerheid over wat er daarna gebeurt is een van de goedkoopst op te lossen redenen om niet te versturen.",
           },
         ],
       },
@@ -536,7 +536,7 @@ export const ARTIKELEN: Artikel[] = [
       },
       {
         q: "Wat doe ik met kortingen voor vaste klanten?",
-        a: "Die noem je als staffel of als afspraak, niet als los bedrag. Bijvoorbeeld: bij meer dan vijf verhuringen per jaar maken we een vaste prijsafspraak. Zo houd je je ruimte en weet de terugkerende klant toch dat er iets te halen is.",
+        a: "Die noem je als staffel of als afspraak, niet als los bedrag. Bijvoorbeeld: bij meer dan vijf verhuringen per jaar maak je een vaste prijsafspraak. Zo houd je je ruimte en weet de terugkerende klant toch dat er iets te halen is.",
       },
     ],
     links: [

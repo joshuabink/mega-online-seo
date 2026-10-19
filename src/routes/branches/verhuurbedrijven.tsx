@@ -330,7 +330,7 @@ function Verhuurbedrijven() {
             </Qa>
             {' '}
             <Qa question="Kan het gekoppeld worden aan mijn verhuursoftware?" className="reveal">
-                Vaak wel. We kijken naar het systeem dat je gebruikt en bepalen samen wat de slimste koppeling is.
+                Vaak wel. MegaOnline kijkt naar het systeem dat je gebruikt en bepaalt samen met jou wat de slimste koppeling is.
             </Qa>
             {' '}
             <Qa question="Wat kost zo'n website?" className="reveal">

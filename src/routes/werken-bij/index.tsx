@@ -217,7 +217,7 @@ function WerkenBij() {
             Stuur iets. <em>Ook als je twijfelt</em>.
           </>
         }
-        lead="Een half afgemaakt bericht is beter dan geen bericht. We reageren gemiddeld binnen twee werkdagen, ook als het een nee is."
+        lead="Een half afgemaakt bericht is beter dan geen bericht. MegaOnline reageert persoonlijk, ook als het een nee is."
       />{" "}
       <section
         className="section section--tight"

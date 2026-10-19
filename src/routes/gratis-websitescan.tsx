@@ -60,7 +60,7 @@ const STAPPEN = [
   {
     titel: 'Gratis website scan',
     tekst:
-      'We bekijken je huidige site en lezen wat jij ervan vindt. In een gesprek hoor je wat er misgaat en wat het eerst moet.',
+      'MegaOnline bekijkt je huidige site en leest wat jij ervan vindt. In een gesprek hoor je wat er misgaat en wat het eerst moet.',
     punten: [
       'Jouw antwoorden uit het formulier',
       'Een eerlijke blik op je site',
@@ -69,7 +69,7 @@ const STAPPEN = [
   },
   {
     titel: 'Begrijpen',
-    tekst: 'Pas als we je bedrijf kennen, weten we wat je site moet doen.',
+    tekst: 'Pas als MegaOnline je bedrijf kent, is duidelijk wat je site moet doen.',
     punten: [
       'Deep dive in je bedrijf',
       "Doelgroepanalyse met persona's",
@@ -80,12 +80,12 @@ const STAPPEN = [
   {
     titel: 'Bouwen',
     tekst:
-      'Een site die vertrouwen wekt en bezoekers naar een aanvraag of boeking leidt. Meestal 4 tot 8 weken.',
+      'Een site die vertrouwen wekt en bezoekers naar een aanvraag of boeking leidt.',
     punten: ['Ontwerp', 'Development', 'Aanvraagflows', 'Tracking'],
   },
   {
     titel: 'Verbeteren',
-    tekst: 'Na de livegang kijken we wat bezoekers echt doen en sturen we bij.',
+    tekst: 'Na de livegang kijkt MegaOnline wat bezoekers echt doen en stuurt bij.',
     punten: [
       'Bezoekersdata bekijken',
       'Bezoekersgedrag analyseren',
@@ -130,14 +130,14 @@ function GratisWebsitescan() {
             {SCAN_H1}
           </Reveal>
           <Reveal as="p" className="lead reveal" data-d="1">
-            We bekijken je site en vertellen je eerlijk wat je nu aanvragen en boekingen kost, en wat het eerst moet.
+            MegaOnline bekijkt je site en vertelt je eerlijk wat je nu aanvragen en boekingen kost, en wat het eerst moet.
           </Reveal>
           <Reveal as="div" className="scan-hero__actions reveal" data-d="2">
             <a className="btn btn-primary" href="#formulier">
               {CTA_SCAN}
             </a>
             <a className="tlink" href="#werk">
-              Bekijk ons werk
+              Bekijk het werk
             </a>
           </Reveal>
         </div>
@@ -148,15 +148,15 @@ function GratisWebsitescan() {
           <Reveal as="div" className="shead reveal">
             <h2 className="h2">Wat de website scan bekijkt</h2>
             <p className="lead">
-              We kijken waar bezoekers afhaken op weg naar een aanvraag of boeking, en wat daar beter
-              kan. Jouw antwoorden hieronder bepalen waar we het eerst naar kijken.
+              MegaOnline kijkt waar bezoekers afhaken op weg naar een aanvraag of boeking, en wat daar beter
+              kan. Jouw antwoorden hieronder bepalen waar MegaOnline het eerst naar kijkt.
             </p>
           </Reveal>
           <div className="scan-layout">
             <Reveal as="div" className="reveal" data-d="1">
               <h2 className="h2">Wat gaat er volgens jou mis?</h2>
               <p className="lead">
-                Vijf korte vragen. Je antwoorden gebruiken we in het gesprek over je site.
+                Vijf korte vragen. Je antwoorden komen terug in het gesprek over je site.
               </p>
               <ScanForm />
             </Reveal>
@@ -212,8 +212,8 @@ function GratisWebsitescan() {
           <Reveal as="div" className="shead reveal">
             <h2 className="h2">Zo verloopt de scan</h2>
             <p className="lead">
-              Een mooie site zonder onderzoek levert weinig op. Daarom leren we eerst je bedrijf en je
-              klanten kennen, bouwen we pas daarna en blijven we na de livegang verbeteren. Je werkt
+              Een mooie site zonder onderzoek levert weinig op. Daarom leert MegaOnline eerst je bedrijf en je
+              klanten kennen, bouwt pas daarna en blijft na de livegang verbeteren. Je werkt
               direct met de mensen die het doen, zonder tussenlagen.
             </p>
           </Reveal>
@@ -244,7 +244,7 @@ function GratisWebsitescan() {
       <section className="section" id="waarom" data-theme="dark" data-screen-label="Vergelijking">
         <div className="wrap">
           <Reveal as="h2" className="h2 reveal">
-            Een websitebouwer maakt wat je vraagt. Wij bouwen wat je klant laat aanvragen.
+            Een websitebouwer maakt wat je vraagt. MegaOnline bouwt wat je klant laat aanvragen.
           </Reveal>
           <Reveal as="div" className="scan-table-wrap reveal" data-d="1">
             <table className="scan-table">

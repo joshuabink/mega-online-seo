@@ -331,7 +331,7 @@ function Activiteitenbedrijven() {
           {' '}
           <div className="faq">
             <Qa question="Kan het reserveringssysteem aan mijn bestaande agenda gekoppeld worden?" className="reveal">
-                In veel gevallen wel. We kijken naar het systeem dat je nu gebruikt en koppelen daarop aan, zodat beschikbaarheid altijd klopt en dubbele boekingen niet voorkomen.
+                In veel gevallen wel. MegaOnline kijkt naar het systeem dat je nu gebruikt en koppelt daarop aan, zodat beschikbaarheid altijd klopt en dubbele boekingen niet voorkomen.
             </Qa>
             {' '}
             <Qa question="Kan ik zelf acties en prijzen aanpassen?" className="reveal">

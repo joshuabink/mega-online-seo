@@ -609,19 +609,19 @@ function MegaSmart() {
           {' '}
           <div className="faq">
             <Qa question="Moet ik mijn huidige boekhouding of ERP vervangen?" className="reveal">
-                Nee. MegaSmart is bewust geen boekhoudpakket en geen ERP. Contracten, facturen en betalingen blijven waar ze nu staan. MegaSmart is de laag daarvoor: de aanvraag, het contact, de afspraak en de opvolging. Waar het nuttig is, koppelen we de twee.
+                Nee. MegaSmart is bewust geen boekhoudpakket en geen ERP. Contracten, facturen en betalingen blijven waar ze nu staan. MegaSmart is de laag daarvoor: de aanvraag, het contact, de afspraak en de opvolging. Waar het nuttig is, koppelt MegaOnline de twee.
             </Qa>
             {' '}
             <Qa question="Werkt MegaSmart ook zonder een website van MegaOnline?" className="reveal">
-                Ja. MegaSmart is los af te nemen en werkt naast je bestaande website. Heb je wel een website van ons, dan komen aanvragen en boekingen er rechtstreeks in binnen zonder tussenstap.
+                Ja. MegaSmart is los af te nemen en werkt naast je bestaande website. Heb je wel een website van MegaOnline, dan komen aanvragen en boekingen er rechtstreeks in binnen zonder tussenstap.
             </Qa>
             {' '}
             <Qa question="Hoe lang duurt het voordat je ermee kunt werken?" className="reveal">
-                Een basisinrichting met agenda, boekingspagina en bevestigingen staat meestal binnen enkele weken. Koppelingen met een administratiesysteem duren langer, omdat MegaOnline eerst wil weten welk systeem waarvoor leidend is.
+                Een basisinrichting met agenda, boekingspagina en bevestigingen volgt zodra duidelijk is wat je nodig hebt. Koppelingen met een administratiesysteem vragen eerst uitzoekwerk, omdat MegaOnline wil weten welk systeem waarvoor leidend is.
             </Qa>
             {' '}
             <Qa question="Moeten mijn collega’s hier veel voor leren?" className="reveal">
-                MegaOnline richt het systeem zo in dat iedereen alleen ziet wat hij nodig heeft. De inrichting en uitleg horen bij het abonnement, en je krijgt bij ons een vast aanspreekpunt in plaats van een supportformulier.
+                MegaOnline richt het systeem zo in dat iedereen alleen ziet wat hij nodig heeft. De inrichting en uitleg horen bij het abonnement, en je krijgt bij MegaOnline een vast aanspreekpunt in plaats van een supportformulier.
             </Qa>
             {' '}
             <Qa question="Wat gebeurt er met mijn klantgegevens?" className="reveal">

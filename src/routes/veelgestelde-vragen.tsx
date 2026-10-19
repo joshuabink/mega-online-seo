@@ -138,7 +138,7 @@ function VeelgesteldeVragen() {
             {' '}
             <div className="faq">
               <Qa question="Hoe lang duurt het om een website te bouwen?" className="reveal">
-                  Een Starter Website staat doorgaans binnen enkele weken live, omdat we met vaste bouwblokken werken. Een volledige maatwerk-website duurt langer, afhankelijk van omvang en het aantal feedbackrondes. MegaOnline maakt vooraf een heldere planning.
+                  Een Starter Website werkt met vaste bouwblokken. Hoe lang een volledige maatwerk-website duurt, hangt af van de omvang en het aantal feedbackrondes. MegaOnline maakt vooraf een heldere planning.
               </Qa>
               {' '}
               <Qa question="Hoe verloopt het traject?" className="reveal">
@@ -166,7 +166,7 @@ function VeelgesteldeVragen() {
             {' '}
             <div className="faq">
               <Qa question="Hoe zorgt een website voor meer aanvragen?" className="reveal">
-                  Door bezoekers gericht te begeleiden naar één duidelijke volgende stap: een aanvraag, reservering of boeking. We werken aan vertrouwen, een heldere structuur en sterke call-to-actions, zodat meer bezoekers ook echt klant worden. Lees over <Link to="/kennisbank/$slug" params={{ slug: 'website-levert-geen-aanvragen-op' }}>zes plekken waar een website aanvragen laat liggen</Link>.
+                  Door bezoekers gericht te begeleiden naar één duidelijke volgende stap: een aanvraag, reservering of boeking. MegaOnline werkt aan vertrouwen, een heldere structuur en sterke call-to-actions, zodat meer bezoekers ook echt klant worden. Lees over <Link to="/kennisbank/$slug" params={{ slug: 'website-levert-geen-aanvragen-op' }}>zes plekken waar een website aanvragen laat liggen</Link>.
               </Qa>
               {' '}
               <Qa question="Doet MegaOnline ook SEO?" className="reveal">
@@ -202,7 +202,7 @@ function VeelgesteldeVragen() {
               </Qa>
               {' '}
               <Qa question="Kunnen jullie koppelen met mijn systemen?" className="reveal">
-                  Vaak wel. We koppelen je website aan bijvoorbeeld je CRM, boekingssysteem, agenda, betaaldienst of WhatsApp, zodat aanvragen automatisch op de juiste plek belanden.
+                  Vaak wel. MegaOnline koppelt je website aan bijvoorbeeld je CRM, boekingssysteem, agenda, betaaldienst of WhatsApp, zodat aanvragen automatisch op de juiste plek belanden.
               </Qa>
               {' '}
               <Qa question="Blijft de website van mij?" className="reveal">

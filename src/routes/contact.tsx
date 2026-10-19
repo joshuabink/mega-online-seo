@@ -5,7 +5,6 @@ import { Qa } from '@/components/Qa'
 import { Media } from '@/components/Media'
 import { Reveal } from '@/components/Reveal'
 import { SingleLeadForm } from '@/components/LeadForm'
-import { CONTACT_REACTIETIJD } from '@/lib/lead-contact'
 import '@/styles/pages/contact.css'
 
 export const Route = createFileRoute('/contact')({
@@ -70,7 +69,7 @@ function Contact() {
                 {' '}
                 <span style={{ display: "inline-flex", alignItems: "center", gap: "9px", color: "var(--muted)", fontSize: "0.95rem" }}>
                   <Icon name="check" />
-                  Reactie {CONTACT_REACTIETIJD}
+                  Persoonlijk antwoord
                 </span>
               </Reveal>
             </div>
@@ -107,7 +106,7 @@ function Contact() {
                 <h3>Bedankt. MegaOnline neemt contact op.</h3>
                 {' '}
                 <p>
-                  Je aanvraag is ontvangen. We reageren gemiddeld {CONTACT_REACTIETIJD} om samen een moment te prikken.
+                  Je aanvraag is ontvangen. MegaOnline reageert persoonlijk om samen een moment te prikken.
                 </p>
                 </>
               }
@@ -182,7 +181,7 @@ function Contact() {
               </button>
               {' '}
               <p className="form__disc">
-                We reageren doorgaans binnen twee werkdagen, en altijd persoonlijk.
+                MegaOnline reageert persoonlijk.
               </p>
             </SingleLeadForm>
           </div>
@@ -211,7 +210,7 @@ function Contact() {
               <h3>E-mail</h3>
               {' '}
               <p>
-                Voor vragen, ideeën of een offerteaanvraag. We reageren doorgaans {CONTACT_REACTIETIJD}.
+                Voor vragen, ideeën of een offerteaanvraag. MegaOnline reageert persoonlijk.
               </p>
               {' '}
               <a className="ccard__val" href="mailto:info@megaonline.io">
@@ -282,7 +281,7 @@ function Contact() {
             </Qa>
             {' '}
             <Qa question="Hoe snel hoor ik iets?" className="reveal">
-                We reageren gemiddeld {CONTACT_REACTIETIJD} om samen een moment te prikken dat jou uitkomt.
+                MegaOnline reageert persoonlijk om samen een moment te prikken dat jou uitkomt.
             </Qa>
             {' '}
             <Qa question="Moet ik al precies weten wat ik wil?" className="reveal">

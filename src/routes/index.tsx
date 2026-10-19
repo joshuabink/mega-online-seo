@@ -53,10 +53,10 @@ const FAQ_ITEMS: { q: string; a: string }[] = [
   },
   {
     q: "Hoe lang duurt het bouwen van een website?",
-    a: "Een gemiddeld websiteproject duurt 4 tot 8 weken. Dit hangt af van hoe snel jij en MegaOnline samen de intake kunnen afronden en van hoe snel de teksten en foto's beschikbaar zijn. MegaOnline werkt altijd met een duidelijke planning.",
+    a: "Hoe lang het bouwen duurt, hangt af van hoe snel jij en MegaOnline samen de intake kunnen afronden en van hoe snel de teksten en foto's beschikbaar zijn. MegaOnline werkt altijd met een duidelijke planning.",
   },
   {
-    q: "Wij hebben al een website. Kan MegaOnline die verbeteren?",
+    q: "Je hebt al een website. Kan MegaOnline die verbeteren?",
     a: "Ja. In sommige gevallen is een volledig nieuwe website de beste keuze. In andere gevallen kunnen gerichte verbeteringen al veel effect hebben. De gratis website scan helpt MegaOnline om te bepalen wat voor jou de slimste aanpak is.",
   },
   {
@@ -65,7 +65,7 @@ const FAQ_ITEMS: { q: string; a: string }[] = [
   },
   {
     q: "Is het Groei Partnership verplicht na een nieuwe website?",
-    a: "Nee. Sommige klanten kiezen voor een eenmalige website en regelen het beheer zelf of via een andere partij. We raden het Partnership wel aan, omdat websites die maand na maand nieuwe pagina's krijgen structureel beter gevonden worden. Het loopt twaalf maanden en is daarna maandelijks opzegbaar.",
+    a: "Nee. Sommige klanten kiezen voor een eenmalige website en regelen het beheer zelf of via een andere partij. MegaOnline raadt het Partnership wel aan, omdat websites die maand na maand nieuwe pagina's krijgen structureel beter gevonden worden. Het loopt twaalf maanden en is daarna maandelijks opzegbaar.",
   },
   {
     q: "Voor welke bedrijven werkt MegaOnline?",

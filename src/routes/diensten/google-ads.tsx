@@ -50,8 +50,8 @@ function GoogleAds() {
                 <em>Niet pas over een half jaar.</em>
               </Reveal>{' '}
               <Reveal as="p" className="lead svc-hero__sub reveal" data-d="2">
-                Vindbaarheid via SEO bouw je op over maanden. Met Google Ads sta je in beeld zodra de campagne draait, bij precies de zoekopdrachten die MegaOnline kiest. We richten
-                de campagnes in, zorgen dat de pagina erachter aanvragen oplevert en sturen elke
+                Vindbaarheid via SEO bouw je op over maanden. Met Google Ads sta je in beeld zodra de campagne draait, bij precies de zoekopdrachten die MegaOnline kiest. MegaOnline richt
+                de campagnes in, zorgt dat de pagina erachter aanvragen oplevert en stuurt elke
                 maand bij op wat het echt opbrengt.
               </Reveal>{' '}
               <Reveal as="div" className="svc-hero__ctas reveal" data-d="2">
@@ -203,7 +203,7 @@ function GoogleAds() {
             <Reveal as="div" className="feat reveal" data-d="3">
               <span className="iconbox"><Icon name="bar-chart-2" /></span>
               <h4>Heldere rapportage</h4>
-              <p>Elke maand zwart op wit: wat het kostte, hoeveel aanvragen het opleverde en wat we aanpassen.</p>
+              <p>Elke maand zwart op wit: wat het kostte, hoeveel aanvragen het opleverde en wat MegaOnline aanpast.</p>
             </Reveal>{' '}
             <Reveal as="div" className="feat reveal">
               <span className="iconbox"><Icon name="user-check" /></span>
@@ -339,7 +339,7 @@ function GoogleAds() {
               Beheer per maand. <em>Budget apart.</em>
             </h2>{' '}
             <p className="lead">
-              Je betaalt twee dingen: ons beheer en je advertentiebudget. Het budget betaal je rechtstreeks aan Google, zonder opslag van MegaOnline. Zo zie je altijd precies waar elke
+              Je betaalt twee dingen: het beheer van MegaOnline en je advertentiebudget. Het budget betaal je rechtstreeks aan Google, zonder opslag van MegaOnline. Zo zie je altijd precies waar elke
               euro naartoe gaat.
             </p>
           </Reveal>{' '}

@@ -6,7 +6,6 @@ import { Qa } from '@/components/Qa'
 import { Reveal } from '@/components/Reveal'
 import { ConceptForm } from '@/components/ConceptForm'
 import { CTA_SCAN } from '@/lib/cta'
-import { CONTACT_REACTIETIJD } from '@/lib/lead-contact'
 import { SCAN_OPLEVERING, SCAN_REACTIETIJD } from '@/lib/scan'
 import '@/styles/pages/diensten-starter-website.css'
 
@@ -88,7 +87,7 @@ function StarterWebsite() {
               <div className="hvis__card hvis__stat">
                 <span className="n">Snel</span>
                 {' '}
-                <span className="l">live in weken</span>
+                <span className="l">vlot live</span>
               </div>
             </Reveal>
           </div>
@@ -125,7 +124,7 @@ function StarterWebsite() {
               </p>
               {' '}
               <p>
-                De Starter Website zit daar bewust tussenin: een verzorgde, betrouwbare website tegen een eerlijke instapprijs, gebouwd op een basis die we al honderden keren scherp hebben gekregen.
+                De Starter Website zit daar bewust tussenin: een verzorgde, betrouwbare website tegen een eerlijke instapprijs, gebouwd op een basis die MegaOnline al honderden keren scherp heeft gekregen.
               </p>
             </Reveal>
             {' '}
@@ -140,7 +139,7 @@ function StarterWebsite() {
               <Reveal as="div" className="miniprob reveal" data-d="1">
                 <h4>Snel online willen</h4>
                 <p>
-                  Je wilt niet weken wachten, maar binnen afzienbare tijd live staan.
+                  Je wilt vlot live staan, zonder een lang voortraject.
                 </p>
               </Reveal>
               {' '}
@@ -710,7 +709,7 @@ function StarterWebsite() {
             </Qa>
             {' '}
             <Qa question="Hoe snel staat mijn website online?" className="reveal">
-                Doordat MegaOnline met vaste bouwblokken werkt, gaat het bouwen een stuk sneller dan bij een maatwerktraject. Zodra je teksten, logo en beeld hebt aangeleverd, kan MegaOnline vlot samenstellen. In de praktijk sta je doorgaans binnen enkele weken live.
+                Doordat MegaOnline met vaste bouwblokken werkt, gaat het bouwen een stuk sneller dan bij een maatwerktraject. Zodra je teksten, logo en beeld hebt aangeleverd, kan MegaOnline vlot samenstellen.
             </Qa>
           </div>
         </div>
@@ -769,7 +768,7 @@ function StarterWebsite() {
                 {' '}
                 <span>Eerlijk advies</span>
                 {' '}
-                <span>Reactie {CONTACT_REACTIETIJD}</span>
+                <span>Persoonlijk antwoord</span>
               </Reveal>
             </div>
             {' '}
