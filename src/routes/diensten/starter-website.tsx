@@ -85,7 +85,7 @@ function StarterWebsite() {
               </div>
               {' '}
               <div className="hvis__card hvis__stat">
-                <span className="n">Snel</span>
+                <span className="n">Vaste opzet</span>
                 {' '}
                 <span className="l">na teksten en beeld</span>
               </div>
