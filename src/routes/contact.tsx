@@ -280,7 +280,7 @@ function Contact() {
                 Nee, een kennismaking is gratis en volledig vrijblijvend. Je betaalt niets en zit nergens aan vast.
             </Qa>
             {' '}
-            <Qa question="Hoe snel hoor ik iets?" className="reveal">
+            <Qa question="Hoe hoor ik iets?" className="reveal">
                 MegaOnline reageert persoonlijk om samen een moment te prikken dat jou uitkomt.
             </Qa>
             {' '}

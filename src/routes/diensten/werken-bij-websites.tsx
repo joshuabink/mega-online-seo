@@ -321,7 +321,7 @@ function WerkenBijWebsites() {
             <Reveal as="div" className="media__body reveal" data-d="1">
               <p>
                 Niemand voelt de sfeer van een bedrijf door een vacaturetekst te lezen. Een eerlijke
-                teamfoto of een korte video van een werkdag laat sneller zien hoe het is. Het gaat
+                teamfoto of een korte video van een werkdag laat zien hoe het is. Het gaat
                 vaak mis met verouderde foto's, stockbeelden en pagina's zonder gezichten van het
                 team.
               </p>

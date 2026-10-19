@@ -415,7 +415,7 @@ function OverMegaonline() {
                 </span>
                 <span className="vrow__txt">
                   <h4>Automatisering</h4>
-                  <p>Terugkerend werk slimmer en sneller maken.</p>
+                  <p>Terugkerend werk slimmer maken.</p>
                 </span>
                 <span className="vrow__when next">Toekomst</span>
               </div>
@@ -645,7 +645,7 @@ function OverMegaonline() {
                   <div className="case__step">
                     <span className="k">Aanpak</span>
                     <p>
-                      MegaOnline bracht de propositie terug naar een duidelijke boodschap en bouwde een structuur die bezoekers sneller naar de juiste informatie leidt.
+                      MegaOnline bracht de propositie terug naar een duidelijke boodschap en bouwde een structuur die bezoekers naar de juiste informatie leidt.
                     </p>
                   </div>
                 </div>

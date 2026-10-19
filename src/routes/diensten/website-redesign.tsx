@@ -641,7 +641,7 @@ function WebsiteRedesign() {
                 {' '}
                   <div className="case__step">
                     <span className="k">Wat MegaOnline veranderde</span>
-                    <p>MegaOnline bracht de propositie terug naar een duidelijke boodschap en bouwde een structuur die bezoekers sneller naar de juiste informatie leidt.</p>
+                    <p>MegaOnline bracht de propositie terug naar een duidelijke boodschap en bouwde een structuur die bezoekers naar de juiste informatie leidt.</p>
                   </div>
                 </div>
                 {' '}
@@ -723,7 +723,7 @@ function WebsiteRedesign() {
               </span>
               <h4>Meer vertrouwen</h4>
               <p>
-                Bezoekers voelen sneller dat ze bij de juiste partij zitten.
+                Bezoekers merken dat ze bij de juiste partij zitten.
               </p>
             </Reveal>
             {' '}
@@ -808,8 +808,8 @@ function WebsiteRedesign() {
                 Daar let MegaOnline bewust op. MegaOnline behoudt wat goed scoort, zet redirects waar nodig en houdt de SEO-basis op orde, zodat je vindbaarheid niet inzakt na de livegang maar juist een gezonde basis houdt.
             </Qa>
             {' '}
-            <Qa question="Hoe lang duurt een redesign?" className="reveal">
-                Dat hangt af van de omvang en hoe snel content en feedback rond zijn. Na de website scan en de kennismaking geeft MegaOnline een realistische inschatting voor jouw situatie.
+            <Qa question="Waar hangt een redesign van af?" className="reveal">
+                Dat hangt af van de omvang en van wanneer content en feedback rond zijn. Na de website scan en de kennismaking geeft MegaOnline een realistische inschatting voor jouw situatie.
             </Qa>
             {' '}
             <Qa question="Is een redesign altijd beter dan optimaliseren?" className="reveal">

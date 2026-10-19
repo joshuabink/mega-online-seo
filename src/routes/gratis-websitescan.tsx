@@ -130,7 +130,7 @@ function GratisWebsitescan() {
             {SCAN_H1}
           </Reveal>
           <Reveal as="p" className="lead reveal" data-d="1">
-            MegaOnline bekijkt je site en vertelt je eerlijk wat je nu aanvragen en boekingen kost, en wat het eerst moet.
+            MegaOnline bekijkt je site en vertelt je eerlijk wat je nu aanvragen en boekingen kost en wat het eerst moet.
           </Reveal>
           <Reveal as="div" className="scan-hero__actions reveal" data-d="2">
             <a className="btn btn-primary" href="#formulier">
@@ -148,7 +148,7 @@ function GratisWebsitescan() {
           <Reveal as="div" className="shead reveal">
             <h2 className="h2">Wat de website scan bekijkt</h2>
             <p className="lead">
-              MegaOnline kijkt waar bezoekers afhaken op weg naar een aanvraag of boeking, en wat daar beter
+              MegaOnline kijkt waar bezoekers afhaken op weg naar een aanvraag of boeking en wat daar beter
               kan. Jouw antwoorden hieronder bepalen waar MegaOnline het eerst naar kijkt.
             </p>
           </Reveal>

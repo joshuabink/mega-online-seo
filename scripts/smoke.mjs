@@ -58,7 +58,8 @@ function normCta(s) {
  * of href="tel:", of een href met wa.me of whatsapp bevatten, of het
  * telefoonnummer van MegaOnline in welke notatie dan ook. Een doorlooptijd
  * voor websitebouw of een reactie mag niet: '4 tot 8 weken', 'enkele weken',
- * 'twee werkdagen' en 'vlot live' laten de controle falen. Title, meta
+ * 'twee werkdagen', '2 werkdagen', 'vlot', 'snel live' en een maandtermijn
+ * als 'binnen X maanden' of 'na X maanden' laten de controle falen. Title, meta
  * description, og-tags en JSON-LD mogen die termen ook niet, en evenmin
  * weken, werkdagen, dagen, 'maand live', 'maanden live', vlot of 'snel live'.
  * Uitzondering is de scanlevering 'binnen 5 werkdagen'. Losse woorden we, wij, ons en
@@ -183,9 +184,11 @@ async function controleerCtaTeksten(browser) {
       if (data.html.includes(notatie)) fouten.push(`${pad} HTML bevat ${notatie}`)
     }
     if (/websiteconcept/i.test(data.zichtbaar)) fouten.push(`${pad} toont websiteconcept`)
-    for (const verboden of ['4 tot 8 weken', 'enkele weken', 'twee werkdagen', 'vlot live']) {
+    for (const verboden of ['4 tot 8 weken', 'enkele weken', 'twee werkdagen', '2 werkdagen', 'vlot', 'snel live']) {
       if (data.zichtbaar.toLowerCase().includes(verboden)) fouten.push(`${pad} bevat "${verboden}"`)
     }
+    const maandTermijn = data.zichtbaar.match(/binnen\s+(?:\d+|een|twee|drie|vier|vijf|zes|zeven|acht|negen|tien|elf|twaalf|enkele|paar)\s+maanden|na\s+(?:\d+|een|twee|drie|vier|vijf|zes|zeven|acht|negen|tien|elf|twaalf|enkele|paar)\s+maanden/i)
+    if (maandTermijn) fouten.push(`${pad} bevat "${maandTermijn[0]}"`)
     const kopZonderScan = data.headSchema
       .replace(/binnen 5 werkdagen/gi, '')
       .replace(/rustige dagen|stille dagen|doordeweekse dagen|drukke dagen|feestdagen|contentdagen|sluitingsdagen|dagen per week/gi, '')
@@ -711,7 +714,7 @@ check('velden komen correct door',
   lead?.email === 'test@example.com' &&
   lead?.telefoon === '0612345678' &&
   lead?.branche === 'Activiteiten / Recreatie' &&
-  lead?.start === 'Zo snel mogelijk' &&
+  lead?.start === 'Wanneer het uitkomt' &&
   lead?.omschrijving === 'We verhuren springkussens in de regio Gouda.' &&
   lead?.knelpunt === 'Er komen te weinig aanvragen of boekingen binnen, Mijn website ziet er verouderd uit' &&
   lead?.doel === 'Meer offerteaanvragen',
@@ -1089,7 +1092,7 @@ check(
       scanPagina.canonical === 'https://megaonline.io/gratis-websitescan' &&
       !/noindex/i.test(scanPagina.robots) &&
       scanPagina.h1 === 'Vraag een gratis website scan aan' &&
-      scanPagina.lead === 'MegaOnline bekijkt je site en vertelt je eerlijk wat je nu aanvragen en boekingen kost, en wat het eerst moet.' &&
+      scanPagina.lead === 'MegaOnline bekijkt je site en vertelt je eerlijk wat je nu aanvragen en boekingen kost en wat het eerst moet.' &&
       scanPagina.formTag === 'FORM' &&
       scanPagina.heroHref === '#formulier' &&
       scanPagina.tekstHref === '#formulier' &&

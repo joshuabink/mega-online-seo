@@ -285,8 +285,8 @@ function Offerteaanvragen() {
               <span className="iconbox">
                 <Icon name="zap" />
               </span>
-              <h4>Vlotte opvolging</h4>
-              <p>Complete leads die je direct kunt oppakken.</p>
+              <h4>Bruikbare leads</h4>
+              <p>Complete leads die je kunt oppakken.</p>
             </Reveal>
             {' '}
             <Reveal as="div" className="feat reveal" data-d="1">

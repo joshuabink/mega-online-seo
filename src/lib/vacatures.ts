@@ -208,7 +208,7 @@ export const VACATURES: Vacature[] = [
       {
         icoon: "eye",
         titel: "Je oog wordt scherper",
-        tekst: "Na een paar maanden zie je in tien seconden wat er mis is met een pagina.",
+        tekst: "Na verloop van tijd herken je wat er mis is met een pagina.",
       },
       {
         icoon: "handshake",
@@ -368,7 +368,7 @@ export const VACATURES: Vacature[] = [
       {
         icoon: "handshake",
         titel: "Directe begeleiding",
-        tekst: "Korte lijnen, snelle beslissingen, geen goedkeuringsronde van drie weken.",
+        tekst: "Korte lijnen, zonder een lange goedkeuringsronde.",
       },
     ],
     metaTitle: "AI-ontwikkelaar, stage of parttime | Werken bij MegaOnline.io",
@@ -504,8 +504,8 @@ export const VACATURES: Vacature[] = [
       },
       {
         icoon: "gauge",
-        titel: "Snelle terugkoppeling",
-        tekst: "Bij adverteren zie je binnen dagen of je keuze klopte. Dat leert hard.",
+        titel: "Terugkoppeling uit de cijfers",
+        tekst: "Bij adverteren zie je aan de cijfers of je keuze klopte. Dat leert hard.",
       },
       {
         icoon: "link-2",

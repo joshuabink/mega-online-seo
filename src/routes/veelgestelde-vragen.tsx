@@ -110,11 +110,11 @@ function VeelgesteldeVragen() {
             {' '}
             <div className="faq">
               <Qa question="Wat kost een website bij MegaOnline?" className="reveal">
-                  Dat hangt af van wat je nodig hebt. De Starter Website begint vanaf €1.500 en is bedoeld voor starters die voordelig en snel online willen. Een volledige Conversie Website is maatwerk en wordt geprijsd op basis van omvang, strategie en koppelingen. In een gratis website scan brengt MegaOnline het vrijblijvend voor je in kaart.
+                  Dat hangt af van wat je nodig hebt. De Starter Website begint vanaf €1.500 en is bedoeld voor starters die voordelig online willen. Een volledige Conversie Website is maatwerk en wordt geprijsd op basis van omvang, strategie en koppelingen. In een gratis website scan brengt MegaOnline het vrijblijvend voor je in kaart.
               </Qa>
               {' '}
               <Qa question="Waarom is de Starter Website goedkoper?" className="reveal">
-                  Omdat MegaOnline daarbij werkt met beproefde, herbruikbare bouwblokken en een vaste opzet. Dat scheelt veel ontwerp- en bouwuren. Dat voordeel geeft MegaOnline door. De kwaliteit van de basis blijft hetzelfde, alleen het proces is sneller.
+                  Omdat MegaOnline daarbij werkt met beproefde, herbruikbare bouwblokken en een vaste opzet. Dat scheelt veel ontwerp- en bouwuren. Dat voordeel geeft MegaOnline door. De kwaliteit van de basis blijft hetzelfde.
               </Qa>
               {' '}
               <Qa question="Krijg ik vooraf een duidelijke prijs?" className="reveal">
@@ -146,7 +146,7 @@ function VeelgesteldeVragen() {
               </Qa>
               {' '}
               <Qa question="Wat heb je van mij nodig?" className="reveal">
-                  Vooral je teksten, je logo en een paar foto’s. Waar dat nodig is, denkt MegaOnline mee over de inhoud. Hoe sneller je aanlevert, hoe vlotter je live kunt.
+                  Vooral je teksten, je logo en een paar foto’s. Waar dat nodig is, denkt MegaOnline mee over de inhoud.
               </Qa>
               {' '}
               <Qa question="Kan ik later nog dingen aanpassen?" className="reveal">
@@ -173,8 +173,8 @@ function VeelgesteldeVragen() {
                   Ja. MegaOnline zorgt voor een gezonde SEO-basis en kan verder gaan met lokale vindbaarheid, sterke landingspagina’s en techniek. MegaOnline stuurt daarbij op de juiste bezoekers, mensen die actief zoeken naar wat jij biedt, in plaats van op ijdele bezoekersaantallen.
               </Qa>
               {' '}
-              <Qa question="Hoe snel zie ik resultaat?" className="reveal">
-                  Een betere website werkt vaak direct: bezoekers vinden sneller hun weg naar contact. SEO-resultaat bouwt zich op over weken tot maanden. MegaOnline stuurt op gestage, duurzame groei.
+              <Qa question="Wat levert een betere website op?" className="reveal">
+                  Bezoekers vinden hun weg naar contact. MegaOnline stuurt op gestage, duurzame groei.
               </Qa>
               {' '}
               <Qa question="Kan MegaOnline mijn bestaande website verbeteren?" className="reveal">
@@ -198,7 +198,7 @@ function VeelgesteldeVragen() {
               </Qa>
               {' '}
               <Qa question="Is mijn website veilig en snel?" className="reveal">
-                  Daar zorgt MegaOnline voor. Je website wordt snel, veilig en stabiel opgeleverd, en is volledig mobielvriendelijk, want de meeste bezoekers komen via hun telefoon.
+                  Daar zorgt MegaOnline voor. Je website wordt veilig en stabiel opgeleverd en is volledig mobielvriendelijk, want de meeste bezoekers komen via hun telefoon.
               </Qa>
               {' '}
               <Qa question="Kunnen jullie koppelen met mijn systemen?" className="reveal">

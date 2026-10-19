@@ -56,7 +56,7 @@ const FAQ_ITEMS: { q: string; a: string }[] = [
     a: "Hoe lang het bouwen duurt, hangt af van hoe snel jij en MegaOnline samen de intake kunnen afronden en van hoe snel de teksten en foto's beschikbaar zijn. MegaOnline werkt altijd met een duidelijke planning.",
   },
   {
-    q: "Je hebt al een website. Kan MegaOnline die verbeteren?",
+    q: "Kan MegaOnline mijn bestaande website verbeteren?",
     a: "Ja. In sommige gevallen is een volledig nieuwe website de beste keuze. In andere gevallen kunnen gerichte verbeteringen al veel effect hebben. De gratis website scan helpt MegaOnline om te bepalen wat voor jou de slimste aanpak is.",
   },
   {
@@ -496,7 +496,7 @@ function Home() {
                   <div className="case__step">
                     <span className="k">Wat MegaOnline deed</span>
                     <p>
-                      MegaOnline bracht de propositie terug naar een duidelijke boodschap en bouwde een structuur die bezoekers sneller naar de juiste informatie leidt.
+                      MegaOnline bracht de propositie terug naar een duidelijke boodschap en bouwde een structuur die bezoekers naar de juiste informatie leidt.
                     </p>
                   </div>
                 </div>

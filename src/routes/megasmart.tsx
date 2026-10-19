@@ -621,7 +621,7 @@ function MegaSmart() {
             </Qa>
             {' '}
             <Qa question="Moeten mijn collega’s hier veel voor leren?" className="reveal">
-                MegaOnline richt het systeem zo in dat iedereen alleen ziet wat hij nodig heeft. De inrichting en uitleg horen bij het abonnement, en je krijgt bij MegaOnline een vast aanspreekpunt in plaats van een supportformulier.
+                MegaOnline richt het systeem zo in dat iedereen alleen ziet wat hij nodig heeft. De inrichting en uitleg horen bij het abonnement en je krijgt bij MegaOnline een vast aanspreekpunt in plaats van een supportformulier.
             </Qa>
             {' '}
             <Qa question="Wat gebeurt er met mijn klantgegevens?" className="reveal">

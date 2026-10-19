@@ -158,12 +158,12 @@ function Integraties() {
                 <h3 style={{ marginTop: "18px" }}>Je website als kloppend hart van je proces</h3>
                 {' '}
                 <p style={{ marginTop: "14px" }}>
-                  Een aanvraag of boeking komt binnen en gaat automatisch door naar je CRM, agenda of inbox. Jij houdt overzicht en tijd over, je klant krijgt een snelle, professionele opvolging.
+                  Een aanvraag of boeking komt binnen en gaat automatisch door naar je CRM, agenda of inbox. Jij houdt overzicht en tijd over, je klant krijgt een professionele opvolging.
                 </p>
               </div>
               {' '}
               <div className="pullnote" style={{ marginTop: "24px" }}>
-                Minder handwerk, snellere opvolging,
+                Minder handwerk, zorgvuldige opvolging,
                 {' '}
                 <em>geen</em>
                 {' '}
@@ -306,7 +306,7 @@ function Integraties() {
           {' '}
           <div className="faq">
             <Qa question="Werkt dit met de systemen die ik nu gebruik?" className="reveal">
-                Vaak wel. MegaOnline sluit aan op veelgebruikte CRM-, boekings- en betaalsystemen, en kijkt per situatie wat de slimste koppeling is. Soms via een directe integratie, soms via een tussenstap.
+                Vaak wel. MegaOnline sluit aan op veelgebruikte CRM-, boekings- en betaalsystemen en kijkt per situatie wat de slimste koppeling is. Soms via een directe integratie, soms via een tussenstap.
             </Qa>
             {' '}
             <Qa question="Wat als mijn systeem geen standaardkoppeling heeft?" className="reveal">

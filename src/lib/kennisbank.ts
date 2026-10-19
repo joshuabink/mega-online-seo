@@ -224,8 +224,8 @@ export const ARTIKELEN: Artikel[] = [
         a: "Meestal eerst je website. Advertenties sturen mensen naar dezelfde pagina die nu al te weinig oplevert, dus je betaalt dan voor bezoek dat op dezelfde plek blijft hangen. Staat de pagina eenmaal goed, dan verdient elke advertentie-euro meer terug.",
       },
       {
-        q: "Hoe lang duurt het voordat je verschil ziet?",
-        a: "Aanpassingen aan teksten, formulieren en vertrouwen werken direct op het bezoek dat je al hebt, dus daar kun je iets van zien als je genoeg verkeer hebt. Werk aan je vindbaarheid duurt langer, vaak maanden. Dat is de tweede reden om met de pagina te beginnen.",
+        q: "Waar zie je verschil?",
+        a: "Aanpassingen aan teksten, formulieren en vertrouwen raken het bezoek dat je al hebt, dus daar kun je iets van zien als je genoeg verkeer hebt. Werk aan je vindbaarheid is een apart traject. Dat is de tweede reden om met de pagina te beginnen.",
       },
       {
         q: "Wat als ik geen idee heb hoeveel aanvragen ik nu krijg?",
@@ -953,8 +953,8 @@ export const ARTIKELEN: Artikel[] = [
             tekst: "Wat je bespreekt, hoeft niet via iemand anders te worden doorgegeven.",
           },
           {
-            titel: "Snel schakelen.",
-            tekst: "Er is weinig intern overleg. Een kleine wijziging is vaak snel geregeld.",
+            titel: "Korte lijnen.",
+            tekst: "Er is weinig intern overleg. Een kleine wijziging hoeft niet langs meerdere mensen.",
           },
           {
             titel: "Minder organisatie in de prijs.",
@@ -1291,7 +1291,7 @@ export const ARTIKELEN: Artikel[] = [
         kop: "En je aanvragen dan?",
         accent: "aanvragen",
         alineas: [
-          "Genoemd worden is pas de eerste stap. Wie via ChatGPT op je site komt, moet snel zien wat je doet en hoe hij contact opneemt. Waar het daarna vaak misgaat lees je in [Waarom levert je website geen aanvragen of klanten op?](/kennisbank/website-levert-geen-aanvragen-op) Meer over vindbaarheid in Google en AI lees je bij [SEO en GEO](/diensten/seo).",
+          "Genoemd worden is pas de eerste stap. Wie via ChatGPT op je site komt, moet zien wat je doet en hoe hij contact opneemt. Waar het daarna vaak misgaat lees je in [Waarom levert je website geen aanvragen of klanten op?](/kennisbank/website-levert-geen-aanvragen-op) Meer over vindbaarheid in Google en AI lees je bij [SEO en GEO](/diensten/seo).",
         ],
       },
     ],
