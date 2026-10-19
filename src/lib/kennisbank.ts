@@ -274,7 +274,7 @@ export const ARTIKELEN: Artikel[] = [
         accent: "een lijstje",
         alineas: [
           "Iemand die jouw website voor het eerst opent doet in stilte een risicocontrole. Bestaat dit bedrijf echt. Werkt hier een mens. Weet die persoon waar hij over praat. Wat gaat dit ongeveer kosten. Wat gebeurt er als het misgaat. Pas als die vragen genoeg antwoord hebben gehad, vult iemand een formulier in.",
-          "Het lastige is dat dezelfde woorden net zo goed op de site van je concurrent kunnen staan. Kwaliteit, maatwerk, korte lijnen, jarenlange ervaring. Die woorden zijn gratis, dus ze bewijzen niets. Bewijs is alles wat iemand kan controleren zonder jou te bellen: een naam, een gezicht, een prijs, een project dat echt bestaat. Daarom begint een conversiegerichte website met bewijs en niet met een ontwerp.",
+          "Het lastige is dat dezelfde woorden net zo goed op de site van je concurrent kunnen staan. Kwaliteit, maatwerk, korte lijnen, jarenlange ervaring. Die woorden zijn gratis, dus ze bewijzen niets. Bewijs is alles wat iemand kan controleren zonder jou te bellen: een naam, een gezicht, een prijs, een project dat echt bestaat. Daarom begint een [conversiegerichte website](/diensten/conversie-website) met bewijs en niet met een ontwerp.",
           "Dit geldt sterker naarmate de opdracht groter is. Wie een offerte aanvraagt voor een installatie van tienduizend euro neemt een risico met zijn eigen naam eraan. Zie ook wat dat betekent voor [dienstverleners](/branches/dienstverleners), waar de site het vertrouwen moet wekken dat jij in een gesprek vanzelf wekt.",
         ],
       },
@@ -655,7 +655,7 @@ export const ARTIKELEN: Artikel[] = [
             titel: "6. Prijzen of beschikbaarheid ontbreken",
             tekst: `**Wat de bezoeker ziet.** Eerst naam, e-mail en telefoon invullen. Pas daarna een prijs of een vrije datum. Of helemaal geen vanafprijs.
 
-**Waarom het boekingen kost.** Wie de prijs of een vrije datum niet ziet, moet gegevens afgeven zonder te weten of het past. De scan controleert onder meer of de prijs pas na het formulier zichtbaar is, of de reserveringspagina leeg is zonder datum of tarief. Meer hierover staat in [prijzen op je website zetten](/kennisbank/prijzen-op-website-verhuurbedrijf).
+**Waarom het boekingen kost.** Wie de prijs of een vrije datum niet ziet, moet gegevens afgeven zonder te weten of het past. Let vooral op een prijs die pas na het formulier zichtbaar is of een reserveringspagina zonder datum of tarief. Meer hierover staat in [prijzen op je website zetten](/kennisbank/prijzen-op-website-verhuurbedrijf).
 
 **Zelfcheck (5 minuten).**
 
@@ -679,7 +679,7 @@ export const ARTIKELEN: Artikel[] = [
             titel: "8. Het formulier of de boekingsstap werkt niet",
             tekst: `**Wat de bezoeker ziet.** "Reserveer" leidt naar een foutpagina, een leeg formulier of alleen een WhatsApp-nummer. Of de knop doet niets.
 
-**Waarom het boekingen kost.** Een knop die nergens heen leidt, maakt boeken onmogelijk. De scan controleert of de Reserveer-knop een werkende bestemming heeft.
+**Waarom het boekingen kost.** Een knop die nergens heen leidt, maakt boeken onmogelijk. Hetzelfde geldt voor een lege reserveringspagina.
 
 **Zelfcheck (5 minuten).**
 

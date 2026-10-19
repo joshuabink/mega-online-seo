@@ -7,7 +7,7 @@ import { CTA_SCAN } from "@/lib/cta"
 
 const TITLE = "Kennisbank: uitleg over websites die aanvragen opleveren | MegaOnline.io";
 const DESCRIPTION =
-  "Wat MegaOnline op websites tegenkomt, uitgelegd zodat je er zelf mee aan de slag kunt. Over aanvragen, vertrouwen, formulieren en vindbaarheid.";
+  "De onderdelen van de gratis website scan, uitgelegd zodat je er zelf mee aan de slag kunt. Over aanvragen, vertrouwen, formulieren en vindbaarheid.";
 
 export const Route = createFileRoute("/kennisbank/")({
   head: () => ({
