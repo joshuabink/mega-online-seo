@@ -57,8 +57,11 @@ function normCta(s) {
  * of #scan op de scanpagina zelf. De gebouwde HTML mag nergens websiteconcept
  * of href="tel:", of een href met wa.me of whatsapp bevatten, of het
  * telefoonnummer van MegaOnline in welke notatie dan ook. Een doorlooptijd
- * voor websitebouw of een reactie mag niet: '4 tot 8 weken', 'enkele weken'
- * en 'twee werkdagen' laten de controle falen. Losse woorden we, wij, ons en
+ * voor websitebouw of een reactie mag niet: '4 tot 8 weken', 'enkele weken',
+ * 'twee werkdagen' en 'vlot live' laten de controle falen. Title, meta
+ * description, og-tags en JSON-LD mogen die termen ook niet, en evenmin
+ * weken, werkdagen, dagen, 'maand live', 'maanden live', vlot of 'snel live'.
+ * Uitzondering is de scanlevering 'binnen 5 werkdagen'. Losse woorden we, wij, ons en
  * onze in de zichtbare tekst ook, behalve in een blockquote van een klant.
  * '2 werkdagen' mag nog steeds niet in hetzelfde element, dezelfde zin of
  * dezelfde kaart als het woord scan. De scanlevering 'binnen 5 werkdagen'
@@ -70,10 +73,17 @@ async function controleerCtaTeksten(browser) {
   const sitemap = await pg.request.get(BASE + '/sitemap.xml')
   const xml = await sitemap.text()
   const paden = [...xml.matchAll(/<loc>https:\/\/megaonline\.io([^<]*)<\/loc>/g)].map((m) => m[1] || '/')
-  check('sitemap-paden voor CTA-controle', sitemap.status() === 200 && paden.length > 0 && !paden.includes('/gratis-websiteconcept'), String(paden.length))
-
   const fouten = []
   let zagScan = false
+  check('sitemap-paden voor CTA-controle', sitemap.status() === 200 && paden.length > 0 && !paden.includes('/gratis-websiteconcept'), String(paden.length))
+  const sitemapTreffer = xml.match(/weken|werkdagen|dagen|maanden?\s+live|vlot|snel live/i)
+  if (sitemapTreffer) fouten.push(`sitemap bevat "${sitemapTreffer[0]}"`)
+  for (const bestand of ['/llms.txt', '/llms-full.txt', '/llms.md']) {
+    const llms = await pg.request.get(BASE + bestand)
+    if (llms.status() !== 200) continue
+    const treffer = (await llms.text()).match(/weken|werkdagen|dagen|maanden?\s+live|vlot|snel live/i)
+    if (treffer) fouten.push(`${bestand} bevat "${treffer[0]}"`)
+  }
 
   for (const pad of paden) {
     const res = await pg.goto(BASE + pad, { waitUntil: 'domcontentloaded', timeout: 30000 })
@@ -90,6 +100,13 @@ async function controleerCtaTeksten(browser) {
       const meta = (sel) => document.querySelector(sel)?.getAttribute('content') ?? ''
       const zichtbaar = [kloon.innerText, document.title, meta('meta[name="description"]'), meta('meta[property="og:title"]'), meta('meta[property="og:description"]')].join('\n')
       const stem = [zonderQuote.innerText, document.title, meta('meta[name="description"]'), meta('meta[property="og:title"]'), meta('meta[property="og:description"]')].join('\n')
+      const headSchema = [
+        document.title,
+        meta('meta[name="description"]'),
+        meta('meta[property="og:title"]'),
+        meta('meta[property="og:description"]'),
+        ...[...document.querySelectorAll('script[type="application/ld+json"]')].map((n) => n.textContent || ''),
+      ].join('\n')
       const bestemming = (href) => {
         if (!href) return { soort: 'geen' }
         try {
@@ -120,6 +137,7 @@ async function controleerCtaTeksten(browser) {
         knoppen,
         zichtbaar,
         stem,
+        headSchema,
         eind: eindEl ? norm(eindEl.innerText) : '',
         heeftForm: !!document.querySelector('.concept'),
         formVoorMorgen: !!(
@@ -165,8 +183,16 @@ async function controleerCtaTeksten(browser) {
       if (data.html.includes(notatie)) fouten.push(`${pad} HTML bevat ${notatie}`)
     }
     if (/websiteconcept/i.test(data.zichtbaar)) fouten.push(`${pad} toont websiteconcept`)
-    for (const verboden of ['4 tot 8 weken', 'enkele weken', 'twee werkdagen']) {
+    for (const verboden of ['4 tot 8 weken', 'enkele weken', 'twee werkdagen', 'vlot live']) {
       if (data.zichtbaar.toLowerCase().includes(verboden)) fouten.push(`${pad} bevat "${verboden}"`)
+    }
+    const kopZonderScan = data.headSchema
+      .replace(/binnen 5 werkdagen/gi, '')
+      .replace(/rustige dagen|stille dagen|doordeweekse dagen|drukke dagen|feestdagen|contentdagen|sluitingsdagen|dagen per week/gi, '')
+    const kopTreffer = kopZonderScan.match(/weken|werkdagen|dagen|maanden?\s+live|vlot|snel live/i)
+    if (kopTreffer) {
+      const van = Math.max(0, kopTreffer.index - 40)
+      fouten.push(`${pad} head/JSON-LD bevat "${kopTreffer[0]}" in "${kopZonderScan.slice(van, kopTreffer.index + 80).replace(/\s+/g, ' ')}"`)
     }
     const stemTreffer = data.stem.match(/(^|[^\p{L}])(we|wij|ons|onze)(?=[^\p{L}]|$)/iu)
     if (stemTreffer) {
@@ -1837,20 +1863,30 @@ for (const pad of [
 {
   await page.goto(BASE + '/diensten/seo', { waitUntil: 'load' })
   await waitHydrated(page)
-  const seoBron = await page.evaluate(() => {
+  const seoAntwoord = 'SEO is geen knop die je omzet. SEO werkt op de lange termijn. Hoe snel verbeteringen zichtbaar worden, hangt af van je uitgangspositie en de concurrentie. Daarom werkt MegaOnline met een contentplan voor twaalf maanden in plaats van losse acties.'
+  const seoBron = await page.evaluate((antwoord) => {
     const tekst = (document.body.textContent || '').replace(/\s+/g, ' ')
     const hrefs = [...document.querySelectorAll('a')].map((a) => a.getAttribute('href') || '')
+    const jsonld = [...document.querySelectorAll('script[type="application/ld+json"]')].map((n) => n.textContent || '').join('\n')
     return {
       stuk: tekst.includes(
         "en de website zorgt dat er wat uitkomt. Hoe AI-zoekmachines bedrijven kiezen om te noemen, lees je in gevonden worden in ChatGPT als mkb'er.",
       ),
       href: hrefs.includes('/kennisbank/gevonden-worden-in-chatgpt'),
+      antwoord: tekst.includes(antwoord),
+      faqPage: jsonld.includes('FAQPage'),
+      oud: jsonld.includes('Serieuze, blijvende posities'),
     }
-  })
+  }, seoAntwoord)
   check(
     '/diensten/seo linkt naar gevonden worden in ChatGPT',
     seoBron.stuk && seoBron.href,
     `stuk=${seoBron.stuk} href=${seoBron.href}`,
+  )
+  check(
+    '/diensten/seo toont de SEO-termijnzin en heeft geen afwijkende FAQPage',
+    seoBron.antwoord && !seoBron.faqPage && !seoBron.oud,
+    `antwoord=${seoBron.antwoord} faqPage=${seoBron.faqPage} oud=${seoBron.oud}`,
   )
 }
 

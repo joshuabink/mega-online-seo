@@ -87,7 +87,7 @@ function StarterWebsite() {
               <div className="hvis__card hvis__stat">
                 <span className="n">Snel</span>
                 {' '}
-                <span className="l">vlot live</span>
+                <span className="l">na teksten en beeld</span>
               </div>
             </Reveal>
           </div>
@@ -139,7 +139,7 @@ function StarterWebsite() {
               <Reveal as="div" className="miniprob reveal" data-d="1">
                 <h4>Snel online willen</h4>
                 <p>
-                  Je wilt vlot live staan, zonder een lang voortraject.
+                  Zonder lang voortraject: de bouw start zodra je materiaal compleet is.
                 </p>
               </Reveal>
               {' '}
