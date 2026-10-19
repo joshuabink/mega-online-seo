@@ -530,9 +530,9 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
                   <span className="gdot" />
                   Kenniscentrum
                 </span>
-                <h4 className="mfeat__title">Wat MegaOnline op websites tegenkomt</h4>
+                <h4 className="mfeat__title">Wat de website scan bekijkt</h4>
                 <p className="mfeat__desc">
-                  Wat MegaOnline steeds tegenkomt op websites, uitgewerkt zodat je er zelf mee aan de slag kunt.
+                  De onderdelen van de gratis website scan, uitgewerkt zodat je er zelf mee aan de slag kunt.
                 </p>
                 <span className="mfeat__foot">
                   <Link to="/kennisbank" style={{ color: 'var(--accent)', fontWeight: 600 }}>
