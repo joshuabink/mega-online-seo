@@ -282,7 +282,7 @@ export const ARTIKELEN: Artikel[] = [
         kop: "Zeven dingen die een zakelijke bezoeker zoekt",
         accent: "zeven dingen",
         alineas: [
-          "Dit is geen wensenlijst. Dit zijn de punten waarop de scan het vertrouwen van een website controleert. Hoe meer ervan klopt, hoe minder reden iemand heeft om af te haken.",
+          "Dit is geen wensenlijst. Dit zijn de punten waar de scan naar kijkt bij het vertrouwen van een website. Hoe meer ervan klopt, hoe minder reden iemand heeft om af te haken.",
         ],
         punten: [
           {
