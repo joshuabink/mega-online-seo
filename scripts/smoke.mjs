@@ -1549,7 +1549,7 @@ for (const pad of [
   check(
     'waar-boekingen-weglekken houdt slug, title, meta en H1',
     artikel.h1 === 'Waar lekken boekingen weg op je website?' &&
-      artikel.title === 'Waar boekingen weglekken op je website | MegaOnline.io' &&
+      artikel.title === 'Waar boekingen weglekken op je website | MegaOnline' &&
       artikel.description ===
         'Bezoekers willen boeken en haken toch af. Tien plekken waar boekingen weglekken, waarom dat gebeurt en per lek een zelfcheck van vijf minuten.' &&
       artikel.canonical === 'https://megaonline.io/kennisbank/waar-boekingen-weglekken' &&
@@ -2008,8 +2008,8 @@ for (const [pad, eind, form] of [
     block.includes("https://megaonline.io/kennisbank/waar-boekingen-weglekken"),
   );
   check(
-    "sitemap bevat waar-boekingen-weglekken met lastmod 2026-10-13",
-    !!boekingen && /<lastmod>2026-10-13<\/lastmod>/.test(boekingen),
+    "sitemap bevat waar-boekingen-weglekken met lastmod 2026-10-20",
+    !!boekingen && /<lastmod>2026-10-20<\/lastmod>/.test(boekingen),
     boekingen ?? "ontbreekt",
   );
   const watIsSeo = blocks.find((block) =>
