@@ -10,9 +10,9 @@ export const Route = createFileRoute('/veelgestelde-vragen')({
   head: () => ({
     meta: [
       { title: "Veelgestelde vragen | MegaOnline.io" },
-      { name: 'description', content: "Antwoord op de meestgestelde vragen over websites bij MegaOnline: wat het kost, hoe lang een project duurt, hoe je meer aanvragen krijgt, techniek en beheer." },
+      { name: 'description', content: "Antwoord op de meestgestelde vragen over websites bij MegaOnline: wat het kost, hoe een project verloopt, hoe je meer aanvragen krijgt, techniek en beheer." },
       { property: 'og:title', content: "Veelgestelde vragen | MegaOnline.io" },
-      { property: 'og:description', content: "Antwoord op de meestgestelde vragen over websites bij MegaOnline: wat het kost, hoe lang een project duurt, hoe je meer aanvragen krijgt, techniek en beheer." },
+      { property: 'og:description', content: "Antwoord op de meestgestelde vragen over websites bij MegaOnline: wat het kost, hoe een project verloopt, hoe je meer aanvragen krijgt, techniek en beheer." },
       { property: 'og:url', content: "https://megaonline.io/veelgestelde-vragen" },
     ],
     links: [
@@ -133,14 +133,10 @@ function VeelgesteldeVragen() {
                 <Icon name="calendar-clock" />
               </span>
               {' '}
-              <h2>Hoe lang duurt een project?</h2>
+              <h2>Hoe verloopt een project?</h2>
             </Reveal>
             {' '}
             <div className="faq">
-              <Qa question="Hoe lang duurt het om een website te bouwen?" className="reveal">
-                  Een Starter Website werkt met vaste bouwblokken. Hoe lang een volledige maatwerk-website duurt, hangt af van de omvang en het aantal feedbackrondes. MegaOnline maakt vooraf een heldere planning.
-              </Qa>
-              {' '}
               <Qa question="Hoe verloopt het traject?" className="reveal">
                   Kort gezegd: kennismaking, aanleveren van teksten en beeld, bouwen, een feedbackronde en livegang. Bij maatwerk zitten daar meer ontwerp- en afstemmingsrondes in. Je weet steeds hoe je project ervoor staat en wat de volgende stap is.
               </Qa>

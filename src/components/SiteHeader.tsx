@@ -481,7 +481,7 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
                 <span className="mcol__head">Veelgestelde vragen</span>
                 {[
                   ['prijs', 'euro', 'Wat kost een website?'],
-                  ['traject', 'help-circle', 'Hoe lang duurt een project?'],
+                  ['traject', 'help-circle', 'Hoe verloopt een project?'],
                   ['resultaat', 'trending-up', 'Hoe krijg je meer aanvragen?'],
                 ].map(([hash, icon, label]) => (
                   <Link
