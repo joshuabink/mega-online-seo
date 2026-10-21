@@ -1866,7 +1866,7 @@ for (const pad of [
 {
   await page.goto(BASE + '/diensten/seo', { waitUntil: 'load' })
   await waitHydrated(page)
-  const seoAntwoord = 'SEO is geen knop die je omzet. SEO werkt op de lange termijn. Hoe snel verbeteringen zichtbaar worden, hangt af van je uitgangspositie en de concurrentie. Daarom werkt MegaOnline met een contentplan voor twaalf maanden in plaats van losse acties.'
+  const seoAntwoord = 'SEO is geen knop die je omzet. SEO werkt op de lange termijn en hangt af van je uitgangspositie en de concurrentie. Daarom werkt MegaOnline met een contentplan voor twaalf maanden in plaats van losse acties.'
   const seoBron = await page.evaluate((antwoord) => {
     const tekst = (document.body.textContent || '').replace(/\s+/g, ' ')
     const hrefs = [...document.querySelectorAll('a')].map((a) => a.getAttribute('href') || '')
@@ -2016,8 +2016,8 @@ for (const [pad, eind, form] of [
     block.includes("https://megaonline.io/kennisbank/wat-is-seo"),
   );
   check(
-    "sitemap bevat wat-is-seo met lastmod 2026-10-14",
-    !!watIsSeo && /<lastmod>2026-10-14<\/lastmod>/.test(watIsSeo),
+    "sitemap bevat wat-is-seo met lastmod 2026-10-21",
+    !!watIsSeo && /<lastmod>2026-10-21<\/lastmod>/.test(watIsSeo),
     watIsSeo ?? "ontbreekt",
   );
   const freelancerBureau = blocks.find((block) =>
@@ -2041,7 +2041,7 @@ for (const [pad, eind, form] of [
   );
   check(
     "kennisbankoverzicht lastmod volgt de nieuwste gewijzigd",
-    !!kennisbankOverzicht && /<lastmod>2026-10-15<\/lastmod>/.test(kennisbankOverzicht),
+    !!kennisbankOverzicht && /<lastmod>2026-10-21<\/lastmod>/.test(kennisbankOverzicht),
     kennisbankOverzicht ?? "ontbreekt",
   );
   check(

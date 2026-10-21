@@ -616,10 +616,6 @@ function MegaSmart() {
                 Ja. MegaSmart is los af te nemen en werkt naast je bestaande website. Heb je wel een website van MegaOnline, dan komen aanvragen en boekingen er rechtstreeks in binnen zonder tussenstap.
             </Qa>
             {' '}
-            <Qa question="Hoe lang duurt het voordat je ermee kunt werken?" className="reveal">
-                Een basisinrichting met agenda, boekingspagina en bevestigingen volgt zodra duidelijk is wat je nodig hebt. Koppelingen met een administratiesysteem vragen eerst uitzoekwerk, omdat MegaOnline wil weten welk systeem waarvoor leidend is.
-            </Qa>
-            {' '}
             <Qa question="Moeten mijn collega’s hier veel voor leren?" className="reveal">
                 MegaOnline richt het systeem zo in dat iedereen alleen ziet wat hij nodig heeft. De inrichting en uitleg horen bij het abonnement en je krijgt bij MegaOnline een vast aanspreekpunt in plaats van een supportformulier.
             </Qa>

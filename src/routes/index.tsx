@@ -52,10 +52,6 @@ const FAQ_ITEMS: { q: string; a: string }[] = [
     a: "Ja. MegaOnline bouwt je website zo op dat je teksten en foto’s eenvoudig zelf kunt aanpassen, zonder technische kennis.",
   },
   {
-    q: "Hoe lang duurt het bouwen van een website?",
-    a: "Hoe lang het bouwen duurt, hangt af van hoe snel jij en MegaOnline samen de intake kunnen afronden en van hoe snel de teksten en foto's beschikbaar zijn. MegaOnline werkt altijd met een duidelijke planning.",
-  },
-  {
     q: "Kan MegaOnline mijn bestaande website verbeteren?",
     a: "Ja. In sommige gevallen is een volledig nieuwe website de beste keuze. In andere gevallen kunnen gerichte verbeteringen al veel effect hebben. De gratis website scan helpt MegaOnline om te bepalen wat voor jou de slimste aanpak is.",
   },
