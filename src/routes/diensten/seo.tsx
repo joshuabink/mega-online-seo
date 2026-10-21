@@ -30,8 +30,8 @@ export const Route = createFileRoute('/diensten/seo')({
  */
 const FAQ_ITEMS: { q: string; a: string }[] = [
   {
-    q: "Hoe lang duurt het voordat ik iets merk van SEO?",
-    a: "SEO is geen knop die je omzet. SEO werkt op de lange termijn. Hoe snel verbeteringen zichtbaar worden, hangt af van je uitgangspositie en de concurrentie. Daarom werkt MegaOnline met een contentplan voor twaalf maanden in plaats van losse acties.",
+    q: "Merk ik meteen iets van SEO?",
+    a: "SEO is geen knop die je omzet. SEO werkt op de lange termijn en hangt af van je uitgangspositie en de concurrentie. Daarom werkt MegaOnline met een contentplan voor twaalf maanden in plaats van losse acties.",
   },
   {
     q: "Is lokale vindbaarheid ook zinvol voor een klein bedrijf?",

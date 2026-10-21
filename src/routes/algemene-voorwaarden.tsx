@@ -139,7 +139,7 @@ function AlgemeneVoorwaarden() {
                 <h2>6. Oplevering en wijzigingen</h2>
                 {' '}
                 <p>
-                  Genoemde opleveringstermijnen zijn indicatief en nimmer te beschouwen als fatale termijnen. Vertraging in de aanlevering van materialen door de opdrachtgever kan de oplevering beïnvloeden.
+                  MegaOnline noemt geen datum waarop het werk af is. Vertraging in de aanlevering van materialen door de opdrachtgever kan de voortgang beïnvloeden.
                 </p>
                 {' '}
                 <p>
