@@ -212,6 +212,10 @@ export const ARTIKELEN: Artikel[] = [
     ],
     faq: [
       {
+        q: "Waarom krijg ik geen aanvragen via mijn website?",
+        a: "Meestal niet omdat er te weinig mensen komen, maar omdat de pagina ze te weinig geeft om op te beslissen. Bijna altijd is het een combinatie van zes dingen: een pagina die een andere vraag beantwoordt dan de bezoeker stelt, te weinig bewijs dat je te vertrouwen bent, geen prijsindicatie, een formulier dat te veel vraagt, een eerste stap die op de telefoon niet te vinden is en geen duidelijke vervolgstap. Met de vier controles in dit artikel vind je in een uur welke het bij jou is.",
+      },
+      {
         q: "Wat is een goede conversie voor een website?",
         a: "Er is geen getal dat voor elke branche klopt. Elk percentage dat je online vindt komt uit een andere markt dan de jouwe, met andere prijzen en een ander soort beslissing. Meet daarom je eigen beginpunt: het aantal aanvragen per maand nu. Dat is het enige cijfer waarmee je later kunt vergelijken.",
       },
@@ -249,7 +253,7 @@ export const ARTIKELEN: Artikel[] = [
         tekst: "Een nieuwe site die vanaf de eerste dag op aanvragen is gebouwd.",
       },
     ],
-    metaTitle: "Waarom je website geen aanvragen oplevert | MegaOnline.io",
+    metaTitle: "Waarom krijg je geen aanvragen via je website? | MegaOnline",
     metaDescription:
       "Veel bezoekers, weinig aanvragen. De zes plekken waar het weglekt, hoe je in een uur uitvindt welke het bij jou is en wat je er zelf aan kunt doen.",
   },
