@@ -228,7 +228,7 @@ function OverMegaonline() {
               </span>
               <h4>Makkelijker aanvragen en boekingen</h4>
               <p>
-                Een heldere route die bezoekers soepel naar de volgende stap brengt.
+                Een heldere route die bezoekers soepel naar de volgende stap brengt. Lees <Link to="/kennisbank/$slug" params={{ slug: 'website-levert-geen-aanvragen-op' }}>waarom je geen aanvragen krijgt via je website</Link>.
               </p>
             </Reveal>
             {' '}

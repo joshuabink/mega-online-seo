@@ -10,9 +10,9 @@ import { CTA_SCAN } from '@/lib/cta'
 export const Route = createFileRoute('/diensten/website-optimalisatie')({
   head: () => ({
     meta: [
-      { title: "Bestaande website laten optimaliseren | MegaOnline" },
+      { title: "Website laten optimaliseren voor meer aanvragen | MegaOnline" },
       { name: 'description', content: "Je website staat online, maar haalt er nog niet alles uit. Ontdek waar bezoekers afhaken en welke verbeteringen meer aanvragen opleveren." },
-      { property: 'og:title', content: "Bestaande website laten optimaliseren | MegaOnline" },
+      { property: 'og:title', content: "Website laten optimaliseren voor meer aanvragen | MegaOnline" },
       { property: 'og:description', content: "Je website staat online, maar haalt er nog niet alles uit. Ontdek waar bezoekers afhaken en welke verbeteringen meer aanvragen opleveren." },
       { property: 'og:url', content: "https://megaonline.io/diensten/website-optimalisatie" },
     ],
