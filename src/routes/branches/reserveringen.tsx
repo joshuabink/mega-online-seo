@@ -108,10 +108,11 @@ function Reserveringen() {
                 </span>
               </Reveal>
               <Reveal as="h1" className="display reveal" data-d="1">
-                Website laten maken met online reserveren
+                Website met reserveringssysteem laten maken
               </Reveal>
               <Reveal as="p" className="lead svc-hero__sub reveal" data-d="2">
-                Een website met reserveringssysteem is een website waarop gasten zelf een datum,
+                Een website met reserveringssysteem, ook wel reserveringswebsite genoemd, is een
+                website waarop gasten zelf een datum,
                 tijd of plek kiezen, direct zien wat vrij is en hun reservering afronden zonder te
                 bellen. Het reserveringssysteem regelt de agenda, de beschikbaarheid en de
                 bevestiging. De website laat zien wat je aanbiedt, wat het kost en waarom een gast
