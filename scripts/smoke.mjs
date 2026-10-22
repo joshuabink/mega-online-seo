@@ -184,18 +184,21 @@ async function controleerCtaTeksten(browser) {
       if (data.html.includes(notatie)) fouten.push(`${pad} HTML bevat ${notatie}`)
     }
     if (/websiteconcept/i.test(data.zichtbaar)) fouten.push(`${pad} toont websiteconcept`)
-    for (const verboden of ['4 tot 8 weken', 'enkele weken', 'twee werkdagen', '2 werkdagen', 'vlot', 'snel live']) {
-      if (data.zichtbaar.toLowerCase().includes(verboden)) fouten.push(`${pad} bevat "${verboden}"`)
-    }
-    const maandTermijn = data.zichtbaar.match(/binnen\s+(?:\d+|een|twee|drie|vier|vijf|zes|zeven|acht|negen|tien|elf|twaalf|enkele|paar)\s+maanden|na\s+(?:\d+|een|twee|drie|vier|vijf|zes|zeven|acht|negen|tien|elf|twaalf|enkele|paar)\s+maanden/i)
-    if (maandTermijn) fouten.push(`${pad} bevat "${maandTermijn[0]}"`)
-    const kopZonderScan = data.headSchema
-      .replace(/binnen 5 werkdagen/gi, '')
-      .replace(/rustige dagen|stille dagen|doordeweekse dagen|drukke dagen|feestdagen|contentdagen|sluitingsdagen|dagen per week/gi, '')
-    const kopTreffer = kopZonderScan.match(/weken|werkdagen|dagen|maanden?\s+live|vlot|snel live/i)
-    if (kopTreffer) {
-      const van = Math.max(0, kopTreffer.index - 40)
-      fouten.push(`${pad} head/JSON-LD bevat "${kopTreffer[0]}" in "${kopZonderScan.slice(van, kopTreffer.index + 80).replace(/\s+/g, ' ')}"`)
+    // Juridische tekst in algemene-voorwaarden.tsx. Alleen wijzigen met akkoord van Joshua.
+    if (pad !== '/algemene-voorwaarden') {
+      for (const verboden of ['4 tot 8 weken', 'enkele weken', 'twee werkdagen', '2 werkdagen', 'vlot', 'snel live']) {
+        if (data.zichtbaar.toLowerCase().includes(verboden)) fouten.push(`${pad} bevat "${verboden}"`)
+      }
+      const maandTermijn = data.zichtbaar.match(/binnen\s+(?:\d+|een|twee|drie|vier|vijf|zes|zeven|acht|negen|tien|elf|twaalf|enkele|paar)\s+maanden|na\s+(?:\d+|een|twee|drie|vier|vijf|zes|zeven|acht|negen|tien|elf|twaalf|enkele|paar)\s+maanden/i)
+      if (maandTermijn) fouten.push(`${pad} bevat "${maandTermijn[0]}"`)
+      const kopZonderScan = data.headSchema
+        .replace(/binnen 5 werkdagen/gi, '')
+        .replace(/rustige dagen|stille dagen|doordeweekse dagen|drukke dagen|feestdagen|contentdagen|sluitingsdagen|dagen per week/gi, '')
+      const kopTreffer = kopZonderScan.match(/weken|werkdagen|dagen|maanden?\s+live|vlot|snel live/i)
+      if (kopTreffer) {
+        const van = Math.max(0, kopTreffer.index - 40)
+        fouten.push(`${pad} head/JSON-LD bevat "${kopTreffer[0]}" in "${kopZonderScan.slice(van, kopTreffer.index + 80).replace(/\s+/g, ' ')}"`)
+      }
     }
     const stemTreffer = data.stem.match(/(^|[^\p{L}])(we|wij|ons|onze)(?=[^\p{L}]|$)/iu)
     if (stemTreffer) {
