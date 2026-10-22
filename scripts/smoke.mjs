@@ -376,7 +376,7 @@ function collectGaUrls(pg) {
 const ZOEKTAAL_PAGINAS = [
   {
     path: '/diensten/conversie-website',
-    title: 'Website laten maken gericht op aanvragen | MegaOnline',
+    title: 'Conversiegerichte website laten maken | MegaOnline',
     h1: 'Website laten maken gericht op aanvragen en boekingen',
   },
   {
@@ -391,7 +391,7 @@ const ZOEKTAAL_PAGINAS = [
   },
   {
     path: '/diensten/website-optimalisatie',
-    title: 'Bestaande website laten optimaliseren | MegaOnline',
+    title: 'Website laten optimaliseren voor meer aanvragen | MegaOnline',
     h1: 'Bestaande website laten optimaliseren',
   },
   {
@@ -412,7 +412,7 @@ const ZOEKTAAL_PAGINAS = [
   {
     path: '/branches/reserveringen',
     title: 'Website met reserveringssysteem laten maken | MegaOnline',
-    h1: 'Website laten maken met online reserveren',
+    h1: 'Website met reserveringssysteem laten maken',
   },
   {
     path: '/branches/offerteaanvragen',
@@ -1998,7 +1998,7 @@ for (const [pad, eind, form] of [
   );
   const dates = lastmods.map((list) => list[0] ?? "");
   check("sitemap 200", res.status() === 200, String(res.status()));
-  check("sitemap heeft 41 urls", blocks.length === 41, String(blocks.length));
+  check("sitemap heeft 42 urls", blocks.length === 42, String(blocks.length));
   const scanInSitemap = blocks.find((block) => block.includes("https://megaonline.io/gratis-websitescan"));
   check(
     "sitemap bevat de scan van vandaag en niet het oude conceptadres",

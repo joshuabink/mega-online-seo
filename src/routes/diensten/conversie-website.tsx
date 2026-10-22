@@ -11,10 +11,10 @@ import { CTA_SCAN } from '@/lib/cta'
 export const Route = createFileRoute('/diensten/conversie-website')({
   head: () => ({
     meta: [
-      { title: "Website laten maken gericht op aanvragen | MegaOnline" },
-      { name: 'description', content: "Een website die niet alleen mooi is, maar ook zijn werk doet. Voor bedrijven die afhankelijk zijn van aanvragen, reserveringen en boekingen." },
-      { property: 'og:title', content: "Website laten maken gericht op aanvragen | MegaOnline" },
-      { property: 'og:description', content: "Een website die niet alleen mooi is, maar ook zijn werk doet. Voor bedrijven die afhankelijk zijn van aanvragen, reserveringen en boekingen." },
+      { title: "Conversiegerichte website laten maken | MegaOnline" },
+      { name: 'description', content: "Een conversiegerichte website die niet alleen mooi is, maar ook zijn werk doet. Voor bedrijven die afhankelijk zijn van aanvragen, reserveringen en boekingen." },
+      { property: 'og:title', content: "Conversiegerichte website laten maken | MegaOnline" },
+      { property: 'og:description', content: "Een conversiegerichte website die niet alleen mooi is, maar ook zijn werk doet. Voor bedrijven die afhankelijk zijn van aanvragen, reserveringen en boekingen." },
       { property: 'og:url', content: "https://megaonline.io/diensten/conversie-website" },
     ],
     links: [
@@ -126,7 +126,7 @@ function ConversieWebsite() {
               </Reveal>
               {' '}
               <Reveal as="p" className="lead svc-hero__sub reveal" data-d="2">
-                Voor bedrijven die afhankelijk zijn van aanvragen, reserveringen en boekingen. MegaOnline bouwt websites die vertrouwen uitstralen, bezoekers helpen en klaar zijn voor groei.
+                Een conversiegerichte of converterende website is gebouwd om bezoekers naar een aanvraag of boeking te brengen. Voor bedrijven die afhankelijk zijn van aanvragen, reserveringen en boekingen. MegaOnline bouwt websites die vertrouwen uitstralen, bezoekers helpen en klaar zijn voor groei.
               </Reveal>
               {' '}
               <Reveal as="div" className="svc-hero__ctas reveal" data-d="2">

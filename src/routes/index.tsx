@@ -217,7 +217,7 @@ function Home() {
             <h2 className="h2">Waarom je bezoekers afhaken.</h2>
             {' '}
             <p className="lead">
-              Veel bedrijven hebben een website die online staat, maar niet actief bijdraagt aan groei. Bezoekers haken af. Ze twijfelen of nemen geen contact op. Daardoor blijven aanvragen en boekingen liggen. Lees <Link to="/kennisbank/$slug" params={{ slug: 'website-levert-geen-aanvragen-op' }}>waarom je website geen aanvragen oplevert</Link>.
+              Veel bedrijven hebben een website die online staat, maar niet actief bijdraagt aan groei. Bezoekers haken af. Ze twijfelen of nemen geen contact op. Daardoor blijven aanvragen en boekingen liggen. Lees <Link to="/kennisbank/$slug" params={{ slug: 'website-levert-geen-aanvragen-op' }}>waarom je geen aanvragen krijgt via je website</Link>.
             </p>
           </Reveal>
           {' '}

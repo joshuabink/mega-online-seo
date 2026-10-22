@@ -212,6 +212,10 @@ export const ARTIKELEN: Artikel[] = [
     ],
     faq: [
       {
+        q: "Waarom krijg ik geen aanvragen via mijn website?",
+        a: "Meestal niet omdat er te weinig mensen komen, maar omdat de pagina ze te weinig geeft om op te beslissen. Bijna altijd is het een combinatie van zes dingen: een pagina die een andere vraag beantwoordt dan de bezoeker stelt, te weinig bewijs dat je te vertrouwen bent, geen prijsindicatie, een formulier dat te veel vraagt, een eerste stap die op de telefoon niet te vinden is en geen duidelijke vervolgstap. Met de vier controles in dit artikel vind je in een uur welke het bij jou is.",
+      },
+      {
         q: "Wat is een goede conversie voor een website?",
         a: "Er is geen getal dat voor elke branche klopt. Elk percentage dat je online vindt komt uit een andere markt dan de jouwe, met andere prijzen en een ander soort beslissing. Meet daarom je eigen beginpunt: het aantal aanvragen per maand nu. Dat is het enige cijfer waarmee je later kunt vergelijken.",
       },
@@ -249,7 +253,7 @@ export const ARTIKELEN: Artikel[] = [
         tekst: "Een nieuwe site die vanaf de eerste dag op aanvragen is gebouwd.",
       },
     ],
-    metaTitle: "Waarom je website geen aanvragen oplevert | MegaOnline.io",
+    metaTitle: "Waarom krijg je geen aanvragen via je website? | MegaOnline",
     metaDescription:
       "Veel bezoekers, weinig aanvragen. De zes plekken waar het weglekt, hoe je in een uur uitvindt welke het bij jou is en wat je er zelf aan kunt doen.",
   },
@@ -1344,6 +1348,160 @@ export const ARTIKELEN: Artikel[] = [
     metaTitle: "Gevonden worden in ChatGPT als mkb'er | MegaOnline",
     metaDescription:
       "Hoe word je als mkb'er genoemd in ChatGPT en het AI-overzicht van Google? Eigen metingen, wat Google en OpenAI zeggen en wat je vandaag kunt doen.",
+  },
+  {
+    slug: "reserveringssysteem-of-website-met-reserveringen",
+    naam: "Reserveringssysteem of website",
+    vraag: "Heb je een reserveringssysteem nodig of een website met reserveringen?",
+    pijler: "Zo werkt het echt",
+    icoon: "calendar-check",
+    branche: "Bedrijven met reserveringen",
+    teaser:
+      "Een systeem regelt de agenda, een website zorgt dat iemand durft te reserveren. Wat je nodig hebt hangt af van wat je nu al hebt.",
+    antwoord:
+      "Meestal allebei, want ze doen iets anders. Het reserveringssysteem regelt de agenda, de beschikbaarheid en de bevestiging. De website zorgt dat een gast genoeg weet en genoeg vertrouwt om op de knop te drukken.",
+    leestijd: "6 minuten",
+    gepubliceerd: "2026-10-22",
+    gewijzigd: "2026-10-22",
+    cta: "scan",
+    eindKop: "Wil je weten waar gasten op jouw site afhaken voordat ze reserveren?",
+    eindLead:
+      "Beantwoord zes korte vragen. MegaOnline kijkt persoonlijk naar je website en je reserveringsroute en laat zien waar de reserveringen blijven hangen. Wil je eerst meer weten over de opzet, lees dan wat er bij een [website met reserveringssysteem](/branches/reserveringen) komt kijken.",
+    secties: [
+      {
+        kop: "Wat een reserveringssysteem doet en wat niet",
+        accent: "en wat niet",
+        alineas: [
+          "Een reserveringssysteem is software. Het houdt bij welke tijden, plekken of tickets nog vrij zijn, neemt de reservering aan, stuurt een bevestiging en vaak ook een herinnering. Goede systemen laten een gast meteen betalen of aanbetalen. Dat is veel werk dat je niet meer met de hand hoeft te doen.",
+          "Wat een systeem niet doet: uitleggen wat je aanbiedt. Een kalender met vrije tijden vertelt een gast niet wat een kinderfeestje bij jou inhoudt, of er parkeerplaats is of wat er gebeurt als hij moet annuleren. Een systeem neemt een beslissing aan. Het helpt niemand die beslissing te nemen.",
+          "Veel systemen geven je ook een eigen boekingspagina. Handig om snel te starten, alleen staat die pagina op het domein van de leverancier en in hun opmaak. Wie op Google zoekt naar wat jij aanbiedt in jouw plaats, vindt jouw eigen site. Die boekingspagina draagt daar weinig aan bij.",
+        ],
+      },
+      {
+        kop: "Wat de website doet wat het systeem niet kan",
+        accent: "wat het systeem niet kan",
+        alineas: [
+          "Neem een indoor speeltuin. Een moeder zoekt op zaterdagochtend naar een plek voor het verjaardagsfeestje van haar zoon. Ze wil weten wat het kost per kind, wat er bij het feestje zit, of er een aparte ruimte is en tot welke leeftijd het leuk is. Pas als dat klopt kijkt ze naar een datum.",
+          "Al die antwoorden horen op de website, vóór de reserveerknop. Staan ze er niet, dan belt ze. Of ze boekt bij de speeltuin twee dorpen verderop, die het wel op een rij heeft gezet. Het systeem had prima gewerkt. Er kwam alleen niemand aan toe.",
+          "Daarom zijn ze geen keuze tussen twee dingen. De website brengt de gast tot de beslissing, het systeem verwerkt die beslissing. Ontbreekt een van de twee, dan merk je dat in het aantal reserveringen.",
+        ],
+      },
+      {
+        kop: "Wat past bij jouw situatie",
+        accent: "jouw situatie",
+        alineas: [
+          "Welke stap het meest oplevert hangt af van waar je nu staat. De meeste bedrijven herkennen zich in een van deze drie.",
+        ],
+        punten: [
+          {
+            titel: "Je reserveert nu via telefoon en mail",
+            tekst:
+              "Hier levert een systeem het meest op. Elke reservering kost nu een paar berichten heen en weer. Wat 's avonds binnenkomt blijft liggen tot de volgende dag. Een gast die om tien uur 's avonds wil reserveren en dat niet kan, reserveert vaak ergens anders. Begin met een systeem dat past bij wat je verkoopt en zet het op je eigen site.",
+          },
+          {
+            titel: "Je hebt een systeem, maar er komt weinig online binnen",
+            tekst:
+              "Dan ligt het zelden aan het systeem. Het ligt aan de weg ernaartoe: een knop die op de telefoon onder de vouw staat, een prijs die pas in de laatste stap verschijnt of een site die de vragen van gasten niet beantwoordt. Waar dat precies zit lees je in het artikel over [waar boekingen weglekken op je website](/kennisbank/waar-boekingen-weglekken).",
+          },
+          {
+            titel: "Je begint opnieuw of je hebt nog niets",
+            tekst:
+              "Kies eerst het systeem en bouw de website eromheen. Zo weet je vooraf of de reservering op je eigen pagina kan blijven, welke gegevens het systeem nodig heeft en wat de gast in welke stap ziet. Andersom kom je er na de bouw achter dat de module niet in je ontwerp past.",
+          },
+        ],
+      },
+      {
+        kop: "Waar je op let bij het kiezen van een systeem",
+        accent: "bij het kiezen",
+        alineas: [
+          "Vergelijkingssites zetten functies naast elkaar. Voor een ondernemer tellen vijf vragen meer dan het aantal vinkjes.",
+        ],
+        punten: [
+          {
+            titel: "Past het bij wat je verkoopt?",
+            tekst:
+              "Een tijdslot voor een escaperoom, een tafel voor vier, een fiets voor een week of een ticket met extra opties zijn vier verschillende dingen. Een systeem dat voor afspraken is gemaakt, wringt bij tickets. Vraag een proefaccount en zet je eigen aanbod er een keer in.",
+          },
+          {
+            titel: "Kan de gast op je eigen site blijven?",
+            tekst:
+              "Er zijn drie routes: een module op je eigen pagina, een knop naar de boekingspagina van de leverancier of een koppeling die beschikbaarheid uitwisselt. Welke kan, hangt af van het systeem. Meer over koppelingen staat bij [integraties](/diensten/integraties).",
+          },
+          {
+            titel: "Werkt het goed op een telefoon?",
+            tekst:
+              "Reserveer zelf op je telefoon, met één hand, op de bank. Moet je inzoomen of verspringt het formulier, dan haakt een deel van je gasten daar af.",
+          },
+          {
+            titel: "Komt alles in één agenda?",
+            tekst:
+              "Reserveringen via de site, de telefoon en de balie moeten in dezelfde agenda staan. Anders is een dubbele boeking een kwestie van tijd.",
+          },
+          {
+            titel: "Hoe wordt er gerekend?",
+            tekst:
+              "Sommige leveranciers rekenen per maand, andere per reservering of per verkocht ticket. Reken het door op je eigen aantallen van een drukke maand en een rustige maand. Een systeem dat goedkoop lijkt, kan in het hoogseizoen het duurste zijn.",
+          },
+        ],
+      },
+      {
+        kop: "Hoe MegaOnline dit aanpakt",
+        accent: "aanpakt",
+        alineas: [
+          "MegaOnline bouwt de website altijd vanuit de reservering terug: wat moet een gast weten voordat hij reserveert en in welke volgorde. Heb je al een systeem dat goed werkt, dan wordt de site daaromheen gebouwd.",
+          "Heb je nog geen systeem, of past je huidige systeem niet bij wat je verkoopt, dan is er ook een eigen boekings- en reserveringssysteem. Dat wordt ingericht op jouw diensten, van het boeken van een belafspraak tot het kopen van een ticket met extra opties. Wat het allemaal kan staat op de pagina over [MegaSmart](/megasmart).",
+        ],
+      },
+    ],
+    doen: [
+      "Reserveer 's avonds op je telefoon bij je eigen bedrijf en tel de stappen tot de bevestiging.",
+      "Schrijf de vijf vragen op die gasten aan de telefoon het vaakst stellen en kijk of het antwoord op je site staat, vóór de reserveerknop.",
+      "Zet de prijs en je annuleringsvoorwaarden vóór de betaalstap.",
+      "Controleer of reserveringen via de telefoon in dezelfde agenda komen als die via de site.",
+      "Tel hoeveel reserveringen per maand nog via telefoon of mail binnenkomen. Dat is je beginpunt.",
+    ],
+    faq: [
+      {
+        q: "Wat is het verschil tussen een reserveringssysteem en een boekingssysteem?",
+        a: "In de praktijk is het meestal hetzelfde. Horeca en locaties spreken vaker van reserveren, activiteiten en verhuur vaker van boeken. Waar het om gaat is of het systeem past bij wat je verkoopt: tijdsloten, plekken, tickets of afspraken.",
+      },
+      {
+        q: "Kan ik een reserveringssysteem op mijn bestaande website zetten?",
+        a: "Meestal wel. Dat kan met een module op je eigen pagina, een knop naar de boekingspagina van de leverancier of een koppeling. Welke route kan hangt af van het systeem en van hoe je site gebouwd is.",
+      },
+      {
+        q: "Is een gratis reserveringssysteem genoeg?",
+        a: "Voor eenvoudige afspraken soms wel. Kijk wel wat je inlevert: vaak een boekingspagina in de opmaak van de leverancier, beperkte betaalmogelijkheden of kosten per reservering zodra je groeit. Reken het door op je eigen aantallen.",
+      },
+      {
+        q: "Moet een gast een account aanmaken om te reserveren?",
+        a: "Liever niet. Naam, e-mailadres en telefoonnummer zijn genoeg om te bevestigen. Elk extra scherm is een moment waarop een gast kan afhaken, zeker op een telefoon.",
+      },
+      {
+        q: "Wat kost een website met reserveringssysteem?",
+        a: "Dat hangt af van het systeem, de koppeling die je wilt en wat er op de site moet staan. De kosten van het systeem zelf verschillen per leverancier en per rekenmodel. Wat er bij de website zelf komt kijken lees je op de pagina over een [conversiegerichte website](/diensten/conversie-website).",
+      },
+    ],
+    links: [
+      {
+        to: "/branches/reserveringen",
+        label: "Website met reserveringssysteem laten maken",
+        tekst: "Wat er naast de reserveerknop op je site moet staan en welke route bij je systeem past.",
+      },
+      {
+        to: "/kennisbank/waar-boekingen-weglekken",
+        label: "Waar boekingen weglekken op je website",
+        tekst: "De plekken waar gasten afhaken voordat ze reserveren.",
+      },
+      {
+        to: "/megasmart",
+        label: "Boekings- en reserveringssysteem MegaSmart",
+        tekst: "Online reserveren, bevestigingen en opvolging in één systeem.",
+      },
+    ],
+    metaTitle: "Reserveringssysteem of website met reserveringen? | MegaOnline",
+    metaDescription:
+      "Een reserveringssysteem regelt de agenda, een website zorgt dat gasten durven te reserveren. Wat past bij jouw situatie en waar let je op bij het kiezen?",
   },
 ];
 
