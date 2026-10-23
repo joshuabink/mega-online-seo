@@ -1503,6 +1503,141 @@ export const ARTIKELEN: Artikel[] = [
     metaDescription:
       "Een reserveringssysteem regelt de agenda, een website zorgt dat gasten durven te reserveren. Wat past bij jouw situatie en waar let je op bij het kiezen?",
   },
+  {
+    slug: "goede-website-voor-non-profit",
+    naam: "Website voor een non-profit",
+    vraag: "Hoe ziet een goede website voor een non-profit eruit?",
+    pijler: "Branche",
+    icoon: "heart-handshake",
+    branche: "Non-profits",
+    teaser:
+      "Een non-profit heeft niet één bezoeker maar drie of vier. Een goede site geeft elk van hen één duidelijke route naar wat ze komen doen.",
+    antwoord:
+      "Een goede website voor een non-profit geeft elke groep bezoekers één duidelijke route: doneren, meedoen als vrijwilliger of hulp vragen. Daarnaast laat hij zien wie er achter de organisatie zit en waar het geld heen gaat, want vertrouwen weegt hier zwaarder dan bij een bedrijf.",
+    leestijd: "6 minuten",
+    gepubliceerd: "2026-10-23",
+    gewijzigd: "2026-10-23",
+    cta: "scan",
+    eindKop: "Wil je weten wat de website van jouw organisatie nodig heeft?",
+    eindLead:
+      "Beantwoord zes korte vragen. MegaOnline kijkt persoonlijk naar je huidige site en laat zien wat jouw situatie nodig heeft om donateurs en vrijwilligers de goede kant op te sturen. Wil je eerst meer weten over de opzet, lees dan wat er bij een [website voor stichtingen en verenigingen](/branches/non-profits) komt kijken.",
+    secties: [
+      {
+        kop: "Een non-profit heeft meer dan één bezoeker",
+        accent: "meer dan één bezoeker",
+        alineas: [
+          "De meeste lijstjes over websites voor stichtingen gaan over functies: een doneerknop, een nieuwspagina, een agenda. Die horen er allemaal bij. Alleen begint een goede site niet bij functies. Hij begint bij de vraag wie er langskomt en wat die persoon komt doen.",
+          "Een bedrijf heeft meestal één soort bezoeker: iemand die wil kopen of een offerte wil. Een non-profit heeft er vaak drie of vier. Iemand die wil geven. Iemand die wil helpen. Iemand die zelf hulp zoekt. En een gemeente of fonds dat wil weten of de organisatie serieus is. Ze komen op dezelfde homepage binnen met een totaal andere vraag.",
+          "Krijgen ze allemaal dezelfde pagina met een welkomsttekst en het laatste nieuws, dan moet elke bezoeker zelf zoeken waar zijn deel staat. Een deel doet dat. De rest klikt weg, zonder dat je ooit merkt dat ze er waren.",
+        ],
+      },
+      {
+        kop: "Een voorbeeld uit de praktijk",
+        accent: "uit de praktijk",
+        alineas: [
+          "Neem een dierenopvang in een middelgrote stad. De homepage opent met een foto van het gebouw, een alinea over de geschiedenis van de stichting en drie nieuwsberichten. Het menu heeft negen knoppen: over de stichting, nieuws, dieren, steun, vrijwilligers, contact, ANBI, links en een fotoalbum.",
+          "Een gezin dat een hond wil adopteren zoekt de dieren en de voorwaarden. Een oud-collega die na een afscheid wil doneren zoekt een knop. Een student die op zaterdag wil helpen zoekt hoeveel tijd het kost en hoe ze zich aanmeldt. Alle drie vinden het uiteindelijk, maar pas na een paar klikken en zonder dat iets ze helpt kiezen.",
+          "Wat werkt: direct onder de kop drie duidelijke ingangen. Adopteren, doneren, vrijwilliger worden. Elke ingang leidt naar een pagina die de vragen van die ene groep beantwoordt en eindigt met één handeling. Het nieuws en de geschiedenis verdwijnen niet. Ze staan alleen niet meer vooraan.",
+        ],
+      },
+      {
+        kop: "Waarom vertrouwen hier zwaarder weegt",
+        accent: "zwaarder weegt",
+        alineas: [
+          "Wie bij een bedrijf koopt, krijgt iets terug. Wie doneert, krijgt niets tastbaars terug. Hij moet erop vertrouwen dat zijn geld goed terechtkomt. Daarom kijkt een donateur scherper dan een klant naar wie er achter de organisatie zit.",
+          "Een paar dingen geven dat vertrouwen. Namen en gezichten van het bestuur of de coördinatoren. Concreet wat de organisatie het afgelopen jaar heeft gedaan. Een jaarverslag dat makkelijk te vinden is. En nieuws dat recent is: een laatste bericht van twee jaar geleden doet een bezoeker afvragen of de stichting nog bestaat.",
+          "Heeft je organisatie een ANBI-status, dan moet je een aantal gegevens online publiceren, zoals het RSIN, de bestuurssamenstelling, het beleidsplan en de financiële verantwoording. Zie dat niet alleen als verplichting. Het is precies de informatie waar een twijfelende donateur naar zoekt. Meer over hoe je dat opbouwt staat in het artikel over [vertrouwen wekken op je website](/kennisbank/vertrouwen-wekken-zakelijke-website).",
+        ],
+      },
+      {
+        kop: "Wat elke route nodig heeft",
+        accent: "elke route",
+        alineas: [
+          "Per groep bezoekers zijn het steeds dezelfde vragen. Beantwoord ze op de pagina zelf, vóór de knop.",
+        ],
+        punten: [
+          {
+            titel: "Doneren",
+            tekst:
+              "Laat zien waar het geld naartoe gaat, liefst concreet per bedrag. Laat de gever een bedrag kiezen of zelf invullen. Eenmalig of maandelijks, betalen zonder een account aan te maken. Elk extra scherm is een moment waarop iemand afhaakt, zeker op een telefoon.",
+          },
+          {
+            titel: "Vrijwilliger worden",
+            tekst:
+              "Vertel wat het werk inhoudt, hoeveel tijd het ongeveer kost en wat iemand ervoor terugkrijgt: begeleiding, een vaste groep, ervaring. Houd het aanmeldformulier kort. Naam, contactgegevens en een vraag waar iemand interesse in heeft zijn genoeg voor een eerste gesprek.",
+          },
+          {
+            titel: "Hulp vragen of meedoen",
+            tekst:
+              "Wie hulp zoekt, zit soms in een lastige situatie. Schrijf in gewone taal voor wie de organisatie er is, wat iemand kan verwachten en hoe het eerste contact verloopt. Een telefoonnummer en openingstijden zijn hier belangrijker dan een formulier.",
+          },
+          {
+            titel: "Fondsen, gemeenten en partners",
+            tekst:
+              "Zij zoeken bewijs dat de organisatie goed draait. Een vaste pagina met missie, resultaten, jaarverslagen en de ANBI-gegevens bespaart je vragen en laat zien dat je dit serieus doet.",
+          },
+        ],
+      },
+      {
+        kop: "Een site die vrijwilligers kunnen bijhouden",
+        accent: "kunnen bijhouden",
+        alineas: [
+          "Bij veel non-profits houdt een vrijwilliger de site bij naast zijn gewone werk. Vertrekt die persoon, dan staat de site vaak jaren stil. Kies daarom voor een opzet waarin nieuws, activiteiten en foto's toe te voegen zijn zonder technische kennis. Leg ook vast wie dat doet.",
+          "Budget is bij non-profits bijna altijd beperkt. Dat is geen reden om met minder te beginnen dan nodig. Een compacte site met drie goede routes levert meer op dan een grote site waar niemand de weg vindt. Wie zo begint kan later uitbreiden, bijvoorbeeld met een [compacte website voor starters](/diensten/starter-website) als basis. Hoe een [website voor non-profit organisaties](/branches/non-profits) er bij MegaOnline uitziet, lees je op de branchepagina.",
+          "Merk je dat er wel bezoekers komen maar weinig donaties of aanmeldingen? Dan ligt het meestal aan dezelfde dingen als bij bedrijven die te weinig aanvragen krijgen. Die staan op een rij in het artikel over [waarom een website geen aanvragen oplevert](/kennisbank/website-levert-geen-aanvragen-op).",
+        ],
+      },
+    ],
+    doen: [
+      "Schrijf op welke drie of vier groepen op je site komen en wat elke groep daar wil doen.",
+      "Kijk of elke groep vanaf de homepage in één klik bij zijn eigen pagina komt.",
+      "Doneer zelf op je telefoon en tel de schermen tot de bevestiging.",
+      "Zoek de datum van je laatste nieuwsbericht. Is die ouder dan een paar maanden, zet er deze week iets nieuws op.",
+      "Controleer of je jaarverslag en ANBI-gegevens vanaf elke pagina te vinden zijn, bijvoorbeeld via de footer.",
+    ],
+    faq: [
+      {
+        q: "Wat kost een website voor een stichting?",
+        a: "Dat hangt af van hoeveel routes er nodig zijn, of er online gedoneerd of aangemeld moet worden en hoeveel de organisatie zelf wil bijhouden. Een compacte site met een paar duidelijke pagina's is vaak een goed begin. Wat bij een compacte opzet hoort staat op de pagina over een [starter website](/diensten/starter-website).",
+      },
+      {
+        q: "Moet een ANBI een eigen website hebben?",
+        a: "Een ANBI moet een aantal gegevens online publiceren. Dat mag op een eigen website of op een gezamenlijke site, bijvoorbeeld van een koepelorganisatie. Een eigen pagina is wel de plek waar donateurs het eerst zoeken.",
+      },
+      {
+        q: "Hoe zet je online doneren op de website van een stichting?",
+        a: "Met een doneermodule op je eigen pagina of een koppeling met een betaalaanbieder. Let erop dat de gever op je eigen site blijft, met iDEAL kan betalen en geen account hoeft aan te maken.",
+      },
+      {
+        q: "Is een gratis websitebouwer genoeg voor een non-profit?",
+        a: "Voor een eerste visitekaartje soms wel. Kijk wel wat je inlevert: vaak een advertentie of de naam van de bouwer in beeld, beperkte doneermogelijkheden en een site die alleen de vrijwilliger begrijpt die hem heeft gemaakt.",
+      },
+      {
+        q: "Hoe vaak moet je de website van een stichting bijwerken?",
+        a: "Er is geen vaste regel. Zorg dat er een paar keer per jaar iets nieuws op staat en dat activiteiten en contactgegevens altijd kloppen. Verouderd nieuws laat bezoekers twijfelen of de organisatie nog actief is.",
+      },
+    ],
+    links: [
+      {
+        to: "/branches/non-profits",
+        label: "Website voor non-profit organisaties",
+        tekst: "Doneerroute, aanmeldformulieren en een site die vrijwilligers zelf bijhouden.",
+      },
+      {
+        to: "/kennisbank/vertrouwen-wekken-zakelijke-website",
+        label: "Vertrouwen wekken op je website",
+        tekst: "Wat een bezoeker wil zien voordat hij contact opneemt of iets geeft.",
+      },
+      {
+        to: "/diensten/starter-website",
+        label: "Starter website",
+        tekst: "Een compacte site als begin, uit te breiden als de organisatie groeit.",
+      },
+    ],
+    metaTitle: "Een goede website voor een non-profit | MegaOnline",
+    metaDescription:
+      "Een non-profit heeft donateurs, vrijwilligers en hulpvragers als bezoekers. Zo geef je elk van hen één route en bouw je het vertrouwen op dat ze nodig hebben.",
+  },
 ];
 
 /**
