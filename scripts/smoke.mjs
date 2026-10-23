@@ -6,6 +6,7 @@
  * Draaien met de dev-server actief:  node scripts/smoke.mjs
  */
 import { chromium } from 'playwright'
+import { spawnSync } from 'node:child_process'
 import fs from 'node:fs'
 import http from 'node:http'
 import path from 'node:path'
@@ -439,6 +440,20 @@ for (const pagina of ZOEKTAAL_PAGINAS) {
       ? `${pagina.title.length} tekens`
       : `status=${status} titles=${JSON.stringify(titles)} h1s=${JSON.stringify(h1s)} og=${JSON.stringify(ogTitles)} twitter=${JSON.stringify(twitterTitles)}`,
   )
+}
+
+{
+  const unit = spawnSync(
+    process.execPath,
+    ['--test', new URL('./generate-sitemap.test.mjs', import.meta.url).pathname],
+    { encoding: 'utf8' },
+  )
+  const detail = `${unit.stdout || ''}${unit.stderr || ''}`
+    .split('\n')
+    .filter((line) => line.startsWith('not ok') || line.startsWith('# fail'))
+    .slice(0, 6)
+    .join(' | ')
+  check('sitemap-lastmod unittests', unit.status === 0, detail || `exit ${unit.status}`)
 }
 
 // De vooraf geïnstalleerde Chromium gebruiken i.p.v. een download.
@@ -1940,12 +1955,12 @@ for (const [pad, eind, form] of [
   );
   const dates = lastmods.map((list) => list[0] ?? "");
   check("sitemap 200", res.status() === 200, String(res.status()));
-  check("sitemap heeft 41 urls", blocks.length === 41, String(blocks.length));
+  check("sitemap heeft 43 urls", blocks.length === 43, String(blocks.length));
   const scanInSitemap = blocks.find((block) => block.includes("https://megaonline.io/gratis-websitescan"));
   check(
     "sitemap bevat de scan van vandaag en niet het oude conceptadres",
     !!scanInSitemap &&
-      /<lastmod>2026-10-14<\/lastmod>/.test(scanInSitemap) &&
+      /<lastmod>2026-10-15<\/lastmod>/.test(scanInSitemap) &&
       !xml.includes("gratis-websiteconcept"),
     scanInSitemap ?? "ontbreekt",
   );
@@ -1986,9 +2001,24 @@ for (const [pad, eind, form] of [
   );
   check(
     "kennisbankoverzicht lastmod volgt de nieuwste gewijzigd",
-    !!kennisbankOverzicht && /<lastmod>2026-10-15<\/lastmod>/.test(kennisbankOverzicht),
+    !!kennisbankOverzicht && /<lastmod>2026-10-23<\/lastmod>/.test(kennisbankOverzicht),
     kennisbankOverzicht ?? "ontbreekt",
   );
+  for (const pad of ["/algemene-voorwaarden", "/privacyverklaring"]) {
+    const block = blocks.find((item) => item.includes(`https://megaonline.io${pad}</loc>`));
+    check(
+      `sitemap lastmod ${pad} is 2026-06-24`,
+      !!block && /<lastmod>2026-06-24<\/lastmod>/.test(block),
+      block ?? "ontbreekt",
+    );
+    const pagina = await fetch(BASE + pad);
+    const html = await pagina.text();
+    check(
+      `${pad} toont Laatst bijgewerkt: 24 juni 2026`,
+      pagina.status === 200 && html.includes("Laatst bijgewerkt: 24 juni 2026"),
+      `status ${pagina.status}`,
+    );
+  }
   check(
     "elke url heeft precies één lastmod",
     lastmods.every((list) => list.length === 1 && /^\d{4}-\d{2}-\d{2}$/.test(list[0])),

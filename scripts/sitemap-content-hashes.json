@@ -1,0 +1,110 @@
+{
+  "src/routes/algemene-voorwaarden.tsx": {
+    "hash": "a118192d9c9985e996e804a0eebd2e79330ac6d276cd68d92c0e22ea85d3285e",
+    "lastmod": "2026-06-24"
+  },
+  "src/routes/branches/activiteitenbedrijven.tsx": {
+    "hash": "9078b4cc1a6218880a2eb3da7e907f44081fd32dc4652488295b18a801c60a8d",
+    "lastmod": "2026-10-14"
+  },
+  "src/routes/branches/dienstverleners.tsx": {
+    "hash": "0043aae653132e2f5e3faea1e961aeb3924bf224ab3fc383c02eb43803de9934",
+    "lastmod": "2026-10-14"
+  },
+  "src/routes/branches/non-profits.tsx": {
+    "hash": "bc604511ad3bad188fc3de3c0b6048dc9da556355b8ee151b786bb473e2be1da",
+    "lastmod": "2026-10-14"
+  },
+  "src/routes/branches/offerteaanvragen.tsx": {
+    "hash": "3ba82176ed0514b490159bd5e60dcce9e572d22368ca2f10bbe087cf92cd87ab",
+    "lastmod": "2026-10-14"
+  },
+  "src/routes/branches/reserveringen.tsx": {
+    "hash": "ba4a8702b9e9b685a38a8c5e4d1069b8bc27f97a2feddb0d690c96290b91333c",
+    "lastmod": "2026-10-22"
+  },
+  "src/routes/branches/verhuurbedrijven.tsx": {
+    "hash": "aefbe5ddce92beef2fc52dc15115b55854d6ac6e3ed5ce9ff0f9f943ec8b833a",
+    "lastmod": "2026-10-14"
+  },
+  "src/routes/concepten/$slug.tsx": {
+    "hash": "daa5dbcc5db69352c12be1bb005e5660f739c2d53aa769bd9d5db312c9176916",
+    "lastmod": "2026-10-14"
+  },
+  "src/routes/concepten/index.tsx": {
+    "hash": "4faadd73a0bd190c87cbe4545bcdc03fec924081cc913e9c801641ded12f9186",
+    "lastmod": "2026-10-03"
+  },
+  "src/routes/contact.tsx": {
+    "hash": "1c2b7b9b422876ac0474b07c876978edd57228d8a7d23b6927af1a67b68cf5d5",
+    "lastmod": "2026-10-15"
+  },
+  "src/routes/diensten/conversie-website.tsx": {
+    "hash": "3b68c4ddd5bbbf2db5036927fd9c7b5a862ac6b8e8738a69b5a84e9209b64315",
+    "lastmod": "2026-10-22"
+  },
+  "src/routes/diensten/google-ads.tsx": {
+    "hash": "42d859066cfb39d68629cae59f24622460978640588eb352b1a72cb2d7a3227b",
+    "lastmod": "2026-10-14"
+  },
+  "src/routes/diensten/integraties.tsx": {
+    "hash": "1721a61b3273fef498eda40524b557f756233dfdfa8b0ecc6d7fcb5a0d6e22dc",
+    "lastmod": "2026-10-14"
+  },
+  "src/routes/diensten/seo.tsx": {
+    "hash": "61187ca3ef612688376cafc5204d6ddcc841b22294d30ebb7ee28c767969ce28",
+    "lastmod": "2026-10-15"
+  },
+  "src/routes/diensten/starter-website.tsx": {
+    "hash": "78a834739ee8e744f83c895efcba0d588fe35bbc11b26a285b86740283e5ff8a",
+    "lastmod": "2026-10-15"
+  },
+  "src/routes/diensten/website-optimalisatie.tsx": {
+    "hash": "324433a122a3348ef370198f66beae166d638ab397065f8fc133124f2146c421",
+    "lastmod": "2026-10-22"
+  },
+  "src/routes/diensten/website-redesign.tsx": {
+    "hash": "c3c18562e9e2b47362a84883a725e8acff6035f0002b5e621773190f6cb527b7",
+    "lastmod": "2026-10-15"
+  },
+  "src/routes/diensten/werken-bij-websites.tsx": {
+    "hash": "f2ddafc9aab0602de162bc09b6f7534c38f0353e83d1be602db4230bef44fe06",
+    "lastmod": "2026-10-14"
+  },
+  "src/routes/gratis-websitescan.tsx": {
+    "hash": "81c05a6d5840fabce839f0965ea54848c3171038639378dd4b235080d9983bb4",
+    "lastmod": "2026-10-15"
+  },
+  "src/routes/index.tsx": {
+    "hash": "61ef671b999f10e99860709d76e494c7727ae063c9cab28592125a5b84941dcd",
+    "lastmod": "2026-10-22"
+  },
+  "src/routes/kennisbank/index.tsx": {
+    "hash": "b797dce6bf818edc5dce302d312e30605907b8715c64398267bdad3a874de24c",
+    "lastmod": "2026-10-23"
+  },
+  "src/routes/megasmart.tsx": {
+    "hash": "203ea41f817446a9343ccdb96e8b905567603b850cf2ecac43e33e58f9a71507",
+    "lastmod": "2026-10-14"
+  },
+  "src/routes/over-megaonline.tsx": {
+    "hash": "1e86370193a3e68becfb44b8fe681ac27412c2a67097e5f14046900878dee605",
+    "lastmod": "2026-10-22"
+  },
+  "src/routes/privacyverklaring.tsx": {
+    "hash": "87b05604c6701ff31361ec6fe54891893e94d843afc5ee6ea826d48afbb1e012",
+    "lastmod": "2026-06-24"
+  },
+  "src/routes/veelgestelde-vragen.tsx": {
+    "hash": "f99a8dadf5ea8b8032f5a0fa9186228c1097a5b84d47a516e0ce92f928e8596d",
+    "lastmod": "2026-10-14"
+  },
+  "src/routes/werken-bij/$slug.tsx": {
+    "hash": "487f15da2a7ab00cd4b1e890ee719cdb5cb32b38daaef2fee4bb3e9a886f5aeb",
+    "lastmod": "2026-10-13"
+  },
+  "src/routes/werken-bij/index.tsx": {
+    "hash": "61e78959bc392bfaa2029cb6d329521ca5f3bf45d0c7b7e126e73dc3cef64310",
+    "lastmod": "2026-10-15"
+  }
+}
