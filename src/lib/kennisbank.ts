@@ -577,7 +577,7 @@ export const ARTIKELEN: Artikel[] = [
       "Boekingen lekken weg op plekken waar een bezoeker die wil boeken vastloopt: een knop die nergens heen leidt, een pad met te veel stappen, een prijs die ontbreekt of een site die op de telefoon hapert. Deze gids laat per lek zien wat de bezoeker ziet, waarom het boekingen kost en hoe je het in vijf minuten zelf checkt.\n\nVoor het bredere plaatje over aanvragen in het algemeen is er [waarom je website geen aanvragen oplevert](/kennisbank/website-levert-geen-aanvragen-op). Deze gids zoomt in op boeken en reserveren.",
     leestijd: "8 minuten",
     gepubliceerd: "2026-10-13",
-    gewijzigd: "2026-10-19",
+    gewijzigd: "2026-10-20",
     cta: "scan",
     secties: [
       {
@@ -775,7 +775,7 @@ export const ARTIKELEN: Artikel[] = [
         tekst: "Meer halen uit de website die je al hebt, zonder opnieuw te beginnen.",
       },
     ],
-    metaTitle: "Waar boekingen weglekken op je website | MegaOnline.io",
+    metaTitle: "Waar boekingen weglekken op je website | MegaOnline",
     metaDescription:
       "Bezoekers willen boeken en haken toch af. Tien plekken waar boekingen weglekken, waarom dat gebeurt en per lek een zelfcheck van vijf minuten.",
   },
