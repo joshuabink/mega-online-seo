@@ -851,10 +851,10 @@ export const ARTIKELEN: Artikel[] = [
         ],
       },
       {
-        kop: "Merk je vanzelf iets?",
-        accent: "vanzelf",
+        kop: "Hoe zie je of een aanpassing werkt?",
+        accent: "aanpassing werkt",
         alineas: [
-          "Google beschrijft dat een wijziging niet vanzelf een andere positie oplevert. Of een aanpassing hielp, zie je door te meten in Search Console ([SEO Starter Guide](https://developers.google.com/search/docs/fundamentals/seo-starter-guide)). Niet elke wijziging levert een zichtbaar verschil op.",
+          "Niet elke aanpassing aan je website is meteen terug te zien in de zoekresultaten. Of een aanpassing hielp, zie je door te meten in Search Console ([SEO Starter Guide](https://developers.google.com/search/docs/fundamentals/seo-starter-guide)).",
           "Dat is waarom doorlopend werken aan pagina's en meten in Search Console hoort bij serieus SEO-werk en niet een eenmalige optimalisatie zonder opvolging.",
         ],
       },
