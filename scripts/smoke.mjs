@@ -1310,6 +1310,52 @@ for (const [from, status, location] of canonicalRedirects) {
   )
 }
 
+/* --- FAQ in de server-HTML: h3 > button, antwoord aanwezig ook dicht --- */
+{
+  const sitemapRes = await fetch(BASE + '/sitemap.xml')
+  const xml = await sitemapRes.text()
+  const paden = [...xml.matchAll(/<loc>https:\/\/megaonline\.io([^<]*)<\/loc>/g)].map((m) => m[1] || '/')
+  let paginas = 0
+  let vragen = 0
+  const fouten = []
+  const verplicht = ['/', '/gratis-websitescan', '/veelgestelde-vragen']
+  const gezien = new Set()
+  for (const pad of paden) {
+    const res = await fetch(BASE + pad)
+    if (res.status !== 200) {
+      fouten.push(`${pad} status ${res.status}`)
+      continue
+    }
+    const zonder = (await res.text()).replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, '')
+    const buttons = [...zonder.matchAll(/<button\b([^>]*)>/gi)].filter((m) => /\bqa__q\b/.test(m[1]))
+    if (buttons.length === 0) continue
+    paginas++
+    gezien.add(pad)
+    for (const match of buttons) {
+      vragen++
+      const index = match.index ?? 0
+      const voor = zonder.slice(Math.max(0, index - 240), index)
+      const na = zonder.slice(index)
+      const sluit = na.match(/<\/button>\s*<\/h3>([\s\S]{0,4000})/)
+      const inner = sluit?.[1]?.match(/<div\b[^>]*class="[^"]*\bqa__a-inner\b[^"]*"[^>]*>([\s\S]*?)<\/div>/)
+      const tekst = inner ? zichtbareTekst(inner[1]) : ''
+      const inH3 = /<h3\b[^>]*>\s*$/.test(voor)
+      const dicht = /aria-expanded="false"/.test(match[1])
+      if (!inH3 || !sluit || !dicht || !tekst) {
+        fouten.push(`${pad}: h3=${inH3} dicht=${dicht} antwoord=${tekst.length}`)
+      }
+    }
+  }
+  for (const pad of verplicht) {
+    if (!gezien.has(pad)) fouten.push(`${pad} heeft geen FAQ in de server-HTML`)
+  }
+  check(
+    'FAQ-vragen staan als h3 in de server-HTML, met antwoord',
+    fouten.length === 0 && paginas >= 29 && vragen >= 177,
+    `${paginas} pagina's, ${vragen} vragen${fouten.length ? '; ' + fouten.slice(0, 4).join(' | ') : ''}`,
+  )
+}
+
 /* --- FAQ accordeon --- */
 await page.goto(BASE + '/veelgestelde-vragen', { waitUntil: 'load' })
 await waitHydrated(page)
@@ -1940,7 +1986,7 @@ for (const [pad, eind, form] of [
   );
   const dates = lastmods.map((list) => list[0] ?? "");
   check("sitemap 200", res.status() === 200, String(res.status()));
-  check("sitemap heeft 41 urls", blocks.length === 41, String(blocks.length));
+  check("sitemap heeft 43 urls", blocks.length === 43, String(blocks.length));
   const scanInSitemap = blocks.find((block) => block.includes("https://megaonline.io/gratis-websitescan"));
   check(
     "sitemap bevat de scan van vandaag en niet het oude conceptadres",
