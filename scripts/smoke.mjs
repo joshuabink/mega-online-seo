@@ -1998,7 +1998,7 @@ for (const [pad, eind, form] of [
   );
   const dates = lastmods.map((list) => list[0] ?? "");
   check("sitemap 200", res.status() === 200, String(res.status()));
-  check("sitemap heeft 42 urls", blocks.length === 42, String(blocks.length));
+  check("sitemap heeft 43 urls", blocks.length === 43, String(blocks.length));
   const scanInSitemap = blocks.find((block) => block.includes("https://megaonline.io/gratis-websitescan"));
   check(
     "sitemap bevat de scan van vandaag en niet het oude conceptadres",
