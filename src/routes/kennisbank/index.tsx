@@ -7,7 +7,7 @@ import { CTA_SCAN } from "@/lib/cta"
 
 const TITLE = "Kennisbank: uitleg over websites die aanvragen opleveren | MegaOnline.io";
 const DESCRIPTION =
-  "Wat MegaOnline op websites tegenkomt, uitgelegd zodat je er zelf mee aan de slag kunt. Over aanvragen, vertrouwen, formulieren en vindbaarheid.";
+  "De onderdelen van de gratis website scan, uitgelegd zodat je er zelf mee aan de slag kunt. Over aanvragen, vertrouwen, formulieren en vindbaarheid.";
 
 export const Route = createFileRoute("/kennisbank/")({
   head: () => ({
@@ -47,11 +47,10 @@ function Kennisbank() {
                 </span>
               </Reveal>{" "}
               <Reveal as="h1" className="display reveal" data-d="1">
-                Wat MegaOnline op websites ziet, <em>zonder eromheen te draaien.</em>
+                Wat de website scan bekijkt, <em>zonder eromheen te draaien.</em>
               </Reveal>{" "}
               <Reveal as="p" className="lead svc-hero__sub reveal" data-d="2">
-                Hieronder lees je waar MegaOnline bij websites op let. Wat daarin steeds terugkomt schrijft MegaOnline hier op, met genoeg detail om er zelf mee aan de slag te gaan. Ook als je nooit
-                klant wordt.
+                Per onderdeel van de website scan staat hier waar MegaOnline naar kijkt, met genoeg detail om er zelf mee aan de slag te gaan. Ook zonder klant te worden.
               </Reveal>
             </div>
           </div>
@@ -109,11 +108,10 @@ function Kennisbank() {
           <Reveal as="div" className="shead reveal">
             <span className="label">In opbouw</span>{" "}
             <h2 className="h2">
-              Hier komt <em>elke maand</em> iets bij.
+              Onderwerpen die op de lijst staan.
             </h2>{" "}
             <p className="lead">
-              MegaOnline werkt per branche: twee artikelen die de pijn van die branche uitdiepen.
-              Onderwerpen die al op de lijst staan.
+              Per branche staan twee artikelen op de lijst.
             </p>
           </Reveal>{" "}
           <div className="featgrid">

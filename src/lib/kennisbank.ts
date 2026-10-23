@@ -104,7 +104,7 @@ export const ARTIKELEN: Artikel[] = [
       "Omdat bezoek en aanvragen twee verschillende dingen zijn. Je website haalt mensen binnen, alleen geeft hij ze te weinig om op te beslissen: geen bewijs dat je te vertrouwen bent, geen idee van de prijs of een aanvraagroute die te veel vraagt.",
     leestijd: "7 minuten",
     gepubliceerd: "2026-09-21",
-    gewijzigd: "2026-09-21",
+    gewijzigd: "2026-10-19",
     cta: "scan",
     conceptForm: true,
     secties: [
@@ -112,7 +112,7 @@ export const ARTIKELEN: Artikel[] = [
         kop: "Bezoekers, aanvragen en klanten zijn drie verschillende getallen",
         accent: "drie verschillende getallen",
         alineas: [
-          "Een website die geen klanten oplevert heeft zelden een bezoekersprobleem. Twee sites met precies evenveel bezoek kunnen een heel verschillend aantal aanvragen opleveren. Het verkeer is dan niet het verschil, de pagina is het verschil. Wie op bezoekers stuurt, stuurt dus op een getal dat niets zegt over wat er onder de streep bij komt.",
+          "Een website die geen klanten oplevert, heeft niet per se een bezoekersprobleem. Twee sites met precies evenveel bezoek kunnen een heel verschillend aantal aanvragen opleveren. Het verkeer is dan niet het verschil, de pagina is het verschil. Wie op bezoekers stuurt, stuurt dus op een getal dat niets zegt over wat er onder de streep bij komt.",
           "Reken het voor jezelf eens door. Stel dat er 500 mensen per maand op je site komen en je krijgt twee aanvragen. Verdubbel je het bezoek naar 1.000, dan levert dezelfde pagina vier aanvragen op. Dat verdubbelen kost maanden werk of advertentiebudget. Zorg je in plaats daarvan dat vier op de honderd bezoekers aanvraagt in plaats van vier op de duizend, dan werkt die verbetering door op al het bezoek dat je nu al hebt. Dit is een rekenvoorbeeld en geen belofte, maar het laat zien welke kant van de rekensom meestal het goedkoopst is. Dat is precies waar [website optimalisatie](/diensten/website-optimalisatie) over gaat.",
           "Begin daarom met één getal: hoeveel aanvragen kreeg je de afgelopen drie maanden? Zolang dat getal ontbreekt is elke verbetering een gevoel in plaats van een uitkomst.",
         ],
@@ -121,7 +121,7 @@ export const ARTIKELEN: Artikel[] = [
         kop: "Zes plekken waar het in de praktijk weglekt",
         accent: "in de praktijk",
         alineas: [
-          "Op websites ziet MegaOnline vrijwel altijd een combinatie van deze zes. Zelden ligt het aan één ding. Bijna nooit aan de techniek alleen.",
+          "De scan bekijkt alle punten hieronder.",
         ],
         punten: [
           {
@@ -132,7 +132,7 @@ export const ARTIKELEN: Artikel[] = [
           {
             titel: "2. Er staat te weinig op de site om je te durven vertrouwen",
             tekst:
-              "Geen gezicht, geen echte foto's van eigen werk, geen adres of inschrijvingsnummer, geen enkele klant die iets zegt. Wie jou niet kent heeft dan geen reden om aan te nemen dat het goed komt. Vertrouwen komt vóór techniek: een snelle website die niets bewijst levert nog steeds niets op. Dit pakt MegaOnline als eerste aan bij een [conversiegerichte website](/diensten/conversie-website).",
+              "Geen gezicht, geen echte foto's van eigen werk, geen adres of inschrijvingsnummer, geen enkele klant die iets zegt. Wie jou niet kent heeft dan geen reden om aan te nemen dat het goed komt. Vertrouwen komt vóór techniek: een snelle website die niets bewijst levert nog steeds niets op. Daarom begint een [conversiegerichte website](/diensten/conversie-website) bij bewijs.",
           },
           {
             titel: "3. De prijs staat er nergens",
@@ -147,7 +147,7 @@ export const ARTIKELEN: Artikel[] = [
           {
             titel: "5. Op de telefoon is de eerste stap niet te vinden",
             tekst:
-              "De aanvraagknop staat onder een lange hero, het telefoonnummer is geen link of het formulier springt bij het typen. Het grootste deel van je bezoek komt van een telefoon, dus wat daar niet werkt werkt bijna niet. Pak je eigen site erbij op je mobiel en tel hoeveel tikken het kost om een aanvraag te versturen.",
+              "De aanvraagknop staat onder een lange hero, het telefoonnummer is geen link of het formulier springt bij het typen. Kijk in je bezoekersstatistieken hoeveel bezoek van een telefoon komt. Wat daar niet werkt, kost je aanvragen. Pak je eigen site erbij op je mobiel en tel hoeveel tikken het kost om een aanvraag te versturen.",
           },
           {
             titel: "6. Er staat geen duidelijke vervolgstap",
@@ -181,15 +181,15 @@ export const ARTIKELEN: Artikel[] = [
           {
             titel: "Vraag drie klanten wat hen deed besluiten",
             tekst:
-              "Wat zij noemen staat verrassend vaak nergens op je site. Precies die zin hoort boven de vouw te staan in plaats van in je hoofd.",
+              "Controleer of wat zij noemen ook op je site staat. Precies die zin hoort boven de vouw te staan in plaats van in je hoofd.",
           },
         ],
       },
       {
-        kop: "Wat MegaOnline hierin het vaakst terugziet",
-        accent: "het vaakst",
+        kop: "Patronen waar de scan naar kijkt",
+        accent: "de scan",
         alineas: [
-          "Twee patronen komen zo vaak voorbij dat ze bijna standaard zijn. Het eerste: een pagina die veel vertoningen krijgt in Google en nauwelijks klikken. Dat is geen vindbaarheidsprobleem, dat is een titelprobleem. De pagina staat er wel, alleen belooft de titel niet wat de zoeker zocht.",
+          "Twee patronen om op te letten. Het eerste: een pagina die veel vertoningen krijgt in Google en nauwelijks klikken. Dat is geen vindbaarheidsprobleem, dat is een titelprobleem. De pagina staat er wel, alleen belooft de titel niet wat de zoeker zocht.",
           "Het tweede: bijna al het bezoek komt binnen op de homepage en er gaat nauwelijks iemand door naar de pagina die zijn vraag beantwoordt. Dan is de website geen route maar een wachtkamer. Dat los je op met een duidelijke ingang per doelgroep en met links in de tekst die de bezoeker meenemen, niet met meer bezoek.",
         ],
       },
@@ -267,10 +267,10 @@ export const ARTIKELEN: Artikel[] = [
     teaser:
       "Vertrouwen is geen gevoel, het is een lijstje dat je bezoeker afvinkt. Dit staat erop. Dit haalt het onderuit.",
     antwoord:
-      "Door te laten zien wie je bent, wat het ongeveer kost en wat je eerder hebt gedaan. Vertrouwen op een zakelijke website komt niet van mooie woorden over kwaliteit en passie, maar van bewijs dat een vreemde in twintig seconden kan controleren.",
+      "Door te laten zien wie je bent, wat het ongeveer kost en wat je eerder hebt gedaan. Vertrouwen op een zakelijke website komt niet van mooie woorden over kwaliteit en passie, maar van bewijs dat een vreemde zelf kan controleren.",
     leestijd: "7 minuten",
     gepubliceerd: "2026-09-21",
-    gewijzigd: "2026-09-21",
+    gewijzigd: "2026-10-19",
     cta: "scan",
     secties: [
       {
@@ -278,7 +278,7 @@ export const ARTIKELEN: Artikel[] = [
         accent: "een lijstje",
         alineas: [
           "Iemand die jouw website voor het eerst opent doet in stilte een risicocontrole. Bestaat dit bedrijf echt. Werkt hier een mens. Weet die persoon waar hij over praat. Wat gaat dit ongeveer kosten. Wat gebeurt er als het misgaat. Pas als die vragen genoeg antwoord hebben gehad, vult iemand een formulier in.",
-          "Het lastige is dat bijna elke zakelijke website precies hetzelfde zegt. Kwaliteit, maatwerk, korte lijnen, jarenlange ervaring. Die woorden zijn gratis, dus ze bewijzen niets. Bewijs is alles wat iemand kan controleren zonder jou te bellen: een naam, een gezicht, een prijs, een project dat echt bestaat. Daarom begint een [conversiegerichte website](/diensten/conversie-website) bij MegaOnline met bewijs en niet bij een ontwerp.",
+          "Het lastige is dat dezelfde woorden net zo goed op de site van je concurrent kunnen staan. Kwaliteit, maatwerk, korte lijnen, jarenlange ervaring. Die woorden zijn gratis, dus ze bewijzen niets. Bewijs is alles wat iemand kan controleren zonder jou te bellen: een naam, een gezicht, een prijs, een project dat echt bestaat. Daarom begint een [conversiegerichte website](/diensten/conversie-website) met bewijs en niet met een ontwerp.",
           "Dit geldt sterker naarmate de opdracht groter is. Wie een offerte aanvraagt voor een installatie van tienduizend euro neemt een risico met zijn eigen naam eraan. Zie ook wat dat betekent voor [dienstverleners](/branches/dienstverleners), waar de site het vertrouwen moet wekken dat jij in een gesprek vanzelf wekt.",
         ],
       },
@@ -286,7 +286,7 @@ export const ARTIKELEN: Artikel[] = [
         kop: "Zeven dingen die een zakelijke bezoeker zoekt",
         accent: "zeven dingen",
         alineas: [
-          "Dit is geen wensenlijst, dit is wat MegaOnline op websites het vaakst mist. Hoe meer ervan klopt, hoe minder reden iemand heeft om af te haken.",
+          "Dit is geen wensenlijst. Dit zijn de punten waar de scan naar kijkt bij het vertrouwen van een website. Hoe meer ervan klopt, hoe minder reden iemand heeft om af te haken.",
         ],
         punten: [
           {
@@ -330,13 +330,13 @@ export const ARTIKELEN: Artikel[] = [
         kop: "Vier dingen die vertrouwen juist onderuit halen",
         accent: "onderuit halen",
         alineas: [
-          "Net zo belangrijk als toevoegen: weghalen. Deze vier ziet MegaOnline vaak op sites die inhoudelijk prima zijn.",
+          "Net zo belangrijk als toevoegen: weghalen. Wat hieronder staat kan vertrouwen ondermijnen, ook op sites die inhoudelijk prima zijn.",
         ],
         punten: [
           {
             titel: "Stockfoto's van mensen die niet bestaan",
             tekst:
-              "Bezoekers herkennen ze inmiddels. Eén echte foto van je eigen werk is meer waard dan vijf gelikte beelden die net zo goed bij een ander bedrijf kunnen staan.",
+              "Eén echte foto van je eigen werk is meer waard dan vijf gelikte beelden die net zo goed bij een ander bedrijf kunnen staan.",
           },
           {
             titel: "Sporen van verwaarlozing",
@@ -346,7 +346,7 @@ export const ARTIKELEN: Artikel[] = [
           {
             titel: "Keurmerklogo's zonder betekenis",
             tekst:
-              "Voor een webshop kan een keurmerk helpen. Voor een dienstverlener werkt een rij logo's die de bezoeker niet kent vaak averechts, want het lijkt op iets verbergen. Echte certificeringen en branchelidmaatschappen zijn een ander verhaal: noem die met naam.",
+              "Voor een webshop kan een keurmerk helpen. Voor een dienstverlener kan een rij logo's die de bezoeker niet kent averechts werken, want het lijkt op iets verbergen. Echte certificeringen en branchelidmaatschappen zijn een ander verhaal: noem die met naam.",
           },
           {
             titel: "Te veel keuzes tegelijk",
@@ -359,7 +359,7 @@ export const ARTIKELEN: Artikel[] = [
         kop: "Waarom dit vóór snelheid en vindbaarheid komt",
         accent: "vóór snelheid",
         alineas: [
-          "Een snelle website die niets bewijst levert nog steeds niets op. Techniek bepaalt of iemand je pagina ziet, vertrouwen bepaalt of hij iets doet. Dat is ook waarom MegaOnline bij een website eerst naar vertrouwen kijkt en pas daarna naar laadtijd.",
+          "Een snelle website die niets bewijst levert nog steeds niets op. Techniek bepaalt of iemand je pagina ziet, vertrouwen bepaalt of hij iets doet. Kijk daarom eerst naar vertrouwen en daarna naar laadtijd.",
           "Het loont daarna dubbel. Elke bezoeker die je met [betere vindbaarheid in Google](/diensten/seo) binnenhaalt komt op een pagina die de twijfel al heeft weggenomen. Andersom werkt het niet: meer bezoek op een pagina die geen bewijs levert betekent alleen meer mensen die weer weggaan.",
         ],
       },
@@ -387,7 +387,7 @@ export const ARTIKELEN: Artikel[] = [
       },
       {
         q: "Hoeveel referenties heb ik nodig?",
-        a: "Drie goed uitgewerkte projecten doen meer dan twintig logo's. Wat een bezoeker wil weten is: heeft hij dit eerder gedaan voor iemand zoals ik. Eén project uit zijn eigen branche, met wat er niet werkte en wat het opleverde, beantwoordt die vraag.",
+        a: "Een paar goed uitgewerkte projecten zeggen meer dan een rij logo's. Wat een bezoeker wil weten is: heeft hij dit eerder gedaan voor iemand zoals ik. Eén project uit zijn eigen branche, met wat er niet werkte en wat het opleverde, beantwoordt die vraag.",
       },
       {
         q: "Helpt een chatfunctie bij vertrouwen?",
@@ -408,7 +408,7 @@ export const ARTIKELEN: Artikel[] = [
       {
         to: "/diensten/website-optimalisatie",
         label: "Website optimalisatie",
-        tekst: "Je huidige site langs de tien scanpunten, zonder opnieuw te beginnen.",
+        tekst: "Je huidige site langs de punten van de website scan, zonder opnieuw te beginnen.",
       },
     ],
     metaTitle: "Vertrouwen wekken op je zakelijke website | MegaOnline.io",
@@ -423,21 +423,21 @@ export const ARTIKELEN: Artikel[] = [
     icoon: "euro",
     branche: "Verhuurbedrijven",
     teaser:
-      "Ja, in bijna alle gevallen. Niet je hele prijslijst, wel genoeg dat iemand weet of hij bij jou moet zijn.",
+      "Ja, tenzij elke opdracht op maat wordt gerekend. Niet je hele prijslijst, wel genoeg dat iemand weet of hij bij jou moet zijn.",
     antwoord:
-      "Ja, in bijna alle gevallen wel. Niet je volledige prijslijst, maar een vanafprijs of een bandbreedte per periode, zodat iemand weet of hij bij jou aan het juiste adres is voordat hij de telefoon pakt.",
+      "Ja, tenzij elke opdracht op maat wordt gerekend. Niet je volledige prijslijst, maar een vanafprijs of een bandbreedte per periode, zodat iemand weet of hij bij jou aan het juiste adres is voordat hij de telefoon pakt.",
     leestijd: "6 minuten",
     gepubliceerd: "2026-09-21",
-    gewijzigd: "2026-09-21",
+    gewijzigd: "2026-10-19",
     cta: "scan",
     secties: [
       {
         kop: "De drie redenen om ze weg te laten en wat ervan waar is",
         accent: "wat ervan waar is",
         alineas: [
-          "Bijna elke verhuurder die geen prijzen op zijn site heeft staan noemt een van deze drie redenen. Ze zijn allemaal begrijpelijk. Twee ervan houden geen stand.",
+          "Er zijn drie redenen om geen prijzen op de site te zetten. Ze zijn allemaal begrijpelijk. Twee ervan houden geen stand.",
           "De eerste: mijn concurrent kijkt mee. Dat doet hij toch al. Wie in jouw markt zit kent je tarieven binnen een paar telefoontjes, of hij vraagt gewoon een offerte aan onder een andere naam. Je verbergt je prijs dus vooral voor de klant, niet voor de concurrent.",
-          "De tweede: elke verhuur is anders. Vaak waar. Precies daarom werkt een vanafprijs. Niemand verwacht een exacte prijs voor een samengestelde order. Wel wil hij weten of hij in de buurt van jouw orde van grootte zit. Een tarief per dag, weekend en week met een ondergrens is genoeg om die vraag te beantwoorden.",
+          "De tweede: elke verhuur is anders. Dat klopt. Precies daarom werkt een vanafprijs. Niemand verwacht een exacte prijs voor een samengestelde order. Wel wil hij weten of hij in de buurt van jouw orde van grootte zit. Een tarief per dag, weekend en week met een ondergrens is genoeg om die vraag te beantwoorden.",
           "De derde: ik wil eerst het gesprek. Dat is een echte reden, alleen kost hij je de gesprekken die je juist wil. De klant die zijn budget kent en jouw prijs ziet passen, belt. De klant die niets kan inschatten belt de volgende in Google. Je selecteert zo op mensen met veel tijd in plaats van op mensen die willen huren.",
         ],
       },
@@ -445,7 +445,7 @@ export const ARTIKELEN: Artikel[] = [
         kop: "Wat er in de praktijk gebeurt als de prijs er niet staat",
         accent: "in de praktijk",
         alineas: [
-          "Deze vier gevolgen komt MegaOnline steeds tegen bij verhuurders zonder tarieven op de site.",
+          "Dit kan een verhuurder zonder tarieven op de site merken:",
         ],
         punten: [
           {
@@ -456,7 +456,7 @@ export const ARTIKELEN: Artikel[] = [
           {
             titel: "2. Je telefoon wordt een prijslijst",
             tekst:
-              "Dezelfde vraag, tien keer per week, vaak van mensen die alleen even peilen. Dat werk verdwijnt niet door harder te werken, het verdwijnt door het antwoord op te schrijven. Precies waar een [website voor verhuurbedrijven](/branches/verhuurbedrijven) voor bedoeld is: het standaardwerk uit handen nemen.",
+              "Elke keer dezelfde vraag, ook van mensen die alleen even peilen. Dat werk verdwijnt niet door harder te werken, het verdwijnt door het antwoord op te schrijven. Precies waar een [website voor verhuurbedrijven](/branches/verhuurbedrijven) voor bedoeld is: het standaardwerk uit handen nemen.",
           },
           {
             titel: "3. Je maakt offertes die nooit iets worden",
@@ -485,7 +485,7 @@ export const ARTIKELEN: Artikel[] = [
           {
             titel: "Tarieven per periode naast elkaar",
             tekst:
-              "Dag, weekend en week in één tabel. Verhuur wordt in periodes gedacht, dus je prijzen horen in periodes te staan. Dit is ook het blok dat het vaakst wordt gelezen op een verhuurpagina.",
+              "Dag, weekend en week in één tabel. Verhuur wordt in periodes gedacht, dus je prijzen horen in periodes te staan.",
           },
           {
             titel: "Borg en voorwaarden apart en vooraf",
@@ -495,7 +495,7 @@ export const ARTIKELEN: Artikel[] = [
           {
             titel: "Wat wel en niet is inbegrepen",
             tekst:
-              "Bezorging, brandstof, schoonmaak, verzekering. Twee regels zijn genoeg. Dit is de vraag die na de prijs altijd komt, dus geef het antwoord ernaast.",
+              "Bezorging, brandstof, schoonmaak, verzekering. Twee regels zijn genoeg. Dit is de logische vraag na de prijs, dus geef het antwoord ernaast.",
           },
           {
             titel: "Eén rekenvoorbeeld",
@@ -508,7 +508,7 @@ export const ARTIKELEN: Artikel[] = [
         kop: "Wanneer je ze wel weglaat",
         accent: "wel weglaat",
         alineas: [
-          "Er is een uitzondering. Die is kleiner dan de meeste ondernemers denken. Bij echt samengesteld werk, waar de prijs van tien variabelen afhangt en elke opdracht op maat wordt gerekend, is een losse prijs zinloos. Dan zet je geen bedrag neer maar een bandbreedte plus dat rekenvoorbeeld.",
+          "Er is een uitzondering. Die is kleiner dan het lijkt. Bij echt samengesteld werk, waar de prijs van tien variabelen afhangt en elke opdracht op maat wordt gerekend, is een losse prijs zinloos. Dan zet je geen bedrag neer maar een bandbreedte plus dat rekenvoorbeeld.",
           "Wat je nooit doet is de vraag onbeantwoord laten. Prijs op aanvraag zonder verdere uitleg is het slechtste van twee werelden: de bezoeker weet niets en jij krijgt de vraag alsnog. Eén zin over hoe de prijs wordt opgebouwd is dan het minimum.",
         ],
       },
@@ -536,7 +536,7 @@ export const ARTIKELEN: Artikel[] = [
       },
       {
         q: "Helpt het voor je vindbaarheid in Google?",
-        a: "Indirect. Mensen zoeken vaak letterlijk op wat iets kost, dus een pagina die dat beantwoordt past bij die zoekvraag. Belangrijker is dat de bezoeker die binnenkomt blijft in plaats van meteen terug te gaan naar de zoekresultaten.",
+        a: "Indirect. Wie zoekt op wat iets kost, vindt op zo'n pagina het antwoord, dus die pagina past bij die zoekvraag. Belangrijker is dat de bezoeker die binnenkomt blijft in plaats van meteen terug te gaan naar de zoekresultaten.",
       },
       {
         q: "Wat doe ik met kortingen voor vaste klanten?",
@@ -577,7 +577,7 @@ export const ARTIKELEN: Artikel[] = [
       "Boekingen lekken weg op plekken waar een bezoeker die wil boeken vastloopt: een knop die nergens heen leidt, een pad met te veel stappen, een prijs die ontbreekt of een site die op de telefoon hapert. Deze gids laat per lek zien wat de bezoeker ziet, waarom het boekingen kost en hoe je het in vijf minuten zelf checkt.\n\nVoor het bredere plaatje over aanvragen in het algemeen is er [waarom je website geen aanvragen oplevert](/kennisbank/website-levert-geen-aanvragen-op). Deze gids zoomt in op boeken en reserveren.",
     leestijd: "8 minuten",
     gepubliceerd: "2026-10-13",
-    gewijzigd: "2026-10-13",
+    gewijzigd: "2026-10-19",
     cta: "scan",
     secties: [
       {
@@ -611,7 +611,7 @@ export const ARTIKELEN: Artikel[] = [
             titel: "2. De site werkt slecht op de telefoon",
             tekst: `**Wat de bezoeker ziet.** Knoppen die te klein zijn, horizontaal scrollen, een datumkiezer die niet werkt of tekst die van het scherm valt.
 
-**Waarom het boekingen kost.** Google gebruikt vooral de mobiele versie van een site om pagina's te indexeren en te rangschikken ([Google Search Central](https://developers.google.com/search/docs/crawling-indexing/mobile/mobile-sites-mobile-first-indexing)). Een goede pagina-ervaring omvat volgens Google onder meer goed weergeven op mobiel, een beveiligde verbinding en geen opdringerige tussenschermen ([Google Search Central](https://developers.google.com/search/docs/appearance/page-experience)). Wie op de telefoon niet verder komt, kan niet boeken.
+**Waarom het boekingen kost.** Google gebruikt vooral de mobiele versie van een site om pagina's te indexeren en te rangschikken ([Google Search Central](https://developers.google.com/search/docs/crawling-indexing/mobile/mobile-sites-mobile-first-indexing), bijgewerkt 10-12-2025, gelezen 19-10-2026). Een goede pagina-ervaring omvat volgens Google onder meer goed weergeven op mobiel, een beveiligde verbinding en geen opdringerige tussenschermen ([Google Search Central](https://developers.google.com/search/docs/appearance/page-experience), bijgewerkt 22-09-2026, gelezen 19-10-2026). Wie op de telefoon niet verder komt, kan niet boeken.
 
 **Zelfcheck (5 minuten).**
 
@@ -623,7 +623,7 @@ export const ARTIKELEN: Artikel[] = [
             titel: "3. De pagina laadt te traag",
             tekst: `**Wat de bezoeker ziet.** Een wit scherm, een trage openingsfoto of een knop die pas na seconden verschijnt.
 
-**Waarom het boekingen kost.** Snelheid beïnvloedt hoe lang bezoekers blijven en of ze verder gaan ([web.dev](https://web.dev/articles/why-speed-matters)). Google noemt een pagina snel genoeg als het grootste zichtbare element binnen 2,5 seconden in beeld staat ([web.dev](https://web.dev/articles/vitals)). Goede scores garanderen geen hogere positie in Google ([Google Search Central](https://developers.google.com/search/docs/appearance/page-experience)).
+**Waarom het boekingen kost.** Snelheid beïnvloedt hoe lang bezoekers blijven en of ze verder gaan ([web.dev](https://web.dev/articles/why-speed-matters), bijgewerkt 01-11-2023, gelezen 19-10-2026). Google noemt een pagina snel genoeg als het grootste zichtbare element binnen 2,5 seconden in beeld staat ([web.dev](https://web.dev/articles/vitals), bijgewerkt 31-10-2024, gelezen 19-10-2026). Goede scores garanderen geen hogere positie in Google ([Google Search Central](https://developers.google.com/search/docs/appearance/page-experience), bijgewerkt 22-09-2026, gelezen 19-10-2026).
 
 **Zelfcheck (5 minuten).**
 
@@ -659,7 +659,7 @@ export const ARTIKELEN: Artikel[] = [
             titel: "6. Prijzen of beschikbaarheid ontbreken",
             tekst: `**Wat de bezoeker ziet.** Eerst naam, e-mail en telefoon invullen. Pas daarna een prijs of een vrije datum. Of helemaal geen vanafprijs.
 
-**Waarom het boekingen kost.** Wie de prijs of een vrije datum niet ziet, moet gegevens afgeven zonder te weten of het past. In eigen onderzoek naar boekingssites kwamen steeds dezelfde patronen terug, waaronder een prijs die pas na het formulier zichtbaar is of een lege reserveringspagina zonder datum of tarief. Meer hierover staat in [prijzen op je website zetten](/kennisbank/prijzen-op-website-verhuurbedrijf).
+**Waarom het boekingen kost.** Wie de prijs of een vrije datum niet ziet, moet gegevens afgeven zonder te weten of het past. Let vooral op een prijs die pas na het formulier zichtbaar is of een reserveringspagina zonder datum of tarief. Meer hierover staat in [prijzen op je website zetten](/kennisbank/prijzen-op-website-verhuurbedrijf).
 
 **Zelfcheck (5 minuten).**
 
@@ -683,7 +683,7 @@ export const ARTIKELEN: Artikel[] = [
             titel: "8. Het formulier of de boekingsstap werkt niet",
             tekst: `**Wat de bezoeker ziet.** "Reserveer" leidt naar een foutpagina, een leeg formulier of alleen een WhatsApp-nummer. Of de knop doet niets.
 
-**Waarom het boekingen kost.** Een knop die nergens heen leidt, maakt boeken onmogelijk. In eigen onderzoek naar boekingssites was dit een van de patronen die steeds terugkwamen: een Reserveer-knop zonder werkende bestemming, alleen bellen of WhatsApp, of een lege reserveringspagina.
+**Waarom het boekingen kost.** Een knop die nergens heen leidt, maakt boeken onmogelijk. Hetzelfde geldt voor een lege reserveringspagina.
 
 **Zelfcheck (5 minuten).**
 

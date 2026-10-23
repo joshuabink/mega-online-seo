@@ -4,6 +4,7 @@ import { Icon } from '@/components/Icon'
 import { Media } from '@/components/Media'
 import { Reveal } from '@/components/Reveal'
 import { CTA_SCAN } from '@/lib/cta'
+import { SCAN_OPLEVERING } from '@/lib/scan'
 
 export const Route = createFileRoute('/over-megaonline')({
   head: () => ({
@@ -88,7 +89,7 @@ function OverMegaonline() {
               </h3>
               {' '}
               <p>
-                Veel bedrijven hebben een website. Maar te vaak staat die er vooral mooi bij, zonder bezoekers verder te helpen. MegaOnline gelooft dat het anders kan en moet.
+                Veel bedrijven hebben een website. Maar een website die er vooral mooi bij staat, helpt bezoekers niet verder. MegaOnline gelooft dat het anders kan en moet.
               </p>
               {' '}
               <div className="ethos__pull">
@@ -507,6 +508,52 @@ function OverMegaonline() {
       </section>
       {' '}
       {' '}
+      <section className="section" id="website-scan" data-theme="dark" data-screen-label="Zo werkt de gratis website scan">
+        <div className="wrap">
+          <Reveal as="div" className="shead reveal">
+            <h2 className="h2">
+              Zo werkt de gratis <em>website scan.</em>
+            </h2>
+          </Reveal>
+          {' '}
+          <div className="process">
+            <Reveal as="div" className="pstep reveal">
+              <span className="pstep__no">1</span>
+              <p>
+                Je vraagt de scan aan via het formulier op{' '}
+                <Link
+                  to="/gratis-websitescan"
+                  style={{ color: 'var(--accent-text)', textDecoration: 'underline', textUnderlineOffset: '2px' }}
+                >
+                  /gratis-websitescan
+                </Link>
+                .
+              </p>
+              <span className="pstep__arrow">→</span>
+            </Reveal>
+            {' '}
+            <Reveal as="div" className="pstep reveal" data-d="1">
+              <span className="pstep__no">2</span>
+              <p>MegaOnline bekijkt je website op de onderdelen van de scan.</p>
+              <span className="pstep__arrow">→</span>
+            </Reveal>
+            {' '}
+            <Reveal as="div" className="pstep reveal" data-d="2">
+              <span className="pstep__no">3</span>
+              <p>{SCAN_OPLEVERING}</p>
+              <span className="pstep__arrow">→</span>
+            </Reveal>
+            {' '}
+            <Reveal as="div" className="pstep reveal" data-d="3">
+              <span className="pstep__no">4</span>
+              <p>Daarna beslis je zelf of er een vervolg komt. De scan is vrijblijvend.</p>
+              <span className="pstep__arrow">→</span>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+      {' '}
+      {' '}
       <section className="section section--tight" id="groei" data-theme="light" data-screen-label="Hoe een samenwerking eruitziet">
         <div className="wrap">
           <Reveal as="div" className="shead reveal">
@@ -530,7 +577,7 @@ function OverMegaonline() {
               </span>
               <span className="jnode__step">Stap 1</span>
               <h4>Kennismaking</h4>
-              <p>Jij en MegaOnline leren elkaar kennen en kijken of er een klik is.</p>
+              <p>Wat het bedrijf doet en wat de website moet opleveren.</p>
               <span className="jnode__arrow">→</span>
             </Reveal>
             {' '}
@@ -540,7 +587,7 @@ function OverMegaonline() {
               </span>
               <span className="jnode__step">Stap 2</span>
               <h4>Strategie</h4>
-              <p>MegaOnline bepaalt wat de website moet doen en voor wie.</p>
+              <p>Wat een bezoeker zoekt en hoe die naar contact gaat.</p>
               <span className="jnode__arrow">→</span>
             </Reveal>
             {' '}
@@ -550,7 +597,7 @@ function OverMegaonline() {
               </span>
               <span className="jnode__step">Stap 3</span>
               <h4>Website</h4>
-              <p>MegaOnline bouwt een site die vertrouwen wekt en helpt.</p>
+              <p>MegaOnline bouwt de website.</p>
               <span className="jnode__arrow">→</span>
             </Reveal>
             {' '}
