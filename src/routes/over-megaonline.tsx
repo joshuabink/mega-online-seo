@@ -4,7 +4,6 @@ import { Icon } from '@/components/Icon'
 import { Media } from '@/components/Media'
 import { Reveal } from '@/components/Reveal'
 import { CTA_SCAN } from '@/lib/cta'
-import { CONTACT_REACTIETIJD } from '@/lib/lead-contact'
 
 export const Route = createFileRoute('/over-megaonline')({
   head: () => ({
@@ -416,7 +415,7 @@ function OverMegaonline() {
                 </span>
                 <span className="vrow__txt">
                   <h4>Automatisering</h4>
-                  <p>Terugkerend werk slimmer en sneller maken.</p>
+                  <p>Terugkerend werk slimmer maken.</p>
                 </span>
                 <span className="vrow__when next">Toekomst</span>
               </div>
@@ -571,7 +570,7 @@ function OverMegaonline() {
               </span>
               <span className="jnode__step">Stap 5</span>
               <h4>Groei Partnership</h4>
-              <p>Daarna verbeteren we de site maand na maand.</p>
+              <p>Daarna verbetert MegaOnline de site maand na maand.</p>
               <span className="jnode__arrow">→</span>
             </Reveal>
           </div>
@@ -646,7 +645,7 @@ function OverMegaonline() {
                   <div className="case__step">
                     <span className="k">Aanpak</span>
                     <p>
-                      MegaOnline bracht de propositie terug naar een duidelijke boodschap en bouwde een structuur die bezoekers sneller naar de juiste informatie leidt.
+                      MegaOnline bracht de propositie terug naar een duidelijke boodschap en bouwde een structuur die bezoekers naar de juiste informatie leidt.
                     </p>
                   </div>
                 </div>
@@ -804,7 +803,7 @@ function OverMegaonline() {
               {' '}
               <span>Persoonlijk contact</span>
               {' '}
-              <span>Reactie {CONTACT_REACTIETIJD}</span>
+              <span>Persoonlijk antwoord</span>
             </div>
           </Reveal>
         </div>

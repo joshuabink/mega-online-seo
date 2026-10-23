@@ -30,16 +30,16 @@ export const Route = createFileRoute('/diensten/seo')({
  */
 const FAQ_ITEMS: { q: string; a: string }[] = [
   {
-    q: "Hoe lang duurt het voordat ik iets merk van SEO?",
-    a: "SEO is geen knop die je omzet. De eerste verbeteringen zijn vaak binnen enkele weken zichtbaar, maar serieuze, blijvende posities bouw je op over maanden. Daarom werkt MegaOnline met een contentplan voor twaalf maanden in plaats van losse acties.",
+    q: "Merk ik meteen iets van SEO?",
+    a: "SEO is geen knop die je omzet. SEO werkt op de lange termijn en hangt af van je uitgangspositie en de concurrentie. Daarom werkt MegaOnline met een contentplan voor twaalf maanden in plaats van losse acties.",
   },
   {
     q: "Is lokale vindbaarheid ook zinvol voor een klein bedrijf?",
-    a: "Juist dan. Lokaal is vaak de snelste winst: je concurreert in je eigen regio in plaats van met heel Nederland. We zorgen dat je verschijnt wanneer iemand in de buurt zoekt naar wat jij doet.",
+    a: "Juist dan. Lokaal is vaak de duidelijkste winst: je concurreert in je eigen regio in plaats van met heel Nederland. MegaOnline zorgt dat je verschijnt wanneer iemand in de buurt zoekt naar wat jij doet.",
   },
   {
     q: "Is het Groei Partnership verplicht?",
-    a: "Nee. Sommige klanten kiezen voor een eenmalige website en regelen het beheer zelf of via een andere partij. We raden het partnership wel aan, omdat websites die regelmatig verbeterd worden structureel beter presteren dan websites die blijven stilstaan.",
+    a: "Nee. Sommige klanten kiezen voor een eenmalige website en regelen het beheer zelf of via een andere partij. MegaOnline raadt het partnership wel aan, omdat websites die regelmatig verbeterd worden structureel beter presteren dan websites die blijven stilstaan.",
   },
   {
     q: "Wat krijg ik voor 150 euro per maand?",
@@ -47,7 +47,7 @@ const FAQ_ITEMS: { q: string; a: string }[] = [
   },
   {
     q: "Kan ik meer dan één pagina per maand krijgen?",
-    a: "Ja. Het abonnement is gebouwd rond één nieuwe pagina per maand. Wil je sneller opschalen, dan kost elke extra pagina in die maand 75 euro. Je kijkt samen met MegaOnline wat past bij wat je wilt bereiken.",
+    a: "Ja. Het abonnement is gebouwd rond één nieuwe pagina per maand. Wil je een extra pagina, dan kost die in die maand 75 euro. Je kijkt samen met MegaOnline wat past bij wat je wilt bereiken.",
   },
   {
     q: "Moet mijn website door MegaOnline gebouwd zijn?",
@@ -59,7 +59,7 @@ const FAQ_ITEMS: { q: string; a: string }[] = [
   },
   {
     q: "Hoe vaak is er contact?",
-    a: "In de basis spreken we elke maand de analyse en verbeterpunten door. Daarnaast zijn de lijnen kort: heb je tussendoor een vraag of een wijziging, dan staan we voor je klaar. Je hebt één vast aanspreekpunt dat je bedrijf kent.",
+    a: "In de basis spreekt MegaOnline elke maand de analyse en verbeterpunten met je door. Daarnaast zijn de lijnen kort: heb je tussendoor een vraag of een wijziging, dan staat MegaOnline voor je klaar. Je hebt één vast aanspreekpunt dat je bedrijf kent.",
   },
   {
     q: "Wat gebeurt er iedere maand?",
@@ -67,7 +67,7 @@ const FAQ_ITEMS: { q: string; a: string }[] = [
   },
   {
     q: "Kan ik opzeggen?",
-    a: "Het partnership loopt twaalf maanden en is daarna maandelijks opzegbaar. Die eerste periode is nodig omdat vindbaarheid zich over maanden opbouwt: na twee maanden is er nog weinig te zien, na acht maanden wel.",
+    a: "Het partnership loopt twaalf maanden en is daarna maandelijks opzegbaar.",
   },
   {
     q: "Doet MegaOnline ook technische ondersteuning?",
@@ -75,7 +75,7 @@ const FAQ_ITEMS: { q: string; a: string }[] = [
   },
   {
     q: "Wat als ik alleen onderhoud wil?",
-    a: "Dat kan. MegaOnline biedt een lichtere onderhoudsoptie vanaf € 50 per maand. Daarmee blijft je website veilig en up-to-date, zonder actieve doorontwikkeling. Goed om te weten: dat is bewust iets anders dan het Groei Partnership, waarbij we je website juist maand na maand verbeteren.",
+    a: "Dat kan. MegaOnline biedt een lichtere onderhoudsoptie vanaf € 50 per maand. Daarmee blijft je website veilig en up-to-date, zonder actieve doorontwikkeling. Goed om te weten: dat is bewust iets anders dan het Groei Partnership, waarbij MegaOnline je website juist maand na maand verbetert.",
   },
   {
     q: "Wat is GEO en wat is het verschil met SEO?",
@@ -398,7 +398,7 @@ function Seo() {
                 <Icon name="activity" />
               </span>
               <h4>Meten en analyseren</h4>
-              <p>We kijken elke maand wat bezoekers doen en wat dat oplevert.</p>
+              <p>MegaOnline kijkt elke maand wat bezoekers doen en wat dat oplevert.</p>
             </Reveal>
             {' '}
             <Reveal as="div" className="feat reveal" data-d="2">
@@ -490,7 +490,7 @@ function Seo() {
             </h2>
             {' '}
             <p className="lead">
-              We kijken elke maand opnieuw waar de meeste winst te halen valt, kiezen daar één of twee dingen uit en voeren die uit. Geen lijst met taken die nooit afkomt, maar steeds de stap die op dat moment het meeste oplevert.
+              MegaOnline kijkt elke maand opnieuw waar de meeste winst te halen valt, kiest daar één of twee dingen uit en voert die uit. Geen lijst met taken die nooit afkomt, maar steeds de stap die op dat moment het meeste oplevert.
             </p>
           </Reveal>
           {' '}
@@ -669,7 +669,7 @@ function Seo() {
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: "clamp(24px,3vw,40px)", alignItems: "center" }}>
               <div>
                 <p style={{ color: "var(--muted)", lineHeight: "1.6" }}>
-                  Elke maand maakt MegaOnline een nieuwe pagina die gericht is op vindbaarheid. Dat kan een blog zijn of een landingspagina. Welk type het wordt staat vooraf in je contentplan, zodat je weet wat eraan komt. Wil je sneller opschalen, dan kost een extra pagina in dezelfde maand 75 euro.
+                  Elke maand maakt MegaOnline een nieuwe pagina die gericht is op vindbaarheid. Dat kan een blog zijn of een landingspagina. Welk type het wordt staat vooraf in je contentplan, zodat je weet wat eraan komt. Wil je een extra pagina, dan kost die in dezelfde maand 75 euro.
                 </p>
                 {' '}
                 <ul className="considlist" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(160px,1fr))", marginTop: "20px" }}>
@@ -685,7 +685,7 @@ function Seo() {
                 </ul>
                 {' '}
                 <p className="brand__tag" style={{ marginTop: "22px", paddingTop: "0" }}>
-                  Het partnership loopt twaalf maanden en is daarna maandelijks opzegbaar. Die looptijd is er niet om je vast te zetten: vindbaarheid bouwt zich op over maanden. Korter dan een jaar krijgt het plan de kans niet.
+                  Het partnership loopt twaalf maanden en is daarna maandelijks opzegbaar.
                 </p>
               </div>
               {' '}
@@ -800,8 +800,8 @@ function Seo() {
               <span className="iconbox">
                 <Icon name="zap" />
               </span>
-              <h4>Snellere verbeteringen</h4>
-              <p>Korte lijnen, dus aanpassingen zijn snel doorgevoerd.</p>
+              <h4>Korte lijnen</h4>
+              <p>Je spreekt één aanspreekpunt voor vragen en aanpassingen.</p>
             </Reveal>
             {' '}
             <Reveal as="div" className="feat reveal" data-d="2">

@@ -202,7 +202,7 @@ function VacaturePagina() {
             Klinkt dit als jouw plek? <em>Laat iets weten</em>.
           </>
         }
-        lead="Een cv is niet verplicht. Schrijf in een paar zinnen wat je aanspreekt en wanneer je zou kunnen beginnen. We reageren gemiddeld binnen twee werkdagen."
+        lead="Een cv is niet verplicht. Schrijf in een paar zinnen wat je aanspreekt en wanneer je zou kunnen beginnen. MegaOnline reageert persoonlijk."
         rol={v.naam}
       />{" "}
       <section

@@ -47,9 +47,9 @@ const BRANCHES = [
 ] as const
 
 const STARTEN = [
-  'Zo snel mogelijk',
-  'Binnen 3 maanden',
-  'Over 3 tot 6 maanden',
+  'Wanneer het uitkomt',
+  'Dit jaar',
+  'Later',
   'Ik oriënteer me nog',
 ] as const
 

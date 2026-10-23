@@ -10,9 +10,9 @@ export const Route = createFileRoute('/branches/verhuurbedrijven')({
   head: () => ({
     meta: [
       { title: "Website laten maken voor verhuurbedrijf | MegaOnline" },
-      { name: 'description', content: "Een website voor verhuurbedrijven die het bel- en mailverkeer vermindert: beschikbaarheid, periodes en voorwaarden helder, en snellere bevestigde verhuur." },
+      { name: 'description', content: "Een website voor verhuurbedrijven die het bel- en mailverkeer vermindert: beschikbaarheid, periodes en voorwaarden helder, en een route naar een bevestigde verhuur." },
       { property: 'og:title', content: "Website laten maken voor verhuurbedrijf | MegaOnline" },
-      { property: 'og:description', content: "Een website voor verhuurbedrijven die het bel- en mailverkeer vermindert: beschikbaarheid, periodes en voorwaarden helder, en snellere bevestigde verhuur." },
+      { property: 'og:description', content: "Een website voor verhuurbedrijven die het bel- en mailverkeer vermindert: beschikbaarheid, periodes en voorwaarden helder, en een route naar een bevestigde verhuur." },
       { property: 'og:url', content: "https://megaonline.io/branches/verhuurbedrijven" },
     ],
     links: [
@@ -264,7 +264,7 @@ function Verhuurbedrijven() {
               </span>
               <h4>Overzichtelijk assortiment</h4>
               <p>
-                Categorieën en filters die snel naar het juiste artikel leiden.
+                Categorieën en filters die naar het juiste artikel leiden.
               </p>
             </Reveal>
             {' '}
@@ -330,7 +330,7 @@ function Verhuurbedrijven() {
             </Qa>
             {' '}
             <Qa question="Kan het gekoppeld worden aan mijn verhuursoftware?" className="reveal">
-                Vaak wel. We kijken naar het systeem dat je gebruikt en bepalen samen wat de slimste koppeling is.
+                Vaak wel. MegaOnline kijkt naar het systeem dat je gebruikt en bepaalt samen met jou wat de slimste koppeling is.
             </Qa>
             {' '}
             <Qa question="Wat kost zo'n website?" className="reveal">

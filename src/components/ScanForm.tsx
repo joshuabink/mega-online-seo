@@ -272,7 +272,7 @@ export function ScanForm() {
             {CTA_SCAN}
           </button>
           <p className="form__disc">
-            We gebruiken je gegevens alleen voor de scan en het gesprek erover. Lees de{' '}
+            MegaOnline gebruikt je gegevens alleen voor de scan en het gesprek erover. Lees de{' '}
             <Link to="/privacyverklaring">privacyverklaring</Link>.
           </p>
 
@@ -300,7 +300,7 @@ export function ScanForm() {
         <div className="ic">✓</div>
         <h3>Bedankt. Je aanvraag is binnen.</h3>
         <p>
-          We gebruiken je antwoorden in het gesprek over je site. Je ontvangt de uitkomst van de scan{' '}
+          Je antwoorden komen terug in het gesprek over je site. Je ontvangt de uitkomst van de scan{' '}
           {SCAN_REACTIETIJD} na je aanvraag.
         </p>
       </div>

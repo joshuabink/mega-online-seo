@@ -228,8 +228,8 @@ export const ARTIKELEN: Artikel[] = [
         a: "Meestal eerst je website. Advertenties sturen mensen naar dezelfde pagina die nu al te weinig oplevert, dus je betaalt dan voor bezoek dat op dezelfde plek blijft hangen. Staat de pagina eenmaal goed, dan verdient elke advertentie-euro meer terug.",
       },
       {
-        q: "Hoe lang duurt het voordat je verschil ziet?",
-        a: "Aanpassingen aan teksten, formulieren en vertrouwen werken direct op het bezoek dat je al hebt, dus daar kun je binnen enkele weken iets van zien als je genoeg verkeer hebt. Werk aan je vindbaarheid duurt langer, vaak maanden. Dat is de tweede reden om met de pagina te beginnen.",
+        q: "Waar zie je verschil?",
+        a: "Aanpassingen aan teksten, formulieren en vertrouwen raken het bezoek dat je al hebt, dus daar kun je iets van zien als je genoeg verkeer hebt. Werk aan je vindbaarheid is een apart traject. Dat is de tweede reden om met de pagina te beginnen.",
       },
       {
         q: "Wat als ik geen idee heb hoeveel aanvragen ik nu krijg?",
@@ -322,7 +322,7 @@ export const ARTIKELEN: Artikel[] = [
           {
             titel: "7. Wat er gebeurt nadat iemand op verzenden drukt",
             tekst:
-              "Eén zin bij je formulier: je krijgt binnen twee werkdagen antwoord. Je zit nergens aan vast. Onzekerheid over wat er daarna gebeurt is een van de goedkoopst op te lossen redenen om niet te versturen.",
+              "Eén zin bij je formulier: je krijgt persoonlijk antwoord. Je zit nergens aan vast. Onzekerheid over wat er daarna gebeurt is een van de goedkoopst op te lossen redenen om niet te versturen.",
           },
         ],
       },
@@ -540,7 +540,7 @@ export const ARTIKELEN: Artikel[] = [
       },
       {
         q: "Wat doe ik met kortingen voor vaste klanten?",
-        a: "Die noem je als staffel of als afspraak, niet als los bedrag. Bijvoorbeeld: bij meer dan vijf verhuringen per jaar maken we een vaste prijsafspraak. Zo houd je je ruimte en weet de terugkerende klant toch dat er iets te halen is.",
+        a: "Die noem je als staffel of als afspraak, niet als los bedrag. Bijvoorbeeld: bij meer dan vijf verhuringen per jaar maak je een vaste prijsafspraak. Zo houd je je ruimte en weet de terugkerende klant toch dat er iets te halen is.",
       },
     ],
     links: [
@@ -792,7 +792,7 @@ export const ARTIKELEN: Artikel[] = [
       "SEO staat voor search engine optimization, in het Nederlands zoekmachineoptimalisatie. Volgens Google gaat SEO erom zoekmachines te helpen je content te begrijpen en bezoekers te helpen je site te vinden en te beoordelen of een bezoek de moeite waard is ([Google Search Central, SEO Starter Guide](https://developers.google.com/search/docs/fundamentals/seo-starter-guide)).\n\nDit artikel legt uit wat SEO is, hoe Google Search in grote lijnen werkt en wat je zelf kunt checken. Voor doorlopend werk aan vindbaarheid staat de dienst [SEO en GEO](/diensten/seo).",
     leestijd: "7 minuten",
     gepubliceerd: "2026-10-14",
-    gewijzigd: "2026-10-14",
+    gewijzigd: "2026-10-21",
     cta: "scan",
     secties: [
       {
@@ -851,10 +851,10 @@ export const ARTIKELEN: Artikel[] = [
         ],
       },
       {
-        kop: "Hoe lang duurt het voor je iets merkt?",
-        accent: "iets merkt",
+        kop: "Hoe zie je of een aanpassing werkt?",
+        accent: "aanpassing werkt",
         alineas: [
-          "Google schrijft dat sommige wijzigingen binnen enkele uren zichtbaar zijn en andere maanden kunnen duren. Als richtlijn: vaak een paar weken wachten voordat je beoordeelt of iets in de zoekresultaten hielp ([SEO Starter Guide](https://developers.google.com/search/docs/fundamentals/seo-starter-guide)). Niet elke wijziging levert een zichtbaar verschil op.",
+          "Niet elke aanpassing aan je website is meteen terug te zien in de zoekresultaten. Of een aanpassing hielp, zie je door te meten in Search Console ([SEO Starter Guide](https://developers.google.com/search/docs/fundamentals/seo-starter-guide)).",
           "Dat is waarom doorlopend werken aan pagina's en meten in Search Console hoort bij serieus SEO-werk en niet een eenmalige optimalisatie zonder opvolging.",
         ],
       },
@@ -957,8 +957,8 @@ export const ARTIKELEN: Artikel[] = [
             tekst: "Wat je bespreekt, hoeft niet via iemand anders te worden doorgegeven.",
           },
           {
-            titel: "Snel schakelen.",
-            tekst: "Er is weinig intern overleg. Een kleine wijziging is vaak snel geregeld.",
+            titel: "Korte lijnen.",
+            tekst: "Er is weinig intern overleg. Een kleine wijziging hoeft niet langs meerdere mensen.",
           },
           {
             titel: "Minder organisatie in de prijs.",
@@ -1295,7 +1295,7 @@ export const ARTIKELEN: Artikel[] = [
         kop: "En je aanvragen dan?",
         accent: "aanvragen",
         alineas: [
-          "Genoemd worden is pas de eerste stap. Wie via ChatGPT op je site komt, moet snel zien wat je doet en hoe hij contact opneemt. Waar het daarna vaak misgaat lees je in [Waarom levert je website geen aanvragen of klanten op?](/kennisbank/website-levert-geen-aanvragen-op) Meer over vindbaarheid in Google en AI lees je bij [SEO en GEO](/diensten/seo).",
+          "Genoemd worden is pas de eerste stap. Wie via ChatGPT op je site komt, moet zien wat je doet en hoe hij contact opneemt. Waar het daarna vaak misgaat lees je in [Waarom levert je website geen aanvragen of klanten op?](/kennisbank/website-levert-geen-aanvragen-op) Meer over vindbaarheid in Google en AI lees je bij [SEO en GEO](/diensten/seo).",
         ],
       },
     ],

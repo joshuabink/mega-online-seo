@@ -46,12 +46,11 @@ function GoogleAds() {
                 </span>
               </Reveal>{' '}
               <Reveal as="h1" className="display reveal" data-d="1">
-                Zichtbaar op het moment dat je klant zoekt.{' '}
-                <em>Niet pas over een half jaar.</em>
+                Zichtbaar op het moment dat je klant zoekt.
               </Reveal>{' '}
               <Reveal as="p" className="lead svc-hero__sub reveal" data-d="2">
-                Vindbaarheid via SEO bouw je op over maanden. Met Google Ads sta je in beeld zodra de campagne draait, bij precies de zoekopdrachten die MegaOnline kiest. We richten
-                de campagnes in, zorgen dat de pagina erachter aanvragen oplevert en sturen elke
+                Met Google Ads sta je in beeld zodra de campagne draait, bij precies de zoekopdrachten die MegaOnline kiest. MegaOnline richt
+                de campagnes in, zorgt dat de pagina erachter aanvragen oplevert en stuurt elke
                 maand bij op wat het echt opbrengt.
               </Reveal>{' '}
               <Reveal as="div" className="svc-hero__ctas reveal" data-d="2">
@@ -203,7 +202,7 @@ function GoogleAds() {
             <Reveal as="div" className="feat reveal" data-d="3">
               <span className="iconbox"><Icon name="bar-chart-2" /></span>
               <h4>Heldere rapportage</h4>
-              <p>Elke maand zwart op wit: wat het kostte, hoeveel aanvragen het opleverde en wat we aanpassen.</p>
+              <p>Elke maand zwart op wit: wat het kostte, hoeveel aanvragen het opleverde en wat MegaOnline aanpast.</p>
             </Reveal>{' '}
             <Reveal as="div" className="feat reveal">
               <span className="iconbox"><Icon name="user-check" /></span>
@@ -223,7 +222,7 @@ function GoogleAds() {
               Elke maand een stukje <em>minder verspilling.</em>
             </h2>{' '}
             <p className="lead">
-              De eerste weken leert MegaOnline wat werkt. Daarna wordt het beheer steeds preciezer: minder
+              MegaOnline leert wat werkt en stuurt het beheer bij: minder
               budget naar zoekopdrachten die niets doen, meer naar de zoekopdrachten die aanvragen
               opleveren.
             </p>
@@ -274,10 +273,10 @@ function GoogleAds() {
               </h2>{' '}
               <p>
                 Met Google Ads betaal je voor elke bezoeker. Stop je met adverteren, dan stopt
-                ook de zichtbaarheid. Met SEO bouw je iets op dat blijft, maar dat kost maanden.
+                ook de zichtbaarheid. Met SEO bouw je iets op dat blijft.
               </p>{' '}
               <p>
-                Samen werken ze het beste. Ads brengen direct aanvragen binnen en laten zien welke
+                Samen werken ze het beste. Ads brengen aanvragen binnen en laten zien welke
                 zoekopdrachten echt klanten opleveren. Die kennis gebruikt MegaOnline om te bepalen welke pagina's het voor SEO als eerste maakt.
               </p>{' '}
               <div className="pullnote" style={{ marginTop: '24px' }}>
@@ -324,7 +323,7 @@ function GoogleAds() {
             </div>{' '}
             <div className="exchip">
               <span className="iconbox iconbox--sm"><Icon name="trending-up" /></span>
-              Bedrijven die snel meer aanvragen nodig hebben
+              Bedrijven die meer aanvragen nodig hebben
             </div>
           </Reveal>
         </div>
@@ -339,7 +338,7 @@ function GoogleAds() {
               Beheer per maand. <em>Budget apart.</em>
             </h2>{' '}
             <p className="lead">
-              Je betaalt twee dingen: ons beheer en je advertentiebudget. Het budget betaal je rechtstreeks aan Google, zonder opslag van MegaOnline. Zo zie je altijd precies waar elke
+              Je betaalt twee dingen: het beheer van MegaOnline en je advertentiebudget. Het budget betaal je rechtstreeks aan Google, zonder opslag van MegaOnline. Zo zie je altijd precies waar elke
               euro naartoe gaat.
             </p>
           </Reveal>{' '}
@@ -392,13 +391,12 @@ function GoogleAds() {
               Dat verschilt per branche en regio. Wat een klik kost hangt af van hoeveel bedrijven
               op dezelfde zoekopdracht adverteren. MegaOnline kijkt eerst wat mensen in jouw markt zoeken en wat een klik daar ongeveer kost. Op basis daarvan adviseert MegaOnline een startbudget dat groot genoeg is om te leren wat werkt.
             </Qa>{' '}
-            <Qa question="Hoe snel zie ik resultaat?" className="reveal">
-              Je advertenties zijn zichtbaar zodra de campagne is goedgekeurd. De eerste weken gebruikt MegaOnline om te leren welke zoekopdrachten aanvragen opleveren. Daarna stuurt MegaOnline gericht bij. Hoeveel aanvragen het oplevert kan MegaOnline vooraf niet beloven, wel dat je elke maand ziet wat het deed.
+            <Qa question="Wat zie je van de campagne?" className="reveal">
+              Je advertenties zijn zichtbaar zodra de campagne is goedgekeurd. MegaOnline gebruikt de cijfers om te leren welke zoekopdrachten aanvragen opleveren en stuurt daarna gericht bij. Hoeveel aanvragen het oplevert kan MegaOnline vooraf niet beloven, wel dat je elke maand ziet wat het deed.
             </Qa>{' '}
             <Qa question="Wat is het verschil met SEO?" className="reveal">
-              Met Google Ads betaal je per klik en ben je direct zichtbaar. Met SEO betaal je niet
-              per bezoeker, maar bouw je vindbaarheid op over maanden. Ads is snel en stopt zodra
-              je stopt. SEO is traag en blijft. Veel bedrijven combineren ze.
+              Met Google Ads betaal je per klik en ben je zichtbaar zolang de campagne draait. Met SEO betaal je niet
+              per bezoeker. Ads stopt zodra je stopt. SEO blijft. Veel bedrijven combineren ze.
             </Qa>{' '}
             <Qa question="Van wie is het advertentieaccount?" className="reveal">
               Van jou. Het account staat op jouw naam en het budget betaal je rechtstreeks aan

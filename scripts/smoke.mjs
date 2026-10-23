@@ -56,9 +56,17 @@ function normCta(s) {
  * zijn. Een link daarbij gaat naar /gratis-websitescan, of naar #formulier
  * of #scan op de scanpagina zelf. De gebouwde HTML mag nergens websiteconcept
  * of href="tel:", of een href met wa.me of whatsapp bevatten, of het
- * telefoonnummer van MegaOnline in welke notatie dan ook. '2 werkdagen' mag,
- * behalve in hetzelfde element, dezelfde zin of dezelfde kaart als het woord
- * scan. Het telefoonveld van de bezoeker mag blijven.
+ * telefoonnummer van MegaOnline in welke notatie dan ook. Een doorlooptijd
+ * voor websitebouw of een reactie mag niet: '4 tot 8 weken', 'enkele weken',
+ * 'twee werkdagen', '2 werkdagen', 'vlot', 'snel live' en een maandtermijn
+ * als 'binnen X maanden' of 'na X maanden' laten de controle falen. Title, meta
+ * description, og-tags en JSON-LD mogen die termen ook niet, en evenmin
+ * weken, werkdagen, dagen, 'maand live', 'maanden live', vlot of 'snel live'.
+ * Uitzondering is de scanlevering 'binnen 5 werkdagen'. Losse woorden we, wij, ons en
+ * onze in de zichtbare tekst ook, behalve in een blockquote van een klant.
+ * '2 werkdagen' mag nog steeds niet in hetzelfde element, dezelfde zin of
+ * dezelfde kaart als het woord scan. De scanlevering 'binnen 5 werkdagen'
+ * blijft staan. Het telefoonveld van de bezoeker mag blijven.
  */
 async function controleerCtaTeksten(browser) {
   const pg = await browser.newPage({ viewport: { width: 1440, height: 900 } })
@@ -66,10 +74,17 @@ async function controleerCtaTeksten(browser) {
   const sitemap = await pg.request.get(BASE + '/sitemap.xml')
   const xml = await sitemap.text()
   const paden = [...xml.matchAll(/<loc>https:\/\/megaonline\.io([^<]*)<\/loc>/g)].map((m) => m[1] || '/')
-  check('sitemap-paden voor CTA-controle', sitemap.status() === 200 && paden.length > 0 && !paden.includes('/gratis-websiteconcept'), String(paden.length))
-
   const fouten = []
   let zagScan = false
+  check('sitemap-paden voor CTA-controle', sitemap.status() === 200 && paden.length > 0 && !paden.includes('/gratis-websiteconcept'), String(paden.length))
+  const sitemapTreffer = xml.match(/weken|werkdagen|dagen|maanden?\s+live|vlot|snel live/i)
+  if (sitemapTreffer) fouten.push(`sitemap bevat "${sitemapTreffer[0]}"`)
+  for (const bestand of ['/llms.txt', '/llms-full.txt', '/llms.md']) {
+    const llms = await pg.request.get(BASE + bestand)
+    if (llms.status() !== 200) continue
+    const treffer = (await llms.text()).match(/weken|werkdagen|dagen|maanden?\s+live|vlot|snel live/i)
+    if (treffer) fouten.push(`${bestand} bevat "${treffer[0]}"`)
+  }
 
   for (const pad of paden) {
     const res = await pg.goto(BASE + pad, { waitUntil: 'domcontentloaded', timeout: 30000 })
@@ -81,8 +96,18 @@ async function controleerCtaTeksten(browser) {
       const norm = (s) => String(s ?? '').replace(/\s+/g, ' ').replace(/\s*→\s*$/u, '').trim()
       const kloon = document.body.cloneNode(true)
       kloon.querySelectorAll('script, style, noscript').forEach((n) => n.remove())
+      const zonderQuote = document.body.cloneNode(true)
+      zonderQuote.querySelectorAll('script, style, noscript, blockquote').forEach((n) => n.remove())
       const meta = (sel) => document.querySelector(sel)?.getAttribute('content') ?? ''
       const zichtbaar = [kloon.innerText, document.title, meta('meta[name="description"]'), meta('meta[property="og:title"]'), meta('meta[property="og:description"]')].join('\n')
+      const stem = [zonderQuote.innerText, document.title, meta('meta[name="description"]'), meta('meta[property="og:title"]'), meta('meta[property="og:description"]')].join('\n')
+      const headSchema = [
+        document.title,
+        meta('meta[name="description"]'),
+        meta('meta[property="og:title"]'),
+        meta('meta[property="og:description"]'),
+        ...[...document.querySelectorAll('script[type="application/ld+json"]')].map((n) => n.textContent || ''),
+      ].join('\n')
       const bestemming = (href) => {
         if (!href) return { soort: 'geen' }
         try {
@@ -112,6 +137,8 @@ async function controleerCtaTeksten(browser) {
       return {
         knoppen,
         zichtbaar,
+        stem,
+        headSchema,
         eind: eindEl ? norm(eindEl.innerText) : '',
         heeftForm: !!document.querySelector('.concept'),
         formVoorMorgen: !!(
@@ -157,6 +184,27 @@ async function controleerCtaTeksten(browser) {
       if (data.html.includes(notatie)) fouten.push(`${pad} HTML bevat ${notatie}`)
     }
     if (/websiteconcept/i.test(data.zichtbaar)) fouten.push(`${pad} toont websiteconcept`)
+    // Juridische tekst in algemene-voorwaarden.tsx. Alleen wijzigen met akkoord van Joshua.
+    if (pad !== '/algemene-voorwaarden') {
+      for (const verboden of ['4 tot 8 weken', 'enkele weken', 'twee werkdagen', '2 werkdagen', 'vlot', 'snel live']) {
+        if (data.zichtbaar.toLowerCase().includes(verboden)) fouten.push(`${pad} bevat "${verboden}"`)
+      }
+      const maandTermijn = data.zichtbaar.match(/binnen\s+(?:\d+|een|twee|drie|vier|vijf|zes|zeven|acht|negen|tien|elf|twaalf|enkele|paar)\s+maanden|na\s+(?:\d+|een|twee|drie|vier|vijf|zes|zeven|acht|negen|tien|elf|twaalf|enkele|paar)\s+maanden/i)
+      if (maandTermijn) fouten.push(`${pad} bevat "${maandTermijn[0]}"`)
+      const kopZonderScan = data.headSchema
+        .replace(/binnen 5 werkdagen/gi, '')
+        .replace(/rustige dagen|stille dagen|doordeweekse dagen|drukke dagen|feestdagen|contentdagen|sluitingsdagen|dagen per week/gi, '')
+      const kopTreffer = kopZonderScan.match(/weken|werkdagen|dagen|maanden?\s+live|vlot|snel live/i)
+      if (kopTreffer) {
+        const van = Math.max(0, kopTreffer.index - 40)
+        fouten.push(`${pad} head/JSON-LD bevat "${kopTreffer[0]}" in "${kopZonderScan.slice(van, kopTreffer.index + 80).replace(/\s+/g, ' ')}"`)
+      }
+    }
+    const stemTreffer = data.stem.match(/(^|[^\p{L}])(we|wij|ons|onze)(?=[^\p{L}]|$)/iu)
+    if (stemTreffer) {
+      const van = Math.max(0, stemTreffer.index - 30)
+      fouten.push(`${pad} bevat "${stemTreffer[2]}" in "${data.stem.slice(van, stemTreffer.index + 70).replace(/\s+/g, ' ')}"`)
+    }
     for (const oud of OUDE_CTA_VARIANTEN) {
       if (data.zichtbaar.includes(oud)) fouten.push(`${pad} bevat "${oud}"`)
     }
@@ -328,7 +376,7 @@ function collectGaUrls(pg) {
 const ZOEKTAAL_PAGINAS = [
   {
     path: '/diensten/conversie-website',
-    title: 'Website laten maken gericht op aanvragen | MegaOnline',
+    title: 'Conversiegerichte website laten maken | MegaOnline',
     h1: 'Website laten maken gericht op aanvragen en boekingen',
   },
   {
@@ -343,7 +391,7 @@ const ZOEKTAAL_PAGINAS = [
   },
   {
     path: '/diensten/website-optimalisatie',
-    title: 'Bestaande website laten optimaliseren | MegaOnline',
+    title: 'Website laten optimaliseren voor meer aanvragen | MegaOnline',
     h1: 'Bestaande website laten optimaliseren',
   },
   {
@@ -364,7 +412,7 @@ const ZOEKTAAL_PAGINAS = [
   {
     path: '/branches/reserveringen',
     title: 'Website met reserveringssysteem laten maken | MegaOnline',
-    h1: 'Website laten maken met online reserveren',
+    h1: 'Website met reserveringssysteem laten maken',
   },
   {
     path: '/branches/offerteaanvragen',
@@ -669,7 +717,7 @@ check('velden komen correct door',
   lead?.email === 'test@example.com' &&
   lead?.telefoon === '0612345678' &&
   lead?.branche === 'Activiteiten / Recreatie' &&
-  lead?.start === 'Zo snel mogelijk' &&
+  lead?.start === 'Wanneer het uitkomt' &&
   lead?.omschrijving === 'We verhuren springkussens in de regio Gouda.' &&
   lead?.knelpunt === 'Er komen te weinig aanvragen of boekingen binnen, Mijn website ziet er verouderd uit' &&
   lead?.doel === 'Meer offerteaanvragen',
@@ -1047,7 +1095,7 @@ check(
       scanPagina.canonical === 'https://megaonline.io/gratis-websitescan' &&
       !/noindex/i.test(scanPagina.robots) &&
       scanPagina.h1 === 'Vraag een gratis website scan aan' &&
-      scanPagina.lead === 'We bekijken je site en vertellen je eerlijk wat je nu aanvragen en boekingen kost, en wat het eerst moet.' &&
+      scanPagina.lead === 'MegaOnline bekijkt je site en vertelt je eerlijk wat je nu aanvragen en boekingen kost en wat het eerst moet.' &&
       scanPagina.formTag === 'FORM' &&
       scanPagina.heroHref === '#formulier' &&
       scanPagina.tekstHref === '#formulier' &&
@@ -1074,7 +1122,7 @@ check(
     'zijblok noemt rapport en videogesprek',
     scanPagina.oplevering.includes('rapport') &&
       scanPagina.oplevering.includes('videogesprek') &&
-      scanPagina.oplevering === 'Binnen 5 werkdagen ontvang je een rapport over je site. In een persoonlijk videogesprek lichten we het rapport toe.',
+      scanPagina.oplevering === 'Binnen 5 werkdagen ontvang je een rapport over je site. In een persoonlijk videogesprek licht MegaOnline het rapport toe.',
     scanPagina.oplevering,
   )
 
@@ -1164,11 +1212,11 @@ check(
   const scanToontVijf = await page.evaluate(() => document.body.innerText.includes('binnen 5 werkdagen'))
   await page.goto(BASE + '/contact', { waitUntil: 'load' })
   await waitHydrated(page)
-  const contactToontTwee = await page.evaluate(() => document.body.innerText.includes('binnen 2 werkdagen'))
+  const contactToontTermijn = await page.evaluate(() => /2 werkdagen|twee werkdagen/i.test(document.body.innerText))
   check(
-    'contact toont binnen 2 werkdagen en de scanpagina binnen 5 werkdagen',
-    scanToontVijf && contactToontTwee,
-    `scan=${scanToontVijf} contact=${contactToontTwee}`,
+    'contact noemt geen reactietermijn en de scanpagina wel binnen 5 werkdagen',
+    scanToontVijf && !contactToontTermijn,
+    `scan=${scanToontVijf} contactTermijn=${contactToontTermijn}`,
   )
 
   await page.goto(BASE + '/diensten/starter-website', { waitUntil: 'load' })
@@ -1821,20 +1869,30 @@ for (const pad of [
 {
   await page.goto(BASE + '/diensten/seo', { waitUntil: 'load' })
   await waitHydrated(page)
-  const seoBron = await page.evaluate(() => {
+  const seoAntwoord = 'SEO is geen knop die je omzet. SEO werkt op de lange termijn en hangt af van je uitgangspositie en de concurrentie. Daarom werkt MegaOnline met een contentplan voor twaalf maanden in plaats van losse acties.'
+  const seoBron = await page.evaluate((antwoord) => {
     const tekst = (document.body.textContent || '').replace(/\s+/g, ' ')
     const hrefs = [...document.querySelectorAll('a')].map((a) => a.getAttribute('href') || '')
+    const jsonld = [...document.querySelectorAll('script[type="application/ld+json"]')].map((n) => n.textContent || '').join('\n')
     return {
       stuk: tekst.includes(
         "en de website zorgt dat er wat uitkomt. Hoe AI-zoekmachines bedrijven kiezen om te noemen, lees je in gevonden worden in ChatGPT als mkb'er.",
       ),
       href: hrefs.includes('/kennisbank/gevonden-worden-in-chatgpt'),
+      antwoord: tekst.includes(antwoord),
+      faqPage: jsonld.includes('FAQPage'),
+      oud: jsonld.includes('Serieuze, blijvende posities'),
     }
-  })
+  }, seoAntwoord)
   check(
     '/diensten/seo linkt naar gevonden worden in ChatGPT',
     seoBron.stuk && seoBron.href,
     `stuk=${seoBron.stuk} href=${seoBron.href}`,
+  )
+  check(
+    '/diensten/seo toont de SEO-termijnzin en heeft geen afwijkende FAQPage',
+    seoBron.antwoord && !seoBron.faqPage && !seoBron.oud,
+    `antwoord=${seoBron.antwoord} faqPage=${seoBron.faqPage} oud=${seoBron.oud}`,
   )
 }
 
@@ -1940,7 +1998,7 @@ for (const [pad, eind, form] of [
   );
   const dates = lastmods.map((list) => list[0] ?? "");
   check("sitemap 200", res.status() === 200, String(res.status()));
-  check("sitemap heeft 41 urls", blocks.length === 41, String(blocks.length));
+  check("sitemap heeft 43 urls", blocks.length === 43, String(blocks.length));
   const scanInSitemap = blocks.find((block) => block.includes("https://megaonline.io/gratis-websitescan"));
   check(
     "sitemap bevat de scan van vandaag en niet het oude conceptadres",
@@ -1961,8 +2019,8 @@ for (const [pad, eind, form] of [
     block.includes("https://megaonline.io/kennisbank/wat-is-seo"),
   );
   check(
-    "sitemap bevat wat-is-seo met lastmod 2026-10-14",
-    !!watIsSeo && /<lastmod>2026-10-14<\/lastmod>/.test(watIsSeo),
+    "sitemap bevat wat-is-seo met lastmod 2026-10-21",
+    !!watIsSeo && /<lastmod>2026-10-21<\/lastmod>/.test(watIsSeo),
     watIsSeo ?? "ontbreekt",
   );
   const freelancerBureau = blocks.find((block) =>
@@ -1986,7 +2044,7 @@ for (const [pad, eind, form] of [
   );
   check(
     "kennisbankoverzicht lastmod volgt de nieuwste gewijzigd",
-    !!kennisbankOverzicht && /<lastmod>2026-10-15<\/lastmod>/.test(kennisbankOverzicht),
+    !!kennisbankOverzicht && /<lastmod>2026-10-21<\/lastmod>/.test(kennisbankOverzicht),
     kennisbankOverzicht ?? "ontbreekt",
   );
   check(

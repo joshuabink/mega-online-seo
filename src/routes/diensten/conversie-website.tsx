@@ -7,7 +7,6 @@ import { Qa } from '@/components/Qa'
 import { Reveal } from '@/components/Reveal'
 import { ConceptForm } from '@/components/ConceptForm'
 import { CTA_SCAN } from '@/lib/cta'
-import { CONTACT_REACTIETIJD } from '@/lib/lead-contact'
 
 export const Route = createFileRoute('/diensten/conversie-website')({
   head: () => ({
@@ -44,7 +43,7 @@ const FAQ_ITEMS: { q: string; a: ReactNode }[] = [
   },
   {
     q: "Wat gebeurt er na livegang?",
-    a: "Livegang is het startpunt, niet het eindpunt. We kunnen blijven kijken waar bezoekers afhaken en de website maand na maand verbeteren via een Groei Partnership. Wil je dat liever niet, dan is alleen onderhoud en support ook mogelijk.",
+    a: "Livegang is het startpunt, niet het eindpunt. MegaOnline kan blijven kijken waar bezoekers afhaken en de website maand na maand verbeteren via een Groei Partnership. Wil je dat liever niet, dan is alleen onderhoud en support ook mogelijk.",
   },
   {
     q: "Kan mijn website gekoppeld worden aan bestaande software?",
@@ -56,11 +55,11 @@ const FAQ_ITEMS: { q: string; a: ReactNode }[] = [
   },
   {
     q: "Is een Groei Partnership verplicht?",
-    a: "Nee. Sommige klanten kiezen voor een eenmalige website en regelen het beheer zelf of via een andere partij. We raden het Partnership wel aan, omdat websites die regelmatig verbeterd worden structureel beter presteren.",
+    a: "Nee. Sommige klanten kiezen voor een eenmalige website en regelen het beheer zelf of via een andere partij. MegaOnline raadt het Partnership wel aan, omdat websites die regelmatig verbeterd worden structureel beter presteren.",
   },
   {
     q: "Helpt MegaOnline ook met foto's en video's?",
-    a: "Ja. Goede beelden maken vaak het verschil tussen afhaken of vertrouwen krijgen. We kunnen helpen met fotografie op locatie, content shoots, bedrijfsvideo's en dronebeelden. Eenmalig bij de bouw, of periodiek via contentdagen om je content vers te houden.",
+    a: "Ja. Goede beelden maken vaak het verschil tussen afhaken of vertrouwen krijgen. MegaOnline kan helpen met fotografie op locatie, content shoots, bedrijfsvideo's en dronebeelden. Eenmalig bij de bouw, of periodiek via contentdagen om je content vers te houden.",
   },
   {
     q: "Kan MegaOnline ook helpen met een logo of huisstijl?",
@@ -569,7 +568,7 @@ function ConversieWebsite() {
             </h2>
             {' '}
             <p className="lead">
-              Je website hoeft geen los eiland te zijn. We kunnen hem verbinden met de systemen waarmee je al werkt, zodat alles op één plek samenkomt.
+              Je website hoeft geen los eiland te zijn. MegaOnline kan hem verbinden met de systemen waarmee je al werkt, zodat alles op één plek samenkomt.
             </p>
           </Reveal>
           {' '}
@@ -996,7 +995,7 @@ function ConversieWebsite() {
                   <div className="case__step">
                     <span className="k">Wat MegaOnline deed</span>
                     <p>
-                      MegaOnline bracht de propositie terug naar een duidelijke boodschap en bouwde een structuur die bezoekers sneller naar de juiste informatie leidt.
+                      MegaOnline bracht de propositie terug naar een duidelijke boodschap en bouwde een structuur die bezoekers naar de juiste informatie leidt.
                     </p>
                   </div>
                 </div>
@@ -1122,7 +1121,7 @@ function ConversieWebsite() {
                 {' '}
                 <span>Geen automatisch rapport</span>
                 {' '}
-                <span>Reactie {CONTACT_REACTIETIJD}</span>
+                <span>Persoonlijk antwoord</span>
               </Reveal>
             </div>
             {' '}

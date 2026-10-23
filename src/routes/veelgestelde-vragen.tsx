@@ -10,9 +10,9 @@ export const Route = createFileRoute('/veelgestelde-vragen')({
   head: () => ({
     meta: [
       { title: "Veelgestelde vragen | MegaOnline.io" },
-      { name: 'description', content: "Antwoord op de meestgestelde vragen over websites bij MegaOnline: wat het kost, hoe lang een project duurt, hoe je meer aanvragen krijgt, techniek en beheer." },
+      { name: 'description', content: "Antwoord op de meestgestelde vragen over websites bij MegaOnline: wat het kost, hoe een project verloopt, hoe je meer aanvragen krijgt, techniek en beheer." },
       { property: 'og:title', content: "Veelgestelde vragen | MegaOnline.io" },
-      { property: 'og:description', content: "Antwoord op de meestgestelde vragen over websites bij MegaOnline: wat het kost, hoe lang een project duurt, hoe je meer aanvragen krijgt, techniek en beheer." },
+      { property: 'og:description', content: "Antwoord op de meestgestelde vragen over websites bij MegaOnline: wat het kost, hoe een project verloopt, hoe je meer aanvragen krijgt, techniek en beheer." },
       { property: 'og:url', content: "https://megaonline.io/veelgestelde-vragen" },
     ],
     links: [
@@ -110,11 +110,11 @@ function VeelgesteldeVragen() {
             {' '}
             <div className="faq">
               <Qa question="Wat kost een website bij MegaOnline?" className="reveal">
-                  Dat hangt af van wat je nodig hebt. De Starter Website begint vanaf €1.500 en is bedoeld voor starters die voordelig en snel online willen. Een volledige Conversie Website is maatwerk en wordt geprijsd op basis van omvang, strategie en koppelingen. In een gratis website scan brengt MegaOnline het vrijblijvend voor je in kaart.
+                  Dat hangt af van wat je nodig hebt. De Starter Website begint vanaf €1.500 en is bedoeld voor starters die voordelig online willen. Een volledige Conversie Website is maatwerk en wordt geprijsd op basis van omvang, strategie en koppelingen. In een gratis website scan brengt MegaOnline het vrijblijvend voor je in kaart.
               </Qa>
               {' '}
               <Qa question="Waarom is de Starter Website goedkoper?" className="reveal">
-                  Omdat MegaOnline daarbij werkt met beproefde, herbruikbare bouwblokken en een vaste opzet. Dat scheelt veel ontwerp- en bouwuren. Dat voordeel geeft MegaOnline door. De kwaliteit van de basis blijft hetzelfde, alleen het proces is sneller.
+                  Omdat MegaOnline daarbij werkt met beproefde, herbruikbare bouwblokken en een vaste opzet. Dat scheelt veel ontwerp- en bouwuren. Dat voordeel geeft MegaOnline door. De kwaliteit van de basis blijft hetzelfde.
               </Qa>
               {' '}
               <Qa question="Krijg ik vooraf een duidelijke prijs?" className="reveal">
@@ -133,20 +133,16 @@ function VeelgesteldeVragen() {
                 <Icon name="calendar-clock" />
               </span>
               {' '}
-              <h2>Hoe lang duurt een project?</h2>
+              <h2>Hoe verloopt een project?</h2>
             </Reveal>
             {' '}
             <div className="faq">
-              <Qa question="Hoe lang duurt het om een website te bouwen?" className="reveal">
-                  Een Starter Website staat doorgaans binnen enkele weken live, omdat we met vaste bouwblokken werken. Een volledige maatwerk-website duurt langer, afhankelijk van omvang en het aantal feedbackrondes. MegaOnline maakt vooraf een heldere planning.
-              </Qa>
-              {' '}
               <Qa question="Hoe verloopt het traject?" className="reveal">
                   Kort gezegd: kennismaking, aanleveren van teksten en beeld, bouwen, een feedbackronde en livegang. Bij maatwerk zitten daar meer ontwerp- en afstemmingsrondes in. Je weet steeds hoe je project ervoor staat en wat de volgende stap is.
               </Qa>
               {' '}
               <Qa question="Wat heb je van mij nodig?" className="reveal">
-                  Vooral je teksten, je logo en een paar foto’s. Waar dat nodig is, denkt MegaOnline mee over de inhoud. Hoe sneller je aanlevert, hoe vlotter je live kunt.
+                  Vooral je teksten, je logo en een paar foto’s. Waar dat nodig is, denkt MegaOnline mee over de inhoud.
               </Qa>
               {' '}
               <Qa question="Kan ik later nog dingen aanpassen?" className="reveal">
@@ -166,15 +162,15 @@ function VeelgesteldeVragen() {
             {' '}
             <div className="faq">
               <Qa question="Hoe zorgt een website voor meer aanvragen?" className="reveal">
-                  Door bezoekers gericht te begeleiden naar één duidelijke volgende stap: een aanvraag, reservering of boeking. We werken aan vertrouwen, een heldere structuur en sterke call-to-actions, zodat meer bezoekers ook echt klant worden. Lees over <Link to="/kennisbank/$slug" params={{ slug: 'website-levert-geen-aanvragen-op' }}>zes plekken waar een website aanvragen laat liggen</Link>.
+                  Door bezoekers gericht te begeleiden naar één duidelijke volgende stap: een aanvraag, reservering of boeking. MegaOnline werkt aan vertrouwen, een heldere structuur en sterke call-to-actions, zodat meer bezoekers ook echt klant worden. Lees over <Link to="/kennisbank/$slug" params={{ slug: 'website-levert-geen-aanvragen-op' }}>zes plekken waar een website aanvragen laat liggen</Link>.
               </Qa>
               {' '}
               <Qa question="Doet MegaOnline ook SEO?" className="reveal">
                   Ja. MegaOnline zorgt voor een gezonde SEO-basis en kan verder gaan met lokale vindbaarheid, sterke landingspagina’s en techniek. MegaOnline stuurt daarbij op de juiste bezoekers, mensen die actief zoeken naar wat jij biedt, in plaats van op ijdele bezoekersaantallen.
               </Qa>
               {' '}
-              <Qa question="Hoe snel zie ik resultaat?" className="reveal">
-                  Een betere website werkt vaak direct: bezoekers vinden sneller hun weg naar contact. SEO-resultaat bouwt zich op over weken tot maanden. MegaOnline stuurt op gestage, duurzame groei.
+              <Qa question="Wat levert een betere website op?" className="reveal">
+                  Bezoekers vinden hun weg naar contact. MegaOnline stuurt op gestage, duurzame groei.
               </Qa>
               {' '}
               <Qa question="Kan MegaOnline mijn bestaande website verbeteren?" className="reveal">
@@ -198,11 +194,11 @@ function VeelgesteldeVragen() {
               </Qa>
               {' '}
               <Qa question="Is mijn website veilig en snel?" className="reveal">
-                  Daar zorgt MegaOnline voor. Je website wordt snel, veilig en stabiel opgeleverd, en is volledig mobielvriendelijk, want de meeste bezoekers komen via hun telefoon.
+                  Daar zorgt MegaOnline voor. Je website wordt veilig en stabiel opgeleverd en is volledig mobielvriendelijk, want de meeste bezoekers komen via hun telefoon.
               </Qa>
               {' '}
               <Qa question="Kunnen jullie koppelen met mijn systemen?" className="reveal">
-                  Vaak wel. We koppelen je website aan bijvoorbeeld je CRM, boekingssysteem, agenda, betaaldienst of WhatsApp, zodat aanvragen automatisch op de juiste plek belanden.
+                  Vaak wel. MegaOnline koppelt je website aan bijvoorbeeld je CRM, boekingssysteem, agenda, betaaldienst of WhatsApp, zodat aanvragen automatisch op de juiste plek belanden.
               </Qa>
               {' '}
               <Qa question="Blijft de website van mij?" className="reveal">

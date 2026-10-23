@@ -6,7 +6,6 @@ import { Qa } from '@/components/Qa'
 import { Reveal } from '@/components/Reveal'
 import { ConceptForm } from '@/components/ConceptForm'
 import { CTA_SCAN } from '@/lib/cta'
-import { CONTACT_REACTIETIJD } from '@/lib/lead-contact'
 
 export const Route = createFileRoute('/diensten/website-optimalisatie')({
   head: () => ({
@@ -644,7 +643,7 @@ function WebsiteOptimalisatie() {
                   <div className="case__step">
                     <span className="k">Wat MegaOnline deed</span>
                     <p>
-                      MegaOnline bracht de propositie terug naar een duidelijke boodschap en bouwde een structuur die bezoekers sneller naar de juiste informatie leidt.
+                      MegaOnline bracht de propositie terug naar een duidelijke boodschap en bouwde een structuur die bezoekers naar de juiste informatie leidt.
                     </p>
                   </div>
                 </div>
@@ -725,8 +724,8 @@ function WebsiteOptimalisatie() {
                 Ja. De meeste websites zijn uitstekend te optimaliseren. MegaOnline kan structuur, formulieren, snelheid, de mobiele ervaring en de SEO-basis verbeteren zonder je website helemaal opnieuw te bouwen.
             </Qa>
             {' '}
-            <Qa question="Hoe snel zie ik resultaat?" className="reveal">
-                Sommige verbeteringen, zoals een duidelijkere call-to-action of een eenvoudiger formulier, kunnen al snel merkbaar zijn. Andere, zoals de SEO-basis, hebben wat meer tijd nodig. MegaOnline stuurt op basis van wat het meet, zodat verbetering onderbouwd is en niet op gevoel.
+            <Qa question="Wat merk je van de verbeteringen?" className="reveal">
+                Een duidelijkere call-to-action of een eenvoudiger formulier verandert wat de bezoeker op de pagina doet. De SEO-basis is een apart traject. MegaOnline stuurt op basis van wat het meet, zodat verbetering onderbouwd is en niet op gevoel.
             </Qa>
             {' '}
             <Qa question="Werkt MegaOnline ook met websites die het niet zelf gebouwd heeft?" className="reveal">
@@ -782,7 +781,7 @@ function WebsiteOptimalisatie() {
                 {' '}
                 <span>Eerlijk advies</span>
                 {' '}
-                <span>Reactie {CONTACT_REACTIETIJD}</span>
+                <span>Persoonlijk antwoord</span>
               </Reveal>
             </div>
             {' '}
