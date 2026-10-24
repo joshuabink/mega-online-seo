@@ -2,14 +2,17 @@ import { useEffect, useId, useRef, useState } from 'react'
 import { Link } from '@tanstack/react-router'
 import { LEAD_CONTACT } from '@/lib/lead-contact'
 import { SteppedLeadForm } from './LeadForm'
-import { CTA_SCAN } from '@/lib/cta'
-import { SCAN_OPLEVERING, SCAN_REACTIETIJD, SCAN_SUBJECT } from '@/lib/scan'
 
 /**
- * Korte variant van het scanformulier (4 stappen) voor /homepage-v2.
- * Zelfde veldnamen en verzending als ConceptForm, zodat de mail er hetzelfde
- * uitziet. ConceptForm zelf blijft ongewijzigd voor de echte homepage.
+ * Kort aanvraagformulier voor het gratis websiteconcept (4 stappen), voor
+ * /homepage-v2. Zelfde veldnamen en verzending als ConceptForm, zodat de mail
+ * er hetzelfde uitziet. ConceptForm zelf blijft ongewijzigd.
+ *
+ * Wie nog geen website heeft, vult in stap 2 geen websiteadres in maar
+ * beschrijft wat het bedrijf doet en voor wie.
  */
+
+const SUBJECT = 'Gratis websiteconcept aanvraag'
 
 const GEEN_WEBSITE = 'Ik heb nog geen website'
 
@@ -104,7 +107,7 @@ function Nav({ last = false }: { last?: boolean }) {
       </button>
       {last ? (
         <button className="btn btn-primary" type="submit">
-          {CTA_SCAN}
+          Vraag je gratis websiteconcept aan
         </button>
       ) : (
         <button className="btn btn-primary" type="button" data-next="">
@@ -115,13 +118,14 @@ function Nav({ last = false }: { last?: boolean }) {
   )
 }
 
-export function ScanFormKort({ className = '' }: { className?: string }) {
+export function ConceptFormKort({ className = '' }: { className?: string }) {
   const uid = useId().replace(/:/g, '')
   const id = (name: string) => `${uid}-${name}`
 
   const [knelpunt, setKnelpunt] = useState<string[]>([])
   const [doel, setDoel] = useState<string[]>([])
   const [geenWebsite, setGeenWebsite] = useState(false)
+  const geenUitStap1 = knelpunt.includes(GEEN_WEBSITE)
   const [url, setUrl] = useState('')
   const geenStondAan = useRef(false)
 
@@ -138,15 +142,15 @@ export function ScanFormKort({ className = '' }: { className?: string }) {
   return (
     <SteppedLeadForm
       className={`concept scankort ${className}`.trim()}
-      subject={SCAN_SUBJECT}
-      formName="scan"
+      subject={SUBJECT}
+      formName="concept"
       ok={
         <>
           <div className="ic">✓</div>
           <h3>Bedankt. Je aanvraag is binnen.</h3>
           <p>
-            {SCAN_OPLEVERING} Vragen in de tussentijd? Mail naar{' '}
-            <a href="mailto:info@megaonline.io">info@megaonline.io</a>.
+            We gaan aan de slag met je websiteconcept en nemen daarna contact met je op. Vragen in de
+            tussentijd? Mail naar <a href="mailto:info@megaonline.io">info@megaonline.io</a>.
           </p>
         </>
       }
@@ -156,7 +160,7 @@ export function ScanFormKort({ className = '' }: { className?: string }) {
           <div className="scankort__top">
             <span className="form__head-note">
               <span className="form__dot" />
-              Gratis website scan
+              Gratis websiteconcept
             </span>
             <span className="form__step-label" aria-live="polite" aria-atomic="true">
               Stap <b>{current + 1}</b> van {STAPPEN}
@@ -179,7 +183,7 @@ export function ScanFormKort({ className = '' }: { className?: string }) {
               Volgende stap <span className="arr">→</span>
             </button>
             <p className="scankort__ticks">
-              Persoonlijk advies · Vrijblijvend · Reactie {SCAN_REACTIETIJD}
+              Persoonlijk · Vrijblijvend · Op maat van jouw bedrijf
             </p>
           </div>
 
@@ -201,30 +205,50 @@ export function ScanFormKort({ className = '' }: { className?: string }) {
               />
               <p id={`${id('bedrijf')}-error`} className="field__error" role="alert" hidden />
             </div>
-            <div className="field">
-              <label htmlFor={id('url')}>Huidige website (optioneel)</label>
-              <input
-                id={id('url')}
-                name="url"
-                type="text"
-                inputMode="url"
-                autoComplete="url"
-                placeholder="jouwwebsite.nl"
-                value={url}
-                disabled={geenWebsite}
-                onChange={(e) => setUrl(e.target.value)}
-              />
-            </div>
-            <label className="checkline">
-              <input
-                type="checkbox"
-                name="geen_website"
-                value="ja"
-                checked={geenWebsite}
-                onChange={(e) => setGeenWebsite(e.target.checked)}
-              />
-              <span>Ik heb nog geen website</span>
-            </label>
+            {geenWebsite ? (
+              <div className="field">
+                <label htmlFor={id('omschrijving')}>Wat doet je bedrijf en voor wie?</label>
+                <textarea
+                  id={id('omschrijving')}
+                  name="omschrijving"
+                  rows={3}
+                  maxLength={500}
+                  required
+                  data-error="Vertel kort wat je bedrijf doet."
+                  aria-describedby={`${id('omschrijving')}-error`}
+                  placeholder="Bijvoorbeeld: we verhuren springkussens aan particulieren en bedrijven in de regio Gouda."
+                />
+                <p id={`${id('omschrijving')}-error`} className="field__error" role="alert" hidden />
+              </div>
+            ) : (
+              <div className="field">
+                <label htmlFor={id('url')}>Huidige website (optioneel)</label>
+                <input
+                  id={id('url')}
+                  name="url"
+                  type="text"
+                  inputMode="url"
+                  autoComplete="url"
+                  placeholder="jouwwebsite.nl"
+                  value={url}
+                  onChange={(e) => setUrl(e.target.value)}
+                />
+              </div>
+            )}
+            {geenUitStap1 ? (
+              <input type="hidden" name="geen_website" value="ja" />
+            ) : (
+              <label className="checkline">
+                <input
+                  type="checkbox"
+                  name="geen_website"
+                  value="ja"
+                  checked={geenWebsite}
+                  onChange={(e) => setGeenWebsite(e.target.checked)}
+                />
+                <span>Ik heb nog geen website</span>
+              </label>
+            )}
             <Nav />
           </div>
 
@@ -242,7 +266,7 @@ export function ScanFormKort({ className = '' }: { className?: string }) {
 
           <div className="fstep" data-step="4" hidden={current !== 3}>
             <h3 className="fstep__title" tabIndex={-1} data-step-focus>
-              Waar mag de scan heen?
+              Waar mogen we het concept heen sturen?
             </h3>
             <div className="field">
               <label htmlFor={id('naam')}>Je naam</label>
@@ -288,7 +312,7 @@ export function ScanFormKort({ className = '' }: { className?: string }) {
               Liever direct contact? Mail <a href={`mailto:${LEAD_CONTACT.mail}`}>{LEAD_CONTACT.mail}</a>.
             </p>
             <p className="form__disc">
-              MegaOnline gebruikt je gegevens alleen voor je website scan en advies. Je komt niet op een
+              MegaOnline gebruikt je gegevens alleen voor je websiteconcept. Je komt niet op een
               mailinglijst. <Link to="/privacyverklaring">Privacyverklaring</Link>
             </p>
           </div>

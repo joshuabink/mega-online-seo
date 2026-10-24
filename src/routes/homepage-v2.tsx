@@ -3,7 +3,7 @@ import { Icon } from '@/components/Icon'
 import { Media } from '@/components/Media'
 import { Qa } from '@/components/Qa'
 import { Reveal } from '@/components/Reveal'
-import { ScanFormKort } from '@/components/ScanFormKort'
+import { ConceptFormKort } from '@/components/ConceptFormKort'
 import { CTA_SCAN } from '@/lib/cta'
 import '@/styles/pages/homepage-v2.css'
 
@@ -202,7 +202,7 @@ function HomepageV2() {
                 </li>
               </Reveal>
             </div>{' '}
-            <ScanFormKort className="hero__form reveal" />
+            <ConceptFormKort className="hero__form reveal" />
           </div>
         </div>
       </section>{' '}
@@ -265,7 +265,7 @@ function HomepageV2() {
           <Reveal as="div" className="shead reveal">
             <span className="label">Het verschil</span>
             <h2 className="h2">
-              Een websitebouwer maakt wat je vraagt. Wij bouwen wat je klant laat <em>aanvragen.</em>
+              Een websitebouwer maakt wat jij vraagt. Wij bouwen wat jouw klant nodig heeft om <em>aan te vragen.</em>
             </h2>
           </Reveal>{' '}
           <Reveal as="div" className="v2-table reveal" data-d="1">
