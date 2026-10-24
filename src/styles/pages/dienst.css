@@ -78,15 +78,48 @@
 [data-dienst] .cw-beeld__grid > div { aspect-ratio: 4 / 3; border-radius: 12px; overflow: hidden; background: rgba(255, 255, 255, 0.06); }
 [data-dienst] .cw-beeld__tekst { display: grid; gap: 14px; color: var(--muted); font-size: 1rem; line-height: 1.65; }
 
+/* Drie pijlers (koppelingen en automatiseringen) */
+[data-dienst] .cw-pijlers { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: clamp(28px, 3vw, 40px); }
+[data-dienst] .cw-pijlers .cw-incl__ico { width: 44px; height: 44px; border-radius: 11px; margin-bottom: 4px; }
+[data-dienst] .cw-pijlers .cw-incl__ico svg { width: 22px; height: 22px; }
+
+/* Flowschema's: stappen met pijlen ertussen */
+[data-dienst] .cw-flows { display: grid; gap: 16px; margin-top: clamp(28px, 3vw, 40px); }
+[data-dienst] .cw-flow { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 2.6fr); gap: 24px 40px; align-items: center; padding: clamp(22px, 2.4vw, 30px); border-radius: 16px; border: 1px solid rgba(245, 243, 236, 0.12); background: rgba(245, 243, 236, 0.03); }
+[data-dienst] .cw-flow__kop { display: grid; gap: 8px; }
+[data-dienst] .cw-flow__kop .cw-card__tag { color: #E9DF73; }
+[data-dienst] .cw-flow__kop h3 { font-size: 1.25rem; line-height: 1.25; }
+[data-dienst] .cw-flow__kop p { color: var(--muted); font-size: 0.95rem; line-height: 1.55; }
+[data-dienst] .cw-flow__stappen { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 28px; }
+[data-dienst] .cw-flow__stap { position: relative; display: grid; gap: 6px; align-content: start; padding: 16px; border-radius: 12px; background: rgba(245, 243, 236, 0.06); border: 1px solid rgba(245, 243, 236, 0.10); }
+[data-dienst] .cw-flow__stap:not(:last-child)::after { content: "\2192"; position: absolute; right: -22px; top: 50%; transform: translateY(-50%); color: #E9DF73; font-size: 1.1rem; line-height: 1; }
+[data-dienst] .cw-flow__ico { width: 34px; height: 34px; border-radius: 9px; display: inline-flex; align-items: center; justify-content: center; background: rgba(233, 223, 115, 0.14); color: #E9DF73; }
+[data-dienst] .cw-flow__ico svg { width: 18px; height: 18px; }
+[data-dienst] .cw-flow__t { font-weight: 600; font-size: 0.98rem; margin-top: 4px; }
+[data-dienst] .cw-flow__s { color: var(--muted); font-size: 0.85rem; line-height: 1.45; }
+
+/* Logo's van systemen */
+[data-dienst] .cw-logos { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; margin-top: clamp(28px, 3vw, 40px); }
+[data-dienst] .cw-logo { display: flex; align-items: center; gap: 10px; min-height: 56px; padding: 12px 14px; border-radius: 12px; background: var(--card); border: 1px solid var(--line); font-size: 0.92rem; font-weight: 500; color: var(--fg); }
+[data-dienst] .cw-logo svg { flex: none; width: 22px; height: 22px; fill: currentColor; color: #23593D; }
+
 @media (max-width: 1100px) {
   [data-dienst] .cw-steps { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   [data-dienst] .cw-problems--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  [data-dienst] .cw-flow { grid-template-columns: 1fr; }
 }
 @media (max-width: 900px) {
   [data-dienst] .cw-problems { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  [data-dienst] .cw-krijgt, [data-dienst] .cw-prijs, [data-dienst] .cw-faq, [data-dienst] .cw-duo, [data-dienst] .cw-beeld { grid-template-columns: 1fr; }
+  [data-dienst] .cw-krijgt, [data-dienst] .cw-prijs, [data-dienst] .cw-faq, [data-dienst] .cw-duo, [data-dienst] .cw-beeld, [data-dienst] .cw-pijlers { grid-template-columns: 1fr; }
   [data-dienst] .cw-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 600px) {
   [data-dienst] .cw-problems, [data-dienst] .cw-problems--4, [data-dienst] .cw-steps, [data-dienst] .cw-incl { grid-template-columns: 1fr; }
+}
+@media (max-width: 760px) {
+  [data-dienst] .cw-flow__stappen { grid-template-columns: 1fr; gap: 18px; }
+  [data-dienst] .cw-flow__stap { grid-template-columns: 34px 1fr; column-gap: 12px; row-gap: 2px; padding: 12px 14px; }
+  [data-dienst] .cw-flow__ico { grid-row: span 2; align-self: center; }
+  [data-dienst] .cw-flow__t { margin-top: 0; }
+  [data-dienst] .cw-flow__stap:not(:last-child)::after { content: "\2193"; right: auto; left: 50%; top: auto; bottom: -17px; transform: translateX(-50%); }
 }

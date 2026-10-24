@@ -209,7 +209,7 @@ const CRUMB_LABEL: Record<string, string> = {
   "/concepten/ns": "NS",
   "/diensten/conversie-website": "Conversie Website",
   "/diensten/google-ads": "Google Ads",
-  "/diensten/integraties": "Integraties & koppelingen",
+  "/diensten/integraties": "Koppelingen en automatiseringen",
   "/diensten/seo": "SEO en GEO",
   "/diensten/starter-website": "Starter Website",
   "/diensten/website-optimalisatie": "Website Optimalisatie",
@@ -275,8 +275,8 @@ const SERVICES: Record<
     serviceType: "Zoekmachineadverteren (SEA)",
   },
   "/diensten/integraties": {
-    name: "Integraties en koppelingen",
-    serviceType: "Systeemintegratie voor websites",
+    name: "Koppelingen en automatiseringen",
+    serviceType: "Koppelingen, automatiseringen en AI-agents",
   },
   "/diensten/werken-bij-websites": {
     name: "Werken-bij Websites",

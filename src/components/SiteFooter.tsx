@@ -11,6 +11,7 @@ const DIENSTEN = [
   ['/diensten/werken-bij-websites', 'Werken-bij Website'],
   ['/diensten/seo', 'SEO en GEO'],
   ['/diensten/google-ads', 'Google Ads'],
+  ['/diensten/integraties', 'Koppelingen en automatiseringen'],
 ] as const
 
 const BRANCHES = [

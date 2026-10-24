@@ -312,9 +312,9 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
                     <Icon name="plug" />
                   </span>
                   <span className="mlink__txt">
-                    <span className="mlink__name">Integraties</span>
+                    <span className="mlink__name">Koppelingen en automatiseringen</span>
                     <span className="mlink__sub">
-                      CRM, boekingssystemen en WhatsApp
+                      CRM, WhatsApp en AI-agents
                     </span>
                   </span>
                 </Link>
@@ -689,7 +689,7 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
               <span className="mlink__ico">
                 <Icon name="plug" />
               </span>
-              Integraties
+              Koppelingen en automatiseringen
             </Link>
             <Link className="macc__link" to="/megasmart" onClick={onClose}>
               <span className="mlink__ico">
