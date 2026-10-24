@@ -169,7 +169,7 @@ function Seo() {
                 SEO en GEO · elke maand een nieuwe pagina
               </Reveal>
               <Reveal as="h1" className="display reveal" data-d="1">
-                Gevonden worden in Google. En in de <em>AI die je klant nu vraagt.</em>
+                Gevonden worden in Google. En in de <em>antwoorden van AI.</em>
               </Reveal>
               <Reveal as="p" className="lead hero__sub reveal" data-d="2">
                 Elke maand publiceren we een nieuwe pagina die je beter vindbaar maakt, in Google en in AI-zoekmachines zoals ChatGPT en Gemini. Welke pagina's dat worden, ligt vooraf vast in je contentplan.
