@@ -202,3 +202,9 @@
   -webkit-mask-image: radial-gradient(ellipse 60% 75% at 50% 50%, #000 30%, transparent 80%);
   mask-image: radial-gradient(ellipse 60% 75% at 50% 50%, #000 30%, transparent 80%);
 }
+
+/* Formulier: geen focusrand om de staptitel na "Volgende" (de focus verhuist
+   wel, voor schermlezers), en Terug en Volgende even hoog op één lijn. */
+[data-page="home"] .scankort [data-step-focus]:focus { outline: none; }
+[data-page="home"] .scankort .form__nav { align-items: stretch; }
+[data-page="home"] .scankort .form__nav .btn { margin-top: 0; min-height: 48px; justify-content: center; }

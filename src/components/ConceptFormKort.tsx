@@ -4,7 +4,7 @@ import { LEAD_CONTACT } from '@/lib/lead-contact'
 import { SteppedLeadForm } from './LeadForm'
 
 /**
- * Kort aanvraagformulier voor het gratis websiteconcept (4 stappen), voor
+ * Kort aanvraagformulier voor het gratis homepageontwerp (4 stappen), voor
  * de homepage. Zelfde veldnamen en verzending als ConceptForm, zodat de mail
  * er hetzelfde uitziet. ConceptForm zelf blijft ongewijzigd.
  *
@@ -12,7 +12,7 @@ import { SteppedLeadForm } from './LeadForm'
  * beschrijft wat het bedrijf doet en voor wie.
  */
 
-const SUBJECT = 'Gratis websiteconcept aanvraag'
+const SUBJECT = 'Gratis homepageontwerp aanvraag'
 
 const GEEN_WEBSITE = 'Ik heb nog geen website'
 
@@ -107,7 +107,7 @@ function Nav({ last = false }: { last?: boolean }) {
       </button>
       {last ? (
         <button className="btn btn-primary" type="submit">
-          Vraag je gratis websiteconcept aan
+          Vraag je gratis homepageontwerp aan
         </button>
       ) : (
         <button className="btn btn-primary" type="button" data-next="">
@@ -150,7 +150,7 @@ export function ConceptFormKort({ className = '' }: { className?: string }) {
           <h3>Bedankt. Je aanvraag is binnen.</h3>
           <p>
             We ontwerpen een homepage voor je bedrijf, zodat je ziet wat we voor je kunnen maken. Teksten
-            en foto's zijn nog een eerste invulling: het concept geeft een beeld, het eindresultaat bouwen
+            en foto's zijn nog een eerste invulling: het ontwerp geeft een beeld, het eindresultaat bouwen
             we samen. We nemen contact met je op zodra het klaar is. Vragen in de tussentijd? Mail naar{' '}
             <a href="mailto:info@megaonline.io">info@megaonline.io</a>.
           </p>
@@ -162,7 +162,7 @@ export function ConceptFormKort({ className = '' }: { className?: string }) {
           <div className="scankort__top">
             <span className="form__head-note">
               <span className="form__dot" />
-              Gratis websiteconcept
+              Gratis homepageontwerp
             </span>
             <span className="form__step-label" aria-live="polite" aria-atomic="true">
               Stap <b>{current + 1}</b> van {STAPPEN}
@@ -185,7 +185,7 @@ export function ConceptFormKort({ className = '' }: { className?: string }) {
               Volgende stap <span className="arr">→</span>
             </button>
             <p className="scankort__ticks">
-              Een ontworpen homepage voor jouw bedrijf · Gratis · Vrijblijvend
+              Gemaakt voor jouw bedrijf · Gratis · Vrijblijvend
             </p>
           </div>
 
@@ -268,7 +268,7 @@ export function ConceptFormKort({ className = '' }: { className?: string }) {
 
           <div className="fstep" data-step="4" hidden={current !== 3}>
             <h3 className="fstep__title" tabIndex={-1} data-step-focus>
-              Waar mogen we het concept heen sturen?
+              Waar mogen we het ontwerp heen sturen?
             </h3>
             <div className="field">
               <label htmlFor={id('naam')}>Je naam</label>
@@ -314,7 +314,7 @@ export function ConceptFormKort({ className = '' }: { className?: string }) {
               Liever direct contact? Mail <a href={`mailto:${LEAD_CONTACT.mail}`}>{LEAD_CONTACT.mail}</a>.
             </p>
             <p className="form__disc">
-              MegaOnline gebruikt je gegevens alleen voor je websiteconcept. Je komt niet op een
+              MegaOnline gebruikt je gegevens alleen voor je homepageontwerp. Je komt niet op een
               mailinglijst. <Link to="/privacyverklaring">Privacyverklaring</Link>
             </p>
           </div>
