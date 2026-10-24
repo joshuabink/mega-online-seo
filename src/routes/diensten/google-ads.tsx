@@ -117,7 +117,7 @@ function GoogleAds() {
                 <b>Google Ads</b>
               </Reveal>
               <Reveal as="p" className="v2-eyebrow reveal">
-                Google Ads · gemeten op aanvragen
+                Google Ads · gestuurd op aanvragen
               </Reveal>
               <Reveal as="h1" className="display reveal" data-d="1">
                 Zichtbaar op het moment dat je klant zoekt. <em>Niet pas over een half jaar.</em>
@@ -128,15 +128,15 @@ function GoogleAds() {
               <Reveal as="ul" className="hero__ticks reveal" data-d="3">
                 <li>
                   <Icon name="check" className="ck" />
-                  <span>Gemeten op aanvragen en boekingen, niet op klikken</span>
+                  <span>Gestuurd op aanvragen en boekingen, niet op klikken</span>
                 </li>
                 <li>
                   <Icon name="check" className="ck" />
-                  <span>Account op jouw naam, budget zonder opslag</span>
+                  <span>Je advertentiebudget gaat rechtstreeks naar Google</span>
                 </li>
                 <li>
                   <Icon name="check" className="ck" />
-                  <span>Elke maand bijgestuurd en gerapporteerd</span>
+                  <span>We verbeteren ook de pagina achter de advertentie</span>
                 </li>
               </Reveal>
             </div>
