@@ -3,7 +3,7 @@ import { Icon } from '@/components/Icon'
 import { Media } from '@/components/Media'
 import { Qa } from '@/components/Qa'
 import { Reveal } from '@/components/Reveal'
-import { ConceptForm } from '@/components/ConceptForm'
+import { ScanFormKort } from '@/components/ScanFormKort'
 import { CTA_SCAN } from '@/lib/cta'
 import '@/styles/pages/homepage-v2.css'
 
@@ -205,7 +205,7 @@ function HomepageV2() {
                 </li>
               </Reveal>
             </div>{' '}
-            <ConceptForm className="hero__form reveal" />
+            <ScanFormKort className="hero__form reveal" />
           </div>
         </div>
       </section>{' '}
