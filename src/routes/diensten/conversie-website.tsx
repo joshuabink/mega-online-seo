@@ -5,7 +5,7 @@ import { Media } from '@/components/Media'
 import { Qa } from '@/components/Qa'
 import { Reveal } from '@/components/Reveal'
 import { AanvraagKort } from '@/components/AanvraagKort'
-import '@/styles/pages/conversie-website.css'
+import '@/styles/pages/dienst.css'
 
 export const Route = createFileRoute('/diensten/conversie-website')({
   head: () => ({
@@ -108,7 +108,7 @@ const FAQ_ITEMS: { q: string; a: ReactNode }[] = [
 
 function ConversieWebsite() {
   return (
-    <main id="top" data-page="conversie">
+    <main id="top" data-page="conversie" data-dienst>
       <section className="section hero" id="ontwerp" data-theme="dark" data-screen-label="Hero + formulier">
         <div className="wrap">
           <div className="hero__grid">

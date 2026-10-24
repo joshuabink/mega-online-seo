@@ -1,14 +1,10 @@
-import { createFileRoute } from '@tanstack/react-router'
-import { Link } from '@tanstack/react-router'
+import { type ReactNode } from 'react'
+import { createFileRoute, Link } from '@tanstack/react-router'
 import { Icon } from '@/components/Icon'
-import { Media } from '@/components/Media'
 import { Qa } from '@/components/Qa'
 import { Reveal } from '@/components/Reveal'
-import { ConceptForm } from '@/components/ConceptForm'
-import { CTA_SCAN } from '@/lib/cta'
-import { CONTACT_REACTIETIJD } from '@/lib/lead-contact'
-import { SCAN_OPLEVERING, SCAN_REACTIETIJD } from '@/lib/scan'
-import '@/styles/pages/diensten-starter-website.css'
+import { AanvraagKort } from '@/components/AanvraagKort'
+import '@/styles/pages/dienst.css'
 
 export const Route = createFileRoute('/diensten/starter-website')({
   head: () => ({
@@ -26,755 +22,366 @@ export const Route = createFileRoute('/diensten/starter-website')({
   component: StarterWebsite,
 })
 
+const SITUATIES = [
+  { t: 'Je bent net gestart', p: 'Je hebt een nette online plek nodig, maar nog geen groot budget.' },
+  { t: 'Je wilt snel online', p: 'Je wilt niet maanden wachten, maar binnen afzienbare tijd live staan.' },
+  { t: 'Je aanbod is overzichtelijk', p: "Een paar diensten of producten, geen website met tientallen pagina's." },
+  { t: 'Je wilt gevonden worden', p: 'Wie je naam hoort, moet je makkelijk kunnen vinden en bereiken.' },
+  { t: 'Je wilt een helder budget', p: 'Vooraf weten waar je aan toe bent, zonder verrassingen achteraf.' },
+  { t: 'Je wilt later kunnen groeien', p: 'Doorgroeien naar meer maatwerk moet gewoon mogelijk blijven.' },
+]
+
+const INBEGREPEN: { icon: string; t: string }[] = [
+  { icon: 'files', t: "Tot ongeveer 5 pagina's" },
+  { icon: 'palette', t: 'Jouw kleuren en logo' },
+  { icon: 'smartphone', t: 'Werkt goed op mobiel' },
+  { icon: 'mail', t: 'Contactformulier' },
+  { icon: 'search-check', t: 'Technische basis voor Google' },
+  { icon: 'gauge', t: 'Snel en veilig' },
+  { icon: 'pen-tool', t: 'Zelf teksten en foto’s aanpassen' },
+  { icon: 'trending-up', t: 'Later uit te breiden' },
+]
+
+const VOORDELEN = ['Beproefde structuur', 'Sneller traject', 'Vaste opzet en prijs', 'Toch jouw uitstraling']
+
+const STAPPEN = [
+  { t: 'Intake', p: "We bespreken wat je doet, wat je nodig hebt en welke pagina's er moeten komen." },
+  { t: 'Aanleveren', p: "Jij levert je teksten, je logo en een paar foto's aan. We denken mee waar dat nodig is." },
+  { t: 'Samenstellen', p: 'We stellen je website samen uit de bouwblokken en stemmen alles af op jouw huisstijl.' },
+  { t: 'Bijschaven', p: 'Je bekijkt het resultaat en we verwerken je opmerkingen in één gerichte ronde.' },
+  { t: 'Live', p: 'Je website gaat online. Teksten en foto’s pas je daarna zelf aan.' },
+]
+
+const STARTER_WEL = [
+  'Gebouwd op beproefde, herbruikbare bouwblokken',
+  'Vaste opzet, vaste prijs en snel live',
+  'Afgestemd op jouw kleuren, teksten en logo',
+]
+const STARTER_NIET = [
+  'Geen volledig maatwerkontwerp vanaf nul',
+  "Compact in omvang, tot ongeveer 5 pagina's",
+  'Eén feedbackronde in plaats van een uitgebreid traject',
+  'Geen diepgaande strategie voor doelgroep en aanvragen',
+]
+const CONVERSIE = [
+  'Volledig maatwerk, ontworpen rond jouw bedrijf',
+  'Strategie voor je doelgroep, je aanvragen en je vindbaarheid',
+  'Geen vaste grens aan omvang en opbouw',
+  'Meerdere ontwerp- en feedbackrondes',
+  'Gericht op meer aanvragen, reserveringen en boekingen',
+]
+
+const VOOR_WIE = [
+  { to: '/branches/dienstverleners', t: 'Dienstverleners', p: 'Net begonnen in advies, installatie of techniek en toe aan een serieuze uitstraling.' },
+  { to: '/branches/non-profits', t: 'Stichtingen en verenigingen', p: 'Een sterk verhaal met een beperkt budget, dat online net zo goed moet landen.' },
+  { to: '/branches/offerteaanvragen', t: 'Offerteaanvragen', p: 'Eén goed aanvraagformulier is soms alles wat je nodig hebt om te beginnen.' },
+] as const
+
+const FAQ_ITEMS: { q: string; a: ReactNode }[] = [
+  {
+    q: 'Waarom is een Starter Website goedkoper?',
+    a: 'Omdat we niet elke website vanaf nul ontwerpen. We werken met beproefde, herbruikbare bouwblokken en een vaste opzet. Dat scheelt veel ontwerp- en bouwuren en dat voordeel zie je terug in de prijs.',
+  },
+  {
+    q: 'Wordt mijn website dan hetzelfde als die van anderen?',
+    a: "Nee. De bouwblokken zijn herbruikbaar, maar jouw kleuren, logo, teksten en foto's zijn dat niet. We stemmen alles af op jouw huisstijl, zodat de website herkenbaar van jou is.",
+  },
+  {
+    q: 'Wat kost een Starter Website precies?',
+    a: "Een Starter Website begint vanaf € 1.500. De exacte prijs hangt af van het aantal pagina's en wat je zelf aanlevert aan teksten en beeld. Je weet vooraf waar je aan toe bent.",
+  },
+  {
+    q: 'Kan ik later uitbreiden of doorgroeien?',
+    a: (
+      <>
+        Zeker. Je kunt later pagina's toevoegen of doorgroeien naar een volledige{' '}
+        <Link to="/diensten/conversie-website">Conversie Website</Link> met maatwerk en strategie.
+      </>
+    ),
+  },
+  {
+    q: 'Voor wie is de Starter Website bedoeld?',
+    a: "Vooral voor startende ondernemers en zzp'ers met een overzichtelijk aanbod die professioneel online willen. Wil je echt sturen op meer aanvragen, dan past de Conversie Website beter. Dat zeggen we je ook eerlijk.",
+  },
+  {
+    q: 'Hoe snel staat mijn website online?',
+    a: 'Doordat we met vaste bouwblokken werken, gaat het bouwen een stuk sneller dan bij maatwerk. Zodra je teksten, logo en beeld hebt aangeleverd, sta je doorgaans binnen enkele weken live.',
+  },
+  {
+    q: 'Twijfel je tussen een freelancer en een bureau?',
+    a: (
+      <>
+        Lees dan{' '}
+        <Link to="/kennisbank/$slug" params={{ slug: 'freelance-webdesigner-of-webbureau' }}>
+          freelance webdesigner of webbureau: wat past bij jou?
+        </Link>
+      </>
+    ),
+  },
+]
+
 function StarterWebsite() {
   return (
-    <main id="top" data-page="diensten-starter-website">
-      <section className="section svc-hero" data-theme="dark" data-screen-label="Hero — Starter Website">
+    <main id="top" data-page="starter" data-dienst>
+      <section className="section hero" id="ontwerp" data-theme="dark" data-screen-label="Hero + formulier">
         <div className="wrap">
-          <div className="svc-hero__grid">
-            <div className="svc-hero__copy">
+          <div className="hero__grid">
+            <div className="hero__copy">
               <Reveal as="div" className="crumb reveal">
                 <Link to="/" hash="top">Home</Link>
                 <span className="sep">/</span>
-                {' '}
                 <b>Starter Website</b>
               </Reveal>
-              {' '}
-              <Reveal as="div" className="hero__badge reveal" data-d="1">
-                <span className="badge">
-                  <span className="gdot" />
-                  De voordelige instapoptie voor starters
-                </span>
+              <Reveal as="p" className="v2-eyebrow reveal">
+                Voor starters
               </Reveal>
-              {' '}
               <Reveal as="h1" className="display reveal" data-d="1">
-                Website laten maken als je
-                {' '}
-                <em>net begint</em>
+                Website laten maken als je <em>net begint</em>
               </Reveal>
-              {' '}
-              <Reveal as="p" className="lead svc-hero__sub reveal" data-d="2">
-                De Starter Website is de bewust voordeligere optie. Sneller gebouwd op beproefde, herbruikbare bouwblokken, zodat je als startende ondernemer professioneel online staat zonder een groot budget.
+              <Reveal as="p" className="lead hero__sub reveal" data-d="2">
+                De Starter Website is de bewust voordeligere optie. Gebouwd op beproefde bouwblokken, zodat je professioneel online staat zonder groot budget.
               </Reveal>
-              {' '}
-              <Reveal as="div" className="svc-hero__ctas reveal" data-d="2">
-                <Link className="btn btn-primary" to="/gratis-websitescan">
-                  {CTA_SCAN}
-                  {' '}
-                </Link>
-                {' '}
-                <a className="tlink" href="#prijs">
-                  Bekijk wat het kost
-                  {' '}
-                </a>
-              </Reveal>
-            </div>
-            {' '}
-            <Reveal as="div" className="hvis reveal" data-d="2">
-              <div className="hvis__frame">
-                <Media id="st-hero" fit="cover" placeholder="[ STARTERSWEBSITE ]" alt="Voorbeeld van een starterswebsite" />
-              </div>
-              {' '}
-              <div className="hvis__card hvis__toast">
-                <span className="tk">€</span>
-                {' '}
-                <span>
-                  <span className="tt">Vanaf € 1.500</span>
-                  {' '}
-                  <span className="ts">Heldere instapprijs</span>
-                </span>
-              </div>
-              {' '}
-              <div className="hvis__card hvis__stat">
-                <span className="n">Snel</span>
-                {' '}
-                <span className="l">live in weken</span>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-      {' '}
-      {' '}
-      <section className="section section--tight" data-theme="paper" data-screen-label="Wat een Starter Website wel en niet is">
-        <div className="wrap">
-          <Reveal as="div" className="shead reveal">
-            <span className="label">Eerlijk vanaf het begin</span>
-            {' '}
-            <h2 className="h2">
-              Een
-              {' '}
-              <em>bewust voordeligere</em>
-              {' '}
-              optie. En dat zegt MegaOnline ook gewoon.
-            </h2>
-            {' '}
-            <p className="lead">
-              De Starter Website is geen uitgekleed product, maar wél een andere keuze dan de volledige Conversie Website. Goedkoper en sneller, omdat MegaOnline slim hergebruikt wat zich al bewezen heeft. MegaOnline is er open over waar dat verschil zit.
-            </p>
-          </Reveal>
-          {' '}
-          <div className="flaw">
-            <Reveal as="div" className="flaw__intro reveal">
-              <h3>
-                Voor starters die professioneel online willen, zonder groot budget.
-              </h3>
-              {' '}
-              <p>
-                Als je net begint, heb je vaak nog geen ruimte voor een volledig maatwerktraject. Maar een rommelige doe-het-zelf-site of een gratis bouwertje doet je net zo goed tekort. Twijfel je ook tussen een freelancer en een bureau? Lees <Link to="/kennisbank/$slug" params={{ slug: 'freelance-webdesigner-of-webbureau' }}>freelance webdesigner of webbureau</Link>.
-              </p>
-              {' '}
-              <p>
-                De Starter Website zit daar bewust tussenin: een verzorgde, betrouwbare website tegen een eerlijke instapprijs, gebouwd op een basis die we al honderden keren scherp hebben gekregen.
-              </p>
-            </Reveal>
-            {' '}
-            <div className="flaw__mini">
-              <Reveal as="div" className="miniprob reveal">
-                <h4>Je bent net gestart</h4>
-                <p>
-                  Je hebt een nette online plek nodig, maar nog geen groot marketingbudget.
-                </p>
-              </Reveal>
-              {' '}
-              <Reveal as="div" className="miniprob reveal" data-d="1">
-                <h4>Snel online willen</h4>
-                <p>
-                  Je wilt niet weken wachten, maar binnen afzienbare tijd live staan.
-                </p>
-              </Reveal>
-              {' '}
-              <Reveal as="div" className="miniprob reveal">
-                <h4>Overzichtelijk aanbod</h4>
-                <p>
-                  Een paar diensten of producten, geen complexe website met tientallen pagina's.
-                </p>
-              </Reveal>
-              {' '}
-              <Reveal as="div" className="miniprob reveal" data-d="1">
-                <h4>Vooral gevonden worden</h4>
-                <p>
-                  Mensen die je naam horen, willen je makkelijk kunnen vinden en bereiken.
-                </p>
-              </Reveal>
-              {' '}
-              <Reveal as="div" className="miniprob reveal">
-                <h4>Helder budget</h4>
-                <p>
-                  Je wilt vooraf weten waar je aan toe bent, zonder verrassingen achteraf.
-                </p>
-              </Reveal>
-              {' '}
-              <Reveal as="div" className="miniprob reveal" data-d="1">
-                <h4>Ruimte om te groeien</h4>
-                <p>
-                  Later doorgroeien naar meer maatwerk moet gewoon mogelijk blijven.
-                </p>
+              <Reveal as="ul" className="hero__ticks reveal" data-d="3">
+                <li>
+                  <Icon name="check" className="ck" />
+                  <span>Vanaf € 1.500, vooraf een duidelijke prijs</span>
+                </li>
+                <li>
+                  <Icon name="check" className="ck" />
+                  <span>Doorgaans binnen enkele weken live</span>
+                </li>
+                <li>
+                  <Icon name="check" className="ck" />
+                  <span>Teksten en foto’s pas je gemakkelijk zelf aan</span>
+                </li>
               </Reveal>
             </div>
+            <AanvraagKort soort="ontwerp" className="hero__form reveal" />
           </div>
         </div>
       </section>
-      {' '}
-      {' '}
-      <section className="section" data-theme="light" data-screen-label="Waarom een Starter Website voordeliger kan">
+
+      <section className="section" data-theme="light" data-screen-label="Voor wie">
+        <div className="wrap">
+          <Reveal as="div" className="v2-head reveal">
+            <div className="shead">
+              <span className="label">Eerlijk vanaf het begin</span>
+              <h2 className="h2">
+                Een <em>bewust voordeligere</em> optie. Dat zeggen we er gewoon bij.
+              </h2>
+            </div>
+            <div className="v2-head__side">
+              <p>
+                Een rommelige doe-het-zelfsite doet je tekort, maar een volledig maatwerktraject past vaak nog niet. De Starter Website zit daar bewust tussenin. Past dit bij jou?
+              </p>
+            </div>
+          </Reveal>
+          <ul className="cw-problems">
+            {SITUATIES.map((x, i) => (
+              <Reveal as="li" key={x.t} className="cw-problem reveal" data-d={String(i % 3)}>
+                <h3>{x.t}</h3>
+                <p>{x.p}</p>
+              </Reveal>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="section" data-theme="paper" data-screen-label="Wat je krijgt">
         <div className="wrap">
           <Reveal as="div" className="shead reveal">
-            <span className="label">Waarom het goedkoper kan</span>
-            {' '}
+            <span className="label">Wat je krijgt</span>
             <h2 className="h2">
-              Geen knip in de kwaliteit.
-              <br />
-              Wel slim met de
-              {' '}
-              <em>bouwtijd.</em>
+              Compact in omvang. <em>Compleet</em> in wat je nodig hebt.
             </h2>
-            {' '}
-            <p className="lead">
-              Een lagere prijs betekent niet minder zorg. Het betekent dat MegaOnline niet elke keer het wiel opnieuw uitvindt. MegaOnline werkt met beproefde, herbruikbare bouwblokken en een vaste, efficiënte aanpak.
-            </p>
           </Reveal>
-          {' '}
-          <div className="bento">
-            <Reveal as="div" className="bcell bcell--big reveal">
-              <div>
-                <div className="bcell__top">
-                  <span className="bcell__no">Het verschil</span>
-                  {' '}
-                  <span className="iconbox">
-                    <Icon name="blocks" />
-                  </span>
-                </div>
-                {' '}
-                <h3 style={{ marginTop: "18px" }}>Herbruikbare bouwblokken</h3>
-                {' '}
-                <p style={{ marginTop: "14px" }}>
-                  In plaats van elke website vanaf nul te ontwerpen, stelt MegaOnline hem samen uit beproefde onderdelen: een sterke hero, een dienstenblok, een contactsectie. Stuk voor stuk al verfijnd op eerdere projecten en afgestemd op jouw kleuren, teksten en logo.
-                </p>
-              </div>
-              {' '}
-              <div className="pullnote" style={{ marginTop: "24px" }}>
-                Minder uren in opbouw,
-                {' '}
-                <em>meer</em>
-                {' '}
-                overgehouden voor jouw budget.
-              </div>
+          <div className="cw-krijgt">
+            <Reveal as="div" className="cw-card reveal">
+              <h3>Standaard in elke Starter Website</h3>
+              <ul className="cw-incl">
+                {INBEGREPEN.map((x) => (
+                  <li key={x.t}>
+                    <span className="cw-incl__ico">
+                      <Icon name={x.icon} />
+                    </span>
+                    {x.t}
+                  </li>
+                ))}
+              </ul>
             </Reveal>
-            {' '}
-            <Reveal as="div" className="bcell reveal" data-d="1">
-              <div className="bcell__top">
-                <span className="bcell__no">Voordeel 01</span>
-                <span className="iconbox iconbox--sm">
-                  <Icon name="layout-template" />
-                </span>
-              </div>
-              {' '}
-              <h3>Beproefde structuur</h3>
-              {' '}
+            <Reveal as="div" className="cw-card reveal" data-d="1">
+              <h3>Waarom het voordeliger kan</h3>
               <p>
-                Een opbouw die zich al heeft bewezen, dus geen lang ontwerpproces vooraf.
+                Een lagere prijs betekent niet minder zorg. We vinden niet elke keer het wiel opnieuw uit. Je website bestaat uit onderdelen die zich al bewezen hebben: een sterke opening, een dienstenblok, een contactsectie. Die stemmen we af op jouw kleuren, teksten en logo.
               </p>
-            </Reveal>
-            {' '}
-            <Reveal as="div" className="bcell reveal" data-d="2">
-              <div className="bcell__top">
-                <span className="bcell__no">Voordeel 02</span>
-                <span className="iconbox iconbox--sm">
-                  <Icon name="zap" />
-                </span>
-              </div>
-              {' '}
-              <h3>Sneller traject</h3>
-              {' '}
-              <p>
-                Minder afstemmingsrondes en een strakke planning, dus eerder live.
-              </p>
-            </Reveal>
-            {' '}
-            <Reveal as="div" className="bcell reveal" data-d="1">
-              <div className="bcell__top">
-                <span className="bcell__no">Voordeel 03</span>
-                <span className="iconbox iconbox--sm">
-                  <Icon name="package-check" />
-                </span>
-              </div>
-              {' '}
-              <h3>Vaste opzet</h3>
-              {' '}
-              <p>
-                Een helder pakket met een duidelijke omvang, dus een eerlijke vaste prijs.
-              </p>
-            </Reveal>
-            {' '}
-            <Reveal as="div" className="bcell reveal" data-d="2">
-              <div className="bcell__top">
-                <span className="bcell__no">Voordeel 04</span>
-                <span className="iconbox iconbox--sm">
-                  <Icon name="sparkles" />
-                </span>
-              </div>
-              {' '}
-              <h3>Toch jouw uitstraling</h3>
-              {' '}
-              <p>
-                De blokken zijn herbruikbaar, de kleuren, teksten en beelden zijn van jou.
-              </p>
+              <ul className="cw-chips">
+                {VOORDELEN.map((x) => (
+                  <li key={x}>{x}</li>
+                ))}
+              </ul>
+              <h3 className="cw-card__sub">Minder uren in de opbouw</h3>
+              <p>En dus meer over voor jouw budget.</p>
             </Reveal>
           </div>
         </div>
       </section>
-      {' '}
-      {' '}
-      <section className="section section--tight" data-theme="paper" data-screen-label="Wat je krijgt bij een Starter Website">
-        <div className="wrap">
-          <Reveal as="div" className="shead reveal">
-            <span className="label">In het pakket</span>
-            {' '}
-            <h2 className="h2">
-              Wat je bij een Starter Website
-              {' '}
-              <em>krijgt.</em>
-            </h2>
-            {' '}
-            <p className="lead">
-              Een volwaardige, professionele website. Compact in omvang, maar compleet in wat een startende ondernemer nodig heeft om online gevonden en vertrouwd te worden.
-            </p>
-          </Reveal>
-          {' '}
-          <div className="featgrid">
-            <Reveal as="div" className="feat reveal">
-              <span className="iconbox">
-                <Icon name="files" />
-              </span>
-              <h4>Tot ± 5 pagina's</h4>
-              <p>
-                Home, over, diensten en contact. Genoeg om je verhaal helder te vertellen.
-              </p>
-            </Reveal>
-            {' '}
-            <Reveal as="div" className="feat reveal" data-d="1">
-              <span className="iconbox">
-                <Icon name="palette" />
-              </span>
-              <h4>Eigen kleuren & logo</h4>
-              <p>
-                MegaOnline stemt de bouwblokken af op jouw huisstijl en uitstraling.
-              </p>
-            </Reveal>
-            {' '}
-            <Reveal as="div" className="feat reveal" data-d="2">
-              <span className="iconbox">
-                <Icon name="smartphone" />
-              </span>
-              <h4>Mobielvriendelijk</h4>
-              <p>
-                Soepel en logisch op de telefoon, waar de meeste bezoekers binnenkomen.
-              </p>
-            </Reveal>
-            {' '}
-            <Reveal as="div" className="feat reveal" data-d="3">
-              <span className="iconbox">
-                <Icon name="mail" />
-              </span>
-              <h4>Contactformulier</h4>
-              <p>
-                Een duidelijke route zodat mensen je makkelijk kunnen bereiken.
-              </p>
-            </Reveal>
-            {' '}
-            <Reveal as="div" className="feat reveal">
-              <span className="iconbox">
-                <Icon name="search-check" />
-              </span>
-              <h4>SEO-basis</h4>
-              <p>
-                Een gezond fundament zodat je vindbaar bent op je eigen naam en dienst.
-              </p>
-            </Reveal>
-            {' '}
-            <Reveal as="div" className="feat reveal" data-d="1">
-              <span className="iconbox">
-                <Icon name="gauge" />
-              </span>
-              <h4>Snel & veilig</h4>
-              <p>Snel ladend, veilig en stabiel.</p>
-            </Reveal>
-            {' '}
-            <Reveal as="div" className="feat reveal" data-d="2">
-              <span className="iconbox">
-                <Icon name="settings" />
-              </span>
-              <h4>Zelf te beheren</h4>
-              <p>Teksten en foto's pas je later eenvoudig zelf aan.</p>
-            </Reveal>
-            {' '}
-            <Reveal as="div" className="feat reveal" data-d="3">
-              <span className="iconbox">
-                <Icon name="trending-up" />
-              </span>
-              <h4>Ruimte om te groeien</h4>
-              <p>Later uitbreiden of doorgroeien naar maatwerk kan altijd.</p>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-      {' '}
-      {' '}
-      <section className="section" id="aanpak" data-theme="dark" data-screen-label="Hoe een Starter traject eruitziet">
+
+      <section className="section" id="aanpak" data-theme="dark" data-screen-label="Traject">
         <div className="wrap">
           <Reveal as="div" className="shead reveal">
             <span className="label">Het traject</span>
-            {' '}
             <h2 className="h2">
-              Een kort, helder traject.
-              {' '}
-              <em>Snel</em>
-              {' '}
-              live.
+              Een kort, helder traject. <em>Snel</em> live.
             </h2>
-            {' '}
-            <p className="lead">
-              Doordat MegaOnline met vaste bouwblokken en een beproefde opzet werkt, is er veel minder bedenkwerk nodig. Dat scheelt tijd, en dus geld.
-            </p>
+            <p className="lead">Met vaste bouwblokken is er minder bedenkwerk nodig. Dat scheelt tijd. En dus geld.</p>
           </Reveal>
-          {' '}
-          <Reveal as="div" className="tl reveal" style={{ marginTop: "clamp(40px,4.5vw,60px)" }}>
-            <div className="tl__row">
-              <span className="tl__dot" />
-              {' '}
-              <div className="tl__phase">Stap 1 · Kennismaking</div>
-              {' '}
-              <div className="tl__card">
-                <div className="tl__cardhead">
-                  <span className="svcname">Korte intake</span>
-                </div>
-                {' '}
-                <p>
-                  Je bespreekt met MegaOnline wat je doet, wat je nodig hebt en welke pagina's er moeten komen. Helder en to-the-point.
-                </p>
-              </div>
-            </div>
-            {' '}
-            <div className="tl__row">
-              <span className="tl__dot" />
-              {' '}
-              <div className="tl__phase">Stap 2 · Aanleveren</div>
-              {' '}
-              <div className="tl__card">
-                <div className="tl__cardhead">
-                  <span className="svcname">Teksten, logo & beeld</span>
-                </div>
-                {' '}
-                <p>
-                  Jij levert de basis aan: je teksten, je logo en een paar foto's. MegaOnline denkt mee waar dat nodig is.
-                </p>
-              </div>
-            </div>
-            {' '}
-            <div className="tl__row tl__row--rec">
-              <span className="tl__dot" />
-              {' '}
-              <div className="tl__phase">Stap 3 · Samenstellen</div>
-              {' '}
-              <div className="tl__card tl__card--rec">
-                <div className="tl__cardhead">
-                  <span className="svcname">Bouwblokken op maat gezet</span>
-                </div>
-                {' '}
-                <p>
-                  MegaOnline stelt je website samen uit de beproefde bouwblokken en stemt alles af op jouw huisstijl en inhoud.
-                </p>
-              </div>
-            </div>
-            {' '}
-            <div className="tl__row">
-              <span className="tl__dot" />
-              {' '}
-              <div className="tl__phase">Stap 4 · Bijschaven</div>
-              {' '}
-              <div className="tl__card">
-                <div className="tl__cardhead">
-                  <span className="svcname">Één feedbackronde</span>
-                </div>
-                {' '}
-                <p>
-                  Je bekijkt het resultaat en MegaOnline verwerkt je opmerkingen in één gerichte ronde. Kort en doelgericht.
-                </p>
-              </div>
-            </div>
-            {' '}
-            <div className="tl__liverow">
-              <span className="tl__live">
-                <Icon name="rocket" />
-              </span>
-              {' '}
-              <span className="tl__livelabel">Stap 5 · Livegang</span>
-            </div>
-          </Reveal>
+          <ol className="v2-steps cw-steps">
+            {STAPPEN.map((s, i) => (
+              <Reveal as="li" key={s.t} className="v2-step reveal" data-d={String(i % 3)}>
+                <span className="v2-step__no">0{i + 1}</span>
+                <h3>{s.t}</h3>
+                <p>{s.p}</p>
+              </Reveal>
+            ))}
+          </ol>
         </div>
       </section>
-      {' '}
-      {' '}
-      <section className="section section--tight" data-theme="light" data-screen-label="Starter Website vs Conversie Website">
+
+      <section className="section" data-theme="light" data-screen-label="Starter vs Conversie">
         <div className="wrap">
           <Reveal as="div" className="shead reveal">
             <span className="label">Eerlijk vergelijken</span>
-            {' '}
             <h2 className="h2">
-              Wat je inlevert, en wat je
-              {' '}
-              <em>ervoor terugkrijgt.</em>
+              Wat je inlevert. En wat je <em>ervoor terugkrijgt.</em>
             </h2>
-            {' '}
-            <p className="lead">
-              De Starter Website is goedkoper omdat MegaOnline andere keuzes maakt dan bij de volledige Conversie Website. Hieronder zie je precies waar dat verschil zit, zonder mooie praatjes.
-            </p>
           </Reveal>
-          {' '}
-          <div className="compare">
-            <Reveal as="div" className="cmp cmp--plain reveal">
-              <span className="cmp__tag">Starter Website · vanaf € 1.500</span>
-              {' '}
-              <h3>Voordelig & snel</h3>
-              {' '}
-              <ul className="cmp__list">
-                <li>
-                  <span className="ic">✓</span>
-                  Gebouwd op beproefde, herbruikbare bouwblokken
-                </li>
-                {' '}
-                <li>
-                  <span className="ic">✓</span>
-                  Vaste opzet, vaste prijs, snel live
-                </li>
-                {' '}
-                <li>
-                  <span className="ic">✓</span>
-                  Afgestemd op jouw kleuren, teksten en logo
-                </li>
-                {' '}
-                <li>
-                  <span className="ic">–</span>
-                  Geen volledig maatwerkontwerp vanaf nul
-                </li>
-                {' '}
-                <li>
-                  <span className="ic">–</span>
-                  Compact in omvang (± 5 pagina's)
-                </li>
-                {' '}
-                <li>
-                  <span className="ic">–</span>
-                  Eén feedbackronde in plaats van een uitgebreid traject
-                </li>
-                {' '}
-                <li>
-                  <span className="ic">–</span>
-                  Geen diepgaande conversie- en doelgroepstrategie
-                </li>
+          <div className="cw-duo">
+            <Reveal as="div" className="cw-card reveal">
+              <span className="cw-card__tag">Starter Website · vanaf € 1.500</span>
+              <h3>Voordelig en snel</h3>
+              <ul className="cw-list">
+                {STARTER_WEL.map((x) => (
+                  <li key={x}>
+                    <Icon name="check" className="ck" />
+                    <span>{x}</span>
+                  </li>
+                ))}
+              </ul>
+              <ul className="cw-list cw-list--min">
+                {STARTER_NIET.map((x) => (
+                  <li key={x}>
+                    <span className="min" aria-hidden="true">·</span>
+                    <span>{x}</span>
+                  </li>
+                ))}
               </ul>
             </Reveal>
-            {' '}
-            <Reveal as="div" className="cmp cmp--us reveal" data-d="1">
-              <span className="cmp__badge">Kerndienst</span>
-              {' '}
-              <span className="cmp__tag">Conversie Website · maatwerk</span>
-              {' '}
-              <h3>Volledig op groei gericht</h3>
-              {' '}
-              <ul className="cmp__list">
-                <li>
-                  <span className="ic">✓</span>
-                  Volledig maatwerk, ontworpen rond jouw bedrijf
-                </li>
-                {' '}
-                <li>
-                  <span className="ic">✓</span>
-                  Strategie op doelgroep, conversie en vindbaarheid
-                </li>
-                {' '}
-                <li>
-                  <span className="ic">✓</span>
-                  Onbeperkt in omvang en opbouw
-                </li>
-                {' '}
-                <li>
-                  <span className="ic">✓</span>
-                  Meerdere ontwerp- en feedbackrondes
-                </li>
-                {' '}
-                <li>
-                  <span className="ic">✓</span>
-                  Gericht op meer aanvragen, reserveringen en boekingen
-                </li>
-                {' '}
-                <li>
-                  <span className="ic">✓</span>
-                  Voor bedrijven die echt willen doorgroeien
-                </li>
+            <Reveal as="div" className="cw-card cw-card--dark reveal" data-d="1">
+              <span className="cw-card__tag">Conversie Website · vanaf € 2.500</span>
+              <h3>Volledig gericht op aanvragen</h3>
+              <ul className="cw-list">
+                {CONVERSIE.map((x) => (
+                  <li key={x}>
+                    <Icon name="check" className="ck" />
+                    <span>{x}</span>
+                  </li>
+                ))}
               </ul>
-            </Reveal>
-          </div>
-          {' '}
-          <Reveal as="div" className="shead reveal" style={{ marginTop: "clamp(28px,3vw,40px)", maxWidth: "none" }}>
-            <p className="lead" style={{ fontSize: "1rem" }}>
-              Twijfel je welke optie bij je past? Begin met een Starter Website en groei later door, of
-              {' '}
-              <Link to="/diensten/conversie-website" style={{ color: "var(--accent-text)" }}>bekijk meteen de Conversie Website</Link>
-              . MegaOnline adviseert je er eerlijk in.
-            </p>
-          </Reveal>
-        </div>
-      </section>
-      {' '}
-      {' '}
-      <section className="section" id="prijs" data-theme="paper" data-screen-label="Prijs van een Starter Website">
-        <div className="wrap">
-          <div className="price-wrap">
-            <Reveal as="div" className="shead reveal" style={{ maxWidth: "none" }}>
-              <span className="label">De prijs</span>
-              {' '}
-              <h2 className="h2">
-                Een eerlijke instapprijs,
-                {' '}
-                <em>vooraf duidelijk.</em>
-              </h2>
-              {' '}
-              <p className="lead">
-                Geen vage offertes of verrassingen achteraf. De Starter Website heeft een heldere vaste opzet en daarmee een voorspelbare prijs. De exacte investering hangt af van het aantal pagina's en wat je zelf aanlevert.
-              </p>
-              {' '}
-              <div className="pullnote">
-                Je weet vooraf waar je aan toe bent.
-                {' '}
-                <em>Geen</em>
-                {' '}
-                kleine lettertjes.
-              </div>
-              {' '}
-              <ul className="minilist" style={{ marginTop: "24px", gap: "10px" }}>
-                <li>Vaste prijs op basis van een helder pakket</li>
-                {' '}
-                <li>Inclusief inrichting, basis-SEO en livegang</li>
-                {' '}
-                <li>Hosting en onderhoud optioneel bij te nemen</li>
-                {' '}
-                <li>Later doorgroeien naar maatwerk altijd mogelijk</li>
-              </ul>
-            </Reveal>
-            {' '}
-            <Reveal as="div" className="price-card reveal" data-d="1">
-              <span className="price-card__tag">
-                <span className="gdot" />
-                {' '}
-                Starter Website
-              </span>
-              {' '}
-              <div className="price-card__amount">
-                <span className="price-card__from">vanaf</span>
-                {' '}
-                <span className="price-card__num">€ 1.500</span>
-              </div>
-              {' '}
-              <p className="price-card__note">
-                Een complete, verzorgde website voor starters, gebouwd op beproefde bouwblokken en afgestemd op jouw huisstijl.
-              </p>
-              {' '}
-              <ul className="price-card__list">
-                <li>
-                  <span className="ic">✓</span>
-                  Tot ± 5 pagina's, mobielvriendelijk
-                </li>
-                {' '}
-                <li>
-                  <span className="ic">✓</span>
-                  Eigen kleuren, logo en teksten
-                </li>
-                {' '}
-                <li>
-                  <span className="ic">✓</span>
-                  Contactformulier & SEO-basis
-                </li>
-                {' '}
-                <li>
-                  <span className="ic">✓</span>
-                  Zelf te beheren
-                </li>
-                {' '}
-                <li>
-                  <span className="ic">✓</span>
-                  Eén feedbackronde en livegang
-                </li>
-              </ul>
-              {' '}
-              <Link className="btn btn-primary" to="/gratis-websitescan">
-                {CTA_SCAN}
-                {' '}
+              <Link className="btn btn-primary" to="/diensten/conversie-website">
+                Bekijk de Conversie Website
               </Link>
-              {' '}
-              <p className="price-card__fine">Vrijblijvend · Reactie {SCAN_REACTIETIJD}</p>
             </Reveal>
           </div>
         </div>
       </section>
-      {' '}
-      {' '}
-      <section className="section" id="faq" data-theme="dark" data-screen-label="FAQ">
+
+      <section className="section" id="prijs" data-theme="paper" data-screen-label="Prijs">
         <div className="wrap">
-          <Reveal as="div" className="shead reveal" style={{ maxWidth: "680px" }}>
-            <span className="label">Veelgestelde vragen</span>
-            {' '}
-            <h2 className="h2">Wat je misschien nog wil weten</h2>
+          <Reveal as="div" className="shead reveal">
+            <span className="label">Investering</span>
+            <h2 className="h2">Een eerlijke instapprijs, vooraf duidelijk.</h2>
           </Reveal>
-          {' '}
-          <div className="faq">
-            <Qa question="Waarom is een Starter Website goedkoper?" className="reveal">
-                Omdat MegaOnline niet elke website vanaf nul ontwerpt. MegaOnline werkt met beproefde, herbruikbare bouwblokken en een vaste opzet die zich al heeft bewezen. Dat scheelt veel ontwerp- en bouwuren. Dat voordeel geeft MegaOnline door in de prijs. De kwaliteit van de basis blijft hetzelfde, alleen het proces is sneller.
-            </Qa>
-            {' '}
-            <Qa question="Wordt mijn website dan hetzelfde als die van anderen?" className="reveal">
-                Nee. De bouwblokken zijn herbruikbaar, maar jouw kleuren, logo, teksten en foto's zijn dat niet. MegaOnline stemt alles af op jouw huisstijl en bedrijf, zodat de website herkenbaar van jou is. Het is geen kant-en-klaar sjabloontje, maar een op maat ingerichte website op een slimme basis.
-            </Qa>
-            {' '}
-            <Qa question="Wat kost een Starter Website precies?" className="reveal">
-                De Starter Website begint vanaf € 1.500. De exacte prijs hangt af van het aantal pagina's en wat je zelf aanlevert aan teksten en beeld. Omdat MegaOnline met een vaste opzet werkt, weet je vooraf waar je aan toe bent. Geen verrassingen achteraf.
-            </Qa>
-            {' '}
-            <Qa question="Kan ik later uitbreiden of doorgroeien?" className="reveal">
-                Zeker. Je kunt later pagina's toevoegen of doorgroeien naar een volledige Conversie Website met maatwerk en strategie. Je begint klein en bouwt rustig verder wanneer je bedrijf daar klaar voor is.
-            </Qa>
-            {' '}
-            <Qa question="Voor wie is de Starter Website bedoeld?" className="reveal">
-                Vooral voor startende ondernemers en zzp'ers die professioneel online willen, maar nog geen groot budget hebben. Heb je een overzichtelijk aanbod en wil je vooral goed gevonden en bereikt worden, dan past deze optie goed. Wil je echt sturen op groei en conversie, dan is de Conversie Website een betere keuze. MegaOnline is daar eerlijk over.
-            </Qa>
-            {' '}
-            <Qa question="Hoe snel staat mijn website online?" className="reveal">
-                Doordat MegaOnline met vaste bouwblokken werkt, gaat het bouwen een stuk sneller dan bij een maatwerktraject. Zodra je teksten, logo en beeld hebt aangeleverd, kan MegaOnline vlot samenstellen. In de praktijk sta je doorgaans binnen enkele weken live.
-            </Qa>
+          <div className="cw-prijs">
+            <Reveal as="div" className="cw-prijs__main reveal" data-theme="dark">
+              <span className="v2-eyebrow">Starter Website</span>
+              <p className="cw-prijs__bedrag">vanaf € 1.500</p>
+              <p className="cw-prijs__uitleg">De prijs hangt af van het aantal pagina's en wat je zelf aanlevert. Je krijgt vooraf een vaste prijs.</p>
+              <ul className="hero__ticks">
+                <li><Icon name="check" className="ck" /><span>Inrichting, technische basis voor Google en livegang</span></li>
+                <li><Icon name="check" className="ck" /><span>Eén feedbackronde</span></li>
+                <li><Icon name="check" className="ck" /><span>Alles wat standaard inbegrepen is</span></li>
+              </ul>
+              <a className="btn btn-primary" href="#ontwerp">
+                Vraag je gratis homepageontwerp aan
+              </a>
+            </Reveal>
+            <div className="cw-prijs__na">
+              <Reveal as="div" className="cw-card reveal" data-d="1">
+                <span className="cw-card__tag">Optioneel</span>
+                <h3>Onderhoud &amp; Support</h3>
+                <p>Hosting, updates, beveiliging en back-ups geregeld. Gaat er toch iets mis, dan heb je direct iemand die het oplost.</p>
+                <p className="cw-card__prijs">vanaf € 50 per maand</p>
+              </Reveal>
+              <Reveal as="div" className="cw-card reveal" data-d="2">
+                <span className="cw-card__tag">Later</span>
+                <h3>Doorgroeien naar maatwerk</h3>
+                <p>Groeit je bedrijf, dan bouw je verder richting een Conversie Website met strategie voor je doelgroep en aanvragen.</p>
+                <Link className="tlink" to="/diensten/conversie-website">Bekijk de Conversie Website <span className="arr">&rarr;</span></Link>
+              </Reveal>
+            </div>
           </div>
         </div>
       </section>
-      {' '}
+
+      <section className="section" id="faq" data-theme="light" data-screen-label="FAQ">
+        <div className="wrap cw-faq">
+          <Reveal as="div" className="shead reveal">
+            <span className="label">Veelgestelde vragen</span>
+            <h2 className="h2">Wat je misschien nog wil weten</h2>
+            <p className="cw-faq__mail">
+              Staat je vraag er niet bij? Mail naar <a href="mailto:info@megaonline.io">info@megaonline.io</a>.
+            </p>
+          </Reveal>
+          <div className="faq">
+            {FAQ_ITEMS.map(({ q, a }) => (
+              <Qa key={q} question={q} className="reveal">
+                {a}
+              </Qa>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="section section--tight" data-theme="paper" data-screen-label="Voor wie">
         <div className="wrap">
           <Reveal as="div" className="shead reveal">
             <span className="label">Voor wie</span>
-            {' '}
-            <h2 className="h2">Voor wie de Starter Website bedoeld is.</h2>
-            {' '}
-            <p className="lead">
-              Een compacte website die er verzorgd uitziet en meteen duidelijk maakt wat je doet. Deze groepen kiezen er het vaakst voor.
-            </p>
+            <h2 className="h2">Wie het vaakst voor de Starter Website kiest.</h2>
           </Reveal>
-          {' '}
-          <div className="featgrid">
-            <Reveal as="div" className="feat reveal">
-              <h4><Link to="/branches/dienstverleners">Website laten maken voor dienstverleners</Link></h4>
-              <p>Net begonnen in advies, installatie of techniek en toe aan een serieuze uitstraling.</p>
-            </Reveal>
-            {' '}
-            <Reveal as="div" className="feat reveal" data-d="1">
-              <h4><Link to="/branches/non-profits">Website laten maken voor stichtingen en verenigingen</Link></h4>
-              <p>Een sterk verhaal met een beperkt budget, dat online net zo goed moet landen.</p>
-            </Reveal>
-            {' '}
-            <Reveal as="div" className="feat reveal" data-d="2">
-              <h4><Link to="/branches/offerteaanvragen">Meer offerteaanvragen via je website</Link></h4>
-              <p>Eén goed aanvraagformulier is soms alles wat je nodig hebt om te beginnen.</p>
-            </Reveal>
-          </div>
+          <ul className="cw-problems">
+            {VOOR_WIE.map((x, i) => (
+              <Reveal as="li" key={x.to} className="cw-problem reveal" data-d={String(i)}>
+                <h3>
+                  <Link to={x.to}>{x.t}</Link>
+                </h3>
+                <p>{x.p}</p>
+              </Reveal>
+            ))}
+          </ul>
         </div>
       </section>
-      {' '}
-      <section className="section" id="scan" data-theme="paper" data-screen-label="Eind-CTA + scan-formulier">
+
+      <section className="section final" data-theme="dark" data-screen-label="Afsluitende CTA">
         <div className="wrap">
-          <div className="endcta__grid">
-            <div className="endcta__copy">
-              <Reveal as="h2" className="display reveal">Je eerste website hoeft geen gok te zijn.</Reveal>
-              {' '}
-              <Reveal as="p" className="lead reveal" data-d="1">
-                Vraag een gratis website scan aan. {SCAN_OPLEVERING} Je kijkt samen met MegaOnline of de Starter Website bij je past, of dat een andere optie slimmer is.
-              </Reveal>
-              {' '}
-              <Reveal as="div" className="svc-hero__ctas reveal" data-d="2" style={{ marginTop: "28px" }}>
-                <Link className="btn btn-primary" to="/gratis-websitescan">
-                  {CTA_SCAN}
-                  {' '}
-                </Link>
-              </Reveal>
-              {' '}
-              <Reveal as="div" className="endcta__trust reveal" data-d="2" style={{ marginTop: "24px" }}>
-                <span>Geen verplichtingen</span>
-                {' '}
-                <span>Eerlijk advies</span>
-                {' '}
-                <span>Reactie {CONTACT_REACTIETIJD}</span>
-              </Reveal>
-            </div>
-            {' '}
-            <ConceptForm className="reveal" />
-          </div>
+          <Reveal as="h2" className="display reveal">
+            Je eerste website hoeft geen gok te zijn.
+          </Reveal>
+          <Reveal as="p" className="lead reveal" data-d="1">
+            We ontwerpen gratis een homepage voor je bedrijf. Zo zie je wat we voor je kunnen maken, zonder verplichtingen.
+          </Reveal>
+          <Reveal as="a" className="btn btn-primary reveal" data-d="2" href="#ontwerp">
+            Vraag je gratis homepageontwerp aan
+          </Reveal>
         </div>
       </section>
     </main>

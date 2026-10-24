@@ -1,12 +1,11 @@
-import { createFileRoute } from '@tanstack/react-router'
-import { Link } from '@tanstack/react-router'
+import { type ReactNode } from 'react'
+import { createFileRoute, Link } from '@tanstack/react-router'
 import { Icon } from '@/components/Icon'
 import { Media } from '@/components/Media'
 import { Qa } from '@/components/Qa'
 import { Reveal } from '@/components/Reveal'
-import { ConceptForm } from '@/components/ConceptForm'
-import { CTA_SCAN } from '@/lib/cta'
-import { CONTACT_REACTIETIJD } from '@/lib/lead-contact'
+import { AanvraagKort } from '@/components/AanvraagKort'
+import '@/styles/pages/dienst.css'
 
 export const Route = createFileRoute('/diensten/website-redesign')({
   head: () => ({
@@ -24,871 +23,363 @@ export const Route = createFileRoute('/diensten/website-redesign')({
   component: WebsiteRedesign,
 })
 
+const SIGNALEN = [
+  { t: 'Je website voelt verouderd', p: 'De stijl is van een paar jaar terug. Dat zie je meteen en je bezoeker ook.' },
+  { t: 'Concurrenten ogen professioneler', p: 'Naast hun site valt die van jou net wat minder op zijn plek.' },
+  { t: 'Je bedrijf is veranderd', p: 'Wie je nu bent, staat niet meer goed op je website.' },
+  { t: 'Je aanbod is uitgebreid', p: 'Nieuwe diensten passen niet meer logisch in de oude opzet.' },
+  { t: 'Sluit niet meer aan op je doelgroep', p: 'De toon en uitstraling passen niet bij wie je nu wilt bereiken.' },
+  { t: 'Je bent er niet trots meer op', p: 'Je deelt de link liever niet. Dat zegt eigenlijk genoeg.' },
+]
+
+const BEKIJKEN: { icon: string; t: string }[] = [
+  { icon: 'eye', t: 'Huidige uitstraling' },
+  { icon: 'layout', t: 'Structuur en opbouw' },
+  { icon: 'users', t: 'Je doelgroep van nu' },
+  { icon: 'flag', t: 'Je concurrenten' },
+  { icon: 'smartphone', t: 'Mobiele ervaring' },
+  { icon: 'shield-check', t: 'Signalen van vertrouwen' },
+  { icon: 'file-text', t: 'Route naar aanvraag of boeking' },
+  { icon: 'search-check', t: 'Wat goed scoort in Google' },
+]
+
+const BETER = [
+  'Duidelijkere boodschap',
+  'Modernere uitstraling',
+  'Meer vertrouwen',
+  'Logischere structuur',
+  'Betere mobiele ervaring',
+  'Sterkere volgende stap',
+  'Zelf te beheren',
+  'Groeit met je mee',
+]
+
+const STAPPEN = [
+  { t: 'Analyseren', p: 'We kijken wat er nu staat: wat werkt, waar bezoekers afhaken en wat zeker behouden moet blijven.' },
+  { t: 'Begrijpen', p: 'Wie ben je vandaag, wat maakt je anders en waar wil je naartoe? Dat is het uitgangspunt.' },
+  { t: 'Structureren', p: 'We bepalen welke informatie waar komt en hoe bezoekers richting contact bewegen.' },
+  { t: 'Ontwerpen en bouwen', p: 'Een nieuwe uitstraling die past bij je bedrijf van nu. Snel, veilig en zelf te beheren.' },
+  { t: 'Live zetten', p: 'Met doorverwijzingen van oude naar nieuwe pagina’s, zodat bezoekers en Google je blijven vinden.' },
+]
+
+const WANNEER = [
+  'De uitstraling past niet meer bij het niveau van je bedrijf',
+  'Het fundament is niet meer veilig, snel of houdbaar',
+  'De website vertelt niet meer het juiste verhaal',
+  'Je bent gegroeid, maar de site kan niet meegroeien',
+  'Losse aanpassingen lossen het echte probleem niet op',
+]
+
+const VOOR_WIE = [
+  { to: '/branches/dienstverleners', t: 'Dienstverleners', p: 'Het werk is groter geworden, de site praat nog tegen je eerste klanten.' },
+  { to: '/branches/verhuurbedrijven', t: 'Verhuurbedrijven', p: 'Het assortiment is uitgebreid, de structuur van de site is nooit meegegroeid.' },
+  { to: '/branches/non-profits', t: 'Stichtingen en verenigingen', p: "Jaren aan losse pagina's die samen geen verhaal meer vertellen." },
+] as const
+
+const FAQ_ITEMS: { q: string; a: ReactNode }[] = [
+  {
+    q: 'Moet mijn website volledig opnieuw gebouwd worden?',
+    a: 'Niet altijd. Soms volstaat een grondige restyling op de bestaande basis, soms is opnieuw opbouwen slimmer. Dat hangt af van de technische en strategische staat van je huidige website. We zijn daar eerlijk over.',
+  },
+  {
+    q: 'Kunnen jullie bestaande content overnemen?',
+    a: "Ja. Goede teksten, foto's en pagina's nemen we mee. Vaak scherpen we ze aan zodat ze beter aansluiten bij je bedrijf van nu, maar je begint zelden vanaf nul.",
+  },
+  {
+    q: 'Wat gebeurt er met mijn vindbaarheid in Google?',
+    a: 'Daar letten we bewust op. We houden pagina’s die goed scoren in stand, zetten doorverwijzingen van oude naar nieuwe adressen en houden de technische basis op orde. Zo verlies je niet zomaar wat je al hebt opgebouwd.',
+  },
+  {
+    q: 'Hoe lang duurt een redesign?',
+    a: 'Dat hangt af van de omvang en van hoe snel teksten en feedback rond zijn. Meestal is het een traject van enkele weken. Na een eerste gesprek krijg je een realistische inschatting voor jouw situatie.',
+  },
+  {
+    q: 'Is een redesign altijd beter dan optimaliseren?',
+    a: (
+      <>
+        Nee. Is je website technisch in orde en ziet hij er nog goed uit, dan zijn gerichte verbeteringen vaak slimmer en goedkoper. Bekijk dan{' '}
+        <Link to="/diensten/website-optimalisatie">Website Optimalisatie</Link>.
+      </>
+    ),
+  },
+  {
+    q: 'Kan ik mijn website daarna zelf beheren?',
+    a: 'Ja. Teksten en foto’s pas je gemakkelijk zelf aan. Je zit nooit vast aan één leverancier: de website blijft van jou.',
+  },
+  {
+    q: 'Hoe begin ik?',
+    a: 'Vraag het gratis homepageontwerp aan. Je ziet dan meteen hoe je vernieuwde homepage eruit kan zien. Daarna bespreken we samen of en hoe we verder gaan.',
+  },
+]
+
 function WebsiteRedesign() {
   return (
-    <main id="top">
-      <section className="section svc-hero" data-theme="dark" data-screen-label="Hero — Website Redesign">
+    <main id="top" data-page="redesign" data-dienst>
+      <section className="section hero" id="ontwerp" data-theme="dark" data-screen-label="Hero + formulier">
         <div className="wrap">
-          <div className="svc-hero__grid">
-            <div className="svc-hero__copy">
+          <div className="hero__grid">
+            <div className="hero__copy">
               <Reveal as="div" className="crumb reveal">
                 <Link to="/" hash="top">Home</Link>
                 <span className="sep">/</span>
-                {' '}
                 <b>Website Redesign</b>
               </Reveal>
-              {' '}
-              <Reveal as="div" className="hero__badge reveal" data-d="1">
-                <span className="badge">
-                  <span className="gdot" />
-                  Voor wie ontgroeid is aan zijn website
-                </span>
+              <Reveal as="p" className="v2-eyebrow reveal">
+                Website Redesign
               </Reveal>
-              {' '}
               <Reveal as="h1" className="display reveal" data-d="1">
-                Website vernieuwen als je bedrijf is
-                {' '}
-                <em>gegroeid</em>
+                Website vernieuwen als je bedrijf is <em>gegroeid</em>
               </Reveal>
-              {' '}
-              <Reveal as="p" className="lead svc-hero__sub reveal" data-d="2">
-                Veel websites zijn gebouwd voor het bedrijf dat je jaren geleden was. MegaOnline helpt bedrijven hun online uitstraling opnieuw af te stemmen op waar ze vandaag staan en waar ze naartoe willen.
+              <Reveal as="p" className="lead hero__sub reveal" data-d="2">
+                Veel websites zijn gebouwd voor het bedrijf dat je jaren geleden was. We stemmen je website opnieuw af op waar je vandaag staat en waar je naartoe wilt.
               </Reveal>
-              {' '}
-              <Reveal as="div" className="svc-hero__ctas reveal" data-d="2">
-                <Link className="btn btn-primary" to="/gratis-websitescan">
-                  {CTA_SCAN}
-                </Link>
-                {' '}
-                <Link className="tlink" to="/contact">
-                  Plan een kennismaking
-                  {' '}
-                </Link>
+              <Reveal as="ul" className="hero__ticks reveal" data-d="3">
+                <li>
+                  <Icon name="check" className="ck" />
+                  <span>We nemen mee wat nu al goed werkt</span>
+                </li>
+                <li>
+                  <Icon name="check" className="ck" />
+                  <span>Met aandacht voor je vindbaarheid in Google</span>
+                </li>
+                <li>
+                  <Icon name="check" className="ck" />
+                  <span>Teksten en foto’s pas je gemakkelijk zelf aan</span>
+                </li>
               </Reveal>
             </div>
-            {' '}
-            <Reveal as="div" className="hvis reveal" data-d="2">
-              <div className="hvis__frame">
-                <Media id="rd-hero" fit="cover" placeholder="[ VOOR → NA ]" alt="Website voor en na het redesign" />
-              </div>
-              {' '}
-              <div className="hvis__card hvis__toast">
-                <span className="tk">↑</span>
-                {' '}
-                <span>
-                  <span className="tt">Nieuwe uitstraling live</span>
-                  {' '}
-                  <span className="ts">Afgestemd op nu</span>
-                </span>
-              </div>
-              {' '}
-              <div className="hvis__card hvis__stat">
-                <span className="n">Eerste indruk</span>
-                {' '}
-                <span className="l">telt mee in de keuze om contact op te nemen</span>
-              </div>
-            </Reveal>
+            <AanvraagKort soort="ontwerp" className="hero__form reveal" />
           </div>
         </div>
       </section>
-      {' '}
-      {' '}
-      <section className="section section--tight" data-theme="paper" data-screen-label="Herken je dit?">
+
+      <section className="section" data-theme="light" data-screen-label="Herken je dit?">
+        <div className="wrap">
+          <Reveal as="div" className="v2-head reveal">
+            <div className="shead">
+              <span className="label">Herken je dit?</span>
+              <h2 className="h2">
+                Je bedrijf is verder dan je <em>website.</em>
+              </h2>
+            </div>
+            <div className="v2-head__side">
+              <p>
+                Niet omdat je iets fout doet, maar omdat je bent doorgegroeid. De website bleef staan waar hij stond. Bezoekers vormen in een paar seconden een oordeel. Een verouderde site laat ze twijfelen.
+              </p>
+              <Link className="tlink" to="/kennisbank/$slug" params={{ slug: 'vertrouwen-wekken-zakelijke-website' }}>
+                Lees waar bezoekers op letten <span className="arr">&rarr;</span>
+              </Link>
+            </div>
+          </Reveal>
+          <ul className="cw-problems">
+            {SIGNALEN.map((x, i) => (
+              <Reveal as="li" key={x.t} className="cw-problem reveal" data-d={String(i % 3)}>
+                <h3>{x.t}</h3>
+                <p>{x.p}</p>
+              </Reveal>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="section" id="aanpak" data-theme="dark" data-screen-label="Aanpak">
         <div className="wrap">
           <Reveal as="div" className="shead reveal">
-            <span className="label">Herken je dit?</span>
-            {' '}
+            <span className="label">De aanpak</span>
             <h2 className="h2">
-              Je bedrijf is verder dan je
-              {' '}
-              <em>website.</em>
+              Eerst kijken wat er is. <em>Dan</em> pas bouwen.
             </h2>
-            {' '}
-            <p className="lead">
-              Niet omdat je iets fout doet, maar omdat je doorgegroeid bent. De website bleef staan waar hij stond. Dit zijn de momenten waarop dat begint te wringen.
-            </p>
+            <p className="lead">Een redesign die alleen mooier is, lost weinig op. We grijpen het moment aan om je hele website scherper te maken.</p>
           </Reveal>
-          {' '}
-          <div className="flaw">
-            <Reveal as="div" className="flaw__intro reveal">
-              <h3>Je website laat niet meer zien wie je vandaag bent.</h3>
-              {' '}
-              <p>
-                Je hebt hard gewerkt aan je bedrijf. Je dienstverlening is gegroeid, je klanten zijn veranderd, je ambitie is groter geworden. Maar online ziet niemand dat terug.
-              </p>
-              {' '}
-              <p>
-                Een website die achterloopt op het bedrijf erachter, doet je tekort. Niet omdat het werk niet goed is, maar omdat de presentatie het verhaal niet meer vertelt.
-              </p>
-            </Reveal>
-            {' '}
-            <div className="flaw__mini">
-              <Reveal as="div" className="miniprob reveal">
-                <h4>Je website voelt verouderd</h4>
-                <p>
-                  De stijl is van een paar jaar terug en dat zie en voel je meteen.
-                </p>
+          <ol className="v2-steps cw-steps">
+            {STAPPEN.map((s, i) => (
+              <Reveal as="li" key={s.t} className="v2-step reveal" data-d={String(i % 3)}>
+                <span className="v2-step__no">0{i + 1}</span>
+                <h3>{s.t}</h3>
+                <p>{s.p}</p>
               </Reveal>
-              {' '}
-              <Reveal as="div" className="miniprob reveal" data-d="1">
-                <h4>Concurrenten ogen professioneler</h4>
-                <p>
-                  Naast hun site valt die van jou net wat minder op zijn plek.
-                </p>
-              </Reveal>
-              {' '}
-              <Reveal as="div" className="miniprob reveal">
-                <h4>Je bedrijf is veranderd</h4>
-                <p>Wie je nu bent staat niet meer goed op je website.</p>
-              </Reveal>
-              {' '}
-              <Reveal as="div" className="miniprob reveal" data-d="1">
-                <h4>Je aanbod is uitgebreid</h4>
-                <p>Nieuwe diensten passen niet meer logisch in de oude opzet.</p>
-              </Reveal>
-              {' '}
-              <Reveal as="div" className="miniprob reveal">
-                <h4>Sluit niet meer aan op je doelgroep</h4>
-                <p>
-                  De toon en uitstraling passen niet meer bij wie je wilt bereiken.
-                </p>
-              </Reveal>
-              {' '}
-              <Reveal as="div" className="miniprob reveal" data-d="1">
-                <h4>Je bent er niet trots meer op</h4>
-                <p>Je deelt de link liever niet, en dat zegt eigenlijk genoeg.</p>
-              </Reveal>
-            </div>
-          </div>
+            ))}
+          </ol>
         </div>
       </section>
-      {' '}
-      {' '}
-      <section className="section" data-theme="dark" data-screen-label="Meer dan een nieuw design">
+
+      <section className="section" data-theme="paper" data-screen-label="Wat we bekijken">
         <div className="wrap">
           <Reveal as="div" className="shead reveal">
             <span className="label">Meer dan een nieuw jasje</span>
-            {' '}
             <h2 className="h2">
-              MegaOnline vervangt niet alleen de uitstraling.
-              <br />
-              MegaOnline verbetert de <em>ervaring.</em>
+              We vervangen niet alleen de uitstraling. We verbeteren de <em>ervaring.</em>
             </h2>
-            {' '}
-            <p className="lead">
-              Een redesign die alleen mooier is, lost weinig op. MegaOnline grijpt het moment aan om je hele online presentatie scherper en sterker te maken.
-            </p>
           </Reveal>
-          {' '}
-          <div className="featgrid">
-            <Reveal as="div" className="feat reveal">
-              <span className="iconbox">
-                <Icon name="message-square-text" />
-              </span>
-              <h4>Duidelijkere boodschap</h4>
-              <p>In één oogopslag helder wat je doet en voor wie.</p>
+          <div className="cw-krijgt">
+            <Reveal as="div" className="cw-card reveal">
+              <h3>Wat we eerst bekijken</h3>
+              <ul className="cw-incl">
+                {BEKIJKEN.map((x) => (
+                  <li key={x.t}>
+                    <span className="cw-incl__ico">
+                      <Icon name={x.icon} />
+                    </span>
+                    {x.t}
+                  </li>
+                ))}
+              </ul>
             </Reveal>
-            {' '}
-            <Reveal as="div" className="feat reveal" data-d="1">
-              <span className="iconbox">
-                <Icon name="sparkles" />
-              </span>
-              <h4>Modernere uitstraling</h4>
-              <p>Een look die past bij het niveau van je bedrijf vandaag.</p>
-            </Reveal>
-            {' '}
-            <Reveal as="div" className="feat reveal" data-d="2">
-              <span className="iconbox">
-                <Icon name="shield-check" />
-              </span>
-              <h4>Meer vertrouwen</h4>
-              <p>Een verzorgde presentatie die twijfel wegneemt.</p>
-            </Reveal>
-            {' '}
-            <Reveal as="div" className="feat reveal" data-d="3">
-              <span className="iconbox">
-                <Icon name="smartphone" />
-              </span>
-              <h4>Betere mobiele ervaring</h4>
-              <p>
-                Bijna iedereen gaat ook met de telefoon online.
-              </p>
-            </Reveal>
-            {' '}
-            <Reveal as="div" className="feat reveal">
-              <span className="iconbox">
-                <Icon name="layout" />
-              </span>
-              <h4>Logischere structuur</h4>
-              <p>Bezoekers vinden moeiteloos hun weg naar de juiste plek.</p>
-            </Reveal>
-            {' '}
-            <Reveal as="div" className="feat reveal" data-d="1">
-              <span className="iconbox">
-                <Icon name="mouse-pointer-click" />
-              </span>
-              <h4>Sterkere call-to-actions</h4>
-              <p>Een duidelijke uitnodiging tot de volgende stap.</p>
-            </Reveal>
-            {' '}
-            <Reveal as="div" className="feat reveal" data-d="2">
-              <span className="iconbox">
-                <Icon name="award" />
-              </span>
-              <h4>Professionelere presentatie</h4>
-              <p>Je werk en je bedrijf eindelijk goed in beeld.</p>
-            </Reveal>
-            {' '}
-            <Reveal as="div" className="feat reveal" data-d="3">
-              <span className="iconbox">
-                <Icon name="rocket" />
-              </span>
-              <h4>Groeit met je mee</h4>
-              <p>Een fundament dat meebeweegt met waar je naartoe wilt.</p>
+            <Reveal as="div" className="cw-card reveal" data-d="1">
+              <h3>Wat er beter wordt</h3>
+              <p>Een website die weer past bij het niveau van je werk en bezoekers duidelijk naar de volgende stap brengt.</p>
+              <ul className="cw-chips">
+                {BETER.map((x) => (
+                  <li key={x}>{x}</li>
+                ))}
+              </ul>
+              <h3 className="cw-card__sub">Geen beloftes over percentages</h3>
+              <p>Wel een website die op alle fronten beter aansluit bij je bedrijf en je bezoekers. Na livegang kijken we samen wat bezoekers echt doen.</p>
             </Reveal>
           </div>
         </div>
       </section>
-      {' '}
-      {' '}
-      <section className="section" data-theme="light" data-screen-label="Waarom bedrijven kiezen voor een redesign">
-        <div className="wrap">
-          <div className="why">
-            <Reveal as="div" className="shead reveal" style={{ maxWidth: "none" }}>
-              <span className="label">Waarom een redesign</span>
-              {' '}
-              <h2 className="h2">
-                Bezoekers vormen binnen
-                {' '}
-                <em>enkele seconden</em>
-                {' '}
-                een oordeel.
-              </h2>
-              {' '}
-              <p className="lead">
-                Nog voordat iemand één zin leest, is de eerste indruk al gevormd. Een website die niet aansluit bij het niveau van je bedrijf kan vertrouwen kosten. Niet omdat je bedrijf slecht is, maar omdat de presentatie achterloopt. Lees <Link to="/kennisbank/$slug" params={{ slug: 'vertrouwen-wekken-zakelijke-website' }}>waar bezoekers op letten voordat ze contact opnemen</Link>.
-              </p>
-              {' '}
-              <p className="lead">
-                Een redesign sluit dat gat. Het brengt online weer in lijn met de kwaliteit die je offline allang levert.
-              </p>
-            </Reveal>
-            {' '}
-            <Reveal as="aside" className="panel reveal" data-d="1">
-              <p className="panel__quote">
-                Je website is vaak het
-                {' '}
-                <em>eerste</em>
-                {' '}
-                wat een klant van je ziet. En soms het enige.
-              </p>
-              {' '}
-              <p className="panel__support">
-                Een verouderde uitstraling laat mensen onbewust twijfelen. Een verzorgde, actuele website doet precies het tegenovergestelde: die bevestigt dat ze bij de juiste partij zijn.
-              </p>
-              {' '}
-              <div className="panel__stats">
-                <div>
-                  <span className="n">1ste</span>
-                  <span className="l">indruk telt meteen mee</span>
-                </div>
-                {' '}
-                <div>
-                  <div className="n">96%</div>
-                  <div className="l">
-                    van de Nederlanders (12+) gaat online met de telefoon (
-                    <a href="https://www.cbs.nl/nl-nl/longread/rapportages/2026/digitalisering-en-kenniseconomie-2025/4-ict-gebruik-personen" target="_blank" rel="noopener" style={{ textDecoration: "underline", textUnderlineOffset: "2px" }}>
-                      CBS, 2025
-                    </a>
-                    )
-                  </div>
-                </div>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-      {' '}
-      {' '}
-      <section className="section section--tight" data-theme="paper" data-screen-label="Wat we tijdens een redesign bekijken">
+
+      <section className="section" data-theme="light" data-screen-label="Eerlijk advies">
         <div className="wrap">
           <Reveal as="div" className="shead reveal">
-            <span className="label">Eerst kijken, dan bouwen</span>
-            {' '}
-            <h2 className="h2">
-              Wat MegaOnline tijdens een redesign <em>bekijkt.</em>
-            </h2>
-            {' '}
-            <p className="lead">
-              MegaOnline begint nooit bij het ontwerp. Eerst brengt MegaOnline in kaart wat er is, wat werkt en wat beter moet. Pas als dat helder is, bouwt MegaOnline.
-            </p>
+            <span className="label">Eerlijk advies</span>
+            <h2 className="h2">Niet elke website hoeft opnieuw.</h2>
           </Reveal>
-          {' '}
-          <div className="featgrid">
-            <Reveal as="div" className="feat reveal">
-              <span className="iconbox">
-                <Icon name="eye" />
-              </span>
-              <h4>Huidige uitstraling</h4>
-              <p>
-                Wat straalt je website nu uit, en klopt dat met wie je bent?
+          <div className="cw-prijs">
+            <Reveal as="div" className="cw-prijs__main reveal" data-theme="dark">
+              <span className="v2-eyebrow">Redesign of optimaliseren?</span>
+              <p className="cw-prijs__uitleg">
+                Sommige websites hebben vooral kleine verbeteringen nodig. Andere zijn visueel, technisch of strategisch zo verouderd dat opnieuw opbouwen de betere investering is.
               </p>
-            </Reveal>
-            {' '}
-            <Reveal as="div" className="feat reveal" data-d="1">
-              <span className="iconbox">
-                <Icon name="layout" />
-              </span>
-              <h4>Structuur</h4>
-              <p>Is de opbouw nog logisch voor je huidige aanbod?</p>
-            </Reveal>
-            {' '}
-            <Reveal as="div" className="feat reveal" data-d="2">
-              <span className="iconbox">
-                <Icon name="hand-heart" />
-              </span>
-              <h4>Gebruiksvriendelijkheid</h4>
-              <p>Beweegt een bezoeker soepel naar wat hij zoekt?</p>
-            </Reveal>
-            {' '}
-            <Reveal as="div" className="feat reveal" data-d="3">
-              <span className="iconbox">
-                <Icon name="users" />
-              </span>
-              <h4>Doelgroep</h4>
-              <p>Wie wil je vandaag bereiken, en sluit de site daarop aan?</p>
-            </Reveal>
-            {' '}
-            <Reveal as="div" className="feat reveal">
-              <span className="iconbox">
-                <Icon name="flag" />
-              </span>
-              <h4>Concurrenten</h4>
-              <p>
-                Hoe val je op tussen de bedrijven waarmee je vergeleken wordt?
+              <p className="cw-prijs__uitleg">
+                Heb je vooral gerichte verbeteringen nodig? Dan is optimaliseren waarschijnlijk slimmer dan een redesign.
               </p>
-            </Reveal>
-            {' '}
-            <Reveal as="div" className="feat reveal" data-d="1">
-              <span className="iconbox">
-                <Icon name="smartphone" />
-              </span>
-              <h4>Mobiele ervaring</h4>
-              <p>Werkt alles even goed op de telefoon als op desktop?</p>
-            </Reveal>
-            {' '}
-            <Reveal as="div" className="feat reveal" data-d="2">
-              <span className="iconbox">
-                <Icon name="shield-check" />
-              </span>
-              <h4>Vertrouwen</h4>
-              <p>
-                Welke signalen geven bezoekers het gevoel: hier zit ik goed?
-              </p>
-            </Reveal>
-            {' '}
-            <Reveal as="div" className="feat reveal" data-d="3">
-              <span className="iconbox">
-                <Icon name="file-text" />
-              </span>
-              <h4>Aanvragen & boekingen</h4>
-              <p>
-                Hoe makkelijk is het nu om contact op te nemen of te boeken?
-              </p>
-            </Reveal>
-            {' '}
-            <Reveal as="div" className="feat reveal">
-              <span className="iconbox">
-                <Icon name="search-check" />
-              </span>
-              <h4>SEO-basis</h4>
-              <p>
-                Wat moet behouden blijven zodat je vindbaarheid niet inzakt?
-              </p>
-            </Reveal>
-            {' '}
-            <Reveal as="div" className="feat reveal" data-d="1">
-              <span className="iconbox">
-                <Icon name="settings" />
-              </span>
-              <h4>Technische staat</h4>
-              <p>Is het fundament gezond, of zit daar juist het probleem?</p>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-      {' '}
-      {' '}
-      <section className="section" id="aanpak" data-theme="dark" data-screen-label="Hoe een redesign traject eruitziet">
-        <div className="wrap">
-          <Reveal as="div" className="shead reveal">
-            <span className="label">Het traject</span>
-            {' '}
-            <h2 className="h2">
-              Hoe een redesign-traject
-              {' '}
-              <em>eruitziet.</em>
-            </h2>
-            {' '}
-            <p className="lead">
-              Een rustig, doordacht proces. Stap voor stap, van begrijpen naar bouwen naar livegang, zonder verrassingen onderweg.
-            </p>
-          </Reveal>
-          {' '}
-          <Reveal as="div" className="tl reveal" style={{ marginTop: "clamp(40px,4.5vw,60px)" }}>
-            <div className="tl__row">
-              <span className="tl__dot" />
-              {' '}
-              <div className="tl__phase">Stap 1 · Analyse</div>
-              {' '}
-              <div className="tl__card">
-                <div className="tl__cardhead">
-                  <span className="svcname">Analyse van de huidige website</span>
-                </div>
-                {' '}
-                <p>
-                  MegaOnline kijkt wat er nu staat: wat werkt, wat haakt af en wat absoluut behouden moet blijven.
-                </p>
-              </div>
-            </div>
-            {' '}
-            <div className="tl__row">
-              <span className="tl__dot" />
-              {' '}
-              <div className="tl__phase">Stap 2 · Begrijpen</div>
-              {' '}
-              <div className="tl__card">
-                <div className="tl__cardhead">
-                  <span className="svcname">Het bedrijf begrijpen</span>
-                </div>
-                {' '}
-                <p>
-                  Wie ben je vandaag, wat maakt je anders en waar wil je naartoe? Dat is het uitgangspunt.
-                </p>
-              </div>
-            </div>
-            {' '}
-            <div className="tl__row">
-              <span className="tl__dot" />
-              {' '}
-              <div className="tl__phase">Stap 3 · Onderzoek</div>
-              {' '}
-              <div className="tl__card">
-                <div className="tl__cardhead">
-                  <span className="svcname">Doelgroep en concurrenten</span>
-                </div>
-                {' '}
-                <p>
-                  MegaOnline onderzoekt wie je wilt bereiken en hoe je je onderscheidt van de bedrijven om je heen.
-                </p>
-              </div>
-            </div>
-            {' '}
-            <div className="tl__row">
-              <span className="tl__dot" />
-              {' '}
-              <div className="tl__phase">Stap 4 · Structuur</div>
-              {' '}
-              <div className="tl__card">
-                <div className="tl__cardhead">
-                  <span className="svcname">Nieuwe structuur bepalen</span>
-                </div>
-                {' '}
-                <p>
-                  MegaOnline bepaalt welke informatie waar komt en hoe bezoekers richting contact bewegen.
-                </p>
-              </div>
-            </div>
-            {' '}
-            <div className="tl__row tl__row--rec">
-              <span className="tl__dot" />
-              {' '}
-              <div className="tl__phase">Stap 5 · Creatie</div>
-              {' '}
-              <div className="tl__card tl__card--rec">
-                <div className="tl__cardhead">
-                  <span className="svcname">Ontwerp en ontwikkeling</span>
-                </div>
-                {' '}
-                <p>
-                  MegaOnline ontwerpt de nieuwe uitstraling en bouwt die uit: modern, snel en zelf te beheren.
-                </p>
-              </div>
-            </div>
-            {' '}
-            <div className="tl__liverow">
-              <span className="tl__live">
-                <Icon name="rocket" />
-              </span>
-              {' '}
-              <span className="tl__livelabel">Stap 6 · Livegang</span>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-      {' '}
-      {' '}
-      <section className="section" data-theme="paper" data-screen-label="Wanneer een redesign slimmer is dan optimaliseren">
-        <div className="wrap">
-          <div className="wp">
-            <Reveal as="div" className="wp__panel reveal">
-              <span className="label">Eerlijk advies</span>
-              {' '}
-              <h2 className="h2" style={{ marginTop: "18px", fontSize: "clamp(1.7rem,2.8vw,2.6rem)" }}>Niet elke website hoeft opnieuw.</h2>
-              {' '}
-              <p className="lead" style={{ marginTop: "16px", fontSize: "1.05rem" }}>
-                Sommige websites hebben vooral kleine verbeteringen nodig. Andere zijn visueel, technisch of strategisch zo verouderd dat opnieuw opbouwen simpelweg de betere investering is.
-              </p>
-              {' '}
-              <div className="pullnote">
-                Heb je vooral gerichte verbeteringen nodig? Dan is
-                {' '}
-                <em>optimaliseren</em>
-                {' '}
-                waarschijnlijk slimmer dan een redesign.
-              </div>
-              {' '}
-              <Link className="btn btn-primary" to="/diensten/website-optimalisatie" style={{ marginTop: "26px" }}>
+              <Link className="btn btn-primary" to="/diensten/website-optimalisatie">
                 Bekijk Website Optimalisatie
-                {' '}
               </Link>
             </Reveal>
-            {' '}
-            <Reveal as="ul" className="wplist reveal" data-d="1">
-              <li>
-                <h4>Visueel verouderd</h4>
-                <p>
-                  De uitstraling past niet meer bij het niveau van je bedrijf.
-                </p>
-              </li>
-              {' '}
-              <li>
-                <h4>Technisch verouderd</h4>
-                <p>Het fundament is niet meer veilig, snel of houdbaar.</p>
-              </li>
-              {' '}
-              <li>
-                <h4>Strategisch verouderd</h4>
-                <p>De website vertelt niet meer het juiste verhaal.</p>
-              </li>
-              {' '}
-              <li>
-                <h4>Niet meer schaalbaar</h4>
-                <p>Je bent gegroeid, maar de site kan niet meegroeien.</p>
-              </li>
-              {' '}
-              <li>
-                <h4>Structureel onlogisch</h4>
-                <p>Losse aanpassingen lossen het echte probleem niet op.</p>
-              </li>
-              {' '}
-              <li>
-                <h4>Niet meer trots</h4>
-                <p>Je deelt je website liever niet, en dat zegt genoeg.</p>
-              </li>
+            <Reveal as="div" className="cw-card reveal" data-d="1">
+              <span className="cw-card__tag">Een redesign is slimmer als</span>
+              <ul className="cw-list">
+                {WANNEER.map((x) => (
+                  <li key={x}>
+                    <Icon name="check" className="ck" />
+                    <span>{x}</span>
+                  </li>
+                ))}
+              </ul>
             </Reveal>
           </div>
         </div>
       </section>
-      {' '}
-      {' '}
-      <section className="section" id="werk" data-theme="dark" data-screen-label="Voorbeelden van redesign projecten">
+
+      <section className="section" id="werk" data-theme="paper" data-screen-label="Cases">
         <div className="wrap">
-          <Reveal as="div" className="shead shead--split reveal">
-            <div className="shead">
-              <span className="label">Redesign projecten</span>
-              {' '}
-              <h2 className="h2">
-                Van
-                {' '}
-                <em>verouderd</em>
-                {' '}
-                naar van nu.
-              </h2>
-            </div>
-            {' '}
-            <Link className="tlink" to="/gratis-websitescan" style={{ paddingBottom: "6px" }}>
-              Start jouw redesign
-              {' '}
-            </Link>
+          <Reveal as="div" className="shead reveal">
+            <span className="label">Redesign projecten</span>
+            <h2 className="h2">
+              Van <em>verouderd</em> naar van nu.
+            </h2>
           </Reveal>
-          {' '}
           <div className="cases">
             <Reveal as="article" className="case reveal">
               <div className="case__media">
-                <Media id="case-qteam" fit="cover" placeholder="[ VOOR - NA ]" alt="De vernieuwde website van Q-Team Solutions" />
+                <Media id="case-qteam" fit="cover" placeholder="[ Q-Team Solutions ]" alt="De vernieuwde website van Q-Team Solutions" />
               </div>
-                            {' '}
               <div className="case__body">
                 <h3 className="case__name">Q-Team Solutions</h3>
-                {' '}
                 <div className="case__meta">
                   <span className="tag">Redesign</span>
                   <span className="tag">B2B software</span>
                 </div>
-                {' '}
-                <p className="case__context">Een bedrijf dat eigen apps ontwikkelt voor zakelijke klanten.</p>
-                {' '}
                 <div className="case__steps">
                   <div className="case__step">
-                    <span className="k">Situatie</span>
-                    <p>Een softwarebedrijf waarvan de website niet was meegegroeid met het aanbod.</p>
-                  </div>
-                {' '}
-                  <div className="case__step">
                     <span className="k">Wat was verouderd</span>
-                    <p>De site liet onvoldoende zien welke apps het bedrijf ontwikkelt en welke waarde die bieden aan klanten.</p>
+                    <p>De site was niet meegegroeid met het aanbod en liet onvoldoende zien welke apps het bedrijf ontwikkelt.</p>
                   </div>
-                {' '}
                   <div className="case__step">
-                    <span className="k">Wat MegaOnline veranderde</span>
-                    <p>MegaOnline bracht de propositie terug naar een duidelijke boodschap en bouwde een structuur die bezoekers sneller naar de juiste informatie leidt.</p>
+                    <span className="k">Wat we deden</span>
+                    <p>We brachten de propositie terug naar een duidelijke boodschap en bouwden een structuur die bezoekers sneller naar de juiste informatie leidt.</p>
                   </div>
-                </div>
-                {' '}
-                <div className="case__chips">
-                  <span className="k">Resultaat</span>
-                {' '}
-                  <span className="chip">Duidelijkere propositie</span>
-                {' '}
-                  <span className="chip">Professionelere uitstraling</span>
                 </div>
               </div>
             </Reveal>
-            {' '}
             <Reveal as="article" className="case reveal" data-d="1">
               <div className="case__media">
-                <Media id="case-guestroom" fit="cover" placeholder="[ VOOR - NA ]" alt="De vernieuwde website van GuestRoomUtrecht" />
+                <Media id="case-guestroom" fit="cover" placeholder="[ GuestRoomUtrecht ]" alt="De vernieuwde website van GuestRoomUtrecht" />
               </div>
-                            {' '}
               <div className="case__body">
                 <h3 className="case__name">GuestRoomUtrecht</h3>
-                {' '}
                 <div className="case__meta">
                   <span className="tag">Redesign</span>
                   <span className="tag">Bed &amp; Breakfast</span>
                 </div>
-                {' '}
-                <p className="case__context">Een verblijf dat draait op sfeer en de ervaring van gasten.</p>
-                {' '}
                 <div className="case__steps">
-                  <div className="case__step">
-                    <span className="k">Situatie</span>
-                    <p>Een bed &amp; breakfast waarvan de website de beleving niet overbracht.</p>
-                  </div>
-                {' '}
                   <div className="case__step">
                     <span className="k">Wat was verouderd</span>
                     <p>De sfeer van het verblijf kwam onvoldoende over en de route naar een boeking was onduidelijk.</p>
                   </div>
-                {' '}
                   <div className="case__step">
-                    <span className="k">Wat MegaOnline veranderde</span>
-                    <p>MegaOnline ontwikkelde een visuele website met een duidelijke boekingsroute en focus op beleving.</p>
+                    <span className="k">Wat we deden</span>
+                    <p>Een visuele website met een duidelijke boekingsroute en focus op beleving.</p>
                   </div>
-                </div>
-                {' '}
-                <div className="case__chips">
-                  <span className="k">Resultaat</span>
-                {' '}
-                  <span className="chip">Sterker verhaal</span>
-                {' '}
-                  <span className="chip">Betere gebruikerservaring</span>
                 </div>
               </div>
             </Reveal>
-          </div>        </div>
+          </div>
+        </div>
       </section>
-      {' '}
-      {' '}
-      <section className="section section--tight" data-theme="light" data-screen-label="Wat verandert er na een redesign?">
-        <div className="wrap">
+
+      <section className="section" id="faq" data-theme="light" data-screen-label="FAQ">
+        <div className="wrap cw-faq">
           <Reveal as="div" className="shead reveal">
-            <span className="label">Na de livegang</span>
-            {' '}
-            <h2 className="h2">
-              Wat er meestal verandert na een
-              {' '}
-              <em>redesign.</em>
-            </h2>
-            {' '}
-            <p className="lead">
-              Geen beloftes over harde percentages, wel een website die op alle fronten beter aansluit bij je bedrijf en je bezoekers.
+            <span className="label">Veelgestelde vragen</span>
+            <h2 className="h2">Wat je misschien nog wil weten</h2>
+            <p className="cw-faq__mail">
+              Staat je vraag er niet bij? Mail naar <a href="mailto:info@megaonline.io">info@megaonline.io</a>.
             </p>
           </Reveal>
-          {' '}
-          <div className="featgrid">
-            <Reveal as="div" className="feat reveal">
-              <span className="iconbox">
-                <Icon name="shield-check" />
-              </span>
-              <h4>Meer vertrouwen</h4>
-              <p>
-                Bezoekers voelen sneller dat ze bij de juiste partij zitten.
-              </p>
-            </Reveal>
-            {' '}
-            <Reveal as="div" className="feat reveal" data-d="1">
-              <span className="iconbox">
-                <Icon name="award" />
-              </span>
-              <h4>Professionelere uitstraling</h4>
-              <p>Je website past weer bij het niveau van je werk.</p>
-            </Reveal>
-            {' '}
-            <Reveal as="div" className="feat reveal" data-d="2">
-              <span className="iconbox">
-                <Icon name="message-square-text" />
-              </span>
-              <h4>Duidelijkere communicatie</h4>
-              <p>In één oogopslag helder wat je doet en voor wie.</p>
-            </Reveal>
-            {' '}
-            <Reveal as="div" className="feat reveal" data-d="3">
-              <span className="iconbox">
-                <Icon name="smartphone" />
-              </span>
-              <h4>Betere mobiele ervaring</h4>
-              <p>Soepel en logisch op elk scherm.</p>
-            </Reveal>
-            {' '}
-            <Reveal as="div" className="feat reveal">
-              <span className="iconbox">
-                <Icon name="file-text" />
-              </span>
-              <h4>Meer aanvragen</h4>
-              <p>Een duidelijke route maakt contact opnemen makkelijker.</p>
-            </Reveal>
-            {' '}
-            <Reveal as="div" className="feat reveal" data-d="1">
-              <span className="iconbox">
-                <Icon name="wind" />
-              </span>
-              <h4>Meer rust en overzicht</h4>
-              <p>Minder ruis, meer focus op wat er echt toe doet.</p>
-            </Reveal>
-            {' '}
-            <Reveal as="div" className="feat reveal" data-d="2">
-              <span className="iconbox">
-                <Icon name="eye" />
-              </span>
-              <h4>Betere eerste indruk</h4>
-              <p>Die belangrijke eerste seconden werken nu vóór je.</p>
-            </Reveal>
-            {' '}
-            <Reveal as="div" className="feat reveal" data-d="3">
-              <span className="iconbox">
-                <Icon name="rocket" />
-              </span>
-              <h4>Groeit met je mee</h4>
-              <p>Een fundament dat meebeweegt met je volgende stappen.</p>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-      {' '}
-      {' '}
-      <section className="section" id="faq" data-theme="paper" data-screen-label="FAQ">
-        <div className="wrap">
-          <Reveal as="div" className="shead reveal" style={{ maxWidth: "680px" }}>
-            <span className="label">Veelgestelde vragen</span>
-            {' '}
-            <h2 className="h2">Wat je misschien nog wil weten</h2>
-          </Reveal>
-          {' '}
           <div className="faq">
-            <Qa question="Moet mijn website volledig opnieuw gebouwd worden?" className="reveal">
-                Niet altijd. Soms volstaat een grondige restyling op de bestaande basis, soms is het slimmer om opnieuw op te bouwen. Dat hangt af van de technische en strategische staat van je huidige website. Dat bepaal je samen met MegaOnline tijdens het advies. MegaOnline is daar eerlijk over.
-            </Qa>
-            {' '}
-            <Qa question="Kan MegaOnline bestaande content overnemen?" className="reveal">
-                Ja. Goede teksten, foto's en pagina's neemt MegaOnline mee. Vaak scherpt MegaOnline ze aan zodat ze beter aansluiten bij je huidige bedrijf, maar je begint zelden vanaf nul.
-            </Qa>
-            {' '}
-            <Qa question="Wat gebeurt er met SEO?" className="reveal">
-                Daar let MegaOnline bewust op. We behouden wat goed scoort, zetten redirects waar nodig en houden de SEO-basis op orde, zodat je vindbaarheid niet inzakt na de livegang maar juist een gezonde basis houdt.
-            </Qa>
-            {' '}
-            <Qa question="Hoe lang duurt een redesign?" className="reveal">
-                Dat hangt af van de omvang en hoe snel content en feedback rond zijn. Een redesign is doorgaans een traject van enkele weken. Na de website scan en de kennismaking geeft MegaOnline een realistische inschatting voor jouw situatie.
-            </Qa>
-            {' '}
-            <Qa question="Is een redesign altijd beter dan optimaliseren?" className="reveal">
-                Nee. Dat zegt MegaOnline ook eerlijk. Als je website technisch in orde is en er nog goed uitziet, zijn gerichte verbeteringen vaak slimmer en goedkoper. Een redesign is bedoeld voor websites die echt zijn achtergelopen op het bedrijf. Twijfel je? Bekijk dan ook de pagina over Website Optimalisatie.
-            </Qa>
-            {' '}
-            <Qa question="Kan ik mijn website straks zelf beheren?" className="reveal">
-                Ja. MegaOnline bouwt redesigns die flexibel, veilig, schaalbaar en eenvoudig zelf te beheren zijn. Je zit nooit vast aan één leverancier, want je website blijft van jou.
-            </Qa>
+            {FAQ_ITEMS.map(({ q, a }) => (
+              <Qa key={q} question={q} className="reveal">
+                {a}
+              </Qa>
+            ))}
           </div>
         </div>
       </section>
-      {' '}
+
       <section className="section section--tight" data-theme="paper" data-screen-label="Voor wie">
         <div className="wrap">
           <Reveal as="div" className="shead reveal">
             <span className="label">Voor wie</span>
-            {' '}
-            <h2 className="h2">Voor wie een redesign het verschil maakt.</h2>
-            {' '}
-            <p className="lead">
-              Je bedrijf is gegroeid, je website niet meegegroeid. Dat ziet MegaOnline het vaakst bij deze groepen.
-            </p>
+            <h2 className="h2">Waar we een redesign het vaakst zien.</h2>
           </Reveal>
-          {' '}
-          <div className="featgrid">
-            <Reveal as="div" className="feat reveal">
-              <h4><Link to="/branches/dienstverleners">Website laten maken voor dienstverleners</Link></h4>
-              <p>Het werk is groter geworden, de site praat nog tegen je eerste klanten.</p>
-            </Reveal>
-            {' '}
-            <Reveal as="div" className="feat reveal" data-d="1">
-              <h4><Link to="/branches/verhuurbedrijven">Website laten maken voor verhuurbedrijven</Link></h4>
-              <p>Het assortiment is uitgebreid, de structuur van de site is nooit meegegroeid.</p>
-            </Reveal>
-            {' '}
-            <Reveal as="div" className="feat reveal" data-d="2">
-              <h4><Link to="/branches/non-profits">Website laten maken voor stichtingen en verenigingen</Link></h4>
-              <p>Jaren aan losse pagina's die samen geen verhaal meer vertellen.</p>
-            </Reveal>
-          </div>
+          <ul className="cw-problems">
+            {VOOR_WIE.map((x, i) => (
+              <Reveal as="li" key={x.to} className="cw-problem reveal" data-d={String(i)}>
+                <h3>
+                  <Link to={x.to}>{x.t}</Link>
+                </h3>
+                <p>{x.p}</p>
+              </Reveal>
+            ))}
+          </ul>
         </div>
       </section>
-      {' '}
-      <section className="section" id="scan" data-theme="dark" data-screen-label="Eind-CTA + scan-formulier">
+
+      <section className="section final" data-theme="dark" data-screen-label="Afsluitende CTA">
         <div className="wrap">
-          <div className="endcta__grid">
-            <div className="endcta__copy">
-              <Reveal as="h2" className="display reveal">
-                Laat je website weer aansluiten op het niveau van je bedrijf.
-              </Reveal>
-              {' '}
-              <Reveal as="p" className="lead reveal" data-d="1">
-                Ontdek met een gratis website scan of een redesign de juiste volgende stap is.
-              </Reveal>
-              {' '}
-              <Reveal as="div" className="svc-hero__ctas reveal" data-d="2" style={{ marginTop: "28px" }}>
-                <Link className="btn btn-primary" to="/gratis-websitescan">
-                  {CTA_SCAN}
-                </Link>
-                {' '}
-                <Link className="tlink" to="/contact">
-                  Plan een kennismaking
-                  {' '}
-                </Link>
-              </Reveal>
-              {' '}
-              <Reveal as="div" className="endcta__trust reveal" data-d="2" style={{ marginTop: "24px" }}>
-                <span>Geen verplichtingen</span>
-                {' '}
-                <span>Eerlijk advies</span>
-                {' '}
-                <span>Reactie {CONTACT_REACTIETIJD}</span>
-              </Reveal>
-            </div>
-            {' '}
-            <ConceptForm className="reveal" />
-          </div>
+          <Reveal as="h2" className="display reveal">
+            Benieuwd hoe je vernieuwde homepage eruit kan zien?
+          </Reveal>
+          <Reveal as="p" className="lead reveal" data-d="1">
+            We ontwerpen gratis een homepage voor je bedrijf. Zo zie je wat een redesign kan doen, zonder verplichtingen.
+          </Reveal>
+          <Reveal as="a" className="btn btn-primary reveal" data-d="2" href="#ontwerp">
+            Vraag je gratis homepageontwerp aan
+          </Reveal>
         </div>
       </section>
     </main>

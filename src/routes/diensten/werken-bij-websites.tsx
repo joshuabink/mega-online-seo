@@ -1,276 +1,193 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { Link } from "@tanstack/react-router";
-import { type CSSProperties, type ReactNode } from "react";
-import { ConceptForm } from "@/components/ConceptForm";
-import { Icon } from "@/components/Icon";
-import { Media } from "@/components/Media";
-import { Qa } from "@/components/Qa";
-import { Reveal } from "@/components/Reveal";
-import { CTA_SCAN } from "@/lib/cta"
+import { createFileRoute, Link } from '@tanstack/react-router'
+import { Icon } from '@/components/Icon'
+import { Media } from '@/components/Media'
+import { Qa } from '@/components/Qa'
+import { Reveal } from '@/components/Reveal'
+import { AanvraagKort } from '@/components/AanvraagKort'
+import '@/styles/pages/dienst.css'
 
-export const Route = createFileRoute("/diensten/werken-bij-websites")({
+export const Route = createFileRoute('/diensten/werken-bij-websites')({
   head: () => ({
     meta: [
-      { title: "Werken-bij website laten maken | MegaOnline.io" },
+      { title: 'Werken-bij website laten maken | MegaOnline.io' },
       {
-        name: "description",
+        name: 'description',
         content:
-          "Een werken-bij website laten maken die laat zien hoe het echt is. Lees wat erop moet, hoe vacatures op je site komen en wat Google met vacatures doet.",
+          'Een werken-bij website laten maken die laat zien hoe het echt is. Lees wat erop moet, hoe vacatures op je site komen en wat Google met vacatures doet.',
       },
-      { property: "og:title", content: "Werken-bij website laten maken | MegaOnline.io" },
+      { property: 'og:title', content: 'Werken-bij website laten maken | MegaOnline.io' },
       {
-        property: "og:description",
+        property: 'og:description',
         content:
-          "Een werken-bij website laten maken die laat zien hoe het echt is. Lees wat erop moet, hoe vacatures op je site komen en wat Google met vacatures doet.",
+          'Een werken-bij website laten maken die laat zien hoe het echt is. Lees wat erop moet, hoe vacatures op je site komen en wat Google met vacatures doet.',
       },
-      { property: "og:url", content: "https://megaonline.io/diensten/werken-bij-websites" },
+      { property: 'og:url', content: 'https://megaonline.io/diensten/werken-bij-websites' },
     ],
-    links: [{ rel: "canonical", href: "https://megaonline.io/diensten/werken-bij-websites" }],
+    links: [{ rel: 'canonical', href: 'https://megaonline.io/diensten/werken-bij-websites' }],
   }),
   component: WerkenBijWebsites,
-});
+})
 
 /** Enige bron van de zichtbare vragen. Antwoorden staan in de HTML, niet in schema. */
 const FAQ_ITEMS: { q: string; a: string }[] = [
   {
-    q: "Heb ik een aparte werken-bij website nodig?",
-    a: "Niet per se. Soms is een werken-bij sectie op je bestaande website genoeg, soms werkt een aparte website beter omdat die volledig om sfeer, mensen en solliciteren draait. In de gratis website scan kijkt MegaOnline wat voor jouw situatie het slimst is.",
+    q: 'Heb ik een aparte werken-bij website nodig?',
+    a: 'Niet per se. Soms is een werken-bij sectie op je bestaande website genoeg, soms werkt een aparte website beter omdat die volledig om sfeer, mensen en solliciteren draait. We kijken samen wat voor jouw situatie het slimst is.',
   },
   {
-    q: "Kunnen vacatures automatisch worden bijgewerkt?",
-    a: "Dat kan als je wervingssysteem (ATS) een koppeling of vacaturelijst voor websites aanbiedt. Anders beheer je de vacatures zelf op de website, zonder technische kennis.",
+    q: 'Kunnen vacatures automatisch worden bijgewerkt?',
+    a: 'Dat kan als je wervingssysteem (ATS) een koppeling of vacaturelijst voor websites aanbiedt. Anders beheer je de vacatures zelf op de website, zonder technische kennis.',
   },
   {
-    q: "Kunnen mijn vacatures in Google verschijnen?",
-    a: "Ze kunnen in aanmerking komen voor de vacatureresultaten van Google als elke vacature een eigen pagina met JobPosting-gegevens heeft. Of ze verschijnen, bepaalt Google; dat kan niemand garanderen.",
+    q: 'Kunnen mijn vacatures in Google verschijnen?',
+    a: 'Ze kunnen in aanmerking komen voor de vacatureresultaten van Google als elke vacature een eigen pagina met JobPosting-gegevens heeft. Of ze verschijnen, bepaalt Google. Dat kan niemand garanderen.',
   },
   {
-    q: "Helpt MegaOnline ook met foto's en video?",
-    a: "Ja. Bij werken-bij websites is beeld vaak belangrijker dan tekst. MegaOnline kan helpen met teamfoto's, werkdagbeelden, interviews en bedrijfsvideo's, eenmalig bij de bouw of periodiek.",
+    q: "Helpen jullie ook met foto's en video?",
+    a: "Ja. Bij werken-bij websites is beeld vaak belangrijker dan tekst. We helpen met teamfoto's, werkdagbeelden, interviews en bedrijfsvideo's, eenmalig bij de bouw of periodiek.",
   },
   {
-    q: "Kunnen medewerkers hun verhaal delen?",
-    a: "Ja. Op de website komt ruimte voor portretten, quotes en interviews, zodat sollicitanten een eerlijk beeld krijgen van hoe het is om bij je te werken.",
+    q: 'Kunnen medewerkers hun verhaal delen?',
+    a: 'Ja. Op de website komt ruimte voor portretten, quotes en interviews, zodat sollicitanten een eerlijk beeld krijgen van hoe het is om bij je te werken.',
   },
-];
+  {
+    q: 'Wat kost een werken-bij website laten maken?',
+    a: 'Dat hangt af van de vorm (een sectie of een aparte website), het aantal vacatures en of de vacatures uit een wervingssysteem moeten komen. Na een eerste gesprek krijg je een duidelijke prijs voor jouw situatie.',
+  },
+]
 
-const tekstLink: CSSProperties = {
-  color: "var(--accent-text)",
-  textDecoration: "underline",
-  textUnderlineOffset: "0.18em",
-};
+const AFHAKERS = [
+  { t: 'Geen idee hoe het is', p: 'Een sollicitant ziet niet hoe het is om bij je te werken.' },
+  { t: 'Alleen een lijstje vacatures', p: 'Functietitels en eisen, maar geen verhaal erachter.' },
+  { t: 'Solliciteren kost te veel moeite', p: 'Lange formulieren en onduidelijke stappen.' },
+  { t: "Geen echte foto's", p: 'Stockbeelden in plaats van het team en de werkvloer.' },
+]
 
-const nadruk: CSSProperties = { color: "var(--fg)", fontWeight: 600 };
+const NODIG: { icon: string; t: string }[] = [
+  { icon: 'users', t: "Echte mensen en verhalen van collega's" },
+  { icon: 'camera', t: 'Een eerlijk beeld van de werkvloer' },
+  { icon: 'list-checks', t: 'Heldere verwachtingen over het werk' },
+  { icon: 'send', t: 'Een kort sollicitatieformulier' },
+  { icon: 'award', t: 'Wie je bent en waarom mensen blijven' },
+  { icon: 'smartphone', t: 'Solliciteren werkt goed op mobiel' },
+  { icon: 'phone-call', t: 'Even appen of bellen kan ook' },
+  { icon: 'file-text', t: 'Vacatures zelf bijhouden' },
+]
 
-const kaarten: CSSProperties = {
-  gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
-};
+const STAPPEN = [
+  { t: 'Je bedrijf begrijpen', p: "Wat maakt het werk leuk, waarom blijven collega's en wat maakt je anders dan de werkgever verderop?" },
+  { t: 'De mensen die je zoekt', p: 'Wat hebben zij nodig om te solliciteren? Waar twijfelen ze?' },
+  { t: 'Structuur bepalen', p: 'Welke informatie en welk beeld nodig zijn en hoe iemand naar de sollicitatie gaat.' },
+  { t: 'Bouwen', p: 'Een website die solliciteren makkelijker maakt en die je zelf bijhoudt.' },
+]
 
-const stappen: CSSProperties = {
-  marginTop: "clamp(22px, 2.4vw, 32px)",
-  paddingLeft: "1.35em",
-  maxWidth: "68ch",
-  color: "var(--muted)",
-  fontSize: "1.05rem",
-  lineHeight: 1.6,
-};
-
-const vervolg: CSSProperties = { marginTop: "clamp(22px, 2.4vw, 32px)" };
-
-function Punt({ children }: { children: ReactNode }) {
-  return (
-    <li style={{ fontSize: "1.05rem", lineHeight: 1.55 }}>
-      <span>{children}</span>
-    </li>
-  );
-}
+const VOORBEELD = [
+  'Een overzicht met per rol een kaart: het soort rol, één zin over het werk en de ervaring die nodig is.',
+  'Per rol een eigen pagina met wat je gaat doen, wat je meebrengt, wat je niet hoeft te hebben en wat je er leert.',
+  'Per vacaturepagina gestructureerde gegevens (JobPosting), uit dezelfde bron als de tekst op de pagina.',
+  'Een kort sollicitatieformulier waarin een cv niet verplicht is, met mail en WhatsApp als alternatief.',
+  'Een procedure in drie stappen: iets sturen, een kort belgesprek en daarna een opdracht met kennismaking.',
+]
 
 function WerkenBijWebsites() {
   return (
-    <main id="top">
-      <section
-        className="section svc-hero"
-        data-theme="dark"
-        data-screen-label="Hero — Werken-bij Websites"
-      >
+    <main id="top" data-page="werken-bij-websites" data-dienst>
+      <section className="section hero" id="ontwerp" data-theme="dark" data-screen-label="Hero + formulier">
         <div className="wrap">
-          <div className="svc-hero__grid">
-            <div className="svc-hero__copy">
-              {/* prettier-ignore */}
+          <div className="hero__grid">
+            <div className="hero__copy">
               <Reveal as="div" className="crumb reveal">
                 <Link to="/" hash="top">Home</Link>
                 <span className="sep">/</span>
-                {' '}
                 <b>Werken-bij Websites</b>
-              </Reveal>{" "}
-              <Reveal as="div" className="hero__badge reveal" data-d="1">
-                <span className="badge">
-                  <span className="gdot" />
-                  Voor bedrijven die personeel zoeken
-                </span>
+              </Reveal>
+              <Reveal as="p" className="v2-eyebrow reveal">
+                Voor bedrijven die personeel zoeken
               </Reveal>
               <Reveal as="h1" className="display reveal" data-d="1">
-                Een werken-bij website laten maken die laat zien hoe het echt is
+                Een werken-bij website laten maken die laat zien hoe het <em>echt</em> is
               </Reveal>
-              <Reveal as="p" className="lead svc-hero__sub reveal" data-d="2">
-                Een werken-bij website is een website of een deel van je bedrijfssite waar
-                sollicitanten zien hoe het is om bij je te werken, welke vacatures er zijn en hoe ze
-                solliciteren. MegaOnline bouwt werken-bij websites die laten zien wie er werken, hoe
-                een werkdag eruitziet en hoe je met een paar klikken solliciteert. Je website kost
-                je misschien niet alleen klanten, maar ook medewerkers.
+              <Reveal as="p" className="lead hero__sub reveal" data-d="2">
+                Een werken-bij website is een website of een deel van je bedrijfssite waar sollicitanten zien hoe het is om bij je te werken, welke vacatures er zijn en hoe ze solliciteren.
               </Reveal>
-              <Reveal as="div" className="svc-hero__ctas reveal" data-d="2">
-                <Link className="btn btn-primary" to="/gratis-websitescan">
-                  {CTA_SCAN}
-                </Link>
-                <Link className="tlink" to="/contact">
-                  Plan een kennismaking
-                </Link>
+              <Reveal as="ul" className="hero__ticks reveal" data-d="3">
+                <li>
+                  <Icon name="check" className="ck" />
+                  <span>Een sectie op je site of een aparte website</span>
+                </li>
+                <li>
+                  <Icon name="check" className="ck" />
+                  <span>Vacatures zelf beheren of uit je wervingssysteem</span>
+                </li>
+                <li>
+                  <Icon name="check" className="ck" />
+                  <span>Solliciteren in een paar klikken, ook op mobiel</span>
+                </li>
               </Reveal>
             </div>
-            <Reveal as="div" className="hvis reveal" data-d="2">
-              <div className="hvis__frame">
-                <Media
-                  id="wb-hero"
-                  fit="cover"
-                  placeholder="[ TEAMFOTO OP DE WERKVLOER ]"
-                  alt="Team aan het werk op de werkvloer"
-                />
-              </div>
-            </Reveal>
+            <AanvraagKort soort="ontwerp" className="hero__form reveal" />
           </div>
         </div>
       </section>
 
-      <section
-        className="section section--tight"
-        data-theme="paper"
-        data-screen-label="Sectie of aparte website"
-      >
+      <section className="section" data-theme="light" data-screen-label="Arbeidsmarkt">
         <div className="wrap">
-          <Reveal as="div" className="shead reveal">
-            <h2 className="h2">Een aparte werken-bij website of een sectie op je bedrijfssite?</h2>
-            <p className="lead">
-              Allebei kan. Wat past, hangt af van hoeveel vacatures je hebt en hoeveel je wilt laten
-              zien.
-            </p>
-          </Reveal>
-          <div className="featgrid" style={kaarten}>
-            <Reveal as="div" className="feat reveal">
-              <span className="iconbox">
-                <Icon name="layout" />
-              </span>
+          <Reveal as="div" className="v2-head reveal">
+            <div className="shead">
+              <span className="label">Het probleem</span>
+              <h2 className="h2">Ligt het alleen aan de arbeidsmarkt?</h2>
+            </div>
+            <div className="v2-head__side">
               <p>
-                <strong style={nadruk}>Een sectie op je bedrijfssite</strong>, bijvoorbeeld
-                /werken-bij: één website om bij te houden en sollicitanten zien meteen wat je
-                bedrijf doet.
+                Goede mensen vinden is zwaar. Maar het ligt ook aan wat iemand ziet als hij je bedrijf opzoekt. Een twijfelende sollicitant haakt net zo stil af als een twijfelende klant.
               </p>
-            </Reveal>
-            <Reveal as="div" className="feat reveal" data-d="1">
-              <span className="iconbox">
-                <Icon name="globe" />
-              </span>
-              <p>
-                <strong style={nadruk}>Een aparte werken-bij website:</strong> alle ruimte voor
-                sfeer, mensen en solliciteren, met een eigen opbouw.
-              </p>
-            </Reveal>
-          </div>
-          <Reveal as="p" className="lead reveal" style={vervolg}>
-            In de gratis website scan kijkt MegaOnline wat voor jouw situatie het slimst is.
+            </div>
           </Reveal>
+          <ul className="cw-problems cw-problems--4">
+            {AFHAKERS.map((x, i) => (
+              <Reveal as="li" key={x.t} className="cw-problem reveal" data-d={String(i % 3)}>
+                <h3>{x.t}</h3>
+                <p>{x.p}</p>
+              </Reveal>
+            ))}
+          </ul>
         </div>
       </section>
 
-      <section
-        className="section section--tight"
-        data-theme="light"
-        data-screen-label="Arbeidsmarkt"
-      >
+      <section className="section" data-theme="paper" data-screen-label="Wat een werken-bij website nodig heeft">
         <div className="wrap">
           <Reveal as="div" className="shead reveal">
-            <h2 className="h2">Ligt het alleen aan de arbeidsmarkt?</h2>
-            <p className="lead">
-              Goede mensen vinden is zwaar. Maar het ligt ook aan wat iemand ziet als hij je bedrijf
-              opzoekt. Een twijfelende sollicitant haakt net zo stil af als een twijfelende klant.
-              Dit houdt hem vaak tegen:
-            </p>
-          </Reveal>
-          <div className="flaw__mini" style={{ marginTop: "clamp(28px,3vw,40px)" }}>
-            <Reveal as="div" className="miniprob reveal">
-              <h4>Geen idee hoe het is om bij je te werken.</h4>
-            </Reveal>
-            <Reveal as="div" className="miniprob reveal" data-d="1">
-              <h4>Alleen een lijstje vacatures met functietitels en eisen.</h4>
-            </Reveal>
-            <Reveal as="div" className="miniprob reveal">
-              <h4>Solliciteren kost te veel moeite: lange formulieren en onduidelijke stappen.</h4>
-            </Reveal>
-            <Reveal as="div" className="miniprob reveal" data-d="1">
-              <h4>Geen echte foto's van het team.</h4>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      <section
-        className="section section--tight"
-        data-theme="light"
-        data-screen-label="Wat een werken-bij website nodig heeft"
-      >
-        <div className="wrap">
-          <Reveal as="div" className="shead reveal">
+            <span className="label">Wat erop moet</span>
             <h2 className="h2">Wat heeft een goede werken-bij website nodig?</h2>
           </Reveal>
-          <div className="featgrid">
-            <Reveal as="div" className="feat reveal">
-              <span className="iconbox">
-                <Icon name="users" />
-              </span>
-              <h4>Echte mensen</h4>
-              <p>Gezichten en verhalen van collega's, niet alleen functietitels.</p>
+          <div className="cw-krijgt">
+            <Reveal as="div" className="cw-card reveal">
+              <h3>Wat sollicitanten willen zien</h3>
+              <ul className="cw-incl">
+                {NODIG.map((x) => (
+                  <li key={x.t}>
+                    <span className="cw-incl__ico">
+                      <Icon name={x.icon} />
+                    </span>
+                    {x.t}
+                  </li>
+                ))}
+              </ul>
             </Reveal>
-            <Reveal as="div" className="feat reveal" data-d="1">
-              <span className="iconbox">
-                <Icon name="camera" />
-              </span>
-              <h4>Goede foto's</h4>
-              <p>Een eerlijk beeld van de werkvloer.</p>
-            </Reveal>
-            <Reveal as="div" className="feat reveal" data-d="2">
-              <span className="iconbox">
-                <Icon name="list-checks" />
-              </span>
-              <h4>Heldere verwachtingen</h4>
-              <p>Wat het werk inhoudt, zodat de juiste mensen reageren.</p>
-            </Reveal>
-            <Reveal as="div" className="feat reveal" data-d="3">
-              <span className="iconbox">
-                <Icon name="send" />
-              </span>
-              <h4>Eenvoudig solliciteren</h4>
-              <p>Een kort formulier, zonder verplichte velden die niet nodig zijn.</p>
-            </Reveal>
-            <Reveal as="div" className="feat reveal">
-              <span className="iconbox">
-                <Icon name="award" />
-              </span>
-              <h4>Een herkenbaar verhaal</h4>
-              <p>Wie je bent en waarom mensen blijven.</p>
-            </Reveal>
-            <Reveal as="div" className="feat reveal" data-d="1">
-              <span className="iconbox">
-                <Icon name="smartphone" />
-              </span>
-              <h4>Goed op mobiel</h4>
-              <p>Solliciteren werkt op een telefoon net zo goed als op een laptop.</p>
-            </Reveal>
-            <Reveal as="div" className="feat reveal" data-d="2">
-              <span className="iconbox">
-                <Icon name="phone-call" />
-              </span>
-              <h4>Snel contact</h4>
-              <p>Even appen of bellen, voor wie nog geen volledige sollicitatie wil sturen.</p>
+            <Reveal as="div" className="cw-card reveal" data-d="1">
+              <h3>Een aparte website of een sectie op je bedrijfssite?</h3>
+              <p>Allebei kan. Wat past, hangt af van hoeveel vacatures je hebt en hoeveel je wilt laten zien.</p>
+              <ul className="cw-list">
+                <li>
+                  <Icon name="check" className="ck" />
+                  <span><strong>Een sectie op je bedrijfssite</strong>, bijvoorbeeld /werken-bij: één website om bij te houden en sollicitanten zien meteen wat je bedrijf doet.</span>
+                </li>
+                <li>
+                  <Icon name="check" className="ck" />
+                  <span><strong>Een aparte werken-bij website:</strong> alle ruimte voor sfeer, mensen en solliciteren, met een eigen opbouw.</span>
+                </li>
+              </ul>
+              <p>We kijken samen wat voor jouw situatie het slimst is.</p>
             </Reveal>
           </div>
         </div>
@@ -278,254 +195,156 @@ function WerkenBijWebsites() {
 
       <section className="section" data-theme="dark" data-screen-label="Foto's en video">
         <div className="wrap">
-          <Reveal as="div" className="shead reveal" style={{ marginBottom: "8px" }}>
-            <h2 className="h2">
-              Waarom zijn foto's en video zo belangrijk op een werken-bij website?
-            </h2>
+          <Reveal as="div" className="shead reveal">
+            <span className="label">Beeld</span>
+            <h2 className="h2">Waarom zijn foto's en video zo belangrijk op een werken-bij website?</h2>
           </Reveal>
-          <div className="media">
-            <Reveal as="div" className="mediagal reveal">
-              <div className="mslot mslot--tall">
-                <Media
-                  id="cw-media-1"
-                  fit="cover"
-                  placeholder="[ TEAMFOTO ]"
-                  alt="Collega's samen aan het werk op kantoor"
-                />
-              </div>
-              <div className="mslot mslot--sq">
-                <Media
-                  id="cw-media-2"
-                  fit="cover"
-                  placeholder="[ WERKDAG ]"
-                  alt="Monteur aan het werk op locatie"
-                />
-              </div>
-              <div className="mslot mslot--sq">
-                <Media
-                  id="cw-media-3"
-                  fit="cover"
-                  placeholder="[ INTERVIEW ]"
-                  alt="Gesprek tussen twee collega's"
-                />
-              </div>
-              <div className="mslot mslot--wide">
-                <Media
-                  id="cw-media-4"
-                  fit="cover"
-                  placeholder="[ VIDEO / SFEER ]"
-                  alt="Medewerker in het magazijn"
-                />
-              </div>
+          <div className="cw-beeld">
+            <Reveal as="div" className="cw-beeld__grid reveal">
+              <div><Media id="cw-media-1" fit="cover" placeholder="[ TEAMFOTO ]" alt="Collega's samen aan het werk op kantoor" /></div>
+              <div><Media id="cw-media-2" fit="cover" placeholder="[ WERKDAG ]" alt="Monteur aan het werk op locatie" /></div>
+              <div><Media id="cw-media-3" fit="cover" placeholder="[ INTERVIEW ]" alt="Gesprek tussen twee collega's" /></div>
+              <div><Media id="cw-media-4" fit="cover" placeholder="[ VIDEO / SFEER ]" alt="Medewerker in het magazijn" /></div>
             </Reveal>
-            <Reveal as="div" className="media__body reveal" data-d="1">
+            <Reveal as="div" className="cw-beeld__tekst reveal" data-d="1">
               <p>
-                Niemand voelt de sfeer van een bedrijf door een vacaturetekst te lezen. Een eerlijke
-                teamfoto of een korte video van een werkdag laat sneller zien hoe het is. Het gaat
-                vaak mis met verouderde foto's, stockbeelden en pagina's zonder gezichten van het
-                team.
+                Niemand voelt de sfeer van een bedrijf door een vacaturetekst te lezen. Een eerlijke teamfoto of een korte video van een werkdag laat sneller zien hoe het is.
               </p>
               <p>
-                MegaOnline kan helpen met teamfoto's, werkdagbeelden, interviews met collega's en
-                bedrijfsvideo's, eenmalig bij de bouw of periodiek.
+                Het gaat vaak mis met verouderde foto's, stockbeelden en pagina's zonder gezichten van het team. We helpen met teamfoto's, werkdagbeelden, interviews met collega's en bedrijfsvideo's, eenmalig bij de bouw of periodiek.
               </p>
             </Reveal>
           </div>
         </div>
       </section>
 
-      <section className="section section--tight" data-theme="light" data-screen-label="Vacatures">
+      <section className="section" data-theme="light" data-screen-label="Vacatures en Google">
         <div className="wrap">
           <Reveal as="div" className="shead reveal">
-            <h2 className="h2">Hoe komen je vacatures op je werken-bij website?</h2>
-            <p className="lead">Er zijn twee manieren:</p>
+            <span className="label">Vacatures</span>
+            <h2 className="h2">
+              Van vacature tot <em>sollicitatie.</em>
+            </h2>
           </Reveal>
-          <div className="featgrid" style={kaarten}>
-            <Reveal as="div" className="feat reveal">
-              <span className="iconbox">
-                <Icon name="file-text" />
-              </span>
-              <h4>Zelf beheren</h4>
-              <p>
-                Je zet een vacature online of haalt hem weg op de website, zonder technische kennis.
-              </p>
+          <div className="cw-duo">
+            <Reveal as="div" className="cw-card reveal">
+              <h2>Hoe komen je vacatures op je werken-bij website?</h2>
+              <p>Er zijn twee manieren:</p>
+              <ul className="cw-list">
+                <li>
+                  <Icon name="check" className="ck" />
+                  <span><strong>Zelf beheren:</strong> je zet een vacature online of haalt hem weg, zonder technische kennis.</span>
+                </li>
+                <li>
+                  <Icon name="check" className="ck" />
+                  <span><strong>Uit je wervingssysteem (ATS):</strong> dat kan alleen als dat systeem een koppeling of een vacaturelijst voor websites aanbiedt. Dan kijken we per situatie wat de slimste koppeling is.</span>
+                </li>
+              </ul>
+              <p>Sollicitaties kunnen binnenkomen via een kort formulier, per mail of via WhatsApp.</p>
             </Reveal>
-            <Reveal as="div" className="feat reveal" data-d="1">
-              <span className="iconbox">
-                <Icon name="workflow" />
-              </span>
-              <h4>Uit je wervingssysteem</h4>
+            <Reveal as="div" className="cw-card reveal" data-d="1">
+              <h2>Kunnen je vacatures in Google verschijnen?</h2>
               <p>
-                De vacatures komen uit het systeem waarin je sollicitaties beheert (een ATS). Dat
-                kan alleen als dat systeem een koppeling of een vacaturelijst voor websites
-                aanbiedt. Ondersteunt je systeem dat, dan kijkt MegaOnline per situatie wat de
-                slimste koppeling is.
+                Google heeft een aparte zoekomgeving voor vacatures, ook in Nederland. Een vacaturepagina kan daarvoor in aanmerking komen als die gestructureerde gegevens heeft (JobPosting) met onder meer de functietitel, een omschrijving, de werkgever, de locatie en de datum van plaatsing.
               </p>
+              <ul className="cw-list">
+                <li>
+                  <Icon name="check" className="ck" />
+                  <span>Elke vacature krijgt een eigen pagina. Google wil deze gegevens alleen op een pagina met één vacature.</span>
+                </li>
+                <li>
+                  <Icon name="check" className="ck" />
+                  <span>Een gesloten vacature gaat offline of krijgt een einddatum.</span>
+                </li>
+              </ul>
+              <p>Of en waar een vacature verschijnt, bepaalt Google. Niemand kan dat garanderen.</p>
             </Reveal>
           </div>
-          <Reveal as="p" className="lead reveal" style={vervolg}>
-            Sollicitaties kunnen binnenkomen via een kort formulier, per mail of via WhatsApp.
-          </Reveal>
         </div>
       </section>
 
-      <section className="section section--tight" data-theme="dark" data-screen-label="Google">
+      <section className="section" id="aanpak" data-theme="dark" data-screen-label="Aanpak">
         <div className="wrap">
           <Reveal as="div" className="shead reveal">
-            <h2 className="h2">Kunnen je vacatures in Google verschijnen?</h2>
+            <span className="label">De aanpak</span>
+            <h2 className="h2">Hoe pakken we een werken-bij website aan?</h2>
             <p className="lead">
-              Google heeft een aparte zoekomgeving voor vacatures, ook in Nederland. Een
-              vacaturepagina kan daarvoor in aanmerking komen als die gestructureerde gegevens heeft
-              (JobPosting) met onder meer de functietitel, een omschrijving, de werkgever, de
-              locatie en de datum van plaatsing. Twee dingen zijn daarbij belangrijk:
+              Het doel is niet zoveel mogelijk sollicitaties, maar dat de juiste mensen denken: hier wil ik werken.
             </p>
           </Reveal>
-          <Reveal
-            as="ul"
-            className="minilist minilist--do reveal"
-            style={{ ...vervolg, maxWidth: "68ch" }}
-          >
-            <Punt>
-              Elke vacature krijgt een eigen pagina. Google wil deze gegevens alleen op een pagina
-              met één vacature, niet op een overzichtspagina.
-            </Punt>
-            <Punt>Een gesloten vacature gaat offline of krijgt een einddatum.</Punt>
+          <ol className="v2-steps v2-steps--4">
+            {STAPPEN.map((s, i) => (
+              <Reveal as="li" key={s.t} className="v2-step reveal" data-d={String(i % 3)}>
+                <span className="v2-step__no">0{i + 1}</span>
+                <h3>{s.t}</h3>
+                <p>{s.p}</p>
+              </Reveal>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <section className="section" data-theme="paper" data-screen-label="Voorbeeld MegaOnline">
+        <div className="wrap">
+          <Reveal as="div" className="v2-head reveal">
+            <div className="shead">
+              <span className="label">Voorbeeld</span>
+              <h2 className="h2">Hoe ziet een werken-bij pagina eruit? Een voorbeeld van MegaOnline zelf</h2>
+            </div>
+            <div className="v2-head__side">
+              <p>
+                Op <Link to="/werken-bij">de vacaturepagina van MegaOnline</Link> staan onze eigen open rollen, van stages tot freelance. Dit is onze eigen website, geen klantvoorbeeld.
+              </p>
+            </div>
           </Reveal>
-          <Reveal as="p" className="lead reveal" style={vervolg}>
-            Of en waar een vacature verschijnt, bepaalt Google. Niemand kan dat garanderen.
+          <Reveal as="div" className="cw-card reveal" style={{ marginTop: 'clamp(28px, 3vw, 40px)' }}>
+            <h3>Zo is die pagina opgebouwd</h3>
+            <ul className="cw-list">
+              {VOORBEELD.map((x) => (
+                <li key={x}>
+                  <Icon name="check" className="ck" />
+                  <span>{x}</span>
+                </li>
+              ))}
+            </ul>
           </Reveal>
         </div>
       </section>
 
-      <section
-        className="section section--tight"
-        data-theme="paper"
-        data-screen-label="Voorbeeld MegaOnline"
-      >
+      <section className="section" data-theme="light" data-screen-label="Voor welke bedrijven">
         <div className="wrap">
-          <Reveal as="div" className="shead reveal">
-            <h2 className="h2">
-              Hoe ziet een werken-bij pagina eruit? Een voorbeeld van MegaOnline zelf
-            </h2>
-            <p className="lead">
-              Op{" "}
-              <Link to="/werken-bij" style={tekstLink}>
-                de vacaturepagina van MegaOnline
-              </Link>{" "}
-              staan de open rollen van MegaOnline zelf, van stages tot freelance. Zo is die pagina
-              opgebouwd:
-            </p>
-          </Reveal>
-          <Reveal
-            as="ul"
-            className="minilist minilist--do reveal"
-            style={{ ...vervolg, maxWidth: "68ch" }}
-          >
-            <Punt>
-              Een overzicht met per rol een kaart: het soort rol, één zin over het werk en de
-              ervaring die nodig is.
-            </Punt>
-            <Punt>
-              Per rol een eigen pagina met wat je gaat doen, wat je meebrengt, wat je niet hoeft te
-              hebben en wat je er leert.
-            </Punt>
-            <Punt>
-              Per vacaturepagina gestructureerde gegevens (JobPosting), uit dezelfde bron als de
-              tekst op de pagina.
-            </Punt>
-            <Punt>
-              Een kort sollicitatieformulier waarin een cv niet verplicht is, met mail en WhatsApp
-              als alternatief.
-            </Punt>
-            <Punt>
-              Een procedure in drie stappen: iets sturen, een kort belgesprek en daarna een opdracht
-              met kennismaking.
-            </Punt>
-          </Reveal>
-          <Reveal as="p" className="lead reveal" style={vervolg}>
-            Dit is de eigen website van MegaOnline, geen klantvoorbeeld.
-          </Reveal>
-        </div>
-      </section>
-
-      <section
-        className="section section--tight"
-        id="aanpak"
-        data-theme="paper"
-        data-screen-label="Aanpak"
-      >
-        <div className="wrap">
-          <Reveal as="div" className="shead reveal">
-            <h2 className="h2">Hoe pakt MegaOnline een werken-bij website aan?</h2>
-          </Reveal>
-          <Reveal as="ol" className="reveal" style={stappen}>
-            <li>
-              <strong style={nadruk}>Je bedrijf begrijpen:</strong> wat maakt het werk leuk, waarom
-              blijven collega's en wat maakt je anders dan de werkgever verderop?
-            </li>
-            <li>
-              <strong style={nadruk}>De mensen begrijpen die je zoekt:</strong> wat hebben zij nodig
-              om te solliciteren?
-            </li>
-            <li>
-              <strong style={nadruk}>Structuur:</strong> welke informatie en welk beeld nodig zijn
-              en hoe iemand naar de sollicitatie gaat.
-            </li>
-            <li>
-              <strong style={nadruk}>Bouwen:</strong> een website die solliciteren makkelijker maakt
-              en die je zelf bijhoudt.
-            </li>
-          </Reveal>
-          <Reveal as="p" className="lead reveal" style={vervolg}>
-            Het doel is niet zoveel mogelijk sollicitaties, maar dat de juiste mensen denken: hier
-            wil ik werken.
-          </Reveal>
-        </div>
-      </section>
-
-      <section className="section" data-theme="dark" data-screen-label="Voor welke bedrijven">
-        <div className="wrap">
-          <Reveal as="div" className="shead reveal">
-            <h2 className="h2">Voor welke bedrijven is een werken-bij website?</h2>
-            <p className="lead">
-              Voor bedrijven die moeite hebben om goede mensen te vinden, zoals
-              installatiebedrijven, bouwbedrijven, transportbedrijven, hoveniers, technische
-              bedrijven en dienstverleners. Zoek je ook meer klanten via je website? Bekijk dan{" "}
-              <Link to="/branches/dienstverleners" style={tekstLink}>
-                websites voor dienstverleners
-              </Link>
-              ,{" "}
-              <Link to="/branches/activiteitenbedrijven" style={tekstLink}>
-                websites voor activiteitenbedrijven
-              </Link>{" "}
-              of{" "}
-              <Link to="/branches/verhuurbedrijven" style={tekstLink}>
-                websites voor verhuurbedrijven
-              </Link>
-              .
-            </p>
-          </Reveal>
-        </div>
-      </section>
-
-      <section className="section section--tight" data-theme="paper" data-screen-label="Prijs">
-        <div className="wrap">
-          <Reveal as="div" className="shead reveal">
-            <h2 className="h2">Wat kost een werken-bij website laten maken?</h2>
-            <p className="lead">
-              Dat hangt af van de vorm (een sectie of een aparte website), het aantal vacatures en
-              of de vacatures uit een wervingssysteem moeten komen.{" "}
-              {/* [prijs: Beslissing Joshua (TK-166 punt 5 / TK-85 vraag 1)] */}
-              In de gratis website scan krijg je advies voor jouw situatie.
-            </p>
-          </Reveal>
+          <div className="cw-duo">
+            <Reveal as="div" className="cw-card reveal">
+              <h2>Voor welke bedrijven is een werken-bij website?</h2>
+              <p>
+                Voor bedrijven die moeite hebben om goede mensen te vinden, zoals installatiebedrijven, bouwbedrijven, transportbedrijven, hoveniers, technische bedrijven en dienstverleners.
+              </p>
+              <p>
+                Zoek je ook meer klanten via je website? Bekijk dan <Link to="/branches/dienstverleners">websites voor dienstverleners</Link>, <Link to="/branches/activiteitenbedrijven">websites voor activiteitenbedrijven</Link> of <Link to="/branches/verhuurbedrijven">websites voor verhuurbedrijven</Link>.
+              </p>
+            </Reveal>
+            <Reveal as="div" className="cw-card cw-card--dark reveal" data-d="1">
+              <span className="cw-card__tag">Investering</span>
+              <h2>Wat kost een werken-bij website laten maken?</h2>
+              <p>
+                Dat hangt af van de vorm (een sectie of een aparte website), het aantal vacatures en of de vacatures uit een wervingssysteem moeten komen. Na een eerste gesprek krijg je een duidelijke prijs.
+              </p>
+              <a className="btn btn-primary" href="#ontwerp">
+                Vraag je gratis homepageontwerp aan
+              </a>
+            </Reveal>
+          </div>
         </div>
       </section>
 
       <section className="section" id="faq" data-theme="paper" data-screen-label="FAQ">
-        <div className="wrap">
-          <Reveal as="div" className="shead reveal" style={{ maxWidth: "680px" }}>
-            <h2 className="h2">Veelgestelde vragen over werken-bij websites</h2>
+        <div className="wrap cw-faq">
+          <Reveal as="div" className="shead reveal">
+            <span className="label">Veelgestelde vragen</span>
+            <h2 className="h2">Veelgestelde vragen over <span style={{ whiteSpace: 'nowrap' }}>werken-bij</span> websites</h2>
+            <p className="cw-faq__mail">
+              Staat je vraag er niet bij? Mail naar <a href="mailto:info@megaonline.io">info@megaonline.io</a>.
+            </p>
           </Reveal>
           <div className="faq">
             {FAQ_ITEMS.map(({ q, a }) => (
@@ -537,40 +356,19 @@ function WerkenBijWebsites() {
         </div>
       </section>
 
-      <section
-        className="section"
-        id="scan"
-        data-theme="dark"
-        data-screen-label="Eind-CTA + scan-formulier"
-      >
+      <section className="section final" data-theme="dark" data-screen-label="Afsluitende CTA">
         <div className="wrap">
-          <div className="endcta__grid">
-            <div className="endcta__copy">
-              <Reveal as="h2" className="display reveal">
-                Gratis website scan voor je werken-bij website
-              </Reveal>
-              <Reveal as="p" className="lead reveal" data-d="1">
-                Wil je weten hoe jouw werken-bij website eruit kan zien? Ontvang een gratis
-                website scan met persoonlijk advies. Beantwoord zes korte vragen. Vrijblijvend.
-              </Reveal>
-              <Reveal
-                as="div"
-                className="svc-hero__ctas reveal"
-                data-d="2"
-                style={{ marginTop: "28px" }}
-              >
-                <Link className="btn btn-primary" to="/gratis-websitescan">
-                  {CTA_SCAN}
-                </Link>
-                <Link className="tlink" to="/contact">
-                  Plan een kennismaking
-                </Link>
-              </Reveal>
-            </div>
-            <ConceptForm className="reveal" />
-          </div>
+          <Reveal as="h2" className="display reveal">
+            Benieuwd hoe jouw website eruit kan zien?
+          </Reveal>
+          <Reveal as="p" className="lead reveal" data-d="1">
+            We ontwerpen gratis een homepage voor je bedrijf. Zo zie je wat we voor je kunnen maken, zonder verplichtingen.
+          </Reveal>
+          <Reveal as="a" className="btn btn-primary reveal" data-d="2" href="#ontwerp">
+            Vraag je gratis homepageontwerp aan
+          </Reveal>
         </div>
       </section>
     </main>
-  );
+  )
 }
