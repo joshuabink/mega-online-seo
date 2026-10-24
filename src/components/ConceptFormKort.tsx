@@ -5,7 +5,7 @@ import { SteppedLeadForm } from './LeadForm'
 
 /**
  * Kort aanvraagformulier voor het gratis websiteconcept (4 stappen), voor
- * /homepage-v2. Zelfde veldnamen en verzending als ConceptForm, zodat de mail
+ * de homepage. Zelfde veldnamen en verzending als ConceptForm, zodat de mail
  * er hetzelfde uitziet. ConceptForm zelf blijft ongewijzigd.
  *
  * Wie nog geen website heeft, vult in stap 2 geen websiteadres in maar

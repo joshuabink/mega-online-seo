@@ -1,13 +1,11 @@
-import { useEffect, useState } from 'react'
-import { createFileRoute } from '@tanstack/react-router'
-import { Link } from '@tanstack/react-router'
+import { createFileRoute, Link } from '@tanstack/react-router'
 import { Icon } from '@/components/Icon'
 import { Media } from '@/components/Media'
 import { Qa } from '@/components/Qa'
 import { Reveal } from '@/components/Reveal'
-import { ConceptForm } from '@/components/ConceptForm'
+import { ConceptFormKort } from '@/components/ConceptFormKort'
 import { CTA_SCAN } from '@/lib/cta'
-import '@/styles/pages/index.css'
+import '@/styles/pages/home.css'
 
 export const Route = createFileRoute('/')({
   head: () => ({
@@ -26,53 +24,156 @@ export const Route = createFileRoute('/')({
   component: Home,
 })
 
-/**
- * Bron voor zowel de zichtbare FAQ als de FAQPage-structured data. Eén lijst,
- * zodat de vragen op de pagina en het schema niet uit elkaar kunnen lopen.
- */
-const FAQ_ITEMS: { q: string; a: string }[] = [
+const DIENSTEN: {
+  icon: string
+  tag: string
+  name: string
+  text: string
+  price: string
+  to: string
+  linkText: string
+  dark?: boolean
+}[] = [
   {
-    q: "Wat kost een website bij MegaOnline?",
-    a: "Een Conversie Website begint vanaf € 2.500. De uiteindelijke prijs hangt af van het aantal pagina's en de complexiteit. En van welke extra functionaliteiten je nodig hebt. In de gratis website scan geeft MegaOnline je een eerlijke indicatie op basis van jouw situatie.",
+    icon: 'target',
+    tag: 'Kerndienst',
+    name: 'Conversie Website',
+    text: 'Een nieuwe website die laat zien waarom klanten voor jou moeten kiezen. Daarna staan ze in een paar klikken bij een aanvraag of boeking.',
+    price: 'vanaf € 2.500',
+    to: '/diensten/conversie-website',
+    linkText: 'Bekijk de dienst',
+    dark: true,
   },
   {
-    q: "Waarom niet kiezen voor een goedkope webbouwer?",
-    a: "Een website bouwen is meer dan pagina's online zetten. MegaOnline kijkt naar vertrouwen, gebruiksgemak en hoe bezoekers daadwerkelijk actie ondernemen. Twijfel je tussen een freelancer en een bureau? Lees de eerlijke vergelijking tussen een freelancer en een webbureau.",
+    icon: 'trending-up',
+    tag: 'SEO · GEO · Google Ads',
+    name: 'Online marketing',
+    text: "Gevonden worden door mensen die zoeken naar wat jij doet. Elke maand schrijven we blogs en landingspagina's op de vragen van jouw klanten. Haast? Dan zetten we Google Ads in.",
+    price: 'SEO-pakket: vanaf € 75 per maand',
+    to: '/diensten/seo',
+    linkText: 'Bekijk de dienst',
   },
   {
-    q: "Wat gebeurt er na livegang?",
-    a: "Na livegang kan MegaOnline blijven helpen met onderhoud, verbeteringen en het optimaliseren van de website.",
+    icon: 'refresh-cw',
+    tag: 'Bestaande site',
+    name: 'Website Redesign',
+    text: 'Je site werkt nog, maar oogt gedateerd of past niet meer bij je bedrijf. We vernieuwen hem en houden vast aan wat nu al goed werkt.',
+    price: 'prijs na de scan',
+    to: '/diensten/website-redesign',
+    linkText: 'Bekijk de dienst',
   },
   {
-    q: "Hoe weet MegaOnline of een website beter presteert?",
-    a: "Door analytics en bezoekersgedrag te meten, krijgt MegaOnline inzicht in wat werkt en waar kansen liggen.",
+    icon: 'layout-template',
+    tag: 'Voor starters',
+    name: 'Starter Website',
+    text: 'Net begonnen of een kleiner bedrijf? Een compacte site met de basis op orde: wie je bent, wat je doet en hoe je makkelijk contact opneemt.',
+    price: 'vanaf € 1.500',
+    to: '/diensten/starter-website',
+    linkText: 'Bekijk de dienst',
   },
   {
-    q: "Kan ik mijn website straks zelf beheren?",
-    a: "Ja. MegaOnline bouwt je website zo op dat je teksten en foto’s eenvoudig zelf kunt aanpassen, zonder technische kennis.",
+    icon: 'calendar-check',
+    tag: 'Boekingssysteem',
+    name: 'Online boeken en reserveren',
+    text: "Klanten boeken zelf, ook 's avonds en in het weekend. Van een belafspraak tot een ticket met extra's, ingericht op jouw diensten en gekoppeld aan je agenda, CRM of WhatsApp.",
+    price: 'prijs na de scan',
+    to: '/diensten/integraties',
+    linkText: 'Bekijk de dienst',
   },
   {
-    q: "Hoe lang duurt het bouwen van een website?",
-    a: "Een gemiddeld websiteproject duurt 4 tot 8 weken. Dit hangt af van hoe snel jij en MegaOnline samen de intake kunnen afronden en van hoe snel de teksten en foto's beschikbaar zijn. MegaOnline werkt altijd met een duidelijke planning.",
-  },
-  {
-    q: "Wij hebben al een website. Kan MegaOnline die verbeteren?",
-    a: "Ja. In sommige gevallen is een volledig nieuwe website de beste keuze. In andere gevallen kunnen gerichte verbeteringen al veel effect hebben. De gratis website scan helpt MegaOnline om te bepalen wat voor jou de slimste aanpak is.",
-  },
-  {
-    q: "Wat als ik na livegang iets wil aanpassen?",
-    a: "Kleine aanpassingen vallen vaak binnen het standaard beheer. Grotere uitbreidingen worden apart besproken en geprijsd. Met een Groei Partnership heb je sowieso een vaste maandelijkse capaciteit voor verbeteringen.",
-  },
-  {
-    q: "Is het Groei Partnership verplicht na een nieuwe website?",
-    a: "Nee. Sommige klanten kiezen voor een eenmalige website en regelen het beheer zelf of via een andere partij. We raden het Partnership wel aan, omdat websites die maand na maand nieuwe pagina's krijgen structureel beter gevonden worden. Het loopt twaalf maanden en is daarna maandelijks opzegbaar.",
-  },
-  {
-    q: "Voor welke bedrijven werkt MegaOnline?",
-    a: "MegaOnline werkt het liefst voor groeiende bedrijven, waarbij de website een directe rol speelt in het binnenhalen van aanvragen, reserveringen of boekingen. Denk aan activiteitenbedrijven, verhuurders, zakelijke dienstverleners, rijscholen en transportbedrijven. De branche is minder belangrijk dan het bedrijfsmodel.",
+    icon: 'shield-check',
+    tag: 'Zorgeloos',
+    name: 'Onderhoud & Support',
+    text: 'Updates, beveiliging en back-ups geregeld. Gaat er toch iets mis, dan heb je direct iemand die het oplost.',
+    price: 'vanaf € 50 per maand',
+    to: '/contact',
+    linkText: 'Stel je vraag',
   },
 ]
 
+const STAPPEN = [
+  {
+    no: '01',
+    name: 'Begrijpen',
+    text: 'We leren je bedrijf en je klanten kennen. Wie is je klant, wat zoekt hij en wat trekt hem over de streep?',
+    meta: 'Intake · doelgroep · structuur',
+  },
+  {
+    no: '02',
+    name: 'Bouwen',
+    text: 'We ontwerpen en bouwen een site die vertrouwen opbouwt en bezoekers zonder omwegen naar een aanvraag of boeking leidt.',
+    meta: 'Gemiddeld 4 tot 8 weken',
+  },
+  {
+    no: '03',
+    name: 'Verbeteren',
+    text: 'Na livegang kijken we wat bezoekers doen. Waar haken ze af? Elke maand pakken we de grootste groeikans.',
+    meta: 'Meten · bijsturen · rapporteren',
+  },
+]
+
+const VERSCHIL = [
+  {
+    k: 'Startpunt',
+    them: 'Jouw wensenlijst: welke pagina’s, welke kleuren.',
+    us: 'Je klant: wie hij is, wat hij zoekt en wat hem over de streep trekt.',
+  },
+  { k: 'Doel', them: 'Een site die er goed uitziet.', us: 'Een site die aanvragen en boekingen oplevert.' },
+  { k: 'Na livegang', them: 'Project af, factuur verstuurd.', us: 'Doorlopend bijsturen op de grootste groeikans.' },
+  {
+    k: 'Meten',
+    them: 'Bezoekersaantallen, als je erom vraagt.',
+    us: 'Elke maand zwart op wit wat het opleverde in aanvragen.',
+  },
+]
+
+const CHECKS = [
+  {
+    t: 'Bezoekers snappen niet wat je doet',
+    c: 'laat iemand je homepage vijf seconden zien. Kan hij zeggen wat je doet en voor wie?',
+  },
+  {
+    t: 'Er is geen reden om jou te vertrouwen',
+    c: 'zie je wie er achter het bedrijf zit, wat iets ongeveer kost en wat klanten ervan vonden?',
+  },
+  {
+    t: 'Op de telefoon loopt het vast',
+    c: 'vraag via je eigen telefoon een offerte of boeking aan. Hoeveel tikken had je nodig?',
+  },
+  {
+    t: 'Het formulier vraagt te veel, te vroeg',
+    c: 'tel de velden. Welke heb je pas na het eerste gesprek echt nodig?',
+  },
+]
+
+const FAQ_ITEMS: { q: string; a: string }[] = [
+  {
+    q: 'Wat kost een website bij MegaOnline?',
+    a: "Een Conversie Website begint vanaf € 2.500. De prijs hangt af van het aantal pagina's en de functies die je nodig hebt. In de gratis scan krijg je een eerlijke indicatie.",
+  },
+  {
+    q: 'Hoe lang duurt het bouwen?',
+    a: "Gemiddeld 4 tot 8 weken. Dat hangt vooral af van hoe snel teksten en foto's beschikbaar zijn.",
+  },
+  {
+    q: 'Wij hebben al een website. Kunnen jullie die verbeteren?',
+    a: 'Ja. Soms is een nieuwe site de beste keuze, soms leveren gerichte verbeteringen al veel op. De scan laat zien wat voor jou het slimst is.',
+  },
+  {
+    q: 'Kan ik mijn website zelf beheren?',
+    a: "Ja. Teksten en foto's pas je zelf aan, zonder technische kennis.",
+  },
+  {
+    q: 'Zit ik na livegang ergens aan vast?',
+    a: 'Nee. Na livegang kies je zelf: onderhoud, online marketing of het beheer in eigen hand.',
+  },
+  {
+    q: 'Voor welke bedrijven werken jullie?',
+    a: 'Voor bedrijven die leven van aanvragen, reserveringen of boekingen. Denk aan activiteitenbedrijven, verhuurders, zakelijke dienstverleners en rijscholen. Het bedrijfsmodel telt meer dan de branche.',
+  },
+]
+
+/** FAQPage-schema uit dezelfde bron als de zichtbare vragen. */
 const FAQ_SCHEMA = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
@@ -83,732 +184,185 @@ const FAQ_SCHEMA = {
   })),
 }
 
-const VERSCHIL = [
-  {
-    k: 'Startpunt',
-    them: 'Jouw wensenlijst: welke pagina\u2019s, welke kleuren.',
-    us: 'Je klant: wie hij is, wat hij zoekt en wat hem over de streep trekt.',
-  },
-  { k: 'Doel', them: 'Een site die er goed uitziet.', us: 'Een site die aanvragen en boekingen oplevert.' },
-  { k: 'Na de livegang', them: 'Project af, factuur verstuurd.', us: 'Doorlopend bijsturen op de grootste groeikans.' },
-  {
-    k: 'Meten',
-    them: 'Bezoekersaantallen, als je erom vraagt.',
-    us: 'Elke maand zwart op wit wat het opleverde in aanvragen.',
-  },
-]
-
-const WERKWIJZE_ALT =
-  'Zo gaat een bezoeker van eerste indruk naar een aanvraag: eerste indruk, vertrouwen, makkelijk aanvragen en meer aanvragen, met meten en verbeteren na livegang'
-
-/**
- * De mobiele infographic ligt binnen het lazy-loadvenster van Lighthouse.
- * Staat de URL in de eerste HTML, dan is het bestand binnen vóór de
- * headerknop en telt het mee voor de gesimuleerde LCP. Het figuur is tot
- * de reveal toch onzichtbaar.
- */
-function WerkwijzeVisual() {
-  const [on, setOn] = useState(false)
-  useEffect(() => {
-    setOn(true)
-  }, [])
-  return (
-    <picture>
-      {on ? (
-        <source
-          media="(max-width: 767px)"
-          srcSet="/images/werkwijze-visual-mobiel.webp"
-          width={740}
-          height={1233}
-        />
-      ) : null}
-      <img
-        {...(on ? { src: '/images/werkwijze-visual.webp' } : {})}
-        width={1600}
-        height={699}
-        alt={WERKWIJZE_ALT}
-        loading="lazy"
-        decoding="async"
-      />
-      <noscript
-        dangerouslySetInnerHTML={{
-          __html:
-            '<source media="(max-width: 767px)" srcset="/images/werkwijze-visual-mobiel.webp" width="740" height="1233" />' +
-            `<img src="/images/werkwijze-visual.webp" width="1600" height="699" alt="${WERKWIJZE_ALT}" />`,
-        }}
-      />
-    </picture>
-  )
-}
-
 function Home() {
   return (
-    <main id="top" data-page="index">
+    <main id="top" data-page="home">
       <section className="section hero" id="scan" data-theme="dark" data-screen-label="Hero + scan-formulier">
         <div className="wrap">
           <div className="hero__grid">
             <div className="hero__copy">
-              <Reveal as="div" className="hero__badge reveal">
-                <span className="badge">
-                  <span className="gdot" />
-                  Websites voor groeiende bedrijven
-                </span>
-              </Reveal>
-              {' '}
+              <Reveal as="p" className="v2-eyebrow reveal">
+                Websites voor bedrijven die leven van aanvragen
+              </Reveal>{' '}
               <Reveal as="h1" className="display reveal" data-d="1">
-                Je website staat online. Maar
-                {' '}
-                <em>levert</em>
-                {' '}
-                hij ook aanvragen en boekingen op?
-              </Reveal>
-              {' '}
+                Je website staat online. Maar <em>levert</em> hij ook aanvragen en boekingen op?
+              </Reveal>{' '}
               <Reveal as="p" className="lead hero__sub reveal" data-d="2">
-                Veel websites zien er prima uit, maar helpen bezoekers niet om actie te ondernemen. MegaOnline bouwt websites die vertrouwen uitstralen en bezoekers gericht naar meer aanvragen en boekingen begeleiden.
+                Veel websites zien er prima uit, maar helpen bezoekers niet om actie te ondernemen. Wij bouwen websites die vertrouwen wekken en bezoekers naar een aanvraag of boeking leiden. Daarna blijven we bijsturen.
+              </Reveal>{' '}
+              <Reveal as="ul" className="hero__ticks reveal" data-d="3">
+                <li>
+                  <Icon name="check" className="ck" />
+                  <span>Direct contact met wie je site bouwt</span>
+                </li>
+                <li>
+                  <Icon name="check" className="ck" />
+                  <span>Gebouwd op vertrouwen en makkelijk aanvragen</span>
+                </li>
+                <li>
+                  <Icon name="check" className="ck" />
+                  <span>Betrokken partner na livegang</span>
+                </li>
               </Reveal>
+            </div>{' '}
+            <ConceptFormKort className="hero__form reveal" />
+          </div>
+        </div>
+      </section>{' '}
+      <section className="section" id="diensten" data-theme="paper" data-screen-label="Diensten">
+        <div className="wrap">
+          <Reveal as="div" className="v2-head reveal">
+            <div className="shead">
+              <span className="label">Diensten</span>
+              <h2 className="h2">Eerst een website die werkt. Daarna blijven we bijsturen.</h2>
             </div>
-            {' '}
-            <ConceptForm className="hero__form reveal" />
+            <div className="v2-head__side">
+              <p>Je begint met een website die vertrouwen wekt. Na livegang kies je zelf hoe betrokken we blijven.</p>
+            </div>
+          </Reveal>{' '}
+          <div className="v2-svcs">
+            {DIENSTEN.map((d, i) => (
+              <Reveal
+                as="article"
+                key={d.name}
+                className="v2-svc reveal"
+                data-d={String(i % 3)}
+                {...(d.dark ? { 'data-theme': 'dark' } : {})}
+              >
+                <span className="v2-svc__ico">
+                  <Icon name={d.icon} />
+                </span>
+                <span className="v2-svc__tag">{d.tag}</span>
+                <h3>{d.name}</h3>
+                <p>{d.text}</p>
+                <span className="v2-svc__price">{d.price}</span>
+                <Link className="tlink" to={d.to}>
+                  {d.linkText} <span className="arr">&rarr;</span>
+                </Link>
+              </Reveal>
+            ))}
           </div>
         </div>
-      </section>
-      {' '}
-      {' '}
-      <div className="proof proof-band" data-theme="paper" data-screen-label="Vertrouwensbalk">
-        <div className="wrap">
-          <div className="proof__grid">
-            <Reveal as="div" className="proof__item reveal">
-              <span className="proof__ico">
-                <Icon name="shield-check" />
-              </span>
-              {' '}
-              <p>Meer vertrouwen bij bezoekers</p>
-            </Reveal>
-            {' '}
-            <Reveal as="div" className="proof__item reveal" data-d="1">
-              <span className="proof__ico">
-                <Icon name="calendar-check" />
-              </span>
-              {' '}
-              <p>Makkelijker aanvragen en boekingen</p>
-            </Reveal>
-            {' '}
-            <Reveal as="div" className="proof__item reveal" data-d="2">
-              <span className="proof__ico">
-                <Icon name="target" />
-              </span>
-              {' '}
-              <p>Een website die past bij je bedrijf</p>
-            </Reveal>
-            {' '}
-            <Reveal as="div" className="proof__item reveal" data-d="3">
-              <span className="proof__ico">
-                <Icon name="handshake" />
-              </span>
-              {' '}
-              <p>Betrokken partner na livegang</p>
-            </Reveal>
-          </div>
-        </div>
-      </div>
-      {' '}
-      {' '}
-      <section className="section section--tight" data-theme="light" data-screen-label="Het probleem">
-        <div className="wrap">
-          <Reveal as="div" className="shead reveal">
-            <span className="label">Het probleem</span>
-            {' '}
-            <h2 className="h2">Waarom je bezoekers afhaken.</h2>
-            {' '}
-            <p className="lead">
-              Veel bedrijven hebben een website die online staat, maar niet actief bijdraagt aan groei. Bezoekers haken af. Ze twijfelen of nemen geen contact op. Daardoor blijven aanvragen en boekingen liggen. Lees <Link to="/kennisbank/$slug" params={{ slug: 'website-levert-geen-aanvragen-op' }}>waarom je geen aanvragen krijgt via je website</Link>.
-            </p>
-          </Reveal>
-          {' '}
-          <div className="problist">
-            <Reveal as="div" className="prob reveal">
-              <h3>Bezoekers begrijpen niet wat je doet</h3>
-              {' '}
-              <p>
-                Als bezoekers binnen enkele seconden niet begrijpen wat je aanbiedt, haken ze af voordat ze contact opnemen.
-              </p>
-            </Reveal>
-            {' '}
-            <Reveal as="div" className="prob reveal" data-d="1">
-              <h3>Je website straalt weinig vertrouwen uit</h3>
-              {' '}
-              <p>
-                Bezoekers vergelijken je direct met concurrenten. Een verouderde uitstraling kost vertrouwen. Lees <Link to="/kennisbank/$slug" params={{ slug: 'vertrouwen-wekken-zakelijke-website' }}>hoe je vertrouwen wekt op een zakelijke website</Link>.
-              </p>
-            </Reveal>
-            {' '}
-            <Reveal as="div" className="prob reveal">
-              <h3>De mobiele ervaring werkt tegen je</h3>
-              {' '}
-              <p>
-                Bijna iedereen gaat ook met de telefoon online. Als de ervaring daar niet soepel is, verlies je kansen.
-              </p>
-            </Reveal>
-            {' '}
-            <Reveal as="div" className="prob reveal" data-d="1">
-              <h3>Aanvragen zijn te moeilijk gemaakt</h3>
-              {' '}
-              <p>
-                Hoe meer stappen, hoe meer afhakers. Een website moet bezoekers helpen om eenvoudig actie te ondernemen.
-              </p>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-      {' '}
-      {' '}
+      </section>{' '}
       <section className="section" id="werkwijze" data-theme="dark" data-screen-label="Werkwijze">
         <div className="wrap">
           <Reveal as="div" className="shead reveal">
-            <span className="label" style={{ padding: "6px 12px" }}>DE AANPAK</span>
-            {' '}
-            <h2 className="h2">Van eerste indruk tot meer aanvragen</h2>
-            {' '}
-            <p className="lead">
-              Geen standaard webbureau dat een website bouwt en verdwijnt. MegaOnline begint met begrijpen. MegaOnline bouwt met een doel en blijft betrokken.
-            </p>
-          </Reveal>
-          {' '}
-          <Reveal as="figure" className="procband reveal">
-            <WerkwijzeVisual />
-          </Reveal>
-          {' '}
-          <div className="steps">
-            <Reveal as="div" className="step reveal">
-              <span className="step__no">Stap 1</span>
-              {' '}
-              <div className="step__body">
-                <h3>Begrijpen</h3>
-                <p>
-                  MegaOnline leert jouw bedrijf, klanten en doelen kennen. Alleen zo kan MegaOnline een website bouwen die aansluit bij wat bezoekers nodig hebben.
-                </p>
-              </div>
-            </Reveal>
-            {' '}
-            <Reveal as="div" className="step reveal" data-d="1">
-              <span className="step__no">Stap 2</span>
-              {' '}
-              <div className="step__body">
-                <h3>Bouwen</h3>
-                <p>
-                  MegaOnline ontwerpt en ontwikkelt een website die vertrouwen opbouwt en bezoekers makkelijker richting contact, aanvraag of boeking stuurt.
-                </p>
-              </div>
-            </Reveal>
-            {' '}
-            <Reveal as="div" className="step reveal" data-d="2">
-              <span className="step__no">Stap 3</span>
-              {' '}
-              <div className="step__body">
-                <h3>Verbeteren</h3>
-                <p>
-                  Na livegang blijft MegaOnline kijken wat bezoekers doen. Waar kansen liggen en hoe de website verder kan verbeteren.
-                </p>
-              </div>
-            </Reveal>
-          </div>
+            <span className="label">Zo werken we</span>
+            <h2 className="h2">Begrijpen. Bouwen. Verbeteren.</h2>
+            <p className="lead">Geen bureau dat oplevert en vertrekt. We beginnen bij je klant en blijven na livegang betrokken.</p>
+          </Reveal>{' '}
+          <ol className="v2-steps">
+            {STAPPEN.map((s, i) => (
+              <Reveal as="li" key={s.no} className="v2-step reveal" data-d={String(i)}>
+                <span className="v2-step__no">{s.no}</span>
+                <h3>{s.name}</h3>
+                <p>{s.text}</p>
+                <span className="v2-step__meta">{s.meta}</span>
+              </Reveal>
+            ))}
+          </ol>
         </div>
-      </section>
-      {' '}
-      {' '}
-      <section className="section section--tight" id="waarom" data-theme="paper" data-screen-label="Waarom MegaOnline">
-        <div className="wrap">
-          <Reveal as="div" className="shead reveal" style={{ marginBottom: "56px" }}>
-            <span className="label">Waarom MegaOnline</span>
-            {' '}
-            <h2 className="h2">
-              Een mooie website is
-              {' '}
-              <em>niet genoeg.</em>
-            </h2>
-            {' '}
-            <p className="lead">
-              Een website kan er fantastisch uitzien en alsnog weinig opleveren. Daarom kijkt MegaOnline verder dan design alleen.
-            </p>
-          </Reveal>
-          {' '}
-          <div className="why">
-            <Reveal as="div" className="whylist reveal">
-              <div className="whyitem">
-                <div>
-                  <h3>Begrijpt een bezoeker direct wat je doet?</h3>
-                </div>
-              </div>
-              {' '}
-              <div className="whyitem">
-                <div>
-                  <h3>Weet een bezoeker waarom hij voor jou moet kiezen?</h3>
-                </div>
-              </div>
-              {' '}
-              <div className="whyitem">
-                <div>
-                  <h3>Kan iemand eenvoudig contact opnemen of boeken?</h3>
-                </div>
-              </div>
-              {' '}
-              <div className="whyitem">
-                <div>
-                  <h3>Straalt je website voldoende vertrouwen uit?</h3>
-                </div>
-              </div>
-              {' '}
-              <div className="whyitem">
-                <div>
-                  <h3>Werkt alles goed op mobiel?</h3>
-                </div>
-              </div>
-            </Reveal>
-            {' '}
-            <Reveal as="aside" className="panel reveal" data-d="1">
-              <p className="panel__quote">
-                MegaOnline snapt dat je geen website wilt om een website te hebben. Je wilt dat jouw online aanwezigheid
-                {' '}
-                <em>beter werkt</em>
-                {' '}
-                voor je bedrijf.
-              </p>
-              {' '}
-              <p className="panel__support">
-                MegaOnline werkt voor bedrijven die afhankelijk zijn van aanvragen, reserveringen en boekingen. Bedrijven die begrijpen dat hun website daar een grote rol in speelt.
-              </p>
-              {' '}
-              <div className="panel__stats">
-                <div>
-                  <div className="n">96%</div>
-                  <div className="l">
-                    van de Nederlanders (12+) gaat online met de telefoon (
-                    <a
-                      href="https://www.cbs.nl/nl-nl/longread/rapportages/2026/digitalisering-en-kenniseconomie-2025/4-ict-gebruik-personen"
-                      target="_blank"
-                      rel="noopener"
-                      style={{ textDecoration: "underline", textUnderlineOffset: "2px" }}
-                    >
-                      CBS, 2025
-                    </a>
-                    )
-                  </div>
-                </div>
-                {' '}
-                <div>
-                  <div className="n">Eerste indruk</div>
-                  <div className="l">telt mee in de keuze om contact op te nemen</div>
-                </div>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-      {' '}
-      <section className="section section--tight" id="verschil" data-theme="dark" data-screen-label="Vergelijking websitebouwer">
+      </section>{' '}
+      <section className="section" id="verschil" data-theme="paper" data-screen-label="Vergelijking websitebouwer">
         <div className="wrap">
           <Reveal as="div" className="shead reveal">
             <span className="label">Het verschil</span>
-            {' '}
             <h2 className="h2">
-              Een websitebouwer maakt wat je vraagt. MegaOnline bouwt wat je klant laat <em>aanvragen.</em>
+              Een websitebouwer maakt wat jij vraagt. Wij bouwen voor jouw doelgroep. Met één doel: dat je bezoeker <em>actie onderneemt.</em>
             </h2>
-          </Reveal>
-          {' '}
-          <Reveal as="div" className="cmp reveal" data-d="1">
-            <div className="cmp__row cmp__row--head" aria-hidden="true">
-              <span />
-              <span className="cmp__col">Gemiddelde websitebouwer</span>
-              <span className="cmp__col cmp__col--us">MegaOnline</span>
-            </div>
-            {VERSCHIL.map((r) => (
-              <div className="cmp__row" key={r.k}>
-                <h3 className="cmp__k">{r.k}</h3>
-                <p className="cmp__them">
-                  <span className="cmp__who">Gemiddelde websitebouwer</span>
-                  {r.them}
-                </p>
-                <p className="cmp__us">
-                  <Icon name="check" className="cmp__ck" />
-                  <span>
-                    <span className="cmp__who">MegaOnline</span>
-                    {r.us}
-                  </span>
-                </p>
-              </div>
-            ))}
-          </Reveal>
-          {' '}
-          <Reveal as="div" className="cmp__foot reveal">
-            <p>Wil je zien hoe dit voor jouw bedrijf kan werken? MegaOnline maakt een gratis website scan met persoonlijk advies.</p>
-            {' '}
-            <Link className="tlink" to="/gratis-websitescan">
-              {CTA_SCAN}
-              {' '}
-              <span className="arr">&rarr;</span>
-            </Link>
+          </Reveal>{' '}
+          <Reveal as="div" className="v2-table reveal" data-d="1">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">
+                    <span className="sr-only">Onderdeel</span>
+                  </th>
+                  <th scope="col">Gemiddelde websitebouwer</th>
+                  <th scope="col" className="us">MegaOnline</th>
+                </tr>
+              </thead>
+              <tbody>
+                {VERSCHIL.map((r) => (
+                  <tr key={r.k}>
+                    <th scope="row">{r.k}</th>
+                    <td>{r.them}</td>
+                    <td className="us">{r.us}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </Reveal>
         </div>
-      </section>
-      {' '}
-      {' '}
-      <section className="section" id="werk" data-theme="light" data-screen-label="Werk / Cases">
+      </section>{' '}
+      <section className="section section--tight" id="zelf-checken" data-theme="light" data-screen-label="Zelf aan de slag">
         <div className="wrap">
-          <Reveal as="div" className="shead shead--split reveal">
+          <Reveal as="div" className="v2-head reveal">
             <div className="shead">
-              <span className="label">PROJECTEN</span>
-              {' '}
-              <h2 className="h2">Wat MegaOnline voor deze bedrijven oploste.</h2>
+              <span className="label">Zelf aan de slag</span>
+              <h2 className="h2">Waarom je website niets oplevert. En hoe je dat zelf checkt.</h2>
             </div>
-            {' '}
-            <Link className="tlink" to="/gratis-websitescan" style={{ paddingBottom: "6px" }}>
-              Start jouw project
-              {' '}
-            </Link>
-          </Reveal>
-          {' '}
-          <div className="cases">
-            <Reveal as="article" className="case reveal">
-              <div className="case__media">
-                <Media id="case-qteam" fit="cover" placeholder="[ Q-Team Solutions ]" alt="Screenshot van de website die MegaOnline voor Q-Team Solutions bouwde" />
-              </div>
-              {' '}
-              <div className="case__body">
-                <h3 className="case__name">Q-Team Solutions</h3>
-                {' '}
-                <div className="case__meta">
-                  <span className="tag">B2B</span>
-                  <span className="tag">Softwarebedrijf</span>
-                </div>
-                {' '}
-                <p className="case__context">
-                  Een bedrijf dat eigen apps ontwikkelt voor zakelijke klanten.
+            <div className="v2-head__side">
+              <p>Dit zien we het vaakst terug in scans. Tien minuten en je telefoon zijn genoeg om het te controleren.</p>
+              <Link className="tlink" to="/kennisbank/$slug" params={{ slug: 'website-levert-geen-aanvragen-op' }}>
+                Lees: waarom je website geen aanvragen oplevert <span className="arr">&rarr;</span>
+              </Link>
+            </div>
+          </Reveal>{' '}
+          <ol className="v2-checks">
+            {CHECKS.map((c, i) => (
+              <Reveal as="li" key={c.t} className="v2-check reveal" data-d={String(i)}>
+                <span className="v2-check__no">0{i + 1}</span>
+                <h3>{c.t}</h3>
+                <p>
+                  <b>Check:</b> {c.c}
                 </p>
-                {' '}
-                <div className="case__steps">
-                  <div className="case__step">
-                    <span className="k">Uitdaging</span>
-                    <p>
-                      De website liet onvoldoende zien welke apps het bedrijf ontwikkelt en welke waarde die bieden aan klanten.
-                    </p>
-                  </div>
-                  {' '}
-                  <div className="case__step">
-                    <span className="k">Wat MegaOnline deed</span>
-                    <p>
-                      MegaOnline bracht de propositie terug naar een duidelijke boodschap en bouwde een structuur die bezoekers sneller naar de juiste informatie leidt.
-                    </p>
-                  </div>
-                </div>
-                {' '}
-                <div className="case__chips">
-                  <span className="k">Resultaat</span>
-                  {' '}
-                  <span className="chip">Duidelijkere propositie</span>
-                  {' '}
-                  <span className="chip">Professionelere uitstraling</span>
-                </div>
-              </div>
-            </Reveal>
-            {' '}
-            <Reveal as="article" className="case reveal" data-d="1">
-              <div className="case__media">
-                <Media id="case-guestroom" fit="cover" placeholder="[ GuestRoomUtrecht ]" alt="Screenshot van de website die MegaOnline voor GuestRoomUtrecht bouwde" />
-              </div>
-              {' '}
-              <div className="case__body">
-                <h3 className="case__name">GuestRoomUtrecht</h3>
-                {' '}
-                <div className="case__meta">
-                  <span className="tag">B2C</span>
-                  <span className="tag">Bed & Breakfast</span>
-                </div>
-                {' '}
-                <p className="case__context">Een verblijf dat draait op sfeer en de ervaring van gasten.</p>
-                {' '}
-                <div className="case__steps">
-                  <div className="case__step">
-                    <span className="k">Uitdaging</span>
-                    <p>
-                      De website bracht de sfeer van het verblijf onvoldoende over.
-                    </p>
-                  </div>
-                  {' '}
-                  <div className="case__step">
-                    <span className="k">Wat MegaOnline deed</span>
-                    <p>
-                      MegaOnline ontwikkelde een visuele website met een duidelijke boekingsroute en focus op beleving.
-                    </p>
-                  </div>
-                </div>
-                {' '}
-                <div className="case__chips">
-                  <span className="k">Resultaat</span>
-                  {' '}
-                  <span className="chip">Sterker verhaal</span>
-                  {' '}
-                  <span className="chip">Betere gebruikerservaring</span>
-                </div>
-              </div>
-            </Reveal>
-            {' '}
-            <Reveal as="article" className="case reveal">
-              <div className="case__media">
-                <Media id="case-enevents" fit="cover" placeholder="[ enevents.nl ]" alt="Homepage van enevents.nl, website voor event- en weddingplanning gebouwd door MegaOnline" />
-              </div>
-              {' '}
-              <div className="case__body">
-                <h3 className="case__name">enevents.nl</h3>
-                {' '}
-                <div className="case__meta">
-                  <span className="tag">B2C</span>
-                  <span className="tag">Eventplanning</span>
-                </div>
-                {' '}
-                <p className="case__context">
-                  Persoonlijke event- en weddingplanning door Eva, met één vast aanspreekpunt.
-                </p>
-                {' '}
-                <div className="case__steps">
-                  <div className="case__step">
-                    <span className="k">Uitdaging</span>
-                    <p>
-                      Bruiloften, particuliere feesten en private dining vragen elk een eigen plek, met een kennismakingsgesprek als vervolgstap.
-                    </p>
-                  </div>
-                  {' '}
-                  <div className="case__step">
-                    <span className="k">Wat MegaOnline deed</span>
-                    <p>
-                      Gebouwd door MegaOnline: aparte pagina's voor de drie belevingen, plus portfolio, traject, prijzen, veelgestelde vragen en contact.
-                    </p>
-                  </div>
-                </div>
-                {' '}
-                <div className="case__chips">
-                  <span className="k">Opgeleverd</span>
-                  {' '}
-                  <span className="chip">Drie belevingen apart</span>
-                  {' '}
-                  <span className="chip">Kennismaking plannen</span>
-                </div>
-              </div>
-            </Reveal>
-            {' '}
-            <Reveal as="article" className="case reveal" data-d="1">
-              <div className="case__media">
-                <Media id="case-africa" fit="cover" placeholder="[ LoveForAfrica ]" alt="Screenshot van de website die MegaOnline voor LoveForAfrica bouwde" />
-              </div>
-              {' '}
-              <div className="case__body">
-                <h3 className="case__name">LoveForAfrica</h3>
-                {' '}
-                <div className="case__meta">
-                  <span className="tag">Non-profit</span>
-                  <span className="tag">Goede doelen</span>
-                </div>
-                {' '}
-                <p className="case__context">Een organisatie met projecten en verhalen die ertoe doen.</p>
-                {' '}
-                <div className="case__steps">
-                  <div className="case__step">
-                    <span className="k">Uitdaging</span>
-                    <p>
-                      Het verhaal en de impact van de organisatie kwamen onvoldoende naar voren.
-                    </p>
-                  </div>
-                  {' '}
-                  <div className="case__step">
-                    <span className="k">Wat MegaOnline deed</span>
-                    <p>
-                      MegaOnline ontwikkelde een website waarin projecten, verhalen en betrokkenheid centraal staan.
-                    </p>
-                  </div>
-                </div>
-                {' '}
-                <div className="case__chips">
-                  <span className="k">Resultaat</span>
-                  {' '}
-                  <span className="chip">Sterker verhaal</span>
-                  {' '}
-                  <span className="chip">Meer vertrouwen</span>
-                </div>
-              </div>
-            </Reveal>
-          </div>
+              </Reveal>
+            ))}
+          </ol>
         </div>
-      </section>
-      {' '}
-      {' '}
-      <section className="section" id="diensten" data-theme="dark" data-screen-label="Diensten">
-        <div className="wrap">
-          <Reveal as="div" className="shead reveal">
-            <span className="label">Diensten</span>
-            {' '}
-            <h2 className="h2">
-              De samenwerking stopt niet na
-              {' '}
-              <em>livegang.</em>
-            </h2>
-            {' '}
-            <p className="lead">
-              Een website is het startpunt. Daarna begint het echte optimaliseren. Je begint met een Conversie Website en kiest na livegang hoe betrokken MegaOnline blijft.
-            </p>
-          </Reveal>
-          {' '}
-          <Reveal as="div" className="rm reveal" style={{ marginTop: "clamp(40px,4vw,56px)" }}>
-            <div className="rm__node">
-              <div className="rm__phase">
-                Fase 1
-                {' '}
-                <b>· Start</b>
-              </div>
-              {' '}
-              <span className="svcname rm__name">Conversie Website</span>
-              {' '}
-              <p>
-                Een professionele website die vertrouwen wekt en bezoekers richting aanvraag of boeking begeleidt. Het fundament waarop alles daarna verdergaat.
-              </p>
-              {' '}
-              <div className="svc__when">Ideaal wanneer</div>
-              {' '}
-              <ul className="svclist">
-                <li>Je website verouderd is</li>
-                {' '}
-                <li>Je bedrijf harder groeit dan je website</li>
-                {' '}
-                <li>Je meer uit je website wilt halen</li>
-              </ul>
-              {' '}
-              <div className="rm__foot">
-                <span className="svcprice">Vanaf € 2.500</span>
-                {' '}
-                <Link className="flow-cta" to="/gratis-websitescan">{CTA_SCAN}</Link>
-              </div>
-            </div>
-            {' '}
-            <div className="rm__connector">
-              <span className="rm__track" />
-              {' '}
-              <span className="rm__badge">
-                <span className="rm__arrow">→</span>
-              </span>
-              {' '}
-              <span className="rm__live">Livegang</span>
-              {' '}
-              <span className="rm__track" />
-            </div>
-            {' '}
-            <div className="rm__node rm__node--rec">
-              <span className="svctag svctag--rec" style={{ position: "absolute", top: "-12px", left: "clamp(22px,2.2vw,30px)" }}>Aanbevolen</span>
-              {' '}
-              <div className="rm__phase">
-                Fase 2
-                {' '}
-                <b>· Vervolgstap</b>
-              </div>
-              {' '}
-              <span className="svcname rm__name">Groei Partnership</span>
-              {' '}
-              <p>
-                Na livegang begint het echte werk. Elke maand publiceert MegaOnline een nieuwe pagina die je beter vindbaar maakt, in Google en in AI-zoekmachines. Hier zit de meeste waarde voor jouw bedrijf.
-              </p>
-              {' '}
-              <div className="svc__when">Ideaal wanneer</div>
-              {' '}
-              <ul className="svclist">
-                <li>Je beter gevonden wilt worden in Google</li>
-                {' '}
-                <li>Je ook zichtbaar wilt zijn in AI-zoekmachines</li>
-                {' '}
-                <li>Je structureel wilt blijven groeien</li>
-              </ul>
-              {' '}
-              <div className="rm__foot">
-                <span className="svcprice">
-                  € 150
-                  <small>
-                    {' '}
-                    / maand · € 250 opstart
-                  </small>
-                </span>
-                {' '}
-                <Link className="flow-cta" to="/gratis-websitescan">Start het partnership</Link>
-              </div>
-            </div>
-          </Reveal>
-          {' '}
-          <div className="maints">
-            <Reveal as="div" className="maint reveal">
-            <div className="maint__txt">
-              <b>Kleiner beginnen?</b>
-              {' '}
-              Voor starters en kleinere bedrijven bouwt MegaOnline een compactere website, met dezelfde aandacht voor vertrouwen en een makkelijke aanvraag.
-              {' '}
-              <Link className="flow-cta" to="/diensten/starter-website">Bekijk de Starter Website</Link>
-            </div>
-            {' '}
-            <div className="maint__price">Starter Website · vanaf € 1.500</div>
-          </Reveal>
-          {' '}
-          <Reveal as="div" className="maint reveal" data-d="1">
-            <div className="maint__txt">
-              <b>Niet op zoek naar actieve optimalisatie?</b>
-              {' '}
-              Ook onderhoud en technische support is mogelijk. MegaOnline houdt je website veilig en up-to-date.
-            </div>
-            {' '}
-            <div className="maint__price">Onderhoud & Support · vanaf € 50 / mnd</div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-      {' '}
-      {' '}
+      </section>{' '}
       <section className="section section--tight" data-theme="paper" data-screen-label="Testimonials">
         <div className="wrap">
           <Reveal as="div" className="shead reveal">
             <span className="label">Referenties</span>
-            {' '}
             <h2 className="h2">Wat klanten ervan merkten.</h2>
-          </Reveal>
-          {' '}
+          </Reveal>{' '}
           <div className="quotes">
             <Reveal as="figure" className="quote reveal">
               <div className="quote__mark">”</div>
-              {' '}
               <blockquote>
-                <p>
-                  Voor het eerst komen er aanvragen binnen waar we niets voor hoeven te doen. De site doet eindelijk het werk.
-                </p>
+                <p>Voor het eerst komen er aanvragen binnen waar we niets voor hoeven te doen. De site doet eindelijk het werk.</p>
               </blockquote>
-              {' '}
               <figcaption className="quote__by">
                 <span className="quote__logo">
                   <Media id="t1-logo" fit="contain" placeholder="LOGO" alt="" />
-                </span>
-                {' '}
+                </span>{' '}
                 <span>
                   <span className="nm">Hennie</span>
                   <span className="rl">Eigenaar · Zakelijke dienstverlening</span>
                 </span>
               </figcaption>
-            </Reveal>
-            {' '}
+            </Reveal>{' '}
             <Reveal as="figure" className="quote reveal" data-d="1">
               <div className="quote__mark">”</div>
-              {' '}
               <blockquote>
-                <p>
-                  Gasten boeken nu direct via de site. Ook 's avonds laat. Precies wat we nodig hadden.
-                </p>
+                <p>Gasten boeken nu direct via de site. Ook 's avonds laat. Precies wat we nodig hadden.</p>
               </blockquote>
-              {' '}
               <figcaption className="quote__by">
                 <span className="quote__logo">
                   <Media id="t2-logo" fit="contain" placeholder="LOGO" alt="" />
-                </span>
-                {' '}
+                </span>{' '}
                 <span>
                   <span className="nm">Margriet</span>
                   <span className="rl">Eigenaar · Bed & Breakfast</span>
@@ -817,94 +371,37 @@ function Home() {
             </Reveal>
           </div>
         </div>
-      </section>
-      {' '}
-      {' '}
-      <section className="section" data-theme="light" data-screen-label="Team / Visie">
-        <div className="wrap">
-          <div className="vision">
-            <Reveal as="div" className="vision__media reveal">
-              <img src="/images/zo-werken-we-visual-v2.webp" width={1600} height={2000} alt="Bij een groot bureau loopt je vraag via accountmanager, projectmanager, designer en developer. Bij MegaOnline heb je direct contact met je eigen webspecialist, die de strategie bepaalt en je site bouwt." loading="lazy" decoding="async" />
-            </Reveal>
-            {' '}
-            <Reveal as="div" className="vision__body reveal" data-d="1">
-              <span className="label">Zo werkt MegaOnline</span>
-              {' '}
-              <h2 className="h2">
-                Klein van opzet.
-                {' '}
-                <em>Groot</em>
-                {' '}
-                in betrokkenheid.
-              </h2>
-              {' '}
-              <p>
-                MegaOnline is geen fabriek die websites uitspuugt. MegaOnline werkt met een beperkt aantal bedrijven tegelijk. Zo begrijpt MegaOnline écht waar jouw klanten op afhaken en wat ze juist over de streep trekt.
-              </p>
-              {' '}
-              <p>
-                Geen accountmanagers en geen tussenlagen. Je werkt direct met wie de strategie bepaalt en de site bouwt. Dat houdt het scherp en eerlijk.
-              </p>
-              {' '}
-              <p>
-                MegaOnline gelooft dat de beste websites ontstaan wanneer je een bedrijf echt begrijpt. Daarom werkt MegaOnline niet als een anoniem bureau, maar als een betrokken partner die meedenkt over de lange termijn.
-              </p>
-              {' '}
-              <div className="vision__sign">
-                <span className="quote__av" style={{ width: "48px", height: "48px" }}>
-                  <Media id="founder-av" fit="cover" shape="circle" placeholder="FOTO" alt="Joshua Bink, oprichter van MegaOnline" />
-                </span>
-                {' '}
-                <span>
-                  <span className="nm">Joshua Bink</span>
-                  {' '}
-                  <span className="rl" style={{ display: "block", marginTop: "3px" }}>OPRICHTER & WEBSITE NERD :)</span>
-                </span>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-      {' '}
-      {' '}
-      <section className="section" id="faq" data-theme="paper" data-screen-label="FAQ">
-        <div className="wrap">
-          <Reveal as="div" className="shead reveal" style={{ maxWidth: "680px" }}>
+      </section>{' '}
+      <section className="section" id="faq" data-theme="light" data-screen-label="FAQ">
+        <div className="wrap v2-faq">
+          <Reveal as="div" className="shead v2-faq__side reveal">
             <span className="label">Veelgestelde vragen</span>
-            {' '}
             <h2 className="h2">Wat je misschien nog wil weten</h2>
-          </Reveal>
-          {' '}
+            <p>
+              Staat je vraag er niet bij? Mail naar <a href="mailto:info@megaonline.io">info@megaonline.io</a>.
+            </p>
+          </Reveal>{' '}
           <div className="faq">
             {FAQ_ITEMS.map(({ q, a }) => (
               <Qa key={q} question={q} className="reveal">
-                {q === "Waarom niet kiezen voor een goedkope webbouwer?" ? (
-                  <>
-                    Een website bouwen is meer dan pagina's online zetten. MegaOnline kijkt naar vertrouwen, gebruiksgemak en hoe bezoekers daadwerkelijk actie ondernemen. Twijfel je tussen een freelancer en een bureau? Lees <Link to="/kennisbank/$slug" params={{ slug: 'freelance-webdesigner-of-webbureau' }}>de eerlijke vergelijking tussen een freelancer en een webbureau</Link>.
-                  </>
-                ) : (
-                  a
-                )}
+                {a}
               </Qa>
             ))}
           </div>
-          {/* FAQPage-schema uit dezelfde bron als de zichtbare vragen. */}
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_SCHEMA) }}
           />
         </div>
-      </section>
-      {' '}
-      {' '}
+      </section>{' '}
       <section className="section final" data-theme="dark" data-screen-label="Afsluitende CTA">
         <div className="wrap">
-          <Reveal as="h2" className="display reveal">Benieuwd wat er beter kan aan je website?</Reveal>
-          {' '}
+          <Reveal as="h2" className="display reveal">
+            Benieuwd wat er beter kan aan je website?
+          </Reveal>{' '}
           <Reveal as="p" className="lead reveal" data-d="1">
-            Vraag een gratis website scan aan en ontdek wat er beter kan. Zonder verplichtingen.
-          </Reveal>
-          {' '}
+            We kijken persoonlijk naar je site en sturen je de punten die we zien. Zonder verplichtingen.
+          </Reveal>{' '}
           <Reveal as={Link} className="btn btn-primary reveal" data-d="2" to="/gratis-websitescan">
             {CTA_SCAN}
           </Reveal>
