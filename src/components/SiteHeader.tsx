@@ -6,7 +6,7 @@ import { artikelenNieuwsteEerst } from '@/lib/kennisbank'
 import { CTA_SCAN } from '@/lib/cta'
 import { SCAN_REACTIETIJD } from '@/lib/scan'
 
-type Panel = 'diensten' | 'cases' | 'over' | 'kennis' | 'contact'
+type Panel = 'diensten' | 'cases' | 'kennis' | 'contact'
 
 /**
  * De drie nieuwste kennisbankartikelen in het megamenu. Komt uit dezelfde bron
@@ -150,7 +150,17 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
           <nav className="mnav" aria-label="Hoofdmenu">
             {trigger('diensten', 'Diensten')}
             {trigger('cases', 'Cases')}
-            {trigger('over', 'Over MegaOnline')}
+            <Link
+              className="mnav__item"
+              to="/over-megaonline"
+              onMouseEnter={() => {
+                cancelClose()
+                setPanel(null)
+              }}
+              onFocus={() => setPanel(null)}
+            >
+              Over MegaOnline
+            </Link>
             {trigger('kennis', 'Kennisbank')}
             {trigger('contact', 'Contact')}
           </nav>
@@ -408,63 +418,6 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
                 <Link className="mfeat__link" to="/" hash="werk">
                   Bekijk alle cases                </Link>
                 <span className="mfeat__foot">Binnenkort: meer branches</span>
-              </aside>
-            </div>
-
-            {/* -------- OVER MEGAONLINE -------- */}
-            <div
-              className={`mega__panel ${panel === 'over' ? 'is-active' : ''}`.trim()}
-              data-panel="over"
-              data-cols="cases"
-              ref={(el) => {
-                panelRefs.current.over = el
-              }}
-            >
-              <div className="mcol">
-                <span className="mcol__head">Over MegaOnline</span>
-                <Link className="mlink" to="/over-megaonline">
-                  <span className="mlink__ico">
-                    <Icon name="users" />
-                  </span>
-                  <span className="mlink__txt">
-                    <span className="mlink__name">Over MegaOnline</span>
-                  </span>
-                </Link>
-                {[
-                  ['werkwijze', 'route', 'Werkwijze'],
-                  ['waarom', 'badge-check', 'Waarom MegaOnline'],
-                  ['groei', 'handshake', 'Groei Partnership'],
-                ].map(([hash, icon, label]) => (
-                  <Link className="mlink" to="/over-megaonline" hash={hash} key={hash}>
-                    <span className="mlink__ico">
-                      <Icon name={icon} />
-                    </span>
-                    <span className="mlink__txt">
-                      <span className="mlink__name">{label}</span>
-                    </span>
-                  </Link>
-                ))}
-                <Link className="mlink" to="/werken-bij">
-                  <span className="mlink__ico">
-                    <Icon name="briefcase" />
-                  </span>
-                  <span className="mlink__txt">
-                    <span className="mlink__name">Werken bij</span>
-                    <span className="mlink__sub">Stages, freelance en parttime</span>
-                  </span>
-                </Link>
-              </div>
-              <aside className="mfeat mfeat--soft">
-                <span className="mfeat__eyebrow">
-                  <span className="gdot" />
-                  Wie je spreekt
-                </span>
-                <h4 className="mfeat__title">Direct contact, grote betrokkenheid</h4>
-                <p className="mfeat__desc">
-                  Geen fabriek die websites uitspuugt. Je werkt direct met wie de strategie bepaalt en je site bouwt.
-                </p>
-                <Link className="mfeat__link" to="/over-megaonline" hash="waarom">
-                  Lees waarom MegaOnline                </Link>
               </aside>
             </div>
 
@@ -774,9 +727,6 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
           </Link>
           <Link className="mmenu__row" to="/over-megaonline" onClick={onClose}>
             Over MegaOnline <Icon name="arrow-up-right" className="arr-ico" />
-          </Link>
-          <Link className="mmenu__row" to="/werken-bij" onClick={onClose}>
-            Werken bij <Icon name="arrow-up-right" className="arr-ico" />
           </Link>
           <Link className="mmenu__row" to="/kennisbank" onClick={onClose}>
             Kennisbank <Icon name="arrow-up-right" className="arr-ico" />
