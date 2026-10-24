@@ -134,11 +134,11 @@ function ConversieWebsite() {
                 </li>
                 <li>
                   <Icon name="check" className="ck" />
-                  <span>Gemiddeld 4 tot 8 weken</span>
+                  <span>Live in gemiddeld 4 tot 8 weken</span>
                 </li>
                 <li>
                   <Icon name="check" className="ck" />
-                  <span>Teksten en foto’s pas je zelf aan</span>
+                  <span>Teksten en foto’s pas je gemakkelijk zelf aan</span>
                 </li>
               </Reveal>
             </div>
