@@ -265,7 +265,7 @@ function HomepageV2() {
           <Reveal as="div" className="shead reveal">
             <span className="label">Het verschil</span>
             <h2 className="h2">
-              Een websitebouwer maakt wat jij vraagt. Wij bouwen wat jouw klant nodig heeft om <em>aan te vragen.</em>
+              Een websitebouwer maakt wat jij vraagt. Wij bouwen voor jouw doelgroep, zodat je bezoeker <em>actie onderneemt.</em>
             </h2>
           </Reveal>{' '}
           <Reveal as="div" className="v2-table reveal" data-d="1">
