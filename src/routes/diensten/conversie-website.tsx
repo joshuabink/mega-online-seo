@@ -71,7 +71,7 @@ const FAQ_ITEMS: { q: string; a: ReactNode }[] = [
   },
   {
     q: 'Wat is het verschil met een Starter Website?',
-    a: "De Starter Website is compact: tot ongeveer 5 pagina's, gebouwd met vaste bouwblokken en met één feedbackronde. De Conversie Website is volledig maatwerk, met een strategie voor je doelgroep, je aanvragen en je vindbaarheid. Er zijn meerdere ontwerp- en feedbackrondes.",
+    a: "Allebei zijn maatwerk. De Starter Website is compact: tot ongeveer 5 pagina's en met één feedbackronde. De Conversie Website heeft geen vaste grens aan omvang en krijgt een strategie voor je doelgroep, je aanvragen en je vindbaarheid. Er zijn meerdere ontwerp- en feedbackrondes.",
   },
   {
     q: 'Waarom niet kiezen voor een goedkope webbouwer?',

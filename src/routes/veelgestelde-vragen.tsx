@@ -110,15 +110,15 @@ function VeelgesteldeVragen() {
             {' '}
             <div className="faq">
               <Qa question="Wat kost een website bij MegaOnline?" className="reveal">
-                  Dat hangt af van wat je nodig hebt. De Starter Website begint vanaf €1.500 en is bedoeld voor starters die voordelig en snel online willen. Een volledige Conversie Website is maatwerk en wordt geprijsd op basis van omvang, strategie en koppelingen. In een gratis website scan brengt MegaOnline het vrijblijvend voor je in kaart.
+                  Dat hangt af van wat je nodig hebt. De Starter Website begint vanaf €1.500 en is bedoeld voor starters die voordelig en snel online willen. Een Conversie Website wordt geprijsd op basis van omvang, strategie en koppelingen. In een gratis website scan brengt MegaOnline het vrijblijvend voor je in kaart.
               </Qa>
               {' '}
               <Qa question="Waarom is de Starter Website goedkoper?" className="reveal">
-                  Omdat MegaOnline daarbij werkt met beproefde, herbruikbare bouwblokken en een vaste opzet. Dat scheelt veel ontwerp- en bouwuren. Dat voordeel geeft MegaOnline door. De kwaliteit van de basis blijft hetzelfde, alleen het proces is sneller.
+                  Omdat de website compacter is: tot ongeveer 5 pagina's, één feedbackronde en een kortere voorbereiding. Ontwerp en bouw blijven maatwerk. Minder uren betekent een lagere prijs.
               </Qa>
               {' '}
               <Qa question="Krijg ik vooraf een duidelijke prijs?" className="reveal">
-                  Ja. Je krijgt vooraf een heldere offerte zonder kleine lettertjes. Bij de Starter Website werkt MegaOnline met een vaste prijs. Bij maatwerk maakt MegaOnline de opbouw en investering vooraf inzichtelijk.
+                  Ja. Je krijgt vooraf een heldere offerte zonder kleine lettertjes. Bij de Starter Website werkt MegaOnline met een vaste prijs. Bij een Conversie Website maakt MegaOnline de opbouw en investering vooraf inzichtelijk.
               </Qa>
               {' '}
               <Qa question="Zijn er maandelijkse kosten?" className="reveal">
@@ -138,11 +138,11 @@ function VeelgesteldeVragen() {
             {' '}
             <div className="faq">
               <Qa question="Hoe lang duurt het om een website te bouwen?" className="reveal">
-                  Een Starter Website staat doorgaans binnen enkele weken live, omdat we met vaste bouwblokken werken. Een volledige maatwerk-website duurt langer, afhankelijk van omvang en het aantal feedbackrondes. MegaOnline maakt vooraf een heldere planning.
+                  Een Starter Website staat doorgaans binnen enkele weken live, omdat hij compacter is. Een Conversie Website duurt langer, afhankelijk van omvang en het aantal feedbackrondes. MegaOnline maakt vooraf een heldere planning.
               </Qa>
               {' '}
               <Qa question="Hoe verloopt het traject?" className="reveal">
-                  Kort gezegd: kennismaking, aanleveren van teksten en beeld, bouwen, een feedbackronde en livegang. Bij maatwerk zitten daar meer ontwerp- en afstemmingsrondes in. Je weet steeds hoe je project ervoor staat en wat de volgende stap is.
+                  Kort gezegd: kennismaking, aanleveren van teksten en beeld, bouwen, een feedbackronde en livegang. Bij een Conversie Website zitten daar meer ontwerp- en afstemmingsrondes in. Je weet steeds hoe je project ervoor staat en wat de volgende stap is.
               </Qa>
               {' '}
               <Qa question="Wat heb je van mij nodig?" className="reveal">

@@ -10,9 +10,9 @@ export const Route = createFileRoute('/diensten/starter-website')({
   head: () => ({
     meta: [
       { title: "Website laten maken voor starters | MegaOnline" },
-      { name: 'description', content: "Een professionele website voor starters. Sneller gebouwd en voordeliger, dankzij beproefde, herbruikbare bouwblokken. Een eerlijke instapoptie vanaf €1.500." },
+      { name: 'description', content: "Een professionele maatwerkwebsite voor starters. Compact, snel live en voordelig. Een eerlijke instapoptie vanaf €1.500." },
       { property: 'og:title', content: "Website laten maken voor starters | MegaOnline" },
-      { property: 'og:description', content: "Een professionele website voor starters. Sneller gebouwd en voordeliger, dankzij beproefde, herbruikbare bouwblokken. Een eerlijke instapoptie vanaf €1.500." },
+      { property: 'og:description', content: "Een professionele maatwerkwebsite voor starters. Compact, snel live en voordelig. Een eerlijke instapoptie vanaf €1.500." },
       { property: 'og:url', content: "https://megaonline.io/diensten/starter-website" },
     ],
     links: [
@@ -28,7 +28,7 @@ const SITUATIES = [
   { t: 'Je aanbod is overzichtelijk', p: "Een paar diensten of producten, geen website met tientallen pagina's." },
   { t: 'Je wilt gevonden worden', p: 'Wie je naam hoort, moet je makkelijk kunnen vinden en bereiken.' },
   { t: 'Je wilt een helder budget', p: 'Vooraf weten waar je aan toe bent, zonder verrassingen achteraf.' },
-  { t: 'Je wilt later kunnen groeien', p: 'Doorgroeien naar meer maatwerk moet gewoon mogelijk blijven.' },
+  { t: 'Je wilt later kunnen groeien', p: 'Doorgroeien naar een grotere website moet gewoon mogelijk blijven.' },
 ]
 
 const INBEGREPEN: { icon: string; t: string }[] = [
@@ -42,29 +42,27 @@ const INBEGREPEN: { icon: string; t: string }[] = [
   { icon: 'trending-up', t: 'Later uit te breiden' },
 ]
 
-const VOORDELEN = ['Beproefde structuur', 'Sneller traject', 'Vaste opzet en prijs', 'Toch jouw uitstraling']
+const VOORDELEN = ['Ontwerp op maat', 'Compact in omvang', 'Eén feedbackronde', 'Sneller live']
 
 const STAPPEN = [
   { t: 'Intake', p: "We bespreken wat je doet, wat je nodig hebt en welke pagina's er moeten komen." },
   { t: 'Aanleveren', p: "Jij levert je teksten, je logo en een paar foto's aan. We denken mee waar dat nodig is." },
-  { t: 'Samenstellen', p: 'We stellen je website samen uit de bouwblokken en stemmen alles af op jouw huisstijl.' },
+  { t: 'Ontwerpen en bouwen', p: 'We ontwerpen en bouwen je website op maat, in jouw huisstijl.' },
   { t: 'Bijschaven', p: 'Je bekijkt het resultaat en we verwerken je opmerkingen in één gerichte ronde.' },
   { t: 'Live', p: 'Je website gaat online. Teksten en foto’s pas je daarna zelf aan.' },
 ]
 
 const STARTER_WEL = [
-  'Gebouwd op beproefde, herbruikbare bouwblokken',
-  'Vaste opzet, vaste prijs en snel live',
-  'Afgestemd op jouw kleuren, teksten en logo',
+  'Ontwerp en bouw op maat',
+  'Duidelijke prijs vooraf en snel live',
+  'In jouw kleuren, met jouw teksten en logo',
 ]
 const STARTER_NIET = [
-  'Geen volledig maatwerkontwerp vanaf nul',
   "Compact in omvang, tot ongeveer 5 pagina's",
-  'Eén feedbackronde in plaats van een uitgebreid traject',
+  'Eén feedbackronde in plaats van meerdere',
   'Geen diepgaande strategie voor doelgroep en aanvragen',
 ]
 const CONVERSIE = [
-  'Volledig maatwerk, ontworpen rond jouw bedrijf',
   'Strategie voor je doelgroep, je aanvragen en je vindbaarheid',
   'Geen vaste grens aan omvang en opbouw',
   'Meerdere ontwerp- en feedbackrondes',
@@ -80,11 +78,11 @@ const VOOR_WIE = [
 const FAQ_ITEMS: { q: string; a: ReactNode }[] = [
   {
     q: 'Waarom is een Starter Website goedkoper?',
-    a: 'Omdat we niet elke website vanaf nul ontwerpen. We werken met beproefde, herbruikbare bouwblokken en een vaste opzet. Dat scheelt veel ontwerp- en bouwuren en dat voordeel zie je terug in de prijs.',
+    a: "Omdat de website compacter is: tot ongeveer 5 pagina's, één feedbackronde en een kortere voorbereiding. Het ontwerp en de bouw blijven maatwerk. Minder uren betekent een lagere prijs.",
   },
   {
     q: 'Wordt mijn website dan hetzelfde als die van anderen?',
-    a: "Nee. De bouwblokken zijn herbruikbaar, maar jouw kleuren, logo, teksten en foto's zijn dat niet. We stemmen alles af op jouw huisstijl, zodat de website herkenbaar van jou is.",
+    a: "Nee. Ook een Starter Website ontwerpen en bouwen we op maat, in jouw huisstijl en met jouw teksten en foto's.",
   },
   {
     q: 'Wat kost een Starter Website precies?',
@@ -94,8 +92,8 @@ const FAQ_ITEMS: { q: string; a: ReactNode }[] = [
     q: 'Kan ik later uitbreiden of doorgroeien?',
     a: (
       <>
-        Zeker. Je kunt later pagina's toevoegen of doorgroeien naar een volledige{' '}
-        <Link to="/diensten/conversie-website">Conversie Website</Link> met maatwerk en strategie.
+        Zeker. Je kunt later pagina's toevoegen of doorgroeien naar een{' '}
+        <Link to="/diensten/conversie-website">Conversie Website</Link> met meer pagina's en strategie.
       </>
     ),
   },
@@ -105,7 +103,7 @@ const FAQ_ITEMS: { q: string; a: ReactNode }[] = [
   },
   {
     q: 'Hoe snel staat mijn website online?',
-    a: 'Doordat we met vaste bouwblokken werken, gaat het bouwen een stuk sneller dan bij maatwerk. Zodra je teksten, logo en beeld hebt aangeleverd, sta je doorgaans binnen enkele weken live.',
+    a: 'Doordat de website compacter is, gaat het sneller dan bij een groter traject. Zodra je teksten, logo en beeld hebt aangeleverd, sta je doorgaans binnen enkele weken live.',
   },
   {
     q: 'Twijfel je tussen een freelancer en een bureau?',
@@ -139,7 +137,7 @@ function StarterWebsite() {
                 Website laten maken als je <em>net begint</em>
               </Reveal>
               <Reveal as="p" className="lead hero__sub reveal" data-d="2">
-                De Starter Website is de bewust voordeligere optie. Gebouwd op beproefde bouwblokken, zodat je professioneel online staat zonder groot budget.
+                Ook een Starter Website is volledig maatwerk. Alleen compacter, zodat je als starter professioneel online staat zonder groot budget.
               </Reveal>
               <Reveal as="ul" className="hero__ticks reveal" data-d="3">
                 <li>
@@ -172,7 +170,7 @@ function StarterWebsite() {
             </div>
             <div className="v2-head__side">
               <p>
-                Een rommelige doe-het-zelfsite doet je tekort, maar een volledig maatwerktraject past vaak nog niet. De Starter Website zit daar bewust tussenin. Past dit bij jou?
+                Een rommelige doe-het-zelfsite doet je tekort, maar een groot traject met veel pagina's past vaak nog niet. De Starter Website is maatwerk in een compacte vorm. Past dit bij jou?
               </p>
             </div>
           </Reveal>
@@ -212,15 +210,15 @@ function StarterWebsite() {
             <Reveal as="div" className="cw-card reveal" data-d="1">
               <h3>Waarom het voordeliger kan</h3>
               <p>
-                Een lagere prijs betekent niet minder zorg. We vinden niet elke keer het wiel opnieuw uit. Je website bestaat uit onderdelen die zich al bewezen hebben: een sterke opening, een dienstenblok, een contactsectie. Die stemmen we af op jouw kleuren, teksten en logo.
+                Ook de Starter Website ontwerpen en bouwen we op maat. Het verschil zit in de omvang: minder pagina's, één feedbackronde en een kortere voorbereiding. Daardoor kost het minder uren.
               </p>
               <ul className="cw-chips">
                 {VOORDELEN.map((x) => (
                   <li key={x}>{x}</li>
                 ))}
               </ul>
-              <h3 className="cw-card__sub">Minder uren in de opbouw</h3>
-              <p>En dus meer over voor jouw budget.</p>
+              <h3 className="cw-card__sub">Minder uren, niet minder zorg</h3>
+              <p>Dat zie je terug in de prijs.</p>
             </Reveal>
           </div>
         </div>
@@ -233,7 +231,7 @@ function StarterWebsite() {
             <h2 className="h2">
               Een kort, helder traject. <em>Snel</em> live.
             </h2>
-            <p className="lead">Met vaste bouwblokken is er minder bedenkwerk nodig. Dat scheelt tijd. En dus geld.</p>
+            <p className="lead">Een compacte website vraagt minder uren. Dat scheelt tijd. En dus geld.</p>
           </Reveal>
           <ol className="v2-steps cw-steps">
             {STAPPEN.map((s, i) => (
@@ -324,8 +322,8 @@ function StarterWebsite() {
               </Reveal>
               <Reveal as="div" className="cw-card reveal" data-d="2">
                 <span className="cw-card__tag">Later</span>
-                <h3>Doorgroeien naar maatwerk</h3>
-                <p>Groeit je bedrijf, dan bouw je verder richting een Conversie Website met strategie voor je doelgroep en aanvragen.</p>
+                <h3>Later uitbreiden</h3>
+                <p>Groeit je bedrijf, dan breiden we je website uit of groei je door naar een Conversie Website met strategie voor je doelgroep en aanvragen.</p>
                 <Link className="tlink" to="/diensten/conversie-website">Bekijk de Conversie Website <span className="arr">&rarr;</span></Link>
               </Reveal>
             </div>
