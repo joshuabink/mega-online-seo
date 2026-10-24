@@ -169,3 +169,23 @@
 [data-page="home"] .v2-table td.us { color: var(--fg); }
 /* Sectielabels als losse tekst, zoals in het ontwerp */
 [data-page="home"] .label { border: 0; border-bottom: 0; background: none; padding: 0; border-radius: 0; font-size: 0.75rem; letter-spacing: 0.08em; }
+
+/* ---------- Hero: lijnenraster op de achtergrond, bredere kop ---------- */
+[data-page="home"] .hero { overflow: hidden; isolation: isolate; }
+[data-page="home"] .hero::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.09) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.09) 1px, transparent 1px);
+  background-size: 64px 64px;
+  background-position: center top;
+  -webkit-mask-image: radial-gradient(ellipse 75% 70% at 50% 45%, #000 35%, transparent 85%);
+  mask-image: radial-gradient(ellipse 75% 70% at 50% 45%, #000 35%, transparent 85%);
+}
+[data-page="home"] .hero__grid { grid-template-columns: 1.3fr 0.9fr; gap: clamp(40px, 5vw, 80px); }
+[data-page="home"] .hero h1.display { max-width: none; }
+[data-page="home"] .hero__form.scankort { box-shadow: 0 30px 80px -30px rgba(0, 0, 0, 0.7); }
+@media (max-width: 1024px) {
+  [data-page="home"] .hero__grid { grid-template-columns: 1fr; }
+  [data-page="home"] .hero__form.scankort { justify-self: start; }
+}

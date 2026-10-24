@@ -170,3 +170,13 @@
 .ffooter .footer__cookie:hover {
   color: var(--fg);
 }
+
+/* "Alles accepteren" staat op desktop rechts en op mobiel bovenaan, zodat
+   de meest gekozen knop op een vaste, logische plek staat. */
+#cc-main [data-role="show"] { order: 1; }
+#cc-main [data-role="necessary"] { order: 2; }
+#cc-main [data-role="save"] { order: 2; }
+#cc-main [data-role="all"] { order: 3; }
+@media (max-width: 640px) {
+  #cc-main [data-role="all"] { order: -1; }
+}

@@ -149,8 +149,10 @@ export function ConceptFormKort({ className = '' }: { className?: string }) {
           <div className="ic">✓</div>
           <h3>Bedankt. Je aanvraag is binnen.</h3>
           <p>
-            We gaan aan de slag met je websiteconcept en nemen daarna contact met je op. Vragen in de
-            tussentijd? Mail naar <a href="mailto:info@megaonline.io">info@megaonline.io</a>.
+            We ontwerpen een homepage voor je bedrijf, zodat je ziet wat we voor je kunnen maken. Teksten
+            en foto's zijn nog een eerste invulling: het concept geeft een beeld, het eindresultaat bouwen
+            we samen. We nemen contact met je op zodra het klaar is. Vragen in de tussentijd? Mail naar{' '}
+            <a href="mailto:info@megaonline.io">info@megaonline.io</a>.
           </p>
         </>
       }
@@ -183,7 +185,7 @@ export function ConceptFormKort({ className = '' }: { className?: string }) {
               Volgende stap <span className="arr">→</span>
             </button>
             <p className="scankort__ticks">
-              Persoonlijk · Vrijblijvend · Op maat van jouw bedrijf
+              Een ontworpen homepage voor jouw bedrijf · Gratis · Vrijblijvend
             </p>
           </div>
 
