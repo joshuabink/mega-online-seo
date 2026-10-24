@@ -189,3 +189,16 @@
   [data-page="home"] .hero__grid { grid-template-columns: 1fr; }
   [data-page="home"] .hero__form.scankort { justify-self: start; }
 }
+
+/* ---------- Afsluitende CTA: zelfde lijnenraster als de hero ---------- */
+[data-page="home"] .final { overflow: hidden; isolation: isolate; }
+[data-page="home"] .final::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.09) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.09) 1px, transparent 1px);
+  background-size: 64px 64px;
+  background-position: center center;
+  -webkit-mask-image: radial-gradient(ellipse 60% 75% at 50% 50%, #000 30%, transparent 80%);
+  mask-image: radial-gradient(ellipse 60% 75% at 50% 50%, #000 30%, transparent 80%);
+}
