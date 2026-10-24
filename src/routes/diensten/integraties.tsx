@@ -40,7 +40,7 @@ const PIJLERS: { icon: string; t: string; p: string; voorbeelden: string[] }[] =
     icon: 'link-2',
     t: 'Koppelingen',
     p: 'Je website praat met de systemen waar je al mee werkt. Niets hoeft meer overgetypt te worden.',
-    voorbeelden: ['Aanvraag direct in je CRM', 'Boeking meteen in je agenda', 'Melding via WhatsApp', 'Betaling gekoppeld aan de boeking'],
+    voorbeelden: ['Aanvraag direct in je CRM', 'Boeking meteen in je agenda', 'Melding via WhatsApp, Slack of Teams', 'Betaling gekoppeld aan de boeking'],
   },
   {
     icon: 'workflow',
