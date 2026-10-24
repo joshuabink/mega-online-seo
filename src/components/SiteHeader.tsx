@@ -2,19 +2,10 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { Link, useRouterState } from '@tanstack/react-router'
 import { Icon } from './Icon'
 import { Logo } from './Logo'
-import { artikelenNieuwsteEerst } from '@/lib/kennisbank'
 import { CTA_SCAN } from '@/lib/cta'
 import { SCAN_REACTIETIJD } from '@/lib/scan'
 
-type Panel = 'diensten' | 'cases' | 'kennis' | 'contact'
-
-/**
- * De drie nieuwste kennisbankartikelen in het megamenu. Komt uit dezelfde bron
- * als de pagina's zelf, dus een nieuw artikel staat hier automatisch in.
- */
-const KENNISBANK_LINKS = artikelenNieuwsteEerst()
-  .slice(0, 3)
-  .map(({ slug, icoon, naam }) => ({ slug, icoon, naam }))
+type Panel = 'diensten' | 'cases' | 'contact'
 
 /**
  * Sticky header + megamenu + fullscreen mobiel menu.
@@ -161,7 +152,17 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
             >
               Over MegaOnline
             </Link>
-            {trigger('kennis', 'Kennisbank')}
+            <Link
+              className="mnav__item"
+              to="/kennisbank"
+              onMouseEnter={() => {
+                cancelClose()
+                setPanel(null)
+              }}
+              onFocus={() => setPanel(null)}
+            >
+              Kennisbank
+            </Link>
             {trigger('contact', 'Contact')}
           </nav>
           <div className="nav__cta">
@@ -337,19 +338,6 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
                     {CTA_SCAN}                  </Link>
                 </aside>
 
-                <aside className="mfeat mfeat--soft mfeat--compact">
-                  <span className="mfeat__eyebrow">
-                    <span className="gdot" />
-                    Nieuw: eigen software
-                  </span>
-                  <h4 className="mfeat__title">MegaSmart</h4>
-                  <p className="mfeat__desc">
-                    Het CRM- en boekingsplatform voor activiteitenbedrijven: agenda,
-                    online boeken, klantcontact en opvolging in een omgeving.
-                  </p>
-                  <Link className="mfeat__link" to="/megasmart">
-                    Bekijk MegaSmart                  </Link>
-                </aside>
               </div>
 
               <div className="mega__foot">
@@ -418,80 +406,6 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
                 <Link className="mfeat__link" to="/" hash="werk">
                   Bekijk alle cases                </Link>
                 <span className="mfeat__foot">Binnenkort: meer branches</span>
-              </aside>
-            </div>
-
-            {/* -------- KENNISBANK -------- */}
-            <div
-              className={`mega__panel ${panel === 'kennis' ? 'is-active' : ''}`.trim()}
-              data-panel="kennis"
-              data-cols="kennis"
-              ref={(el) => {
-                panelRefs.current.kennis = el
-              }}
-            >
-              <div className="mcol">
-                <span className="mcol__head">Veelgestelde vragen</span>
-                {[
-                  ['prijs', 'euro', 'Wat kost een website?'],
-                  ['traject', 'help-circle', 'Hoe lang duurt een project?'],
-                  ['resultaat', 'trending-up', 'Hoe krijg je meer aanvragen?'],
-                ].map(([hash, icon, label]) => (
-                  <Link
-                    className="mlink"
-                    to="/veelgestelde-vragen"
-                    hash={hash}
-                    key={hash}
-                  >
-                    <span className="mlink__ico">
-                      <Icon name={icon} />
-                    </span>
-                    <span className="mlink__txt">
-                      <span className="mlink__name">{label}</span>
-                    </span>
-                  </Link>
-                ))}
-              </div>
-              <div className="mcol">
-                <span className="mcol__head">Uit de kennisbank</span>
-                {KENNISBANK_LINKS.map(({ slug, icoon, naam }) => (
-                  <Link
-                    className="mlink"
-                    to="/kennisbank/$slug"
-                    params={{ slug }}
-                    key={slug}
-                  >
-                    <span className="mlink__ico">
-                      <Icon name={icoon} />
-                    </span>
-                    <span className="mlink__txt">
-                      <span className="mlink__name">{naam}</span>
-                    </span>
-                  </Link>
-                ))}
-                <Link className="mlink" to="/kennisbank">
-                  <span className="mlink__ico">
-                    <Icon name="list-checks" />
-                  </span>
-                  <span className="mlink__txt">
-                    <span className="mlink__name">Alle artikelen</span>
-                  </span>
-                </Link>
-              </div>
-              <aside className="mfeat mfeat--soft">
-                <span className="mfeat__eyebrow">
-                  <span className="gdot" />
-                  Kenniscentrum
-                </span>
-                <h4 className="mfeat__title">Wat MegaOnline op websites tegenkomt</h4>
-                <p className="mfeat__desc">
-                  Wat MegaOnline steeds tegenkomt op websites, uitgewerkt zodat je er zelf mee aan de slag kunt.
-                </p>
-                <span className="mfeat__foot">
-                  <Link to="/kennisbank" style={{ color: 'var(--accent)', fontWeight: 600 }}>
-                    Naar de kennisbank
-                  </Link>
-                </span>
               </aside>
             </div>
 
@@ -690,12 +604,6 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
                 <Icon name="plug" />
               </span>
               Koppelingen en automatiseringen
-            </Link>
-            <Link className="macc__link" to="/megasmart" onClick={onClose}>
-              <span className="mlink__ico">
-                <Icon name="calendar-check" />
-              </span>
-              MegaSmart<span className="macc__tag">Software</span>
             </Link>
           </MobileAccordion>
 

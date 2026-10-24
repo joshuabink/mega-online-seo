@@ -217,7 +217,6 @@ const CRUMB_LABEL: Record<string, string> = {
   "/diensten/werken-bij-websites": "Werken-bij Websites",
   "/gratis-websitescan": "Gratis website scan",
   "/kennisbank": "Kennisbank",
-  "/megasmart": "MegaSmart",
   "/over-megaonline": "Over MegaOnline",
   "/privacyverklaring": "Privacyverklaring",
   "/veelgestelde-vragen": "Veelgestelde vragen",

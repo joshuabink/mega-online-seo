@@ -4,7 +4,6 @@ import { type CSSProperties, type ReactNode } from "react";
 import { Icon } from "@/components/Icon";
 import { Qa } from "@/components/Qa";
 import { Reveal } from "@/components/Reveal";
-import { MegaSmartBridge } from "@/components/MegaSmartBridge";
 import { CTA_SCAN } from "@/lib/cta"
 
 export const Route = createFileRoute("/branches/reserveringen")({
@@ -354,14 +353,6 @@ function Reserveringen() {
         </div>
       </section>
 
-      <MegaSmartBridge
-        text="Een reservering binnenhalen is stap een. MegaSmart regelt de rest: online reserveren, bevestigingen, herinneringen en opvolging na het bezoek, gekoppeld aan je website."
-        bullets={[
-          "Online reserveren",
-          "Automatische herinneringen",
-          "Reserveringen en klantcontact in een systeem",
-        ]}
-      />
 
       <section className="section" id="faq" data-theme="dark" data-screen-label="FAQ">
         <div className="wrap">

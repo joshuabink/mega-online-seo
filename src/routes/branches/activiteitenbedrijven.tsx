@@ -3,7 +3,6 @@ import { Link } from '@tanstack/react-router'
 import { Icon } from '@/components/Icon'
 import { Qa } from '@/components/Qa'
 import { Reveal } from '@/components/Reveal'
-import { MegaSmartBridge } from '@/components/MegaSmartBridge'
 import { CTA_SCAN } from '@/lib/cta'
 
 export const Route = createFileRoute('/branches/activiteitenbedrijven')({
@@ -312,14 +311,6 @@ function Activiteitenbedrijven() {
         </div>
       </section>
       {' '}
-      <MegaSmartBridge
-        text="Je website haalt de boeking binnen. Wat daarna gebeurt bepaalt of je agenda ook op de rustige dagen vol komt. MegaSmart is het boekings- en CRM-platform van MegaOnline voor activiteitenbedrijven: online boeken, betalen, bevestigen en opvolgen in een omgeving, gekoppeld aan je website."
-        bullets={[
-                'Online boeken en betalen',
-                'Automatische bevestiging en herinnering',
-                'Al het klantcontact op een plek',
-        ]}
-      />
       {' '}
       <section className="section" id="faq" data-theme="dark" data-screen-label="FAQ">
         <div className="wrap">

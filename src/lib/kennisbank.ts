@@ -1449,7 +1449,7 @@ export const ARTIKELEN: Artikel[] = [
         accent: "aanpakt",
         alineas: [
           "MegaOnline bouwt de website altijd vanuit de reservering terug: wat moet een gast weten voordat hij reserveert en in welke volgorde. Heb je al een systeem dat goed werkt, dan wordt de site daaromheen gebouwd.",
-          "Heb je nog geen systeem, of past je huidige systeem niet bij wat je verkoopt, dan is er ook een eigen boekings- en reserveringssysteem. Dat wordt ingericht op jouw diensten, van het boeken van een belafspraak tot het kopen van een ticket met extra opties. Wat het allemaal kan staat op de pagina over [MegaSmart](/megasmart).",
+          "Heb je nog geen systeem, of past je huidige systeem niet bij wat je verkoopt, dan is er ook een eigen boekings- en reserveringssysteem. Dat wordt ingericht op jouw diensten, van het boeken van een belafspraak tot het kopen van een ticket met extra opties. Hoe dat aansluit op je agenda en opvolging lees je bij [koppelingen en automatiseringen](/diensten/integraties).",
         ],
       },
     ],
@@ -1494,9 +1494,9 @@ export const ARTIKELEN: Artikel[] = [
         tekst: "De plekken waar gasten afhaken voordat ze reserveren.",
       },
       {
-        to: "/megasmart",
-        label: "Boekings- en reserveringssysteem MegaSmart",
-        tekst: "Online reserveren, bevestigingen en opvolging in één systeem.",
+        to: "/diensten/integraties",
+        label: "Koppelingen en automatiseringen",
+        tekst: "Reserveringen automatisch in je agenda, met bevestigingen en opvolging.",
       },
     ],
     metaTitle: "Reserveringssysteem of website met reserveringen? | MegaOnline",
