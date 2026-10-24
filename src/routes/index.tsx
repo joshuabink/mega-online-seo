@@ -48,7 +48,7 @@ const DIENSTEN: {
     icon: 'trending-up',
     tag: 'SEO · GEO · Google Ads',
     name: 'Online marketing',
-    text: "Gevonden worden door mensen die zoeken naar wat jij doet. Elke maand schrijven we blogs en landingspagina's op de vragen van jouw klanten. Haast? Dan zetten we Google Ads in.",
+    text: "Gevonden worden door mensen die zoeken naar wat jij doet. Elke maand schrijven we blogs en landingspagina's op de vragen van jouw klanten. Wil je sneller aanvragen? Dan zetten we ook Google Ads in.",
     price: 'SEO-pakket: vanaf € 75 per maand',
     to: '/diensten/seo',
     linkText: 'Bekijk de dienst',

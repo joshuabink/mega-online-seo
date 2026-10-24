@@ -263,7 +263,7 @@ function ConversieWebsite() {
               <Reveal as="div" className="cw-card reveal" data-d="1">
                 <span className="cw-card__tag">Na livegang</span>
                 <h3>Online marketing</h3>
-                <p>Elke maand blogs en landingspagina's op de vragen van jouw klanten. Haast? Dan zetten we Google Ads in.</p>
+                <p>Elke maand blogs en landingspagina's op de vragen van jouw klanten. Wil je sneller aanvragen? Dan zetten we ook Google Ads in.</p>
                 <p className="cw-card__prijs">SEO-pakket: vanaf € 75 per maand</p>
                 <Link className="tlink" to="/diensten/seo">Bekijk de dienst <span className="arr">&rarr;</span></Link>
               </Reveal>
