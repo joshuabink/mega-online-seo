@@ -96,19 +96,19 @@ const STAPPEN = [
     no: '01',
     name: 'Begrijpen',
     text: 'We leren je bedrijf en je klanten kennen. Wie is je klant, wat zoekt hij en wat trekt hem over de streep?',
-    meta: 'Intake · doelgroep · structuur',
+    punten: ['Deep dive in je bedrijf', "Doelgroepanalyse met persona's", 'Concurrentieonderzoek', 'Contentplan'],
   },
   {
     no: '02',
     name: 'Bouwen',
     text: 'We ontwerpen en bouwen een site die vertrouwen opbouwt en bezoekers zonder omwegen naar een aanvraag of boeking leidt.',
-    meta: 'Gemiddeld 4 tot 8 weken',
+    punten: ['Ontwerp', 'Development', 'Aanvraagflows', 'Tracking'],
   },
   {
     no: '03',
     name: 'Verbeteren',
     text: 'Na livegang kijken we wat bezoekers doen. Waar haken ze af? Elke maand pakken we de grootste groeikans.',
-    meta: 'Meten · bijsturen · rapporteren',
+    punten: ['Bezoekersdata bekijken', 'Bezoekersgedrag analyseren', 'De website daarop aanpassen', 'Onderhoud'],
   },
 ]
 
@@ -267,7 +267,11 @@ function Home() {
                 <span className="v2-step__no">{s.no}</span>
                 <h3>{s.name}</h3>
                 <p>{s.text}</p>
-                <span className="v2-step__meta">{s.meta}</span>
+                <ul className="v2-step__list">
+                  {s.punten.map((punt) => (
+                    <li key={punt}>{punt}</li>
+                  ))}
+                </ul>
               </Reveal>
             ))}
           </ol>
