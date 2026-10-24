@@ -110,7 +110,7 @@ const STAPPEN = [
   { t: 'Website live', p: 'Het startpunt. Vanaf hier begint het echte werk pas.' },
   { t: 'Meten', p: 'We verzamelen gegevens over bezoekers en zoekverkeer.' },
   { t: 'Kansen zoeken', p: 'We zetten de grootste kansen op een rij en kiezen waar we deze maand op inzetten.' },
-  { t: 'Uitvoeren', p: 'We pakken die kans aan: nieuwe pagina's, een verbetering of de techniek.' },
+  { t: 'Uitvoeren', p: "We pakken die kans aan: nieuwe pagina's, een verbetering of de techniek." },
   { t: 'Herhalen', p: 'Volgende maand opnieuw, met de lessen van de vorige.' },
 ]
 
