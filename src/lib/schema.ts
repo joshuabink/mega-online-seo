@@ -470,7 +470,7 @@ function vacatureVoorPad(path: string): Vacature | undefined {
  * Twee dingen zijn daar hard nodig en makkelijk te vergeten. `validThrough`
  * staat in `src/lib/vacatures.ts`: loopt die datum af, dan verdwijnen alle
  * vacatures stilletjes uit de resultaten. En omdat de rollen ook volledig op
- * afstand kunnen, staat naast `jobLocation` (Gouda) ook `jobLocationType:
+ * afstand kunnen, staat naast `jobLocation` (Utrecht) ook `jobLocationType:
  * TELECOMMUTE` met `applicantLocationRequirements` op Nederland. Zonder dat
  * tweede deel keurt Google een remote vacature af als locatiefout.
  *
@@ -505,8 +505,6 @@ function buildJobPosting(v: Vacature, url: string, pageId: string) {
       "@type": "Place",
       address: {
         "@type": "PostalAddress",
-        streetAddress: "Boelekade 106",
-        postalCode: "2806 AM",
         addressLocality: VOORWAARDEN.plaats,
         addressCountry: "NL",
       },

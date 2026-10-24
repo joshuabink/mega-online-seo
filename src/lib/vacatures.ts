@@ -42,11 +42,11 @@ export type Vacature = {
 
 /** Geldt voor alle rollen, dus één keer vastgelegd. */
 export const VOORWAARDEN = {
-  locatie: "Gouda of volledig remote",
+  locatie: "Utrecht of volledig remote",
   vergoeding: "In overleg",
   start: "In overleg",
   bedrijf: "MegaOnline.io",
-  plaats: "Gouda",
+  plaats: "Utrecht",
   mail: "joshua@megaonline.io",
 };
 
@@ -138,7 +138,7 @@ export const VACATURES: Vacature[] = [
     ],
     metaTitle: "Stage SEO | Werken bij MegaOnline.io",
     metaDescription:
-      "Stage SEO bij MegaOnline in Gouda of volledig remote. Zoekwoordonderzoek, titels herschrijven, techniek nalopen en rapportages maken voor echte klanten.",
+      "Stage SEO bij MegaOnline in Utrecht of volledig remote. Zoekwoordonderzoek, titels herschrijven, techniek nalopen en rapportages maken voor echte klanten.",
   },
 
   {
@@ -218,7 +218,7 @@ export const VACATURES: Vacature[] = [
     ],
     metaTitle: "Stage Webdesign | Werken bij MegaOnline.io",
     metaDescription:
-      "Stage webdesign bij MegaOnline in Gouda of volledig remote. Geen ervaring met ontwerpprogramma’s nodig, gevoel voor wat werkt wel. Je ontwerp gaat echt live.",
+      "Stage webdesign bij MegaOnline in Utrecht of volledig remote. Geen ervaring met ontwerpprogramma’s nodig, gevoel voor wat werkt wel. Je ontwerp gaat echt live.",
   },
 
   {
@@ -293,7 +293,7 @@ export const VACATURES: Vacature[] = [
     ],
     metaTitle: "Stage Webdevelopment | Werken bij MegaOnline.io",
     metaDescription:
-      "Stage webdevelopment bij MegaOnline in Gouda of volledig remote. Je hoeft niet te kunnen coderen. Pagina’s bouwen, koppelingen leggen en sites live zetten.",
+      "Stage webdevelopment bij MegaOnline in Utrecht of volledig remote. Je hoeft niet te kunnen coderen. Pagina’s bouwen, koppelingen leggen en sites live zetten.",
   },
 
   {
@@ -373,7 +373,7 @@ export const VACATURES: Vacature[] = [
     ],
     metaTitle: "AI-ontwikkelaar, stage of parttime | Werken bij MegaOnline.io",
     metaDescription:
-      "Bouw met AI bij MegaOnline in Gouda of volledig remote. Automatiseringen, agents en koppelingen maken. Geen modellen trainen, wel iets werkends opleveren.",
+      "Bouw met AI bij MegaOnline in Utrecht of volledig remote. Automatiseringen, agents en koppelingen maken. Geen modellen trainen, wel iets werkends opleveren.",
   },
 
   {
@@ -447,7 +447,7 @@ export const VACATURES: Vacature[] = [
     ],
     metaTitle: "SEO Specialist, freelance of parttime | Werken bij MegaOnline.io",
     metaDescription:
-      "SEO Specialist gezocht bij MegaOnline, freelance of parttime, remote of vanuit Gouda. Eigen klantenset, eigen aanpak en maandelijkse rapportage met duiding.",
+      "SEO Specialist gezocht bij MegaOnline, freelance of parttime, remote of vanuit Utrecht. Eigen klantenset, eigen aanpak en maandelijkse rapportage met duiding.",
   },
 
   {
@@ -520,7 +520,7 @@ export const VACATURES: Vacature[] = [
     ],
     metaTitle: "Stage SEA | Werken bij MegaOnline.io",
     metaDescription:
-      "Stage SEA bij MegaOnline in Gouda of volledig remote. Campagnes opzetten, verspilling eruit halen en sturen op kosten per aanvraag. Geen ervaring nodig.",
+      "Stage SEA bij MegaOnline in Utrecht of volledig remote. Campagnes opzetten, verspilling eruit halen en sturen op kosten per aanvraag. Geen ervaring nodig.",
   },
 
   {
@@ -599,7 +599,7 @@ export const VACATURES: Vacature[] = [
     ],
     metaTitle: "Web Consultant, parttime, freelance of stage | Werken bij MegaOnline.io",
     metaDescription:
-      "Web Consultant bij MegaOnline in Gouda of volledig remote. Klantgesprekken voeren, doelgroep en strategie uitwerken en vertalen naar wat er op de site moet staan.",
+      "Web Consultant bij MegaOnline in Utrecht of volledig remote. Klantgesprekken voeren, doelgroep en strategie uitwerken en vertalen naar wat er op de site moet staan.",
   },
 
   {
@@ -678,7 +678,7 @@ export const VACATURES: Vacature[] = [
     ],
     metaTitle: "App & Web Architect, parttime, freelance of stage | Werken bij MegaOnline.io",
     metaDescription:
-      "App & Web Architect bij MegaOnline in Gouda of volledig remote. De technische inrichting van websites en webapps doordenken voordat er gebouwd wordt.",
+      "App & Web Architect bij MegaOnline in Utrecht of volledig remote. De technische inrichting van websites en webapps doordenken voordat er gebouwd wordt.",
   },
 ];
 

@@ -8,7 +8,7 @@ import "@/styles/pages/werken-bij.css";
 
 const TITEL = "Werken bij MegaOnline | Stages, freelance en parttime";
 const OMSCHRIJVING =
-  "Acht open rollen bij MegaOnline: stages in SEO, SEA, webdesign, webdevelopment en AI, plus freelance en parttime plekken. Gouda of volledig remote, ervaring vaak niet nodig.";
+  "Acht open rollen bij MegaOnline: stages in SEO, SEA, webdesign, webdevelopment en AI, plus freelance en parttime plekken. Utrecht of volledig remote, ervaring vaak niet nodig.";
 
 export const Route = createFileRoute("/werken-bij/")({
   head: () => ({
@@ -71,7 +71,7 @@ function WerkenBij() {
         <div className="wrap">
           <div className="proof__grid">
             {[
-              ["map-pin", "Gouda of volledig remote"],
+              ["map-pin", "Utrecht of volledig remote"],
               ["user-plus", "Meestal geen ervaring nodig"],
               ["handshake", "Direct contact met de oprichter"],
               ["rocket", "Je werk gaat live bij klanten"],
@@ -118,7 +118,7 @@ function WerkenBij() {
               ],
               [
                 "map-pin",
-                "Gouda of thuis",
+                "Utrecht of thuis",
                 "Waar je werkt maakt niet uit. Af en toe samen aan tafel is wel zo prettig.",
               ],
             ].map(([icoon, kop, tekst], i) => (
@@ -239,7 +239,7 @@ function WerkenBij() {
             </Qa>
             <Qa question="Kan ik volledig op afstand werken?" className="reveal" delay="1">
               <p>
-                Ja. MegaOnline heeft klanten door heel Nederland en werkt zelf ook zo. Woon je in de buurt van Gouda, dan ziet MegaOnline je graag af en toe aan tafel, want sommige dingen leer je nu eenmaal sneller naast elkaar.
+                Ja. MegaOnline heeft klanten door heel Nederland en werkt zelf ook zo. Woon je in de buurt van Utrecht, dan ziet MegaOnline je graag af en toe aan tafel, want sommige dingen leer je nu eenmaal sneller naast elkaar.
               </p>
             </Qa>
             <Qa question="Wat verdien ik?" className="reveal" delay="2">
