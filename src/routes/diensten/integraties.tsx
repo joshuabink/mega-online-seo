@@ -52,7 +52,7 @@ const PIJLERS: { icon: string; t: string; p: string; voorbeelden: string[] }[] =
     icon: 'bot',
     t: 'AI-agents',
     p: 'Een assistent die werk voor je voorbereidt. Jij houdt de controle en keurt goed wat ertoe doet.',
-    voorbeelden: ['Aanvragen beoordelen', 'Conceptantwoorden schrijven', 'Een ochtendoverzicht maken', 'Taken vastleggen in Notion'],
+    voorbeelden: ['Aanvragen beoordelen', 'Conceptantwoorden schrijven', 'Een ochtendoverzicht maken', 'Taken klaarzetten in je planningstool'],
   },
 ]
 
