@@ -49,7 +49,7 @@ const DIENSTEN: {
     tag: 'SEO · GEO · Google Ads',
     name: 'Online marketing',
     text: "Gevonden worden door mensen die zoeken naar wat jij doet. Elke maand schrijven we blogs en landingspagina's op de vragen van jouw klanten. Wil je sneller aanvragen? Dan zetten we ook Google Ads in.",
-    price: 'SEO-pakket: vanaf € 75 per maand',
+    price: 'SEO en GEO: € 150 per maand',
     to: '/diensten/seo',
     linkText: 'Bekijk de dienst',
   },

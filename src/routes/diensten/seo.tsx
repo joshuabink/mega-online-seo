@@ -10,9 +10,9 @@ export const Route = createFileRoute('/diensten/seo')({
   head: () => ({
     meta: [
       { title: "SEO en GEO | Gevonden worden in Google en in AI | MegaOnline.io" },
-      { name: 'description', content: "Elke maand nieuwe pagina's die je vindbaar maken in Google en in AI-zoekmachines. 250 euro opstart, daarna 150 euro per maand. Geen trucjes, wel een plan." },
+      { name: 'description', content: "Elke maand vier nieuwe pagina's die je vindbaar maken in Google en in AI-zoekmachines. 250 euro opstart, daarna 150 euro per maand. Geen trucjes, wel een plan." },
       { property: 'og:title', content: "SEO en GEO | Gevonden worden in Google en in AI | MegaOnline.io" },
-      { property: 'og:description', content: "Elke maand nieuwe pagina's die je vindbaar maken in Google en in AI-zoekmachines. 250 euro opstart, daarna 150 euro per maand. Geen trucjes, wel een plan." },
+      { property: 'og:description', content: "Elke maand vier nieuwe pagina's die je vindbaar maken in Google en in AI-zoekmachines. 250 euro opstart, daarna 150 euro per maand. Geen trucjes, wel een plan." },
       { property: 'og:url', content: "https://megaonline.io/diensten/seo" },
     ],
     links: [
@@ -33,15 +33,15 @@ const FAQ_ITEMS: { q: string; a: string }[] = [
   },
   {
     q: "Wat kost SEO per maand bij MegaOnline?",
-    a: "Je betaalt € 250 eenmalig voor het zoekwoordenonderzoek en het contentplan. Daarna kost het € 150 per maand. Daarvoor publiceren we elke maand nieuwe pagina's: blogs en landingspagina's.",
+    a: "Je betaalt € 250 eenmalig voor het zoekwoordenonderzoek en het contentplan. Daarna kost het € 150 per maand. Daarvoor publiceren we elke maand vier nieuwe pagina's: blogs of landingspagina's.",
   },
   {
     q: "Wat krijg ik voor 150 euro per maand?",
-    a: "Elke maand nieuwe pagina's die gericht zijn op vindbaarheid: blogs en landingspagina's, geschreven, opgebouwd en gepubliceerd. Elke pagina wordt geoptimaliseerd voor Google en krijgt heldere FAQ's, zodat je ook naar voren komt in AI-zoekmachines. Welk type pagina er wanneer komt, ligt vooraf vast in je contentplan.",
+    a: "Elke maand vier nieuwe pagina's die gericht zijn op vindbaarheid: blogs of landingspagina's, geschreven, opgebouwd en gepubliceerd. Elke pagina wordt geoptimaliseerd voor Google en krijgt heldere FAQ's, zodat je ook naar voren komt in AI-zoekmachines. Welk type pagina er wanneer komt, ligt vooraf vast in je contentplan.",
   },
   {
     q: "Hoeveel pagina's komen er per maand bij?",
-    a: "Dat hangt af van wat je wilt bereiken en hoe snel. In je contentplan leggen we vooraf vast welke pagina's er wanneer live gaan. Wil je sneller opschalen, dan kijken we samen wat past.",
+    a: "Vier per maand: blogs of landingspagina's. Wil je sneller opschalen, dan kost elke extra pagina in die maand € 50. In je contentplan leggen we vooraf vast welke pagina's er wanneer live gaan.",
   },
   {
     q: "Hoe lang duurt het voordat ik iets merk van SEO?",
@@ -118,7 +118,7 @@ const IN_TRAJECT: { icon: string; t: string }[] = [
   { icon: 'compass', t: 'Zoekwoordenonderzoek en contentplan' },
   { icon: 'search-check', t: 'Beter gevonden in Google' },
   { icon: 'target', t: 'Heldere FAQ’s voor AI-zoekmachines' },
-  { icon: 'file-text', t: "Elke maand nieuwe blogs en landingspagina's" },
+  { icon: 'file-text', t: "Elke maand vier blogs of landingspagina's" },
   { icon: 'sliders-horizontal', t: 'Meer aanvragen uit dezelfde bezoekers' },
   { icon: 'bar-chart-2', t: 'Elke maand zien wat het oplevert' },
   { icon: 'shield-check', t: 'Snelheid, veiligheid en updates' },
@@ -141,8 +141,8 @@ const WE_KIJKEN = [
 ]
 
 const PAKKET = [
-  "Elke maand nieuwe pagina's",
-  "Blogs en landingspagina's",
+  "Elke maand vier nieuwe pagina's",
+  "Blogs of landingspagina's",
   'Vindbaar in Google en AI',
   'Maandelijkse terugkoppeling',
 ]
@@ -166,18 +166,18 @@ function Seo() {
                 <b>SEO en GEO</b>
               </Reveal>
               <Reveal as="p" className="v2-eyebrow reveal">
-                SEO en GEO · elke maand nieuwe pagina's
+                SEO en GEO · elke maand vier nieuwe pagina's
               </Reveal>
               <Reveal as="h1" className="display reveal" data-d="1">
                 Gevonden worden in Google. En in de <em>antwoorden van AI.</em>
               </Reveal>
               <Reveal as="p" className="lead hero__sub reveal" data-d="2">
-                Elke maand publiceren we nieuwe pagina's die je beter vindbaar maken, in Google en in AI-zoekmachines zoals ChatGPT en Gemini. Welke pagina's dat worden, ligt vooraf vast in je contentplan.
+                Elke maand publiceren we vier nieuwe pagina's die je beter vindbaar maken, in Google en in AI-zoekmachines zoals ChatGPT en Gemini. Welke pagina's dat worden, ligt vooraf vast in je contentplan.
               </Reveal>
               <Reveal as="ul" className="hero__ticks reveal" data-d="3">
                 <li>
                   <Icon name="check" className="ck" />
-                  <span>Elke maand nieuwe blogs en landingspagina's</span>
+                  <span>Elke maand vier nieuwe blogs of landingspagina's</span>
                 </li>
                 <li>
                   <Icon name="check" className="ck" />
@@ -257,7 +257,7 @@ function Seo() {
             </div>
             <div className="v2-head__side">
               <p>
-                Het Groei Partnership is de SEO- en GEO-dienst van MegaOnline: elke maand nieuwe pagina's, gericht op vindbaarheid in Google en in AI-zoekmachines. Bij de start doen we zoekwoordenonderzoek en leggen we een contentplan voor twaalf maanden vast.
+                Het Groei Partnership is de SEO- en GEO-dienst van MegaOnline: elke maand vier nieuwe pagina's, gericht op vindbaarheid in Google en in AI-zoekmachines. Bij de start doen we zoekwoordenonderzoek en leggen we een contentplan voor twaalf maanden vast.
               </p>
               <p>
                 Hoe AI-zoekmachines bedrijven kiezen om te noemen, lees je in <Link to="/kennisbank/$slug" params={{ slug: 'gevonden-worden-in-chatgpt' }}>gevonden worden in ChatGPT als mkb'er</Link>.
@@ -309,7 +309,7 @@ function Seo() {
               <span className="v2-eyebrow">SEO en GEO abonnement</span>
               <p className="cw-prijs__bedrag">€ 150 per maand</p>
               <p className="cw-prijs__uitleg">
-                Eenmalig € 250 opstart voor het zoekwoordenonderzoek, een technische check van je website en het contentplan.
+                Eenmalig € 250 opstart voor het zoekwoordenonderzoek, een technische check van je website en het contentplan. Een extra pagina in dezelfde maand kost € 50.
               </p>
               <ul className="hero__ticks">
                 {PAKKET.map((x) => (
