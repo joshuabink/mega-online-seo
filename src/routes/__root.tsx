@@ -34,6 +34,8 @@ import "@/styles/funnel.css";
 import "@/styles/megamenu.css";
 // Visuele refresh (golf 1) — review-laag, hoort bij akkoord in styles.css.
 import "@/styles/refresh.css";
+// Sitebrede stijl in de lijn van de homepage. Laatste laag.
+import "@/styles/site.css";
 
 /** Per-route vlaggen die de layout aansturen. */
 export type RouteMeta = {

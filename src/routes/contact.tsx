@@ -57,26 +57,24 @@ function Contact() {
                 Of je nu een concrete vraag hebt of gewoon wilt sparren over je website, MegaOnline denkt graag mee. Je krijgt eerlijk advies, ook als dat betekent dat je (nog) geen hulp nodig hebt.
               </Reveal>
               {' '}
-              <Reveal as="div" className="hero__ticks reveal" data-d="2" style={{ display: "flex", flexWrap: "wrap", gap: "10px 22px", marginTop: "26px" }}>
-                <span style={{ display: "inline-flex", alignItems: "center", gap: "9px", color: "var(--muted)", fontSize: "0.95rem" }}>
-                  <Icon name="check" />
-                  Geen verplichtingen
-                </span>
-                {' '}
-                <span style={{ display: "inline-flex", alignItems: "center", gap: "9px", color: "var(--muted)", fontSize: "0.95rem" }}>
-                  <Icon name="check" />
-                  Direct met de maker
-                </span>
-                {' '}
-                <span style={{ display: "inline-flex", alignItems: "center", gap: "9px", color: "var(--muted)", fontSize: "0.95rem" }}>
-                  <Icon name="check" />
-                  Reactie {CONTACT_REACTIETIJD}
-                </span>
+              <Reveal as="ul" className="hero__ticks reveal" data-d="2">
+                <li>
+                  <Icon name="check" className="ck" />
+                  <span>Geen verplichtingen</span>
+                </li>
+                <li>
+                  <Icon name="check" className="ck" />
+                  <span>Direct met de maker</span>
+                </li>
+                <li>
+                  <Icon name="check" className="ck" />
+                  <span>Reactie {CONTACT_REACTIETIJD}</span>
+                </li>
               </Reveal>
             </div>
             {' '}
             <SingleLeadForm
-              className="fhero__form reveal"
+              className="fhero__form hero__form reveal"
               subject="Nieuw contactverzoek - MegaOnline.io"
               formName="contact"
               head={

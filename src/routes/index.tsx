@@ -3,7 +3,7 @@ import { Icon } from '@/components/Icon'
 import { Media } from '@/components/Media'
 import { Qa } from '@/components/Qa'
 import { Reveal } from '@/components/Reveal'
-import { ConceptFormKort } from '@/components/ConceptFormKort'
+import { AanvraagKort } from '@/components/AanvraagKort'
 import { CTA_SCAN } from '@/lib/cta'
 import '@/styles/pages/home.css'
 
@@ -215,7 +215,7 @@ function Home() {
                 </li>
               </Reveal>
             </div>{' '}
-            <ConceptFormKort className="hero__form reveal" />
+            <AanvraagKort soort="ontwerp" className="hero__form reveal" />
           </div>
         </div>
       </section>{' '}

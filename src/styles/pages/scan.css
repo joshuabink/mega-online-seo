@@ -1,11 +1,8 @@
 /* Pagina /gratis-websitescan. Alleen tokens uit het designsysteem. */
 
-[data-page="scan"] .scan-hero .display {
-  max-width: 16ch;
-}
 [data-page="scan"] .scan-hero .lead {
   margin-top: 18px;
-  max-width: 46ch;
+  max-width: 52ch;
 }
 [data-page="scan"] .scan-hero__actions {
   display: flex;

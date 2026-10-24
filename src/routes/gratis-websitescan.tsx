@@ -2,9 +2,9 @@ import { createFileRoute, Link } from '@tanstack/react-router'
 import { Media } from '@/components/Media'
 import { Qa } from '@/components/Qa'
 import { Reveal } from '@/components/Reveal'
-import { ScanForm } from '@/components/ScanForm'
-import { CTA_SCAN } from '@/lib/cta'
-import { SCAN_DESCRIPTION, SCAN_FAQ, SCAN_H1, SCAN_OPLEVERING, SCAN_TITLE } from '@/lib/scan'
+import { AanvraagKort } from '@/components/AanvraagKort'
+import { Icon } from '@/components/Icon'
+import { SCAN_DESCRIPTION, SCAN_FAQ, SCAN_H1, SCAN_OPLEVERING, SCAN_REACTIETIJD, SCAN_TITLE } from '@/lib/scan'
 import '@/styles/pages/scan.css'
 
 export const Route = createFileRoute('/gratis-websitescan')({
@@ -124,51 +124,54 @@ const KENNIS = [
 function GratisWebsitescan() {
   return (
     <main id="top" data-page="scan">
-      <section className="section hero scan-hero" data-theme="dark" data-screen-label="Hero">
+      <section className="section hero scan-hero" id="formulier" data-theme="dark" data-screen-label="Hero + scanformulier">
         <div className="wrap">
-          <Reveal as="h1" className="display reveal">
-            {SCAN_H1}
-          </Reveal>
-          <Reveal as="p" className="lead reveal" data-d="1">
-            We bekijken je site en vertellen je eerlijk wat je nu aanvragen en boekingen kost, en wat het eerst moet.
-          </Reveal>
-          <Reveal as="div" className="scan-hero__actions reveal" data-d="2">
-            <a className="btn btn-primary" href="#formulier">
-              {CTA_SCAN}
-            </a>
-            <a className="tlink" href="#werk">
-              Bekijk ons werk
-            </a>
-          </Reveal>
+          <div className="hero__grid">
+            <div className="hero__copy">
+              <Reveal as="p" className="v2-eyebrow reveal">
+                Gratis website scan
+              </Reveal>
+              <Reveal as="h1" className="display reveal" data-d="1">
+                {SCAN_H1}
+              </Reveal>
+              <Reveal as="p" className="lead hero__sub reveal" data-d="2">
+                We bekijken je site en vertellen je eerlijk wat je nu aanvragen en boekingen kost en wat het eerst moet.
+              </Reveal>
+              <Reveal as="ul" className="hero__ticks reveal" data-d="3">
+                <li>
+                  <Icon name="check" className="ck" />
+                  <span>Persoonlijk advies, geen standaardrapport</span>
+                </li>
+                <li>
+                  <Icon name="check" className="ck" />
+                  <span>Rapport {SCAN_REACTIETIJD}</span>
+                </li>
+                <li>
+                  <Icon name="check" className="ck" />
+                  <span>Toelichting in een videogesprek</span>
+                </li>
+              </Reveal>
+            </div>
+            <AanvraagKort soort="scan" className="hero__form reveal" />
+          </div>
         </div>
       </section>
 
-      <section className="section" id="scan" data-theme="light" data-screen-label="Scanformulier">
+      <section className="section section--tight" id="scan" data-theme="light" data-screen-label="Wat de scan bekijkt">
         <div className="wrap">
-          <Reveal as="div" className="shead reveal">
-            <h2 className="h2">Wat de website scan bekijkt</h2>
-            <p className="lead">
-              We kijken waar bezoekers afhaken op weg naar een aanvraag of boeking, en wat daar beter
-              kan. Jouw antwoorden hieronder bepalen waar we het eerst naar kijken.
-            </p>
-          </Reveal>
-          <div className="scan-layout">
-            <Reveal as="div" className="reveal" data-d="1">
-              <h2 className="h2">Wat gaat er volgens jou mis?</h2>
-              <p className="lead">
-                Vijf korte vragen. Je antwoorden gebruiken we in het gesprek over je site.
+          <Reveal as="div" className="v2-head reveal">
+            <div className="shead">
+              <span className="label">Wat de scan bekijkt</span>
+              <h2 className="h2">Waar haken bezoekers af op weg naar een aanvraag?</h2>
+            </div>
+            <div className="v2-head__side">
+              <p>
+                We kijken waar bezoekers afhaken op weg naar een aanvraag of boeking en wat daar beter
+                kan. Jouw antwoorden in het formulier bepalen waar we het eerst naar kijken.
               </p>
-              <ScanForm />
-            </Reveal>
-            <Reveal as="aside" className="scan-side reveal" data-d="2">
-              <h3>Wat je na de scan ontvangt</h3>
               <p>{SCAN_OPLEVERING}</p>
-              <p className="scan-side__mail">
-                Liever eerst mailen?{' '}
-                <a href="mailto:info@megaonline.io">info@megaonline.io</a>
-              </p>
-            </Reveal>
-          </div>
+            </div>
+          </Reveal>
         </div>
       </section>
 
@@ -217,19 +220,17 @@ function GratisWebsitescan() {
               direct met de mensen die het doen, zonder tussenlagen.
             </p>
           </Reveal>
-          <ol className="scan-steps">
+          <ol className="v2-steps v2-steps--4">
             {STAPPEN.map((stap, i) => (
-              <Reveal as="li" className="reveal" data-d={String(i % 3)} key={stap.titel}>
-                <span className="scan-steps__no">{i + 1}</span>
-                <div>
-                  <h3>{stap.titel}</h3>
-                  <p>{stap.tekst}</p>
-                  <ul>
-                    {stap.punten.map((punt) => (
-                      <li key={punt}>{punt}</li>
-                    ))}
-                  </ul>
-                </div>
+              <Reveal as="li" className="v2-step reveal" data-d={String(i % 3)} key={stap.titel}>
+                <span className="v2-step__no">0{i + 1}</span>
+                <h3>{stap.titel}</h3>
+                <p>{stap.tekst}</p>
+                <ul className="v2-step__list">
+                  {stap.punten.map((punt) => (
+                    <li key={punt}>{punt}</li>
+                  ))}
+                </ul>
               </Reveal>
             ))}
           </ol>
@@ -243,16 +244,21 @@ function GratisWebsitescan() {
 
       <section className="section" id="waarom" data-theme="dark" data-screen-label="Vergelijking">
         <div className="wrap">
-          <Reveal as="h2" className="h2 reveal">
-            Een websitebouwer maakt wat je vraagt. Wij bouwen wat je klant laat aanvragen.
+          <Reveal as="div" className="shead reveal">
+            <span className="label">Het verschil</span>
+            <h2 className="h2">
+              Een websitebouwer maakt wat jij vraagt. Wij bouwen voor jouw doelgroep. Met één doel: dat je bezoeker <em>actie onderneemt.</em>
+            </h2>
           </Reveal>
-          <Reveal as="div" className="scan-table-wrap reveal" data-d="1">
-            <table className="scan-table">
+          <Reveal as="div" className="v2-table reveal" data-d="1">
+            <table>
               <thead>
                 <tr>
-                  <th scope="col" />
+                  <th scope="col">
+                    <span className="sr-only">Onderdeel</span>
+                  </th>
                   <th scope="col">Gemiddelde websitebouwer</th>
-                  <th scope="col">MegaOnline</th>
+                  <th scope="col" className="us">MegaOnline</th>
                 </tr>
               </thead>
               <tbody>
@@ -260,7 +266,7 @@ function GratisWebsitescan() {
                   <tr key={rij.label}>
                     <th scope="row">{rij.label}</th>
                     <td>{rij.ander}</td>
-                    <td>{rij.wij}</td>
+                    <td className="us">{rij.wij}</td>
                   </tr>
                 ))}
               </tbody>
