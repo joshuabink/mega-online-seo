@@ -126,3 +126,47 @@
 @media (max-width: 380px) {
   [data-page="homepage-v2"] .scankort .choice__grid { grid-template-columns: 1fr; }
 }
+
+/* ---------- Gelijk aan het ontwerp ---------- */
+/* Koppen in Hanken Grotesk, zoals in het ontwerp */
+[data-page="homepage-v2"] { --display: var(--sans); }
+[data-page="homepage-v2"] h1, [data-page="homepage-v2"] h2, [data-page="homepage-v2"] h3 { font-weight: 700; letter-spacing: -0.02em; }
+[data-page="homepage-v2"] .display em, [data-page="homepage-v2"] .h2 em { font-style: italic; }
+[data-page="homepage-v2"] .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+/* Hero: los label, kleinere kop, vinkjes in accentkleur */
+[data-page="homepage-v2"] .v2-eyebrow { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-text); margin-bottom: 20px; }
+[data-page="homepage-v2"] .hero h1.display { font-size: clamp(2.1rem, 3.5vw, 3.1rem); line-height: 1.12; letter-spacing: -0.02em; max-width: 20ch; }
+[data-page="homepage-v2"] .hero__sub { font-size: 1.1rem; max-width: 52ch; }
+[data-page="homepage-v2"] .hero__ticks { margin-top: 24px; }
+[data-page="homepage-v2"] .hero__ticks li { color: var(--fg); align-items: center; }
+[data-page="homepage-v2"] .hero__ticks .ck { width: 18px; height: 18px; color: var(--accent-text); margin-top: 0; }
+[data-page="homepage-v2"] .hero__grid { align-items: center; }
+
+/* Formulierkaart op papier met groene knop */
+[data-page="homepage-v2"] .hero__form.scankort { background: #F5F3EC; border-color: transparent; border-radius: 16px; max-width: 460px; justify-self: end; width: 100%; }
+[data-page="homepage-v2"] .scankort .form__head-note { color: #23593D; }
+[data-page="homepage-v2"] .scankort .form__bar { background: #DEDBD0; }
+[data-page="homepage-v2"] .scankort .form__bar i { background: #23593D; }
+[data-page="homepage-v2"] .scankort .btn-primary { background: #23593D; color: #FFFFFF; }
+[data-page="homepage-v2"] .scankort .btn-primary:hover { box-shadow: 0 14px 34px -16px #23593D; }
+[data-page="homepage-v2"] .scankort .choice { background: #FFFFFF; }
+[data-page="homepage-v2"] .scankort .choice:has(input:checked) { border-color: #23593D; border-width: 2px; background: #FFFFFF; }
+[data-page="homepage-v2"] .scankort .choice:has(input:checked) .choice__mark { border-color: #23593D; background: #23593D; }
+[data-page="homepage-v2"] .scankort .choice:has(input:checked) .choice__mark::after { border-color: #FFFFFF; }
+[data-page="homepage-v2"] .scankort .choice__count { color: #23593D; }
+
+/* Vergelijking als tabel, zoals in het ontwerp */
+[data-page="homepage-v2"] .v2-table { margin-top: clamp(28px, 3vw, 36px); overflow-x: auto; background: #FFFFFF; border: 1px solid var(--line); border-radius: 14px; }
+[data-page="homepage-v2"] .v2-table table { width: 100%; min-width: 620px; border-collapse: collapse; font-size: 0.95rem; line-height: 1.55; }
+[data-page="homepage-v2"] .v2-table th, [data-page="homepage-v2"] .v2-table td { padding: 16px 24px; text-align: left; vertical-align: top; }
+[data-page="homepage-v2"] .v2-table thead th { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); padding-block: 16px; }
+[data-page="homepage-v2"] .v2-table thead th:first-child { width: 18%; }
+[data-page="homepage-v2"] .v2-table thead th.us { color: var(--accent-text); }
+[data-page="homepage-v2"] .v2-table tbody tr { border-top: 1px solid var(--line); }
+[data-page="homepage-v2"] .v2-table tbody th { font-weight: 600; color: var(--fg); }
+[data-page="homepage-v2"] .v2-table td { color: var(--muted); }
+[data-page="homepage-v2"] .v2-table .us { background: color-mix(in oklab, var(--accent-text) 10%, #FFFFFF); }
+[data-page="homepage-v2"] .v2-table td.us { color: var(--fg); }
+/* Sectielabels als losse tekst, zoals in het ontwerp */
+[data-page="homepage-v2"] .label { border: 0; border-bottom: 0; background: none; padding: 0; border-radius: 0; font-size: 0.75rem; letter-spacing: 0.08em; }

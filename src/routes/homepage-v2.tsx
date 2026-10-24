@@ -178,11 +178,8 @@ function HomepageV2() {
         <div className="wrap">
           <div className="hero__grid">
             <div className="hero__copy">
-              <Reveal as="div" className="hero__badge reveal">
-                <span className="badge">
-                  <span className="gdot" />
-                  Websites voor bedrijven die leven van aanvragen
-                </span>
+              <Reveal as="p" className="v2-eyebrow reveal">
+                Websites voor bedrijven die leven van aanvragen
               </Reveal>{' '}
               <Reveal as="h1" className="display reveal" data-d="1">
                 Je website staat online. Maar <em>levert</em> hij ook aanvragen en boekingen op?
@@ -192,15 +189,15 @@ function HomepageV2() {
               </Reveal>{' '}
               <Reveal as="ul" className="hero__ticks reveal" data-d="3">
                 <li>
-                  <span className="ck">✓</span>
+                  <Icon name="check" className="ck" />
                   <span>Direct contact met wie je site bouwt</span>
                 </li>
                 <li>
-                  <span className="ck">✓</span>
+                  <Icon name="check" className="ck" />
                   <span>Gebouwd op vertrouwen en makkelijk aanvragen</span>
                 </li>
                 <li>
-                  <span className="ck">✓</span>
+                  <Icon name="check" className="ck" />
                   <span>Betrokken partner na livegang</span>
                 </li>
               </Reveal>
@@ -263,7 +260,7 @@ function HomepageV2() {
           </ol>
         </div>
       </section>{' '}
-      <section className="section" id="verschil" data-theme="light" data-screen-label="Vergelijking websitebouwer">
+      <section className="section" id="verschil" data-theme="paper" data-screen-label="Vergelijking websitebouwer">
         <div className="wrap">
           <Reveal as="div" className="shead reveal">
             <span className="label">Het verschil</span>
@@ -271,32 +268,31 @@ function HomepageV2() {
               Een websitebouwer maakt wat je vraagt. Wij bouwen wat je klant laat <em>aanvragen.</em>
             </h2>
           </Reveal>{' '}
-          <Reveal as="div" className="cmp reveal" data-d="1">
-            <div className="cmp__row cmp__row--head" aria-hidden="true">
-              <span />
-              <span className="cmp__col">Gemiddelde websitebouwer</span>
-              <span className="cmp__col cmp__col--us">MegaOnline</span>
-            </div>
-            {VERSCHIL.map((r) => (
-              <div className="cmp__row" key={r.k}>
-                <h3 className="cmp__k">{r.k}</h3>
-                <p className="cmp__them">
-                  <span className="cmp__who">Gemiddelde websitebouwer</span>
-                  {r.them}
-                </p>
-                <p className="cmp__us">
-                  <Icon name="check" className="cmp__ck" />
-                  <span>
-                    <span className="cmp__who">MegaOnline</span>
-                    {r.us}
-                  </span>
-                </p>
-              </div>
-            ))}
+          <Reveal as="div" className="v2-table reveal" data-d="1">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">
+                    <span className="sr-only">Onderdeel</span>
+                  </th>
+                  <th scope="col">Gemiddelde websitebouwer</th>
+                  <th scope="col" className="us">MegaOnline</th>
+                </tr>
+              </thead>
+              <tbody>
+                {VERSCHIL.map((r) => (
+                  <tr key={r.k}>
+                    <th scope="row">{r.k}</th>
+                    <td>{r.them}</td>
+                    <td className="us">{r.us}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </Reveal>
         </div>
       </section>{' '}
-      <section className="section section--tight" id="zelf-checken" data-theme="paper" data-screen-label="Zelf aan de slag">
+      <section className="section section--tight" id="zelf-checken" data-theme="light" data-screen-label="Zelf aan de slag">
         <div className="wrap">
           <Reveal as="div" className="v2-head reveal">
             <div className="shead">
@@ -323,7 +319,7 @@ function HomepageV2() {
           </ol>
         </div>
       </section>{' '}
-      <section className="section section--tight" data-theme="light" data-screen-label="Testimonials">
+      <section className="section section--tight" data-theme="paper" data-screen-label="Testimonials">
         <div className="wrap">
           <Reveal as="div" className="shead reveal">
             <span className="label">Referenties</span>
@@ -363,7 +359,7 @@ function HomepageV2() {
           </div>
         </div>
       </section>{' '}
-      <section className="section" id="faq" data-theme="paper" data-screen-label="FAQ">
+      <section className="section" id="faq" data-theme="light" data-screen-label="FAQ">
         <div className="wrap v2-faq">
           <Reveal as="div" className="shead v2-faq__side reveal">
             <span className="label">Veelgestelde vragen</span>
