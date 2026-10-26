@@ -166,9 +166,9 @@ export function initAnalytics(): void {
  * Alleen form_name, page_path en — bij een browser-terugval — route "fallback".
  * Geen naam, e-mail, telefoon of vrije tekst.
  *
- * Open vraag voor de review: telt een geslaagde browser-terugval als lead?
- * true: ook `generate_lead` met parameter route "fallback".
- * false: alleen het aparte event `lead_browser_fallback`, geen `generate_lead`.
+ * Bewuste keuze: een geslaagde FormSubmit-terugval uit de browser bereikt
+ * MegaOnline echt. Die telt daarom ook als generate_lead, met route "fallback",
+ * zodat Theo die inzendingen kan scheiden van een geslaagde serverreactie.
  * Sollicitaties tellen nooit als lead, ook niet via deze constante.
  */
 export const GENERATE_LEAD_BIJ_BROWSER_FALLBACK = true
@@ -188,9 +188,20 @@ export function generateLeadParams(
   return params
 }
 
+/** Zonder toestemming geen event. Met toestemming dezelfde parameters als generateLeadParams. */
+export function generateLeadBijToestemming(
+  toestemming: boolean,
+  formName: string,
+  pagePath: string,
+  extra?: { route?: "fallback" },
+): Record<string, string> | null {
+  if (!toestemming) return null
+  return generateLeadParams(formName, pagePath, extra)
+}
+
 export function trackGenerateLead(formName: string, extra?: { route?: "fallback" }): void {
-  if (!gaActive || typeof window === "undefined") return
-  const params = generateLeadParams(formName, location.pathname, extra)
+  if (typeof window === "undefined") return
+  const params = generateLeadBijToestemming(gaActive, formName, location.pathname, extra)
   if (!params) return
   const w = gaWindow()
   w?.gtag?.("event", "generate_lead", params)

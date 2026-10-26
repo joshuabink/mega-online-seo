@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import { generateLeadParams } from '../src/lib/analytics.ts'
+import { GENERATE_LEAD_BIJ_BROWSER_FALLBACK, generateLeadBijToestemming, generateLeadParams } from '../src/lib/analytics.ts'
 import { metingenVoorResultaat } from '../src/lib/lead-meting.ts'
 
 const PII = /@|06\d{8}|naam|email|telefoon|bericht/i
@@ -69,4 +69,14 @@ test('een geslaagde browser-terugval telt als response, een sollicitatie nooit a
 
 test('een form_name met een e-mailadres wordt geweigerd', () => {
   assert.equal(generateLeadParams('jan@example.com', '/contact'), null)
+})
+
+test('zonder toestemming geen generate_lead', () => {
+  assert.equal(GENERATE_LEAD_BIJ_BROWSER_FALLBACK, true)
+  assert.equal(generateLeadBijToestemming(false, 'contact', '/contact'), null)
+  assert.equal(generateLeadBijToestemming(false, 'scan', '/gratis-websitescan', { route: 'fallback' }), null)
+  assert.deepEqual(generateLeadBijToestemming(true, 'contact', '/contact'), {
+    form_name: 'contact',
+    page_path: '/contact',
+  })
 })
