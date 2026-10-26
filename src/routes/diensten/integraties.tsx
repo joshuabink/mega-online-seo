@@ -76,9 +76,9 @@ const VOORBEELDEN: { img: string; w: number; h: number; tag: string; t: string; 
     levert: ['Instructies precies op het juiste moment', 'Een herinnering voor het inleveren', 'Factuur klaar zodra het terug is'],
   },
   {
-    img: '/images/n8n-ai-assistent.webp',
+    img: '/images/n8n-agent.webp',
     w: 1200,
-    h: 615,
+    h: 750,
     tag: 'AI-agent',
     t: 'Een agent die praat, plant en zelf aan de slag gaat',
     p: 'Je geeft de agent instructies in gewone taal. Hij werkt met je eigen tools en kennisbank, voert ingeplande taken uit en zet workflows of andere agents aan het werk.',
@@ -238,7 +238,7 @@ function Integraties() {
               </h2>
             </div>
             <div className="v2-head__side">
-              <p>Drie flows zoals we ze in n8n bouwen: een koppeling, een automatisering en een AI-agent. Elke stap is zichtbaar en later aan te passen.</p>
+              <p>Drie voorbeelden zoals we ze in n8n bouwen: een koppeling, een automatisering en een AI-agent. Elke stap is zichtbaar en later aan te passen.</p>
             </div>
           </Reveal>
           <div className="cw-shots">
