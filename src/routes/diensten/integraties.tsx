@@ -39,14 +39,14 @@ const PIJLERS: { icon: string; t: string; p: string; voorbeelden: string[] }[] =
   {
     icon: 'link-2',
     t: 'Koppelingen',
-    p: 'Je website praat met de systemen waar je al mee werkt. Niets hoeft meer overgetypt te worden.',
+    p: 'Je systemen praten met elkaar. Wat op je website binnenkomt, staat meteen in je CRM, agenda of mailbox. Niets meer overtypen.',
     voorbeelden: ['Aanvraag direct in je CRM', 'Boeking meteen in je agenda', 'Melding via WhatsApp, Slack of Teams', 'Betaling gekoppeld aan de boeking'],
   },
   {
     icon: 'workflow',
     t: 'Automatiseringen',
-    p: 'Terugkerend werk loopt vanzelf, op het juiste moment en altijd op dezelfde manier.',
-    voorbeelden: ['Offerte opvolgen na drie dagen', 'Reviewverzoek na een afspraak', 'Rapportages klaarzetten', 'Gegevens bijwerken in je sheet'],
+    p: 'Werk dat je nu zelf moet onthouden, gebeurt vanzelf. Op het juiste moment en elke keer op dezelfde manier.',
+    voorbeelden: ['Offerte opvolgen na drie dagen', 'Reviewverzoek na een afspraak', 'Rapportages klaarzetten', 'Herinnering sturen de dag voor een afspraak'],
   },
   {
     icon: 'bot',
@@ -186,11 +186,16 @@ function Integraties() {
 
       <section className="section" data-theme="paper" data-screen-label="Wat we bouwen">
         <div className="wrap">
-          <Reveal as="div" className="shead reveal">
-            <span className="label">Wat we bouwen</span>
-            <h2 className="h2">
-              Koppelen, automatiseren en <em>laten meedenken.</em>
-            </h2>
+          <Reveal as="div" className="v2-head reveal">
+            <div className="shead">
+              <span className="label">Wat we bouwen</span>
+              <h2 className="h2">
+                Koppelen, automatiseren en <em>laten meedenken.</em>
+              </h2>
+            </div>
+            <div className="v2-head__side">
+              <p>Een koppeling verplaatst gegevens. Een automatisering neemt een handeling over. Een AI-agent denkt mee.</p>
+            </div>
           </Reveal>
           <ul className="cw-pijlers">
             {PIJLERS.map((x, i) => (
