@@ -259,7 +259,7 @@ function Home() {
               <Icon name="shield-check" />
             </span>
             <p>
-              <b>Onderhoud &amp; Support</b> Al een site? Updates, beveiliging en back-ups geregeld, vanaf € 50 per maand.
+              <b>Hosting, onderhoud &amp; support</b> Laat je je website bij ons maken, dan regelen we daarna ook de hosting, updates, beveiliging en back-ups. Gaat er iets mis, dan los je het niet zelf op. € 50 per maand.
             </p>
             <Link className="tlink" to="/contact">
               Stel je vraag <span className="arr">&rarr;</span>
