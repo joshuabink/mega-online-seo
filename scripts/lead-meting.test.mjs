@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict'
+import { registerHooks } from 'node:module'
 import test from 'node:test'
-import { GENERATE_LEAD_BIJ_BROWSER_FALLBACK, generateLeadBijToestemming, generateLeadParams } from '../src/lib/analytics.ts'
+import { GENERATE_LEAD_BIJ_BROWSER_FALLBACK, generateLeadBijToestemming, generateLeadParams, initAnalytics, optOut, trackGenerateLead } from '../src/lib/analytics.ts'
 import { metingenVoorResultaat } from '../src/lib/lead-meting.ts'
 
 const PII = /@|06\d{8}|naam|email|telefoon|bericht/i
@@ -79,4 +80,70 @@ test('zonder toestemming geen generate_lead', () => {
     form_name: 'contact',
     page_path: '/contact',
   })
+})
+
+test('trackGenerateLead volgt gaActive', async () => {
+  const posthogStub = 'data:text/javascript,' + encodeURIComponent(
+    'export default { init(){ globalThis.__moPosthogStub = (globalThis.__moPosthogStub ?? 0) + 1 }, opt_in_capturing(){}, opt_out_capturing(){}, capture(){} }',
+  )
+  registerHooks({
+    resolve(specifier, context, nextResolve) {
+      if (specifier === 'posthog-js') return { url: posthogStub, shortCircuit: true }
+      return nextResolve(specifier, context)
+    },
+  })
+
+  const aangemaakt = []
+  const dataLayer = []
+  const fakeWindow = {
+    dataLayer,
+    document: {
+      title: 'test',
+      head: { appendChild(node) { aangemaakt.push(node) } },
+      querySelector() { return null },
+      createElement() { return { dataset: {} } },
+      addEventListener() {},
+    },
+    gtag(...args) { dataLayer.push(args) },
+  }
+  const vorig = {
+    window: globalThis.window,
+    document: globalThis.document,
+    location: globalThis.location,
+  }
+  globalThis.window = fakeWindow
+  globalThis.document = fakeWindow.document
+  globalThis.location = { pathname: '/contact', search: '', href: 'http://127.0.0.1/contact' }
+
+  const leads = () => dataLayer.filter((entry) => entry[0] === 'event' && entry[1] === 'generate_lead')
+
+  try {
+    trackGenerateLead('contact')
+    assert.equal(leads().length, 0)
+
+    initAnalytics()
+    const gestart = Date.now()
+    while (!globalThis.__moPosthogStub) {
+      if (Date.now() - gestart > 1000) throw new Error('posthog-stub niet geladen')
+      await new Promise((resolve) => setTimeout(resolve, 10))
+    }
+    assert.equal(leads().length, 0)
+    assert.equal(aangemaakt.length, 1)
+    assert.match(aangemaakt[0].src, /^https:\/\/www\.googletagmanager\.com\/gtag\/js\?id=G-DCZS4D0PFM$/)
+    assert.equal(aangemaakt[0].nodeType, undefined)
+
+    trackGenerateLead('contact')
+    assert.equal(leads().length, 1)
+    assert.deepEqual(leads()[0][2], { form_name: 'contact', page_path: '/contact' })
+
+    optOut()
+    trackGenerateLead('contact')
+    assert.equal(leads().length, 1)
+  } finally {
+    optOut()
+    globalThis.window = vorig.window
+    globalThis.document = vorig.document
+    globalThis.location = vorig.location
+    delete globalThis.__moPosthogStub
+  }
 })
