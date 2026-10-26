@@ -6,9 +6,12 @@
  * Draaien met de dev-server actief:  node scripts/smoke.mjs
  */
 import { chromium } from 'playwright'
+import { spawnSync } from 'node:child_process'
 import fs from 'node:fs'
 import http from 'node:http'
 import path from 'node:path'
+import { fileURLToPath } from 'node:url'
+import { controleerSite } from './cta-guard.mjs'
 
 const BASE = process.env.BASE ?? 'http://localhost:3000'
 const results = []
@@ -192,6 +195,39 @@ async function controleerCtaTeksten(browser) {
     fouten.slice(0, 8).join(' | ') || `scan=${zagScan} pagina's=${paden.length}`,
   )
   await pg.close()
+}
+
+/**
+ * TK-321. Draait vóór de rest van de smoketest, zodat een time-out later
+ * in het formulier de waarschuwingen niet wegneemt. De unit-test hoort te
+ * slagen. Echte overtredingen op de site verhogen `failed` alleen als
+ * CTA_GUARD_STRICT=1. controleerCtaTeksten hierboven blijft zoals hij is.
+ */
+async function draaiCtaWaarschuwing() {
+  const unit = spawnSync(
+    process.execPath,
+    ['--test', fileURLToPath(new URL('./cta-guard.test.mjs', import.meta.url))],
+    { encoding: 'utf8' },
+  )
+  const unitRegels = `${unit.stdout ?? ''}\n${unit.stderr ?? ''}`
+  const unitKort = unitRegels
+    .split('\n')
+    .filter((regel) => /^(not ok|ok |# tests|# pass|# fail)/.test(regel))
+    .slice(-8)
+    .join(' | ')
+  check(
+    'unit-test: strikte CTA-bewaker faalt op verkeerde tekst en link',
+    unit.status === 0,
+    unit.status === 0 ? unitKort : unitRegels.slice(-800),
+  )
+  const strict = process.env.CTA_GUARD_STRICT === '1'
+  const uit = await controleerSite({ base: BASE, strict })
+  if (!uit.gelezen) {
+    check('CTA-bewaker las de sitemap-pagina\'s', false, uit.fout || uit.samenvatting)
+  }
+  if (strict && uit.exitCode !== 0) {
+    check('CTA-bewaker strikt: geen tekst- of linkovertreding', false, uit.samenvatting)
+  }
 }
 
 function isGaUrl(url) {
@@ -440,6 +476,8 @@ for (const pagina of ZOEKTAAL_PAGINAS) {
       : `status=${status} titles=${JSON.stringify(titles)} h1s=${JSON.stringify(h1s)} og=${JSON.stringify(ogTitles)} twitter=${JSON.stringify(twitterTitles)}`,
   )
 }
+
+await draaiCtaWaarschuwing()
 
 // De vooraf geïnstalleerde Chromium gebruiken i.p.v. een download.
 const EXECUTABLE =
