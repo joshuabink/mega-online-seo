@@ -51,21 +51,12 @@ const PIJLERS: { icon: string; t: string; p: string; voorbeelden: string[] }[] =
   {
     icon: 'bot',
     t: 'AI-agents',
-    p: 'Een assistent die werk voor je voorbereidt. Jij houdt de controle en keurt goed wat ertoe doet.',
-    voorbeelden: ['Aanvragen beoordelen', 'Conceptantwoorden schrijven', 'Een ochtendoverzicht maken', 'Taken klaarzetten in je planningstool'],
+    p: 'Een assistent die zelf aan de slag gaat. Je praat ermee in je eigen chat of plant een taak voor hem in. Jij houdt de controle.',
+    voorbeelden: ['Praat met je via Slack, Telegram, Linear of Discord', 'Voert ingeplande taken zelf uit', 'Start workflows en roept subagents aan', 'Werkt met je tools, skills en eigen kennisbank'],
   },
 ]
 
 const VOORBEELDEN: { img: string; w: number; h: number; tag: string; t: string; p: string; levert: string[] }[] = [
-  {
-    img: '/images/n8n-ai-assistent.webp',
-    w: 1200,
-    h: 615,
-    tag: 'AI-agent',
-    t: 'Een AI-assistent die vragen beantwoordt en aanvragen vastlegt',
-    p: 'Een chatbericht komt binnen. De assistent zoekt het antwoord op in je veelgestelde vragen, kijkt in je agenda of er plek is en zet de aanvraag direct in je CRM.',
-    levert: ['Ook buiten kantoortijd een antwoord', 'Beschikbaarheid uit je eigen agenda', 'Elke aanvraag meteen in je CRM'],
-  },
   {
     img: '/images/n8n-websiteaanvraag.webp',
     w: 1200,
@@ -74,6 +65,24 @@ const VOORBEELDEN: { img: string; w: number; h: number; tag: string; t: string; 
     t: 'Van websiteaanvraag naar CRM, sheet, WhatsApp en mail',
     p: 'Iemand vult het formulier op je website in. De gegevens worden netjes klaargezet en gaan in één keer naar je CRM, je overzicht in Google Sheets, je WhatsApp en je mailbox.',
     levert: ['Niets meer overtypen', 'Direct een melding op je telefoon', 'Alle aanvragen op één plek'],
+  },
+  {
+    img: '/images/n8n-verhuur.webp',
+    w: 1200,
+    h: 771,
+    tag: 'Automatisering',
+    t: 'Van boeking tot factuur, zonder dat je eraan hoeft te denken',
+    p: 'Een klant boekt via je website. Daarna krijgt hij op het juiste moment de ophaalinstructies en een inleverherinnering. Zodra het materiaal terug is, staat de factuur klaar.',
+    levert: ['Instructies precies op het juiste moment', 'Een herinnering voor het inleveren', 'Factuur klaar zodra het terug is'],
+  },
+  {
+    img: '/images/n8n-ai-assistent.webp',
+    w: 1200,
+    h: 615,
+    tag: 'AI-agent',
+    t: 'Een agent die praat, plant en zelf aan de slag gaat',
+    p: 'Je geeft de agent instructies in gewone taal. Hij werkt met je eigen tools en kennisbank, voert ingeplande taken uit en zet workflows of andere agents aan het werk.',
+    levert: ['Bereikbaar in Slack, Telegram, Linear of Discord', 'Taken op een vast moment, zonder dat jij eraan denkt', 'Antwoorden uit je eigen kennisbank'],
   },
 ]
 
@@ -229,7 +238,7 @@ function Integraties() {
               </h2>
             </div>
             <div className="v2-head__side">
-              <p>Twee flows zoals we ze in n8n bouwen. Elke stap is zichtbaar en later aan te passen.</p>
+              <p>Drie flows zoals we ze in n8n bouwen: een koppeling, een automatisering en een AI-agent. Elke stap is zichtbaar en later aan te passen.</p>
             </div>
           </Reveal>
           <div className="cw-shots">
