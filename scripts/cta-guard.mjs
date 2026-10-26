@@ -393,6 +393,22 @@ export function exitCode(bevindingen, { strict }) {
   return bevindingen.some((item) => item.ernst === 'overtreding') ? 1 : 0
 }
 
+/**
+ * De smoketest faalt op deze bewaker alleen met CTA_GUARD_STRICT=1.
+ * Een falende unit-test, een onleesbare sitemap, een crash of een
+ * tekst-/linkovertreding blijft in de waarschuwmodus een ::warning::.
+ */
+export function smokeMoetFalen({
+  strict,
+  unitMislukt = false,
+  nietGelezen = false,
+  crash = false,
+  siteOvertreding = false,
+}) {
+  if (!strict) return false
+  return Boolean(unitMislukt || nietGelezen || crash || siteOvertreding)
+}
+
 function waarschuwing(bevinding) {
   const bron = (bevinding.bron ?? []).map((item) => `${item.file}:${item.line}`).join(', ')
   const eerste = bevinding.bron?.[0]

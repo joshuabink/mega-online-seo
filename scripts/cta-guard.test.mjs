@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict'
+import fs from 'node:fs'
 import test from 'node:test'
 import {
   beoordeelHtml,
@@ -7,6 +8,7 @@ import {
   leesCtaScan,
   normaliseer,
   rapporteer,
+  smokeMoetFalen,
   striktAan,
 } from './cta-guard.mjs'
 
@@ -119,14 +121,32 @@ test('een Bekijk-link is geen CTA-knop', () => {
   assert.equal(bevindingen.length, 0)
 })
 
-test('bron van een hero-knop wijst niet naar een menulink', () => {
+test('bron van een hero-knop wijst naar de knop zelf', () => {
+  const bron = fs.readFileSync(new URL('../src/routes/over-megaonline.tsx', import.meta.url), 'utf8').split('\n')
+  const index = bron.findIndex((regel) => regel.includes('btn-primary') && regel.includes('to="/contact"'))
+  assert.ok(index >= 0, 'hero-knop naar /contact staat in over-megaonline.tsx')
   const html = `<section class="section svc-hero"><a class="btn btn-primary" href="/contact">Plan een kennismaking</a></section>`
   const bevindingen = beoordeelHtml({ pad: '/over-megaonline', html, ctaScan: CTA })
   const regels = []
   rapporteer(bevindingen.filter((item) => item.rol === 'hero'), { strict: false, schrijf: (regel) => regels.push(regel) })
   const waarschuwing = regels.find((regel) => regel.includes('[hero]'))
-  assert.match(waarschuwing, /over-megaonline\.tsx:57/)
+  assert.match(waarschuwing, new RegExp(`over-megaonline\\.tsx:${index + 1}\\b`))
   assert.doesNotMatch(waarschuwing, /SiteHeader/)
+})
+
+test('waarschuwmodus laat de smoketest slagen', () => {
+  const problemen = [
+    { unitMislukt: true },
+    { nietGelezen: true },
+    { crash: true },
+    { siteOvertreding: true },
+  ]
+  for (const probleem of problemen) {
+    assert.equal(smokeMoetFalen({ strict: false, ...probleem }), false)
+    assert.equal(smokeMoetFalen({ strict: true, ...probleem }), true)
+  }
+  assert.equal(smokeMoetFalen({ strict: false }), false)
+  assert.equal(smokeMoetFalen({ strict: true }), false)
 })
 
 test('hero-knop met andere tekst is een overtreding', () => {

@@ -11,7 +11,7 @@ import fs from 'node:fs'
 import http from 'node:http'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { controleerSite } from './cta-guard.mjs'
+import { controleerSite, smokeMoetFalen } from './cta-guard.mjs'
 
 const BASE = process.env.BASE ?? 'http://localhost:3000'
 const results = []
@@ -199,34 +199,45 @@ async function controleerCtaTeksten(browser) {
 
 /**
  * TK-321. Draait vóór de rest van de smoketest, zodat een time-out later
- * in het formulier de waarschuwingen niet wegneemt. De unit-test hoort te
- * slagen. Echte overtredingen op de site verhogen `failed` alleen als
- * CTA_GUARD_STRICT=1. controleerCtaTeksten hierboven blijft zoals hij is.
+ * in het formulier de waarschuwingen niet wegneemt.
+ * Zonder CTA_GUARD_STRICT=1 blijft dit een waarschuwing: een falende
+ * unit-test, een onleesbare sitemap of een crash verhoogt `failed` niet.
+ * controleerCtaTeksten hierboven blijft zoals hij is.
  */
 async function draaiCtaWaarschuwing() {
-  const unit = spawnSync(
-    process.execPath,
-    ['--test', fileURLToPath(new URL('./cta-guard.test.mjs', import.meta.url))],
-    { encoding: 'utf8' },
-  )
-  const unitRegels = `${unit.stdout ?? ''}\n${unit.stderr ?? ''}`
-  const unitKort = unitRegels
-    .split('\n')
-    .filter((regel) => /^(not ok|ok |# tests|# pass|# fail)/.test(regel))
-    .slice(-8)
-    .join(' | ')
-  check(
-    'unit-test: strikte CTA-bewaker faalt op verkeerde tekst en link',
-    unit.status === 0,
-    unit.status === 0 ? unitKort : unitRegels.slice(-800),
-  )
   const strict = process.env.CTA_GUARD_STRICT === '1'
-  const uit = await controleerSite({ base: BASE, strict })
-  if (!uit.gelezen) {
-    check('CTA-bewaker las de sitemap-pagina\'s', false, uit.fout || uit.samenvatting)
+  const meld = (bericht) => {
+    console.log(`::warning title=CTA-bewaker::${String(bericht).replace(/[\r\n]+/g, ' ')}`)
   }
-  if (strict && uit.exitCode !== 0) {
-    check('CTA-bewaker strikt: geen tekst- of linkovertreding', false, uit.samenvatting)
+  try {
+    const unit = spawnSync(
+      process.execPath,
+      ['--test', fileURLToPath(new URL('./cta-guard.test.mjs', import.meta.url))],
+      { encoding: 'utf8' },
+    )
+    if (unit.status !== 0) {
+      const staart = `${unit.stdout ?? ''}\n${unit.stderr ?? ''}`.slice(-800)
+      meld(`unit-test faalde (status ${unit.status ?? 'geen'}): ${staart}`)
+      if (smokeMoetFalen({ strict, unitMislukt: true })) {
+        check('unit-test: strikte CTA-bewaker faalt op verkeerde tekst en link', false, staart)
+      }
+    }
+    const uit = await controleerSite({ base: BASE, strict })
+    if (!uit.gelezen) {
+      const fout = uit.fout || uit.samenvatting || 'sitemap niet gelezen'
+      meld(fout)
+      if (smokeMoetFalen({ strict, nietGelezen: true })) {
+        check('CTA-bewaker las de sitemap-pagina\'s', false, fout)
+      }
+    } else if (uit.exitCode !== 0 && smokeMoetFalen({ strict, siteOvertreding: true })) {
+      check('CTA-bewaker strikt: geen tekst- of linkovertreding', false, uit.samenvatting)
+    }
+  } catch (error) {
+    const fout = error instanceof Error ? error.stack || error.message : String(error)
+    meld(`crash: ${fout}`)
+    if (smokeMoetFalen({ strict, crash: true })) {
+      check('CTA-bewaker draaide', false, fout.slice(0, 800))
+    }
   }
 }
 
