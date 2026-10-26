@@ -328,7 +328,7 @@ function collectGaUrls(pg) {
 const ZOEKTAAL_PAGINAS = [
   {
     path: '/diensten/conversie-website',
-    title: 'Website laten maken gericht op aanvragen | MegaOnline',
+    title: 'Conversiegerichte website laten maken | MegaOnline',
     h1: 'Website laten maken gericht op aanvragen en boekingen',
   },
   {
@@ -343,7 +343,7 @@ const ZOEKTAAL_PAGINAS = [
   },
   {
     path: '/diensten/website-optimalisatie',
-    title: 'Bestaande website laten optimaliseren | MegaOnline',
+    title: 'Website laten optimaliseren voor meer aanvragen | MegaOnline',
     h1: 'Bestaande website laten optimaliseren',
   },
   {
