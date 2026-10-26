@@ -259,7 +259,7 @@ function Home() {
           <Reveal as="div" className="shead reveal">
             <span className="label">Zo werken we</span>
             <h2 className="h2">Begrijpen. Bouwen. Verbeteren.</h2>
-            <p className="lead">Geen bureau dat oplevert en vertrekt. We beginnen bij je klant en blijven na livegang betrokken.</p>
+            <p className="lead">Geen bureau dat oplevert en vertrekt. We beginnen bij je doelgroep en blijven na livegang betrokken.</p>
           </Reveal>{' '}
           <ol className="v2-steps">
             {STAPPEN.map((s, i) => (
@@ -300,8 +300,8 @@ function Home() {
                 {VERSCHIL.map((r) => (
                   <tr key={r.k}>
                     <th scope="row">{r.k}</th>
-                    <td>{r.them}</td>
-                    <td className="us">{r.us}</td>
+                    <td data-label="Gemiddelde websitebouwer">{r.them}</td>
+                    <td className="us" data-label="MegaOnline">{r.us}</td>
                   </tr>
                 ))}
               </tbody>

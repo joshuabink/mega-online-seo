@@ -208,3 +208,19 @@
 [data-page="home"] .scankort [data-step-focus]:focus { outline: none; }
 [data-page="home"] .scankort .form__nav { align-items: stretch; }
 [data-page="home"] .scankort .form__nav .btn { margin-top: 0; min-height: 48px; justify-content: center; }
+
+/* Vergelijkingstabel op mobiel: per rij een blok, geen horizontaal scrollen */
+@media (max-width: 760px) {
+  [data-page="home"] .v2-table { overflow: visible; }
+  [data-page="home"] .v2-table table { min-width: 0; }
+  [data-page="home"] .v2-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  [data-page="home"] .v2-table tr,
+  [data-page="home"] .v2-table th,
+  [data-page="home"] .v2-table td { display: block; width: auto; }
+  [data-page="home"] .v2-table tbody tr:first-child { border-top: 0; }
+  [data-page="home"] .v2-table tbody th { padding: 18px 18px 10px; }
+  [data-page="home"] .v2-table td { padding: 0 18px 14px; }
+  [data-page="home"] .v2-table td::before { content: attr(data-label); display: block; margin-bottom: 4px; font-size: 0.66rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--faint); }
+  [data-page="home"] .v2-table td.us { margin: 0 12px 16px; padding: 12px 14px; border-radius: 10px; }
+  [data-page="home"] .v2-table td.us::before { color: var(--accent-text); }
+}
