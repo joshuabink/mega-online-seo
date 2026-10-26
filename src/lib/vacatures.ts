@@ -133,7 +133,7 @@ export const VACATURES: Vacature[] = [
       {
         icoon: "handshake",
         titel: "Directe begeleiding",
-        tekst: "Je werkt naast Joshua, niet onder drie lagen leidinggevenden.",
+        tekst: "Je werkt direct met ons samen, niet onder drie lagen leidinggevenden.",
       },
     ],
     metaTitle: "Stage SEO | Werken bij MegaOnline.io",
@@ -151,7 +151,7 @@ export const VACATURES: Vacature[] = [
     teaser:
       "Je hoeft geen enkel programma te kennen. Je moet kunnen zien waarom de ene pagina rust uitstraalt en de andere niet.",
     intro:
-      "Vormgeving is bij MegaOnline geen laagje op het eind. Het is de keuze wat bovenaan staat, wat weg mag en waar de blik als eerste landt. Die keuzes leer je maken op sites die daarna echt live gaan.",
+      "Vormgeving is bij ons geen laagje op het eind. Het is de keuze wat bovenaan staat, wat weg mag en waar de blik als eerste landt. Die keuzes leer je maken op sites die daarna echt live gaan.",
     koph1: ["Smaak is een begin. ", "Weten waarom", " is het vak."],
     uren: "2 tot 5 dagen per week",
     ervaring: "Geen ervaring nodig",
@@ -203,7 +203,7 @@ export const VACATURES: Vacature[] = [
       {
         icoon: "graduation-cap",
         titel: "Je leert de tools hier",
-        tekst: "MegaOnline zet je op weg in de programma’s die het gebruikt. Beginnen mag.",
+        tekst: "We zetten je op weg in de programma’s die we gebruiken. Beginnen mag.",
       },
       {
         icoon: "eye",
@@ -239,7 +239,7 @@ export const VACATURES: Vacature[] = [
       {
         titel: "Pagina’s bouwen",
         tekst:
-          "In de bouwers die MegaOnline gebruikt. Uit een ontwerp een werkende pagina maken die op mobiel net zo goed staat.",
+          "In de bouwers die wij gebruiken. Uit een ontwerp een werkende pagina maken die op mobiel net zo goed staat.",
       },
       {
         titel: "Koppelingen leggen",
@@ -306,7 +306,7 @@ export const VACATURES: Vacature[] = [
     teaser:
       "Dingen maken mét AI. Je hoeft zelf geen model te bouwen, je moet er iets werkends van maken.",
     intro:
-      "MegaOnline automatiseert het eigen werk: rapportages die zichzelf voorbereiden, offertes die al klaarstaan, klantvragen die op de goede plek belanden. Jij bouwt die dingen, test ze tot ze betrouwbaar zijn en zoekt uit wat je juist níet aan een AI moet overlaten.",
+      "We automatiseren ons eigen werk: rapportages die zichzelf voorbereiden, offertes die al klaarstaan, klantvragen die op de goede plek belanden. Jij bouwt die dingen, test ze tot ze betrouwbaar zijn en zoekt uit wat je juist níet aan een AI moet overlaten.",
     koph1: ["Bouwen ", "met", " AI, niet aan AI."],
     uren: "2 tot 4 dagen per week",
     ervaring: "Eigen geknutsel telt als ervaring",
@@ -324,7 +324,7 @@ export const VACATURES: Vacature[] = [
       {
         titel: "Koppelingen leggen",
         tekst:
-          "Tussen de tools die MegaOnline gebruikt: website, mail, agenda, boekhouding en klantsysteem.",
+          "Tussen de tools die wij gebruiken: website, mail, agenda, boekhouding en klantsysteem.",
       },
       {
         titel: "Prompts schrijven en testen",
@@ -386,7 +386,7 @@ export const VACATURES: Vacature[] = [
     teaser:
       "Je pakt de vindbaarheid van een vaste set klanten en bent verantwoordelijk voor wat er groeit.",
     intro:
-      "De klanten van MegaOnline leven van aanvragen en boekingen. Jij zorgt dat ze gevonden worden door de mensen die daar klaar voor zijn. Elke maand leg je uit wat je deed en wat het opleverde. Geen rapport vol grafieken, wel een eerlijk verhaal.",
+      "Onze klanten leven van aanvragen en boekingen. Jij zorgt dat ze gevonden worden door de mensen die daar klaar voor zijn. Elke maand leg je uit wat je deed en wat het opleverde. Geen rapport vol grafieken, wel een eerlijk verhaal.",
     koph1: ["Eigenaar van de ", "groei", " van een vaste set klanten."],
     uren: "In overleg, vanaf 8 uur per week",
     ervaring: "Aantoonbare ervaring vereist",
@@ -408,7 +408,7 @@ export const VACATURES: Vacature[] = [
       {
         titel: "Maandrapportage met duiding",
         tekst:
-          "Elk cijfer krijgt uitleg. Bij een daling benoemt MegaOnline die in plaats van hem weg te poetsen.",
+          "Elk cijfer krijgt uitleg. Bij een daling benoemen we die in plaats van hem weg te poetsen.",
       },
       {
         titel: "Stagiairs begeleiden",
@@ -421,7 +421,7 @@ export const VACATURES: Vacature[] = [
       "Je legt in gewone taal uit wat je doet, ook aan een ondernemer die niks van SEO weet",
       "Je stuurt op aanvragen, niet op bezoekersaantallen",
     ],
-    nietNodigKop: "Wat MegaOnline niet vraagt",
+    nietNodigKop: "Wat we niet vragen",
     nietNodig: ["Fulltime beschikbaar zijn", "Op kantoor zitten", "Een cv van een groot bureau"],
     krijgt: [
       {
@@ -432,7 +432,7 @@ export const VACATURES: Vacature[] = [
       {
         icoon: "sliders",
         titel: "Je eigen aanpak",
-        tekst: "MegaOnline schrijft geen draaiboek voor. Jij bepaalt hoe je het aanpakt.",
+        tekst: "We schrijven geen draaiboek voor. Jij bepaalt hoe je het aanpakt.",
       },
       {
         icoon: "calendar-check",
@@ -515,7 +515,7 @@ export const VACATURES: Vacature[] = [
       {
         icoon: "handshake",
         titel: "Directe begeleiding",
-        tekst: "Je zit niet alleen op een campagne. Je kijkt samen met MegaOnline naar de cijfers.",
+        tekst: "Je zit niet alleen op een campagne. We kijken samen naar de cijfers.",
       },
     ],
     metaTitle: "Stage SEA | Werken bij MegaOnline.io",
@@ -648,7 +648,7 @@ export const VACATURES: Vacature[] = [
       "Je hebt ervaring met webapplicaties, koppelingen of datamodellen",
       "Je durft te zeggen dat een idee niet gaat werken, met argumenten erbij",
     ],
-    nietNodigKop: "Wat MegaOnline niet vraagt",
+    nietNodigKop: "Wat we niet vragen",
     nietNodig: [
       "Een specifieke taal of framework beheersen",
       "Fulltime beschikbaar zijn",
