@@ -1,5 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 'react'
 import { sendLead, type LeadResult } from '@/lib/lead'
+import { metingenVoorResultaat } from '@/lib/lead-meting'
 import {
   GENERATE_LEAD_BIJ_BROWSER_FALLBACK,
   track,
@@ -98,20 +99,16 @@ function useBedankAnker(status: 'idle' | 'sending' | 'sent', rootRef: React.RefO
 }
 
 function verwerkMeting(result: LeadResult, formName: string, soort: 'lead' | 'sollicitatie') {
-  const naam = soort === 'sollicitatie' ? 'sollicitatie' : formName
-  if (!result.ok) {
-    if (result.mailto) trackLeadFallbackGetoond(naam)
-    return
-  }
-  if (result.via === 'server') {
-    if (soort === 'sollicitatie') trackSollicitatieVerzonden()
-    else trackGenerateLead(formName)
-    return
-  }
-  if (result.route !== 'FormSubmit') return
-  trackLeadBrowserFallback(naam)
-  if (soort === 'lead' && GENERATE_LEAD_BIJ_BROWSER_FALLBACK) {
-    trackGenerateLead(formName, { route: 'fallback' })
+  for (const meting of metingenVoorResultaat(result, formName, soort, GENERATE_LEAD_BIJ_BROWSER_FALLBACK)) {
+    if (meting.event === 'generate_lead') {
+      trackGenerateLead(meting.formName, meting.route ? { route: meting.route } : undefined)
+    } else if (meting.event === 'lead_browser_fallback') {
+      trackLeadBrowserFallback(meting.formName)
+    } else if (meting.event === 'lead_fallback_getoond') {
+      trackLeadFallbackGetoond(meting.formName)
+    } else {
+      trackSollicitatieVerzonden()
+    }
   }
 }
 

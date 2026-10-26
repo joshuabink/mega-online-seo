@@ -173,14 +173,25 @@ export function initAnalytics(): void {
  */
 export const GENERATE_LEAD_BIJ_BROWSER_FALLBACK = true
 
-export function trackGenerateLead(formName: string, extra?: { route?: "fallback" }): void {
-  if (!gaActive || typeof window === "undefined") return
-  if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(formName)) return
+/** Alleen form_name en page_path, plus route bij een browser-terugval. Geen veldwaarden. */
+export function generateLeadParams(
+  formName: string,
+  pagePath: string,
+  extra?: { route?: "fallback" },
+): Record<string, string> | null {
+  if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(formName)) return null
   const params: Record<string, string> = {
     form_name: formName,
-    page_path: location.pathname,
+    page_path: pagePath,
   }
   if (extra?.route === "fallback") params.route = "fallback"
+  return params
+}
+
+export function trackGenerateLead(formName: string, extra?: { route?: "fallback" }): void {
+  if (!gaActive || typeof window === "undefined") return
+  const params = generateLeadParams(formName, location.pathname, extra)
+  if (!params) return
   const w = gaWindow()
   w?.gtag?.("event", "generate_lead", params)
 }
