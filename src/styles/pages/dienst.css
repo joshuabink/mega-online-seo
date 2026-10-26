@@ -103,6 +103,19 @@
 [data-dienst] .cw-logo { display: flex; align-items: center; gap: 10px; min-height: 56px; padding: 12px 14px; border-radius: 12px; background: var(--card); border: 1px solid var(--line); font-size: 0.92rem; font-weight: 500; color: var(--fg); }
 [data-dienst] .cw-logo svg { flex: none; width: 22px; height: 22px; fill: currentColor; color: #23593D; }
 
+/* Screenshots van flows uit n8n */
+[data-dienst] .cw-shots { display: grid; gap: clamp(28px, 3.5vw, 48px); margin-top: clamp(28px, 3vw, 40px); }
+[data-dienst] .cw-shot { display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr); gap: clamp(24px, 3.5vw, 56px); align-items: center; }
+[data-dienst] .cw-shot:nth-child(even) { grid-template-columns: minmax(0, 1fr) minmax(0, 1.7fr); }
+[data-dienst] .cw-shot:nth-child(even) .cw-shot__beeld { order: 2; }
+[data-dienst] .cw-shot__beeld { display: block; border-radius: 16px; overflow: hidden; border: 1px solid rgba(245, 243, 236, 0.14); box-shadow: 0 30px 70px -35px rgba(0, 0, 0, 0.8); cursor: zoom-in; }
+[data-dienst] .cw-shot__beeld img { display: block; width: 100%; height: auto; }
+[data-dienst] .cw-shot__tekst { display: grid; gap: 12px; }
+[data-dienst] .cw-shot__tekst .cw-card__tag { color: #E9DF73; }
+[data-dienst] .cw-shot__tekst h3 { font-size: clamp(1.2rem, 1.7vw, 1.45rem); line-height: 1.25; }
+[data-dienst] .cw-shot__tekst p { color: var(--muted); font-size: 0.97rem; line-height: 1.6; }
+[data-dienst] .cw-shot .cw-list .ck { color: #E9DF73; }
+
 @media (max-width: 1100px) {
   [data-dienst] .cw-steps { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   [data-dienst] .cw-problems--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -110,7 +123,8 @@
 }
 @media (max-width: 900px) {
   [data-dienst] .cw-problems { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  [data-dienst] .cw-krijgt, [data-dienst] .cw-prijs, [data-dienst] .cw-faq, [data-dienst] .cw-duo, [data-dienst] .cw-beeld, [data-dienst] .cw-pijlers { grid-template-columns: 1fr; }
+  [data-dienst] .cw-krijgt, [data-dienst] .cw-prijs, [data-dienst] .cw-faq, [data-dienst] .cw-duo, [data-dienst] .cw-beeld, [data-dienst] .cw-pijlers, [data-dienst] .cw-shot, [data-dienst] .cw-shot:nth-child(even) { grid-template-columns: 1fr; }
+  [data-dienst] .cw-shot:nth-child(even) .cw-shot__beeld { order: 0; }
   [data-dienst] .cw-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 600px) {

@@ -56,40 +56,24 @@ const PIJLERS: { icon: string; t: string; p: string; voorbeelden: string[] }[] =
   },
 ]
 
-type Stap = { icon: string; t: string; s: string }
-const FLOWS: { tag: string; t: string; p: string; stappen: Stap[] }[] = [
+const VOORBEELDEN: { img: string; w: number; h: number; tag: string; t: string; p: string; levert: string[] }[] = [
   {
+    img: '/images/n8n-ai-assistent.webp',
+    w: 1200,
+    h: 615,
+    tag: 'AI-agent',
+    t: 'Een AI-assistent die vragen beantwoordt en aanvragen vastlegt',
+    p: 'Een chatbericht komt binnen. De assistent zoekt het antwoord op in je veelgestelde vragen, kijkt in je agenda of er plek is en zet de aanvraag direct in je CRM.',
+    levert: ['Ook buiten kantoortijd een antwoord', 'Beschikbaarheid uit je eigen agenda', 'Elke aanvraag meteen in je CRM'],
+  },
+  {
+    img: '/images/n8n-websiteaanvraag.webp',
+    w: 1200,
+    h: 718,
     tag: 'Koppeling',
-    t: 'Van aanvraag tot opvolging',
-    p: 'Geen aanvraag die in een mailbox blijft liggen.',
-    stappen: [
-      { icon: 'file-text', t: 'Formulier', s: 'Aanvraag op je website' },
-      { icon: 'users', t: 'CRM', s: 'Klant en aanvraag aangemaakt' },
-      { icon: 'message-circle', t: 'WhatsApp', s: 'Jij krijgt direct een melding' },
-      { icon: 'alarm-clock', t: 'Herinnering', s: 'Na drie dagen, als het nog openstaat' },
-    ],
-  },
-  {
-    tag: 'AI-agent',
-    t: 'Ochtendbriefing',
-    p: 'Elke ochtend één overzicht in plaats van vijf apps doorlopen.',
-    stappen: [
-      { icon: 'clock', t: 'Elke ochtend', s: 'Start automatisch' },
-      { icon: 'list-checks', t: 'Ophalen', s: 'Taken en berichten van gisteren' },
-      { icon: 'sparkles', t: 'Samenvatten', s: 'AI zet op een rij wat aandacht nodig heeft' },
-      { icon: 'send', t: 'Overzicht', s: 'Klaar in je chat voordat je begint' },
-    ],
-  },
-  {
-    tag: 'AI-agent',
-    t: 'Alles vastgelegd in Notion',
-    p: 'Afspraken en taken raken niet meer kwijt in gesprekken.',
-    stappen: [
-      { icon: 'message-square-text', t: 'Gesprek', s: 'Bericht of notitie komt binnen' },
-      { icon: 'brain', t: 'Herkennen', s: 'AI haalt taken en afspraken eruit' },
-      { icon: 'database', t: 'Notion', s: 'De juiste database bijgewerkt' },
-      { icon: 'check-circle', t: 'Goedkeuren', s: 'Jij houdt het laatste woord' },
-    ],
+    t: 'Van websiteaanvraag naar CRM, sheet, WhatsApp en mail',
+    p: 'Iemand vult het formulier op je website in. De gegevens worden netjes klaargezet en gaan in één keer naar je CRM, je overzicht in Google Sheets, je WhatsApp en je mailbox.',
+    levert: ['Niets meer overtypen', 'Direct een melding op je telefoon', 'Alle aanvragen op één plek'],
   },
 ]
 
@@ -240,28 +224,28 @@ function Integraties() {
               </h2>
             </div>
             <div className="v2-head__side">
-              <p>Drie flows die we in n8n gebouwd hebben. Elke stap is zichtbaar en aan te passen.</p>
+              <p>Twee flows zoals we ze in n8n bouwen. Elke stap is zichtbaar en later aan te passen.</p>
             </div>
           </Reveal>
-          <div className="cw-flows">
-            {FLOWS.map((f, i) => (
-              <Reveal as="article" key={f.t} className="cw-flow reveal" data-d={String(i)}>
-                <div className="cw-flow__kop">
-                  <span className="cw-card__tag">{f.tag}</span>
-                  <h3>{f.t}</h3>
-                  <p>{f.p}</p>
+          <div className="cw-shots">
+            {VOORBEELDEN.map((v, i) => (
+              <Reveal as="article" key={v.t} className="cw-shot reveal" data-d={String(i)}>
+                <a className="cw-shot__beeld" href={v.img} target="_blank" rel="noopener" aria-label={`Bekijk de flow "${v.t}" groot`}>
+                  <img src={v.img} width={v.w} height={v.h} loading="lazy" alt={`Flow in n8n: ${v.t}`} />
+                </a>
+                <div className="cw-shot__tekst">
+                  <span className="cw-card__tag">{v.tag}</span>
+                  <h3>{v.t}</h3>
+                  <p>{v.p}</p>
+                  <ul className="cw-list">
+                    {v.levert.map((x) => (
+                      <li key={x}>
+                        <Icon name="check" className="ck" />
+                        <span>{x}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <ol className="cw-flow__stappen">
-                  {f.stappen.map((s) => (
-                    <li key={s.t} className="cw-flow__stap">
-                      <span className="cw-flow__ico">
-                        <Icon name={s.icon} />
-                      </span>
-                      <span className="cw-flow__t">{s.t}</span>
-                      <span className="cw-flow__s">{s.s}</span>
-                    </li>
-                  ))}
-                </ol>
               </Reveal>
             ))}
           </div>
