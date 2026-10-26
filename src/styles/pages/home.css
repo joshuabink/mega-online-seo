@@ -45,6 +45,13 @@
 [data-page="home"] .v2-svc h3 { font-size: 1.25rem; line-height: 1.2; letter-spacing: -0.02em; }
 [data-page="home"] .v2-svc p { color: var(--muted); font-size: 0.95rem; line-height: 1.6; flex-grow: 1; }
 [data-page="home"] .v2-svc__price { font-weight: 600; font-size: 0.9rem; color: var(--fg); }
+[data-page="home"] .v2-svc-strip { display: flex; align-items: center; gap: 16px; margin-top: 16px; padding: 16px clamp(18px, 2.2vw, 28px); border: 1px solid var(--line); border-radius: 14px; background: var(--card); }
+[data-page="home"] .v2-svc-strip__ico { flex: none; width: 40px; height: 40px; border-radius: 10px; display: inline-flex; align-items: center; justify-content: center; color: var(--accent-text); background: color-mix(in oklab, var(--accent-text) 11%, transparent); }
+[data-page="home"] .v2-svc-strip__ico svg { width: 20px; height: 20px; }
+[data-page="home"] .v2-svc-strip p { flex: 1; color: var(--muted); font-size: 0.95rem; line-height: 1.5; }
+[data-page="home"] .v2-svc-strip p b { color: var(--fg); font-weight: 600; margin-right: 6px; }
+[data-page="home"] .v2-svc-strip .tlink { flex: none; font-size: 0.95rem; }
+@media (max-width: 640px) { [data-page="home"] .v2-svc-strip { flex-wrap: wrap; } [data-page="home"] .v2-svc-strip p { flex-basis: calc(100% - 56px); } }
 [data-page="home"] .v2-svc .tlink { font-size: 0.95rem; justify-self: start; width: fit-content; }
 
 /* ---------- Aanpak ---------- */

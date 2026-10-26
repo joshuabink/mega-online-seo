@@ -30,6 +30,7 @@ import { Route as ConceptenSlugRouteImport } from './routes/concepten/$slug'
 import { Route as DienstenConversieWebsiteRouteImport } from './routes/diensten/conversie-website'
 import { Route as DienstenGoogleAdsRouteImport } from './routes/diensten/google-ads'
 import { Route as DienstenIntegratiesRouteImport } from './routes/diensten/integraties'
+import { Route as DienstenOnlineBoekenRouteImport } from './routes/diensten/online-boeken'
 import { Route as DienstenSeoRouteImport } from './routes/diensten/seo'
 import { Route as DienstenStarterWebsiteRouteImport } from './routes/diensten/starter-website'
 import { Route as DienstenWebsiteOptimalisatieRouteImport } from './routes/diensten/website-optimalisatie'
@@ -149,6 +150,11 @@ const DienstenIntegratiesRoute = DienstenIntegratiesRouteImport.update({
   path: '/diensten/integraties',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DienstenOnlineBoekenRoute = DienstenOnlineBoekenRouteImport.update({
+  id: '/diensten/online-boeken',
+  path: '/diensten/online-boeken',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DienstenSeoRoute = DienstenSeoRouteImport.update({
   id: '/diensten/seo',
   path: '/diensten/seo',
@@ -218,6 +224,7 @@ export interface FileRoutesByFullPath {
   '/diensten/conversie-website': typeof DienstenConversieWebsiteRoute
   '/diensten/google-ads': typeof DienstenGoogleAdsRoute
   '/diensten/integraties': typeof DienstenIntegratiesRoute
+  '/diensten/online-boeken': typeof DienstenOnlineBoekenRoute
   '/diensten/seo': typeof DienstenSeoRoute
   '/diensten/starter-website': typeof DienstenStarterWebsiteRoute
   '/diensten/website-optimalisatie': typeof DienstenWebsiteOptimalisatieRoute
@@ -250,6 +257,7 @@ export interface FileRoutesByTo {
   '/diensten/conversie-website': typeof DienstenConversieWebsiteRoute
   '/diensten/google-ads': typeof DienstenGoogleAdsRoute
   '/diensten/integraties': typeof DienstenIntegratiesRoute
+  '/diensten/online-boeken': typeof DienstenOnlineBoekenRoute
   '/diensten/seo': typeof DienstenSeoRoute
   '/diensten/starter-website': typeof DienstenStarterWebsiteRoute
   '/diensten/website-optimalisatie': typeof DienstenWebsiteOptimalisatieRoute
@@ -283,6 +291,7 @@ export interface FileRoutesById {
   '/diensten/conversie-website': typeof DienstenConversieWebsiteRoute
   '/diensten/google-ads': typeof DienstenGoogleAdsRoute
   '/diensten/integraties': typeof DienstenIntegratiesRoute
+  '/diensten/online-boeken': typeof DienstenOnlineBoekenRoute
   '/diensten/seo': typeof DienstenSeoRoute
   '/diensten/starter-website': typeof DienstenStarterWebsiteRoute
   '/diensten/website-optimalisatie': typeof DienstenWebsiteOptimalisatieRoute
@@ -317,6 +326,7 @@ export interface FileRouteTypes {
     | '/diensten/conversie-website'
     | '/diensten/google-ads'
     | '/diensten/integraties'
+    | '/diensten/online-boeken'
     | '/diensten/seo'
     | '/diensten/starter-website'
     | '/diensten/website-optimalisatie'
@@ -349,6 +359,7 @@ export interface FileRouteTypes {
     | '/diensten/conversie-website'
     | '/diensten/google-ads'
     | '/diensten/integraties'
+    | '/diensten/online-boeken'
     | '/diensten/seo'
     | '/diensten/starter-website'
     | '/diensten/website-optimalisatie'
@@ -381,6 +392,7 @@ export interface FileRouteTypes {
     | '/diensten/conversie-website'
     | '/diensten/google-ads'
     | '/diensten/integraties'
+    | '/diensten/online-boeken'
     | '/diensten/seo'
     | '/diensten/starter-website'
     | '/diensten/website-optimalisatie'
@@ -414,6 +426,7 @@ export interface RootRouteChildren {
   DienstenConversieWebsiteRoute: typeof DienstenConversieWebsiteRoute
   DienstenGoogleAdsRoute: typeof DienstenGoogleAdsRoute
   DienstenIntegratiesRoute: typeof DienstenIntegratiesRoute
+  DienstenOnlineBoekenRoute: typeof DienstenOnlineBoekenRoute
   DienstenSeoRoute: typeof DienstenSeoRoute
   DienstenStarterWebsiteRoute: typeof DienstenStarterWebsiteRoute
   DienstenWebsiteOptimalisatieRoute: typeof DienstenWebsiteOptimalisatieRoute
@@ -575,6 +588,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DienstenIntegratiesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/diensten/online-boeken': {
+      id: '/diensten/online-boeken'
+      path: '/diensten/online-boeken'
+      fullPath: '/diensten/online-boeken'
+      preLoaderRoute: typeof DienstenOnlineBoekenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/diensten/seo': {
       id: '/diensten/seo'
       path: '/diensten/seo'
@@ -662,6 +682,7 @@ const rootRouteChildren: RootRouteChildren = {
   DienstenConversieWebsiteRoute: DienstenConversieWebsiteRoute,
   DienstenGoogleAdsRoute: DienstenGoogleAdsRoute,
   DienstenIntegratiesRoute: DienstenIntegratiesRoute,
+  DienstenOnlineBoekenRoute: DienstenOnlineBoekenRoute,
   DienstenSeoRoute: DienstenSeoRoute,
   DienstenStarterWebsiteRoute: DienstenStarterWebsiteRoute,
   DienstenWebsiteOptimalisatieRoute: DienstenWebsiteOptimalisatieRoute,

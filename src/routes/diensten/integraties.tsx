@@ -208,7 +208,7 @@ function Integraties() {
           </Reveal>
           <ul className="cw-pijlers">
             {PIJLERS.map((x, i) => (
-              <Reveal as="li" key={x.t} className="cw-card reveal" data-d={String(i)}>
+              <Reveal as="li" key={x.t} id={x.t === 'AI-agents' ? 'ai-agents' : undefined} className="cw-card reveal" data-d={String(i)}>
                 <span className="cw-incl__ico">
                   <Icon name={x.icon} />
                 </span>

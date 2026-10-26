@@ -12,6 +12,7 @@ const DIENSTEN = [
   ['/diensten/seo', 'SEO en GEO'],
   ['/diensten/google-ads', 'Google Ads'],
   ['/diensten/integraties', 'Koppelingen en automatiseringen'],
+  ['/diensten/online-boeken', 'Online boeken en reserveren'],
 ] as const
 
 const BRANCHES = [

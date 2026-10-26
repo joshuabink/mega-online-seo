@@ -32,6 +32,7 @@ const DIENSTEN: {
   price: string
   to: string
   linkText: string
+  hash?: string
   dark?: boolean
 }[] = [
   {
@@ -45,24 +46,6 @@ const DIENSTEN: {
     dark: true,
   },
   {
-    icon: 'trending-up',
-    tag: 'SEO · GEO · Google Ads',
-    name: 'Online marketing',
-    text: "Gevonden worden door mensen die zoeken naar wat jij doet. Elke maand schrijven we blogs en landingspagina's op de vragen van jouw klanten. Wil je sneller aanvragen? Dan zetten we ook Google Ads in.",
-    price: 'SEO en GEO: € 150 per maand',
-    to: '/diensten/seo',
-    linkText: 'Bekijk de dienst',
-  },
-  {
-    icon: 'refresh-cw',
-    tag: 'Bestaande site',
-    name: 'Website Redesign',
-    text: 'Je site werkt nog, maar oogt gedateerd of past niet meer bij je bedrijf. We vernieuwen hem en houden vast aan wat nu al goed werkt.',
-    price: 'prijs na de scan',
-    to: '/diensten/website-redesign',
-    linkText: 'Bekijk de dienst',
-  },
-  {
     icon: 'layout-template',
     tag: 'Voor starters',
     name: 'Starter Website',
@@ -72,22 +55,41 @@ const DIENSTEN: {
     linkText: 'Bekijk de dienst',
   },
   {
+    icon: 'trending-up',
+    tag: 'SEO · GEO · Google Ads',
+    name: 'Online marketing',
+    text: "Gevonden worden door mensen die zoeken naar wat jij doet. Elke maand schrijven we blogs en landingspagina's op de vragen van jouw klanten. Wil je sneller aanvragen? Dan zetten we ook Google Ads in.",
+    price: 'SEO en GEO: € 150 per maand',
+    to: '/diensten/seo',
+    linkText: 'Bekijk de dienst',
+  },
+  {
     icon: 'calendar-check',
     tag: 'Boekingssysteem',
     name: 'Online boeken en reserveren',
     text: "Klanten boeken zelf, ook 's avonds en in het weekend. Van een belafspraak tot een ticket met extra's, ingericht op jouw diensten en gekoppeld aan je agenda, CRM of WhatsApp.",
     price: 'prijs na de scan',
+    to: '/diensten/online-boeken',
+    linkText: 'Bekijk de dienst',
+  },
+  {
+    icon: 'plug',
+    tag: 'Koppelen · Automatiseren',
+    name: 'Koppelingen en automatiseringen',
+    text: 'Je website, agenda, CRM en WhatsApp praten met elkaar. Aanvragen komen vanzelf op de goede plek en terugkerend werk loopt zonder dat jij eraan denkt.',
+    price: 'prijs na de scan',
     to: '/diensten/integraties',
     linkText: 'Bekijk de dienst',
   },
   {
-    icon: 'shield-check',
-    tag: 'Zorgeloos',
-    name: 'Onderhoud & Support',
-    text: 'Updates, beveiliging en back-ups geregeld. Gaat er toch iets mis, dan heb je direct iemand die het oplost.',
-    price: 'vanaf € 50 per maand',
-    to: '/contact',
-    linkText: 'Stel je vraag',
+    icon: 'sparkles',
+    tag: 'Digitale collega',
+    name: 'AI-agents',
+    text: 'Een digitale collega die vragen beantwoordt, aanvragen beoordeelt en taken klaarzet. Je praat ermee in je eigen chat en jij houdt de controle.',
+    price: 'prijs na de scan',
+    to: '/diensten/integraties',
+    hash: 'ai-agents',
+    linkText: 'Bekijk de dienst',
   },
 ]
 
@@ -246,12 +248,23 @@ function Home() {
                 <h3>{d.name}</h3>
                 <p>{d.text}</p>
                 <span className="v2-svc__price">{d.price}</span>
-                <Link className="tlink" to={d.to}>
+                <Link className="tlink" to={d.to} hash={d.hash}>
                   {d.linkText} <span className="arr">&rarr;</span>
                 </Link>
               </Reveal>
             ))}
           </div>
+          <Reveal as="div" className="v2-svc-strip reveal">
+            <span className="v2-svc-strip__ico">
+              <Icon name="shield-check" />
+            </span>
+            <p>
+              <b>Onderhoud &amp; Support</b> Al een site? Updates, beveiliging en back-ups geregeld, vanaf € 50 per maand.
+            </p>
+            <Link className="tlink" to="/contact">
+              Stel je vraag <span className="arr">&rarr;</span>
+            </Link>
+          </Reveal>
         </div>
       </section>{' '}
       <section className="section" id="werkwijze" data-theme="dark" data-screen-label="Werkwijze">

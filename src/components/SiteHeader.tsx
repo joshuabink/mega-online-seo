@@ -319,6 +319,17 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
                     </span>
                   </span>
                 </Link>
+                <Link className="mlink" to="/diensten/online-boeken">
+                  <span className="mlink__ico">
+                    <Icon name="calendar-check" />
+                  </span>
+                  <span className="mlink__txt">
+                    <span className="mlink__name">Online boeken en reserveren</span>
+                    <span className="mlink__sub">
+                      Klanten boeken zelf, dag en nacht
+                    </span>
+                  </span>
+                </Link>
               </div>
 
               <div className="mrail">
@@ -604,6 +615,12 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
                 <Icon name="plug" />
               </span>
               Koppelingen en automatiseringen
+            </Link>
+            <Link className="macc__link" to="/diensten/online-boeken" onClick={onClose}>
+              <span className="mlink__ico">
+                <Icon name="calendar-check" />
+              </span>
+              Online boeken en reserveren
             </Link>
           </MobileAccordion>
 
