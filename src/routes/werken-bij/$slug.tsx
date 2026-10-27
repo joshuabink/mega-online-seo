@@ -147,7 +147,7 @@ function VacaturePagina() {
           <Reveal as="div" className="shead reveal">
             <span className="label">Past dit bij jou</span>{" "}
             <h2 className="h2">
-              Wat we <em>wel</em> vragen en wat niet.
+              Wat MegaOnline <em>wel</em> vraagt en wat niet.
             </h2>
           </Reveal>
           <div className="vac-fit">
@@ -170,7 +170,7 @@ function VacaturePagina() {
           </div>
           <Reveal as="p" className="pullnote reveal" data-d="2">
             Herken je jezelf in het grootste deel maar niet in alles? <em>Solliciteer alsnog.</em>{" "}
-            We hebben liever iemand die wil leren dan iemand die het lijstje afvinkt.
+            MegaOnline heeft liever iemand die wil leren dan iemand die het lijstje afvinkt.
           </Reveal>
         </div>
       </section>{" "}
@@ -202,7 +202,7 @@ function VacaturePagina() {
             Klinkt dit als jouw plek? <em>Laat iets weten</em>.
           </>
         }
-        lead="Een cv is niet verplicht. Schrijf in een paar zinnen wat je aanspreekt en wanneer je zou kunnen beginnen. We reageren gemiddeld binnen twee werkdagen."
+        lead="Een cv is niet verplicht. Schrijf in een paar zinnen wat je aanspreekt en wanneer je zou kunnen beginnen. MegaOnline reageert persoonlijk."
         rol={v.naam}
       />{" "}
       <section

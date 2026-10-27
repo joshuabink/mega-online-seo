@@ -72,11 +72,11 @@ const VOOR_WIE = [
 const FAQ_ITEMS: { q: string; a: ReactNode }[] = [
   {
     q: 'Hoeveel advertentiebudget heb ik nodig?',
-    a: 'Dat verschilt per branche en regio. Wat een klik kost, hangt af van hoeveel bedrijven op dezelfde zoekopdracht adverteren. We kijken eerst wat mensen in jouw markt zoeken en wat een klik daar ongeveer kost. Op basis daarvan adviseren we een startbudget dat groot genoeg is om te leren wat werkt.',
+    a: 'Dat verschilt per branche en regio. Wat een klik kost, hangt af van hoeveel bedrijven op dezelfde zoekopdracht adverteren. MegaOnline kijkt eerst wat mensen in jouw markt zoeken en wat een klik daar ongeveer kost. Op basis daarvan adviseert MegaOnline een startbudget dat groot genoeg is om te leren wat werkt.',
   },
   {
     q: 'Hoe snel zie ik resultaat?',
-    a: 'Je advertenties zijn zichtbaar zodra de campagne is goedgekeurd. De eerste weken gebruiken we om te leren welke zoekopdrachten aanvragen opleveren. Daarna sturen we gericht bij. Hoeveel aanvragen het oplevert, kunnen we vooraf niet beloven. Wel zie je elke maand wat het deed.',
+    a: 'Je advertenties zijn zichtbaar zodra de campagne is goedgekeurd. MegaOnline gebruikt de start om te leren welke zoekopdrachten aanvragen opleveren. Daarna stuurt MegaOnline gericht bij. Hoeveel aanvragen het oplevert, kan MegaOnline vooraf niet beloven. Wel zie je elke maand wat het deed.',
   },
   {
     q: 'Wat is het verschil met SEO?',
@@ -88,19 +88,19 @@ const FAQ_ITEMS: { q: string; a: ReactNode }[] = [
   },
   {
     q: 'Van wie is het advertentieaccount?',
-    a: 'Van jou. Het account staat op jouw naam en het budget betaal je rechtstreeks aan Google. Wij krijgen toegang om het te beheren. Stop je met de samenwerking, dan houd je alles.',
+    a: 'Van jou. Het account staat op jouw naam en het budget betaal je rechtstreeks aan Google. MegaOnline krijgt toegang om het te beheren. Stop je met de samenwerking, dan houd je alles.',
   },
   {
-    q: 'Ik adverteer al zelf. Kunnen jullie meekijken?',
-    a: 'Ja. We beginnen dan met een blik op je huidige campagnes: waar gaat het budget naartoe, meet het account aanvragen en klopt de pagina erachter? Vaak zit de grootste winst in wat je nu betaalt zonder dat het iets oplevert.',
+    q: 'Ik adverteer al zelf. Kan MegaOnline meekijken?',
+    a: 'Ja. MegaOnline begint dan met een blik op je huidige campagnes: waar gaat het budget naartoe, meet het account aanvragen en klopt de pagina erachter? Vaak zit de grootste winst in wat je nu betaalt zonder dat het iets oplevert.',
   },
   {
     q: 'Moet mijn website door MegaOnline gebouwd zijn?',
-    a: 'Nee. Wel kijken we eerst of de pagina waar de advertentie naartoe gaat goed genoeg is. Een campagne op een pagina die geen aanvragen oplevert, is weggegooid geld. Is daar werk nodig, dan laten we je weten wat en waarom.',
+    a: 'Nee. Wel kijkt MegaOnline eerst of de pagina waar de advertentie naartoe gaat goed genoeg is. Een campagne op een pagina die geen aanvragen oplevert, is weggegooid geld. Is daar werk nodig, dan laat MegaOnline je weten wat en waarom.',
   },
   {
     q: 'Hoe weet ik wat het oplevert?',
-    a: 'We meten aanvragen, telefoontjes en boekingen die via je advertenties binnenkomen. Elke maand krijg je een overzicht van wat het kostte, wat het opleverde en wat we de volgende maand aanpassen.',
+    a: 'MegaOnline meet aanvragen, telefoontjes en boekingen die via je advertenties binnenkomen. Elke maand krijg je een overzicht van wat het kostte, wat het opleverde en wat MegaOnline de volgende maand aanpast.',
   },
 ]
 
@@ -123,7 +123,7 @@ function GoogleAds() {
                 Zichtbaar op het moment dat je klant zoekt. <em>Niet pas over een half jaar.</em>
               </Reveal>
               <Reveal as="p" className="lead hero__sub reveal" data-d="2">
-                Met Google Ads sta je in beeld zodra de campagne draait. We richten de campagnes in, zorgen dat de pagina erachter aanvragen oplevert en sturen elke maand bij op wat het echt opbrengt.
+                Met Google Ads sta je in beeld zodra de campagne draait. MegaOnline richt de campagnes in, zorgt dat de pagina erachter aanvragen oplevert en stuurt elke maand bij op wat het echt opbrengt.
               </Reveal>
               <Reveal as="ul" className="hero__ticks reveal" data-d="3">
                 <li>
@@ -136,7 +136,7 @@ function GoogleAds() {
                 </li>
                 <li>
                   <Icon name="check" className="ck" />
-                  <span>We verbeteren ook de pagina achter de advertentie</span>
+                  <span>MegaOnline verbetert ook de pagina achter de advertentie</span>
                 </li>
               </Reveal>
             </div>
@@ -184,14 +184,14 @@ function GoogleAds() {
                 Google brengt de bezoeker tot aan je voordeur. Of hij binnenkomt, beslist je website. Een onduidelijke pagina maakt elke klik duurder, hoe goed de campagne ook is ingericht.
               </p>
               <p className="cw-prijs__uitleg">
-                Daarom kijken we vóór de eerste euro naar de pagina waar de advertentie naartoe gaat. Soms heeft een bestaande pagina een paar aanpassingen nodig. Soms is een aparte landingspagina de betere keuze.
+                Daarom kijkt MegaOnline vóór de eerste euro naar de pagina waar de advertentie naartoe gaat. Soms heeft een bestaande pagina een paar aanpassingen nodig. Soms is een aparte landingspagina de betere keuze.
               </p>
               <Link className="tlink" to="/kennisbank/$slug" params={{ slug: 'website-levert-geen-aanvragen-op' }}>
                 Eerst je pagina, dan pas adverteren <span className="arr">&rarr;</span>
               </Link>
             </Reveal>
             <Reveal as="div" className="cw-card reveal" data-d="1">
-              <span className="cw-card__tag">Voordat een campagne live gaat, controleren we</span>
+              <span className="cw-card__tag">Voordat een campagne live gaat, controleert MegaOnline</span>
               <ul className="cw-list">
                 {CONTROLE.map((x) => (
                   <li key={x}>
@@ -208,11 +208,11 @@ function GoogleAds() {
       <section className="section" data-theme="light" data-screen-label="Wat we doen">
         <div className="wrap">
           <Reveal as="div" className="shead reveal">
-            <span className="label">Wat we doen</span>
+            <span className="label">Wat MegaOnline doet</span>
             <h2 className="h2">
               Van zoekwoord tot <em>aanvraag.</em>
             </h2>
-            <p className="lead">Geen losse campagne die we aanzetten en overdragen. We beheren het geheel: wat je adverteert, waar het naartoe leidt en wat het oplevert.</p>
+            <p className="lead">Geen losse campagne die MegaOnline aanzet en overdraagt. MegaOnline beheert het geheel: wat je adverteert, waar het naartoe leidt en wat het oplevert.</p>
           </Reveal>
           <div className="cw-krijgt">
             <Reveal as="div" className="cw-card reveal">
@@ -229,7 +229,7 @@ function GoogleAds() {
               </ul>
             </Reveal>
             <Reveal as="div" className="cw-card reveal" data-d="1">
-              <h3>We meten wat het oplevert</h3>
+              <h3>MegaOnline meet wat het oplevert</h3>
               <p>Niet alleen klikken, maar wat er daarna gebeurt.</p>
               <ul className="cw-chips">
                 {METEN.map((x) => (
@@ -251,7 +251,7 @@ function GoogleAds() {
               Elke maand een stukje <em>minder verspilling.</em>
             </h2>
             <p className="lead">
-              De eerste weken leren we wat werkt. Daarna wordt het beheer steeds preciezer: minder budget naar zoekopdrachten die niets doen, meer naar zoekopdrachten die aanvragen opleveren.
+              In het begin leert MegaOnline wat werkt. Daarna wordt het beheer steeds preciezer: minder budget naar zoekopdrachten die niets doen, meer naar zoekopdrachten die aanvragen opleveren.
             </p>
           </Reveal>
           <ol className="v2-steps cw-steps">
@@ -280,7 +280,7 @@ function GoogleAds() {
                 Met Google Ads betaal je voor elke bezoeker. Stop je met adverteren, dan stopt ook de zichtbaarheid. Met SEO bouw je iets op dat blijft, maar dat kost maanden.
               </p>
               <p>
-                Samen werken ze het best. Ads brengen direct aanvragen binnen en laten zien welke zoekopdrachten echt klanten opleveren. Die kennis gebruiken we om te bepalen welke pagina's we voor SEO als eerste maken.
+                Samen werken ze het best. Ads brengen direct aanvragen binnen en laten zien welke zoekopdrachten echt klanten opleveren. Die kennis gebruikt MegaOnline om te bepalen welke pagina's voor SEO als eerste komen.
               </p>
               <Link className="tlink" to="/diensten/seo">
                 Bekijk SEO <span className="arr">&rarr;</span>
@@ -303,7 +303,7 @@ function GoogleAds() {
               <span className="v2-eyebrow">Google Ads beheer</span>
               <p className="cw-prijs__bedrag">Op maat</p>
               <p className="cw-prijs__uitleg">
-                Je betaalt twee dingen: ons beheer en je advertentiebudget. Het budget betaal je rechtstreeks aan Google, zonder opslag van ons. Zo zie je altijd waar elke euro naartoe gaat.
+                Je betaalt twee dingen: het beheer van MegaOnline en je advertentiebudget. Het budget betaal je rechtstreeks aan Google, zonder opslag. Zo zie je altijd waar elke euro naartoe gaat.
               </p>
               <ul className="hero__ticks">
                 <li><Icon name="check" className="ck" /><span>Campagnes inrichten en de pagina afstemmen</span></li>
@@ -385,7 +385,7 @@ function GoogleAds() {
             Betaal voor aanvragen. Niet voor klikken die nergens heen gaan.
           </Reveal>
           <Reveal as="p" className="lead reveal" data-d="1">
-            Wil je weten of Google Ads zinvol is voor jouw bedrijf? In de gratis website scan kijken we of je website klaar is om advertentiebezoekers om te zetten in aanvragen.
+            Wil je weten of Google Ads zinvol is voor jouw bedrijf? In de gratis website scan kijkt MegaOnline of je website klaar is om advertentiebezoekers om te zetten in aanvragen.
           </Reveal>
           <Reveal as="a" className="btn btn-primary reveal" data-d="2" href="#scan">
             {CTA_SCAN}

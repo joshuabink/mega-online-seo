@@ -9,6 +9,7 @@ import { chromium } from 'playwright'
 import fs from 'node:fs'
 import http from 'node:http'
 import path from 'node:path'
+import { beoordeelTermijnBestanden, beoordeelTermijnPagina } from './termijn-bewaker.mjs'
 
 const BASE = process.env.BASE ?? 'http://localhost:3000'
 const results = []
@@ -58,7 +59,8 @@ function normCta(s) {
  * of href="tel:", of een href met wa.me of whatsapp bevatten, of het
  * telefoonnummer van MegaOnline in welke notatie dan ook. '2 werkdagen' mag,
  * behalve in hetzelfde element, dezelfde zin of dezelfde kaart als het woord
- * scan. Het telefoonveld van de bezoeker mag blijven.
+ * scan. Het telefoonveld van de bezoeker mag blijven. Doorlooptijden en de
+ * we-vorm lopen via termijn-bewaker.mjs.
  */
 async function controleerCtaTeksten(browser) {
   const pg = await browser.newPage({ viewport: { width: 1440, height: 900 } })
@@ -69,7 +71,9 @@ async function controleerCtaTeksten(browser) {
   check('sitemap-paden voor CTA-controle', sitemap.status() === 200 && paden.length > 0 && !paden.includes('/gratis-websiteconcept'), String(paden.length))
 
   const fouten = []
+  const termijnFouten = []
   let zagScan = false
+  termijnFouten.push(...(await beoordeelTermijnBestanden(pg, xml, BASE)))
 
   for (const pad of paden) {
     const res = await pg.goto(BASE + pad, { waitUntil: 'domcontentloaded', timeout: 30000 })
@@ -77,6 +81,7 @@ async function controleerCtaTeksten(browser) {
       fouten.push(`${pad} status ${res ? res.status() : 'geen'}`)
       continue
     }
+    termijnFouten.push(...(await beoordeelTermijnPagina(pg, pad)))
     const data = await pg.evaluate((scan) => {
       const norm = (s) => String(s ?? '').replace(/\s+/g, ' ').replace(/\s*→\s*$/u, '').trim()
       const kloon = document.body.cloneNode(true)
@@ -186,6 +191,11 @@ async function controleerCtaTeksten(browser) {
     }
   }
 
+  check(
+    'termijn-bewaker: geen doorlooptijd en geen we-vorm',
+    termijnFouten.length === 0,
+    termijnFouten.slice(0, 12).join(' | ') || `pagina's=${paden.length}`,
+  )
   check(
     'CTA-bewaker: alleen de scanknop, alleen de scanpagina, geen websiteconcept',
     fouten.length === 0 && zagScan,
@@ -1047,7 +1057,7 @@ check(
       scanPagina.canonical === 'https://megaonline.io/gratis-websitescan' &&
       !/noindex/i.test(scanPagina.robots) &&
       scanPagina.h1 === 'Vraag een gratis website scan aan' &&
-      scanPagina.lead === 'We bekijken je site en vertellen je eerlijk wat je nu aanvragen en boekingen kost, en wat het eerst moet.' &&
+      scanPagina.lead === 'MegaOnline bekijkt je site en vertelt je eerlijk wat je nu aanvragen en boekingen kost en wat het eerst moet.' &&
       scanPagina.formTag === 'FORM' &&
       scanPagina.heroHref === '#formulier' &&
       scanPagina.tekstHref === '#formulier' &&
@@ -1074,7 +1084,7 @@ check(
     'zijblok noemt rapport en videogesprek',
     scanPagina.oplevering.includes('rapport') &&
       scanPagina.oplevering.includes('videogesprek') &&
-      scanPagina.oplevering === 'Binnen 5 werkdagen ontvang je een rapport over je site. In een persoonlijk videogesprek lichten we het rapport toe.',
+      scanPagina.oplevering === 'Binnen 5 werkdagen ontvang je een rapport over je site. In een persoonlijk videogesprek licht MegaOnline het rapport toe.',
     scanPagina.oplevering,
   )
 
@@ -1164,11 +1174,11 @@ check(
   const scanToontVijf = await page.evaluate(() => document.body.innerText.includes('binnen 5 werkdagen'))
   await page.goto(BASE + '/contact', { waitUntil: 'load' })
   await waitHydrated(page)
-  const contactToontTwee = await page.evaluate(() => document.body.innerText.includes('binnen 2 werkdagen'))
+  const contactToontTermijn = await page.evaluate(() => /2 werkdagen|twee werkdagen/i.test(document.body.innerText))
   check(
-    'contact toont binnen 2 werkdagen en de scanpagina binnen 5 werkdagen',
-    scanToontVijf && contactToontTwee,
-    `scan=${scanToontVijf} contact=${contactToontTwee}`,
+    'contact noemt geen reactietermijn en de scanpagina wel binnen 5 werkdagen',
+    scanToontVijf && !contactToontTermijn,
+    `scan=${scanToontVijf} contactTermijn=${contactToontTermijn}`,
   )
 
   await page.goto(BASE + '/diensten/starter-website', { waitUntil: 'load' })

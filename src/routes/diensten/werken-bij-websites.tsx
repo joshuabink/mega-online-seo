@@ -32,7 +32,7 @@ export const Route = createFileRoute('/diensten/werken-bij-websites')({
 const FAQ_ITEMS: { q: string; a: string }[] = [
   {
     q: 'Heb ik een aparte werken-bij website nodig?',
-    a: 'Niet per se. Soms is een werken-bij sectie op je bestaande website genoeg, soms werkt een aparte website beter omdat die volledig om sfeer, mensen en solliciteren draait. We kijken samen wat voor jouw situatie het slimst is.',
+    a: 'Niet per se. Soms is een werken-bij sectie op je bestaande website genoeg, soms werkt een aparte website beter omdat die volledig om sfeer, mensen en solliciteren draait. MegaOnline kijkt samen wat voor jouw situatie het slimst is.',
   },
   {
     q: 'Kunnen vacatures automatisch worden bijgewerkt?',
@@ -43,8 +43,8 @@ const FAQ_ITEMS: { q: string; a: string }[] = [
     a: 'Ze kunnen in aanmerking komen voor de vacatureresultaten van Google als elke vacature een eigen pagina met JobPosting-gegevens heeft. Of ze verschijnen, bepaalt Google. Dat kan niemand garanderen.',
   },
   {
-    q: "Helpen jullie ook met foto's en video?",
-    a: "Ja. Bij werken-bij websites is beeld vaak belangrijker dan tekst. We helpen met teamfoto's, werkdagbeelden, interviews en bedrijfsvideo's, eenmalig bij de bouw of periodiek.",
+    q: "Helpt MegaOnline ook met foto's en video?",
+    a: "Ja. Bij werken-bij websites is beeld vaak belangrijker dan tekst. MegaOnline helpt met teamfoto's, werkdagbeelden, interviews en bedrijfsvideo's, eenmalig bij de bouw of periodiek.",
   },
   {
     q: 'Kunnen medewerkers hun verhaal delen?',
@@ -187,7 +187,7 @@ function WerkenBijWebsites() {
                   <span><strong>Een aparte werken-bij website:</strong> alle ruimte voor sfeer, mensen en solliciteren, met een eigen opbouw.</span>
                 </li>
               </ul>
-              <p>We kijken samen wat voor jouw situatie het slimst is.</p>
+              <p>MegaOnline kijkt samen wat voor jouw situatie het slimst is.</p>
             </Reveal>
           </div>
         </div>
@@ -211,7 +211,7 @@ function WerkenBijWebsites() {
                 Niemand voelt de sfeer van een bedrijf door een vacaturetekst te lezen. Een eerlijke teamfoto of een korte video van een werkdag laat sneller zien hoe het is.
               </p>
               <p>
-                Het gaat vaak mis met verouderde foto's, stockbeelden en pagina's zonder gezichten van het team. We helpen met teamfoto's, werkdagbeelden, interviews met collega's en bedrijfsvideo's, eenmalig bij de bouw of periodiek.
+                Het gaat vaak mis met verouderde foto's, stockbeelden en pagina's zonder gezichten van het team. MegaOnline helpt met teamfoto's, werkdagbeelden, interviews met collega's en bedrijfsvideo's, eenmalig bij de bouw of periodiek.
               </p>
             </Reveal>
           </div>
@@ -237,7 +237,7 @@ function WerkenBijWebsites() {
                 </li>
                 <li>
                   <Icon name="check" className="ck" />
-                  <span><strong>Uit je wervingssysteem (ATS):</strong> dat kan alleen als dat systeem een koppeling of een vacaturelijst voor websites aanbiedt. Dan kijken we per situatie wat de slimste koppeling is.</span>
+                  <span><strong>Uit je wervingssysteem (ATS):</strong> dat kan alleen als dat systeem een koppeling of een vacaturelijst voor websites aanbiedt. Dan kijkt MegaOnline per situatie wat de slimste koppeling is.</span>
                 </li>
               </ul>
               <p>Sollicitaties kunnen binnenkomen via een kort formulier, per mail of via WhatsApp.</p>
@@ -267,7 +267,7 @@ function WerkenBijWebsites() {
         <div className="wrap">
           <Reveal as="div" className="shead reveal">
             <span className="label">De aanpak</span>
-            <h2 className="h2">Hoe pakken we een werken-bij website aan?</h2>
+            <h2 className="h2">Hoe pakt MegaOnline een werken-bij website aan?</h2>
             <p className="lead">
               Het doel is niet zoveel mogelijk sollicitaties, maar dat de juiste mensen denken: hier wil ik werken.
             </p>
@@ -293,7 +293,7 @@ function WerkenBijWebsites() {
             </div>
             <div className="v2-head__side">
               <p>
-                Op <Link to="/werken-bij">de vacaturepagina van MegaOnline</Link> staan onze eigen open rollen, van stages tot freelance. Dit is onze eigen website, geen klantvoorbeeld.
+                Op <Link to="/werken-bij">de vacaturepagina van MegaOnline</Link> staan de eigen open rollen, van stages tot freelance. Dit is de eigen website van MegaOnline, geen klantvoorbeeld.
               </p>
             </div>
           </Reveal>
@@ -362,7 +362,7 @@ function WerkenBijWebsites() {
             Benieuwd hoe jouw website eruit kan zien?
           </Reveal>
           <Reveal as="p" className="lead reveal" data-d="1">
-            We ontwerpen gratis een homepage voor je bedrijf. Zo zie je wat we voor je kunnen maken, zonder verplichtingen.
+            MegaOnline ontwerpt gratis een homepage voor je bedrijf. Zo zie je wat MegaOnline voor je kan maken, zonder verplichtingen.
           </Reveal>
           <Reveal as="a" className="btn btn-primary reveal" data-d="2" href="#ontwerp">
             Vraag je gratis homepageontwerp aan

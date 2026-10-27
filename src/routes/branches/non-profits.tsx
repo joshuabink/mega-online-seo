@@ -319,7 +319,7 @@ function NonProfits() {
             </Qa>
             {' '}
             <Qa question="Kunnen donateurs online doneren?" className="reveal">
-                Ja. We richten een heldere doneerroute in en koppelen die aan een betrouwbare betaaldienst, zodat doneren in een paar stappen kan.
+                Ja. MegaOnline richt een heldere doneerroute in en koppelt die aan een betrouwbare betaaldienst, zodat doneren in een paar stappen kan.
             </Qa>
             {' '}
             <Qa question="Kunnen vrijwilligers de website zelf bijhouden?" className="reveal">

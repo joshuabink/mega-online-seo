@@ -87,10 +87,10 @@ const VOORBEELDEN: { img: string; w: number; h: number; tag: string; t: string; 
 ]
 
 const STAPPEN = [
-  { t: 'In kaart brengen', p: 'We kijken met welke systemen je werkt en waar je het meeste handwerk kwijt bent.' },
-  { t: 'Route kiezen', p: 'Per situatie bepalen we de slimste oplossing: een directe koppeling, een automatisering of een AI-agent.' },
-  { t: 'Bouwen en testen', p: 'We bouwen de flow in n8n en controleren of alles op de juiste plek belandt.' },
-  { t: 'Uitbreiden', p: 'We beginnen met wat het meeste oplevert en breiden uit wanneer jij daar klaar voor bent.' },
+  { t: 'In kaart brengen', p: 'MegaOnline kijkt met welke systemen je werkt en waar je het meeste handwerk kwijt bent.' },
+  { t: 'Route kiezen', p: 'Per situatie bepaalt MegaOnline de slimste oplossing: een directe koppeling, een automatisering of een AI-agent.' },
+  { t: 'Bouwen en testen', p: 'MegaOnline bouwt de flow in n8n en controleert of alles op de juiste plek belandt.' },
+  { t: 'Uitbreiden', p: 'MegaOnline begint met wat het meeste oplevert en breidt uit wanneer jij daar klaar voor bent.' },
 ]
 
 const VOOR_WIE = [
@@ -102,11 +102,11 @@ const VOOR_WIE = [
 const FAQ_ITEMS: { q: string; a: ReactNode }[] = [
   {
     q: 'Werkt dit met de systemen die ik nu gebruik?',
-    a: 'Vaak wel. We sluiten aan op veelgebruikte CRM-, boekings-, mail- en betaalsystemen. Heeft jouw systeem een koppeling of API, dan is er bijna altijd iets mogelijk.',
+    a: 'Vaak wel. MegaOnline sluit aan op veelgebruikte CRM-, boekings-, mail- en betaalsystemen. Heeft jouw systeem een koppeling of API, dan is er bijna altijd iets mogelijk.',
   },
   {
-    q: 'Waarom bouwen jullie in n8n?',
-    a: 'In n8n bouwen we automatiseringen als overzichtelijke flows. Je ziet stap voor stap wat er gebeurt, het koppelt met veel systemen en we kunnen er AI-stappen in opnemen. Zo blijft een automatisering te begrijpen en aan te passen.',
+    q: 'Waarom bouwt MegaOnline in n8n?',
+    a: 'In n8n bouwt MegaOnline automatiseringen als overzichtelijke flows. Je ziet stap voor stap wat er gebeurt, het koppelt met veel systemen en MegaOnline kan er AI-stappen in opnemen. Zo blijft een automatisering te begrijpen en aan te passen.',
   },
   {
     q: 'Wat is een AI-agent precies?',
@@ -114,15 +114,15 @@ const FAQ_ITEMS: { q: string; a: ReactNode }[] = [
   },
   {
     q: 'Wat als mijn systeem geen standaardkoppeling heeft?',
-    a: 'Dan zoeken we naar een maatwerkoplossing. Niet alles kan, maar vaak is er meer mogelijk dan je denkt. We zijn eerlijk over wat haalbaar en zinvol is.',
+    a: 'Dan zoekt MegaOnline naar een maatwerkoplossing. Niet alles kan, maar vaak is er meer mogelijk dan je denkt. MegaOnline is eerlijk over wat haalbaar en zinvol is.',
   },
   {
     q: 'Kan ik later uitbreiden?',
-    a: 'Zeker. Je hoeft niet alles in één keer te doen. We beginnen met wat het meeste oplevert en breiden uit wanneer jij daar klaar voor bent.',
+    a: 'Zeker. Je hoeft niet alles in één keer te doen. MegaOnline begint met wat het meeste oplevert en breidt uit wanneer jij daar klaar voor bent.',
   },
   {
     q: 'Kan dit ook zonder nieuwe website?',
-    a: 'Ja. We kunnen koppelingen en automatiseringen ook toevoegen aan je bestaande website en systemen. Begin met een gratis website scan, dan kijken we waar je het meeste handwerk kunt wegnemen.',
+    a: 'Ja. MegaOnline kan koppelingen en automatiseringen ook toevoegen aan je bestaande website en systemen. Begin met een gratis website scan, dan kijkt MegaOnline waar je het meeste handwerk kunt wegnemen.',
   },
 ]
 
@@ -145,7 +145,7 @@ function Integraties() {
                 Laat je systemen het werk <em>doen.</em>
               </Reveal>
               <Reveal as="p" className="lead hero__sub reveal" data-d="2">
-                We koppelen je website aan de systemen waar je al mee werkt, automatiseren terugkerend werk en bouwen AI-agents die werk voor je voorbereiden.
+                MegaOnline koppelt je website aan de systemen waar je al mee werkt, automatiseert terugkerend werk en bouwt AI-agents die werk voor je voorbereiden.
               </Reveal>
               <Reveal as="ul" className="hero__ticks reveal" data-d="3">
                 <li>
@@ -197,7 +197,7 @@ function Integraties() {
         <div className="wrap">
           <Reveal as="div" className="v2-head reveal">
             <div className="shead">
-              <span className="label">Wat we bouwen</span>
+              <span className="label">Wat MegaOnline bouwt</span>
               <h2 className="h2">
                 Koppelen, automatiseren en <em>laten meedenken.</em>
               </h2>
@@ -238,7 +238,7 @@ function Integraties() {
               </h2>
             </div>
             <div className="v2-head__side">
-              <p>Drie voorbeelden zoals we ze in n8n bouwen: een koppeling, een automatisering en een AI-agent. Elke stap is zichtbaar en later aan te passen.</p>
+              <p>Drie voorbeelden zoals MegaOnline ze in n8n bouwt: een koppeling, een automatisering en een AI-agent. Elke stap is zichtbaar en later aan te passen.</p>
             </div>
           </Reveal>
           <div className="cw-shots">
@@ -272,11 +272,11 @@ function Integraties() {
             <div className="shead">
               <span className="label">Systemen</span>
               <h2 className="h2">
-                Waar we mee <em>koppelen.</em>
+                Waar MegaOnline mee <em>koppelt.</em>
               </h2>
             </div>
             <div className="v2-head__side">
-              <p>Een greep uit de systemen waar we mee werken. Staat het jouwe er niet tussen? Heeft het een koppeling of API, dan kan het vaak alsnog.</p>
+              <p>Een greep uit de systemen waar MegaOnline mee werkt. Staat het jouwe er niet tussen? Heeft het een koppeling of API, dan kan het vaak alsnog.</p>
             </div>
           </Reveal>
           <Reveal as="ul" className="cw-logos reveal" data-d="1">
@@ -301,7 +301,7 @@ function Integraties() {
             <h2 className="h2">
               Klein beginnen, <em>slim</em> uitbreiden.
             </h2>
-            <p className="lead">We beginnen bij het handwerk dat je de meeste tijd kost en bouwen van daaruit verder.</p>
+            <p className="lead">MegaOnline begint bij het handwerk dat je de meeste tijd kost en bouwt van daaruit verder.</p>
           </Reveal>
           <ol className="v2-steps v2-steps--4">
             {STAPPEN.map((s, i) => (

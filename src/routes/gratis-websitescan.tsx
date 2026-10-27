@@ -60,7 +60,7 @@ const STAPPEN = [
   {
     titel: 'Gratis website scan',
     tekst:
-      'We bekijken je huidige site en lezen wat jij ervan vindt. In een gesprek hoor je wat er misgaat en wat het eerst moet.',
+      'MegaOnline bekijkt je huidige site en leest wat jij ervan vindt. In een gesprek hoor je wat er misgaat en wat het eerst moet.',
     punten: [
       'Jouw antwoorden uit het formulier',
       'Een eerlijke blik op je site',
@@ -69,7 +69,7 @@ const STAPPEN = [
   },
   {
     titel: 'Begrijpen',
-    tekst: 'Pas als we je bedrijf kennen, weten we wat je site moet doen.',
+    tekst: 'Pas als MegaOnline je bedrijf kent, is duidelijk wat je site moet doen.',
     punten: [
       'Deep dive in je bedrijf',
       "Doelgroepanalyse met persona's",
@@ -80,12 +80,12 @@ const STAPPEN = [
   {
     titel: 'Bouwen',
     tekst:
-      'Een site die vertrouwen wekt en bezoekers naar een aanvraag of boeking leidt. Meestal 4 tot 8 weken.',
+      'Een site die vertrouwen wekt en bezoekers naar een aanvraag of boeking leidt.',
     punten: ['Ontwerp', 'Development', 'Aanvraagflows', 'Tracking'],
   },
   {
     titel: 'Verbeteren',
-    tekst: 'Na de livegang kijken we wat bezoekers echt doen en sturen we bij.',
+    tekst: 'Na de livegang kijkt MegaOnline wat bezoekers echt doen en stuurt bij.',
     punten: [
       'Bezoekersdata bekijken',
       'Bezoekersgedrag analyseren',
@@ -99,12 +99,12 @@ const VERGELIJKING = [
   {
     label: 'Doel',
     ander: 'Een site die er goed uitziet.',
-    wij: 'Een site die aanvragen en boekingen oplevert.',
+    mega: 'Een site die aanvragen en boekingen oplevert.',
   },
   {
     label: 'Na de livegang',
     ander: 'Project af, factuur verstuurd.',
-    wij: 'Doorlopend bijsturen op de grootste groeikans.',
+    mega: 'Doorlopend bijsturen op de grootste groeikans.',
   },
 ] as const
 
@@ -135,7 +135,7 @@ function GratisWebsitescan() {
                 {SCAN_H1}
               </Reveal>
               <Reveal as="p" className="lead hero__sub reveal" data-d="2">
-                We bekijken je site en vertellen je eerlijk wat je nu aanvragen en boekingen kost en wat het eerst moet.
+                MegaOnline bekijkt je site en vertelt je eerlijk wat je nu aanvragen en boekingen kost en wat het eerst moet.
               </Reveal>
               <Reveal as="ul" className="hero__ticks reveal" data-d="3">
                 <li>
@@ -166,8 +166,8 @@ function GratisWebsitescan() {
             </div>
             <div className="v2-head__side">
               <p>
-                We kijken waar bezoekers afhaken op weg naar een aanvraag of boeking en wat daar beter
-                kan. Jouw antwoorden in het formulier bepalen waar we het eerst naar kijken.
+                MegaOnline kijkt waar bezoekers afhaken op weg naar een aanvraag of boeking en wat daar beter
+                kan. Jouw antwoorden in het formulier bepalen waar MegaOnline het eerst naar kijkt.
               </p>
               <p>{SCAN_OPLEVERING}</p>
             </div>
@@ -215,8 +215,8 @@ function GratisWebsitescan() {
           <Reveal as="div" className="shead reveal">
             <h2 className="h2">Zo verloopt de scan</h2>
             <p className="lead">
-              Een mooie site zonder onderzoek levert weinig op. Daarom leren we eerst je bedrijf en je
-              klanten kennen, bouwen we pas daarna en blijven we na de livegang verbeteren. Je werkt
+              Een mooie site zonder onderzoek levert weinig op. Daarom leert MegaOnline eerst je bedrijf en je
+              klanten kennen, bouwt pas daarna en blijft na de livegang verbeteren. Je werkt
               direct met de mensen die het doen, zonder tussenlagen.
             </p>
           </Reveal>
@@ -247,7 +247,7 @@ function GratisWebsitescan() {
           <Reveal as="div" className="shead reveal">
             <span className="label">Het verschil</span>
             <h2 className="h2">
-              Een websitebouwer maakt wat jij vraagt. Wij bouwen voor jouw doelgroep. Met één doel: dat je bezoeker <em>actie onderneemt.</em>
+              Een websitebouwer maakt wat jij vraagt. MegaOnline bouwt voor jouw doelgroep. Met één doel: dat je bezoeker <em>actie onderneemt.</em>
             </h2>
           </Reveal>
           <Reveal as="div" className="v2-table reveal" data-d="1">
@@ -266,7 +266,7 @@ function GratisWebsitescan() {
                   <tr key={rij.label}>
                     <th scope="row">{rij.label}</th>
                     <td>{rij.ander}</td>
-                    <td className="us">{rij.wij}</td>
+                    <td className="us">{rij.mega}</td>
                   </tr>
                 ))}
               </tbody>

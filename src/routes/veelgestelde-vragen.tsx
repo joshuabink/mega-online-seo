@@ -133,12 +133,12 @@ function VeelgesteldeVragen() {
                 <Icon name="calendar-clock" />
               </span>
               {' '}
-              <h2>Hoe lang duurt een project?</h2>
+              <h2>Hoe verloopt een project?</h2>
             </Reveal>
             {' '}
             <div className="faq">
-              <Qa question="Hoe lang duurt het om een website te bouwen?" className="reveal">
-                  Een Starter Website staat doorgaans binnen enkele weken live, omdat hij compacter is. Een Conversie Website duurt langer, afhankelijk van omvang en het aantal feedbackrondes. MegaOnline maakt vooraf een heldere planning.
+              <Qa question="Wat bepaalt de planning van een website?" className="reveal">
+                  Een Starter Website is compacter dan een Conversie Website. De planning hangt af van de omvang en het aantal feedbackrondes. MegaOnline maakt vooraf een heldere planning.
               </Qa>
               {' '}
               <Qa question="Hoe verloopt het traject?" className="reveal">
@@ -146,7 +146,7 @@ function VeelgesteldeVragen() {
               </Qa>
               {' '}
               <Qa question="Wat heb je van mij nodig?" className="reveal">
-                  Vooral je teksten, je logo en een paar foto’s. Waar dat nodig is, denkt MegaOnline mee over de inhoud. Hoe sneller je aanlevert, hoe vlotter je live kunt.
+                  Vooral je teksten, je logo en een paar foto’s. Waar dat nodig is, denkt MegaOnline mee over de inhoud. Hoe sneller je aanlevert, hoe eerder MegaOnline verder kan.
               </Qa>
               {' '}
               <Qa question="Kan ik later nog dingen aanpassen?" className="reveal">
@@ -166,15 +166,15 @@ function VeelgesteldeVragen() {
             {' '}
             <div className="faq">
               <Qa question="Hoe zorgt een website voor meer aanvragen?" className="reveal">
-                  Door bezoekers gericht te begeleiden naar één duidelijke volgende stap: een aanvraag, reservering of boeking. We werken aan vertrouwen, een heldere structuur en sterke call-to-actions, zodat meer bezoekers ook echt klant worden. Lees over <Link to="/kennisbank/$slug" params={{ slug: 'website-levert-geen-aanvragen-op' }}>zes plekken waar een website aanvragen laat liggen</Link>.
+                  Door bezoekers gericht te begeleiden naar één duidelijke volgende stap: een aanvraag, reservering of boeking. MegaOnline werkt aan vertrouwen, een heldere structuur en sterke call-to-actions, zodat meer bezoekers ook echt klant worden. Lees over <Link to="/kennisbank/$slug" params={{ slug: 'website-levert-geen-aanvragen-op' }}>zes plekken waar een website aanvragen laat liggen</Link>.
               </Qa>
               {' '}
               <Qa question="Doet MegaOnline ook SEO?" className="reveal">
                   Ja. MegaOnline zorgt voor een gezonde SEO-basis en kan verder gaan met lokale vindbaarheid, sterke landingspagina’s en techniek. MegaOnline stuurt daarbij op de juiste bezoekers, mensen die actief zoeken naar wat jij biedt, in plaats van op ijdele bezoekersaantallen.
               </Qa>
               {' '}
-              <Qa question="Hoe snel zie ik resultaat?" className="reveal">
-                  Een betere website werkt vaak direct: bezoekers vinden sneller hun weg naar contact. SEO-resultaat bouwt zich op over weken tot maanden. MegaOnline stuurt op gestage, duurzame groei.
+              <Qa question="Wanneer is een betere website merkbaar?" className="reveal">
+                  Een betere website helpt bezoekers sneller hun weg naar contact te vinden. Vindbaarheid bouwt zich op de lange termijn op. MegaOnline stuurt op gestage, duurzame groei.
               </Qa>
               {' '}
               <Qa question="Kan MegaOnline mijn bestaande website verbeteren?" className="reveal">
@@ -201,8 +201,8 @@ function VeelgesteldeVragen() {
                   Daar zorgt MegaOnline voor. Je website wordt snel, veilig en stabiel opgeleverd, en is volledig mobielvriendelijk, want de meeste bezoekers komen via hun telefoon.
               </Qa>
               {' '}
-              <Qa question="Kunnen jullie koppelen met mijn systemen?" className="reveal">
-                  Vaak wel. We koppelen je website aan bijvoorbeeld je CRM, boekingssysteem, agenda, betaaldienst of WhatsApp, zodat aanvragen automatisch op de juiste plek belanden.
+              <Qa question="Kan MegaOnline koppelen met mijn systemen?" className="reveal">
+                  Vaak wel. MegaOnline koppelt je website aan bijvoorbeeld je CRM, boekingssysteem, agenda, betaaldienst of WhatsApp, zodat aanvragen automatisch op de juiste plek belanden.
               </Qa>
               {' '}
               <Qa question="Blijft de website van mij?" className="reveal">

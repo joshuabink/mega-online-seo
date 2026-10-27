@@ -55,9 +55,9 @@ const BETER = [
 ]
 
 const STAPPEN = [
-  { t: 'Analyseren', p: 'We kijken wat er nu staat: wat werkt, waar bezoekers afhaken en wat zeker behouden moet blijven.' },
+  { t: 'Analyseren', p: 'MegaOnline kijkt wat er nu staat: wat werkt, waar bezoekers afhaken en wat zeker behouden moet blijven.' },
   { t: 'Begrijpen', p: 'Wie ben je vandaag, wat maakt je anders en waar wil je naartoe? Dat is het uitgangspunt.' },
-  { t: 'Structureren', p: 'We bepalen welke informatie waar komt en hoe bezoekers richting contact bewegen.' },
+  { t: 'Structureren', p: 'MegaOnline bepaalt welke informatie waar komt en hoe bezoekers richting contact bewegen.' },
   { t: 'Ontwerpen en bouwen', p: 'Een nieuwe uitstraling die past bij je bedrijf van nu. Snel, veilig en zelf te beheren.' },
   { t: 'Live zetten', p: 'Met doorverwijzingen van oude naar nieuwe pagina’s, zodat bezoekers en Google je blijven vinden.' },
 ]
@@ -79,19 +79,19 @@ const VOOR_WIE = [
 const FAQ_ITEMS: { q: string; a: ReactNode }[] = [
   {
     q: 'Moet mijn website volledig opnieuw gebouwd worden?',
-    a: 'Niet altijd. Soms volstaat een grondige restyling op de bestaande basis, soms is opnieuw opbouwen slimmer. Dat hangt af van de technische en strategische staat van je huidige website. We zijn daar eerlijk over.',
+    a: 'Niet altijd. Soms volstaat een grondige restyling op de bestaande basis, soms is opnieuw opbouwen slimmer. Dat hangt af van de technische en strategische staat van je huidige website. MegaOnline is daar eerlijk over.',
   },
   {
-    q: 'Kunnen jullie bestaande content overnemen?',
-    a: "Ja. Goede teksten, foto's en pagina's nemen we mee. Vaak scherpen we ze aan zodat ze beter aansluiten bij je bedrijf van nu, maar je begint zelden vanaf nul.",
+    q: 'Kan MegaOnline bestaande content overnemen?',
+    a: "Ja. Goede teksten, foto's en pagina's neemt MegaOnline mee. Vaak scherpt MegaOnline ze aan zodat ze beter aansluiten bij je bedrijf van nu, maar je begint zelden vanaf nul.",
   },
   {
     q: 'Wat gebeurt er met mijn vindbaarheid in Google?',
-    a: 'Daar letten we bewust op. We houden pagina’s die goed scoren in stand, zetten doorverwijzingen van oude naar nieuwe adressen en houden de technische basis op orde. Zo verlies je niet zomaar wat je al hebt opgebouwd.',
+    a: 'Daar let MegaOnline bewust op. MegaOnline houdt pagina’s die goed scoren in stand, zet doorverwijzingen van oude naar nieuwe adressen en houdt de technische basis op orde. Zo verlies je niet zomaar wat je al hebt opgebouwd.',
   },
   {
     q: 'Hoe lang duurt een redesign?',
-    a: 'Dat hangt af van de omvang en van hoe snel teksten en feedback rond zijn. Meestal is het een traject van enkele weken. Na een eerste gesprek krijg je een realistische inschatting voor jouw situatie.',
+    a: 'Dat hangt af van de omvang en van hoe snel teksten en feedback rond zijn. Na een eerste gesprek krijg je een realistische planning voor jouw situatie.',
   },
   {
     q: 'Is een redesign altijd beter dan optimaliseren?',
@@ -108,7 +108,7 @@ const FAQ_ITEMS: { q: string; a: ReactNode }[] = [
   },
   {
     q: 'Hoe begin ik?',
-    a: 'Vraag het gratis homepageontwerp aan. Je ziet dan meteen hoe je vernieuwde homepage eruit kan zien. Daarna bespreken we samen of en hoe we verder gaan.',
+    a: 'Vraag het gratis homepageontwerp aan. Je ziet dan meteen hoe je vernieuwde homepage eruit kan zien. Daarna bespreekt MegaOnline met jou of en hoe het verder gaat.',
   },
 ]
 
@@ -131,12 +131,12 @@ function WebsiteRedesign() {
                 Website vernieuwen als je bedrijf is <em>gegroeid</em>
               </Reveal>
               <Reveal as="p" className="lead hero__sub reveal" data-d="2">
-                Veel websites zijn gebouwd voor het bedrijf dat je jaren geleden was. We stemmen je website opnieuw af op waar je vandaag staat en waar je naartoe wilt.
+                Veel websites zijn gebouwd voor het bedrijf dat je jaren geleden was. MegaOnline stemt je website opnieuw af op waar je vandaag staat en waar je naartoe wilt.
               </Reveal>
               <Reveal as="ul" className="hero__ticks reveal" data-d="3">
                 <li>
                   <Icon name="check" className="ck" />
-                  <span>We nemen mee wat nu al goed werkt</span>
+                  <span>MegaOnline neemt mee wat nu al goed werkt</span>
                 </li>
                 <li>
                   <Icon name="check" className="ck" />
@@ -189,7 +189,7 @@ function WebsiteRedesign() {
             <h2 className="h2">
               Eerst kijken wat er is. <em>Dan</em> pas bouwen.
             </h2>
-            <p className="lead">Een redesign die alleen mooier is, lost weinig op. We grijpen het moment aan om je hele website scherper te maken.</p>
+            <p className="lead">Een redesign die alleen mooier is, lost weinig op. MegaOnline grijpt het moment aan om je hele website scherper te maken.</p>
           </Reveal>
           <ol className="v2-steps cw-steps">
             {STAPPEN.map((s, i) => (
@@ -208,12 +208,12 @@ function WebsiteRedesign() {
           <Reveal as="div" className="shead reveal">
             <span className="label">Meer dan een nieuw jasje</span>
             <h2 className="h2">
-              We vervangen niet alleen de uitstraling. We verbeteren de <em>ervaring.</em>
+              MegaOnline vervangt niet alleen de uitstraling. MegaOnline verbetert de <em>ervaring.</em>
             </h2>
           </Reveal>
           <div className="cw-krijgt">
             <Reveal as="div" className="cw-card reveal">
-              <h3>Wat we eerst bekijken</h3>
+              <h3>Wat MegaOnline eerst bekijkt</h3>
               <ul className="cw-incl">
                 {BEKIJKEN.map((x) => (
                   <li key={x.t}>
@@ -234,7 +234,7 @@ function WebsiteRedesign() {
                 ))}
               </ul>
               <h3 className="cw-card__sub">Geen beloftes over percentages</h3>
-              <p>Wel een website die op alle fronten beter aansluit bij je bedrijf en je bezoekers. Na livegang kijken we samen wat bezoekers echt doen.</p>
+              <p>Wel een website die op alle fronten beter aansluit bij je bedrijf en je bezoekers. Na livegang kijkt MegaOnline samen met jou wat bezoekers echt doen.</p>
             </Reveal>
           </div>
         </div>
@@ -299,8 +299,8 @@ function WebsiteRedesign() {
                     <p>De site was niet meegegroeid met het aanbod en liet onvoldoende zien welke apps het bedrijf ontwikkelt.</p>
                   </div>
                   <div className="case__step">
-                    <span className="k">Wat we deden</span>
-                    <p>We brachten de propositie terug naar een duidelijke boodschap en bouwden een structuur die bezoekers sneller naar de juiste informatie leidt.</p>
+                    <span className="k">Wat MegaOnline deed</span>
+                    <p>MegaOnline bracht de propositie terug naar een duidelijke boodschap en bouwde een structuur die bezoekers sneller naar de juiste informatie leidt.</p>
                   </div>
                 </div>
               </div>
@@ -321,7 +321,7 @@ function WebsiteRedesign() {
                     <p>De sfeer van het verblijf kwam onvoldoende over en de route naar een boeking was onduidelijk.</p>
                   </div>
                   <div className="case__step">
-                    <span className="k">Wat we deden</span>
+                    <span className="k">Wat MegaOnline deed</span>
                     <p>Een visuele website met een duidelijke boekingsroute en focus op beleving.</p>
                   </div>
                 </div>
@@ -354,7 +354,7 @@ function WebsiteRedesign() {
         <div className="wrap">
           <Reveal as="div" className="shead reveal">
             <span className="label">Voor wie</span>
-            <h2 className="h2">Waar we een redesign het vaakst zien.</h2>
+            <h2 className="h2">Waar MegaOnline een redesign het vaakst ziet.</h2>
           </Reveal>
           <ul className="cw-problems">
             {VOOR_WIE.map((x, i) => (
@@ -375,7 +375,7 @@ function WebsiteRedesign() {
             Benieuwd hoe je vernieuwde homepage eruit kan zien?
           </Reveal>
           <Reveal as="p" className="lead reveal" data-d="1">
-            We ontwerpen gratis een homepage voor je bedrijf. Zo zie je wat een redesign kan doen, zonder verplichtingen.
+            MegaOnline ontwerpt gratis een homepage voor je bedrijf. Zo zie je wat een redesign kan doen, zonder verplichtingen.
           </Reveal>
           <Reveal as="a" className="btn btn-primary reveal" data-d="2" href="#ontwerp">
             Vraag je gratis homepageontwerp aan

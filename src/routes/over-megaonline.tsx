@@ -4,8 +4,6 @@ import { Icon } from '@/components/Icon'
 import { Media } from '@/components/Media'
 import { Reveal } from '@/components/Reveal'
 import { CTA_SCAN } from '@/lib/cta'
-import { CONTACT_REACTIETIJD } from '@/lib/lead-contact'
-
 export const Route = createFileRoute('/over-megaonline')({
   head: () => ({
     meta: [
@@ -571,7 +569,7 @@ function OverMegaonline() {
               </span>
               <span className="jnode__step">Stap 5</span>
               <h4>Groei Partnership</h4>
-              <p>Daarna verbeteren we de site maand na maand.</p>
+              <p>Daarna verbetert MegaOnline de site maand na maand.</p>
               <span className="jnode__arrow">→</span>
             </Reveal>
           </div>
@@ -804,7 +802,7 @@ function OverMegaonline() {
               {' '}
               <span>Persoonlijk contact</span>
               {' '}
-              <span>Reactie {CONTACT_REACTIETIJD}</span>
+              <span>Persoonlijk antwoord</span>
             </div>
           </Reveal>
         </div>

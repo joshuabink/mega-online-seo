@@ -50,7 +50,7 @@ function WerkenBij() {
                 Leren door het te doen, aan sites die <em>echt van iemand zijn</em>.
               </Reveal>{" "}
               <Reveal as="p" className="lead svc-hero__sub reveal" data-d="2">
-                We bouwen websites voor ondernemers die leven van aanvragen en boekingen.
+                MegaOnline bouwt websites voor ondernemers die leven van aanvragen en boekingen.
                 Klein bedrijf, korte lijnen en werk dat live gaat. Bij de meeste rollen is ervaring
                 niet het belangrijkste. Willen uitzoeken hoe iets werkt wel.
               </Reveal>{" "}
@@ -114,7 +114,7 @@ function WerkenBij() {
               [
                 "graduation-cap",
                 "Beginnen mag",
-                "We verwachten niet dat je de tools al kent, wel dat je ze wilt leren.",
+                "MegaOnline verwacht niet dat je de tools al kent, wel dat je ze wilt leren.",
               ],
               [
                 "map-pin",
@@ -142,7 +142,7 @@ function WerkenBij() {
             </h2>{" "}
             <p className="lead">
               Twijfel je tussen twee rollen, of past er iets net niet helemaal? Solliciteer gewoon
-              op de rol die het dichtst in de buurt komt. Dan zoeken we het samen uit.
+              op de rol die het dichtst in de buurt komt. Dan zoekt MegaOnline het samen met jou uit.
             </p>
           </Reveal>
           <div className="vacs">
@@ -180,7 +180,7 @@ function WerkenBij() {
               Geen assessment. Gewoon <em>een gesprek en een opdracht</em>.
             </h2>{" "}
             <p className="lead">
-              We willen weten hoe je denkt, niet hoe goed je solliciteert. Daarom is de procedure
+              MegaOnline wil weten hoe je denkt, niet hoe goed je solliciteert. Daarom is de procedure
               kort en concreet.
             </p>
           </Reveal>
@@ -191,12 +191,12 @@ function WerkenBij() {
                 "Het formulier hieronder, een mail of een appje. Een cv mag, een paar zinnen over jezelf is genoeg om te beginnen.",
               ],
               [
-                "We bellen kort",
-                "Vijftien tot twintig minuten. Wat zoek jij, wat zoeken wij en klopt dat een beetje op elkaar.",
+                "MegaOnline belt kort",
+                "Vijftien tot twintig minuten. Wat zoek jij, wat zoekt MegaOnline en klopt dat een beetje op elkaar.",
               ],
               [
                 "Opdracht en kennismaking",
-                "Iets echts uit onze praktijk, een uurtje werk. Die bespreken we samen. Daarna maken we afspraken over uren, vergoeding en startdatum.",
+                "Iets echts uit de praktijk van MegaOnline, een uurtje werk. Die bespreekt MegaOnline samen met jou. Daarna maakt MegaOnline afspraken over uren, vergoeding en startdatum.",
               ],
             ].map(([kop, tekst], i) => (
               <Reveal as="div" className="step reveal" data-d={String(i)} key={kop}>
@@ -217,7 +217,7 @@ function WerkenBij() {
             Stuur iets. <em>Ook als je twijfelt</em>.
           </>
         }
-        lead="Een half afgemaakt bericht is beter dan geen bericht. We reageren gemiddeld binnen twee werkdagen, ook als het een nee is."
+        lead="Een half afgemaakt bericht is beter dan geen bericht. MegaOnline reageert persoonlijk, ook als het een nee is."
       />{" "}
       <section
         className="section section--tight"
@@ -233,19 +233,19 @@ function WerkenBij() {
             <Qa question="Kan ik solliciteren als ik geen ervaring heb?" className="reveal">
               <p>
                 Bij de stages is dat het uitgangspunt. Webdesign, webdevelopment en SEA vragen geen
-                voorkennis. Bij SEO is een beetje ervaring fijn en bij de specialist- en architectrollen vragen we die wel. Wat overal geldt: laat zien dat je iets
+                voorkennis. Bij SEO is een beetje ervaring fijn en bij de specialist- en architectrollen vraagt MegaOnline die wel. Wat overal geldt: laat zien dat je iets
                 uitgezocht hebt, hoe klein ook.
               </p>
             </Qa>
             <Qa question="Kan ik volledig op afstand werken?" className="reveal" delay="1">
               <p>
-                Ja. We hebben klanten door heel Nederland en werken zelf ook zo. Woon je in de buurt van Utrecht, dan zien we je graag af en toe aan tafel, want sommige dingen leer je nu eenmaal sneller naast elkaar.
+                Ja. MegaOnline heeft klanten door heel Nederland en werkt zelf ook zo. Woon je in de buurt van Utrecht, dan ziet MegaOnline je graag af en toe aan tafel, want sommige dingen leer je nu eenmaal sneller naast elkaar.
               </p>
             </Qa>
             <Qa question="Wat verdien ik?" className="reveal" delay="2">
               <p>
-                Dat spreken we samen af. Stagevergoeding, uurtarief en aantal uren hangen af van de
-                rol, je opleiding en wat je meebrengt. We noemen bewust geen bedrag vooraf, maar zijn er in het eerste gesprek meteen open over.
+                Dat spreekt MegaOnline samen met jou af. Stagevergoeding, uurtarief en aantal uren hangen af van de
+                rol, je opleiding en wat je meebrengt. MegaOnline noemt bewust geen bedrag vooraf, maar is er in het eerste gesprek meteen open over.
               </p>
             </Qa>
             <Qa
@@ -254,7 +254,7 @@ function WerkenBij() {
               delay="3"
             >
               <p>
-                Stuur alsnog iets. We maken een plek voor je als je iets kunt wat goed van pas komt. Schrijf dan vooral op wat je zou willen doen en waarom je denkt dat het bij ons past.
+                Stuur alsnog iets. MegaOnline maakt een plek voor je als je iets kunt wat goed van pas komt. Schrijf dan vooral op wat je zou willen doen en waarom je denkt dat het bij MegaOnline past.
               </p>
             </Qa>
           </div>

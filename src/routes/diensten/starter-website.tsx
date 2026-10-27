@@ -10,9 +10,9 @@ export const Route = createFileRoute('/diensten/starter-website')({
   head: () => ({
     meta: [
       { title: "Website laten maken voor starters | MegaOnline" },
-      { name: 'description', content: "Een professionele maatwerkwebsite voor starters. Compact, snel live en voordelig. Een eerlijke instapoptie vanaf €1.500." },
+      { name: 'description', content: "Een professionele maatwerkwebsite voor starters. Compact en voordelig. Een eerlijke instapoptie vanaf €1.500." },
       { property: 'og:title', content: "Website laten maken voor starters | MegaOnline" },
-      { property: 'og:description', content: "Een professionele maatwerkwebsite voor starters. Compact, snel live en voordelig. Een eerlijke instapoptie vanaf €1.500." },
+      { property: 'og:description', content: "Een professionele maatwerkwebsite voor starters. Compact en voordelig. Een eerlijke instapoptie vanaf €1.500." },
       { property: 'og:url', content: "https://megaonline.io/diensten/starter-website" },
     ],
     links: [
@@ -24,7 +24,7 @@ export const Route = createFileRoute('/diensten/starter-website')({
 
 const SITUATIES = [
   { t: 'Je bent net gestart', p: 'Je hebt een nette online plek nodig, maar nog geen groot budget.' },
-  { t: 'Je wilt snel online', p: 'Je wilt niet maanden wachten, maar binnen afzienbare tijd live staan.' },
+  { t: 'Je wilt online', p: 'Een compacte site past als een groot traject nog niet nodig is.' },
   { t: 'Je aanbod is overzichtelijk', p: "Een paar diensten of producten, geen website met tientallen pagina's." },
   { t: 'Je wilt gevonden worden', p: 'Wie je naam hoort, moet je makkelijk kunnen vinden en bereiken.' },
   { t: 'Je wilt een helder budget', p: 'Vooraf weten waar je aan toe bent, zonder verrassingen achteraf.' },
@@ -42,19 +42,19 @@ const INBEGREPEN: { icon: string; t: string }[] = [
   { icon: 'trending-up', t: 'Later uit te breiden' },
 ]
 
-const VOORDELEN = ['Ontwerp op maat', 'Compact in omvang', 'Eén feedbackronde', 'Sneller live']
+const VOORDELEN = ['Ontwerp op maat', 'Compact in omvang', 'Eén feedbackronde', 'Vaste opzet']
 
 const STAPPEN = [
-  { t: 'Intake', p: "We bespreken wat je doet, wat je nodig hebt en welke pagina's er moeten komen." },
-  { t: 'Aanleveren', p: "Jij levert je teksten, je logo en een paar foto's aan. We denken mee waar dat nodig is." },
-  { t: 'Ontwerpen en bouwen', p: 'We ontwerpen en bouwen je website op maat, in jouw huisstijl.' },
-  { t: 'Bijschaven', p: 'Je bekijkt het resultaat en we verwerken je opmerkingen in één gerichte ronde.' },
+  { t: 'Intake', p: "MegaOnline bespreekt wat je doet, wat je nodig hebt en welke pagina's er moeten komen." },
+  { t: 'Aanleveren', p: "Jij levert je teksten, je logo en een paar foto's aan. MegaOnline denkt mee waar dat nodig is." },
+  { t: 'Ontwerpen en bouwen', p: 'MegaOnline ontwerpt en bouwt je website op maat, in jouw huisstijl.' },
+  { t: 'Bijschaven', p: 'Je bekijkt het resultaat en MegaOnline verwerkt je opmerkingen in één gerichte ronde.' },
   { t: 'Live', p: 'Je website gaat online. Teksten en foto’s pas je daarna zelf aan.' },
 ]
 
 const STARTER_WEL = [
   'Ontwerp en bouw op maat',
-  'Duidelijke prijs vooraf en snel live',
+  'Duidelijke prijs vooraf en een vaste opzet',
   'In jouw kleuren, met jouw teksten en logo',
 ]
 const STARTER_NIET = [
@@ -82,7 +82,7 @@ const FAQ_ITEMS: { q: string; a: ReactNode }[] = [
   },
   {
     q: 'Wordt mijn website dan hetzelfde als die van anderen?',
-    a: "Nee. Ook een Starter Website ontwerpen en bouwen we op maat, in jouw huisstijl en met jouw teksten en foto's.",
+    a: "Nee. Ook een Starter Website ontwerpt en bouwt MegaOnline op maat, in jouw huisstijl en met jouw teksten en foto's.",
   },
   {
     q: 'Wat kost een Starter Website precies?',
@@ -99,11 +99,11 @@ const FAQ_ITEMS: { q: string; a: ReactNode }[] = [
   },
   {
     q: 'Voor wie is de Starter Website bedoeld?',
-    a: "Vooral voor startende ondernemers en zzp'ers met een overzichtelijk aanbod die professioneel online willen. Wil je echt sturen op meer aanvragen, dan past de Conversie Website beter. Dat zeggen we je ook eerlijk.",
+    a: "Vooral voor startende ondernemers en zzp'ers met een overzichtelijk aanbod die professioneel online willen. Wil je echt sturen op meer aanvragen, dan past de Conversie Website beter. Dat zegt MegaOnline ook eerlijk.",
   },
   {
-    q: 'Hoe snel staat mijn website online?',
-    a: 'Doordat de website compacter is, gaat het sneller dan bij een groter traject. Zodra je teksten, logo en beeld hebt aangeleverd, sta je doorgaans binnen enkele weken live.',
+    q: 'Wat bepaalt wanneer de website online gaat?',
+    a: 'De website is compacter dan een groter traject. Zodra je teksten, logo en beeld hebt aangeleverd, maakt MegaOnline vooraf een heldere planning.',
   },
   {
     q: 'Twijfel je tussen een freelancer en een bureau?',
@@ -146,7 +146,7 @@ function StarterWebsite() {
                 </li>
                 <li>
                   <Icon name="check" className="ck" />
-                  <span>Doorgaans binnen enkele weken live</span>
+                  <span>Vaste opzet</span>
                 </li>
                 <li>
                   <Icon name="check" className="ck" />
@@ -165,7 +165,7 @@ function StarterWebsite() {
             <div className="shead">
               <span className="label">Eerlijk vanaf het begin</span>
               <h2 className="h2">
-                Een <em>bewust voordeligere</em> optie. Dat zeggen we er gewoon bij.
+                Een <em>bewust voordeligere</em> optie. Dat zegt MegaOnline er gewoon bij.
               </h2>
             </div>
             <div className="v2-head__side">
@@ -210,7 +210,7 @@ function StarterWebsite() {
             <Reveal as="div" className="cw-card reveal" data-d="1">
               <h3>Waarom het voordeliger kan</h3>
               <p>
-                Ook de Starter Website ontwerpen en bouwen we op maat. Het verschil zit in de omvang: minder pagina's, één feedbackronde en een kortere voorbereiding. Daardoor kost het minder uren.
+                Ook de Starter Website ontwerpt en bouwt MegaOnline op maat. Het verschil zit in de omvang: minder pagina's, één feedbackronde en een kortere voorbereiding. Daardoor kost het minder uren.
               </p>
               <ul className="cw-chips">
                 {VOORDELEN.map((x) => (
@@ -229,7 +229,7 @@ function StarterWebsite() {
           <Reveal as="div" className="shead reveal">
             <span className="label">Het traject</span>
             <h2 className="h2">
-              Een kort, helder traject. <em>Snel</em> live.
+              Een kort, helder traject. <em>Minder</em> uren.
             </h2>
             <p className="lead">Een compacte website vraagt minder uren. Dat scheelt tijd. En dus geld.</p>
           </Reveal>
@@ -323,7 +323,7 @@ function StarterWebsite() {
               <Reveal as="div" className="cw-card reveal" data-d="2">
                 <span className="cw-card__tag">Later</span>
                 <h3>Later uitbreiden</h3>
-                <p>Groeit je bedrijf, dan breiden we je website uit of groei je door naar een Conversie Website met strategie voor je doelgroep en aanvragen.</p>
+                <p>Groeit je bedrijf, dan breidt MegaOnline je website uit of groei je door naar een Conversie Website met strategie voor je doelgroep en aanvragen.</p>
                 <Link className="tlink" to="/diensten/conversie-website">Bekijk de Conversie Website <span className="arr">&rarr;</span></Link>
               </Reveal>
             </div>
@@ -375,7 +375,7 @@ function StarterWebsite() {
             Je eerste website hoeft geen gok te zijn.
           </Reveal>
           <Reveal as="p" className="lead reveal" data-d="1">
-            We ontwerpen gratis een homepage voor je bedrijf. Zo zie je wat we voor je kunnen maken, zonder verplichtingen.
+            MegaOnline ontwerpt gratis een homepage voor je bedrijf. Zo zie je wat MegaOnline voor je kan maken, zonder verplichtingen.
           </Reveal>
           <Reveal as="a" className="btn btn-primary reveal" data-d="2" href="#ontwerp">
             Vraag je gratis homepageontwerp aan
