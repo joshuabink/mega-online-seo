@@ -1638,6 +1638,137 @@ export const ARTIKELEN: Artikel[] = [
     metaDescription:
       "Een non-profit heeft donateurs, vrijwilligers en hulpvragers als bezoekers. Zo geef je elk van hen één route en bouw je het vertrouwen op dat ze nodig hebben.",
   },
+  {
+    slug: "wat-kost-een-website-met-reserveringssysteem",
+    naam: "Kosten website met reserveringen",
+    vraag: "Wat kost een website met reserveringssysteem?",
+    pijler: "Zo werkt het echt",
+    icoon: "euro",
+    branche: "Bedrijven met reserveringen",
+    teaser:
+      "De prijs zit in drie lagen die elk anders rekenen. Wie ze apart bekijkt en over een jaar optelt, vergelijkt eindelijk hetzelfde.",
+    antwoord:
+      "Dat hangt af van drie dingen die je los moet bekijken: de website, het reserveringssysteem en de koppeling tussen die twee. Wat het je echt kost zie je pas als je die drie optelt over een heel jaar, op je eigen aantallen reserveringen.",
+    leestijd: "6 minuten",
+    gepubliceerd: "2026-10-27",
+    gewijzigd: "2026-10-27",
+    cta: "scan",
+    eindKop: "Wil je weten wat jouw situatie nodig heeft voordat je offertes vergelijkt?",
+    eindLead:
+      "Beantwoord zes korte vragen. MegaOnline kijkt persoonlijk naar je website en je huidige manier van reserveren. Je krijgt te zien welke van de drie lagen jij echt nodig hebt.",
+    secties: [
+      {
+        kop: "Waarom je nergens één eerlijke prijs vindt",
+        accent: "één eerlijke prijs",
+        alineas: [
+          "Wie zoekt wat een website met reserveringssysteem kost, vindt vooral vanafprijzen. Een systeem met een laag maandbedrag, een websitebouwer met een boekingsmodule erbij, een bureau met een pakket. Elk bedrag klopt. Alleen gaat het steeds over een ander stuk.",
+          "Het lastige is dat die stukken elk op een andere manier rekenen. De website betaal je meestal één keer, met daarna eventueel onderhoud. Het systeem betaal je doorlopend. De koppeling zit er soms gratis bij en is soms het duurste deel. Leg je drie offertes naast elkaar, dan vergelijk je zelden hetzelfde.",
+        ],
+      },
+      {
+        kop: "De drie lagen van de prijs",
+        accent: "drie lagen",
+        alineas: [
+          "Haal de prijs uit elkaar in drie lagen. Dan zie je per offerte wat erin zit en wat er later nog bijkomt.",
+        ],
+        punten: [
+          {
+            titel: "1. De website",
+            tekst:
+              "Dit is het deel dat een gast laat besluiten: wat je aanbiedt, wat het kost, wat erbij zit en wat er gebeurt als hij moet annuleren. De prijs hangt af van het aantal pagina's, de teksten en hoeveel maatwerk er nodig is. Bij MegaOnline begint een [conversiegerichte website](/diensten/conversie-website) vanaf € 2.500. Een compacte Starter Website begint vanaf € 1.500.",
+          },
+          {
+            titel: "2. Het reserveringssysteem",
+            tekst:
+              "Dit is de software die de agenda bijhoudt, de reservering aanneemt en de bevestiging stuurt. Leveranciers rekenen op drie manieren: een vast bedrag per maand, een bedrag per reservering of verkocht ticket, of een percentage van de omzet die via het systeem loopt. Betaalt een gast online, dan komen er vaak transactiekosten bovenop. Welke manier voor jou het voordeligst is, hangt helemaal af van hoeveel je reserveert.",
+          },
+          {
+            titel: "3. De koppeling",
+            tekst:
+              "Hoe komt het systeem op je site? Een knop naar de boekingspagina van de leverancier kost bijna niets, alleen verlaat de gast dan je site. Een module in je eigen pagina vraagt meer werk. Een koppeling die beschikbaarheid, betalingen en klantgegevens doorzet naar je agenda of administratie is maatwerk. Daar zit vaak het grootste verschil tussen twee offertes.",
+          },
+        ],
+        daarna: [
+          "Vraag bij elke offerte welke van de drie erin zit. Een lage websiteprijs zonder koppeling is geen lage prijs voor een website met reserveringen.",
+        ],
+      },
+      {
+        kop: "Reken over een jaar, niet over een maand",
+        accent: "over een jaar",
+        alineas: [
+          "Neem een klimhal. In de herfst en de winter is het elk weekend vol, in de zomer is het doordeweeks stil. Een systeem dat per reservering rekent lijkt in juni goedkoop. In december betaal je voor elke groep die binnenkomt, juist in de maanden waarin je het meeste verkoopt. Een systeem met een vast maandbedrag voelt in juni duur. In december staat er precies hetzelfde op de rekening.",
+          "Vergelijk systemen daarom niet op hun vanafprijs. Pak je eigen aantallen van vorig jaar: hoeveel reserveringen in je drukste maand en hoeveel in je rustigste. Reken voor elk systeem uit wat het over twaalf maanden kost, met de transactiekosten erbij. Pas dan zie je welk systeem bij jouw bedrijf past.",
+          "Tel er ook je eigen tijd bij. Een systeem dat niet koppelt met je agenda betekent overtypen. Een boekingspagina die op de telefoon slecht werkt betekent telefoontjes van gasten die het niet lukte. Die uren staan op geen enkele factuur. Je betaalt ze wel.",
+        ],
+      },
+      {
+        kop: "Wat het kost als je het niet regelt",
+        accent: "niet regelt",
+        alineas: [
+          "Tegenover de kosten staat iets wat je op geen offerte ziet: de reserveringen die je nu misloopt. Een gast die om tien uur 's avonds wil reserveren en alleen een telefoonnummer vindt, probeert het morgen misschien opnieuw. Vaker reserveert hij bij een ander die het wel online geregeld heeft.",
+          "Hoe groot dat verlies is, weet je pas als je het meet. Een begin is tellen hoeveel verzoeken nu buiten openingstijden binnenkomen via mail, WhatsApp of het contactformulier. Dat zijn de mensen die het al probeerden. Waar gasten verder afhaken lees je in het artikel over [waar boekingen weglekken op je website](/kennisbank/waar-boekingen-weglekken).",
+        ],
+      },
+      {
+        kop: "Hoe MegaOnline dit aanpakt",
+        accent: "aanpakt",
+        alineas: [
+          "MegaOnline begint niet bij een pakket maar bij wat je verkoopt. Een belafspraak, een tafel, een tijdslot voor een groep of een ticket met extra opties vragen elk iets anders van het systeem. Daarmee verschilt ook de prijs.",
+          "Heb je al een systeem dat goed werkt, dan wordt de [website met reserveringssysteem](/branches/reserveringen) daaromheen gebouwd en gaat het alleen nog om de website en de koppeling. Heb je nog niets, of past je huidige systeem niet bij wat je verkoopt, dan richt MegaOnline een eigen boekings- en reserveringssysteem in op jouw diensten. Wat daar allemaal bij kan lees je bij [online boeken en reserveren](/diensten/online-boeken).",
+          "Twijfel je nog of je wel een los systeem nodig hebt, lees dan eerst [reserveringssysteem of website met reserveringen](/kennisbank/reserveringssysteem-of-website-met-reserveringen). Dat scheelt een offerte voor iets wat je niet nodig hebt.",
+        ],
+      },
+    ],
+    doen: [
+      "Zoek op hoeveel reserveringen je vorig jaar had in je drukste en in je rustigste maand.",
+      "Reken voor je huidige systeem uit wat het over twaalf maanden kost, met transactiekosten erbij.",
+      "Vraag bij elke offerte apart wat de website, het systeem en de koppeling kosten.",
+      "Tel een week lang hoeveel reserveringen nog via telefoon, mail of WhatsApp binnenkomen.",
+      "Reserveer 's avonds op je telefoon bij je eigen bedrijf en kijk of je op je eigen site blijft tot de bevestiging.",
+    ],
+    faq: [
+      {
+        q: "Is een reserveringssysteem met een maandbedrag goedkoper dan een systeem per reservering?",
+        a: "Dat hangt af van je aantallen. Bij weinig reserveringen is betalen per reservering vaak voordeliger. Bij veel reserveringen, of een seizoen met grote pieken, is een vast maandbedrag meestal goedkoper. Reken het door op je drukste en je rustigste maand.",
+      },
+      {
+        q: "Welke kosten komen er na de oplevering nog terug?",
+        a: "Vaak meer dan het abonnement van het systeem. Denk aan transactiekosten bij online betalen, hosting en onderhoud van de website en soms kosten voor berichten zoals sms-herinneringen. Vraag vooraf welke kosten per maand of per reservering terugkomen.",
+      },
+      {
+        q: "Waarom verschillen offertes voor een website met reserveringen zo veel?",
+        a: "Omdat ze zelden hetzelfde bevatten. De ene offerte rekent alleen de website en een knop naar de boekingspagina van de leverancier. De andere rekent ook een koppeling met je agenda, betalingen en administratie. Vraag per offerte welke van de drie lagen erin zit.",
+      },
+      {
+        q: "Wat kost een website met reserveringssysteem bij MegaOnline?",
+        a: "Een Conversie Website begint vanaf € 2.500, een Starter Website vanaf € 1.500. Wat er voor het reserveren bijkomt hangt af van wat je verkoopt, welk systeem past en welke koppelingen nodig zijn. Dat zie je vooraf in een duidelijke offerte.",
+      },
+      {
+        q: "Moet ik meteen alles laten koppelen?",
+        a: "Nee. Begin met reserveren op je eigen site in één agenda. Koppelingen met je administratie of klantenbestand kun je later toevoegen, zodra je merkt waar het overtypen de meeste tijd kost.",
+      },
+    ],
+    links: [
+      {
+        to: "/branches/reserveringen",
+        label: "Website met reserveringssysteem laten maken",
+        tekst: "Wat er naast de reserveerknop op je site moet staan en welke route bij je systeem past.",
+      },
+      {
+        to: "/diensten/online-boeken",
+        label: "Online boeken en reserveren",
+        tekst: "Van een belafspraak tot een ticket met extra opties, op je eigen site en in één agenda.",
+      },
+      {
+        to: "/kennisbank/reserveringssysteem-of-website-met-reserveringen",
+        label: "Reserveringssysteem of website met reserveringen",
+        tekst: "Wat een systeem doet, wat de website doet en wat past bij jouw situatie.",
+      },
+    ],
+    metaTitle: "Wat kost een website met reserveringssysteem? | MegaOnline",
+    metaDescription:
+      "Een website met reserveringssysteem kost drie dingen: de site, het systeem en de koppeling. Zo vergelijk je offertes en reken je het door over een jaar.",
+  },
 ];
 
 /**
