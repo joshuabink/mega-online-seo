@@ -58,6 +58,10 @@ jobs:
 
       # Playwright hoort niet bij de site. Alleen deze job installeert hem,
       # zonder package.json of het lockfile aan te passen.
+      # Faalt deze stap, dan start de smoketest niet en wordt geen formulier verstuurd.
+      - name: Blokkade
+        run: node scripts/blokkade-check.mjs
+
       - name: Install browser
         run: |
           bun add --no-save playwright@1.63.0
@@ -66,10 +70,21 @@ jobs:
       - name: Smoketest
         env:
           BASE: http://localhost:3000
+          # Zonder deze lokale mock post de dev-server naar het echte FormSubmit.
+          # De sleutel blijft leeg zodat Resend niet wordt aangeroepen.
           MO_LEAD_MAIL_ENDPOINT: http://localhost:3101/mail
           MO_RESEND_API_KEY: ""
         run: |
           set -euo pipefail
+          node scripts/blokkade-check.mjs
+          case "$MO_LEAD_MAIL_ENDPOINT" in
+            http://localhost:*|http://127.0.0.1:*|http://\[::1\]:*) ;;
+            *) echo "MO_LEAD_MAIL_ENDPOINT is geen lokaal nepadres: $MO_LEAD_MAIL_ENDPOINT"; exit 1 ;;
+          esac
+          if [ -n "$MO_RESEND_API_KEY" ]; then
+            echo "MO_RESEND_API_KEY moet leeg zijn"
+            exit 1
+          fi
           node scripts/mock-endpoint.mjs > /tmp/mock-mail.log 2>&1 &
           bun run dev -- --host :: --port 3000 --strictPort > /tmp/dev-server.log 2>&1 &
           ready=0

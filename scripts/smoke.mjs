@@ -10,6 +10,7 @@ import fs from 'node:fs'
 import http from 'node:http'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { hostVan, isGaUrl, isLoopbackHost, isLoopbackUrl, pasRouteToe, routeBesluit } from './mail-blokkade.mjs'
 
 const BASE = process.env.BASE ?? 'http://localhost:3000'
 const results = []
@@ -115,6 +116,106 @@ function normCta(s) {
   return String(s ?? '').replace(/\s+/g, ' ').replace(/\s*→\s*$/u, '').trim()
 }
 
+// Posts die de browser zelf naar FormSubmit doet, nadat de server faalde.
+// De route beantwoordt ze lokaal. Er gaat geen verzoek het netwerk op.
+const clientPosts = []
+const alleRequests = []
+const tegengehouden = new WeakSet()
+let routeActief = false
+
+function externePostsOntsnapt() {
+  return alleRequests.filter((req) => {
+    if (req.method() !== 'POST') return false
+    if (isLoopbackHost(hostVan(req.url()))) return false
+    return !tegengehouden.has(req)
+  })
+}
+
+function rapporteerOntsnapt() {
+  const ontsnapt = externePostsOntsnapt()
+  check(
+    'geen ontsnapt extern POST-verzoek',
+    routeActief && ontsnapt.length === 0,
+    ontsnapt.map((req) => `${req.method()} ${req.url()}`).slice(0, 4).join(' | ') || (routeActief ? '' : 'route niet actief'),
+  )
+}
+
+/**
+ * De mock is geen eigenschap van het formulier. Zonder MO_LEAD_MAIL_ENDPOINT
+ * post de dev-server naar het echte FormSubmit, met de productiereferer.
+ * De smoketest weigert te starten als dat zo is.
+ */
+function eisLokaleMailroute({ vereisDevServer }) {
+  const problemen = []
+  const eigen = process.env.MO_LEAD_MAIL_ENDPOINT ?? ''
+  if (!isLoopbackUrl(eigen)) {
+    problemen.push(`MO_LEAD_MAIL_ENDPOINT van deze run is geen lokaal http-adres (${eigen || 'ontbreekt'})`)
+  }
+  if (process.env.MO_RESEND_API_KEY) problemen.push('MO_RESEND_API_KEY staat aan')
+  if (vereisDevServer) {
+    let vite = 0
+    for (const pid of fs.readdirSync('/proc')) {
+      if (!/^\d+$/.test(pid)) continue
+      let cmd = ''
+      try { cmd = fs.readFileSync(`/proc/${pid}/cmdline`).toString('utf8') } catch { continue }
+      if (!cmd.includes('vite')) continue
+      vite += 1
+      let vars = {}
+      try {
+        vars = Object.fromEntries(
+          fs.readFileSync(`/proc/${pid}/environ`).toString('utf8').split('\0').filter(Boolean).map((deel) => {
+            const i = deel.indexOf('=')
+            return [deel.slice(0, i), deel.slice(i + 1)]
+          }),
+        )
+      } catch { /* proces verdween */ }
+      const endpoint = vars.MO_LEAD_MAIL_ENDPOINT ?? ''
+      if (!isLoopbackUrl(endpoint)) {
+        problemen.push(`dev-server ${pid} heeft geen lokale mailmock (${endpoint || 'geen MO_LEAD_MAIL_ENDPOINT'})`)
+      }
+      if (vars.MO_RESEND_API_KEY) problemen.push(`dev-server ${pid} heeft MO_RESEND_API_KEY`)
+    }
+    if (vite === 0) problemen.push('geen dev-server gevonden')
+  }
+  if (problemen.length === 0) return
+  console.error('Smoketest start niet. Zonder deze stop kan een formulier echte mail versturen:')
+  for (const probleem of problemen) console.error(`- ${probleem}`)
+  process.exit(1)
+}
+
+/** Elke browsercontext. Externe mailposts worden lokaal beantwoord, de rest geblokkeerd. */
+async function installRoutes(target) {
+  const context = typeof target.context === 'function' ? target.context() : target
+  if (context.__moBewaakt) return
+  context.__moBewaakt = true
+  context.on('request', (req) => { alleRequests.push(req) })
+  await context.route('**/*', (route) => pasRouteToe(route, { clientPosts, tegengehouden }))
+  routeActief = true
+}
+
+/** Stopt vóór een formulier als de blokkade niet aanstaat of een mailpost zou doorlaten. */
+function eisBlokkadeVoorVerzending() {
+  const mail = routeBesluit({
+    url: 'https://formsubmit.co/ajax/zakelijk@joshuabink.nl',
+    method: 'POST',
+    body: 'email=test@example.com',
+  })
+  const resend = routeBesluit({
+    url: 'https://api.resend.com/emails',
+    method: 'POST',
+    body: '{}',
+  })
+  if (
+    !routeActief ||
+    mail.actie !== 'lokaal' ||
+    !String(mail.body).includes('"smoke":"onderschept"') ||
+    resend.actie === 'doorlaten'
+  ) {
+    console.error('Smoketest vult het formulier niet in: de blokkade staat niet vóór de verzending.')
+    process.exit(1)
+  }
+}
+
 /**
  * CTA-bewaker. Een CTA-knop is een bediening waarvan de zichtbare tekst
  * exact CTA_SCAN is, of een .btn die naar de scanpagina wijst, of de
@@ -127,7 +228,7 @@ function normCta(s) {
  * scan. Het telefoonveld van de bezoeker mag blijven.
  */
 async function controleerCtaTeksten(browser) {
-  const pg = await browser.newPage({ viewport: { width: 1440, height: 900 } })
+  const pg = await browserContext.newPage({ viewport: { width: 1440, height: 900 } })
   await installRoutes(pg)
   const sitemap = await pg.request.get(BASE + '/sitemap.xml')
   const xml = await sitemap.text()
@@ -263,10 +364,6 @@ async function controleerCtaTeksten(browser) {
     fouten.slice(0, 8).join(' | ') || `scan=${zagScan} pagina's=${paden.length}`,
   )
   await pg.close()
-}
-
-function isGaUrl(url) {
-  return /googletagmanager\.com|google-analytics\.com|analytics\.google\.com/i.test(url)
 }
 
 function dataLayerEvents(pg, eventName) {
@@ -519,11 +616,18 @@ const EXECUTABLE =
   process.env.CHROMIUM_PATH ?? '/opt/pw-browsers/chromium-1194/chrome-linux/chrome'
 // Zonder --enable-automation blijft navigator.webdriver uit. cookieconsent
 // verbergt de banner anders voor de browser en de GA4-checks zien hem niet.
+eisLokaleMailroute({ vereisDevServer: true })
+
 const browser = await chromium.launch({
   executablePath: EXECUTABLE,
   ignoreDefaultArgs: ['--enable-automation'],
   args: ['--disable-blink-features=AutomationControlled'],
 })
+// context.newPage negeert een viewport-optie. Desktop is de standaard;
+// de smalle pagina's zetten daarna zelf 390px.
+const browserContext = await browser.newContext({ viewport: { width: 1440, height: 900 } })
+await installRoutes(browserContext)
+eisBlokkadeVoorVerzending()
 
 if (process.argv.includes('--alleen-cta')) {
   try {
@@ -531,6 +635,7 @@ if (process.argv.includes('--alleen-cta')) {
   } catch (error) {
     check('CTA-controle', false, fouttekst(error))
   }
+  rapporteerOntsnapt()
   await browser.close()
   console.table(results)
   console.log(failed ? `${failed} test(s) gefaald.` : 'Alle CTA-controles geslaagd.')
@@ -539,7 +644,7 @@ if (process.argv.includes('--alleen-cta')) {
 
 /* ---------------- Desktop ---------------- */
 try {
-const page = await browser.newPage({ viewport: { width: 1440, height: 900 } })
+const page = await browserContext.newPage({ viewport: { width: 1440, height: 900 } })
 const mainGaUrls = collectGaUrls(page)
 
 const consoleErrors = []
@@ -556,33 +661,6 @@ const readLeads = () => {
   try { return JSON.parse(fs.readFileSync(LEADS, 'utf8')) } catch { return [] }
 }
 const leadsBefore = readLeads().length
-
-// Posts die de browser zelf naar FormSubmit doet, nadat de server faalde.
-// De route vangt ze af, zodat de smoketest nooit de echte provider raakt.
-const clientPosts = []
-
-function installRoutes(pg) {
-  return pg.route('**/*', async (route) => {
-    const url = route.request().url()
-    if (url.includes('formsubmit.co')) {
-      const body = route.request().postData() ?? ''
-      clientPosts.push({ url, body })
-      const ok = body.includes('client-lukt%40example.com') || body.includes('client-lukt@example.com')
-      await route.fulfill({
-        status: 200,
-        contentType: 'application/json',
-        body: JSON.stringify(
-          ok
-            ? { success: 'true', message: 'submitted successfully' }
-            : { success: 'false', message: 'Unable to submit form' },
-        ),
-      })
-      return
-    }
-    if (url.includes('localhost') || url.includes('127.0.0.1')) return route.continue()
-    return route.abort()
-  })
-}
 
 // Externe requests (Google Fonts) bestaan niet in deze sandbox; blokkeren
 // scheelt lange time-outs.
@@ -652,7 +730,7 @@ await vang('maximum van twee keuzes', async () => {
   await choice(1, 0).check()
   await choice(1, 1).check()
   const thirdDisabled = await choice(1, 2).isDisabled()
-  const countText = (await page.locator('.fstep[data-step="1"] .choice__count').innerText()).replace(/\s+/g, ' ').trim()
+  const countText = (await page.locator('.fstep[data-step="1"] .choice__count').evaluate((el) => el.textContent ?? '')).replace(/\s+/g, ' ').trim()
   check('maximum van twee keuzes', thirdDisabled && countText === '2 van 2',
     `disabled=${thirdDisabled} teller=${countText}`)
 })
@@ -1118,7 +1196,7 @@ await vang("scanpagina", async () => {
       faq5antwoord: norm(document.querySelectorAll('#vragen .qa__a')[4]?.textContent),
       stappen: document.querySelectorAll('#formulier .fstep').length,
       bedank: norm(document.querySelector('#formulier .form__ok')?.textContent),
-      oplevering: norm([...document.querySelectorAll('p')].map((p) => p.textContent || '').find((t) => t.includes('rapport')) || ''),
+      oplevering: norm([...document.querySelectorAll('.v2-head__side p')].map((p) => p.textContent || '').find((t) => t.includes('rapport')) || ''),
       schemaReactie: [...document.querySelectorAll('script[type="application/ld+json"]')].some((node) => {
         const raw = node.textContent || ''
         return raw.includes('FAQPage') && raw.includes('Je ontvangt de uitkomst van de scan binnen 5 werkdagen na je aanvraag.')
@@ -1178,7 +1256,7 @@ await vang("scanpagina", async () => {
     'scan noemt binnen 5 werkdagen in de FAQ, de FAQPage en de bedankmelding',
     scanPagina.faq5antwoord === 'Je ontvangt de uitkomst van de scan binnen 5 werkdagen na je aanvraag.' &&
       scanPagina.schemaReactie &&
-      scanPagina.bedank.includes('binnen 5 werkdagen'),
+      /binnen 5 werkdagen/i.test(scanPagina.bedank),
     `faq=${scanPagina.faq5antwoord} schema=${scanPagina.schemaReactie} bedank=${scanPagina.bedank}`,
   )
   check(
@@ -1462,9 +1540,10 @@ check('lichte header op juridische pagina', !!lightNav)
 
 /* --- beeld laadt --- */
 await vang("case-afbeeldingen laden", async () => {
-await page.goto(BASE + '/', { waitUntil: 'load' })
+await page.goto(BASE + '/diensten/conversie-website', { waitUntil: 'load' })
 await waitHydrated(page)
 // Beeld is lazy-loaded, dus eerst naar de cases-sectie scrollen.
+// De homepage heeft geen #werk meer; de cases staan op de dienstpagina.
 await page.evaluate(() => document.querySelector('#werk')?.scrollIntoView())
 await page.waitForTimeout(1200)
 await page.waitForFunction(
@@ -1483,6 +1562,8 @@ check('case-afbeeldingen laden', imgs.length > 0 && imgs.every((i) => i.ok),
 
 /* --- interne navigatie zonder full reload --- */
 await vang("client-side navigatie werkt", async () => {
+await page.goto(BASE + '/', { waitUntil: 'load' })
+await waitHydrated(page)
 await page.click('.footer__col a[href="/diensten/conversie-website"]')
 await page.waitForURL('**/diensten/conversie-website')
 check('client-side navigatie werkt', page.url().endsWith('/diensten/conversie-website'))
@@ -1810,16 +1891,12 @@ await vang("freelance-webdesigner-of-webbureau", async () => {
 await vang("freelancer-bronnen", async () => {
   const bronnen = [
     {
-      pad: '/',
-      stuk: 'hoe bezoekers daadwerkelijk actie ondernemen. Twijfel je tussen een freelancer en een bureau? Lees de eerlijke vergelijking tussen een freelancer en een webbureau.',
-    },
-    {
       pad: '/diensten/conversie-website',
-      stuk: 'een website die klanten oplevert. Wat het verschil is tussen een freelancer en een bureau, lees je in freelancer of webbureau: wat past bij jou?.',
+      stuk: 'Wij bouwen vanuit dat doel. Lees ook freelancer of webbureau: wat past bij jou?',
     },
     {
       pad: '/diensten/starter-website',
-      stuk: 'doet je net zo goed tekort. Twijfel je ook tussen een freelancer en een bureau? Lees freelance webdesigner of webbureau.',
+      stuk: 'Lees dan freelance webdesigner of webbureau: wat past bij jou?',
     },
     {
       pad: '/over-megaonline',
@@ -1958,7 +2035,7 @@ await vang("/diensten/seo linkt naar gevonden worden in ChatGPT", async () => {
     const hrefs = [...document.querySelectorAll('a')].map((a) => a.getAttribute('href') || '')
     return {
       stuk: tekst.includes(
-        "en de website zorgt dat er wat uitkomt. Hoe AI-zoekmachines bedrijven kiezen om te noemen, lees je in gevonden worden in ChatGPT als mkb'er.",
+        "Hoe AI-zoekmachines bedrijven kiezen om te noemen, lees je in gevonden worden in ChatGPT als mkb'er.",
       ),
       href: hrefs.includes('/kennisbank/gevonden-worden-in-chatgpt'),
     }
@@ -2242,7 +2319,8 @@ for (const crumbPath of ["/diensten/integraties", "/diensten/seo", "/branches/ve
 
 /* ---------------- Mobiel ---------------- */
 await vang("mobiel menu", async () => {
-const mobile = await browser.newPage({ viewport: { width: 390, height: 844 } })
+const mobile = await browserContext.newPage()
+await mobile.setViewportSize({ width: 390, height: 844 })
 mobile.on('pageerror', (e) => consoleErrors.push('mobile: ' + String(e)))
 await installRoutes(mobile)
 await mobile.goto(BASE + '/', { waitUntil: 'load' })
@@ -2378,7 +2456,8 @@ await vang("conceptformulier toont de fallback", async () => {
     path: path.join(shotDir, 'lead_fallback_desktop_full.png'),
   })
 
-  const narrow = await browser.newPage({ viewport: { width: 390, height: 844 } })
+  const narrow = await browserContext.newPage()
+  await narrow.setViewportSize({ width: 390, height: 844 })
   narrow.on('pageerror', (e) => consoleErrors.push('narrow: ' + String(e)))
   await installRoutes(narrow)
   const mobileFallback = await conceptFallback(narrow)
@@ -2394,16 +2473,12 @@ await vang("conceptformulier toont de fallback", async () => {
 
 /* --- GA4: geen request zonder statistieken-toestemming, wel erna --- */
 await vang("GA4", async () => {
-  const gaPage = await browser.newPage({ viewport: { width: 1440, height: 900 } })
+  const gaPage = await browserContext.newPage({ viewport: { width: 1440, height: 900 } })
   const gaUrls = collectGaUrls(gaPage)
   gaPage.on('pageerror', (e) => consoleErrors.push('ga: ' + String(e)))
-  // Zelfde afhandeling als de rest van de smoketest (FormSubmit-mock), maar
-  // GA-requests laten doorlopen zodat de page_view na toestemming zichtbaar is.
+  // Zelfde route als de rest: mailposts lokaal, andere externe POSTs geblokkeerd.
+  // Een GET van het meetscript mag, zodat de page_view na toestemming zichtbaar is.
   await installRoutes(gaPage)
-  await gaPage.route('**/*', async (route) => {
-    if (isGaUrl(route.request().url())) return route.continue()
-    return route.fallback()
-  })
   // De rest van de test heeft de banner al weggeklikt in dezelfde context.
   await gaPage.context().clearCookies()
   await gaPage.goto(BASE + '/', { waitUntil: 'load' })
@@ -2756,6 +2831,7 @@ check(
 } catch (error) {
   check('onverwachte crash', false, fouttekst(error))
 } finally {
+  rapporteerOntsnapt()
   await browser.close().catch(() => {})
   console.table(results)
   console.log(failed ? `${failed} test(s) gefaald.` : 'Alle smoketests geslaagd.')
