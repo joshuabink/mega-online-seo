@@ -154,6 +154,10 @@ function rapporteerOntsnapt() {
  * Een vite elders mag niet groen geven. De socketlijst komt uit /proc/net/tcp
  * en /proc/net/tcp6 en werkt alleen op Linux. Ontbreekt /proc, dan stopt de
  * test: liever geen run dan een vals-groene.
+ *
+ * Gelezen wordt alleen de start-omgeving van dat vite-proces
+ * (`/proc/<pid>/environ`). Een variabele die het proces later zet, is
+ * hier niet zichtbaar.
  */
 function poortVan(url) {
   const parsed = new URL(url)
@@ -199,6 +203,7 @@ function pidsMetSocket(inodes) {
   return gevonden
 }
 
+/** Start-omgeving uit /proc, niet een omgeving die het proces later wijzigt. */
 function environVan(pid) {
   try {
     return Object.fromEntries(
@@ -707,7 +712,6 @@ const browser = await chromium.launch({
 // context.newPage negeert een viewport-optie. Desktop is de standaard;
 // de smalle pagina's zetten daarna zelf 390px.
 // Een service worker kan de pagina-route omzeilen. Die registratie blijft uit.
-// Een redirect wordt per hop beoordeeld: loopback mag, de externe hop niet.
 const browserContext = await browser.newContext({
   viewport: { width: 1440, height: 900 },
   serviceWorkers: 'block',

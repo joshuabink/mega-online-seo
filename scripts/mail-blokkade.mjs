@@ -80,6 +80,10 @@ export function routeBesluit({ url, method = 'GET', body = '' }) {
 /**
  * Elke hop wordt op zijn eigen url beoordeeld. Een redirect van loopback
  * naar een externe host laat die tweede hop niet door.
+ *
+ * Playwright geeft zo'n vervolghop niet aan de pagina-route: die aanvraag
+ * wordt daar zelf doorgelaten. Deze functie hoort daarom bij de
+ * blokkade-check, niet bij de browserroute in smoke.mjs.
  */
 export function redirectBesluit(vanUrl, naarUrl, method = 'GET') {
   return {
