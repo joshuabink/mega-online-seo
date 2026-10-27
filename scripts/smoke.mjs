@@ -11,8 +11,13 @@ import http from 'node:http'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { hostVan, isGaUrl, isLoopbackHost, isLoopbackUrl, pasRouteToe, routeBesluit } from './mail-blokkade.mjs'
+import { SITEMAP_ONDERGRENS, sitemapDekking } from './sitemap-dekking.mjs'
 
 const BASE = process.env.BASE ?? 'http://localhost:3000'
+if (!isLoopbackUrl(BASE)) {
+  console.error(`BASE is geen lokaal http-adres: ${BASE}`)
+  process.exit(1)
+}
 const results = []
 let failed = 0
 
@@ -144,7 +149,69 @@ function rapporteerOntsnapt() {
  * De mock is geen eigenschap van het formulier. Zonder MO_LEAD_MAIL_ENDPOINT
  * post de dev-server naar het echte FormSubmit, met de productiereferer.
  * De smoketest weigert te starten als dat zo is.
+ *
+ * De dev-server moet het vite-proces zijn dat luistert op de poort van BASE.
+ * Een vite elders mag niet groen geven. De socketlijst komt uit /proc/net/tcp
+ * en /proc/net/tcp6 en werkt alleen op Linux. Ontbreekt /proc, dan stopt de
+ * test: liever geen run dan een vals-groene.
  */
+function poortVan(url) {
+  const parsed = new URL(url)
+  if (parsed.port) return Number(parsed.port)
+  return parsed.protocol === 'http:' ? 80 : 443
+}
+
+function luisterInodes(poort) {
+  const inodes = new Set()
+  for (const bestand of ['/proc/net/tcp', '/proc/net/tcp6']) {
+    let tekst = ''
+    try { tekst = fs.readFileSync(bestand, 'utf8') } catch { continue }
+    for (const regel of tekst.split('\n').slice(1)) {
+      const velden = regel.trim().split(/\s+/)
+      if (velden.length < 10 || velden[3] !== '0A') continue
+      const adres = velden[1]
+      const scheiding = adres.lastIndexOf(':')
+      if (scheiding < 0) continue
+      if (Number.parseInt(adres.slice(scheiding + 1), 16) !== poort) continue
+      inodes.add(velden[9])
+    }
+  }
+  return inodes
+}
+
+function pidsMetSocket(inodes) {
+  const gevonden = []
+  if (inodes.size === 0) return gevonden
+  for (const pid of fs.readdirSync('/proc')) {
+    if (!/^\d+$/.test(pid)) continue
+    let fds
+    try { fds = fs.readdirSync(`/proc/${pid}/fd`) } catch { continue }
+    for (const fd of fds) {
+      let doel = ''
+      try { doel = fs.readlinkSync(`/proc/${pid}/fd/${fd}`) } catch { continue }
+      const socket = /^socket:\[(\d+)\]$/.exec(doel)
+      if (socket && inodes.has(socket[1])) {
+        gevonden.push(pid)
+        break
+      }
+    }
+  }
+  return gevonden
+}
+
+function environVan(pid) {
+  try {
+    return Object.fromEntries(
+      fs.readFileSync(`/proc/${pid}/environ`).toString('utf8').split('\0').filter(Boolean).map((deel) => {
+        const i = deel.indexOf('=')
+        return [deel.slice(0, i), deel.slice(i + 1)]
+      }),
+    )
+  } catch {
+    return null
+  }
+}
+
 function eisLokaleMailroute({ vereisDevServer }) {
   const problemen = []
   const eigen = process.env.MO_LEAD_MAIL_ENDPOINT ?? ''
@@ -153,29 +220,34 @@ function eisLokaleMailroute({ vereisDevServer }) {
   }
   if (process.env.MO_RESEND_API_KEY) problemen.push('MO_RESEND_API_KEY staat aan')
   if (vereisDevServer) {
-    let vite = 0
-    for (const pid of fs.readdirSync('/proc')) {
-      if (!/^\d+$/.test(pid)) continue
-      let cmd = ''
-      try { cmd = fs.readFileSync(`/proc/${pid}/cmdline`).toString('utf8') } catch { continue }
-      if (!cmd.includes('vite')) continue
-      vite += 1
-      let vars = {}
-      try {
-        vars = Object.fromEntries(
-          fs.readFileSync(`/proc/${pid}/environ`).toString('utf8').split('\0').filter(Boolean).map((deel) => {
-            const i = deel.indexOf('=')
-            return [deel.slice(0, i), deel.slice(i + 1)]
-          }),
-        )
-      } catch { /* proces verdween */ }
-      const endpoint = vars.MO_LEAD_MAIL_ENDPOINT ?? ''
-      if (!isLoopbackUrl(endpoint)) {
-        problemen.push(`dev-server ${pid} heeft geen lokale mailmock (${endpoint || 'geen MO_LEAD_MAIL_ENDPOINT'})`)
+    if (!fs.existsSync('/proc/net/tcp') && !fs.existsSync('/proc/net/tcp6')) {
+      problemen.push('de /proc-check werkt alleen op Linux; zonder /proc kan de dev-server niet aan de poort van BASE worden gekoppeld')
+    } else {
+      const poort = poortVan(BASE)
+      const inodes = luisterInodes(poort)
+      const pids = pidsMetSocket(inodes)
+      const vite = []
+      for (const pid of pids) {
+        let cmd = ''
+        try { cmd = fs.readFileSync(`/proc/${pid}/cmdline`).toString('utf8') } catch { continue }
+        if (cmd.includes('vite')) vite.push(pid)
       }
-      if (vars.MO_RESEND_API_KEY) problemen.push(`dev-server ${pid} heeft MO_RESEND_API_KEY`)
+      if (vite.length === 0) {
+        problemen.push(`geen vite-proces luistert op de poort van BASE (${new URL(BASE).host})`)
+      }
+      for (const pid of vite) {
+        const vars = environVan(pid)
+        if (!vars) {
+          problemen.push(`dev-server ${pid} op poort ${poort} heeft geen leesbare omgeving`)
+          continue
+        }
+        const endpoint = vars.MO_LEAD_MAIL_ENDPOINT ?? ''
+        if (!isLoopbackUrl(endpoint)) {
+          problemen.push(`dev-server ${pid} op poort ${poort} heeft geen lokale mailmock (${endpoint || 'geen MO_LEAD_MAIL_ENDPOINT'})`)
+        }
+        if (vars.MO_RESEND_API_KEY) problemen.push(`dev-server ${pid} op poort ${poort} heeft MO_RESEND_API_KEY`)
+      }
     }
-    if (vite === 0) problemen.push('geen dev-server gevonden')
   }
   if (problemen.length === 0) return
   console.error('Smoketest start niet. Zonder deze stop kan een formulier echte mail versturen:')
@@ -233,7 +305,16 @@ async function controleerCtaTeksten(browser) {
   const sitemap = await pg.request.get(BASE + '/sitemap.xml')
   const xml = await sitemap.text()
   const paden = [...xml.matchAll(/<loc>https:\/\/megaonline\.io([^<]*)<\/loc>/g)].map((m) => m[1] || '/')
-  check('sitemap-paden voor CTA-controle', sitemap.status() === 200 && paden.length > 0 && !paden.includes('/gratis-websiteconcept'), String(paden.length))
+  const dekking = sitemapDekking(bestaandeRoutes(), paden)
+  check(
+    'sitemap-paden voor CTA-controle',
+    sitemap.status() === 200 &&
+      paden.length >= SITEMAP_ONDERGRENS &&
+      dekking.ondergrens &&
+      dekking.ontbreekt.length === 0 &&
+      !paden.includes('/gratis-websiteconcept'),
+    dekking.ontbreekt.slice(0, 6).join(', ') || String(paden.length),
+  )
 
   const fouten = []
   let zagScan = false
@@ -625,7 +706,12 @@ const browser = await chromium.launch({
 })
 // context.newPage negeert een viewport-optie. Desktop is de standaard;
 // de smalle pagina's zetten daarna zelf 390px.
-const browserContext = await browser.newContext({ viewport: { width: 1440, height: 900 } })
+// Een service worker kan de pagina-route omzeilen. Die registratie blijft uit.
+// Een redirect wordt per hop beoordeeld: loopback mag, de externe hop niet.
+const browserContext = await browser.newContext({
+  viewport: { width: 1440, height: 900 },
+  serviceWorkers: 'block',
+})
 await installRoutes(browserContext)
 eisBlokkadeVoorVerzending()
 
@@ -1295,10 +1381,13 @@ await vang("scanpagina", async () => {
     }, origin)
   }
 
+  // De hero is het formulier zelf (section#formulier). Er is geen
+  // .scan-hero a.btn-primary meer, dus 'hero-knop springt naar #formulier'
+  // kan niet terug. De tekstlink hieronder springt nog wel.
   check(
     'scanhero is het formulier',
-    scanPagina.formTag === 'SECTION' && scanPagina.stappen === 4,
-    `tag=${scanPagina.formTag} stappen=${scanPagina.stappen}`,
+    scanPagina.formTag === 'SECTION' && scanPagina.stappen === 4 && scanPagina.heroHref === '',
+    `tag=${scanPagina.formTag} stappen=${scanPagina.stappen} heroHref=${scanPagina.heroHref}`,
   )
   await vang("tekstlink springt naar #formulier zonder herladen", async () => {
   const tekstSprong = await sprongNaarFormulier('a.tlink[href="#formulier"]')
@@ -1414,6 +1503,9 @@ await vang("scanpagina", async () => {
     !starterPagina.kennismaking,
     JSON.stringify(starterPagina),
   )
+  // De starterhero is het formulier, niet één scan-knop naar
+  // /gratis-websitescan. 'starterhero heeft precies één knop' hoort bij
+  // die oude opzet en komt niet terug.
   check(
     'starterhero toont het formulier zonder extra knop',
     starterPagina.copyKnoppen.length === 0 &&
@@ -1889,14 +1981,17 @@ await vang("freelance-webdesigner-of-webbureau", async () => {
 })
 
 await vang("freelancer-bronnen", async () => {
+  // De homepage linkt niet meer naar het freelancer-artikel en bevat de oude
+  // zin niet. De check op / komt daarom niet terug. De zinnen hieronder zijn
+  // de volledige huidige tekst, niet de ingekorte fragmenten.
   const bronnen = [
     {
       pad: '/diensten/conversie-website',
-      stuk: 'Wij bouwen vanuit dat doel. Lees ook freelancer of webbureau: wat past bij jou?',
+      stuk: 'Een goedkope website ziet er soms prima uit, maar denkt niet na over vertrouwen, gebruiksgemak en hoe bezoekers tot een aanvraag komen. Wij bouwen vanuit dat doel. Lees ook freelancer of webbureau: wat past bij jou?',
     },
     {
       pad: '/diensten/starter-website',
-      stuk: 'Lees dan freelance webdesigner of webbureau: wat past bij jou?',
+      stuk: 'Twijfel je tussen een freelancer en een bureau? Lees dan freelance webdesigner of webbureau: wat past bij jou?',
     },
     {
       pad: '/over-megaonline',
@@ -2159,8 +2254,15 @@ await vang("sitemap", async () => {
     "sitemap-aantal volgt public/sitemap.xml",
     blocks.length === verwacht.length &&
       geleverd.length === verwacht.length &&
+      verwacht.length >= SITEMAP_ONDERGRENS &&
       verwacht.every((pad) => geleverd.includes(pad)),
     `bestand=${verwacht.length} antwoord=${blocks.length}`,
+  );
+  const dekking = sitemapDekking(bestaandeRoutes(), verwacht);
+  check(
+    "elke route staat in de sitemap, behalve de twee uitzonderingen",
+    dekking.ondergrens && dekking.ontbreekt.length === 0,
+    dekking.ontbreekt.slice(0, 6).join(", ") || String(verwacht.length),
   );
   const onbekendeRoutes = verwacht.filter((pad) => !bestaandeRoutes().has(pad));
   check(
