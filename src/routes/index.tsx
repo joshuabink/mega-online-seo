@@ -58,7 +58,7 @@ const DIENSTEN: {
     icon: 'trending-up',
     tag: 'SEO · GEO · Google Ads',
     name: 'Online marketing',
-    text: "Gevonden worden door mensen die zoeken naar wat jij doet. Elke maand schrijven we blogs en landingspagina's op de vragen van jouw klanten. Wil je sneller aanvragen? Dan zetten we ook Google Ads in.",
+    text: "Gevonden worden door mensen die zoeken naar wat jij doet. Elke maand schrijft MegaOnline blogs en landingspagina's op de vragen van jouw klanten. Wil je sneller aanvragen? Dan zet MegaOnline ook Google Ads in.",
     price: 'SEO en GEO: € 150 per maand',
     to: '/diensten/seo',
     linkText: 'Bekijk de dienst',
@@ -97,19 +97,19 @@ const STAPPEN = [
   {
     no: '01',
     name: 'Begrijpen',
-    text: 'We leren je bedrijf en je klanten kennen. Wie is je klant, wat zoekt hij en wat trekt hem over de streep?',
+    text: 'MegaOnline leert je bedrijf en je klanten kennen. Wie is je klant, wat zoekt hij en wat trekt hem over de streep?',
     punten: ['Deep dive in je bedrijf', "Doelgroepanalyse met persona's", 'Concurrentieonderzoek', 'Contentplan'],
   },
   {
     no: '02',
     name: 'Bouwen',
-    text: 'We ontwerpen en bouwen een site die vertrouwen opbouwt en bezoekers zonder omwegen naar een aanvraag of boeking leidt.',
+    text: 'MegaOnline ontwerpt en bouwt een site die vertrouwen opbouwt en bezoekers zonder omwegen naar een aanvraag of boeking leidt.',
     punten: ['Ontwerp', 'Development', 'Aanvraagflows', 'Tracking'],
   },
   {
     no: '03',
     name: 'Verbeteren',
-    text: 'Na livegang kijken we wat bezoekers doen. Waar haken ze af? Elke maand pakken we de grootste groeikans.',
+    text: 'Na livegang kijkt MegaOnline wat bezoekers doen. Waar haken ze af? Elke maand pakt MegaOnline de grootste groeikans.',
     punten: ['Bezoekersdata bekijken', 'Bezoekersgedrag analyseren', 'De website daarop aanpassen', 'Onderhoud'],
   },
 ]
@@ -154,11 +154,7 @@ const FAQ_ITEMS: { q: string; a: string }[] = [
     a: "Een Conversie Website begint vanaf € 2.500. De prijs hangt af van het aantal pagina's en de functies die je nodig hebt. In de gratis scan krijg je een eerlijke indicatie.",
   },
   {
-    q: 'Hoe lang duurt het bouwen?',
-    a: "Gemiddeld 4 tot 8 weken. Dat hangt vooral af van hoe snel teksten en foto's beschikbaar zijn.",
-  },
-  {
-    q: 'Wij hebben al een website. Kunnen jullie die verbeteren?',
+    q: 'Er is al een website. Kan MegaOnline die verbeteren?',
     a: 'Ja. Soms is een nieuwe site de beste keuze, soms leveren gerichte verbeteringen al veel op. De scan laat zien wat voor jou het slimst is.',
   },
   {
@@ -170,7 +166,7 @@ const FAQ_ITEMS: { q: string; a: string }[] = [
     a: 'Nee. Na livegang kies je zelf: onderhoud, online marketing of het beheer in eigen hand.',
   },
   {
-    q: 'Voor welke bedrijven werken jullie?',
+    q: 'Voor welke bedrijven werkt MegaOnline?',
     a: 'Voor bedrijven die leven van aanvragen, reserveringen of boekingen. Denk aan activiteitenbedrijven, verhuurders, zakelijke dienstverleners en rijscholen. Het bedrijfsmodel telt meer dan de branche.',
   },
 ]
@@ -200,7 +196,7 @@ function Home() {
                 Je website staat online. Maar <em>levert</em> hij ook aanvragen en boekingen op?
               </Reveal>{' '}
               <Reveal as="p" className="lead hero__sub reveal" data-d="2">
-                Veel websites zien er prima uit, maar helpen bezoekers niet om actie te ondernemen. Wij bouwen websites die vertrouwen wekken en bezoekers naar een aanvraag of boeking leiden. Daarna blijven we bijsturen.
+                Veel websites zien er prima uit, maar helpen bezoekers niet om actie te ondernemen. MegaOnline bouwt websites die vertrouwen wekken en bezoekers naar een aanvraag of boeking leiden. Daarna blijft MegaOnline bijsturen.
               </Reveal>{' '}
               <Reveal as="ul" className="hero__ticks reveal" data-d="3">
                 <li>
@@ -226,10 +222,10 @@ function Home() {
           <Reveal as="div" className="v2-head reveal">
             <div className="shead">
               <span className="label">Diensten</span>
-              <h2 className="h2">Eerst een website die werkt. Daarna blijven we bijsturen.</h2>
+              <h2 className="h2">Eerst een website die werkt. Daarna blijft MegaOnline bijsturen.</h2>
             </div>
             <div className="v2-head__side">
-              <p>Je begint met een website die vertrouwen wekt. Na livegang kies je zelf hoe betrokken we blijven.</p>
+              <p>Je begint met een website die vertrouwen wekt. Na livegang kies je zelf hoe betrokken MegaOnline blijft.</p>
             </div>
           </Reveal>{' '}
           <div className="v2-svcs">
@@ -259,7 +255,7 @@ function Home() {
               <Icon name="shield-check" />
             </span>
             <p>
-              <b>Hosting, onderhoud &amp; support</b> Laat je je website bij ons maken, dan regelen we daarna ook de hosting, updates, beveiliging en back-ups. Gaat er iets mis, dan los je het niet zelf op. € 50 per maand.
+              <b>Hosting, onderhoud &amp; support</b> Laat je je website door MegaOnline maken, dan regelt MegaOnline daarna ook de hosting, updates, beveiliging en back-ups. Gaat er iets mis, dan los je het niet zelf op. € 50 per maand.
             </p>
             <Link className="tlink" to="/contact">
               Stel je vraag <span className="arr">&rarr;</span>
@@ -270,9 +266,9 @@ function Home() {
       <section className="section" id="werkwijze" data-theme="dark" data-screen-label="Werkwijze">
         <div className="wrap">
           <Reveal as="div" className="shead reveal">
-            <span className="label">Zo werken we</span>
+            <span className="label">Zo werkt MegaOnline</span>
             <h2 className="h2">Begrijpen. Bouwen. Verbeteren.</h2>
-            <p className="lead">Geen bureau dat oplevert en vertrekt. We beginnen bij je doelgroep en blijven na livegang betrokken.</p>
+            <p className="lead">Geen bureau dat oplevert en vertrekt. MegaOnline begint bij je doelgroep en blijft na livegang betrokken.</p>
           </Reveal>{' '}
           <ol className="v2-steps">
             {STAPPEN.map((s, i) => (
@@ -295,7 +291,7 @@ function Home() {
           <Reveal as="div" className="shead reveal">
             <span className="label">Het verschil</span>
             <h2 className="h2">
-              Een websitebouwer maakt wat jij vraagt. Wij bouwen voor jouw doelgroep. Met één doel: dat je bezoeker <em>actie onderneemt.</em>
+              Een websitebouwer maakt wat jij vraagt. MegaOnline bouwt voor jouw doelgroep. Met één doel: dat je bezoeker <em>actie onderneemt.</em>
             </h2>
           </Reveal>{' '}
           <Reveal as="div" className="v2-table reveal" data-d="1">
@@ -330,7 +326,7 @@ function Home() {
               <h2 className="h2">Waarom je website niets oplevert. En hoe je dat zelf checkt.</h2>
             </div>
             <div className="v2-head__side">
-              <p>Dit zien we het vaakst terug in scans. Tien minuten en je telefoon zijn genoeg om het te controleren.</p>
+              <p>Dit ziet MegaOnline het vaakst terug in scans. Tien minuten en je telefoon zijn genoeg om het te controleren.</p>
               <Link className="tlink" to="/kennisbank/$slug" params={{ slug: 'website-levert-geen-aanvragen-op' }}>
                 Lees: waarom je website geen aanvragen oplevert <span className="arr">&rarr;</span>
               </Link>
@@ -417,7 +413,7 @@ function Home() {
             Benieuwd wat er beter kan aan je website?
           </Reveal>{' '}
           <Reveal as="p" className="lead reveal" data-d="1">
-            We kijken persoonlijk naar je site en sturen je de punten die we zien. Zonder verplichtingen.
+            MegaOnline kijkt persoonlijk naar je site en stuurt de punten die opvallen. Zonder verplichtingen.
           </Reveal>{' '}
           <Reveal as={Link} className="btn btn-primary reveal" data-d="2" to="/gratis-websitescan">
             {CTA_SCAN}

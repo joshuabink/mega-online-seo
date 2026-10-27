@@ -93,7 +93,7 @@ const FAQ_ITEMS: { q: string; a: ReactNode }[] = [
   },
   {
     q: 'Kan ik mijn huidige boekingssysteem houden?',
-    a: 'Vaak wel. Kan je systeem op een eigen website worden geplaatst, met een module, een knop of een koppeling, dan bouwen we de website eromheen. In de gratis website scan kijken we wat bij jouw systeem kan.',
+    a: 'Vaak wel. Kan je systeem op een eigen website worden geplaatst, met een module, een knop of een koppeling, dan bouwt MegaOnline de website eromheen. In de gratis website scan kijkt MegaOnline wat bij jouw systeem kan.',
   },
   {
     q: 'Kunnen klanten direct online betalen of aanbetalen?',
@@ -132,7 +132,7 @@ function OnlineBoeken() {
                 Klanten boeken zelf, ook als jij <em>dicht</em> bent.
               </Reveal>
               <Reveal as="p" className="lead hero__sub reveal" data-d="2">
-                Een belafspraak, een behandeling, een tafel of een ticket met extra's. We richten online boeken in op jouw diensten en zetten het op je eigen website, zodat een klant zonder te bellen zijn moment kiest.
+                Een belafspraak, een behandeling, een tafel of een ticket met extra's. MegaOnline richt online boeken in op jouw diensten en zet het op je eigen website, zodat een klant zonder te bellen zijn moment kiest.
               </Reveal>
               <Reveal as="ul" className="hero__ticks reveal" data-d="3">
                 <li>
@@ -219,7 +219,7 @@ function OnlineBoeken() {
         <div className="wrap">
           <Reveal as="div" className="v2-head reveal">
             <div className="shead">
-              <span className="label">Wat we kunnen maken</span>
+              <span className="label">Wat MegaOnline kan maken</span>
               <h2 className="h2">
                 Ingericht op wat jij <em>verkoopt.</em>
               </h2>

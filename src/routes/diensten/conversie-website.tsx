@@ -33,11 +33,11 @@ const PROBLEMEN = [
 ]
 
 const STAPPEN = [
-  { t: 'Begrijpen', p: 'We leren je bedrijf, je doelgroep en je doelen kennen. Waar twijfelen bezoekers en waarom kiezen klanten voor jou?' },
-  { t: 'Structureren', p: 'We bepalen welke informatie bezoekers nodig hebben en hoe ze door de site naar contact bewegen.' },
+  { t: 'Begrijpen', p: 'MegaOnline leert je bedrijf, je doelgroep en je doelen kennen. Waar twijfelen bezoekers en waarom kiezen klanten voor jou?' },
+  { t: 'Structureren', p: 'MegaOnline bepaalt welke informatie bezoekers nodig hebben en hoe ze door de site naar contact bewegen.' },
   { t: 'Ontwerpen', p: 'Een ontwerp dat vertrouwen uitstraalt en past bij hoe jouw bedrijf over wil komen.' },
-  { t: 'Ontwikkelen', p: 'We bouwen de site technisch uit: snel, veilig en eenvoudig zelf te beheren.' },
-  { t: 'Verbeteren', p: 'Na livegang kijken we waar bezoekers afhaken en waar nog kansen liggen.' },
+  { t: 'Ontwikkelen', p: 'MegaOnline bouwt de site technisch uit: snel, veilig en eenvoudig zelf te beheren.' },
+  { t: 'Verbeteren', p: 'Na livegang kijkt MegaOnline waar bezoekers afhaken en waar nog kansen liggen.' },
 ]
 
 const INBEGREPEN: { icon: string; t: string }[] = [
@@ -77,7 +77,7 @@ const FAQ_ITEMS: { q: string; a: ReactNode }[] = [
     q: 'Waarom niet kiezen voor een goedkope webbouwer?',
     a: (
       <>
-        Een goedkope website ziet er soms prima uit, maar denkt niet na over vertrouwen, gebruiksgemak en hoe bezoekers tot een aanvraag komen. Wij bouwen vanuit dat doel. Lees ook{' '}
+        Een goedkope website ziet er soms prima uit, maar denkt niet na over vertrouwen, gebruiksgemak en hoe bezoekers tot een aanvraag komen. MegaOnline bouwt vanuit dat doel. Lees ook{' '}
         <Link to="/kennisbank/$slug" params={{ slug: 'freelance-webdesigner-of-webbureau' }}>
           freelancer of webbureau: wat past bij jou?
         </Link>
@@ -90,19 +90,19 @@ const FAQ_ITEMS: { q: string; a: ReactNode }[] = [
   },
   {
     q: 'Kan mijn website gekoppeld worden aan bestaande software?',
-    a: "In de meeste gevallen wel. Denk aan CRM-systemen, boekingssystemen, agenda's, WhatsApp, e-mailsoftware en betaalsystemen. Werk je met iets specifieks, dan kijken we samen wat mogelijk is.",
+    a: "In de meeste gevallen wel. Denk aan CRM-systemen, boekingssystemen, agenda's, WhatsApp, e-mailsoftware en betaalsystemen. Werk je met iets specifieks, dan kijkt MegaOnline samen met jou wat mogelijk is.",
   },
   {
     q: 'Zit ik na livegang ergens aan vast?',
     a: 'Nee. Na livegang kies je zelf: onderhoud, online marketing of het beheer in eigen hand.',
   },
   {
-    q: "Helpen jullie ook met foto's, video's of een huisstijl?",
-    a: "Ja. We kunnen helpen met fotografie op locatie, bedrijfsvideo's en dronebeelden. Heb je nog geen sterke huisstijl, dan helpen we samen met gespecialiseerde ontwerpers met een logo, kleuren en lettertypes.",
+    q: "Helpt MegaOnline ook met foto's, video's of een huisstijl?",
+    a: "Ja. MegaOnline kan helpen met fotografie op locatie, bedrijfsvideo's en dronebeelden. Heb je nog geen sterke huisstijl, dan helpt MegaOnline samen met gespecialiseerde ontwerpers met een logo, kleuren en lettertypes.",
   },
   {
     q: 'Hoe begin ik?',
-    a: 'Vraag het gratis homepageontwerp aan. Je ziet dan meteen hoe een homepage voor jouw bedrijf eruit kan zien. Daarna bespreken we samen of en hoe we verder gaan.',
+    a: 'Vraag het gratis homepageontwerp aan. Je ziet dan meteen hoe een homepage voor jouw bedrijf eruit kan zien. Daarna bespreekt MegaOnline met jou of en hoe het verder gaat.',
   },
 ]
 
@@ -134,7 +134,7 @@ function ConversieWebsite() {
                 </li>
                 <li>
                   <Icon name="check" className="ck" />
-                  <span>Live in gemiddeld 4 tot 8 weken</span>
+                  <span>Duidelijke planning vooraf</span>
                 </li>
                 <li>
                   <Icon name="check" className="ck" />
@@ -183,7 +183,7 @@ function ConversieWebsite() {
             <h2 className="h2">
               Een goede website begint met <em>begrijpen.</em> Niet met bouwen.
             </h2>
-            <p className="lead">We beginnen niet bij het ontwerp, maar bij je bedrijf, je klanten en wat een bezoeker nodig heeft om in actie te komen.</p>
+            <p className="lead">MegaOnline begint niet bij het ontwerp, maar bij je bedrijf, je klanten en wat een bezoeker nodig heeft om in actie te komen.</p>
           </Reveal>
           <ol className="v2-steps cw-steps">
             {STAPPEN.map((s, i) => (
@@ -221,7 +221,7 @@ function ConversieWebsite() {
             </Reveal>
             <Reveal as="div" className="cw-card reveal" data-d="1">
               <h3>Waar je bezoeker naartoe gaat</h3>
-              <p>We ontwerpen elke pagina naar de aanvraag die jij wilt binnenkrijgen.</p>
+              <p>MegaOnline ontwerpt elke pagina naar de aanvraag die jij wilt binnenkrijgen.</p>
               <ul className="cw-chips">
                 {AANVRAGEN.map((x) => (
                   <li key={x}>{x}</li>
@@ -263,7 +263,7 @@ function ConversieWebsite() {
               <Reveal as="div" className="cw-card reveal" data-d="1">
                 <span className="cw-card__tag">Na livegang</span>
                 <h3>Online marketing</h3>
-                <p>Elke maand blogs en landingspagina's op de vragen van jouw klanten. Wil je sneller aanvragen? Dan zetten we ook Google Ads in.</p>
+                <p>Elke maand blogs en landingspagina's op de vragen van jouw klanten. Wil je sneller aanvragen? Dan zet MegaOnline ook Google Ads in.</p>
                 <p className="cw-card__prijs">SEO en GEO: € 150 per maand</p>
                 <Link className="tlink" to="/diensten/seo">Bekijk de dienst <span className="arr">&rarr;</span></Link>
               </Reveal>
@@ -306,8 +306,8 @@ function ConversieWebsite() {
                     <p>De website liet onvoldoende zien welke apps het bedrijf ontwikkelt en welke waarde die bieden aan klanten.</p>
                   </div>
                   <div className="case__step">
-                    <span className="k">Wat we deden</span>
-                    <p>We brachten de propositie terug naar een duidelijke boodschap en bouwden een structuur die bezoekers sneller naar de juiste informatie leidt.</p>
+                    <span className="k">Wat MegaOnline deed</span>
+                    <p>MegaOnline bracht de propositie terug naar een duidelijke boodschap en bouwde een structuur die bezoekers sneller naar de juiste informatie leidt.</p>
                   </div>
                 </div>
               </div>
@@ -328,7 +328,7 @@ function ConversieWebsite() {
                     <p>De website bracht de sfeer van het verblijf onvoldoende over.</p>
                   </div>
                   <div className="case__step">
-                    <span className="k">Wat we deden</span>
+                    <span className="k">Wat MegaOnline deed</span>
                     <p>Een visuele website met een duidelijke boekingsroute en focus op beleving.</p>
                   </div>
                 </div>
@@ -363,7 +363,7 @@ function ConversieWebsite() {
             Benieuwd hoe jouw homepage eruit kan zien?
           </Reveal>
           <Reveal as="p" className="lead reveal" data-d="1">
-            We ontwerpen gratis een homepage voor je bedrijf. Zo zie je wat we voor je kunnen maken, zonder verplichtingen.
+            MegaOnline ontwerpt gratis een homepage voor je bedrijf. Zo zie je wat MegaOnline voor je kan maken, zonder verplichtingen.
           </Reveal>
           <Reveal as="a" className="btn btn-primary reveal" data-d="2" href="#ontwerp">
             Vraag je gratis homepageontwerp aan

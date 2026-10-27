@@ -13,7 +13,7 @@ export const SCAN_REACTIETIJD = 'binnen 5 werkdagen'
 
 const opleveringStart = SCAN_REACTIETIJD.charAt(0).toUpperCase() + SCAN_REACTIETIJD.slice(1)
 export const SCAN_OPLEVERING =
-  `${opleveringStart} ontvang je een rapport over je site. In een persoonlijk videogesprek lichten we het rapport toe.`
+  `${opleveringStart} ontvang je een rapport over je site. In een persoonlijk videogesprek licht MegaOnline het rapport toe.`
 
 export const SCAN_FAQ: { q: string; a: string }[] = [
   {

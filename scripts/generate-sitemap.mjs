@@ -50,6 +50,7 @@ const ROUTE_FILES = {
   "/diensten/conversie-website": "src/routes/diensten/conversie-website.tsx",
   "/diensten/google-ads": "src/routes/diensten/google-ads.tsx",
   "/diensten/integraties": "src/routes/diensten/integraties.tsx",
+  "/diensten/online-boeken": "src/routes/diensten/online-boeken.tsx",
   "/diensten/seo": "src/routes/diensten/seo.tsx",
   "/diensten/starter-website": "src/routes/diensten/starter-website.tsx",
   "/diensten/website-optimalisatie": "src/routes/diensten/website-optimalisatie.tsx",

@@ -33,7 +33,7 @@ const FAQ_ITEMS: { q: string; a: string }[] = [
   },
   {
     q: "Wat kost SEO per maand bij MegaOnline?",
-    a: "Je betaalt € 250 eenmalig voor het zoekwoordenonderzoek en het contentplan. Daarna kost het € 150 per maand. Daarvoor publiceren we elke maand vier nieuwe pagina's: blogs of landingspagina's.",
+    a: "Je betaalt € 250 eenmalig voor het zoekwoordenonderzoek en het contentplan. Daarna kost het € 150 per maand. Daarvoor publiceert MegaOnline elke maand vier nieuwe pagina's: blogs of landingspagina's.",
   },
   {
     q: "Wat krijg ik voor 150 euro per maand?",
@@ -41,11 +41,11 @@ const FAQ_ITEMS: { q: string; a: string }[] = [
   },
   {
     q: "Hoeveel pagina's komen er per maand bij?",
-    a: "Vier per maand: blogs of landingspagina's. Wil je sneller opschalen, dan kost elke extra pagina in die maand € 50. In je contentplan leggen we vooraf vast welke pagina's er wanneer live gaan.",
+    a: "Vier per maand: blogs of landingspagina's. Wil je sneller opschalen, dan kost elke extra pagina in die maand € 50. In je contentplan legt MegaOnline vooraf vast welke pagina's er wanneer live gaan.",
   },
   {
     q: "Hoe lang duurt het voordat ik iets merk van SEO?",
-    a: "SEO is geen knop die je omzet. De eerste verbeteringen zijn vaak binnen enkele weken zichtbaar, maar blijvende posities bouw je op over maanden. Daarom werken we met een contentplan voor twaalf maanden in plaats van losse acties.",
+    a: "SEO is geen knop die je omzet. SEO werkt op de lange termijn en hangt af van je uitgangspositie en de concurrentie. Daarom werkt MegaOnline met een contentplan voor twaalf maanden in plaats van losse acties.",
   },
   {
     q: "Kan MegaOnline een plek bovenaan in Google garanderen?",
@@ -57,19 +57,19 @@ const FAQ_ITEMS: { q: string; a: string }[] = [
   },
   {
     q: "Is lokale vindbaarheid ook zinvol voor een klein bedrijf?",
-    a: "Juist dan. Lokaal is vaak de snelste winst: je concurreert in je eigen regio in plaats van met heel Nederland. We zorgen dat je verschijnt wanneer iemand in de buurt zoekt naar wat jij doet.",
+    a: "Juist dan. Lokaal is vaak de snelste winst: je concurreert in je eigen regio in plaats van met heel Nederland. MegaOnline zorgt dat je verschijnt wanneer iemand in de buurt zoekt naar wat jij doet.",
   },
   {
     q: "Wat gebeurt er iedere maand?",
-    a: "We publiceren de pagina die voor die maand in het contentplan staat, controleren de website technisch op SEO en GEO en kijken wat de eerder geplaatste pagina's doen. Waar nodig sturen we het plan bij.",
+    a: "MegaOnline publiceert de pagina die voor die maand in het contentplan staat, controleert de website technisch op SEO en GEO en kijkt wat de eerder geplaatste pagina's doen. Waar nodig stuurt MegaOnline het plan bij.",
   },
   {
     q: "Moet mijn website door MegaOnline gebouwd zijn?",
-    a: "In de basis wel. Goed gevonden worden begint bij de techniek van je website. Zit die verkeerd in elkaar, dan kun je nog zulke goede pagina's maken, maar dan worden ze niet gevonden. Daarom draait het partnership op een website die wij hebben gebouwd.",
+    a: "In de basis wel. Goed gevonden worden begint bij de techniek van je website. Zit die verkeerd in elkaar, dan kun je nog zulke goede pagina's maken, maar dan worden ze niet gevonden. Daarom draait het partnership op een website die MegaOnline heeft gebouwd.",
   },
   {
     q: "Ik heb al een website. Kan het dan ook?",
-    a: "Dat kijken we eerst na. We beoordelen je bestaande website technisch en laten je weten wat er nodig is. Is de basis in orde, dan starten we gewoon. Zo niet, dan brengen we die eerst op orde en daarna loopt het partnership normaal door.",
+    a: "Dat kijkt MegaOnline eerst na. MegaOnline beoordeelt je bestaande website technisch en laat je weten wat er nodig is. Is de basis in orde, dan start het partnership gewoon. Zo niet, dan brengt MegaOnline die eerst op orde en daarna loopt het partnership normaal door.",
   },
   {
     q: "Voor wie is het Groei Partnership bedoeld?",
@@ -77,15 +77,15 @@ const FAQ_ITEMS: { q: string; a: string }[] = [
   },
   {
     q: "Is het Groei Partnership verplicht?",
-    a: "Nee. Sommige klanten kiezen voor een eenmalige website en regelen het beheer zelf of via een andere partij. We raden het partnership wel aan, omdat een website die regelmatig wordt bijgestuurd niet stil blijft staan terwijl de rest beweegt.",
+    a: "Nee. Sommige klanten kiezen voor een eenmalige website en regelen het beheer zelf of via een andere partij. MegaOnline raadt het partnership wel aan, omdat een website die regelmatig wordt bijgestuurd niet stil blijft staan terwijl de rest beweegt.",
   },
   {
     q: "Hoe vaak is er contact?",
-    a: "In de basis spreken we elke maand de analyse en verbeterpunten door. Daarnaast zijn de lijnen kort: heb je tussendoor een vraag of een wijziging, dan staan we voor je klaar. Je hebt één vast aanspreekpunt dat je bedrijf kent.",
+    a: "In de basis spreekt MegaOnline elke maand de analyse en verbeterpunten door. Daarnaast zijn de lijnen kort: heb je tussendoor een vraag of een wijziging, dan staat MegaOnline voor je klaar. Je hebt één vast aanspreekpunt dat je bedrijf kent.",
   },
   {
     q: "Kan ik opzeggen?",
-    a: "Het partnership loopt twaalf maanden en is daarna maandelijks opzegbaar. Die eerste periode is nodig omdat vindbaarheid zich over maanden opbouwt: na twee maanden is er nog weinig te zien, na acht maanden wel.",
+    a: "Het partnership loopt twaalf maanden en is daarna maandelijks opzegbaar.",
   },
   {
     q: "Doet MegaOnline ook technische ondersteuning?",
@@ -93,7 +93,7 @@ const FAQ_ITEMS: { q: string; a: string }[] = [
   },
   {
     q: "Wat als ik alleen onderhoud wil?",
-    a: "Dat kan. We bieden een lichtere onderhoudsoptie vanaf € 50 per maand. Daarmee blijft je website veilig en up-to-date, zonder actieve doorontwikkeling. Dat is bewust iets anders dan het Groei Partnership, waarbij we je website juist maand na maand verbeteren.",
+    a: "Dat kan. MegaOnline biedt een lichtere onderhoudsoptie vanaf € 50 per maand. Daarmee blijft je website veilig en up-to-date, zonder actieve doorontwikkeling. Dat is bewust iets anders dan het Groei Partnership, waarbij MegaOnline je website juist maand na maand verbetert.",
   },
 ]
 
@@ -108,9 +108,9 @@ const PROBLEMEN = [
 
 const STAPPEN = [
   { t: 'Website live', p: 'Het startpunt. Vanaf hier begint het echte werk pas.' },
-  { t: 'Meten', p: 'We verzamelen gegevens over bezoekers en zoekverkeer.' },
-  { t: 'Kansen zoeken', p: 'We zetten de grootste kansen op een rij en kiezen waar we deze maand op inzetten.' },
-  { t: 'Uitvoeren', p: "We pakken die kans aan: nieuwe pagina's, een verbetering of de techniek." },
+  { t: 'Meten', p: 'MegaOnline verzamelt gegevens over bezoekers en zoekverkeer.' },
+  { t: 'Kansen zoeken', p: 'MegaOnline zet de grootste kansen op een rij en kiest waar deze maand op wordt ingezet.' },
+  { t: 'Uitvoeren', p: "MegaOnline pakt die kans aan: nieuwe pagina's, een verbetering of de techniek." },
   { t: 'Herhalen', p: 'Volgende maand opnieuw, met de lessen van de vorige.' },
 ]
 
@@ -172,7 +172,7 @@ function Seo() {
                 Gevonden worden in Google. En in de <em>antwoorden van AI.</em>
               </Reveal>
               <Reveal as="p" className="lead hero__sub reveal" data-d="2">
-                Elke maand publiceren we vier nieuwe pagina's die je beter vindbaar maken, in Google en in AI-zoekmachines zoals ChatGPT en Gemini. Welke pagina's dat worden, ligt vooraf vast in je contentplan.
+                Elke maand publiceert MegaOnline vier nieuwe pagina's die je beter vindbaar maken, in Google en in AI-zoekmachines zoals ChatGPT en Gemini. Welke pagina's dat worden, ligt vooraf vast in je contentplan.
               </Reveal>
               <Reveal as="ul" className="hero__ticks reveal" data-d="3">
                 <li>
@@ -231,7 +231,7 @@ function Seo() {
               Elke maand de grootste <em>groeikans.</em>
             </h2>
             <p className="lead">
-              We kijken elke maand opnieuw waar de meeste winst te halen valt, kiezen daar één of twee dingen uit en voeren die uit. Geen lijst met taken die nooit afkomt, maar steeds de stap die op dat moment het meeste oplevert.
+              MegaOnline kijkt elke maand opnieuw waar de meeste winst te halen valt, kiest daar één of twee dingen uit en voert die uit. Geen lijst met taken die nooit afkomt, maar steeds de stap die op dat moment het meeste oplevert.
             </p>
           </Reveal>
           <ol className="v2-steps cw-steps">
@@ -252,12 +252,12 @@ function Seo() {
             <div className="shead">
               <span className="label">In het partnership</span>
               <h2 className="h2">
-                Wat we binnen het traject <em>doen.</em>
+                Wat MegaOnline binnen het traject <em>doet.</em>
               </h2>
             </div>
             <div className="v2-head__side">
               <p>
-                Het Groei Partnership is de SEO- en GEO-dienst van MegaOnline: elke maand vier nieuwe pagina's, gericht op vindbaarheid in Google en in AI-zoekmachines. Bij de start doen we zoekwoordenonderzoek en leggen we een contentplan voor twaalf maanden vast.
+                Het Groei Partnership is de SEO- en GEO-dienst van MegaOnline: elke maand vier nieuwe pagina's, gericht op vindbaarheid in Google en in AI-zoekmachines. Bij de start doet MegaOnline zoekwoordenonderzoek en legt een contentplan voor twaalf maanden vast.
               </p>
               <p>
                 Hoe AI-zoekmachines bedrijven kiezen om te noemen, lees je in <Link to="/kennisbank/$slug" params={{ slug: 'gevonden-worden-in-chatgpt' }}>gevonden worden in ChatGPT als mkb'er</Link>.
@@ -287,7 +287,7 @@ function Seo() {
                 ))}
               </ul>
               <h3 className="cw-card__sub">Niet gokken. Meten.</h3>
-              <p>De eerste versie van je website is een goede aanname. Zodra echte bezoekers hem gebruiken, zien we wat er werkelijk gebeurt:</p>
+              <p>De eerste versie van je website is een goede aanname. Zodra echte bezoekers hem gebruiken, ziet MegaOnline wat er werkelijk gebeurt:</p>
               <ul className="cw-chips cw-chips--line">
                 {WE_KIJKEN.map((x) => (
                   <li key={x}>{x}</li>
@@ -329,7 +329,7 @@ function Seo() {
               <Reveal as="div" className="cw-card reveal" data-d="2">
                 <span className="cw-card__tag">Lichtere optie</span>
                 <h3>Alleen onderhoud &amp; support</h3>
-                <p>Updates, beveiliging, back-ups, kleine wijzigingen en technische ondersteuning. Je website blijft veilig en up-to-date, maar we verbeteren hem niet actief.</p>
+                <p>Updates, beveiliging, back-ups, kleine wijzigingen en technische ondersteuning. Je website blijft veilig en up-to-date, maar MegaOnline verbetert hem dan niet actief.</p>
                 <p className="cw-card__prijs">vanaf € 50 per maand</p>
               </Reveal>
             </div>
@@ -360,7 +360,7 @@ function Seo() {
         <div className="wrap">
           <Reveal as="div" className="shead reveal">
             <span className="label">Voor wie</span>
-            <h2 className="h2">Voor wie we aan vindbaarheid werken.</h2>
+            <h2 className="h2">Voor wie MegaOnline aan vindbaarheid werkt.</h2>
             <p className="lead">Voor bedrijven waarvoor de website iets moet opleveren: aanvragen, reserveringen of boekingen.</p>
           </Reveal>
           <ul className="cw-problems">

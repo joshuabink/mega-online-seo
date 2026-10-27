@@ -34,11 +34,11 @@ const SIGNALEN = [
 ]
 
 const STAPPEN = [
-  { t: 'Analyseren', p: 'We brengen in kaart waar bezoekers binnenkomen, waar ze afhaken en welke kansen blijven liggen.' },
-  { t: 'Verbeterpunten', p: 'We benoemen concreet welke knelpunten en kansen we op je website zien.' },
-  { t: 'Prioriteren', p: 'We beginnen bij wat de meeste impact heeft voor de minste moeite.' },
-  { t: 'Verbeteren', p: 'We voeren de verbeteringen gericht door, zonder je website overhoop te halen.' },
-  { t: 'Meten', p: 'We kijken wat de aanpassingen opleveren en sturen bij waar dat nodig is.' },
+  { t: 'Analyseren', p: 'MegaOnline brengt in kaart waar bezoekers binnenkomen, waar ze afhaken en welke kansen blijven liggen.' },
+  { t: 'Verbeterpunten', p: 'MegaOnline benoemt concreet welke knelpunten en kansen er op je website zitten.' },
+  { t: 'Prioriteren', p: 'MegaOnline begint bij wat de meeste impact heeft voor de minste moeite.' },
+  { t: 'Verbeteren', p: 'MegaOnline voert de verbeteringen gericht door, zonder je website overhoop te halen.' },
+  { t: 'Meten', p: 'MegaOnline kijkt wat de aanpassingen opleveren en stuurt bij waar dat nodig is.' },
 ]
 
 const ONDERDELEN: { icon: string; t: string }[] = [
@@ -83,19 +83,19 @@ const FAQ_ITEMS: { q: string; a: ReactNode }[] = [
   },
   {
     q: 'Hoe weet ik of optimaliseren genoeg is?',
-    a: 'Dat begint met een analyse van bezoekersgedrag, knelpunten en kansen. Daaruit blijkt of gerichte verbeteringen voldoende zijn, of dat de basis te veel beperkingen heeft. We adviseren geen nieuwe website als het niet nodig is.',
+    a: 'Dat begint met een analyse van bezoekersgedrag, knelpunten en kansen. Daaruit blijkt of gerichte verbeteringen voldoende zijn, of dat de basis te veel beperkingen heeft. MegaOnline adviseert geen nieuwe website als het niet nodig is.',
   },
   {
-    q: 'Kunnen jullie mijn bestaande website verbeteren?',
-    a: 'Ja. De meeste websites zijn goed te verbeteren. We pakken structuur, formulieren, snelheid, de mobiele ervaring en de technische basis voor Google aan zonder je website opnieuw te bouwen.',
+    q: 'Kan MegaOnline mijn bestaande website verbeteren?',
+    a: 'Ja. De meeste websites zijn goed te verbeteren. MegaOnline pakt structuur, formulieren, snelheid, de mobiele ervaring en de technische basis voor Google aan zonder je website opnieuw te bouwen.',
   },
   {
     q: 'Hoe snel zie ik resultaat?',
-    a: 'Sommige verbeteringen, zoals een duidelijkere knop of een korter formulier, kunnen al snel merkbaar zijn. Andere, zoals je vindbaarheid in Google, hebben meer tijd nodig. We sturen op wat we meten, niet op gevoel.',
+    a: 'Sommige verbeteringen, zoals een duidelijkere knop of een korter formulier, kunnen al snel merkbaar zijn. Andere, zoals je vindbaarheid in Google, hebben meer tijd nodig. MegaOnline stuurt op wat gemeten wordt, niet op gevoel.',
   },
   {
-    q: 'Werken jullie ook aan websites die jullie niet zelf gebouwd hebben?',
-    a: 'Zeker. Veel optimalisatietrajecten gaan juist over websites die door iemand anders zijn gebouwd. We kijken eerst wat er staat en bepalen daarna wat de slimste verbeteringen zijn.',
+    q: 'Werkt MegaOnline ook aan websites die MegaOnline niet zelf gebouwd heeft?',
+    a: 'Zeker. Veel optimalisatietrajecten gaan juist over websites die door iemand anders zijn gebouwd. MegaOnline kijkt eerst wat er staat en bepaalt daarna wat de slimste verbeteringen zijn.',
   },
   {
     q: 'Kan ik zelf alvast iets doen?',
@@ -143,7 +143,7 @@ function WebsiteOptimalisatie() {
                 </li>
                 <li>
                   <Icon name="check" className="ck" />
-                  <span>Ook voor sites die we niet zelf bouwden</span>
+                  <span>Ook voor sites die MegaOnline niet zelf bouwde</span>
                 </li>
               </Reveal>
             </div>
@@ -185,7 +185,7 @@ function WebsiteOptimalisatie() {
             <h2 className="h2">
               Eerst weten waar het misgaat. <em>Dan</em> pas verbeteren.
             </h2>
-            <p className="lead">Lukraak knoppen verschuiven levert niets op. Onze keuzes rusten op wat bezoekers echt doen, niet op aannames.</p>
+            <p className="lead">Lukraak knoppen verschuiven levert niets op. De keuzes van MegaOnline rusten op wat bezoekers echt doen, niet op aannames.</p>
           </Reveal>
           <ol className="v2-steps cw-steps">
             {STAPPEN.map((s, i) => (
@@ -202,9 +202,9 @@ function WebsiteOptimalisatie() {
       <section className="section" data-theme="paper" data-screen-label="Wat we optimaliseren">
         <div className="wrap">
           <Reveal as="div" className="shead reveal">
-            <span className="label">Waar we naar kijken</span>
+            <span className="label">Waar MegaOnline naar kijkt</span>
             <h2 className="h2">
-              Wat we <em>optimaliseren.</em>
+              Wat MegaOnline <em>optimaliseert.</em>
             </h2>
           </Reveal>
           <div className="cw-krijgt">
@@ -299,8 +299,8 @@ function WebsiteOptimalisatie() {
                     <p>De website liet onvoldoende zien welke apps het bedrijf ontwikkelt en welke waarde die bieden aan klanten.</p>
                   </div>
                   <div className="case__step">
-                    <span className="k">Wat we deden</span>
-                    <p>We brachten de propositie terug naar een duidelijke boodschap en bouwden een structuur die bezoekers sneller naar de juiste informatie leidt.</p>
+                    <span className="k">Wat MegaOnline deed</span>
+                    <p>MegaOnline bracht de propositie terug naar een duidelijke boodschap en bouwde een structuur die bezoekers sneller naar de juiste informatie leidt.</p>
                   </div>
                 </div>
               </div>
@@ -321,7 +321,7 @@ function WebsiteOptimalisatie() {
                     <p>De website bracht de sfeer van het verblijf onvoldoende over.</p>
                   </div>
                   <div className="case__step">
-                    <span className="k">Wat we deden</span>
+                    <span className="k">Wat MegaOnline deed</span>
                     <p>Een visuele website met een duidelijke boekingsroute en focus op beleving.</p>
                   </div>
                 </div>
