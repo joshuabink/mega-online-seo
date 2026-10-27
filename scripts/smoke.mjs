@@ -9,8 +9,15 @@ import { chromium } from 'playwright'
 import fs from 'node:fs'
 import http from 'node:http'
 import path from 'node:path'
+import { fileURLToPath } from 'node:url'
+import { hostVan, isGaUrl, isLoopbackHost, isLoopbackUrl, pasRouteToe, routeBesluit } from './mail-blokkade.mjs'
+import { SITEMAP_ONDERGRENS, sitemapDekking } from './sitemap-dekking.mjs'
 
 const BASE = process.env.BASE ?? 'http://localhost:3000'
+if (!isLoopbackUrl(BASE)) {
+  console.error(`BASE is geen lokaal http-adres: ${BASE}`)
+  process.exit(1)
+}
 const results = []
 let failed = 0
 
@@ -25,6 +32,69 @@ function check(name, ok, detail = '') {
   if (!ok) failed++
 }
 
+function fouttekst(error) {
+  const tekst = error instanceof Error ? error.message : String(error)
+  return tekst.split('\n')[0].slice(0, 350)
+}
+
+/**
+ * Eén check. Een timeout of andere crash telt als gefaald en de volgende
+ * check gaat door. Het overzicht en de foutcode komen pas aan het eind.
+ */
+async function vang(naam, werk) {
+  try {
+    await werk()
+  } catch (error) {
+    check(naam, false, fouttekst(error))
+  }
+}
+
+function sitemapPaden(xml) {
+  return [...xml.matchAll(/<loc>https:\/\/megaonline\.io([^<]*)<\/loc>/g)].map((m) => m[1] || '/')
+}
+
+function leesSitemapBestand() {
+  return fs.readFileSync(new URL('../public/sitemap.xml', import.meta.url), 'utf8')
+}
+
+function slugsUitBron(relatief, marker, stop) {
+  const src = fs.readFileSync(new URL(relatief, import.meta.url), 'utf8')
+  const start = src.indexOf(marker)
+  if (start < 0) throw new Error(`${marker} ontbreekt in ${relatief}`)
+  let blok = src.slice(start)
+  const einde = blok.slice(marker.length).search(stop)
+  if (einde >= 0) blok = blok.slice(0, marker.length + einde)
+  return [...blok.matchAll(/\bslug:\s*['"]([^'"]+)['"]/g)].map((m) => m[1])
+}
+
+/** Statische routes plus de slugs van kennisbank, vacatures en concepten. */
+function bestaandeRoutes() {
+  const routes = new Set()
+  const loop = (dir, prefix) => {
+    for (const naam of fs.readdirSync(dir)) {
+      if (naam.startsWith('_') || naam.includes('$')) continue
+      const vol = path.join(dir, naam)
+      if (fs.statSync(vol).isDirectory()) {
+        loop(vol, `${prefix}/${naam}`)
+        continue
+      }
+      if (!naam.endsWith('.tsx')) continue
+      routes.add(naam === 'index.tsx' ? prefix || '/' : `${prefix}/${naam.slice(0, -4)}`)
+    }
+  }
+  loop(fileURLToPath(new URL('../src/routes/', import.meta.url)), '')
+  for (const slug of slugsUitBron('../src/lib/kennisbank.ts', 'export const ARTIKELEN', /\nconst |\nexport /)) {
+    routes.add(`/kennisbank/${slug}`)
+  }
+  for (const slug of slugsUitBron('../src/lib/vacatures.ts', 'export const VACATURES', /\nexport /)) {
+    routes.add(`/werken-bij/${slug}`)
+  }
+  for (const slug of slugsUitBron('../src/lib/concepten.ts', 'export const CONCEPTEN', /\nexport /)) {
+    routes.add(`/concepten/${slug}`)
+  }
+  return routes
+}
+
 function leesCtaConstante(naam) {
   const src = fs.readFileSync(new URL('../src/lib/cta.ts', import.meta.url), 'utf8')
   const m = src.match(new RegExp(`export const ${naam} = '([^']*)'`))
@@ -33,6 +103,8 @@ function leesCtaConstante(naam) {
 }
 
 const CTA_SCAN = leesCtaConstante('CTA_SCAN')
+/** Verzendknop van AanvraagKort soort ontwerp. De scanknop blijft CTA_SCAN. */
+const ONTWERP_KNOP = 'Vraag je gratis homepageontwerp aan'
 
 /** Oude knopzinnen. Geen van deze mag nog op een knop staan. */
 const OUDE_CTA_VARIANTEN = [
@@ -49,6 +121,178 @@ function normCta(s) {
   return String(s ?? '').replace(/\s+/g, ' ').replace(/\s*→\s*$/u, '').trim()
 }
 
+// Posts die de browser zelf naar FormSubmit doet, nadat de server faalde.
+// De route beantwoordt ze lokaal. Er gaat geen verzoek het netwerk op.
+const clientPosts = []
+const alleRequests = []
+const tegengehouden = new WeakSet()
+let routeActief = false
+
+function externePostsOntsnapt() {
+  return alleRequests.filter((req) => {
+    if (req.method() !== 'POST') return false
+    if (isLoopbackHost(hostVan(req.url()))) return false
+    return !tegengehouden.has(req)
+  })
+}
+
+function rapporteerOntsnapt() {
+  const ontsnapt = externePostsOntsnapt()
+  check(
+    'geen ontsnapt extern POST-verzoek',
+    routeActief && ontsnapt.length === 0,
+    ontsnapt.map((req) => `${req.method()} ${req.url()}`).slice(0, 4).join(' | ') || (routeActief ? '' : 'route niet actief'),
+  )
+}
+
+/**
+ * De mock is geen eigenschap van het formulier. Zonder MO_LEAD_MAIL_ENDPOINT
+ * post de dev-server naar het echte FormSubmit, met de productiereferer.
+ * De smoketest weigert te starten als dat zo is.
+ *
+ * De dev-server moet het vite-proces zijn dat luistert op de poort van BASE.
+ * Een vite elders mag niet groen geven. De socketlijst komt uit /proc/net/tcp
+ * en /proc/net/tcp6 en werkt alleen op Linux. Ontbreekt /proc, dan stopt de
+ * test: liever geen run dan een vals-groene.
+ *
+ * Gelezen wordt alleen de start-omgeving van dat vite-proces
+ * (`/proc/<pid>/environ`). Een variabele die het proces later zet, is
+ * hier niet zichtbaar.
+ */
+function poortVan(url) {
+  const parsed = new URL(url)
+  if (parsed.port) return Number(parsed.port)
+  return parsed.protocol === 'http:' ? 80 : 443
+}
+
+function luisterInodes(poort) {
+  const inodes = new Set()
+  for (const bestand of ['/proc/net/tcp', '/proc/net/tcp6']) {
+    let tekst = ''
+    try { tekst = fs.readFileSync(bestand, 'utf8') } catch { continue }
+    for (const regel of tekst.split('\n').slice(1)) {
+      const velden = regel.trim().split(/\s+/)
+      if (velden.length < 10 || velden[3] !== '0A') continue
+      const adres = velden[1]
+      const scheiding = adres.lastIndexOf(':')
+      if (scheiding < 0) continue
+      if (Number.parseInt(adres.slice(scheiding + 1), 16) !== poort) continue
+      inodes.add(velden[9])
+    }
+  }
+  return inodes
+}
+
+function pidsMetSocket(inodes) {
+  const gevonden = []
+  if (inodes.size === 0) return gevonden
+  for (const pid of fs.readdirSync('/proc')) {
+    if (!/^\d+$/.test(pid)) continue
+    let fds
+    try { fds = fs.readdirSync(`/proc/${pid}/fd`) } catch { continue }
+    for (const fd of fds) {
+      let doel = ''
+      try { doel = fs.readlinkSync(`/proc/${pid}/fd/${fd}`) } catch { continue }
+      const socket = /^socket:\[(\d+)\]$/.exec(doel)
+      if (socket && inodes.has(socket[1])) {
+        gevonden.push(pid)
+        break
+      }
+    }
+  }
+  return gevonden
+}
+
+/** Start-omgeving uit /proc, niet een omgeving die het proces later wijzigt. */
+function environVan(pid) {
+  try {
+    return Object.fromEntries(
+      fs.readFileSync(`/proc/${pid}/environ`).toString('utf8').split('\0').filter(Boolean).map((deel) => {
+        const i = deel.indexOf('=')
+        return [deel.slice(0, i), deel.slice(i + 1)]
+      }),
+    )
+  } catch {
+    return null
+  }
+}
+
+function eisLokaleMailroute({ vereisDevServer }) {
+  const problemen = []
+  const eigen = process.env.MO_LEAD_MAIL_ENDPOINT ?? ''
+  if (!isLoopbackUrl(eigen)) {
+    problemen.push(`MO_LEAD_MAIL_ENDPOINT van deze run is geen lokaal http-adres (${eigen || 'ontbreekt'})`)
+  }
+  if (process.env.MO_RESEND_API_KEY) problemen.push('MO_RESEND_API_KEY staat aan')
+  if (vereisDevServer) {
+    if (!fs.existsSync('/proc/net/tcp') && !fs.existsSync('/proc/net/tcp6')) {
+      problemen.push('de /proc-check werkt alleen op Linux; zonder /proc kan de dev-server niet aan de poort van BASE worden gekoppeld')
+    } else {
+      const poort = poortVan(BASE)
+      const inodes = luisterInodes(poort)
+      const pids = pidsMetSocket(inodes)
+      const vite = []
+      for (const pid of pids) {
+        let cmd = ''
+        try { cmd = fs.readFileSync(`/proc/${pid}/cmdline`).toString('utf8') } catch { continue }
+        if (cmd.includes('vite')) vite.push(pid)
+      }
+      if (vite.length === 0) {
+        problemen.push(`geen vite-proces luistert op de poort van BASE (${new URL(BASE).host})`)
+      }
+      for (const pid of vite) {
+        const vars = environVan(pid)
+        if (!vars) {
+          problemen.push(`dev-server ${pid} op poort ${poort} heeft geen leesbare omgeving`)
+          continue
+        }
+        const endpoint = vars.MO_LEAD_MAIL_ENDPOINT ?? ''
+        if (!isLoopbackUrl(endpoint)) {
+          problemen.push(`dev-server ${pid} op poort ${poort} heeft geen lokale mailmock (${endpoint || 'geen MO_LEAD_MAIL_ENDPOINT'})`)
+        }
+        if (vars.MO_RESEND_API_KEY) problemen.push(`dev-server ${pid} op poort ${poort} heeft MO_RESEND_API_KEY`)
+      }
+    }
+  }
+  if (problemen.length === 0) return
+  console.error('Smoketest start niet. Zonder deze stop kan een formulier echte mail versturen:')
+  for (const probleem of problemen) console.error(`- ${probleem}`)
+  process.exit(1)
+}
+
+/** Elke browsercontext. Externe mailposts worden lokaal beantwoord, de rest geblokkeerd. */
+async function installRoutes(target) {
+  const context = typeof target.context === 'function' ? target.context() : target
+  if (context.__moBewaakt) return
+  context.__moBewaakt = true
+  context.on('request', (req) => { alleRequests.push(req) })
+  await context.route('**/*', (route) => pasRouteToe(route, { clientPosts, tegengehouden }))
+  routeActief = true
+}
+
+/** Stopt vóór een formulier als de blokkade niet aanstaat of een mailpost zou doorlaten. */
+function eisBlokkadeVoorVerzending() {
+  const mail = routeBesluit({
+    url: 'https://formsubmit.co/ajax/zakelijk@joshuabink.nl',
+    method: 'POST',
+    body: 'email=test@example.com',
+  })
+  const resend = routeBesluit({
+    url: 'https://api.resend.com/emails',
+    method: 'POST',
+    body: '{}',
+  })
+  if (
+    !routeActief ||
+    mail.actie !== 'lokaal' ||
+    !String(mail.body).includes('"smoke":"onderschept"') ||
+    resend.actie === 'doorlaten'
+  ) {
+    console.error('Smoketest vult het formulier niet in: de blokkade staat niet vóór de verzending.')
+    process.exit(1)
+  }
+}
+
 /**
  * CTA-bewaker. Een CTA-knop is een bediening waarvan de zichtbare tekst
  * exact CTA_SCAN is, of een .btn die naar de scanpagina wijst, of de
@@ -61,17 +305,27 @@ function normCta(s) {
  * scan. Het telefoonveld van de bezoeker mag blijven.
  */
 async function controleerCtaTeksten(browser) {
-  const pg = await browser.newPage({ viewport: { width: 1440, height: 900 } })
+  const pg = await browserContext.newPage({ viewport: { width: 1440, height: 900 } })
   await installRoutes(pg)
   const sitemap = await pg.request.get(BASE + '/sitemap.xml')
   const xml = await sitemap.text()
   const paden = [...xml.matchAll(/<loc>https:\/\/megaonline\.io([^<]*)<\/loc>/g)].map((m) => m[1] || '/')
-  check('sitemap-paden voor CTA-controle', sitemap.status() === 200 && paden.length > 0 && !paden.includes('/gratis-websiteconcept'), String(paden.length))
+  const dekking = sitemapDekking(bestaandeRoutes(), paden)
+  check(
+    'sitemap-paden voor CTA-controle',
+    sitemap.status() === 200 &&
+      paden.length >= SITEMAP_ONDERGRENS &&
+      dekking.ondergrens &&
+      dekking.ontbreekt.length === 0 &&
+      !paden.includes('/gratis-websiteconcept'),
+    dekking.ontbreekt.slice(0, 6).join(', ') || String(paden.length),
+  )
 
   const fouten = []
   let zagScan = false
 
   for (const pad of paden) {
+    try {
     const res = await pg.goto(BASE + pad, { waitUntil: 'domcontentloaded', timeout: 30000 })
     if (!res || res.status() >= 400) {
       fouten.push(`${pad} status ${res ? res.status() : 'geen'}`)
@@ -104,7 +358,7 @@ async function controleerCtaTeksten(browser) {
         const isSubmit = el.matches('button[type="submit"]') && !!el.closest('.concept, [data-scan-form]')
         const href = el.tagName === 'A' ? bestemming(el.getAttribute('href')) : { soort: 'geen' }
         if (tekst !== scan && !(isBtn && href.soort === 'scan') && !isSubmit) continue
-        knoppen.push({ tekst, href: href.soort, hrefPad: href.pad || '' })
+        knoppen.push({ tekst, href: href.soort, hrefPad: href.pad || '', submit: isSubmit })
       }
       const eindEl = document.querySelector('#scan a.btn')
       const form = document.querySelector('[data-screen-label="Conceptformulier"]')
@@ -161,8 +415,9 @@ async function controleerCtaTeksten(browser) {
       if (data.zichtbaar.includes(oud)) fouten.push(`${pad} bevat "${oud}"`)
     }
     for (const knop of data.knoppen) {
-      if (knop.tekst !== CTA_SCAN) fouten.push(`${pad} CTA-tekst "${knop.tekst}"`)
-      else zagScan = true
+      const tekstOk = knop.tekst === CTA_SCAN || (knop.submit && knop.tekst === ONTWERP_KNOP)
+      if (!tekstOk) fouten.push(`${pad} CTA-tekst "${knop.tekst}"`)
+      else if (knop.tekst === CTA_SCAN) zagScan = true
       if (knop.href === 'anders') fouten.push(`${pad} CTA-link ${knop.hrefPad}`)
     }
     const kennisbankCta = {
@@ -184,6 +439,9 @@ async function controleerCtaTeksten(browser) {
         fouten.push(`${pad} formulier staat niet vóór "Wat je morgen kunt doen"`)
       }
     }
+    } catch (error) {
+      fouten.push(`${pad} crash: ${fouttekst(error)}`)
+    }
   }
 
   check(
@@ -192,10 +450,6 @@ async function controleerCtaTeksten(browser) {
     fouten.slice(0, 8).join(' | ') || `scan=${zagScan} pagina's=${paden.length}`,
   )
   await pg.close()
-}
-
-function isGaUrl(url) {
-  return /googletagmanager\.com|google-analytics\.com|analytics\.google\.com/i.test(url)
 }
 
 function dataLayerEvents(pg, eventName) {
@@ -328,7 +582,7 @@ function collectGaUrls(pg) {
 const ZOEKTAAL_PAGINAS = [
   {
     path: '/diensten/conversie-website',
-    title: 'Website laten maken gericht op aanvragen | MegaOnline',
+    title: 'Conversiegerichte website laten maken | MegaOnline',
     h1: 'Website laten maken gericht op aanvragen en boekingen',
   },
   {
@@ -343,7 +597,7 @@ const ZOEKTAAL_PAGINAS = [
   },
   {
     path: '/diensten/website-optimalisatie',
-    title: 'Bestaande website laten optimaliseren | MegaOnline',
+    title: 'Website laten optimaliseren voor meer aanvragen | MegaOnline',
     h1: 'Bestaande website laten optimaliseren',
   },
   {
@@ -364,7 +618,7 @@ const ZOEKTAAL_PAGINAS = [
   {
     path: '/branches/reserveringen',
     title: 'Website met reserveringssysteem laten maken | MegaOnline',
-    h1: 'Website laten maken met online reserveren',
+    h1: 'Website met reserveringssysteem laten maken',
   },
   {
     path: '/branches/offerteaanvragen',
@@ -400,6 +654,7 @@ function metaContent(html, attr, name) {
 }
 
 for (const pagina of ZOEKTAAL_PAGINAS) {
+  await vang(`${pagina.path} SSR title en H1`, async () => {
   let status = 0
   let html = ''
   try {
@@ -408,7 +663,7 @@ for (const pagina of ZOEKTAAL_PAGINAS) {
     html = await response.text()
   } catch (error) {
     check(`${pagina.path} SSR title en H1`, false, String(error))
-    continue
+    return
   }
   const zonderScripts = html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, '')
   const titles = [...zonderScripts.matchAll(/<title>([^<]*)<\/title>/gi)].map((match) =>
@@ -439,6 +694,7 @@ for (const pagina of ZOEKTAAL_PAGINAS) {
       ? `${pagina.title.length} tekens`
       : `status=${status} titles=${JSON.stringify(titles)} h1s=${JSON.stringify(h1s)} og=${JSON.stringify(ogTitles)} twitter=${JSON.stringify(twitterTitles)}`,
   )
+  })
 }
 
 // De vooraf geïnstalleerde Chromium gebruiken i.p.v. een download.
@@ -446,14 +702,30 @@ const EXECUTABLE =
   process.env.CHROMIUM_PATH ?? '/opt/pw-browsers/chromium-1194/chrome-linux/chrome'
 // Zonder --enable-automation blijft navigator.webdriver uit. cookieconsent
 // verbergt de banner anders voor de browser en de GA4-checks zien hem niet.
+eisLokaleMailroute({ vereisDevServer: true })
+
 const browser = await chromium.launch({
   executablePath: EXECUTABLE,
   ignoreDefaultArgs: ['--enable-automation'],
   args: ['--disable-blink-features=AutomationControlled'],
 })
+// context.newPage negeert een viewport-optie. Desktop is de standaard;
+// de smalle pagina's zetten daarna zelf 390px.
+// Een service worker kan de pagina-route omzeilen. Die registratie blijft uit.
+const browserContext = await browser.newContext({
+  viewport: { width: 1440, height: 900 },
+  serviceWorkers: 'block',
+})
+await installRoutes(browserContext)
+eisBlokkadeVoorVerzending()
 
 if (process.argv.includes('--alleen-cta')) {
-  await controleerCtaTeksten(browser)
+  try {
+    await controleerCtaTeksten(browser)
+  } catch (error) {
+    check('CTA-controle', false, fouttekst(error))
+  }
+  rapporteerOntsnapt()
   await browser.close()
   console.table(results)
   console.log(failed ? `${failed} test(s) gefaald.` : 'Alle CTA-controles geslaagd.')
@@ -461,7 +733,8 @@ if (process.argv.includes('--alleen-cta')) {
 }
 
 /* ---------------- Desktop ---------------- */
-const page = await browser.newPage({ viewport: { width: 1440, height: 900 } })
+try {
+const page = await browserContext.newPage({ viewport: { width: 1440, height: 900 } })
 const mainGaUrls = collectGaUrls(page)
 
 const consoleErrors = []
@@ -479,35 +752,9 @@ const readLeads = () => {
 }
 const leadsBefore = readLeads().length
 
-// Posts die de browser zelf naar FormSubmit doet, nadat de server faalde.
-// De route vangt ze af, zodat de smoketest nooit de echte provider raakt.
-const clientPosts = []
-
-function installRoutes(pg) {
-  return pg.route('**/*', async (route) => {
-    const url = route.request().url()
-    if (url.includes('formsubmit.co')) {
-      const body = route.request().postData() ?? ''
-      clientPosts.push({ url, body })
-      const ok = body.includes('client-lukt%40example.com') || body.includes('client-lukt@example.com')
-      await route.fulfill({
-        status: 200,
-        contentType: 'application/json',
-        body: JSON.stringify(
-          ok
-            ? { success: 'true', message: 'submitted successfully' }
-            : { success: 'false', message: 'Unable to submit form' },
-        ),
-      })
-      return
-    }
-    if (url.includes('localhost') || url.includes('127.0.0.1')) return route.continue()
-    return route.abort()
-  })
-}
-
 // Externe requests (Google Fonts) bestaan niet in deze sandbox; blokkeren
 // scheelt lange time-outs.
+await vang("homepage laadt", async () => {
 await installRoutes(page)
 
 await page.goto(BASE + '/', { waitUntil: 'load' })
@@ -554,111 +801,122 @@ const scrolled = await page.evaluate(
 check('nav krijgt .scrolled', !!scrolled)
 await page.evaluate(() => window.scrollTo(0, 0))
 await page.waitForTimeout(200)
+})
 
-/* --- conceptformulier, 6 stappen --- */
+/* --- homepageformulier, 4 stappen (AanvraagKort, soort ontwerp) --- */
 const stepVisible = (n) => page.isVisible(`.fstep[data-step="${n}"]`)
 const choice = (step, index) =>
   page.locator(`.fstep[data-step="${step}"] .choice input`).nth(index)
 
-// Zonder keuze blijft stap 1 staan en verschijnt de fout bij de groep.
-await page.click('.fstep[data-step="1"] [data-next]')
-await page.waitForTimeout(200)
-const blockedHome = await stepVisible(1)
-const homeError = await page.locator('.fstep[data-step="1"] .field__error').innerText()
-check('lege klikstap blokkeert', blockedHome && /Kies minimaal één antwoord/.test(homeError), homeError)
+await vang('lege klikstap blokkeert', async () => {
+  await page.click('.fstep[data-step="1"] [data-next]')
+  await page.waitForTimeout(200)
+  const blockedHome = await stepVisible(1)
+  const homeError = await page.locator('.fstep[data-step="1"] .field__error').innerText()
+  check('lege klikstap blokkeert', blockedHome && /Kies minimaal één antwoord/.test(homeError), homeError)
+})
 
-await choice(1, 0).check()
-await choice(1, 1).check()
-const thirdDisabled = await choice(1, 2).isDisabled()
-const countText = await page.locator('.fstep[data-step="1"] .choice__count').innerText()
-check('maximum van twee keuzes', thirdDisabled && /2 van 2 gekozen/i.test(countText),
-  `disabled=${thirdDisabled} teller=${countText}`)
+await vang('maximum van twee keuzes', async () => {
+  await choice(1, 0).check()
+  await choice(1, 1).check()
+  const thirdDisabled = await choice(1, 2).isDisabled()
+  const countText = (await page.locator('.fstep[data-step="1"] .choice__count').evaluate((el) => el.textContent ?? '')).replace(/\s+/g, ' ').trim()
+  check('maximum van twee keuzes', thirdDisabled && countText === '2 van 2',
+    `disabled=${thirdDisabled} teller=${countText}`)
+})
 
 // Enter op stap 1 betekent volgende stap, niet meteen versturen.
-await choice(1, 0).press('Enter')
-await page.waitForTimeout(200)
-check('Enter op stap 1 gaat naar stap 2', await stepVisible(2))
+await vang('Enter op stap 1 gaat naar stap 2', async () => {
+  await choice(1, 0).press('Enter')
+  await page.waitForTimeout(200)
+  check('Enter op stap 1 gaat naar stap 2', await stepVisible(2))
+})
 
-await choice(2, 0).check()
-await page.click('.fstep[data-step="2"] [data-next]')
-await page.waitForTimeout(200)
-check('formulier stap 2 → 3', await stepVisible(3))
+await vang('formulier stap 2 → 3', async () => {
+  await page.fill('.fstep[data-step="2"] [name="bedrijf"]', 'Testbedrijf BV')
+  await page.fill('.fstep[data-step="2"] [name="url"]', 'mijnbedrijf.nl')
+  await page.click('.fstep[data-step="2"] [data-next]')
+  await page.waitForTimeout(200)
+  check('formulier stap 2 → 3', await stepVisible(3))
+})
 
-await choice(3, 0).check()
-await page.click('.fstep[data-step="3"] [data-next]')
-await page.waitForTimeout(200)
-check('formulier stap 3 → 4', await stepVisible(4))
+await vang('formulier stap 3 → 4', async () => {
+  await choice(3, 0).check()
+  await page.click('.fstep[data-step="3"] [data-next]')
+  await page.waitForTimeout(200)
+  check('formulier stap 3 → 4', await stepVisible(4))
+})
 
-await page.fill('[name="bedrijf"]', 'Testbedrijf BV')
-await page.fill('[name="omschrijving"]', 'We verhuren springkussens in de regio Gouda.')
-await page.fill('[name="url"]', 'mijnbedrijf.nl')
-await page.click('.fstep[data-step="4"] [data-next]')
-await page.waitForTimeout(200)
-check('formulier stap 4 → 5', await stepVisible(5))
+await vang('formulier terug-knop', async () => {
+  await page.click('.fstep[data-step="4"] [data-prev]')
+  await page.waitForTimeout(200)
+  const terug = await stepVisible(3)
+  await page.click('.fstep[data-step="3"] [data-next]')
+  await page.waitForTimeout(200)
+  check('formulier terug-knop', terug && await stepVisible(4))
+})
 
-await page.click('.fstep[data-step="5"] [data-prev]')
-await page.waitForTimeout(200)
-check('formulier terug-knop', await stepVisible(4))
-await page.click('.fstep[data-step="4"] [data-next]')
-await page.waitForTimeout(200)
+await vang('contactregel staat onder de verzendknop', async () => {
+  const direct = await page.locator('.fstep[data-step="4"] .form__direct').innerText()
+  const directMail = await page.locator('.fstep[data-step="4"] .form__direct a[href^="mailto:"]').getAttribute('href')
+  const directTelLinks = await page.locator('.fstep[data-step="4"] .form__direct a[href^="tel:"]').count()
+  const directWa = await page.locator('.fstep[data-step="4"] .form__direct a[href*="wa.me"], .fstep[data-step="4"] .form__direct a[href*="whatsapp"]').count()
+  check(
+    'contactregel staat onder de verzendknop',
+    /Liever direct contact/.test(direct) &&
+      /zakelijk@joshuabink\.nl/.test(direct) &&
+      !/06 34 38 89 38|31634388938|0634388938/.test(direct) &&
+      directMail === 'mailto:zakelijk@joshuabink.nl' &&
+      directTelLinks === 0 &&
+      directWa === 0,
+    direct,
+  )
+})
 
-await choice(5, 0).check()
-await page.click('.fstep[data-step="5"] [data-next]')
-await page.waitForTimeout(200)
-check('formulier stap 5 → 6', await stepVisible(6))
-
-const direct = await page.locator('.form__direct').innerText()
-const directMail = await page.locator('.form__direct a[href^="mailto:"]').getAttribute('href')
-const directTelLinks = await page.locator('.form__direct a[href^="tel:"]').count()
-const directWa = await page.locator('.form__direct a[href*="wa.me"], .form__direct a[href*="whatsapp"]').count()
-check(
-  'contactregel staat onder de verzendknop',
-  /Liever direct contact/.test(direct) &&
-    /zakelijk@joshuabink\.nl/.test(direct) &&
-    !/06 34 38 89 38|31634388938|0634388938/.test(direct) &&
-    directMail === 'mailto:zakelijk@joshuabink.nl' &&
-    directTelLinks === 0 &&
-    directWa === 0,
-  direct,
-)
-
-await page.fill('[name="naam"]', 'Test Persoon')
-await page.fill('[name="email"]', 'test@example.com')
-await page.fill('[name="telefoon"]', '0612345678')
-const logsVoorConcept = readLeadLogs().length
-await page.click('.fstep[data-step="6"] button[type="submit"]')
-await page.waitForTimeout(1500)
-
-const sent = await page.evaluate(
-  () => document.querySelector('.form')?.classList.contains('sent') ?? false,
-)
-check('geslaagde mail is ok', sent, sent ? 'bedankt-staat' : 'formulier niet verzonden')
-const conceptBedank = await bedankZichtbaar(page, '.form.sent .form__ok')
-check(
-  'geslaagd conceptformulier zet het bedank-anker',
-  heeftBedankAnker(page.url()) && conceptBedank,
-  page.url(),
-)
-const conceptLogs = await wachtLeadLogs(logsVoorConcept + 1)
-const conceptLog = conceptLogs[logsVoorConcept]
-check(
-  'lead-log bij geslaagd concept zonder persoonsgegevens',
-  conceptLogs.length === logsVoorConcept + 1 &&
-    leadLogGeldig(conceptLog) &&
-    conceptLog.json.pagina === '/' &&
-    conceptLog.json.formulier === 'scan' &&
-    conceptLog.json.route === 'FormSubmit' &&
-    conceptLog.json.gelukt === true &&
-    conceptLog.json.reden === '',
-  conceptLog?.raw ?? `geen [lead-log] in ${DEV_LOG}`,
-)
-
-const leadsZonderConsent = await generateLeadEvents(page)
-check(
-  'geslaagd conceptformulier zonder consent stuurt geen generate_lead',
-  leadsZonderConsent.length === 0,
-  JSON.stringify(leadsZonderConsent),
-)
+let logsVoorConcept = 0
+await vang('geslaagde mail is ok', async () => {
+  await page.fill('.fstep[data-step="4"] [name="naam"]', 'Test Persoon')
+  await page.fill('.fstep[data-step="4"] [name="email"]', 'test@example.com')
+  await page.fill('.fstep[data-step="4"] [name="telefoon"]', '0612345678')
+  logsVoorConcept = readLeadLogs().length
+  await page.click('.fstep[data-step="4"] button[type="submit"]')
+  await page.waitForTimeout(1500)
+  const sent = await page.evaluate(
+    () => document.querySelector('.form')?.classList.contains('sent') ?? false,
+  )
+  check('geslaagde mail is ok', sent, sent ? 'bedankt-staat' : 'formulier niet verzonden')
+})
+await vang('geslaagd conceptformulier zet het bedank-anker', async () => {
+  const conceptBedank = await bedankZichtbaar(page, '.form.sent .form__ok')
+  check(
+    'geslaagd conceptformulier zet het bedank-anker',
+    heeftBedankAnker(page.url()) && conceptBedank,
+    page.url(),
+  )
+})
+await vang('lead-log bij geslaagd concept zonder persoonsgegevens', async () => {
+  const conceptLogs = await wachtLeadLogs(logsVoorConcept + 1)
+  const conceptLog = conceptLogs[logsVoorConcept]
+  check(
+    'lead-log bij geslaagd concept zonder persoonsgegevens',
+    conceptLogs.length === logsVoorConcept + 1 &&
+      leadLogGeldig(conceptLog) &&
+      conceptLog.json.pagina === '/' &&
+      conceptLog.json.formulier === 'contact' &&
+      conceptLog.json.route === 'FormSubmit' &&
+      conceptLog.json.gelukt === true &&
+      conceptLog.json.reden === '',
+    conceptLog?.raw ?? `geen [lead-log] in ${DEV_LOG}`,
+  )
+})
+await vang('geslaagd conceptformulier zonder consent stuurt geen generate_lead', async () => {
+  const leadsZonderConsent = await generateLeadEvents(page)
+  check(
+    'geslaagd conceptformulier zonder consent stuurt geen generate_lead',
+    leadsZonderConsent.length === 0,
+    JSON.stringify(leadsZonderConsent),
+  )
+})
 
 const leads = readLeads()
 const lead = leads[leads.length - 1]
@@ -668,16 +926,16 @@ check('velden komen correct door',
   lead?.bedrijf === 'Testbedrijf BV' &&
   lead?.email === 'test@example.com' &&
   lead?.telefoon === '0612345678' &&
-  lead?.branche === 'Activiteiten / Recreatie' &&
-  lead?.start === 'Zo snel mogelijk' &&
-  lead?.omschrijving === 'We verhuren springkussens in de regio Gouda.' &&
-  lead?.knelpunt === 'Er komen te weinig aanvragen of boekingen binnen, Mijn website ziet er verouderd uit' &&
-  lead?.doel === 'Meer offerteaanvragen',
+  lead?.knelpunt === 'Te weinig aanvragen of boekingen, Website ziet er verouderd uit' &&
+  lead?.doel === 'Meer offerteaanvragen' &&
+  !('branche' in (lead ?? {})) &&
+  !('start' in (lead ?? {})) &&
+  !('omschrijving' in (lead ?? {})),
   JSON.stringify(lead ?? {}).slice(0, 240))
 check('url wordt genormaliseerd naar https://',
   lead?.url === 'https://mijnbedrijf.nl', `url=${lead?.url}`)
 check('_subject en _pagina gaan mee',
-  lead?._subject === 'Gratis website scan aanvraag' && !!lead?._pagina,
+  lead?._subject === 'Gratis homepageontwerp aanvraag' && !!lead?._pagina,
   `${lead?._subject}`)
 check('honeypot wordt niet doorgestuurd', !('website_hp' in (lead ?? {})))
 check('lege optionele velden gaan niet mee', !lead?.geen_website)
@@ -689,6 +947,7 @@ check('geslaagde mail post niet nog eens vanuit de browser', clientPosts.length 
   `browserposts=${clientPosts.length}`)
 
 /* --- mislukte mail: server weigert, browser-poging ook, mailto-fallback --- */
+await vang("mislukte mail", async () => {
 await page.goto(BASE + '/contact', { waitUntil: 'load' })
 await waitHydrated(page)
 await page.fill('#c-naam', 'Mail Faalt')
@@ -775,8 +1034,10 @@ check(
   fallbackZonderConsent.length === 0 && !heeftBedankAnker(page.url()) && mainGaUrls.length === 0,
   JSON.stringify({ events: fallbackZonderConsent, url: page.url(), ga: mainGaUrls.length }),
 )
+})
 
 /* --- server faalt, browser-poging lukt: bedankt, en niet nog een serverpost --- */
+await vang("browser-fallback telt als verstuurd", async () => {
 await page.fill('#c-naam', 'Client Lukt')
 await page.fill('#c-email', 'client-lukt@example.com')
 const postsBeforeClient = clientPosts.length
@@ -809,6 +1070,7 @@ check(
     mainGaUrls.length === 0,
   JSON.stringify({ url: page.url(), lead_browser_fallback: clientFallbackEvents, generate_lead: clientLeadEvents }),
 )
+})
 
 async function verstuurContact(email, naam) {
   await page.goto(BASE + '/contact', { waitUntil: 'load' })
@@ -840,52 +1102,52 @@ async function fallbackZichtbaar(timeout = 8000) {
   }))
 }
 
-{
+await vang("403 mail", async () => {
   const t = await verstuurContact('status403@example.com', 'Status 403')
   const ui = await fallbackZichtbaar()
   const d = sinds('status403@example.com', t.postsBefore, t.leadsBefore)
   check('403: precies één browserpost en een mailto',
     !ui.sent && ui.mailto && ui.busy !== 'true' && d.leads.length === 1 && d.posts.length === 1,
     `server=${d.leads.length} browser=${d.posts.length} busy=${ui.busy}`)
-}
+})
 
-{
+await vang("5xx mail", async () => {
   const t = await verstuurContact('status500@example.com', 'Status 500')
   const ui = await fallbackZichtbaar()
   const d = sinds('status500@example.com', t.postsBefore, t.leadsBefore)
   check('5xx: geen browserpost, wel mailto',
     !ui.sent && ui.mailto && d.leads.length === 1 && d.posts.length === 0,
     `server=${d.leads.length} browser=${d.posts.length}`)
-}
+})
 
-{
+await vang("timeout mail", async () => {
   const t = await verstuurContact('hangt@example.com', 'Hangt')
   const ui = await fallbackZichtbaar(20000)
   const d = sinds('hangt@example.com', t.postsBefore, t.leadsBefore)
   check('timeout: geen browserpost, wel mailto, formulier niet blijven hangen',
     !ui.sent && ui.mailto && ui.busy !== 'true' && d.leads.length === 1 && d.posts.length === 0,
     `server=${d.leads.length} browser=${d.posts.length} busy=${ui.busy}`)
-}
+})
 
-{
+await vang("Cloudflare-challenge is geen succes", async () => {
   const t = await verstuurContact('challenge@example.com', 'Challenge')
   const ui = await fallbackZichtbaar()
   const d = sinds('challenge@example.com', t.postsBefore, t.leadsBefore)
   check('Cloudflare-challenge is geen succes',
     !ui.sent && ui.mailto && d.leads.length === 1 && d.posts.length === 1,
     `server=${d.leads.length} browser=${d.posts.length}`)
-}
+})
 
-{
+await vang("success false is geen succes", async () => {
   const t = await verstuurContact('successfalse@example.com', 'Success False')
   const ui = await fallbackZichtbaar()
   const d = sinds('successfalse@example.com', t.postsBefore, t.leadsBefore)
   check('success false is geen succes',
     !ui.sent && ui.mailto && d.leads.length === 1 && d.posts.length === 1,
     `server=${d.leads.length} browser=${d.posts.length}`)
-}
+})
 
-{
+await vang("server function gooit", async () => {
   let aborted = 0
   const abortServerFn = async (route) => {
     if (route.request().method() === 'POST') {
@@ -909,9 +1171,9 @@ async function fallbackZichtbaar(timeout = 8000) {
   check('server function gooit: mailto, geen browserpost, niet blijven hangen',
     !ui.sent && ui.mailto && ui.busy !== 'true' && aborted >= 1 && posts === 0,
     `afgebroken=${aborted} browser=${posts} busy=${ui.busy}`)
-}
+})
 
-{
+await vang("validatiefout zonder mailto", async () => {
   const postsBefore = clientPosts.length
   const leadsBefore = readLeads().length
   await page.goto(BASE + '/contact', { waitUntil: 'load' })
@@ -934,18 +1196,21 @@ async function fallbackZichtbaar(timeout = 8000) {
       clientPosts.length === postsBefore &&
       readLeads().length === leadsBefore,
     validatie.fout)
-}
+})
 
 /* --- validatie blokkeert lege stap op een dienstpagina --- */
+await vang("lege verplichte stap blokkeert", async () => {
 await page.goto(BASE + '/diensten/conversie-website', { waitUntil: 'load' })
 await waitHydrated(page)
 await page.click('.fstep[data-step="1"] [data-next]')
 await page.waitForTimeout(200)
 const blocked = await page.isVisible('.fstep[data-step="1"]')
 check('lege verplichte stap blokkeert', blocked)
+})
 
 // De volgende knop staat onderaan een lang formulier. Na de stapwissel
 // moet de stapkop onder de fixed header blijven, niet eronder verdwijnen.
+await vang("volgende knop naar onderen", async () => {
 await page.locator('.fstep[data-step="1"] [data-next]').evaluate((el) => {
   const root = document.documentElement
   const previous = root.style.scrollBehavior
@@ -955,44 +1220,52 @@ await page.locator('.fstep[data-step="1"] [data-next]').evaluate((el) => {
   scroller.scrollTop = scroller.scrollTop + rect.bottom - window.innerHeight + 24
   root.style.scrollBehavior = previous
 })
-await choice(1, 6).check()
-await page.click('.fstep[data-step="1"] [data-next]')
-await page.waitForTimeout(250)
-const headerGap = await page.evaluate(() => {
-  const nav = document.querySelector('header.nav')?.getBoundingClientRect()
-  const kop = document.querySelector('.fstep[data-step="2"] [data-step-focus]')?.getBoundingClientRect()
-  if (!nav || !kop) return -1
-  return Math.round(kop.top - nav.bottom)
 })
-check('stapkop blijft onder de header', headerGap >= 12, `ruimte=${headerGap}px`)
+await vang('stapkop blijft onder de header', async () => {
+  await choice(1, 0).check()
+  await page.click('.fstep[data-step="1"] [data-next]')
+  await page.waitForTimeout(250)
+  const headerGap = await page.evaluate(() => {
+    const nav = document.querySelector('header.nav')?.getBoundingClientRect()
+    const kop = document.querySelector('.fstep[data-step="2"] [data-step-focus]')?.getBoundingClientRect()
+    if (!nav || !kop) return -1
+    return Math.round(kop.top - nav.bottom)
+  })
+  check('stapkop blijft onder de header', headerGap >= 12, `ruimte=${headerGap}px`)
+})
 
-await choice(2, 0).check()
-await page.click('.fstep[data-step="2"] [data-next]')
-await choice(3, 0).check()
-await page.click('.fstep[data-step="3"] [data-next]')
-await page.waitForTimeout(200)
-const geenAan = await page.locator('[name="geen_website"]').isChecked()
-const urlDicht = await page.locator('[name="url"]').isDisabled()
-await page.locator('[name="geen_website"]').uncheck()
-const geenUit = !(await page.locator('[name="geen_website"]').isChecked())
-const urlOpen = await page.locator('[name="url"]').isEnabled()
-check(
-  'vinkje geen website is uit te zetten',
-  geenAan && urlDicht && geenUit && urlOpen,
-  `aan=${geenAan} urlDicht=${urlDicht} uit=${geenUit} urlOpen=${urlOpen}`,
-)
+await vang('vinkje geen website is uit te zetten', async () => {
+  const stap = '.fstep[data-step="2"]'
+  const vakje = page.locator(`${stap} [name="geen_website"]`)
+  const url = page.locator(`${stap} [name="url"]`)
+  const uit = !(await vakje.isChecked())
+  const urlOpen = (await url.count()) === 1
+  await vakje.check()
+  await page.waitForTimeout(150)
+  const aan = await vakje.isChecked()
+  const urlDicht = (await url.count()) === 0
+  await vakje.uncheck()
+  await page.waitForTimeout(150)
+  const weerUit = !(await vakje.isChecked())
+  const urlTerug = (await url.count()) === 1
+  check(
+    'vinkje geen website is uit te zetten',
+    uit && urlOpen && aan && urlDicht && weerUit && urlTerug,
+    `uit=${uit} urlOpen=${urlOpen} aan=${aan} urlDicht=${urlDicht} weerUit=${weerUit} urlTerug=${urlTerug}`,
+  )
+})
 
 /* --- oude concept-URL en canonieke redirects --- */
-{
+await vang("301 /gratis-websiteconcept", async () => {
   const res = await page.request.get(BASE + '/gratis-websiteconcept', { maxRedirects: 0 })
   const loc = res.headers()['location'] ?? ''
   check('301 /gratis-websiteconcept', res.status() === 301 && loc.includes('/gratis-websitescan'),
     `${res.status()} → ${loc}`)
   const scan = await page.request.get(BASE + '/gratis-websitescan', { maxRedirects: 0 })
   check('200 /gratis-websitescan', scan.status() === 200, String(scan.status()))
-}
+})
 
-{
+await vang("scanpagina", async () => {
   await page.goto(BASE + '/gratis-websitescan', { waitUntil: 'load' })
   await waitHydrated(page)
   const scanPagina = await page.evaluate((scanKnop) => {
@@ -1011,22 +1284,27 @@ check(
       tekstHref: [...document.querySelectorAll('a.tlink')].find((a) => norm(a.textContent) === 'Begin met de gratis website scan')?.getAttribute('href') || '',
       faqs: [...document.querySelectorAll('#vragen .qa__q')].map((el) => norm(el.textContent)),
       faq5antwoord: norm(document.querySelectorAll('#vragen .qa__a')[4]?.textContent),
-      bedank: norm(document.querySelector('.scanform .form__ok')?.textContent),
-      oplevering: norm(document.querySelector('.scan-side p')?.textContent),
+      stappen: document.querySelectorAll('#formulier .fstep').length,
+      bedank: norm(document.querySelector('#formulier .form__ok')?.textContent),
+      oplevering: norm([...document.querySelectorAll('.v2-head__side p')].map((p) => p.textContent || '').find((t) => t.includes('rapport')) || ''),
       schemaReactie: [...document.querySelectorAll('script[type="application/ld+json"]')].some((node) => {
         const raw = node.textContent || ''
         return raw.includes('FAQPage') && raw.includes('Je ontvangt de uitkomst van de scan binnen 5 werkdagen na je aanvraag.')
       }),
-      velden: ['site', 'mis', 'toelichting', 'doel', 'naam', 'mail'].map((naam) => ({
-        naam,
-        aantal: document.querySelectorAll(`[name="${naam}"]`).length,
-        required: veld(naam)?.required ?? false,
-      })),
-      knop: norm(document.querySelector('.scanform button[type="submit"]')?.textContent),
-      honeypot: !!document.querySelector('[name="company_hp"]'),
-      oudeHoneypot: !!document.querySelector('.scanform [name="website_hp"]'),
+      velden: {
+        knelpunt: document.querySelectorAll('#formulier [name="knelpunt"]').length,
+        bedrijf: veld('bedrijf')?.required ?? false,
+        url: veld('url')?.required ?? false,
+        doel: document.querySelectorAll('#formulier [name="doel"]').length,
+        naam: veld('naam')?.required ?? false,
+        email: veld('email')?.required ?? false,
+        telefoon: veld('telefoon')?.required ?? true,
+      },
+      knop: norm(document.querySelector('#formulier button[type="submit"]')?.textContent),
+      honeypot: !!document.querySelector('#formulier [name="website_hp"]'),
+      oudeHoneypot: !!document.querySelector('[name="company_hp"]'),
       tel,
-      privacy: document.querySelector('.scanform a[href="/privacyverklaring"]') ? true : false,
+      privacy: !!document.querySelector('#formulier a[href="/privacyverklaring"]'),
       schema: [...document.querySelectorAll('script[type="application/ld+json"]')].some((node) => {
         const raw = node.textContent || ''
         return raw.includes('FAQPage') && raw.includes('Service') && raw.includes('Wat is de gratis website scan?')
@@ -1034,22 +1312,23 @@ check(
     }
   }, CTA_SCAN)
   const veldenOk =
-    scanPagina.velden[0].aantal === 1 && scanPagina.velden[0].required &&
-    scanPagina.velden[1].aantal === 6 &&
-    scanPagina.velden[2].aantal === 1 && !scanPagina.velden[2].required &&
-    scanPagina.velden[3].aantal === 4 && scanPagina.velden[3].required &&
-    scanPagina.velden[4].aantal === 1 && scanPagina.velden[4].required &&
-    scanPagina.velden[5].aantal === 1 && scanPagina.velden[5].required
+    scanPagina.stappen === 4 &&
+    scanPagina.velden.knelpunt === 5 &&
+    scanPagina.velden.bedrijf === true &&
+    scanPagina.velden.url === true &&
+    scanPagina.velden.doel === 6 &&
+    scanPagina.velden.naam === true &&
+    scanPagina.velden.email === true &&
+    scanPagina.velden.telefoon === false
   check(
-    'scanpagina heeft title, H1, vijf vragen, zes velden en de scanknop',
+    'scanpagina heeft title, H1, vijf vragen en het vierstapsformulier',
     scanPagina.title === 'Gratis website scan voor je bedrijfswebsite | MegaOnline' &&
       scanPagina.description.startsWith('Vraag een gratis website scan aan.') &&
       scanPagina.canonical === 'https://megaonline.io/gratis-websitescan' &&
       !/noindex/i.test(scanPagina.robots) &&
       scanPagina.h1 === 'Vraag een gratis website scan aan' &&
-      scanPagina.lead === 'We bekijken je site en vertellen je eerlijk wat je nu aanvragen en boekingen kost, en wat het eerst moet.' &&
-      scanPagina.formTag === 'FORM' &&
-      scanPagina.heroHref === '#formulier' &&
+      scanPagina.lead === 'We bekijken je site en vertellen je eerlijk wat je nu aanvragen en boekingen kost en wat het eerst moet.' &&
+      scanPagina.formTag === 'SECTION' &&
       scanPagina.tekstHref === '#formulier' &&
       scanPagina.faqs.length === 5 &&
       scanPagina.faqs[0] === 'Wat is de gratis website scan?' &&
@@ -1067,7 +1346,7 @@ check(
     'scan noemt binnen 5 werkdagen in de FAQ, de FAQPage en de bedankmelding',
     scanPagina.faq5antwoord === 'Je ontvangt de uitkomst van de scan binnen 5 werkdagen na je aanvraag.' &&
       scanPagina.schemaReactie &&
-      scanPagina.bedank.includes('binnen 5 werkdagen'),
+      /binnen 5 werkdagen/i.test(scanPagina.bedank),
     `faq=${scanPagina.faq5antwoord} schema=${scanPagina.schemaReactie} bedank=${scanPagina.bedank}`,
   )
   check(
@@ -1106,16 +1385,15 @@ check(
     }, origin)
   }
 
-  const heroSprong = await sprongNaarFormulier('.scan-hero a.btn-primary[href="#formulier"]')
+  // De hero is het formulier zelf (section#formulier). Er is geen
+  // .scan-hero a.btn-primary meer, dus 'hero-knop springt naar #formulier'
+  // kan niet terug. De tekstlink hieronder springt nog wel.
   check(
-    'hero-knop springt naar #formulier zonder herladen',
-    heroSprong.hash === '#formulier' &&
-      heroSprong.path === '/gratis-websitescan' &&
-      heroSprong.mark === 'ja' &&
-      heroSprong.zelfdeDocument &&
-      heroSprong.inView,
-    JSON.stringify(heroSprong),
+    'scanhero is het formulier',
+    scanPagina.formTag === 'SECTION' && scanPagina.stappen === 4 && scanPagina.heroHref === '',
+    `tag=${scanPagina.formTag} stappen=${scanPagina.stappen} heroHref=${scanPagina.heroHref}`,
   )
+  await vang("tekstlink springt naar #formulier zonder herladen", async () => {
   const tekstSprong = await sprongNaarFormulier('a.tlink[href="#formulier"]')
   check(
     'tekstlink springt naar #formulier zonder herladen',
@@ -1126,17 +1404,26 @@ check(
       tekstSprong.inView,
     JSON.stringify(tekstSprong),
   )
+  })
 
-  await page.fill('[name="site"]', 'jouwbedrijf.nl')
-  await page.locator('[name="mis"]').first().check()
-  await page.locator('[name="doel"]').first().check()
-  await page.fill('[name="naam"]', 'Scan Persoon')
-  await page.fill('[name="mail"]', 'scan-lead@example.com')
+  await vang("scanformulier telt apart in de lead-log", async () => {
+  await choice(1, 0).check()
+  await page.click('#formulier .fstep[data-step="1"] [data-next]')
+  await page.waitForTimeout(150)
+  await page.fill('#formulier [name="bedrijf"]', 'Scanbedrijf')
+  await page.fill('#formulier [name="url"]', 'jouwbedrijf.nl')
+  await page.click('#formulier .fstep[data-step="2"] [data-next]')
+  await page.waitForTimeout(150)
+  await choice(3, 0).check()
+  await page.click('#formulier .fstep[data-step="3"] [data-next]')
+  await page.waitForTimeout(150)
+  await page.fill('#formulier [name="naam"]', 'Scan Persoon')
+  await page.fill('#formulier [name="email"]', 'scan-lead@example.com')
   const logsVoorScan = readLeadLogs().length
   const leadsVoorScan = readLeads().length
-  await page.click('.scanform button[type="submit"]')
+  await page.click('#formulier .fstep[data-step="4"] button[type="submit"]')
   await page.waitForFunction(
-    () => document.querySelector('.scanform')?.classList.contains('sent'),
+    () => document.querySelector('#formulier .form')?.classList.contains('sent'),
     null,
     { timeout: 8000 },
   )
@@ -1146,10 +1433,12 @@ check(
   check(
     'scanformulier telt apart in de lead-log',
     readLeads().length === leadsVoorScan + 1 &&
-      scanLead?.mail === 'scan-lead@example.com' &&
-      scanLead?.site === 'https://jouwbedrijf.nl' &&
+      scanLead?.email === 'scan-lead@example.com' &&
+      scanLead?.url === 'https://jouwbedrijf.nl' &&
+      scanLead?.bedrijf === 'Scanbedrijf' &&
       scanLead?.naam === 'Scan Persoon' &&
       scanLead?._subject === 'Gratis website scan aanvraag' &&
+      !('website_hp' in (scanLead ?? {})) &&
       !('company_hp' in (scanLead ?? {})) &&
       !('branche' in (scanLead ?? {})) &&
       !('telefoon' in (scanLead ?? {})) &&
@@ -1160,6 +1449,7 @@ check(
       page.url().includes('#aanvraag-verstuurd'),
     `${scanLog?.raw ?? 'geen log'} | ${JSON.stringify(scanLead ?? {}).slice(0, 240)} | ${page.url()}`,
   )
+  })
 
   const scanToontVijf = await page.evaluate(() => document.body.innerText.includes('binnen 5 werkdagen'))
   await page.goto(BASE + '/contact', { waitUntil: 'load' })
@@ -1175,21 +1465,21 @@ check(
   await waitHydrated(page)
   const starterEind = await page.evaluate(() => {
     const norm = (s) => String(s ?? '').replace(/\s+/g, ' ').trim()
-    const kop = document.querySelector('[data-screen-label="Eind-CTA + scan-formulier"] .endcta__copy')
-    const links = [...(kop?.querySelectorAll('a') ?? [])].map((a) => ({
+    const sectie = document.querySelector('[data-screen-label="Afsluitende CTA"]')
+    const links = [...(sectie?.querySelectorAll('a') ?? [])].map((a) => ({
       tekst: norm(a.textContent),
       href: a.getAttribute('href') || '',
     }))
     return {
       links,
-      kennismaking: norm(kop?.innerText).includes('Plan een kennismaking'),
+      kennismaking: norm(sectie?.innerText).includes('Plan een kennismaking'),
     }
   })
   check(
     'starterpagina heeft precies één eind-CTA',
     starterEind.links.length === 1 &&
-      starterEind.links[0].tekst === CTA_SCAN &&
-      starterEind.links[0].href === '/gratis-websitescan' &&
+      starterEind.links[0].tekst === ONTWERP_KNOP &&
+      starterEind.links[0].href === '#ontwerp' &&
       !starterEind.kennismaking,
     JSON.stringify(starterEind),
   )
@@ -1197,21 +1487,18 @@ check(
   const starterPagina = await page.evaluate(() => {
     const norm = (s) => String(s ?? '').replace(/\s+/g, ' ').trim()
     const main = document.querySelector('main')
-    const hero = document.querySelector('[data-screen-label="Hero — Starter Website"]')
-    const knoppen = [...(hero?.querySelectorAll('a.btn, button') ?? [])].map((el) => ({
+    const hero = document.querySelector('[data-screen-label="Hero + formulier"]')
+    const copyKnoppen = [...(hero?.querySelectorAll('.hero__copy a.btn, .hero__copy button') ?? [])].map((el) => ({
       tekst: norm(el.textContent),
       href: el.getAttribute('href') || '',
     }))
-    const prijs = [...(hero?.querySelectorAll('a') ?? [])].find((a) => norm(a.textContent) === 'Bekijk wat het kost')
+    const prijs = document.querySelector('#prijs a.btn-primary')
     return {
       kennismaking: norm(main?.innerText).includes('Plan een kennismaking'),
-      knoppen,
+      copyKnoppen,
+      stappen: hero?.querySelectorAll('.fstep').length ?? 0,
       prijs: prijs
-        ? {
-            href: prijs.getAttribute('href') || '',
-            knop: prijs.classList.contains('btn'),
-            tlink: prijs.classList.contains('tlink'),
-          }
+        ? { href: prijs.getAttribute('href') || '', tekst: norm(prijs.textContent) }
         : null,
     }
   })
@@ -1220,14 +1507,15 @@ check(
     !starterPagina.kennismaking,
     JSON.stringify(starterPagina),
   )
+  // De starterhero is het formulier, niet één scan-knop naar
+  // /gratis-websitescan. 'starterhero heeft precies één knop' hoort bij
+  // die oude opzet en komt niet terug.
   check(
-    'starterhero heeft precies één knop',
-    starterPagina.knoppen.length === 1 &&
-      starterPagina.knoppen[0].tekst === CTA_SCAN &&
-      starterPagina.knoppen[0].href === '/gratis-websitescan' &&
-      starterPagina.prijs?.href === '#prijs' &&
-      starterPagina.prijs.tlink === true &&
-      starterPagina.prijs.knop === false,
+    'starterhero toont het formulier zonder extra knop',
+    starterPagina.copyKnoppen.length === 0 &&
+      starterPagina.stappen === 4 &&
+      starterPagina.prijs?.href === '#ontwerp' &&
+      starterPagina.prijs.tekst === ONTWERP_KNOP,
     JSON.stringify(starterPagina),
   )
 
@@ -1243,7 +1531,7 @@ check(
       geraakt.join(' | ') || 'geen',
     )
   }
-}
+})
 
 // node:http stuurt het pad ongewijzigd. fetch en Playwright normaliseren
 // `//` en `\` al vóór de request, en dan is de open redirect niet te zien.
@@ -1287,6 +1575,7 @@ const canonicalRedirects = [
   ['/gratis-websiteconcept/?utm=mail', 301, '/gratis-websitescan?utm=mail'],
 ]
 for (const [from, status, location] of canonicalRedirects) {
+  await vang(`redirect ${from}`, async () => {
   const res = await rawGet(from)
   const sameOrigin =
     location === '' ||
@@ -1299,8 +1588,9 @@ for (const [from, status, location] of canonicalRedirects) {
     res.status === status && res.location === location && sameOrigin,
     `${res.status} → ${res.location}`,
   )
+  })
 }
-{
+await vang("308 /diensten//seo/ in één hop", async () => {
   const first = await rawGet('/diensten//seo/')
   const second = await rawGet(first.location || '/')
   check(
@@ -1308,9 +1598,10 @@ for (const [from, status, location] of canonicalRedirects) {
     first.status === 308 && first.location === '/diensten/seo' && second.status === 200,
     `${first.status} → ${first.location} → ${second.status}`,
   )
-}
+})
 
 /* --- FAQ accordeon --- */
+await vang("FAQ opent", async () => {
 await page.goto(BASE + '/veelgestelde-vragen', { waitUntil: 'load' })
 await waitHydrated(page)
 const firstQa = page.locator('.qa').first()
@@ -1331,19 +1622,24 @@ const qaClosed = await firstQa.evaluate((el) => ({
   height: el.querySelector('.qa__a').style.height,
 }))
 check('FAQ sluit', !qaClosed.open && qaClosed.height === '0px')
+})
 
 /* --- lichte header op juridische pagina --- */
+await vang("lichte header op juridische pagina", async () => {
 await page.goto(BASE + '/algemene-voorwaarden', { waitUntil: 'load' })
 await waitHydrated(page)
 const lightNav = await page.evaluate(
   () => document.getElementById('nav')?.classList.contains('nav--light'),
 )
 check('lichte header op juridische pagina', !!lightNav)
+})
 
 /* --- beeld laadt --- */
-await page.goto(BASE + '/', { waitUntil: 'load' })
+await vang("case-afbeeldingen laden", async () => {
+await page.goto(BASE + '/diensten/conversie-website', { waitUntil: 'load' })
 await waitHydrated(page)
 // Beeld is lazy-loaded, dus eerst naar de cases-sectie scrollen.
+// De homepage heeft geen #werk meer; de cases staan op de dienstpagina.
 await page.evaluate(() => document.querySelector('#werk')?.scrollIntoView())
 await page.waitForTimeout(1200)
 await page.waitForFunction(
@@ -1358,13 +1654,19 @@ const imgs = await page.evaluate(() =>
 )
 check('case-afbeeldingen laden', imgs.length > 0 && imgs.every((i) => i.ok),
   `${imgs.filter((i) => i.ok).length}/${imgs.length}`)
+})
 
 /* --- interne navigatie zonder full reload --- */
+await vang("client-side navigatie werkt", async () => {
+await page.goto(BASE + '/', { waitUntil: 'load' })
+await waitHydrated(page)
 await page.click('.footer__col a[href="/diensten/conversie-website"]')
 await page.waitForURL('**/diensten/conversie-website')
 check('client-side navigatie werkt', page.url().endsWith('/diensten/conversie-website'))
+})
 
 /* --- concept-pagina's mogen het design system niet vervuilen --- */
+await vang("concept-CSS lekt niet naar de site", async () => {
 const homeBefore = await page.evaluate(() => ({
   font: getComputedStyle(document.querySelector('h1')).fontFamily,
   bg: getComputedStyle(document.body).backgroundColor,
@@ -1387,6 +1689,7 @@ const homeAfter = await page.evaluate(() => ({
 check('concept-CSS lekt niet naar de site',
   homeBefore.font === homeAfter.font && homeBefore.bg === homeAfter.bg,
   `${homeAfter.font} / ${homeAfter.bg}`)
+})
 
 /* --- oude URL's blijven werken --- */
 const redirects = [
@@ -1395,13 +1698,17 @@ const redirects = [
   ['/index.html', '/'],
 ]
 for (const [from, to] of redirects) {
+  await vang(`301 ${from}`, async () => {
   const res = await page.request.get(BASE + from, { maxRedirects: 0 })
   const loc = res.headers()['location'] ?? ''
   check(`301 ${from}`, res.status() === 301 && loc.replace(BASE, '') === to,
     `${res.status()} → ${loc.replace(BASE, '')}`)
+  })
 }
+await vang("onbekende URL geeft 404", async () => {
 const missing = await page.request.get(BASE + '/bestaat-niet', { maxRedirects: 0 })
 check('onbekende URL geeft 404', missing.status() === 404, String(missing.status()))
+})
 
 /* --- kennisbank: FAQ-blok, FAQPage en auteur --- */
 const JOSHUA_ID = 'https://megaonline.io/#joshua-bink'
@@ -1471,6 +1778,7 @@ for (const pad of [
   '/kennisbank/freelance-webdesigner-of-webbureau',
   '/kennisbank/gevonden-worden-in-chatgpt',
 ]) {
+  await vang(`${pad} toont FAQ-blok en FAQPage`, async () => {
   const data = await openKennisbank(pad)
   const schemaVragen = (data.faqVragen[0] ?? []).map(normTekst)
   const zichtbaar = data.vragen.map(normTekst)
@@ -1484,9 +1792,10 @@ for (const pad of [
     data.faqBlok && gelijk && data.vijf && auteurIsJoshua(data.author) && data.joshua,
     `blok=${data.faqBlok} vragen=${zichtbaar.length} schema=${data.faqVragen.length} vijf=${data.vijf} auteur=${JSON.stringify(data.author)} joshua=${data.joshua}`,
   )
+  })
 }
 
-{
+await vang("waar-boekingen-weglekken", async () => {
   await page.goto(BASE + '/kennisbank/waar-boekingen-weglekken', { waitUntil: 'load' })
   await waitHydrated(page)
   const artikel = await page.evaluate(() => ({
@@ -1521,9 +1830,9 @@ for (const pad of [
       artikel.ctaKop === 'Wil je weten wat je site laat liggen?',
     `${artikel.ctaHref} / ${artikel.ctaTekst} / ${artikel.ctaKop}`,
   )
-}
+})
 
-{
+await vang("wat-is-seo", async () => {
   const res = await page.goto(BASE + '/kennisbank/wat-is-seo', { waitUntil: 'load' })
   await waitHydrated(page)
   const artikel = await page.evaluate(() => ({
@@ -1576,9 +1885,9 @@ for (const pad of [
     kapot.length === 0 && artikel.interne.includes('/diensten/seo'),
     kapot.join(', ') || artikel.interne.join(' '),
   )
-}
+})
 
-{
+await vang("freelance-webdesigner-of-webbureau", async () => {
   const res = await page.goto(BASE + '/kennisbank/freelance-webdesigner-of-webbureau', { waitUntil: 'load' })
   await waitHydrated(page)
   const artikel = await page.evaluate(() => {
@@ -1673,21 +1982,20 @@ for (const pad of [
       artikel.interne.includes('/kennisbank/vertrouwen-wekken-zakelijke-website'),
     kapotBureau.join(', ') || artikel.interne.join(' '),
   )
-}
+})
 
-{
+await vang("freelancer-bronnen", async () => {
+  // De homepage linkt niet meer naar het freelancer-artikel en bevat de oude
+  // zin niet. De check op / komt daarom niet terug. De zinnen hieronder zijn
+  // de volledige huidige tekst, niet de ingekorte fragmenten.
   const bronnen = [
     {
-      pad: '/',
-      stuk: 'hoe bezoekers daadwerkelijk actie ondernemen. Twijfel je tussen een freelancer en een bureau? Lees de eerlijke vergelijking tussen een freelancer en een webbureau.',
-    },
-    {
       pad: '/diensten/conversie-website',
-      stuk: 'een website die klanten oplevert. Wat het verschil is tussen een freelancer en een bureau, lees je in freelancer of webbureau: wat past bij jou?.',
+      stuk: 'Een goedkope website ziet er soms prima uit, maar denkt niet na over vertrouwen, gebruiksgemak en hoe bezoekers tot een aanvraag komen. Wij bouwen vanuit dat doel. Lees ook freelancer of webbureau: wat past bij jou?',
     },
     {
       pad: '/diensten/starter-website',
-      stuk: 'doet je net zo goed tekort. Twijfel je ook tussen een freelancer en een bureau? Lees freelance webdesigner of webbureau.',
+      stuk: 'Twijfel je tussen een freelancer en een bureau? Lees dan freelance webdesigner of webbureau: wat past bij jou?',
     },
     {
       pad: '/over-megaonline',
@@ -1711,9 +2019,9 @@ for (const pad of [
       `stuk=${gevonden.stuk} href=${gevonden.href}`,
     )
   }
-}
+})
 
-{
+await vang("chatgpt-mkb", async () => {
   const res = await page.goto(BASE + '/kennisbank/gevonden-worden-in-chatgpt', { waitUntil: 'load' })
   await waitHydrated(page)
   const artikel = await page.evaluate(() => {
@@ -1816,9 +2124,9 @@ for (const pad of [
       artikel.interne.includes('/kennisbank/website-levert-geen-aanvragen-op'),
     kapotChat.join(', ') || artikel.interne.join(' '),
   )
-}
+})
 
-{
+await vang("/diensten/seo linkt naar gevonden worden in ChatGPT", async () => {
   await page.goto(BASE + '/diensten/seo', { waitUntil: 'load' })
   await waitHydrated(page)
   const seoBron = await page.evaluate(() => {
@@ -1826,7 +2134,7 @@ for (const pad of [
     const hrefs = [...document.querySelectorAll('a')].map((a) => a.getAttribute('href') || '')
     return {
       stuk: tekst.includes(
-        "en de website zorgt dat er wat uitkomt. Hoe AI-zoekmachines bedrijven kiezen om te noemen, lees je in gevonden worden in ChatGPT als mkb'er.",
+        "Hoe AI-zoekmachines bedrijven kiezen om te noemen, lees je in gevonden worden in ChatGPT als mkb'er.",
       ),
       href: hrefs.includes('/kennisbank/gevonden-worden-in-chatgpt'),
     }
@@ -1836,9 +2144,9 @@ for (const pad of [
     seoBron.stuk && seoBron.href,
     `stuk=${seoBron.stuk} href=${seoBron.href}`,
   )
-}
+})
 
-{
+await vang("artikel zonder FAQ toont geen FAQ-blok en geen FAQPage", async () => {
   const data = await openKennisbank('/kennisbank/smoke-zonder-faq')
   check(
     'artikel zonder FAQ toont geen FAQ-blok en geen FAQPage',
@@ -1850,9 +2158,9 @@ for (const pad of [
       data.joshua,
     `blok=${data.faqBlok} schema=${data.faqVragen.length} vijf=${data.vijf} auteur=${JSON.stringify(data.author)} joshua=${data.joshua}`,
   )
-}
+})
 
-{
+await vang("gezet auteursveld gebruikt die naam en slaat FAQ over", async () => {
   const data = await openKennisbank('/kennisbank/smoke-met-auteur')
   const author = data.author ?? {}
   check(
@@ -1866,8 +2174,9 @@ for (const pad of [
       !author['@id'],
     `blok=${data.faqBlok} schema=${data.faqVragen.length} auteur=${JSON.stringify(data.author)}`,
   )
-}
+})
 
+await vang("kennisbankoverzicht", async () => {
 await page.goto(BASE + '/kennisbank', { waitUntil: 'load' })
 await waitHydrated(page)
 const overzichtHrefs = await page.evaluate(() =>
@@ -1887,6 +2196,7 @@ const overzichtEind = await page.evaluate(() =>
   (document.querySelector('#scan a.btn')?.textContent || '').replace(/\s+/g, ' ').trim(),
 )
 check('kennisbankoverzicht toont de scan-tekst', overzichtEind === CTA_SCAN, overzichtEind)
+})
 
 async function leesArtikelForm(pad) {
   await page.goto(BASE + pad, { waitUntil: 'load' })
@@ -1919,6 +2229,7 @@ for (const [pad, eind, form] of [
   ['/kennisbank/gevonden-worden-in-chatgpt', CTA_SCAN, false],
   ['/kennisbank/smoke-zonder-faq', CTA_SCAN, false],
 ]) {
+  await vang(`${pad} eind-CTA en formulier volgen het artikelveld`, async () => {
   const artikel = await leesArtikelForm(pad)
   check(
     `${pad} eind-CTA en formulier volgen het artikelveld`,
@@ -1928,10 +2239,11 @@ for (const [pad, eind, form] of [
       (!form || artikel.formVoorMorgen),
     `eind=${artikel.eind} href=${artikel.href} form=${artikel.heeftForm} voorMorgen=${artikel.formVoorMorgen}`,
   )
+  })
 }
 
 /* --- sitemap lastmod --- */
-{
+await vang("sitemap", async () => {
   const res = await page.request.get(BASE + "/sitemap.xml");
   const xml = await res.text();
   const blocks = [...xml.matchAll(/<url>([\s\S]*?)<\/url>/g)].map((m) => m[1]);
@@ -1940,7 +2252,28 @@ for (const [pad, eind, form] of [
   );
   const dates = lastmods.map((list) => list[0] ?? "");
   check("sitemap 200", res.status() === 200, String(res.status()));
-  check("sitemap heeft 41 urls", blocks.length === 41, String(blocks.length));
+  const verwacht = sitemapPaden(leesSitemapBestand());
+  const geleverd = sitemapPaden(xml);
+  check(
+    "sitemap-aantal volgt public/sitemap.xml",
+    blocks.length === verwacht.length &&
+      geleverd.length === verwacht.length &&
+      verwacht.length >= SITEMAP_ONDERGRENS &&
+      verwacht.every((pad) => geleverd.includes(pad)),
+    `bestand=${verwacht.length} antwoord=${blocks.length}`,
+  );
+  const dekking = sitemapDekking(bestaandeRoutes(), verwacht);
+  check(
+    "elke route staat in de sitemap, behalve de twee uitzonderingen",
+    dekking.ondergrens && dekking.ontbreekt.length === 0,
+    dekking.ontbreekt.slice(0, 6).join(", ") || String(verwacht.length),
+  );
+  const onbekendeRoutes = verwacht.filter((pad) => !bestaandeRoutes().has(pad));
+  check(
+    "elke sitemap-url is een bestaande route",
+    verwacht.length > 0 && onbekendeRoutes.length === 0,
+    onbekendeRoutes.slice(0, 6).join(", ") || String(verwacht.length),
+  );
   const scanInSitemap = blocks.find((block) => block.includes("https://megaonline.io/gratis-websitescan"));
   check(
     "sitemap bevat de scan van vandaag en niet het oude conceptadres",
@@ -2003,10 +2336,11 @@ for (const [pad, eind, form] of [
     new Set(dates).size > 1,
     [...new Set(dates)].join(", "),
   );
-}
+})
 
 /* --- broodkruimels diensten en branches --- */
 for (const crumbPath of ["/diensten/integraties", "/diensten/seo", "/branches/verhuurbedrijven"]) {
+  await vang(`${crumbPath} kruimels`, async () => {
   await page.goto(BASE + crumbPath, { waitUntil: "load" });
   await waitHydrated(page);
   await page.waitForFunction(
@@ -2086,10 +2420,13 @@ for (const crumbPath of ["/diensten/integraties", "/diensten/seo", "/branches/ve
       ),
     crumb.hrefs.join(", "),
   );
+  })
 }
 
 /* ---------------- Mobiel ---------------- */
-const mobile = await browser.newPage({ viewport: { width: 390, height: 844 } })
+await vang("mobiel menu", async () => {
+const mobile = await browserContext.newPage()
+await mobile.setViewportSize({ width: 390, height: 844 })
 mobile.on('pageerror', (e) => consoleErrors.push('mobile: ' + String(e)))
 await installRoutes(mobile)
 await mobile.goto(BASE + '/', { waitUntil: 'load' })
@@ -2126,25 +2463,47 @@ await mobile.waitForTimeout(400)
 check('mobiel menu sluit', await mobile.evaluate(
   () => !document.getElementById('drawer')?.classList.contains('open'),
 ))
+})
 
 /* --- conceptformulier: fallback in beeld, desktop en 390px --- */
-async function fillConcept(pg, email, naam) {
-  const choice = (step, index) =>
+/** AanvraagKort op de homepage: vier stappen, geen keuze op stap 2. */
+async function vulKort(pg, email, naam) {
+  const kies = (step, index) =>
     pg.locator(`.fstep[data-step="${step}"] .choice input`).nth(index)
-  await choice(1, 0).check()
-  await choice(1, 1).check()
+  await kies(1, 0).check()
+  await kies(1, 1).check()
   await pg.click('.fstep[data-step="1"] [data-next]')
   await pg.waitForTimeout(150)
-  await choice(2, 0).check()
+  await pg.fill('[name="bedrijf"]', 'Testbedrijf BV')
+  await pg.fill('[name="url"]', 'mijnbedrijf.nl')
   await pg.click('.fstep[data-step="2"] [data-next]')
   await pg.waitForTimeout(150)
-  await choice(3, 0).check()
+  await kies(3, 0).check()
+  await pg.click('.fstep[data-step="3"] [data-next]')
+  await pg.waitForTimeout(150)
+  await pg.fill('[name="naam"]', naam)
+  await pg.fill('[name="email"]', email)
+  await pg.fill('[name="telefoon"]', '0688888888')
+}
+
+/** ConceptForm op een kennisbankartikel: nog steeds zes stappen. */
+async function fillConcept(pg, email, naam) {
+  const kies = (step, index) =>
+    pg.locator(`.fstep[data-step="${step}"] .choice input`).nth(index)
+  await kies(1, 0).check()
+  await kies(1, 1).check()
+  await pg.click('.fstep[data-step="1"] [data-next]')
+  await pg.waitForTimeout(150)
+  await kies(2, 0).check()
+  await pg.click('.fstep[data-step="2"] [data-next]')
+  await pg.waitForTimeout(150)
+  await kies(3, 0).check()
   await pg.click('.fstep[data-step="3"] [data-next]')
   await pg.waitForTimeout(150)
   await pg.fill('[name="bedrijf"]', 'Testbedrijf BV')
   await pg.click('.fstep[data-step="4"] [data-next]')
   await pg.waitForTimeout(150)
-  await choice(5, 0).check()
+  await kies(5, 0).check()
   await pg.click('.fstep[data-step="5"] [data-next]')
   await pg.waitForTimeout(150)
   await pg.fill('[name="naam"]', naam)
@@ -2155,10 +2514,10 @@ async function fillConcept(pg, email, naam) {
 async function conceptFallback(pg) {
   await pg.goto(BASE + '/', { waitUntil: 'load' })
   await waitHydrated(pg)
-  await fillConcept(pg, 'concept-faalt@example.com', 'Concept Faalt')
+  await vulKort(pg, 'concept-faalt@example.com', 'Concept Faalt')
   const beforeLeads = readLeads().filter((l) => l.email === 'concept-faalt@example.com').length
   const beforePosts = clientPosts.filter((p) => p.body.includes('concept-faalt')).length
-  await pg.click('.fstep[data-step="6"] button[type="submit"]')
+  await pg.click('.fstep[data-step="4"] button[type="submit"]')
   await pg.locator('[data-lead-fallback]').waitFor({ timeout: 8000 })
   await pg.waitForFunction(
     () => document.activeElement?.classList.contains('form__fallback-title'),
@@ -2186,7 +2545,7 @@ async function conceptFallback(pg) {
   return { ...state, addedLeads, addedPosts }
 }
 
-{
+await vang("conceptformulier toont de fallback", async () => {
   const desktopFallback = await conceptFallback(page)
   check('conceptformulier toont de fallback',
     !desktopFallback.sent && desktopFallback.naam === 'Concept Faalt' &&
@@ -2203,7 +2562,8 @@ async function conceptFallback(pg) {
     path: path.join(shotDir, 'lead_fallback_desktop_full.png'),
   })
 
-  const narrow = await browser.newPage({ viewport: { width: 390, height: 844 } })
+  const narrow = await browserContext.newPage()
+  await narrow.setViewportSize({ width: 390, height: 844 })
   narrow.on('pageerror', (e) => consoleErrors.push('narrow: ' + String(e)))
   await installRoutes(narrow)
   const mobileFallback = await conceptFallback(narrow)
@@ -2215,20 +2575,16 @@ async function conceptFallback(pg) {
     path: path.join(shotDir, 'lead_fallback_mobile_full.png'),
   })
   await narrow.close()
-}
+})
 
 /* --- GA4: geen request zonder statistieken-toestemming, wel erna --- */
-{
-  const gaPage = await browser.newPage({ viewport: { width: 1440, height: 900 } })
+await vang("GA4", async () => {
+  const gaPage = await browserContext.newPage({ viewport: { width: 1440, height: 900 } })
   const gaUrls = collectGaUrls(gaPage)
   gaPage.on('pageerror', (e) => consoleErrors.push('ga: ' + String(e)))
-  // Zelfde afhandeling als de rest van de smoketest (FormSubmit-mock), maar
-  // GA-requests laten doorlopen zodat de page_view na toestemming zichtbaar is.
+  // Zelfde route als de rest: mailposts lokaal, andere externe POSTs geblokkeerd.
+  // Een GET van het meetscript mag, zodat de page_view na toestemming zichtbaar is.
   await installRoutes(gaPage)
-  await gaPage.route('**/*', async (route) => {
-    if (isGaUrl(route.request().url())) return route.continue()
-    return route.fallback()
-  })
   // De rest van de test heeft de banner al weggeklikt in dezelfde context.
   await gaPage.context().clearCookies()
   await gaPage.goto(BASE + '/', { waitUntil: 'load' })
@@ -2383,8 +2739,8 @@ async function conceptFallback(pg) {
 
   await gaPage.goto(BASE + '/', { waitUntil: 'load' })
   await waitHydrated(gaPage)
-  await fillConcept(gaPage, 'concept-lead@example.com', 'Concept Lead')
-  await gaPage.click('.fstep[data-step="6"] button[type="submit"]')
+  await vulKort(gaPage, 'concept-lead@example.com', 'Concept Lead')
+  await gaPage.click('.fstep[data-step="4"] button[type="submit"]')
   await gaPage.waitForFunction(
     () => document.querySelector('.concept.form')?.classList.contains('sent'),
     null,
@@ -2395,7 +2751,7 @@ async function conceptFallback(pg) {
   check(
     'met consent stuurt het conceptformulier generate_lead',
     conceptEvents.length === 1 &&
-      conceptEvent?.form_name === 'scan' &&
+      conceptEvent?.form_name === 'concept' &&
       conceptEvent?.page_path === '/' &&
       conceptEvent?.keys.join(',') === 'form_name,page_path' &&
       !/concept-lead@example.com|Concept Lead/.test(conceptEvent?.raw ?? ''),
@@ -2543,7 +2899,7 @@ async function conceptFallback(pg) {
     `toggle=${toggled} nieuw=${afterRevoke.join(' ')}`,
   )
   await gaPage.close()
-}
+})
 
 check(
   'smoketest zonder cookietoestemming doet geen GA-request',
@@ -2551,9 +2907,12 @@ check(
   mainGaUrls.join(' '),
 )
 
+await vang("CTA-teksten", async () => {
 await controleerCtaTeksten(browser)
+})
 
 /* ---------------- Resultaat ---------------- */
+await vang("resultaat", async () => {
 const realErrors = consoleErrors.filter(
   (e) => !/favicon|React DevTools|net::ERR_FAILED|Failed to load resource/i.test(e),
 )
@@ -2573,8 +2932,14 @@ check(
     ongeldigeLogs.length === 0,
   `logs=${alleLeadLogs.length} server=${serverPosts} afgekeurd=${afgekeurd} ongeldig=${ongeldigeLogs.map((entry) => entry.raw).slice(0, 2).join(' | ')}`,
 )
+})
 
-await browser.close()
-console.table(results)
-console.log(failed ? `${failed} test(s) gefaald.` : 'Alle smoketests geslaagd.')
-process.exitCode = failed ? 1 : 0
+} catch (error) {
+  check('onverwachte crash', false, fouttekst(error))
+} finally {
+  rapporteerOntsnapt()
+  await browser.close().catch(() => {})
+  console.table(results)
+  console.log(failed ? `${failed} test(s) gefaald.` : 'Alle smoketests geslaagd.')
+  process.exitCode = failed ? 1 : 0
+}

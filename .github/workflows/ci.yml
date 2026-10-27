@@ -56,6 +56,10 @@ jobs:
       - name: Install dependencies
         run: bun install --frozen-lockfile
 
+      # Faalt deze stap, dan start de smoketest niet en wordt geen formulier verstuurd.
+      - name: Blokkade
+        run: node scripts/blokkade-check.mjs
+
       # Playwright hoort niet bij de site. Alleen deze job installeert hem,
       # zonder package.json of het lockfile aan te passen.
       - name: Install browser
@@ -63,13 +67,20 @@ jobs:
           bun add --no-save playwright@1.63.0
           bunx playwright install --with-deps chromium
 
+      # Tijdelijk alleen de CTA-controle, plus de blokkade-check hierboven.
+      # De volledige smoketest gaat pas weer aan na de herreview van Klaas
+      # en het ja van Joshua. Tot die tijd vult deze job geen formulier in.
       - name: Smoketest
         env:
           BASE: http://localhost:3000
+          # Zonder deze lokale mock post de dev-server naar het echte FormSubmit.
+          # De sleutel blijft leeg zodat Resend niet wordt aangeroepen.
           MO_LEAD_MAIL_ENDPOINT: http://localhost:3101/mail
           MO_RESEND_API_KEY: ""
         run: |
           set -euo pipefail
+          node scripts/blokkade-check.mjs
+          node --input-type=module -e "import { isLoopbackUrl } from './scripts/mail-blokkade.mjs'; const eindpunt = process.env.MO_LEAD_MAIL_ENDPOINT ?? ''; if (!isLoopbackUrl(eindpunt)) { console.error('MO_LEAD_MAIL_ENDPOINT is geen lokaal nepadres: ' + eindpunt); process.exit(1); } if (process.env.MO_RESEND_API_KEY) { console.error('MO_RESEND_API_KEY moet leeg zijn'); process.exit(1); }"
           node scripts/mock-endpoint.mjs > /tmp/mock-mail.log 2>&1 &
           bun run dev -- --host :: --port 3000 --strictPort > /tmp/dev-server.log 2>&1 &
           ready=0
@@ -88,4 +99,5 @@ jobs:
           CHROMIUM_PATH="$(node --input-type=module -e 'import { chromium } from "playwright"; process.stdout.write(chromium.executablePath())')"
           export CHROMIUM_PATH
           test -x "$CHROMIUM_PATH"
-          node scripts/smoke.mjs
+          # Volledige smoketest pas weer na de herreview van Klaas en het ja van Joshua.
+          node scripts/smoke.mjs --alleen-cta
