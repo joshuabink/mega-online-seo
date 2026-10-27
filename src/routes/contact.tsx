@@ -87,7 +87,7 @@ function Contact() {
                   <h3>Laat je gegevens achter</h3>
                   {' '}
                   <p>
-                    MegaOnline neemt contact op om een kort, vrijblijvend gesprek in te plannen op een moment dat jou uitkomt.
+                    We nemen contact op om een kort, vrijblijvend gesprek in te plannen op een moment dat jou uitkomt.
                   </p>
                   {' '}
                   <span className="form__person">
@@ -102,7 +102,7 @@ function Contact() {
                 <>
                 <div className="ic">✓</div>
                 {' '}
-                <h3>Bedankt. MegaOnline neemt contact op.</h3>
+                <h3>Bedankt. We nemen contact met je op.</h3>
                 {' '}
                 <p>
                   Je aanvraag is ontvangen. We reageren gemiddeld {CONTACT_REACTIETIJD} om samen een moment te prikken.
@@ -110,70 +110,34 @@ function Contact() {
                 </>
               }
             >
-              <div className="field">
-                <label htmlFor="c-naam">Je naam</label>
-                {' '}
-                <input id="c-naam" name="naam" type="text" placeholder="Voor- en achternaam" required />
-              </div>
-              {' '}
               <div className="field-row">
                 <div className="field">
-                  <label htmlFor="c-bedrijf">Bedrijfsnaam</label>
-                  {' '}
-                  <input id="c-bedrijf" name="bedrijf" type="text" placeholder="Bedrijfsnaam" />
+                  <label htmlFor="c-naam">Je naam</label>
+                  <input id="c-naam" name="naam" type="text" placeholder="Voor- en achternaam" autoComplete="name" required />
                 </div>
-                {' '}
+                <div className="field">
+                  <label htmlFor="c-bedrijf">
+                    Bedrijfsnaam <span className="opt">(optioneel)</span>
+                  </label>
+                  <input id="c-bedrijf" name="bedrijf" type="text" placeholder="Bedrijfsnaam" autoComplete="organization" />
+                </div>
+              </div>
+              <div className="field-row">
                 <div className="field">
                   <label htmlFor="c-email">E-mailadres</label>
-                  {' '}
-                  <input id="c-email" name="email" type="email" placeholder="jij@bedrijf.nl" required />
+                  <input id="c-email" name="email" type="email" placeholder="jij@bedrijf.nl" autoComplete="email" inputMode="email" required />
                 </div>
-              </div>
-              {' '}
-              <div className="field-row">
                 <div className="field">
-                  <label htmlFor="c-tel">Telefoonnummer</label>
-                  {' '}
-                  <input id="c-tel" name="tel" type="tel" placeholder="06 12345678" />
-                </div>
-                {' '}
-                <div className="field">
-                  <label htmlFor="c-kanaal">Liefst contact via</label>
-                  {' '}
-                  <select id="c-kanaal" name="kanaal">
-                    <option value="Bellen">Bellen</option>
-                    {' '}
-                    <option value="Videocall">Videocall</option>
-                    {' '}
-                    <option value="WhatsApp">WhatsApp</option>
-                    {' '}
-                    <option value="Maakt niet uit">Maakt niet uit</option>
-                  </select>
+                  <label htmlFor="c-tel">
+                    Telefoonnummer <span className="opt">(optioneel)</span>
+                  </label>
+                  <input id="c-tel" name="tel" type="tel" placeholder="06 12345678" autoComplete="tel" inputMode="tel" />
                 </div>
               </div>
-              {' '}
               <div className="field">
-                <label htmlFor="c-onderwerp">Waar gaat het over?</label>
-                {' '}
-                <select id="c-onderwerp" name="onderwerp" required defaultValue="">
-                  <option value="" disabled>Kies wat het beste past</option>
-                  {' '}
-                  <option value="Een nieuwe website">Een nieuwe website</option>
-                  {' '}
-                  <option value="Mijn bestaande website verbeteren">Mijn bestaande website verbeteren</option>
-                  {' '}
-                  <option value="Vrijblijvend sparren">Vrijblijvend sparren</option>
-                  {' '}
-                  <option value="Iets anders">Iets anders</option>
-                </select>
+                <label htmlFor="c-bericht">Je bericht</label>
+                <textarea id="c-bericht" name="bericht" rows={4} placeholder="Vertel kort waar je hulp bij zoekt" required />
               </div>
-              {' '}
-              <div className="field">
-                <label htmlFor="c-bericht">Je bericht (optioneel)</label>
-                {' '}
-                <textarea id="c-bericht" name="bericht" placeholder="Vertel kort waar je hulp bij zoekt" />
-              </div>
-              {' '}
               <button className="btn btn-primary" type="submit" style={{ width: "100%", justifyContent: "center" }}>
                 Plan de kennismaking
                 {' '}

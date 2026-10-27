@@ -12,6 +12,12 @@
 [data-page="contact"] .estep .en { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.12em; color: var(--accent-text); }
 [data-page="contact"] .estep h3 { font-family: var(--display); font-weight: 600; font-size: 1.22rem; letter-spacing: -0.02em; line-height: 1.12; }
 [data-page="contact"] .estep p { color: var(--muted); line-height: 1.55; }
-[data-page="contact"] .scanform .field + .field, [data-page="contact"] .scanform .field-row + .field, [data-page="contact"] .scanform .field + .field-row { margin-top: 14px; }
+[data-page="contact"] .scanform .field-row { margin-bottom: 16px; align-items: start; }
+[data-page="contact"] .scanform .field { margin-bottom: 16px; }
+[data-page="contact"] .scanform .field-row > .field { margin-bottom: 0; }
+[data-page="contact"] .scanform .field label { font-family: var(--sans); font-size: 0.92rem; font-weight: 500; letter-spacing: 0; text-transform: none; color: var(--fg); margin-bottom: 6px; }
+[data-page="contact"] .scanform .field label .opt { font-weight: 400; color: var(--muted); }
+[data-page="contact"] .scanform .field input:focus-visible, [data-page="contact"] .scanform .field textarea:focus-visible { outline: 2px solid #23593D; outline-offset: 1px; }
 [data-page="contact"] .scanform textarea { width: 100%; resize: vertical; min-height: 92px; }
+  @media (max-width: 560px) {[data-page="contact"] .scanform .field-row { grid-template-columns: 1fr; gap: 16px; } }
   @media (max-width: 880px) {[data-page="contact"] .ccards { grid-template-columns: 1fr; }[data-page="contact"] .expect { grid-template-columns: 1fr; } }
