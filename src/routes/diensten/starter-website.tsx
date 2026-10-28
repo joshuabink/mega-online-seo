@@ -103,7 +103,15 @@ const FAQ_ITEMS: { q: string; a: ReactNode }[] = [
   },
   {
     q: 'Hoe snel staat mijn website online?',
-    a: 'Doordat de website compacter is, gaat het sneller dan bij een groter traject. Zodra je teksten, logo en beeld hebt aangeleverd, sta je doorgaans binnen enkele weken live.',
+    a: (
+      <>
+        Doordat de website compacter is, gaat het sneller dan bij een groter traject. Zodra je{' '}
+        <Link to="/kennisbank/$slug" params={{ slug: 'wat-lever-je-aan-nieuwe-website' }}>
+          teksten, logo en beeld
+        </Link>{' '}
+        hebt aangeleverd, sta je doorgaans binnen enkele weken live.
+      </>
+    ),
   },
   {
     q: 'Twijfel je tussen een freelancer en een bureau?',

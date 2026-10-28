@@ -175,6 +175,22 @@ const FAQ_ITEMS: { q: string; a: string }[] = [
   },
 ]
 
+/** Zelfde zin als in het schema. Alleen de genoemde frase wordt een link. */
+function HomeFaqAntwoord({ tekst }: { tekst: string }) {
+  const frase = "teksten en foto's"
+  const op = tekst.indexOf(frase)
+  if (op < 0) return tekst
+  return (
+    <>
+      {tekst.slice(0, op)}
+      <Link to="/kennisbank/$slug" params={{ slug: 'wat-lever-je-aan-nieuwe-website' }}>
+        {frase}
+      </Link>
+      {tekst.slice(op + frase.length)}
+    </>
+  )
+}
+
 /** FAQPage-schema uit dezelfde bron als de zichtbare vragen. */
 const FAQ_SCHEMA = {
   '@context': 'https://schema.org',
@@ -401,7 +417,7 @@ function Home() {
           <div className="faq">
             {FAQ_ITEMS.map(({ q, a }) => (
               <Qa key={q} question={q} className="reveal">
-                {a}
+                <HomeFaqAntwoord tekst={a} />
               </Qa>
             ))}
           </div>
