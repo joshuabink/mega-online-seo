@@ -1769,6 +1769,162 @@ export const ARTIKELEN: Artikel[] = [
     metaDescription:
       "Een website met reserveringssysteem kost drie dingen: de site, het systeem en de koppeling. Zo vergelijk je offertes en reken je het door over een jaar.",
   },
+  {
+    slug: "wat-lever-je-aan-nieuwe-website",
+    naam: "Wat lever je aan voor je nieuwe website",
+    vraag: "Wat lever je aan voor je nieuwe website?",
+    pijler: "Marketing",
+    icoon: "list-checks",
+    branche: "Algemeen",
+    teaser:
+      "Teksten, foto's, logo en toegang tot je domein. Deze checklist laat zien wat je klaarzet voor een nieuwe website en wat ruw mag.",
+    antwoord:
+      "Een nieuwe website staat of valt met de informatie die erin gaat. Een webbouwer kan structuur en vormgeving regelen, maar weet niet uit zichzelf wat je aanbiedt, voor wie je werkt en hoe klanten contact opnemen. Met deze checklist zet je alles op één plek klaar. Alles hoeft niet perfect te zijn: ruwe teksten en scherpe foto's van je telefoon zijn een goed begin.\n\nHoe lang de bouw duurt, hangt mede af van wanneer teksten en foto's klaar zijn. Wie het materiaal vóór de start klaarzet, voorkomt wachttijd tijdens de bouw.",
+    leestijd: "4 minuten",
+    // PLAATSHOUDER: geen echte publicatiedatum. Vervang beide velden en de
+    // sitemap-lastmod door de publicatiedag na Publish.
+    gepubliceerd: "1970-01-01",
+    gewijzigd: "1970-01-01",
+    cta: "scan",
+    eindKop: "Heb je al een website?",
+    eindLead:
+      "De gratis website scan laat zien wat ervan bruikbaar is voor de nieuwe. Binnen 5 werkdagen ontvang je een rapport, dat in een persoonlijk videogesprek wordt toegelicht.",
+    secties: [
+      {
+        kop: "1. Bedrijfsgegevens",
+        accent: "Bedrijfsgegevens",
+        alineas: [
+          `1. Bedrijfsnaam zoals ingeschreven bij de KVK, KVK-nummer en btw-identificatienummer.
+2. Adres, telefoonnummer en zakelijk e-mailadres.
+3. Openingstijden en werkgebied.
+4. Links naar je social media en je Google Bedrijfsprofiel, als je die hebt.`,
+        ],
+      },
+      {
+        kop: "2. Wat je aanbiedt en voor wie",
+        accent: "aanbiedt",
+        alineas: [
+          `1. Per dienst of product: wat het is, voor wie het bedoeld is en hoe het werkt.
+2. De vragen die klanten je nu al stellen. Die zijn de basis voor een veelgestelde vragen-blok.
+3. Wat een bezoeker moet doen: bellen, een formulier invullen, een afspraak maken of boeken.
+4. Prijzen of de opbouw van je prijs, alleen als je die op de site wilt tonen.`,
+        ],
+      },
+      {
+        kop: "3. Teksten",
+        accent: "Teksten",
+        alineas: [
+          `1. Bestaande teksten: je huidige website, een brochure, een offerte of een presentatie. Daar staan vaak de feiten al in.
+2. Een korte tekst over je bedrijf: wie je bent, sinds wanneer en waar je goed in bent.
+3. Klantreacties alleen als de klant toestemming geeft om ze te gebruiken.
+4. Teksten mogen ruw. Juiste feiten zijn belangrijker dan mooie zinnen.`,
+        ],
+      },
+      {
+        kop: "4. Foto's en logo",
+        accent: "logo",
+        alineas: [
+          `1. Je logo in het beste formaat dat je hebt, bij voorkeur SVG of een grote PNG. Heb je alleen een kleine afbeelding of een screenshot, meld dat dan meteen.
+2. Originele foto's van je werk, je locatie, je team of jezelf. Een foto die via WhatsApp is doorgestuurd, kan te klein zijn voor een groot beeld. Stuur het originele bestand.
+3. Alleen beeld waarvan je de rechten hebt.
+4. Huisstijl: kleurcodes en lettertypen, als je die hebt.`,
+        ],
+      },
+      {
+        kop: "5. Toegang tot domein, e-mail en je huidige site",
+        accent: "Toegang",
+        alineas: [
+          `1. Bij welke partij staat je domeinnaam en wie kan daar inloggen?
+2. Waar draait je huidige website?
+3. Waar loopt je zakelijke e-mail?
+4. Staat een account nog op naam van een oud-medewerker of een vorige webbouwer? Regel dat aan het begin, niet vlak voor de livegang.
+5. Deel wachtwoorden niet in een gewone e-mail. Spreek met je webbouwer een veilige manier af, bijvoorbeeld een eigen account voor de bouwer.`,
+        ],
+      },
+      {
+        kop: "6. Voorbeelden en wensen",
+        accent: "wensen",
+        alineas: [
+          `1. Twee of drie websites die je goed vindt en wat je eraan aanspreekt.
+2. Functies die je nodig hebt, zoals een formulier, online reserveren of een koppeling met je agenda of CRM. Meer over koppelingen staat op [/diensten/integraties](/diensten/integraties).`,
+        ],
+      },
+      {
+        kop: "Checklist om af te vinken",
+        accent: "af te vinken",
+        alineas: [
+          `1. Bedrijfsgegevens compleet
+2. Aanbod per dienst of product beschreven
+3. Vragen van klanten verzameld
+4. Gewenste actie voor bezoekers gekozen
+5. Bestaande teksten verzameld
+6. Logo in het beste formaat
+7. Originele foto's met rechten
+8. Toegang tot domein, hosting en e-mail duidelijk
+9. Voorbeelden van sites die je goed vindt`,
+        ],
+      },
+      {
+        kop: "Wat als je nog niet alles hebt?",
+        accent: "nog niet alles",
+        alineas: [
+          "Begin met wat er al is: je bedrijfsgegevens, toegang tot je domein en een eerste beschrijving van je aanbod. Foto's en teksten kunnen in een tweede ronde. Zet wat ontbreekt op een lijst, met wie het maakt of goedkeurt. Twijfel je tussen een freelancer en een bureau voor de bouw, lees dan [Freelance webdesigner of webbureau](/kennisbank/freelance-webdesigner-of-webbureau). Begin je net, kijk dan bij de [Starter Website](/diensten/starter-website).",
+        ],
+      },
+    ],
+    doen: [
+      "Bedrijfsgegevens compleet",
+      "Aanbod per dienst of product beschreven",
+      "Vragen van klanten verzameld",
+      "Gewenste actie voor bezoekers gekozen",
+      "Bestaande teksten verzameld",
+    ],
+    faq: [
+      {
+        q: "Moet je de teksten zelf schrijven?",
+        a: "Niet per se. De feiten over je aanbod, je klanten en je werkwijze kan alleen jij leveren. Het formuleren kan een webbouwer of tekstschrijver doen. Vraag vooraf wat er in het traject zit.",
+      },
+      {
+        q: "Zijn foto's van je telefoon goed genoeg?",
+        a: "Vaak wel, als ze scherp en goed belicht zijn. Stuur het originele bestand en geen doorgestuurde versie uit een chat-app.",
+      },
+      {
+        q: "Wat als je geen logo hebt?",
+        a: "Meld het aan je webbouwer. Een logo kun je later laten maken of vervangen, zolang de rest van de informatie klaarstaat.",
+      },
+      {
+        q: "Hoe deel je inloggegevens veilig?",
+        a: "Niet in een gewone e-mail. Gebruik een wachtwoordmanager met een deelfunctie of geef de webbouwer een eigen account waar dat kan.",
+      },
+    ],
+    links: [
+      {
+        to: "/diensten/integraties",
+        label: "Koppelingen",
+        tekst:
+          "Functies die je nodig hebt, zoals een formulier, online reserveren of een koppeling met je agenda of CRM.",
+      },
+      {
+        to: "/kennisbank/freelance-webdesigner-of-webbureau",
+        label: "Freelance webdesigner of webbureau",
+        tekst: "Twijfel je tussen een freelancer en een bureau voor de bouw.",
+      },
+      {
+        to: "/diensten/starter-website",
+        label: "Starter Website",
+        tekst: "Begin je net, kijk dan bij de Starter Website.",
+      },
+      {
+        to: "/gratis-websitescan",
+        label: "Gratis website scan",
+        tekst:
+          "Heb je al een website? De scan laat zien wat ervan bruikbaar is voor de nieuwe.",
+      },
+    ],
+    metaTitle: "Wat lever je aan voor je nieuwe website? Checklist | MegaOnline",
+    metaDescription:
+      "Teksten, foto's, logo en toegang tot je domein. Deze checklist laat zien wat je klaarzet voor een nieuwe website en wat ruw mag.",
+  },
 ];
 
 /**
