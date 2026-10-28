@@ -6,9 +6,22 @@
  * Draaien met de dev-server actief:  node scripts/smoke.mjs
  */
 import { chromium } from 'playwright'
+import { spawnSync } from 'node:child_process'
 import fs from 'node:fs'
 import http from 'node:http'
 import path from 'node:path'
+import { fileURLToPath } from 'node:url'
+
+const dryCheckTest = fileURLToPath(new URL('../src/lib/lead-dry-check.test.ts', import.meta.url))
+const dryCheckUnit = spawnSync(
+  process.execPath,
+  ['--experimental-strip-types', '--test', '--test-reporter=spec', dryCheckTest],
+  { stdio: 'inherit' },
+)
+if (dryCheckUnit.status !== 0) {
+  console.error('dry-check unittests gefaald')
+  process.exit(dryCheckUnit.status === null ? 1 : dryCheckUnit.status)
+}
 
 const BASE = process.env.BASE ?? 'http://localhost:3000'
 const results = []
@@ -1310,6 +1323,46 @@ for (const [from, status, location] of canonicalRedirects) {
   )
 }
 
+{
+  const slash = await rawGet('/health/lead/onjuist/')
+  check(
+    'dry-check met slash gaat eerst canoniek',
+    slash.status === 308 && slash.location === '/health/lead/onjuist',
+    `${slash.status} → ${slash.location}`,
+  )
+  const dry = await new Promise((resolve, reject) => {
+    const target = new URL(BASE)
+    const req = http.request(
+      {
+        protocol: target.protocol,
+        hostname: target.hostname,
+        port: target.port,
+        method: 'GET',
+        path: '/health/lead/onjuist',
+      },
+      (res) => {
+        const stukken = []
+        res.on('data', (deel) => stukken.push(deel))
+        res.on('end', () =>
+          resolve({
+            status: res.statusCode ?? 0,
+            cache: String(res.headers['cache-control'] ?? ''),
+            robots: String(res.headers['x-robots-tag'] ?? ''),
+            body: Buffer.concat(stukken).toString('utf8'),
+          }),
+        )
+      },
+    )
+    req.on('error', reject)
+    req.end()
+  })
+  check(
+    'dry-check zonder geldig token is 404',
+    dry.status === 404 && !dry.body.includes('"ok"') && /no-store/i.test(dry.cache) && /noindex/i.test(dry.robots),
+    `status=${dry.status} cache=${dry.cache} robots=${dry.robots} body=${dry.body.slice(0, 80)}`,
+  )
+}
+
 /* --- FAQ accordeon --- */
 await page.goto(BASE + '/veelgestelde-vragen', { waitUntil: 'load' })
 await waitHydrated(page)
@@ -1998,6 +2051,7 @@ for (const [pad, eind, form] of [
       .join(", "),
   );
   check("sitemap zonder changefreq en priority", !/<changefreq>|<priority>/.test(xml));
+  check("sitemap noemt de dry-check niet", !xml.includes("/health/lead"));
   check(
     "lastmod is niet overal dezelfde datum",
     new Set(dates).size > 1,

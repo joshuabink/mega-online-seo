@@ -1,6 +1,7 @@
 import { createServerFn } from '@tanstack/react-start'
 import { LEAD_CONTACT } from './lead-contact'
 import { maskContact, schoneVelden } from './lead-mailto'
+import { beoordeelLeadRoute } from './lead-route.ts'
 
 /**
  * Server-side doorzetten van lead-inzendingen (TanStack Start server function).
@@ -18,15 +19,6 @@ import { maskContact, schoneVelden } from './lead-mailto'
  * veldnamen blijven zoals de formulieren ze sturen, inclusief `_subject` en
  * `_pagina`.
  */
-
-/**
- * E-mail naar zakelijk@joshuabink.nl via FormSubmit, als Resend niet is ingesteld.
- * Geen account of API-key nodig; FormSubmit stuurt álle meegegeven velden mee
- * en gebruikt dezelfde `_subject`-conventie als het bestaande formulier.
- * Let op: de eerste inzending moet éénmalig per mail bevestigd worden.
- * Te overschrijven met `MO_LEAD_MAIL_ENDPOINT`.
- */
-const DEFAULT_MAIL_ENDPOINT = `https://formsubmit.co/${LEAD_CONTACT.mail}`
 
 /**
  * FormSubmit weigert elke POST zonder `Referer` met "Unable to submit form" —
@@ -341,7 +333,13 @@ export const submitLead = createServerFn({ method: 'POST' })
     // Lovable-repo heeft die niet in zijn tsconfig staan.
     const env = (globalThis as { process?: { env?: Record<string, string | undefined> } })
       .process?.env
-    const mailRoute: 'Resend' | 'FormSubmit' = env?.MO_RESEND_API_KEY ? 'Resend' : 'FormSubmit'
+    // Zelfde oordeel als de dry-check. Hierna pas versturen of loggen.
+    const oordeel = beoordeelLeadRoute(params, env ?? {})
+    const mailRoute: 'Resend' | 'FormSubmit' = oordeel.ok
+      ? oordeel.route
+      : env?.MO_RESEND_API_KEY?.trim()
+        ? 'Resend'
+        : 'FormSubmit'
     const afronden = (gelukt: boolean, reden: string, response: LeadResponse): LeadResponse => {
       schrijfLeadLog(params, mailRoute, gelukt, reden)
       return response
@@ -350,11 +348,19 @@ export const submitLead = createServerFn({ method: 'POST' })
     // Minimale inhoudscheck: zonder contactgegevens is het geen lead.
     const email = params.get('email') ?? params.get('mail')
     const phone = params.get('telefoon') ?? params.get('tel')
-    if (!email && !phone) {
+    if (!oordeel.ok && oordeel.error === 'geen-contact') {
       log(`afgekeurd: geen e-mail of telefoon (pagina: ${paginaPad(params.get('_pagina'))})`)
       return afronden(false, 'geen-contact', {
         ok: false,
         error: 'Vul een e-mailadres of telefoonnummer in.',
+        retry: 'none',
+      })
+    }
+    if (!oordeel.ok) {
+      log(`afgekeurd: ${oordeel.error} (pagina: ${paginaPad(params.get('_pagina'))})`)
+      return afronden(false, oordeel.error, {
+        ok: false,
+        error: `Je aanvraag is niet automatisch verstuurd. Mail direct naar ${LEAD_CONTACT.mail}.`,
         retry: 'none',
       })
     }
@@ -363,8 +369,6 @@ export const submitLead = createServerFn({ method: 'POST' })
       `inzending ontvangen van ${maskContact(email ?? phone ?? '')} ` +
         `(pagina: ${paginaPad(params.get('_pagina'))}, velden: ${[...params.keys()].join(', ')})`,
     )
-
-    const mailEndpoint = env?.MO_LEAD_MAIL_ENDPOINT ?? DEFAULT_MAIL_ENDPOINT
 
     // E-mailvariant: zelfde velden, plus FormSubmit-opties voor een leesbare
     // tabel en het antwoordadres van de aanvrager.
@@ -418,10 +422,11 @@ export const submitLead = createServerFn({ method: 'POST' })
 
     // Resend zodra de sleutel er is; anders blijft FormSubmit de mailroute.
     // Er is geen tweede bestemming. De bezoeker wacht alleen op deze mail.
-    const resendKey = env?.MO_RESEND_API_KEY
-    const mailOk = resendKey
-      ? await mailViaResend(resendKey, params, env)
-      : await post(mailEndpoint, mailParams.toString(), 'e-mail (FormSubmit)', {
+    const resendKey = env?.MO_RESEND_API_KEY?.trim()
+    const mailOk =
+      oordeel.route === 'Resend'
+        ? await mailViaResend(resendKey ?? '', params, env)
+        : await post(oordeel.endpoint, mailParams.toString(), 'e-mail (FormSubmit)', {
           headers: { Referer: MAIL_REFERER, Origin: 'https://megaonline.io' },
           verify: formSubmitWeigering,
         })
