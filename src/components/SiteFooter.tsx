@@ -26,6 +26,7 @@ const BRANCHES = [
 
 const BEDRIJF = [
   ['/over-megaonline', 'Over MegaOnline'],
+  ['/joshua-bink', 'Joshua Bink'],
   ['/concepten', 'Concepten'],
   ['/werken-bij', 'Werken bij'],
   ['/gratis-websitescan', 'Gratis website scan'],

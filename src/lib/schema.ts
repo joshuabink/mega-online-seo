@@ -13,14 +13,15 @@
  *   #organization  ← de entiteit MegaOnline.io
  *   #website       ← de site, publisher = #organization
  *   #logo          ← afbeelding, hergebruikt door beide
- *   #joshua-bink   ← oprichter
+ *   #joshua-bink   ← oprichter en auteur, met eigen pagina /joshua-bink
  *   <url>#webpage  ← per pagina, about = #organization
  *
  * De `@id`'s zijn bewust ongewijzigd t.o.v. de vorige versie: Google heeft die
  * al gezien en hergebruik voorkomt dat de entiteit opnieuw moet worden geleerd.
  */
 
-import { artikelBySlug, type Artikel } from "./kennisbank";
+import { AUTEUR } from "./auteur";
+import { artikelBySlug, artikelenNieuwsteEerst, type Artikel } from "./kennisbank";
 import { SCAN_FAQ } from "./scan";
 import { GELDIG_TOT, GEPLAATST_OP, VOORWAARDEN, vacatureBySlug, type Vacature } from "./vacatures";
 
@@ -30,6 +31,8 @@ const ORG_ID = `${SITE_URL}/#organization`;
 const WEBSITE_ID = `${SITE_URL}/#website`;
 const LOGO_ID = `${SITE_URL}/#logo`;
 const FOUNDER_ID = `${SITE_URL}/#joshua-bink`;
+const AUTEUR_URL = `${SITE_URL}${AUTEUR.pad}`;
+const PORTRET_ID = `${SITE_URL}/#joshua-bink-portret`;
 
 /** Absolute URL voor een routepad. De homepage houdt zijn sluitende slash. */
 export function absoluteUrl(pathname: string): string {
@@ -128,14 +131,7 @@ const ORGANIZATION = {
     "https://www.linkedin.com/company/megaonline/",
     "https://www.instagram.com/megaonline.io/",
   ],
-  founder: {
-    "@type": "Person",
-    "@id": FOUNDER_ID,
-    name: "Joshua Bink",
-    jobTitle: "Oprichter",
-    worksFor: { "@id": ORG_ID },
-    sameAs: ["https://nl.linkedin.com/in/joshuabink"],
-  },
+  founder: { "@id": FOUNDER_ID },
   // KerkOnline is ons merk voor kerken en draait op dezelfde rechtspersoon.
   // Het @id verwijst naar de organisatie-node op kerkonline.io zelf, zodat de
   // twee schema's één graaf vormen in plaats van twee losse bedrijven. Aan de
@@ -159,6 +155,42 @@ const ORGANIZATION = {
   makesOffer: OFFERS,
 };
 
+/**
+ * Joshua als eigen node in de site-graaf, zodat elke pagina dezelfde persoon
+ * kent. `url` en `mainEntityOfPage` wijzen naar /joshua-bink: daar staat wat
+ * deze node beweert ook zichtbaar. Externe profielen gaan in `sameAs`, alleen
+ * profielen die Joshua zelf aanlevert (zie `src/lib/auteur.ts`).
+ */
+const PERSON = {
+  "@type": "Person",
+  "@id": FOUNDER_ID,
+  name: AUTEUR.naam,
+  givenName: AUTEUR.voornaam,
+  familyName: AUTEUR.achternaam,
+  url: AUTEUR_URL,
+  mainEntityOfPage: { "@id": `${AUTEUR_URL}#webpage` },
+  image: {
+    "@type": "ImageObject",
+    "@id": PORTRET_ID,
+    url: `${SITE_URL}${AUTEUR.portret.src}`,
+    width: AUTEUR.portret.breedte,
+    height: AUTEUR.portret.hoogte,
+    caption: "Joshua Bink, oprichter van MegaOnline",
+  },
+  jobTitle: AUTEUR.rol,
+  description:
+    "Oprichter van MegaOnline. Bouwt websites die bedrijven verder helpen, met een technische achtergrond en een continue interesse in online groei.",
+  worksFor: { "@id": ORG_ID },
+  knowsAbout: [
+    "Webdesign",
+    "Conversieoptimalisatie",
+    "Zoekmachineoptimalisatie",
+    "Websiteontwikkeling",
+    "Online boekingssystemen",
+  ],
+  sameAs: [AUTEUR.linkedin],
+};
+
 const WEBSITE = {
   "@type": "WebSite",
   "@id": WEBSITE_ID,
@@ -172,7 +204,7 @@ const WEBSITE = {
 /** Staat op elke pagina met de gedeelde chrome. */
 export const SITE_GRAPH = {
   "@context": "https://schema.org",
-  "@graph": [ORGANIZATION, WEBSITE],
+  "@graph": [ORGANIZATION, WEBSITE, PERSON],
 };
 
 /* ------------------------------------------------------------------ */
@@ -189,6 +221,8 @@ export const SITE_GRAPH = {
 const PAGE_TYPE: Record<string, string> = {
   "/over-megaonline": "AboutPage",
   "/contact": "ContactPage",
+  "/joshua-bink": "ProfilePage",
+  "/kennisbank": "CollectionPage",
 };
 
 /**
@@ -217,6 +251,7 @@ const CRUMB_LABEL: Record<string, string> = {
   "/diensten/website-redesign": "Website Redesign",
   "/diensten/werken-bij-websites": "Werken-bij Websites",
   "/gratis-websitescan": "Gratis website scan",
+  "/joshua-bink": "Joshua Bink",
   "/kennisbank": "Kennisbank",
   "/over-megaonline": "Over MegaOnline",
   "/privacyverklaring": "Privacyverklaring",
@@ -331,6 +366,36 @@ export function buildPageSchema({ pathname, title, description }: PageSchemaInpu
     nodes.push(crumbs);
   }
 
+  // De auteurspagina gaat over Joshua, niet over het bedrijf.
+  if (path === AUTEUR.pad) {
+    webPage.about = { "@id": FOUNDER_ID };
+    webPage.mainEntity = { "@id": FOUNDER_ID };
+    webPage.primaryImageOfPage = { "@id": PORTRET_ID };
+  }
+
+  // Overzicht en auteurspagina tonen allebei de artikelkaarten. Die lijst
+  // staat hier ook als ItemList, in dezelfde volgorde als op de pagina.
+  if (path === "/kennisbank" || path === AUTEUR.pad) {
+    const lijst = artikelenNieuwsteEerst().filter(
+      (a) => path === "/kennisbank" || !a.auteur?.trim(),
+    );
+    const lijstId = `${url}#artikelen`;
+    if (path === "/kennisbank") webPage.mainEntity = { "@id": lijstId };
+    else webPage.hasPart = { "@id": lijstId };
+    nodes.push({
+      "@type": "ItemList",
+      "@id": lijstId,
+      name: path === "/kennisbank" ? "Kennisbank" : `Artikelen van ${AUTEUR.naam}`,
+      numberOfItems: lijst.length,
+      itemListElement: lijst.map((a, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        url: `${SITE_URL}/kennisbank/${a.slug}`,
+        name: a.vraag,
+      })),
+    });
+  }
+
   nodes.unshift(webPage);
 
   if (path === "/gratis-websitescan") {
@@ -407,7 +472,9 @@ function artikelVoorPad(path: string): Artikel | undefined {
  */
 function artikelAuteur(a: Artikel): Record<string, unknown> {
   const naam = a.auteur?.trim();
-  if (!naam) return { "@id": FOUNDER_ID };
+  // Naam en url staan er ook los bij: dit blok staat in een ander
+  // JSON-LD-script dan de Person-node. Niet elke lezer volgt het @id.
+  if (!naam) return { "@type": "Person", "@id": FOUNDER_ID, name: AUTEUR.naam, url: AUTEUR_URL };
   return { "@type": "Person", name: naam };
 }
 

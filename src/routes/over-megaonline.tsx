@@ -458,7 +458,7 @@ function OverMegaonline() {
               </div>
               {' '}
               <div className="founder__sig">
-                <div className="nm">Joshua</div>
+                <div className="nm"><Link to="/joshua-bink">Joshua</Link></div>
                 <div className="rl">Oprichter · MegaOnline</div>
               </div>
             </Reveal>

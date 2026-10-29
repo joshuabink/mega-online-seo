@@ -1453,7 +1453,14 @@ async function leesKennisbank(pg) {
 }
 
 function auteurIsJoshua(author) {
-  return !!author && author['@id'] === JOSHUA_ID && !author.name
+  // Het @id wijst naar de Person-node. Naam en url staan er los bij, omdat
+  // het Article in een ander JSON-LD-script staat dan die node.
+  return (
+    !!author &&
+    author['@id'] === JOSHUA_ID &&
+    (!author.name || author.name === 'Joshua Bink') &&
+    (!author.url || author.url === 'https://megaonline.io/joshua-bink')
+  )
 }
 
 async function openKennisbank(pad) {
@@ -1644,7 +1651,7 @@ for (const pad of [
   check(
     'freelancer-of-bureau heeft Article, FAQPage en kruimelpad',
     artikel.headline === artikel.h1 &&
-      !artikel.auteurNaam &&
+      (!artikel.auteurNaam || artikel.auteurNaam === 'Joshua Bink') &&
       artikel.kruimels[0] === 'Home' &&
       artikel.kruimels[1] === 'Kennisbank' &&
       artikel.kruimels[2] === 'Freelance webdesigner of webbureau' &&
@@ -1783,7 +1790,7 @@ for (const pad of [
   check(
     'chatgpt-mkb heeft Article, FAQPage en kruimelpad',
     artikel.headline === artikel.h1 &&
-      !artikel.auteurNaam &&
+      (!artikel.auteurNaam || artikel.auteurNaam === 'Joshua Bink') &&
       artikel.auteurId === 'https://megaonline.io/#joshua-bink' &&
       artikel.publisherId === 'https://megaonline.io/#organization' &&
       artikel.kruimels[0] === 'Home' &&
@@ -1865,6 +1872,60 @@ for (const pad of [
       author.name === 'Smoke Auteur' &&
       !author['@id'],
     `blok=${data.faqBlok} schema=${data.faqVragen.length} auteur=${JSON.stringify(data.author)}`,
+  )
+}
+
+/* --- auteurspagina: zichtbare byline, ProfilePage en Person --- */
+{
+  const res = await page.goto(BASE + '/joshua-bink', { waitUntil: 'load' })
+  await waitHydrated(page)
+  const auteur = await page.evaluate((joshuaId) => {
+    const nodes = []
+    const walk = (v) => {
+      if (!v || typeof v !== 'object') return
+      if (Array.isArray(v)) return v.forEach(walk)
+      nodes.push(v)
+      Object.values(v).forEach(walk)
+    }
+    for (const s of document.querySelectorAll('script[type="application/ld+json"]')) {
+      try { walk(JSON.parse(s.textContent || 'null')) } catch { /* telt als ontbrekend */ }
+    }
+    const profiel = nodes.find((n) => n['@type'] === 'ProfilePage')
+    const persoon = nodes.find((n) => n['@type'] === 'Person' && n['@id'] === joshuaId && n.url)
+    const lijst = nodes.find((n) => n['@type'] === 'ItemList')
+    return {
+      h1: (document.querySelector('h1')?.textContent || '').replace(/\s+/g, ' ').trim(),
+      canonical: document.querySelector('link[rel="canonical"]')?.getAttribute('href') || '',
+      profielMain: profiel?.mainEntity?.['@id'] || '',
+      persoonUrl: persoon?.url || '',
+      persoonBeeld: persoon?.image?.url || '',
+      kaarten: document.querySelectorAll('#artikelen .kb-card').length,
+      lijst: lijst?.itemListElement?.length ?? -1,
+    }
+  }, JOSHUA_ID)
+  check('/joshua-bink geeft 200', res?.status() === 200, String(res?.status()))
+  check(
+    '/joshua-bink is een ProfilePage over Joshua met zijn artikelen',
+    auteur.h1 === 'Joshua Bink' &&
+      auteur.canonical === 'https://megaonline.io/joshua-bink' &&
+      auteur.profielMain === JOSHUA_ID &&
+      auteur.persoonUrl === 'https://megaonline.io/joshua-bink' &&
+      auteur.persoonBeeld.endsWith('/images/founder-portret.webp') &&
+      auteur.kaarten > 0 &&
+      auteur.kaarten === auteur.lijst,
+    JSON.stringify(auteur),
+  )
+
+  await page.goto(BASE + '/kennisbank/wat-is-seo', { waitUntil: 'load' })
+  await waitHydrated(page)
+  const byline = await page.evaluate(() => {
+    const a = document.querySelector('.art__byline a')
+    return { href: a?.getAttribute('href') || '', tekst: (a?.textContent || '').trim() }
+  })
+  check(
+    'artikel toont byline met link naar /joshua-bink',
+    byline.href === '/joshua-bink' && byline.tekst === 'Joshua Bink',
+    JSON.stringify(byline),
   )
 }
 

@@ -3,6 +3,7 @@ import { ConceptForm } from "@/components/ConceptForm";
 import { Icon } from "@/components/Icon";
 import { Qa } from "@/components/Qa";
 import { Reveal } from "@/components/Reveal";
+import { AUTEUR } from "@/lib/auteur";
 import { artikelBySlug, artikelenNieuwsteEerst, eindCta, type ArtikelSectie } from "@/lib/kennisbank";
 import "@/styles/pages/kennisbank.css";
 
@@ -191,8 +192,20 @@ function ArtikelPagina() {
                   ))}
                 </Reveal>
               )}{" "}
-              <Reveal as="p" className="art__meta reveal" data-d="2">
-                {a.leestijd} lezen · Bijgewerkt op {datumNl(a.gewijzigd)}
+              <Reveal as="div" className="art__byline reveal" data-d="2">
+                {a.auteur?.trim() ? (
+                  <span className="art__door">Door {a.auteur.trim()} ·</span>
+                ) : (
+                  <>
+                    <img className="art__avatar" src={AUTEUR.avatar} width={28} height={28} alt="" />
+                    <span className="art__door">
+                      Door <Link to="/joshua-bink">{AUTEUR.naam}</Link> ·
+                    </span>
+                  </>
+                )}
+                <span className="art__meta">
+                  {a.leestijd} lezen · Bijgewerkt op {datumNl(a.gewijzigd)}
+                </span>
               </Reveal>
             </div>
           </div>

@@ -66,6 +66,71 @@
   opacity: 0.7;
 }
 
+/* Byline met auteursfoto. De link gaat naar de auteurspagina. */
+.art__byline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 10px;
+  margin-top: 18px;
+  font-family: var(--mono, monospace);
+  font-size: 0.82rem;
+  letter-spacing: 0.02em;
+}
+
+.art__byline .art__meta {
+  margin-top: 0;
+  font-size: inherit;
+}
+
+.art__door {
+  opacity: 0.85;
+}
+
+.svc-hero--center .art__byline {
+  justify-content: center;
+}
+
+.art__avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--line);
+}
+
+.art__byline a {
+  color: var(--fg);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ---------- Auteurspagina ---------- */
+[data-page="auteur"] .founder__body h2 {
+  font-size: clamp(1.5rem, 2.3vw, 2.2rem);
+  letter-spacing: -0.02em;
+  line-height: 1.12;
+}
+
+.auteur__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+  font-family: var(--mono, monospace);
+  font-size: 0.85rem;
+}
+
+.auteur__links a {
+  color: var(--fg);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.auteur__links .sep {
+  color: var(--muted);
+}
+
 .art__body {
   max-width: 68ch;
   margin-top: clamp(18px, 2vw, 26px);

@@ -15,6 +15,7 @@ import { Route as AlgemeneVoorwaardenRouteImport } from './routes/algemene-voorw
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as GratisWebsiteconceptRouteImport } from './routes/gratis-websiteconcept'
 import { Route as GratisWebsitescanRouteImport } from './routes/gratis-websitescan'
+import { Route as JoshuaBinkRouteImport } from './routes/joshua-bink'
 import { Route as MegasmartRouteImport } from './routes/megasmart'
 import { Route as OverMegaonlineRouteImport } from './routes/over-megaonline'
 import { Route as PrivacyverklaringRouteImport } from './routes/privacyverklaring'
@@ -69,6 +70,11 @@ const GratisWebsiteconceptRoute = GratisWebsiteconceptRouteImport.update({
 const GratisWebsitescanRoute = GratisWebsitescanRouteImport.update({
   id: '/gratis-websitescan',
   path: '/gratis-websitescan',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const JoshuaBinkRoute = JoshuaBinkRouteImport.update({
+  id: '/joshua-bink',
+  path: '/joshua-bink',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MegasmartRoute = MegasmartRouteImport.update({
@@ -210,6 +216,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/gratis-websiteconcept': typeof GratisWebsiteconceptRoute
   '/gratis-websitescan': typeof GratisWebsitescanRoute
+  '/joshua-bink': typeof JoshuaBinkRoute
   '/megasmart': typeof MegasmartRoute
   '/over-megaonline': typeof OverMegaonlineRoute
   '/privacyverklaring': typeof PrivacyverklaringRoute
@@ -243,6 +250,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/gratis-websiteconcept': typeof GratisWebsiteconceptRoute
   '/gratis-websitescan': typeof GratisWebsitescanRoute
+  '/joshua-bink': typeof JoshuaBinkRoute
   '/megasmart': typeof MegasmartRoute
   '/over-megaonline': typeof OverMegaonlineRoute
   '/privacyverklaring': typeof PrivacyverklaringRoute
@@ -277,6 +285,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/gratis-websiteconcept': typeof GratisWebsiteconceptRoute
   '/gratis-websitescan': typeof GratisWebsitescanRoute
+  '/joshua-bink': typeof JoshuaBinkRoute
   '/megasmart': typeof MegasmartRoute
   '/over-megaonline': typeof OverMegaonlineRoute
   '/privacyverklaring': typeof PrivacyverklaringRoute
@@ -312,6 +321,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/gratis-websiteconcept'
     | '/gratis-websitescan'
+    | '/joshua-bink'
     | '/megasmart'
     | '/over-megaonline'
     | '/privacyverklaring'
@@ -345,6 +355,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/gratis-websiteconcept'
     | '/gratis-websitescan'
+    | '/joshua-bink'
     | '/megasmart'
     | '/over-megaonline'
     | '/privacyverklaring'
@@ -378,6 +389,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/gratis-websiteconcept'
     | '/gratis-websitescan'
+    | '/joshua-bink'
     | '/megasmart'
     | '/over-megaonline'
     | '/privacyverklaring'
@@ -412,6 +424,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   GratisWebsiteconceptRoute: typeof GratisWebsiteconceptRoute
   GratisWebsitescanRoute: typeof GratisWebsitescanRoute
+  JoshuaBinkRoute: typeof JoshuaBinkRoute
   MegasmartRoute: typeof MegasmartRoute
   OverMegaonlineRoute: typeof OverMegaonlineRoute
   PrivacyverklaringRoute: typeof PrivacyverklaringRoute
@@ -481,6 +494,13 @@ declare module '@tanstack/react-router' {
       path: '/gratis-websitescan'
       fullPath: '/gratis-websitescan'
       preLoaderRoute: typeof GratisWebsitescanRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/joshua-bink': {
+      id: '/joshua-bink'
+      path: '/joshua-bink'
+      fullPath: '/joshua-bink'
+      preLoaderRoute: typeof JoshuaBinkRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/megasmart': {
@@ -668,6 +688,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   GratisWebsiteconceptRoute: GratisWebsiteconceptRoute,
   GratisWebsitescanRoute: GratisWebsitescanRoute,
+  JoshuaBinkRoute: JoshuaBinkRoute,
   MegasmartRoute: MegasmartRoute,
   OverMegaonlineRoute: OverMegaonlineRoute,
   PrivacyverklaringRoute: PrivacyverklaringRoute,
