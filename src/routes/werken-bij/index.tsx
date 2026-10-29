@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Icon } from "@/components/Icon";
 import { Qa } from "@/components/Qa";
+import { FaqSchema } from "@/components/FaqSchema";
 import { Reveal } from "@/components/Reveal";
 import { SollicitatieSectie } from "@/components/SollicitatieForm";
 import { VACATURES } from "@/lib/vacatures";
@@ -229,7 +230,8 @@ function WerkenBij() {
             <span className="label">Veelgestelde vragen</span>{" "}
             <h2 className="h2">Dat wat je je waarschijnlijk afvraagt.</h2>
           </Reveal>
-          <div className="faq">
+          <FaqSchema>
+<div className="faq">
             <Qa question="Kan ik solliciteren als ik geen ervaring heb?" className="reveal">
               <p>
                 Bij de stages is dat het uitgangspunt. Webdesign, webdevelopment en SEA vragen geen
@@ -258,6 +260,7 @@ function WerkenBij() {
               </p>
             </Qa>
           </div>
+</FaqSchema>
         </div>
       </section>
     </main>

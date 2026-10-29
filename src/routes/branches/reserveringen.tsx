@@ -3,6 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { type CSSProperties, type ReactNode } from "react";
 import { Icon } from "@/components/Icon";
 import { Qa } from "@/components/Qa";
+import { FaqSchema } from "@/components/FaqSchema";
 import { Reveal } from "@/components/Reveal";
 import { CTA_SCAN } from "@/lib/cta"
 
@@ -359,13 +360,15 @@ function Reserveringen() {
           <Reveal as="div" className="shead reveal" style={{ maxWidth: "680px" }}>
             <h2 className="h2">Veelgestelde vragen over een website met reserveringen</h2>
           </Reveal>
-          <div className="faq">
+          <FaqSchema>
+<div className="faq">
             {FAQ_ITEMS.map(({ q, a }) => (
               <Qa key={q} question={q} className="reveal">
                 {a}
               </Qa>
             ))}
           </div>
+</FaqSchema>
         </div>
       </section>
 

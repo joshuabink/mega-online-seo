@@ -2,6 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { Link } from '@tanstack/react-router'
 import { Icon } from '@/components/Icon'
 import { Qa } from '@/components/Qa'
+import { FaqSchema } from '@/components/FaqSchema'
 import { Reveal } from '@/components/Reveal'
 import { CTA_SCAN } from '@/lib/cta'
 
@@ -308,7 +309,8 @@ function Offerteaanvragen() {
             <h2 className="h2">Wat je misschien nog wil weten</h2>
           </Reveal>
           {' '}
-          <div className="faq">
+          <FaqSchema>
+<div className="faq">
             <Qa question="Hoe zorgt een formulier voor betere aanvragen?" className="reveal">
                 Door gericht door te vragen. In plaats van een leeg tekstvak leidt het formulier de bezoeker langs de vragen die jij nodig hebt, zodat je meteen een compleet en beoordeelbaar beeld hebt.
             </Qa>
@@ -325,6 +327,7 @@ function Offerteaanvragen() {
                 Dat hangt af van de complexiteit van je aanvraagproces en koppelingen. Met een gratis website scan brengt MegaOnline het vrijblijvend in kaart.
             </Qa>
           </div>
+</FaqSchema>
         </div>
       </section>
       {' '}

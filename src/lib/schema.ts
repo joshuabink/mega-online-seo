@@ -213,10 +213,9 @@ export const SITE_GRAPH = {
 
 /**
  * Afwijkende paginatypes. Alles wat hier niet in staat is een gewone
- * `WebPage`. `/veelgestelde-vragen` staat er bewust níet in als `FAQPage`:
- * dat type hoort een `mainEntity` met vraag-antwoordparen te hebben, en die
- * staan daar nu in losse `<Qa>`-componenten. Zonder mainEntity is `FAQPage`
- * onvolledig — eerst de bron opzetten zoals `FAQ_ITEMS` op de homepage.
+ * `WebPage`. De FAQPage-nodes staan los: op kennisbankartikelen en de scan
+ * komen ze hieronder uit de data, op de andere pagina's met een FAQ-blok uit
+ * `<FaqSchema>` rond dat blok (src/components/FaqSchema.tsx).
  */
 const PAGE_TYPE: Record<string, string> = {
   "/over-megaonline": "AboutPage",

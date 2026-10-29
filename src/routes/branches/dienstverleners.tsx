@@ -2,6 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { Link } from '@tanstack/react-router'
 import { Icon } from '@/components/Icon'
 import { Qa } from '@/components/Qa'
+import { FaqSchema } from '@/components/FaqSchema'
 import { Reveal } from '@/components/Reveal'
 import { CTA_SCAN } from '@/lib/cta'
 
@@ -304,7 +305,8 @@ function Dienstverleners() {
             <h2 className="h2">Wat je misschien nog wil weten</h2>
           </Reveal>
           {' '}
-          <div className="faq">
+          <FaqSchema>
+<div className="faq">
             <Qa question="Ik heb geen tastbaar product. Hoe maak je dat aantrekkelijk?" className="reveal">
                 Door te focussen op het probleem dat je oplost en het resultaat dat je levert. MegaOnline vertaalt je expertise naar herkenbare situaties en concreet bewijs, zodat de waarde meteen voelbaar is.
             </Qa>
@@ -321,6 +323,7 @@ function Dienstverleners() {
                 Dat hangt af van de omvang en je wensen. Begin vrijblijvend met een gratis website scan, dan breng je het samen met MegaOnline in kaart.
             </Qa>
           </div>
+</FaqSchema>
         </div>
       </section>
       {' '}

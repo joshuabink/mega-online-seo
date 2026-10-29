@@ -2,6 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { Link } from '@tanstack/react-router'
 import { Icon } from '@/components/Icon'
 import { Qa } from '@/components/Qa'
+import { FaqSchema } from '@/components/FaqSchema'
 import { Reveal } from '@/components/Reveal'
 import { CTA_SCAN } from '@/lib/cta'
 import '@/styles/pages/veelgestelde-vragen.css'
@@ -75,7 +76,8 @@ function VeelgesteldeVragen() {
             </Reveal>
           </div>
           {' '}
-          <div className="faqp__cat" id="algemeen">
+          <FaqSchema>
+<div className="faqp__cat" id="algemeen">
             <Reveal as="div" className="faqp__cat-head reveal">
               <span className="iconbox">
                 <Icon name="info" />
@@ -211,7 +213,8 @@ function VeelgesteldeVragen() {
             </div>
           </div>
           {' '}
-          <Reveal as="div" className="shead shead--center reveal faqp__cta">
+          </FaqSchema>
+<Reveal as="div" className="shead shead--center reveal faqp__cta">
             <span className="label">Nog een vraag?</span>
             {' '}
             <h2 className="display">MegaOnline denkt graag met je mee.</h2>

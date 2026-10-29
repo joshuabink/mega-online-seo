@@ -2,6 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { Link } from '@tanstack/react-router'
 import { Icon } from '@/components/Icon'
 import { Qa } from '@/components/Qa'
+import { FaqSchema } from '@/components/FaqSchema'
 import { Reveal } from '@/components/Reveal'
 import { CTA_SCAN } from '@/lib/cta'
 
@@ -320,7 +321,8 @@ function Activiteitenbedrijven() {
             <h2 className="h2">Wat je misschien nog wil weten</h2>
           </Reveal>
           {' '}
-          <div className="faq">
+          <FaqSchema>
+<div className="faq">
             <Qa question="Kan het reserveringssysteem aan mijn bestaande agenda gekoppeld worden?" className="reveal">
                 In veel gevallen wel. We kijken naar het systeem dat je nu gebruikt en koppelen daarop aan, zodat beschikbaarheid altijd klopt en dubbele boekingen niet voorkomen.
             </Qa>
@@ -337,6 +339,7 @@ function Activiteitenbedrijven() {
                 Dat hangt af van wat je nodig hebt aan reserveringen en koppelingen. Begin met een gratis website scan, dan brengt MegaOnline het vrijblijvend voor je in kaart.
             </Qa>
           </div>
+</FaqSchema>
         </div>
       </section>
       {' '}

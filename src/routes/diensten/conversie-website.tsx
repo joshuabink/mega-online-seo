@@ -3,6 +3,7 @@ import { createFileRoute, Link } from '@tanstack/react-router'
 import { Icon } from '@/components/Icon'
 import { Media } from '@/components/Media'
 import { Qa } from '@/components/Qa'
+import { FaqSchema } from '@/components/FaqSchema'
 import { Reveal } from '@/components/Reveal'
 import { AanvraagKort } from '@/components/AanvraagKort'
 import '@/styles/pages/dienst.css'
@@ -347,13 +348,15 @@ function ConversieWebsite() {
               Staat je vraag er niet bij? Mail naar <a href="mailto:info@megaonline.io">info@megaonline.io</a>.
             </p>
           </Reveal>
-          <div className="faq">
+          <FaqSchema>
+<div className="faq">
             {FAQ_ITEMS.map(({ q, a }) => (
               <Qa key={q} question={q} className="reveal">
                 {a}
               </Qa>
             ))}
           </div>
+</FaqSchema>
         </div>
       </section>
 

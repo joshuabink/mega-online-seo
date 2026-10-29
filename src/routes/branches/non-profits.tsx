@@ -2,6 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { Link } from '@tanstack/react-router'
 import { Icon } from '@/components/Icon'
 import { Qa } from '@/components/Qa'
+import { FaqSchema } from '@/components/FaqSchema'
 import { Reveal } from '@/components/Reveal'
 import { CTA_SCAN } from '@/lib/cta'
 
@@ -309,7 +310,8 @@ function NonProfits() {
             <h2 className="h2">Wat je misschien nog wil weten</h2>
           </Reveal>
           {' '}
-          <div className="faq">
+          <FaqSchema>
+<div className="faq">
             <Qa question="Heeft MegaOnline ervaring met non-profits?" className="reveal">
                 Ja. MegaOnline bouwde onder meer voor LoveForAfrica, de Ontmoetingskerk en De Nieuwe Westerkerk. MegaOnline snapt dat het bij non-profits om vertrouwen, betrokkenheid en zorgvuldig omgaan met middelen draait.
             </Qa>
@@ -326,6 +328,7 @@ function NonProfits() {
                 Ja. MegaOnline bouwt de site zo op dat je nieuws, agenda en teksten eenvoudig zelf bijwerkt, ook zonder technische kennis.
             </Qa>
           </div>
+</FaqSchema>
         </div>
       </section>
       {' '}

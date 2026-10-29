@@ -2,6 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { Link } from '@tanstack/react-router'
 import { Icon } from '@/components/Icon'
 import { Qa } from '@/components/Qa'
+import { FaqSchema } from '@/components/FaqSchema'
 import { Reveal } from '@/components/Reveal'
 import { CTA_SCAN } from '@/lib/cta'
 
@@ -311,7 +312,8 @@ function Verhuurbedrijven() {
             <h2 className="h2">Wat je misschien nog wil weten</h2>
           </Reveal>
           {' '}
-          <div className="faq">
+          <FaqSchema>
+<div className="faq">
             <Qa question="Kunnen klanten direct online reserveren of alleen aanvragen?" className="reveal">
                 Beide kan. Voor sommige verhuurbedrijven werkt direct reserveren het best, voor andere een aanvraag die jij bevestigt. MegaOnline kiest wat bij jouw werkwijze past.
             </Qa>
@@ -328,6 +330,7 @@ function Verhuurbedrijven() {
                 Dat hangt af van je assortiment en de gewenste koppelingen. Met een gratis website scan brengt MegaOnline het vrijblijvend in kaart.
             </Qa>
           </div>
+</FaqSchema>
         </div>
       </section>
       {' '}

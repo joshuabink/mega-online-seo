@@ -2,6 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { Link } from '@tanstack/react-router'
 import { Icon } from '@/components/Icon'
 import { Qa } from '@/components/Qa'
+import { FaqSchema } from '@/components/FaqSchema'
 import { Media } from '@/components/Media'
 import { Reveal } from '@/components/Reveal'
 import { SingleLeadForm } from '@/components/LeadForm'
@@ -238,7 +239,8 @@ function Contact() {
             <h2 className="h2">Goed om te weten</h2>
           </Reveal>
           {' '}
-          <div className="faq">
+          <FaqSchema>
+<div className="faq">
             <Qa question="Kost een kennismaking iets?" className="reveal">
                 Nee, een kennismaking is gratis en volledig vrijblijvend. Je betaalt niets en zit nergens aan vast.
             </Qa>
@@ -255,6 +257,7 @@ function Contact() {
                 Direct met wie ook je website bouwt. Geen tussenlagen, geen accountmanagers, gewoon de maker zelf.
             </Qa>
           </div>
+</FaqSchema>
         </div>
       </section>
     </main>
