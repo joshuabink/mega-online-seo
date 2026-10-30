@@ -1769,6 +1769,153 @@ export const ARTIKELEN: Artikel[] = [
     metaDescription:
       "Een website met reserveringssysteem kost drie dingen: de site, het systeem en de koppeling. Zo vergelijk je offertes en reken je het door over een jaar.",
   },
+  {
+    slug: "nieuwe-website-of-optimaliseren",
+    naam: "Nieuwe website of optimaliseren",
+    vraag: "Nieuwe website laten maken of je huidige website laten optimaliseren?",
+    pijler: "Mening",
+    icoon: "sliders",
+    branche: "Algemeen",
+    teaser:
+      "Een nieuwe website voelt als een frisse start, maar lost vaak het verkeerde probleem op. Zo zie je of verbeteren genoeg is.",
+    antwoord:
+      "Laat je huidige website eerst optimaliseren, tenzij het fundament je tegenhoudt. Een nieuwe website is pas de betere keuze als de techniek niet meer houdbaar is, de structuur niet past bij wat je nu verkoopt of elke aanpassing meer moeite kost dan hij oplevert.",
+    leestijd: "6 minuten",
+    gepubliceerd: "2026-10-30",
+    gewijzigd: "2026-10-30",
+    cta: "scan",
+    eindKop: "Wil je zien waar jouw website nu weglekt?",
+    eindLead:
+      "Beantwoord zes korte vragen. MegaOnline kijkt persoonlijk naar je website en laat zien waar bezoekers afhaken en of verbeteren genoeg is. Wil je eerst weten wat er bij verbeteren komt kijken, lees dan meer over [website optimalisatie](/diensten/website-optimalisatie).",
+    secties: [
+      {
+        kop: "Waarom een nieuwe website vaak het verkeerde probleem oplost",
+        accent: "het verkeerde probleem",
+        alineas: [
+          "Wie te weinig aanvragen krijgt, kijkt naar zijn website en ziet vooral wat er ouderwets aan is. Een kleur die niet meer past, foto's van vijf jaar terug, een menu dat rommelig oogt. De conclusie ligt voor de hand: tijd voor iets nieuws. Die conclusie is begrijpelijk. Ze is alleen vaak verkeerd.",
+          "Neem een installatiebedrijf in de regio. De site ziet er gedateerd uit en levert weinig offerteaanvragen op. Wie beter kijkt, ziet dat het offerteformulier negen velden heeft, dat het telefoonnummer op de telefoon pas helemaal onderaan staat en dat nergens staat in welke plaatsen het bedrijf werkt. Laat je daar een nieuw ontwerp omheen maken met hetzelfde formulier en dezelfde teksten, dan heb je een mooiere site die precies even weinig oplevert.",
+          "Het uiterlijk is het eerste wat je ziet, maar zelden de reden dat iemand afhaakt. Bezoekers haken af omdat ze een antwoord niet vinden, omdat een stap te veel vraagt of omdat ze niet zien wie er achter het bedrijf zit. Dat zijn dingen die je op je huidige site kunt verbeteren. Meer over waar het meestal misgaat lees je in het artikel over [waarom je website geen aanvragen oplevert](/kennisbank/website-levert-geen-aanvragen-op).",
+        ],
+      },
+      {
+        kop: "De vraag die de keuze bepaalt",
+        accent: "de keuze bepaalt",
+        alineas: [
+          "Zit het probleem in wat er op de site staat, of in waar de site op gebouwd is? Dat is het onderscheid dat telt. Inhoud, volgorde en route kun je aanpassen. Een fundament dat niet meer meekan, niet.",
+        ],
+        punten: [
+          {
+            titel: "Verbeteren is genoeg als het om de route gaat",
+            tekst:
+              "Een homepage die niet in één oogopslag zegt wat je doet, een formulier dat te veel vraagt, een knop die op de telefoon niet te vinden is, te weinig bewijs dat je goed werk levert. Dit soort punten pak je aan zonder de site opnieuw te bouwen. Dat is precies wat [website laten optimaliseren](/diensten/website-optimalisatie) inhoudt.",
+          },
+          {
+            titel: "Opnieuw bouwen is nodig als het om het fundament gaat",
+            tekst:
+              "De techniek krijgt geen updates meer, je kunt zelf geen pagina toevoegen, je aanbod is zo veranderd dat de indeling niet meer klopt of er zitten zoveel losse aanpassingen op dat elke wijziging iets anders laat omvallen. Dan bouw je elke verbetering op iets wat zelf wankelt.",
+          },
+        ],
+        daarna: [
+          "Twijfel je, kijk dan naar de laatste drie dingen die je wilde aanpassen. Lukte dat zonder gedoe, dan is het fundament waarschijnlijk in orde. Kostte elke kleine wijziging dagen of een rekening van je bouwer, dan zegt dat iets over de basis.",
+        ],
+      },
+      {
+        kop: "Wat je verliest als je zonder plan opnieuw begint",
+        accent: "zonder plan",
+        alineas: [
+          "Een bestaande website heeft iets wat een nieuwe niet heeft: geschiedenis in Google. Pagina's die al een tijd online staan, worden gevonden op zoekvragen die je soms niet eens kent. In Google Search Console zie je welke dat zijn. Bouw je opnieuw en verander je adressen, titels en teksten zonder te weten welke pagina's nu bezoekers brengen, dan kan die vindbaarheid voor een deel verdwijnen.",
+          "Dat is geen reden om nooit opnieuw te bouwen. Het is een reden om eerst vast te leggen wat nu werkt. Welke pagina's krijgen bezoek uit Google, welke teksten leveren aanvragen op en welke adressen moeten na de livegang doorsturen naar de nieuwe pagina. Hoe Google pagina's beoordeelt lees je in het artikel [wat is SEO](/kennisbank/wat-is-seo).",
+          "Daar zit ook het sterkste argument voor eerst optimaliseren. Wat je leert van verbeteringen op je huidige site, neem je mee als je later toch opnieuw bouwt. Je weet dan welke vragen bezoekers stellen, welke knop werkt en welk formulier aanvragen oplevert. Een nieuwe site op basis van die kennis begint niet bij nul.",
+        ],
+      },
+      {
+        kop: "Wanneer een nieuwe website wél de betere keuze is",
+        accent: "wél de betere keuze",
+        alineas: [
+          "Er zijn situaties waarin doorverbeteren geld kost zonder dat het iets oplost. Herken je jezelf in een van deze punten, dan is een [website redesign](/diensten/website-redesign) waarschijnlijk de rustigere weg.",
+        ],
+        punten: [
+          {
+            titel: "De techniek is niet meer veilig",
+            tekst:
+              "Het systeem waar de site op draait krijgt geen updates meer of de bouwer is uit beeld en niemand durft er nog aan te komen.",
+          },
+          {
+            titel: "Je bedrijf is gegroeid en de site niet",
+            tekst:
+              "Je verkoopt inmiddels andere diensten aan andere klanten, maar de indeling vertelt nog het verhaal van vijf jaar geleden.",
+          },
+          {
+            titel: "Online boeken of aanvragen past er niet in",
+            tekst:
+              "Je wilt dat klanten zelf een afspraak, tijdslot of offerte regelen, maar de site kan dat niet aan zonder omwegen.",
+          },
+          {
+            titel: "Elke aanpassing kost meer dan hij oplevert",
+            tekst:
+              "Een tekst wijzigen of een pagina toevoegen loopt steeds via een ander en duurt steeds langer.",
+          },
+        ],
+      },
+      {
+        kop: "Hoe MegaOnline die keuze maakt",
+        accent: "die keuze maakt",
+        alineas: [
+          "MegaOnline begint niet met een ontwerp maar met de vraag waar bezoekers nu afhaken. Pas als duidelijk is waar het probleem zit, volgt het advies: gericht verbeteren of opnieuw bouwen. Een nieuwe website wordt alleen geadviseerd als verbeteren op de huidige basis niet meer zinvol is.",
+          "Kies je toch voor een nieuwe site, dan gaat wat nu al goed werkt mee: teksten die aanvragen opleveren, pagina's die in Google gevonden worden en de adressen die moeten blijven werken. Zo wordt de nieuwe site een stap vooruit in plaats van een nieuw begin.",
+        ],
+      },
+    ],
+    doen: [
+      "Schrijf op waarom je een nieuwe website wilt. Staat er vooral iets over uiterlijk, kijk dan eerst naar de route naar een aanvraag.",
+      "Vraag op je telefoon een offerte aan of plan een afspraak via je eigen site en noteer waar je twijfelt of zoekt.",
+      "Zoek in Google Search Console welke pagina's de meeste vertoningen krijgen. Die pagina's wil je bij een nieuwe site niet kwijtraken.",
+      "Kijk naar de laatste drie aanpassingen die je wilde doen en schrijf op hoeveel moeite elke aanpassing kostte.",
+      "Tel hoeveel aanvragen er de afgelopen drie maanden via de site binnenkwamen. Dat getal is je beginpunt, wat je ook kiest.",
+    ],
+    faq: [
+      {
+        q: "Hoe weet ik of mijn website verouderd is?",
+        a: "Uiterlijk is een slechte maatstaf. Kijk naar de techniek: krijgt het systeem nog updates, werkt de site goed op een telefoon en kun je zelf teksten en pagina's aanpassen. Is dat in orde, dan is de site meestal niet verouderd, ook al ziet hij er niet meer nieuw uit.",
+      },
+      {
+        q: "Wat is het verschil tussen een redesign en een nieuwe website?",
+        a: "Bij een redesign neem je mee wat goed werkt, zoals teksten, pagina's en vindbaarheid. Daarna vernieuw je de opbouw en het ontwerp. Een volledig nieuwe website begint vanaf een lege basis. In de praktijk is een goed redesign bijna altijd de verstandigere variant.",
+      },
+      {
+        q: "Raak ik mijn plek in Google kwijt met een nieuwe website?",
+        a: "Dat kan, als adressen veranderen zonder doorverwijzing of als goed gevonden teksten verdwijnen. Leg daarom vooraf vast welke pagina's nu bezoekers uit Google krijgen en zorg dat oude adressen na de livegang doorsturen naar de juiste nieuwe pagina.",
+      },
+      {
+        q: "Kan een website laten optimaliseren ook als iemand anders hem gebouwd heeft?",
+        a: "Ja. Optimaliseren gaat over wat er op de site staat en hoe bezoekers erdoorheen gaan. Wie de site gebouwd heeft maakt daarvoor weinig uit, zolang je toegang hebt om aanpassingen te doen.",
+      },
+      {
+        q: "Hoe lang duurt het voordat verbeteringen effect hebben?",
+        a: "Dat verschilt per verbetering. Een korter formulier of een duidelijkere knop kan snel merkbaar zijn in het aantal aanvragen. Veranderingen in vindbaarheid hebben meer tijd nodig, omdat Google pagina's opnieuw moet beoordelen.",
+      },
+    ],
+    links: [
+      {
+        to: "/diensten/website-optimalisatie",
+        label: "Website laten optimaliseren",
+        tekst: "Gericht verbeteren op de plekken waar bezoekers afhaken, zonder je site opnieuw te bouwen.",
+      },
+      {
+        to: "/diensten/website-redesign",
+        label: "Website redesign",
+        tekst: "Opnieuw bouwen en meenemen wat nu al goed werkt.",
+      },
+      {
+        to: "/kennisbank/website-levert-geen-aanvragen-op",
+        label: "Waarom je website geen aanvragen oplevert",
+        tekst: "De plekken waar het meestal misgaat, voordat je aan iets nieuws begint.",
+      },
+    ],
+    metaTitle: "Nieuwe website of huidige optimaliseren? | MegaOnline",
+    metaDescription:
+      "Een nieuwe website lost vaak het verkeerde probleem op. Zo zie je of je huidige website laten optimaliseren genoeg is of dat opnieuw bouwen slimmer is.",
+  },
 ];
 
 /**
