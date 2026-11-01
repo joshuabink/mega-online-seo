@@ -6,11 +6,13 @@ import { FaqSchema } from '@/components/FaqSchema'
 import { Reveal } from '@/components/Reveal'
 import { AanvraagKort } from '@/components/AanvraagKort'
 import { CTA_SCAN } from '@/lib/cta'
+import { BoekVisual } from '@/components/BoekVisual'
+import { BOEK_FUNCTIES } from '@/lib/boekfuncties'
 import '@/styles/pages/dienst.css'
 
-const TITEL = 'Online boeken en reserveren op je website | MegaOnline.io'
+const TITEL = 'Online boekingssysteem op je website laten inbouwen | MegaOnline.io'
 const OMSCHRIJVING =
-  "Laat klanten zelf online boeken, ook 's avonds en in het weekend. Van een belafspraak tot een ticket met extra's, op je eigen website en gekoppeld aan je agenda."
+  "We bouwen een online boekings- en reserveringssysteem in op je eigen website. Met herinneringen via WhatsApp, online betalen en één agenda, ingericht op wat jij verkoopt."
 
 export const Route = createFileRoute('/diensten/online-boeken')({
   head: () => ({
@@ -110,7 +112,19 @@ const FAQ_ITEMS: { q: string; a: ReactNode }[] = [
   },
   {
     q: 'Wat kost online boeken?',
-    a: 'Dat hangt af van wat je wilt laten boeken en welke koppelingen er nodig zijn. Na de gratis website scan weet je wat bij jou past en wat het kost.',
+    a: 'Dat hangt af van de functies die je nodig hebt en hoe complex je aanbod is. Eén soort afspraak met een bevestiging per mail is eenvoudiger dan tijdsloten voor groepen met extra opties, aanbetaling en een koppeling met je administratie. Na de gratis website scan weet je wat bij jou past en wat het kost.',
+  },
+  {
+    q: 'Kunnen klanten zelf verzetten of annuleren?',
+    a: 'Ja. In de bevestiging staat een link waarmee de klant zelf verzet of annuleert, binnen de termijn die jij instelt. Het vrijgekomen moment staat daarna meteen weer online.',
+  },
+  {
+    q: 'Kunnen klanten ook boeken vanuit Google of Instagram?',
+    a: 'Ja, dat kan erbij. Dan staat er bij je bedrijf in Google Maps en op je Instagram een knop om te boeken. Die boekingen komen in dezelfde agenda als die via je website.',
+  },
+  {
+    q: 'Krijg ik een melding als er een boeking binnenkomt?',
+    a: 'Ja, per mail. Als je dat wilt ook op je telefoon via WhatsApp. Je beheert je boekingen daarnaast in een app, dus je hoeft niet achter de computer te zitten.',
   },
 ]
 
@@ -240,6 +254,33 @@ function OnlineBoeken() {
         </div>
       </section>
 
+      <section className="section" data-theme="paper" data-screen-label="Functies">
+        <div className="wrap">
+          <Reveal as="div" className="v2-head reveal">
+            <div className="shead">
+              <span className="label">Wat we inbouwen</span>
+              <h2 className="h2">
+                De functies die je boekingen <em>vol houden.</em>
+              </h2>
+            </div>
+            <div className="v2-head__side">
+              <p>We bouwen het boekingssysteem in op je eigen website. Je kiest de functies die bij je bedrijf passen, wij richten ze in.</p>
+            </div>
+          </Reveal>
+          <div className="featgrid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))' }}>
+            {BOEK_FUNCTIES.map((f, i) => (
+              <Reveal as="div" key={f.t} className="feat reveal" data-d={String(i % 3)}>
+                <span className="iconbox">
+                  <Icon name={f.icon} />
+                </span>
+                <h4>{f.t}</h4>
+                <p>{f.p}</p>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="section" id="zo-werkt-het" data-theme="dark" data-screen-label="Zo ziet het eruit">
         <div className="wrap">
           <Reveal as="div" className="shead reveal">
@@ -258,6 +299,9 @@ function OnlineBoeken() {
               </Reveal>
             ))}
           </ol>
+          <Reveal as="div" className="reveal" data-d="1" style={{ marginTop: 'clamp(36px, 4vw, 56px)' }}>
+            <BoekVisual soort="ticket" label="Voorbeeld: een tijdslot met extra's boeken op een telefoon" />
+          </Reveal>
         </div>
       </section>
 

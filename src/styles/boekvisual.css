@@ -1,0 +1,71 @@
+/* BoekVisual: telefoon met een boekingsscherm plus een herinneringsbericht. Alleen tokens, kleurt mee met data-theme. */
+.boekvis { position: relative; width: 100%; max-width: 340px; margin-inline: auto; padding-bottom: 54px; }
+.boekvis--video { max-width: 420px; padding-bottom: 0; }
+.boekvis--video video { width: 100%; height: auto; display: block; border-radius: 22px; border: 1px solid var(--line); background: var(--card); }
+
+.boekvis__phone {
+  border: 1px solid var(--line-strong);
+  border-radius: 30px;
+  background: var(--card);
+  box-shadow: var(--elev);
+  padding: 14px 18px 22px;
+  display: grid;
+  gap: 12px;
+}
+.boekvis__bar { width: 72px; height: 5px; border-radius: 99px; background: var(--line-strong); justify-self: center; margin-bottom: 6px; }
+.boekvis__kop { font-family: var(--display); font-weight: 600; font-size: 1.12rem; letter-spacing: -0.02em; color: var(--fg); }
+.boekvis__sub { color: var(--muted); font-size: 0.86rem; margin-top: -8px; }
+
+.boekvis__dagen, .boekvis__tijden { display: grid; gap: 7px; }
+.boekvis__dagen { grid-template-columns: repeat(4, 1fr); }
+.boekvis__tijden { grid-template-columns: repeat(3, 1fr); }
+.boekvis__dagen span, .boekvis__tijden span {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 8px 4px;
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--fg);
+  background: var(--bg);
+}
+.boekvis__dagen span.is-on, .boekvis__tijden span.is-on {
+  background: var(--accent-strong);
+  border-color: var(--accent-strong);
+  color: var(--accent-ink);
+  font-weight: 600;
+}
+.boekvis__tijden span.is-vol { color: var(--faint); text-decoration: line-through; background: transparent; }
+.boekvis__regel { font-size: 0.82rem; color: var(--muted); }
+.boekvis__knop {
+  display: block;
+  text-align: center;
+  border-radius: var(--radius);
+  padding: 12px 10px;
+  background: var(--accent-strong);
+  color: var(--accent-ink);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.boekvis__bericht {
+  position: absolute;
+  right: -14px;
+  bottom: 0;
+  max-width: 250px;
+  border: 1px solid var(--line);
+  border-radius: 16px 16px 4px 16px;
+  background: var(--bg);
+  box-shadow: var(--elev);
+  padding: 10px 14px;
+  font-size: 0.84rem;
+  line-height: 1.4;
+  color: var(--fg);
+}
+.boekvis__bericht-label { display: block; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--dot); margin-bottom: 3px; }
+
+/* Twee kolommen: tekst links, visual rechts. Op mobiel onder elkaar. */
+.boekdemo { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: clamp(32px, 5vw, 72px); align-items: center; }
+@media (max-width: 860px) {
+  .boekdemo { grid-template-columns: 1fr; }
+  .boekvis__bericht { right: 0; }
+}

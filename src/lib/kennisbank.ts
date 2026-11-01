@@ -1362,11 +1362,11 @@ export const ARTIKELEN: Artikel[] = [
       "Meestal allebei, want ze doen iets anders. Het reserveringssysteem regelt de agenda, de beschikbaarheid en de bevestiging. De website zorgt dat een gast genoeg weet en genoeg vertrouwt om op de knop te drukken.",
     leestijd: "6 minuten",
     gepubliceerd: "2026-10-22",
-    gewijzigd: "2026-10-22",
+    gewijzigd: "2026-11-01",
     cta: "scan",
     eindKop: "Wil je weten waar gasten op jouw site afhaken voordat ze reserveren?",
     eindLead:
-      "Beantwoord zes korte vragen. MegaOnline kijkt persoonlijk naar je website en je reserveringsroute en laat zien waar de reserveringen blijven hangen. Wil je eerst meer weten over de opzet, lees dan wat er bij een [website met reserveringssysteem](/branches/reserveringen) komt kijken.",
+      "Beantwoord vier korte vragen. MegaOnline kijkt persoonlijk naar je website en je reserveringsroute en laat zien waar de reserveringen blijven hangen. Wil je eerst meer weten over de opzet, lees dan wat er bij een [website met reserveringssysteem](/branches/reserveringen) komt kijken.",
     secties: [
       {
         kop: "Wat een reserveringssysteem doet en wat niet",
@@ -1449,7 +1449,7 @@ export const ARTIKELEN: Artikel[] = [
         accent: "aanpakt",
         alineas: [
           "MegaOnline bouwt de website altijd vanuit de reservering terug: wat moet een gast weten voordat hij reserveert en in welke volgorde. Heb je al een systeem dat goed werkt, dan wordt de site daaromheen gebouwd.",
-          "Heb je nog geen systeem, of past je huidige systeem niet bij wat je verkoopt, dan is er ook een eigen boekings- en reserveringssysteem. Dat wordt ingericht op jouw diensten, van het boeken van een belafspraak tot het kopen van een ticket met extra opties. Hoe dat aansluit op je agenda en opvolging lees je bij [koppelingen en automatiseringen](/diensten/integraties).",
+          "Heb je nog geen systeem, of past je huidige systeem niet bij wat je verkoopt, dan bouwt MegaOnline het reserveren in op je eigen website. Ingericht op jouw diensten, van het boeken van een belafspraak tot het kopen van een ticket met extra opties, met herinneringen, online betalen en één agenda. Welke functies daarbij kunnen lees je bij [online boeken en reserveren](/diensten/online-boeken). Hoe het aansluit op je agenda en opvolging lees je bij [koppelingen en automatiseringen](/diensten/integraties).",
         ],
       },
     ],
@@ -1489,9 +1489,9 @@ export const ARTIKELEN: Artikel[] = [
         tekst: "Wat er naast de reserveerknop op je site moet staan en welke route bij je systeem past.",
       },
       {
-        to: "/kennisbank/waar-boekingen-weglekken",
-        label: "Waar boekingen weglekken op je website",
-        tekst: "De plekken waar gasten afhaken voordat ze reserveren.",
+        to: "/diensten/online-boeken",
+        label: "Online boeken en reserveren",
+        tekst: "Welke functies we inbouwen: herinneringen, online betalen, één agenda en meer.",
       },
       {
         to: "/diensten/integraties",
@@ -1651,11 +1651,11 @@ export const ARTIKELEN: Artikel[] = [
       "Dat hangt af van drie dingen die je los moet bekijken: de website, het reserveringssysteem en de koppeling tussen die twee. Wat het je echt kost zie je pas als je die drie optelt over een heel jaar, op je eigen aantallen reserveringen.",
     leestijd: "6 minuten",
     gepubliceerd: "2026-10-27",
-    gewijzigd: "2026-10-27",
+    gewijzigd: "2026-11-01",
     cta: "scan",
     eindKop: "Wil je weten wat jouw situatie nodig heeft voordat je offertes vergelijkt?",
     eindLead:
-      "Beantwoord zes korte vragen. MegaOnline kijkt persoonlijk naar je website en je huidige manier van reserveren. Je krijgt te zien welke van de drie lagen jij echt nodig hebt.",
+      "Beantwoord vier korte vragen. MegaOnline kijkt persoonlijk naar je website en je huidige manier van reserveren. Je krijgt te zien welke van de drie lagen jij echt nodig hebt.",
     secties: [
       {
         kop: "Waarom je nergens één eerlijke prijs vindt",
@@ -1702,6 +1702,43 @@ export const ARTIKELEN: Artikel[] = [
         ],
       },
       {
+        kop: "Welke functies de prijs bepalen",
+        accent: "de prijs bepalen",
+        alineas: [
+          "Bouw je het reserveren in op je eigen site, dan hangt de prijs af van wat het moet kunnen. Een restaurant met één soort tafelreservering en een bevestiging per mail is snel ingericht. Een locatie met tijdsloten voor groepen, extra opties, een aanbetaling en een koppeling met de administratie vraagt veel meer. Vijf vragen bepalen waar jij zit.",
+        ],
+        punten: [
+          {
+            titel: "Hoeveel soorten reserveringen bied je aan?",
+            tekst:
+              "Elke soort met een eigen duur, prijs of maximum aantal plekken moet apart worden ingericht. Een kapper met tien behandelingen is meer werk dan een restaurant met één soort tafel.",
+          },
+          {
+            titel: "Laat je gasten vooraf betalen?",
+            tekst:
+              "Online betalen, een aanbetaling of betalen ter plekke. Met betalen erbij komen ook annuleringsregels en terugbetalingen kijken.",
+          },
+          {
+            titel: "Welke herinneringen gaan er uit?",
+            tekst:
+              "Een bevestiging per mail is standaard. Herinneringen via sms of WhatsApp kosten per bericht iets. Ze leveren vaak het meest op tegen gasten die niet komen opdagen.",
+          },
+          {
+            titel: "Met hoeveel medewerkers, ruimtes of locaties werk je?",
+            tekst:
+              "Elke medewerker of ruimte met een eigen agenda en eigen tijden is een extra laag in de inrichting.",
+          },
+          {
+            titel: "Wat moet er gekoppeld worden?",
+            tekst:
+              "Een koppeling met Google Agenda is eenvoudig. Een koppeling die klantgegevens en betalingen doorzet naar je klantenbestand of administratie is maatwerk.",
+          },
+        ],
+        daarna: [
+          "Schrijf deze vijf antwoorden op voordat je offertes opvraagt. Dan krijg je prijzen voor hetzelfde en zie je waar het verschil zit.",
+        ],
+      },
+      {
         kop: "Wat het kost als je het niet regelt",
         accent: "niet regelt",
         alineas: [
@@ -1714,7 +1751,7 @@ export const ARTIKELEN: Artikel[] = [
         accent: "aanpakt",
         alineas: [
           "MegaOnline begint niet bij een pakket maar bij wat je verkoopt. Een belafspraak, een tafel, een tijdslot voor een groep of een ticket met extra opties vragen elk iets anders van het systeem. Daarmee verschilt ook de prijs.",
-          "Heb je al een systeem dat goed werkt, dan wordt de [website met reserveringssysteem](/branches/reserveringen) daaromheen gebouwd en gaat het alleen nog om de website en de koppeling. Heb je nog niets, of past je huidige systeem niet bij wat je verkoopt, dan richt MegaOnline een eigen boekings- en reserveringssysteem in op jouw diensten. Wat daar allemaal bij kan lees je bij [online boeken en reserveren](/diensten/online-boeken).",
+          "Heb je al een systeem dat goed werkt, dan wordt de [website met reserveringssysteem](/branches/reserveringen) daaromheen gebouwd en gaat het alleen nog om de website en de koppeling. Heb je nog niets, of past je huidige systeem niet bij wat je verkoopt, dan bouwt MegaOnline een boekings- en reserveringssysteem in op je eigen website, ingericht op jouw diensten. Wat daar allemaal bij kan lees je bij [online boeken en reserveren](/diensten/online-boeken).",
           "Twijfel je nog of je wel een los systeem nodig hebt, lees dan eerst [reserveringssysteem of website met reserveringen](/kennisbank/reserveringssysteem-of-website-met-reserveringen). Dat scheelt een offerte voor iets wat je niet nodig hebt.",
         ],
       },

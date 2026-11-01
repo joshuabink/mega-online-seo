@@ -5,7 +5,9 @@ import { Icon } from "@/components/Icon";
 import { Qa } from "@/components/Qa";
 import { FaqSchema } from "@/components/FaqSchema";
 import { Reveal } from "@/components/Reveal";
-import { CTA_SCAN } from "@/lib/cta"
+import { CTA_SCAN } from "@/lib/cta";
+import { BoekVisual } from "@/components/BoekVisual";
+import { BOEK_FUNCTIES } from "@/lib/boekfuncties";
 
 export const Route = createFileRoute("/branches/reserveringen")({
   head: () => ({
@@ -14,7 +16,7 @@ export const Route = createFileRoute("/branches/reserveringen")({
       {
         name: "description",
         content:
-          "Website met reserveringssysteem laten maken? Lees het verschil tussen het systeem en de website, welke route past en wat er op je site moet staan.",
+          "Website met reserveringssysteem laten maken? Gasten reserveren zelf op je eigen site, met herinneringen, online betalen en één agenda. Zo werkt het per type bedrijf.",
       },
       {
         property: "og:title",
@@ -23,7 +25,7 @@ export const Route = createFileRoute("/branches/reserveringen")({
       {
         property: "og:description",
         content:
-          "Website met reserveringssysteem laten maken? Lees het verschil tussen het systeem en de website, welke route past en wat er op je site moet staan.",
+          "Website met reserveringssysteem laten maken? Gasten reserveren zelf op je eigen site, met herinneringen, online betalen en één agenda. Zo werkt het per type bedrijf.",
       },
       { property: "og:url", content: "https://megaonline.io/branches/reserveringen" },
     ],
@@ -54,6 +56,18 @@ const FAQ_ITEMS: { q: string; a: string }[] = [
     q: "Kan ik mijn beschikbaarheid en sluitingsdagen zelf beheren?",
     a: "Ja, dat doe je in je reserveringssysteem. De website laat zien wat daar staat, zodat je het op één plek bijhoudt.",
   },
+  {
+    q: "Kunnen gasten zelf hun reservering wijzigen of annuleren?",
+    a: "Ja. In de bevestiging staat een link waarmee de gast zelf verzet of annuleert, binnen de voorwaarden die jij instelt. Een vrijgekomen plek staat dan meteen weer online.",
+  },
+  {
+    q: "Helpen herinneringen echt tegen gasten die niet komen opdagen?",
+    a: "Een herinnering de dag ervoor zorgt dat wie het vergeten was alsnog komt. Wie niet kan, laat het op tijd weten. Wil je meer zekerheid, vraag dan bij grotere groepen of drukke momenten een aanbetaling.",
+  },
+  {
+    q: "Kunnen gasten ook reserveren vanuit Google of Instagram?",
+    a: "Ja, dat kan erbij. Dan staat er bij je bedrijf in Google Maps en op je Instagram een knop om te reserveren. Die reserveringen komen in dezelfde agenda als die via je website.",
+  },
 ];
 
 const tekstLink: CSSProperties = {
@@ -65,6 +79,34 @@ const tekstLink: CSSProperties = {
 const kaarten: CSSProperties = {
   gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
 };
+
+const PER_BEDRIJF: { icon: string; t: string; p: string }[] = [
+  {
+    icon: "users",
+    t: "Restaurant of lunchroom",
+    p: "De gast kiest een datum, een tijd en het aantal personen. Vanaf een grote groep vraag je een aanbetaling en op de dag zelf gaat er een herinnering.",
+  },
+  {
+    icon: "calendar-clock",
+    t: "Salon of praktijk",
+    p: "Elke behandeling heeft een eigen duur en prijs. De klant kiest een medewerker of laat het open. Bij de eerste afspraak vult hij een paar vragen in.",
+  },
+  {
+    icon: "ticket",
+    t: "Escaperoom of activiteit",
+    p: "Een tijdslot met een maximum aantal spelers en de prijs per persoon in beeld. Extra's zoals een drankje of een fotomoment boek je er meteen bij.",
+  },
+  {
+    icon: "calendar-range",
+    t: "Locatie of zaalverhuur",
+    p: "De klant ziet welke dagen en dagdelen vrij zijn, kiest een ruimte en stuurt een aanvraag of boekt direct, met een aanbetaling als bevestiging.",
+  },
+  {
+    icon: "graduation-cap",
+    t: "Rijschool of lessen",
+    p: "Eerst een proefles, daarna een vaste reeks lessen in één keer. Les verzetten gaat zelf, binnen de termijn die jij instelt.",
+  },
+];
 
 const stappen: CSSProperties = {
   marginTop: "clamp(22px, 2.4vw, 32px)",
@@ -253,23 +295,100 @@ function Reserveringen() {
         data-theme="paper"
         data-screen-label="Reserveringsflow"
       >
+        <div className="wrap boekdemo">
+          <div>
+            <Reveal as="div" className="shead reveal">
+              <h2 className="h2">Hoe ziet een goede reserveringsflow eruit?</h2>
+              <p className="lead">Een voorbeeld in vijf stappen, zoals een gast het op zijn telefoon ziet:</p>
+            </Reveal>
+            <Reveal as="ol" className="reveal" style={stappen}>
+              <li>De gast kiest een datum en het aantal personen.</li>
+              <li>Hij ziet direct welke tijden of plekken vrij zijn. Wat vol is, kan hij niet kiezen.</li>
+              <li>Hij kiest een tijd en ziet de prijs en de voorwaarden.</li>
+              <li>
+                Hij vult naam, e-mail en telefoonnummer in en betaalt online als jij dat vraagt.
+              </li>
+              <li>
+                Hij krijgt direct een bevestiging per mail en de dag ervoor een herinnering, met een
+                manier om te wijzigen of te annuleren.
+              </li>
+            </Reveal>
+          </div>
+          <Reveal as="div" className="reveal" data-d="1">
+            <BoekVisual soort="tafel" />
+          </Reveal>
+        </div>
+      </section>
+
+      <section
+        className="section section--tight"
+        data-theme="light"
+        data-screen-label="Functies"
+      >
         <div className="wrap">
           <Reveal as="div" className="shead reveal">
-            <h2 className="h2">Hoe ziet een goede reserveringsflow eruit?</h2>
-            <p className="lead">Een voorbeeld in vijf stappen:</p>
+            <h2 className="h2">Welke functies bouwen we in je reserveringssysteem?</h2>
+            <p className="lead">
+              We bouwen het reserveringssysteem in op je eigen website en richten het in op wat jij
+              verkoopt. Je kiest de functies die je nodig hebt. Dit zijn de functies die we het
+              vaakst inbouwen:
+            </p>
           </Reveal>
-          <Reveal as="ol" className="reveal" style={stappen}>
-            <li>De gast kiest een datum en het aantal personen.</li>
-            <li>Hij ziet direct welke tijden of plekken vrij zijn.</li>
-            <li>Hij kiest een tijd en ziet de prijs en de voorwaarden.</li>
-            <li>
-              Hij vult naam, e-mail en telefoonnummer in en betaalt online als je systeem dat
-              vraagt.
-            </li>
-            <li>
-              Hij krijgt direct een bevestiging per mail, met een manier om te wijzigen of te
-              annuleren.
-            </li>
+          <div className="featgrid" style={kaarten}>
+            {BOEK_FUNCTIES.map((f, i) => (
+              <Reveal as="div" key={f.t} className="feat reveal" data-d={String(i % 3)}>
+                <span className="iconbox">
+                  <Icon name={f.icon} />
+                </span>
+                <h4>{f.t}</h4>
+                <p>{f.p}</p>
+              </Reveal>
+            ))}
+          </div>
+          <Reveal as="p" className="lead reveal" style={{ marginTop: "clamp(22px, 2.4vw, 32px)" }}>
+            Hoe we het inrichten en wat er na een reservering automatisch gebeurt, lees je bij{" "}
+            <Link to="/diensten/online-boeken" style={tekstLink}>
+              online boeken en reserveren
+            </Link>
+            .
+          </Reveal>
+        </div>
+      </section>
+
+      <section
+        className="section section--tight"
+        data-theme="paper"
+        data-screen-label="Per type bedrijf"
+      >
+        <div className="wrap">
+          <Reveal as="div" className="shead reveal">
+            <h2 className="h2">Hoe ziet online reserveren eruit per type bedrijf?</h2>
+            <p className="lead">
+              Een reserveringswebsite voor een restaurant werkt anders dan een voor een salon of een
+              escaperoom. Wat de gast kiest en wat jij vooraf wilt weten, verschilt per bedrijf.
+            </p>
+          </Reveal>
+          <div className="featgrid" style={kaarten}>
+            {PER_BEDRIJF.map((b, i) => (
+              <Reveal as="div" key={b.t} className="feat reveal" data-d={String(i % 3)}>
+                <span className="iconbox">
+                  <Icon name={b.icon} />
+                </span>
+                <h4>{b.t}</h4>
+                <p>{b.p}</p>
+              </Reveal>
+            ))}
+          </div>
+          <Reveal as="p" className="lead reveal" style={{ marginTop: "clamp(22px, 2.4vw, 32px)" }}>
+            Verkoop je vooral tijdsloten of verhuur, kijk dan ook bij{" "}
+            <Link to="/branches/activiteitenbedrijven" style={tekstLink}>
+              websites voor activiteitenbedrijven
+            </Link>{" "}
+            en{" "}
+            <Link to="/branches/verhuurbedrijven" style={tekstLink}>
+              websites voor verhuurbedrijven
+            </Link>
+            .
           </Reveal>
         </div>
       </section>
@@ -324,17 +443,11 @@ function Reserveringen() {
           <Reveal as="div" className="shead reveal">
             <h2 className="h2">Voor welke bedrijven is een website met reserveringen?</h2>
             <p className="lead">
-              Voor bedrijven waar een gast een plek of moment reserveert: restaurants, B&B's,
-              salons, praktijken en vergelijkbare bedrijven. Bied je vooral activiteiten of verhuur
-              aan, kijk dan ook bij{" "}
-              <Link to="/branches/activiteitenbedrijven" style={tekstLink}>
-                activiteitenbedrijven
-              </Link>{" "}
-              en{" "}
-              <Link to="/branches/verhuurbedrijven" style={tekstLink}>
-                verhuurbedrijven
-              </Link>
-              .
+              Voor bedrijven waar een gast een plek of moment reserveert: restaurants en
+              lunchrooms, B&B's, salons, praktijken, rijscholen, locaties en workshops. Het
+              bedrijfsmodel telt meer dan de branche. Leef je van reserveringen, dan is een
+              reserveringswebsite het deel van je bedrijf dat ook 's avonds en in het weekend
+              doorwerkt.
             </p>
           </Reveal>
         </div>
@@ -346,9 +459,34 @@ function Reserveringen() {
             <h2 className="h2">Wat kost een website met reserveringssysteem?</h2>
             {/* [prijs: Beslissing Joshua (TK-166 punt 5 / TK-85 vraag 1)] */}
             <p className="lead">
-              Wat er bijkomt, hangt af van het reserveringssysteem en de koppeling die je wilt. De
-              kosten van het reserveringssysteem zelf hangen af van de leverancier. In de gratis
-              website scan krijg je advies voor jouw situatie.
+              Dat hangt af van de functies die je nodig hebt en hoe complex je aanbod is. Een
+              restaurant met één soort tafelreservering is eenvoudiger dan een locatie met
+              tijdsloten, groepen, extra opties en een aanbetaling. Wat de prijs bepaalt:
+            </p>
+          </Reveal>
+          <Reveal
+            as="ul"
+            className="minilist minilist--do reveal"
+            style={{ marginTop: "clamp(22px, 2.4vw, 32px)", maxWidth: "62ch" }}
+          >
+            <Punt>Hoeveel soorten reserveringen je aanbiedt en of die een eigen duur of prijs hebben.</Punt>
+            <Punt>Of gasten online betalen of een aanbetaling doen.</Punt>
+            <Punt>Welke herinneringen er gaan, per mail, sms of WhatsApp.</Punt>
+            <Punt>Met hoeveel medewerkers, ruimtes of locaties je werkt.</Punt>
+            <Punt>Welke koppelingen er nodig zijn, met je agenda, je klantenbestand of je administratie.</Punt>
+            <Punt>Of je huidige website goed genoeg is, of dat er een nieuwe nodig is.</Punt>
+          </Reveal>
+          <Reveal as="div" className="reveal">
+            <p className="lead" style={{ marginTop: "clamp(22px, 2.4vw, 32px)" }}>
+              Hoe je offertes vergelijkt, lees je in{" "}
+              <Link
+                to="/kennisbank/$slug"
+                params={{ slug: "wat-kost-een-website-met-reserveringssysteem" }}
+                style={tekstLink}
+              >
+                wat kost een website met reserveringssysteem
+              </Link>
+              . Na de gratis website scan weet je wat bij jou past en wat het kost.
             </p>
           </Reveal>
         </div>
@@ -378,7 +516,7 @@ function Reserveringen() {
             <h2 className="display">Gratis website scan voor je reserveringen</h2>
             <p className="lead">
               Wil je weten hoe online reserveren op jouw website kan werken? Ontvang een gratis
-              website scan met persoonlijk advies. Beantwoord zes korte vragen. Vrijblijvend.
+              website scan met persoonlijk advies. Beantwoord vier korte vragen. Vrijblijvend.
             </p>
             <Reveal
               as="div"
