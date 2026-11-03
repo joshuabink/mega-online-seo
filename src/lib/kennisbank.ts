@@ -1953,6 +1953,147 @@ export const ARTIKELEN: Artikel[] = [
     metaDescription:
       "Een nieuwe website lost vaak het verkeerde probleem op. Zo zie je of je huidige website laten optimaliseren genoeg is of dat opnieuw bouwen slimmer is.",
   },
+  {
+    slug: "wat-is-een-converterende-website",
+    naam: "Wat is een converterende website",
+    vraag: "Wat is een converterende website?",
+    pijler: "Zo werkt het echt",
+    icoon: "target",
+    branche: "Algemeen",
+    teaser:
+      "Een converterende website is niet mooier of drukker bezocht. Hij is gebouwd rond één handeling die een bezoeker moet doen.",
+    antwoord:
+      "Een converterende website is een website die bezoekers laat doen waarvoor hij bestaat: een aanvraag sturen, een afspraak maken of een boeking afronden. Het verschil met een gewone website zit niet in het ontwerp, maar in de volgorde: elke pagina is gebouwd vanuit die ene handeling terug naar de vragen die een bezoeker eerst beantwoord wil zien.",
+    leestijd: "6 minuten",
+    gepubliceerd: "2026-11-03",
+    gewijzigd: "2026-11-03",
+    cta: "scan",
+    eindKop: "Wil je zien waar jouw website aanvragen laat weglekken?",
+    eindLead:
+      "MegaOnline kijkt persoonlijk naar je website, loopt de route naar je aanvraag na zoals een bezoeker dat doet en stuurt je de punten waar mensen afhaken. Wil je eerst weten wat er bij een nieuwe site komt kijken, lees dan meer over een [conversiegerichte website](/diensten/conversie-website).",
+    secties: [
+      {
+        kop: "Wat converteren eigenlijk betekent",
+        accent: "eigenlijk betekent",
+        alineas: [
+          "Converteren is een duur woord voor iets eenvoudigs. Een bezoeker wordt iemand die iets van je wil. Hij vult je offerteformulier in, belt, stuurt een WhatsApp of rondt een reservering af. Dat moment heet een conversie. Een converterende website is erop gebouwd dat dit zo vaak mogelijk gebeurt, bij de mensen die je echt wilt hebben.",
+          "Je komt ook de term conversiegerichte website tegen. Dat is hetzelfde. De ene zegt wat de site doet, de andere waar hij op gericht is.",
+          "Belangrijk is wat er niet in staat. Een converterende website is niet per se mooier dan een andere. Hij trekt ook niet vanzelf meer bezoekers. Een site met weinig bezoekers kan prima converteren en een drukbezochte site kan bijna niets opleveren. Het getal dat telt is het aantal aanvragen, niet het aantal mensen dat langskwam.",
+        ],
+      },
+      {
+        kop: "Het begint bij één handeling, niet bij een ontwerp",
+        accent: "één handeling",
+        alineas: [
+          "De meeste websites worden gebouwd vanaf de homepage. Eerst een mooie foto, dan een slogan, dan een blok over het bedrijf, dan de diensten en helemaal onderaan een contactformulier. Dat is de volgorde waarin een ondernemer over zijn bedrijf vertelt. Het is niet de volgorde waarin een klant beslist.",
+          "Een converterende website draait dat om. Je begint bij de handeling die je wilt: een offerteaanvraag, een belafspraak of een boeking. Dan vraag je je af wat iemand moet weten en geloven voordat hij die stap durft te zetten. Die vragen bepalen wat er op de pagina komt en in welke volgorde.",
+          "Neem een installateur die warmtepompen plaatst. Zijn huidige homepage opent met \"Vakmanschap en kwaliteit sinds jaar en dag\". Daaronder een lijst met diensten, een stukje over het team en onderaan een formulier met negen velden, inclusief bouwjaar, oppervlakte en type verwarming. Er komen af en toe aanvragen binnen, vooral van mensen die al wisten dat ze hem wilden hebben.",
+          "Een huiseigenaar die hem nog niet kent, wil iets anders weten. Werk je in mijn regio? Wat kost dit ongeveer? Heb je dit vaker gedaan bij een huis zoals het mijne? Wat gebeurt er nadat ik het formulier verstuur? Staat dat niet boven het formulier, dan sluit hij het tabblad en kijkt hij bij de volgende installateur.",
+          "De converterende versie zet dat recht. Bovenaan staat wat hij doet, voor wie en in welke regio. Daaronder foto's van echte installaties met de plaats erbij, een prijsindicatie met waar die van afhangt en twee zinnen over wat er na de aanvraag gebeurt. Het formulier vraagt alleen naam, telefoonnummer en postcode. De rest bespreekt hij aan de telefoon. Op een telefoon blijft een belknop in beeld, waar de bezoeker ook scrolt.",
+        ],
+      },
+      {
+        kop: "Vijf kenmerken die je op je eigen site kunt controleren",
+        accent: "op je eigen site",
+        alineas: [
+          "Een converterende website herken je niet aan de kleuren. Je herkent hem aan een paar dingen die je zelf in een paar minuten kunt nalopen.",
+        ],
+        punten: [
+          {
+            titel: "Je ziet meteen wat het bedrijf doet en voor wie",
+            tekst:
+              "Bovenaan de pagina staat geen slogan maar een zin die een vreemde begrijpt: wat je aanbiedt, voor wie en waar. Wie moet scrollen om te snappen of hij goed zit, is vaak al weg.",
+          },
+          {
+            titel: "Er is bewijs dat iemand kan controleren",
+            tekst:
+              "Echte foto's van eigen werk, een gezicht, een adres, ervaringen van klanten met naam. Kwaliteit en maatwerk zijn woorden die iedereen gebruikt. Hoe je vertrouwen opbouwt staat in het artikel over [vertrouwen wekken met je website](/kennisbank/vertrouwen-wekken-zakelijke-website).",
+          },
+          {
+            titel: "De prijs is geen geheim",
+            tekst:
+              "Een vast bedrag kan niet altijd. Een vanafprijs of een uitleg waar de prijs van afhangt kan bijna altijd. Wie geen idee heeft van de orde van grootte, vraagt liever niets aan.",
+          },
+          {
+            titel: "Er is één duidelijke volgende stap",
+            tekst:
+              "Elke pagina heeft één doel en één knop die daarbij hoort. Staan er vier knoppen naast elkaar die allemaal iets anders willen, dan kiest de bezoeker vaak geen van allemaal.",
+          },
+          {
+            titel: "Het formulier vraagt alleen wat nodig is",
+            tekst:
+              "Elk veld dat je toevoegt is een reden om te stoppen. Vraag wat je nodig hebt om terug te bellen en bewaar de rest voor het gesprek.",
+          },
+        ],
+      },
+      {
+        kop: "Waarom een website die stilstaat niet blijft converteren",
+        accent: "niet blijft converteren",
+        alineas: [
+          "Een site die bij de oplevering goed converteert, doet dat over een jaar niet vanzelf nog steeds. Je aanbod verandert, concurrenten zetten hun prijzen wel online en bezoekers stellen nieuwe vragen. Een converterende website is daarom geen eenmalige bouw, maar iets dat je bijhoudt.",
+          "Een voorbeeld uit dezelfde wereld: de installateur ziet na een paar maanden dat veel mensen vragen of hij ook subsidie regelt. Zolang dat antwoord alleen aan de telefoon wordt gegeven, haakt een deel van de bezoekers af voordat ze bellen. Zet hij het op de pagina, vlak boven het formulier, dan haalt hij een twijfel weg op de plek waar die ontstaat.",
+          "Dat begint met meten wat ertoe doet. Tel elke maand hoeveel aanvragen er via de site binnenkwamen en via welke pagina. Kijk in Google Search Console op welke zoekvragen je gevonden wordt. Zo zie je of een aanpassing iets oplevert of alleen anders oogt. Waar het vaak misgaat lees je in het artikel over [waarom je website geen aanvragen oplevert](/kennisbank/website-levert-geen-aanvragen-op).",
+        ],
+      },
+      {
+        kop: "Hoe MegaOnline een converterende website bouwt",
+        accent: "converterende website",
+        alineas: [
+          "MegaOnline begint niet bij het ontwerp. Eerst komt begrijpen wat je verkoopt, dan wie je klant is en welke vragen hij heeft, dan de structuur van de pagina's. Pas daarna wordt er gebouwd. Zo staat elke pagina in dienst van de aanvraag, de boeking of de belafspraak die je wilt.",
+          "Na de livegang meet MegaOnline wat de site oplevert in aanvragen en stuurt bij waar bezoekers afhaken. Wat er bij een nieuwe site komt kijken lees je bij een [conversiegerichte website laten maken](/diensten/conversie-website). Heb je al een site die op zich goed staat, dan is [website optimalisatie](/diensten/website-optimalisatie) vaak de kortere weg.",
+        ],
+      },
+    ],
+    doen: [
+      "Open je homepage op je telefoon en kijk of een vreemde zonder scrollen snapt wat je doet, voor wie en waar.",
+      "Schrijf de drie vragen op die klanten aan de telefoon het vaakst stellen en zet de antwoorden boven je formulier.",
+      "Tel de velden in je contactformulier en schrap alles wat je niet nodig hebt om terug te bellen.",
+      "Kies per belangrijke pagina één knop als volgende stap en haal de concurrerende knoppen weg.",
+      "Noteer hoeveel aanvragen er vorige maand via de site binnenkwamen. Dat is het getal waar je vanaf nu op let.",
+    ],
+    faq: [
+      {
+        q: "Wat is het verschil tussen een converterende en een conversiegerichte website?",
+        a: "Er is geen verschil. Beide termen beschrijven een website die gebouwd is om bezoekers een aanvraag, boeking of afspraak te laten doen. De ene zegt wat de site doet, de andere waar hij op gericht is.",
+      },
+      {
+        q: "Kan mijn huidige website converterend worden zonder nieuwe site?",
+        a: "Vaak wel. Teksten, volgorde, bewijs, knoppen en formulieren kun je op een bestaande site aanpassen. Een nieuwe site is pas nodig als de techniek of de structuur je tegenhoudt. Lees daarover meer in het artikel [nieuwe website of optimaliseren](/kennisbank/nieuwe-website-of-optimaliseren).",
+      },
+      {
+        q: "Hoe weet je of een website converteert?",
+        a: "Door aanvragen te tellen, niet bezoekers. Houd per maand bij hoeveel aanvragen, belafspraken of boekingen via de site binnenkomen en via welke pagina. Zie je veel bezoek op een pagina en weinig aanvragen, dan zit daar je groeikans.",
+      },
+      {
+        q: "Wat kost een conversiegerichte website?",
+        a: "Dat hangt af van het aantal pagina's, de teksten en de functies die je nodig hebt, zoals online boeken of koppelingen. Bij MegaOnline begint een Conversie Website vanaf € 2.500. In de gratis website scan krijg je een indicatie voor jouw situatie.",
+      },
+      {
+        q: "Is een converterende website hetzelfde als een website met goede SEO?",
+        a: "Nee. Vindbaarheid zorgt dat mensen je site bereiken. Een converterende website zorgt dat ze daarna een aanvraag doen. Je hebt allebei nodig, maar meer bezoekers op een site die niet converteert levert weinig extra aanvragen op.",
+      },
+    ],
+    links: [
+      {
+        to: "/diensten/conversie-website",
+        label: "Conversiegerichte website laten maken",
+        tekst: "Een website die gebouwd is vanuit de aanvraag, de boeking of de belafspraak.",
+      },
+      {
+        to: "/kennisbank/vertrouwen-wekken-zakelijke-website",
+        label: "Vertrouwen wekken met je website",
+        tekst: "Welk bewijs een bezoeker zoekt voordat hij een aanvraag durft te sturen.",
+      },
+      {
+        to: "/kennisbank/website-levert-geen-aanvragen-op",
+        label: "Waarom je website geen aanvragen oplevert",
+        tekst: "De plekken waar bezoekers het vaakst afhaken.",
+      },
+    ],
+    metaTitle: "Wat is een converterende website? | MegaOnline",
+    metaDescription:
+      "Een converterende website laat bezoekers een aanvraag, boeking of belafspraak doen. Wat het is, hoe je hem herkent en wat je morgen zelf kunt controleren.",
+  },
 ];
 
 /**
