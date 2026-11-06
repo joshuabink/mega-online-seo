@@ -2094,6 +2094,147 @@ export const ARTIKELEN: Artikel[] = [
     metaDescription:
       "Een converterende website laat bezoekers een aanvraag, boeking of belafspraak doen. Wat het is, hoe je hem herkent en wat je morgen zelf kunt controleren.",
   },
+  {
+    slug: "wat-moet-er-op-een-werken-bij-pagina",
+    naam: "Wat moet er op een werken-bij pagina",
+    vraag: "Wat moet er op een werken-bij pagina staan?",
+    pijler: "Zo werkt het echt",
+    icoon: "user-search",
+    branche: "Bedrijven die personeel zoeken",
+    teaser:
+      "Een sollicitant heeft vragen die hij in een gesprek niet durft te stellen. Een goede werken-bij pagina beantwoordt ze voordat hij gaat twijfelen.",
+    antwoord:
+      "Op een werken-bij pagina staan de antwoorden op de vragen die een sollicitant zichzelf stelt voordat hij reageert: wat ga ik doen, wat verdien ik ongeveer, met wie werk ik en wat gebeurt er als ik reageer. Sfeer en kernwaarden helpen pas als die praktische vragen beantwoord zijn.",
+    leestijd: "6 minuten",
+    gepubliceerd: "2026-11-06",
+    gewijzigd: "2026-11-06",
+    cta: "scan",
+    eindKop: "Wil je zien waar sollicitanten op jouw werken-bij pagina afhaken?",
+    eindLead:
+      "MegaOnline kijkt persoonlijk naar je website, loopt de route naar een sollicitatie na zoals een kandidaat dat op zijn telefoon doet en stuurt je de punten waar het weglekt. Wil je eerst weten wat er bij een eigen werken-bij site komt kijken, lees dan meer over een [werken-bij website laten maken](/diensten/werken-bij-websites).",
+    secties: [
+      {
+        kop: "Een sollicitant leest anders dan jij schrijft",
+        accent: "anders dan jij schrijft",
+        alineas: [
+          "De meeste werken-bij pagina's beginnen bij het bedrijf. Een foto van het pand, een alinea over de geschiedenis, drie kernwaarden en daaronder de vacatures. Dat is de volgorde waarin een werkgever over zichzelf vertelt. Het is niet de volgorde waarin iemand besluit om te reageren.",
+          "Iemand die al een baan heeft, kijkt vooral of overstappen het risico waard is. Hij leest geen kernwaarden. Hij zoekt naar het antwoord op een handvol vragen die hij in een sollicitatiegesprek niet zo snel hardop stelt. Wat verdien ik ongeveer? Hoe laat begin ik? Hoeveel reistijd is het? Wie wordt mijn leidinggevende? Moet ik in het weekend werken? Staat dat er niet, dan vult hij het zelf in. Meestal niet in jouw voordeel.",
+          "Een werken-bij pagina werkt dus hetzelfde als een pagina die klanten moet overtuigen. Het gaat om vertrouwen en om twijfel weghalen op de plek waar die ontstaat. Dat principe staat uitgewerkt in het artikel over [wat een converterende website is](/kennisbank/wat-is-een-converterende-website). Alleen heet de aanvraag hier sollicitatie.",
+        ],
+      },
+      {
+        kop: "Een voorbeeld: de monteur die al een baan heeft",
+        accent: "al een baan heeft",
+        alineas: [
+          "Neem een installatiebedrijf dat al maanden een servicemonteur zoekt. De werken-bij pagina noemt een \"marktconform salaris\", \"een informele sfeer\" en \"doorgroeimogelijkheden\". Onderaan staat een formulier met een verplichte upload voor cv en motivatiebrief.",
+          "Een monteur die bij een ander bedrijf werkt, leest dit 's avonds op zijn telefoon. Marktconform zegt hem niets. Hij weet niet of hij een bus mee naar huis krijgt, hoe vaak hij storingsdienst draait of of hij in zijn eigen regio blijft. Zijn cv staat niet op zijn telefoon en een motivatiebrief schrijft hij niet tussen het eten en de televisie door. Hij sluit het tabblad.",
+          "Dezelfde pagina kan het ook anders. Bovenaan staat in één zin wat de monteur doet en in welk gebied. Daaronder een salarisbandbreedte, de werktijden, hoe vaak de storingsdienst langskomt en dat de bus mee naar huis gaat. Een foto van de echte collega's bij de echte bussen. Een naam en een telefoonnummer van wie hij kan bellen. En een formulier dat alleen om naam en telefoonnummer vraagt, met een WhatsApp-knop ernaast.",
+          "Dat tweede formulier levert niet vanzelf meer sollicitaties op. Het haalt wel de redenen weg waarom een geschikte kandidaat nu niet reageert.",
+        ],
+      },
+      {
+        kop: "Wat er op een werken-bij pagina hoort",
+        accent: "hoort",
+        alineas: [
+          "Gebruik dit als controlelijst voor je eigen pagina. De volgorde is bewust: eerst het werk, dan de mensen, dan pas het verhaal.",
+        ],
+        punten: [
+          {
+            titel: "Wat iemand op een gewone dag doet",
+            tekst:
+              "Geen lijst met taken, maar een beschrijving van een werkdag. Waar begint hij, met wie werkt hij, wat is lastig en wat is leuk. Wie dat leest, weet of het bij hem past.",
+          },
+          {
+            titel: "Salaris, uren en voorwaarden",
+            tekst:
+              "Een bandbreedte is genoeg. Noem ook de werktijden, het aantal uren, of er avond- of weekendwerk is en wat er naast het salaris bij zit. Dit is de vraag die sollicitanten het minst durven te stellen en het meest willen weten.",
+          },
+          {
+            titel: "Wat je niet hoeft te hebben",
+            tekst:
+              "Een vacature met tien eisen schrikt ook mensen af die het werk prima kunnen. Zet erbij welke eisen geen harde eis zijn. Een diploma dat je zelf betaalt, een rijbewijs dat je onderweg mag halen of ervaring die niet nodig is.",
+          },
+          {
+            titel: "Echte mensen en echte foto's",
+            tekst:
+              "Collega's met naam en functie, op de werkplek waar de sollicitant ook komt te staan. Stockfoto's van lachende mensen aan een vergadertafel vertellen een monteur of kok dat de pagina niet voor hem gemaakt is.",
+          },
+          {
+            titel: "Wat er gebeurt nadat iemand reageert",
+            tekst:
+              "Hoeveel stappen er zijn, hoe lang het duurt en wie contact opneemt. Onzekerheid over wat er na het versturen gebeurt, is een reden om niet te versturen.",
+          },
+          {
+            titel: "Een sollicitatie die op een telefoon lukt",
+            tekst:
+              "Een kort formulier, een cv dat niet verplicht is en een alternatief via mail of WhatsApp. Wie al werk heeft, solliciteert 's avonds op de bank en niet achter een laptop.",
+          },
+        ],
+        daarna: [
+          "Sfeer, missie en kernwaarden mogen er ook op. Alleen helpen ze pas als de vragen hierboven beantwoord zijn. Vertrouwen bouw je op met dingen die iemand kan controleren. Dat geldt voor sollicitanten net zo goed als voor klanten, zie het artikel over [vertrouwen wekken met je website](/kennisbank/vertrouwen-wekken-zakelijke-website).",
+        ],
+      },
+      {
+        kop: "Hoe de eigen werken-bij pagina van MegaOnline is opgebouwd",
+        accent: "MegaOnline",
+        alineas: [
+          "Een voorbeeld dat je zelf kunt bekijken is de pagina [werken bij MegaOnline](/werken-bij). Het is de eigen vacaturepagina van MegaOnline en geen klantvoorbeeld. Er staan stages, freelance en parttime rollen op.",
+          "Per rol staat er een kaart met het soort rol, één zin over het werk en de ervaring die nodig is. Elke rol heeft een eigen pagina met wat je gaat doen, wat je meebrengt, wat je niet hoeft te hebben en wat je er leert. Een cv mag, maar een paar zinnen over jezelf is genoeg om te beginnen. Reageren kan via het formulier, per mail of met een appje.",
+          "De procedure staat er in drie stappen bij: iets sturen, een kort belgesprek en daarna een kleine opdracht uit de praktijk. Er staat ook bij hoe snel er een reactie komt, ook als het antwoord nee is. Dat is geen versiering. Het is precies de informatie waardoor iemand die twijfelt toch op verzenden drukt.",
+          "Heb je veel vacatures of wil je ze in Google laten verschijnen, dan wordt het meer dan één pagina. Elke vacature krijgt dan een eigen pagina met gestructureerde gegevens. Wat daarbij komt kijken lees je bij [werken-bij websites](/diensten/werken-bij-websites).",
+        ],
+      },
+    ],
+    doen: [
+      "Open je werken-bij pagina 's avonds op je telefoon en probeer zonder cv te solliciteren.",
+      "Vraag twee collega's welke vraag ze zelf hadden voordat ze solliciteerden en zet het antwoord op de pagina.",
+      "Zet bij elke vacature een salarisbandbreedte, de werktijden en of er avond- of weekendwerk is.",
+      "Vervang elke stockfoto door een foto van echte collega's op de werkplek.",
+      "Schrijf in drie stappen op wat er gebeurt nadat iemand reageert en zet dat direct boven het formulier.",
+    ],
+    faq: [
+      {
+        q: "Wat is het verschil tussen een werken-bij pagina en een werken-bij website?",
+        a: "Een werken-bij pagina is een sectie op je bedrijfssite, bijvoorbeeld op /werken-bij. Een werken-bij website is een aparte site die helemaal om werken en solliciteren draait. Welke past hangt af van hoeveel vacatures je hebt en hoeveel je wilt laten zien.",
+      },
+      {
+        q: "Moet het salaris op een werken-bij pagina staan?",
+        a: "Het helpt in elk geval. Salaris is de vraag die sollicitanten het minst durven te stellen. Een bandbreedte geeft genoeg houvast en houdt de mensen weg voor wie het niet past.",
+      },
+      {
+        q: "Hoeveel velden mag een sollicitatieformulier hebben?",
+        a: "Zo weinig als je nodig hebt om contact op te nemen. Naam, telefoonnummer of e-mailadres en eventueel een korte toelichting zijn vaak genoeg. Maak een cv optioneel, want op een telefoon staat dat meestal niet bij de hand.",
+      },
+      {
+        q: "Wat zet je op een werken-bij pagina als je geen vacatures hebt?",
+        a: "Laat de pagina staan en vertel hoe het is om bij je te werken, wie je in de toekomst zoekt en hoe iemand een open sollicitatie stuurt. Zo bouw je een lijst op van mensen die je kunt bellen zodra er wel een plek is.",
+      },
+      {
+        q: "Kunnen vacatures van een werken-bij pagina in Google verschijnen?",
+        a: "Ze kunnen in aanmerking komen als elke vacature een eigen pagina met gestructureerde gegevens heeft. Of en waar ze verschijnen bepaalt Google, dat kan niemand garanderen.",
+      },
+    ],
+    links: [
+      {
+        to: "/diensten/werken-bij-websites",
+        label: "Werken-bij website laten maken",
+        tekst: "Een werken-bij pagina of aparte site die laat zien hoe het echt is om bij je te werken.",
+      },
+      {
+        to: "/werken-bij",
+        label: "Werken bij MegaOnline",
+        tekst: "De eigen vacaturepagina van MegaOnline, met per rol een eigen pagina.",
+      },
+      {
+        to: "/kennisbank/vertrouwen-wekken-zakelijke-website",
+        label: "Vertrouwen wekken met je website",
+        tekst: "Welk bewijs een bezoeker zoekt voordat hij een stap durft te zetten.",
+      },
+    ],
+    metaTitle: "Wat moet er op een werken-bij pagina staan? | MegaOnline",
+    metaDescription:
+      "Wat moet er op een werken-bij pagina staan? De vragen die sollicitanten zichzelf stellen, een voorbeeld uit de praktijk en vijf dingen die je morgen kunt doen.",
+  },
 ];
 
 /**
