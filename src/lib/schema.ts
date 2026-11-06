@@ -248,6 +248,7 @@ const CRUMB_LABEL: Record<string, string> = {
   "/diensten/starter-website": "Starter Website",
   "/diensten/website-optimalisatie": "Website Optimalisatie",
   "/diensten/website-redesign": "Website Redesign",
+  "/diensten/wordpress-optimalisatie": "WordPress Optimalisatie",
   "/diensten/werken-bij-websites": "Werken-bij Websites",
   "/gratis-websitescan": "Gratis website scan",
   "/joshua-bink": "Joshua Bink",
@@ -297,6 +298,10 @@ const SERVICES: Record<
   "/diensten/website-optimalisatie": {
     name: "Website Optimalisatie",
     serviceType: "Conversieoptimalisatie",
+  },
+  "/diensten/wordpress-optimalisatie": {
+    name: "WordPress Optimalisatie",
+    serviceType: "Snelheidsoptimalisatie en opschoning van WordPress-websites",
   },
   "/diensten/seo": {
     name: "Groei Partnership",

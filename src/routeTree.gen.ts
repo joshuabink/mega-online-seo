@@ -37,6 +37,7 @@ import { Route as DienstenStarterWebsiteRouteImport } from './routes/diensten/st
 import { Route as DienstenWebsiteOptimalisatieRouteImport } from './routes/diensten/website-optimalisatie'
 import { Route as DienstenWebsiteRedesignRouteImport } from './routes/diensten/website-redesign'
 import { Route as DienstenWerkenBijWebsitesRouteImport } from './routes/diensten/werken-bij-websites'
+import { Route as DienstenWordpressOptimalisatieRouteImport } from './routes/diensten/wordpress-optimalisatie'
 import { Route as KennisbankIndexRouteImport } from './routes/kennisbank/index'
 import { Route as KennisbankSlugRouteImport } from './routes/kennisbank/$slug'
 import { Route as WerkenBijIndexRouteImport } from './routes/werken-bij/index'
@@ -188,6 +189,12 @@ const DienstenWerkenBijWebsitesRoute =
     path: '/diensten/werken-bij-websites',
     getParentRoute: () => rootRouteImport,
   } as any)
+const DienstenWordpressOptimalisatieRoute =
+  DienstenWordpressOptimalisatieRouteImport.update({
+    id: '/diensten/wordpress-optimalisatie',
+    path: '/diensten/wordpress-optimalisatie',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const KennisbankIndexRoute = KennisbankIndexRouteImport.update({
   id: '/kennisbank/',
   path: '/kennisbank/',
@@ -237,6 +244,7 @@ export interface FileRoutesByFullPath {
   '/diensten/website-optimalisatie': typeof DienstenWebsiteOptimalisatieRoute
   '/diensten/website-redesign': typeof DienstenWebsiteRedesignRoute
   '/diensten/werken-bij-websites': typeof DienstenWerkenBijWebsitesRoute
+  '/diensten/wordpress-optimalisatie': typeof DienstenWordpressOptimalisatieRoute
   '/kennisbank/$slug': typeof KennisbankSlugRoute
   '/werken-bij/$slug': typeof WerkenBijSlugRoute
   '/concepten/': typeof ConceptenIndexRoute
@@ -271,6 +279,7 @@ export interface FileRoutesByTo {
   '/diensten/website-optimalisatie': typeof DienstenWebsiteOptimalisatieRoute
   '/diensten/website-redesign': typeof DienstenWebsiteRedesignRoute
   '/diensten/werken-bij-websites': typeof DienstenWerkenBijWebsitesRoute
+  '/diensten/wordpress-optimalisatie': typeof DienstenWordpressOptimalisatieRoute
   '/kennisbank/$slug': typeof KennisbankSlugRoute
   '/werken-bij/$slug': typeof WerkenBijSlugRoute
   '/concepten': typeof ConceptenIndexRoute
@@ -306,6 +315,7 @@ export interface FileRoutesById {
   '/diensten/website-optimalisatie': typeof DienstenWebsiteOptimalisatieRoute
   '/diensten/website-redesign': typeof DienstenWebsiteRedesignRoute
   '/diensten/werken-bij-websites': typeof DienstenWerkenBijWebsitesRoute
+  '/diensten/wordpress-optimalisatie': typeof DienstenWordpressOptimalisatieRoute
   '/kennisbank/$slug': typeof KennisbankSlugRoute
   '/werken-bij/$slug': typeof WerkenBijSlugRoute
   '/concepten/': typeof ConceptenIndexRoute
@@ -342,6 +352,7 @@ export interface FileRouteTypes {
     | '/diensten/website-optimalisatie'
     | '/diensten/website-redesign'
     | '/diensten/werken-bij-websites'
+    | '/diensten/wordpress-optimalisatie'
     | '/kennisbank/$slug'
     | '/werken-bij/$slug'
     | '/concepten/'
@@ -376,6 +387,7 @@ export interface FileRouteTypes {
     | '/diensten/website-optimalisatie'
     | '/diensten/website-redesign'
     | '/diensten/werken-bij-websites'
+    | '/diensten/wordpress-optimalisatie'
     | '/kennisbank/$slug'
     | '/werken-bij/$slug'
     | '/concepten'
@@ -410,6 +422,7 @@ export interface FileRouteTypes {
     | '/diensten/website-optimalisatie'
     | '/diensten/website-redesign'
     | '/diensten/werken-bij-websites'
+    | '/diensten/wordpress-optimalisatie'
     | '/kennisbank/$slug'
     | '/werken-bij/$slug'
     | '/concepten/'
@@ -445,6 +458,7 @@ export interface RootRouteChildren {
   DienstenWebsiteOptimalisatieRoute: typeof DienstenWebsiteOptimalisatieRoute
   DienstenWebsiteRedesignRoute: typeof DienstenWebsiteRedesignRoute
   DienstenWerkenBijWebsitesRoute: typeof DienstenWerkenBijWebsitesRoute
+  DienstenWordpressOptimalisatieRoute: typeof DienstenWordpressOptimalisatieRoute
   KennisbankSlugRoute: typeof KennisbankSlugRoute
   WerkenBijSlugRoute: typeof WerkenBijSlugRoute
   ConceptenIndexRoute: typeof ConceptenIndexRoute
@@ -650,6 +664,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DienstenWerkenBijWebsitesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/diensten/wordpress-optimalisatie': {
+      id: '/diensten/wordpress-optimalisatie'
+      path: '/diensten/wordpress-optimalisatie'
+      fullPath: '/diensten/wordpress-optimalisatie'
+      preLoaderRoute: typeof DienstenWordpressOptimalisatieRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/kennisbank/': {
       id: '/kennisbank/'
       path: '/kennisbank'
@@ -709,6 +730,7 @@ const rootRouteChildren: RootRouteChildren = {
   DienstenWebsiteOptimalisatieRoute: DienstenWebsiteOptimalisatieRoute,
   DienstenWebsiteRedesignRoute: DienstenWebsiteRedesignRoute,
   DienstenWerkenBijWebsitesRoute: DienstenWerkenBijWebsitesRoute,
+  DienstenWordpressOptimalisatieRoute: DienstenWordpressOptimalisatieRoute,
   KennisbankSlugRoute: KennisbankSlugRoute,
   WerkenBijSlugRoute: WerkenBijSlugRoute,
   ConceptenIndexRoute: ConceptenIndexRoute,

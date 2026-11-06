@@ -91,6 +91,15 @@ const FAQ_ITEMS: { q: string; a: ReactNode }[] = [
     a: 'Ja. De meeste websites zijn goed te verbeteren. We pakken structuur, formulieren, snelheid, de mobiele ervaring en de technische basis voor Google aan zonder je website opnieuw te bouwen.',
   },
   {
+    q: 'Mijn site draait op WordPress. Kunnen jullie ook de backend opruimen?',
+    a: (
+      <>
+        Ja. Lees wat we doen bij{' '}
+        <Link to="/diensten/wordpress-optimalisatie">WordPress optimalisatie</Link>: snelheid, plugins uitzoeken en de inhoud logisch inrichten.
+      </>
+    ),
+  },
+  {
     q: 'Hoe snel zie ik resultaat?',
     a: 'Sommige verbeteringen, zoals een duidelijkere knop of een korter formulier, kunnen al snel merkbaar zijn. Andere, zoals je vindbaarheid in Google, hebben meer tijd nodig. We sturen op wat we meten, niet op gevoel.',
   },

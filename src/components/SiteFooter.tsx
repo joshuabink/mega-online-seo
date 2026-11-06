@@ -7,6 +7,7 @@ const DIENSTEN = [
   ['/diensten/conversie-website', 'Conversie Website'],
   ['/diensten/website-redesign', 'Website Redesign'],
   ['/diensten/website-optimalisatie', 'Website Optimalisatie'],
+  ['/diensten/wordpress-optimalisatie', 'WordPress Optimalisatie'],
   ['/diensten/starter-website', 'Starter Website'],
   ['/diensten/werken-bij-websites', 'Werken-bij Website'],
   ['/diensten/seo', 'SEO en GEO'],

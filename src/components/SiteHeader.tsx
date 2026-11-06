@@ -286,6 +286,17 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
                     </span>
                   </span>
                 </Link>
+                <Link className="mlink" to="/diensten/wordpress-optimalisatie">
+                  <span className="mlink__ico">
+                    <Icon name="wrench" />
+                  </span>
+                  <span className="mlink__txt">
+                    <span className="mlink__name">WordPress Optimalisatie</span>
+                    <span className="mlink__sub">
+                      Sneller en een opgeruimde backend
+                    </span>
+                  </span>
+                </Link>
                 <Link className="mlink" to="/diensten/seo">
                   <span className="mlink__ico">
                     <Icon name="search" />
@@ -581,6 +592,16 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
                 <Icon name="gauge" />
               </span>
               Website Optimalisatie
+            </Link>
+            <Link
+              className="macc__link"
+              to="/diensten/wordpress-optimalisatie"
+              onClick={onClose}
+            >
+              <span className="mlink__ico">
+                <Icon name="wrench" />
+              </span>
+              WordPress Optimalisatie
             </Link>
             <Link className="macc__link" to="/diensten/starter-website" onClick={onClose}>
               <span className="mlink__ico">
