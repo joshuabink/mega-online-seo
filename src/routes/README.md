@@ -19,3 +19,5 @@ is `src/routes/__root.tsx`.
 | `__root.tsx` | app shell — wraps every page; preserve `<Outlet />` |
 
 `routeTree.gen.ts` is auto-generated. Don't edit it by hand.
+
+`/health/lead/` is not a file route. `src/server.ts` answers it only when the request segment matches `LEAD_DRYCHECK_TOKEN`. See `docs/lead-dry-check.md`. Do not add the path to the nav, sitemap, or robots.
