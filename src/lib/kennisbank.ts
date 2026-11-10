@@ -2235,6 +2235,156 @@ export const ARTIKELEN: Artikel[] = [
     metaDescription:
       "Wat moet er op een werken-bij pagina staan? De vragen die sollicitanten zichzelf stellen, een voorbeeld uit de praktijk en vijf dingen die je morgen kunt doen.",
   },
+  {
+    slug: "hoe-komen-je-vacatures-in-google",
+    naam: "Vacatures in Google",
+    vraag: "Hoe komen je vacatures in Google te staan?",
+    pijler: "Zo werkt het echt",
+    icoon: "search-check",
+    branche: "Bedrijven die personeel zoeken",
+    teaser:
+      "Google toont vacatures in een eigen blok bovenaan de zoekresultaten. Daar kom je niet in met een mooie tekst, maar met een eigen pagina per vacature die Google kan lezen.",
+    antwoord:
+      "Je vacatures komen in Google te staan als elke vacature een eigen pagina op je site heeft met gestructureerde gegevens: een vast blok code met de functie, de werkgever, de locatie en de datum van plaatsing. Google leest die gegevens en kan de vacature dan tonen in het vacatureblok bovenaan de zoekresultaten, al bepaalt Google zelf of dat gebeurt.",
+    leestijd: "6 minuten",
+    gepubliceerd: "2026-11-10",
+    gewijzigd: "2026-11-10",
+    cta: "scan",
+    eindKop: "Wil je zien waar het op jouw vacaturepagina's weglekt?",
+    eindLead:
+      "MegaOnline kijkt persoonlijk naar je website, controleert of je vacatures een eigen pagina met de juiste gegevens hebben en stuurt je de punten die het ziet. Wil je eerst weten wat er bij een eigen werken-bij site komt kijken, lees dan meer over een [werken-bij website laten maken](/diensten/werken-bij-websites).",
+    secties: [
+      {
+        kop: "Waarom je vacature wel online staat maar niet in Google",
+        accent: "niet in Google",
+        alineas: [
+          "Zoek op je telefoon naar een functie met een plaatsnaam erachter, bijvoorbeeld chauffeur Utrecht. Bovenaan verschijnt vaak een apart blok met vacatures, met per regel de functie, de werkgever, de plaats en soms het salaris. Dat blok is de vacatureomgeving van Google. Wie daarin staat, wordt gezien voordat iemand een vacaturesite opent.",
+          "Google vult dat blok niet door je vacaturetekst te lezen zoals een sollicitant dat doet. Het zoekt naar een vast formaat: gestructureerde gegevens van het type JobPosting. Dat is een stukje code op de pagina dat een bezoeker niet ziet. Er staat per vacature de functietitel in, een omschrijving, de werkgever, de werklocatie en de datum van plaatsing. Ontbreekt dat, dan is je vacature voor Google een gewone webpagina tussen alle andere.",
+          "Dat is de reden dat veel bedrijven er niet in staan, ook als de vacature al maanden online is. De tekst is er wel. Het formaat ontbreekt.",
+        ],
+      },
+      {
+        kop: "Een voorbeeld: het transportbedrijf met de vacatures in een pdf",
+        accent: "in een pdf",
+        alineas: [
+          "Neem een transportbedrijf dat chauffeurs zoekt. Op de site staat een pagina Vacatures met drie functies onder elkaar. Bij elke functie staat een knop om een pdf met de volledige tekst te downloaden. Reageren gaat per mail.",
+          "Een chauffeur die al ergens rijdt, zoekt 's avonds naar werk in zijn regio. In het vacatureblok van Google ziet hij functies van andere vervoerders en van vacaturesites. Dit transportbedrijf staat er niet tussen. Google vindt één pagina met drie functies en geen gestructureerde gegevens. De pdf's zijn los te vinden, maar een pdf komt niet in het vacatureblok.",
+          "Krijgt elke functie een eigen pagina, met de tekst op die pagina zelf en de gestructureerde gegevens erbij, dan heeft Google drie vacatures die het kan tonen. De chauffeur die erop klikt, komt op de site van het bedrijf terecht. Niet op een vacaturesite waar de vacature van de concurrent er direct naast staat.",
+        ],
+      },
+      {
+        kop: "Wat Google nodig heeft om een vacature te tonen",
+        accent: "nodig heeft",
+        alineas: [
+          "Google noemt een deel van de gegevens verplicht en een deel aanbevolen. Voor een werkgever komt het neer op deze vijf punten.",
+        ],
+        punten: [
+          {
+            titel: "Eén vacature per pagina",
+            tekst:
+              "Google wil de gegevens alleen op een pagina met één vacature. Een overzicht met alle functies mag blijven bestaan, maar daar horen de gegevens niet op. Elke functie krijgt een eigen adres, zoals de rollen op de pagina [werken bij MegaOnline](/werken-bij) elk een eigen pagina hebben.",
+          },
+          {
+            titel: "De verplichte gegevens",
+            tekst:
+              "Functietitel, omschrijving, werkgever, werklocatie en de datum van plaatsing. Ontbreekt er één, dan komt de vacature niet in aanmerking. Werk je volledig op afstand, dan geef je dat apart aan, samen met het land waar de sollicitant moet wonen.",
+          },
+          {
+            titel: "Wat je beter wel invult",
+            tekst:
+              "Salaris, het soort dienstverband en een einddatum zijn niet verplicht. Google gebruikt ze wel. Een salaris dat al in het vacatureblok staat, beantwoordt de vraag die een sollicitant het eerst heeft. Waarom die vraag zo zwaar weegt, lees je in het artikel over [wat er op een werken-bij pagina moet staan](/kennisbank/wat-moet-er-op-een-werken-bij-pagina).",
+          },
+          {
+            titel: "Gegevens die kloppen met de pagina",
+            tekst:
+              "De code moet hetzelfde zeggen als de tekst die de sollicitant ziet. Staat er in de code een ander salaris of een andere plaats dan op de pagina, dan kan Google de vacature weren.",
+          },
+          {
+            titel: "Een vacature die op tijd verdwijnt",
+            tekst:
+              "Een vervulde vacature haal je offline of je geeft hem een einddatum. Laat je verlopen vacatures staan, dan kan Google vacatures van je site weren. Andersom gaat het ook mis: een einddatum die niemand bijhoudt, haalt een vacature die nog openstaat stilletjes uit het blok.",
+          },
+        ],
+        daarna: [
+          "Technisch is dit geen groot werk als het in één keer goed wordt ingericht. Het gaat mis als iemand het per vacature met de hand moet bijhouden. Daarom hoort het formaat uit dezelfde bron te komen als de tekst op de pagina. Dan krijgt een nieuwe vacature de gegevens vanzelf mee.",
+        ],
+      },
+      {
+        kop: "Je eigen site of een vacaturesite",
+        accent: "of een vacaturesite",
+        alineas: [
+          "Er is nog een route naar het vacatureblok: via vacaturesites. Die leveren de gegevens zelf aan Google. Plaats je een vacature daar, dan kan hij in Google verschijnen zonder dat je eigen site iets hoeft te doen.",
+          "Het verschil zit in waar de sollicitant terechtkomt. Via een vacaturesite landt hij op een pagina met jouw vacature tussen die van anderen, in de opmaak van die site. Via je eigen pagina landt hij bij jou: je eigen foto's, je eigen collega's en een sollicitatie die in je eigen mailbox binnenkomt. Het vacatureblok toont soms meerdere plekken waar iemand kan solliciteren. Staat je eigen site ertussen, dan heeft de sollicitant die keuze.",
+          "Het hoeft geen keuze tussen de twee te zijn. Veel werkgevers gebruiken allebei. Alleen bouw je met je eigen pagina's iets op dat blijft staan als je stopt met betalen voor een plaatsing.",
+        ],
+      },
+      {
+        kop: "Hoe je controleert of het werkt",
+        accent: "of het werkt",
+        alineas: [
+          "In Google Search Console zie je of Google de vacatures op je site herkent. Er is een apart overzicht voor vacatures, met de pagina's die in orde zijn en de pagina's met fouten. Per fout staat erbij welk gegeven ontbreekt. Met de URL-inspectie zie je per pagina wat Google heeft gelezen en vraag je Google een nieuwe vacature op te halen.",
+          "Verschijnt een vacature na een paar weken nog niet terwijl Google Search Console geen fouten toont, dan ligt het vaak aan de pagina zelf. Een tekst van drie regels, een locatie die niet klopt of een vacaturepagina waar vanaf de rest van je site geen link naartoe gaat. Ook als alles in orde is, bepaalt Google of en waar een vacature verschijnt. Niemand kan dat garanderen.",
+        ],
+      },
+      {
+        kop: "Hoe MegaOnline dit aanpakt",
+        accent: "aanpakt",
+        alineas: [
+          "Bij een [werken-bij website laten maken](/diensten/werken-bij-websites) krijgt elke vacature bij MegaOnline een eigen pagina. De gestructureerde gegevens komen uit dezelfde bron als de tekst die de sollicitant leest, dus ze lopen niet uit elkaar. Een gesloten vacature gaat offline of krijgt een einddatum.",
+          "Komen je vacatures uit een wervingssysteem, dan kijkt MegaOnline of dat systeem een koppeling of een vacaturelijst voor websites aanbiedt. Hoe zo'n koppeling werkt, lees je bij [koppelingen en automatiseringen](/diensten/integraties).",
+        ],
+      },
+    ],
+    doen: [
+      "Zoek op je telefoon naar je eigen functietitel met je plaatsnaam en kijk wie er in het vacatureblok van Google staat.",
+      "Tel hoeveel vacatures op je site een eigen pagina hebben. Een pdf of een uitklapblok telt niet mee.",
+      "Zet de volledige vacaturetekst op de pagina zelf in plaats van in een download.",
+      "Open Google Search Console en kijk of er een overzicht voor vacatures is en welke fouten erin staan.",
+      "Loop je vacatures na en haal elke vervulde functie vandaag offline.",
+    ],
+    faq: [
+      {
+        q: "Wat is Google for Jobs?",
+        a: "Zo heet de vacatureomgeving van Google: het blok met vacatures dat bovenaan verschijnt als je zoekt op een functie, vaak met een plaatsnaam erbij. Het is geen aparte site waar je een vacature plaatst. Google vult het met vacatures die het op websites en vacaturesites vindt.",
+      },
+      {
+        q: "Kost het geld om vacatures in Google te zetten?",
+        a: "Google rekent er niets voor. De kosten zitten in het inrichten van je site: een eigen pagina per vacature en de gestructureerde gegevens die daarbij horen.",
+      },
+      {
+        q: "Hoe lang duurt het voordat een vacature in Google staat?",
+        a: "Dat verschilt per site en per vacature. Google moet de pagina eerst vinden en lezen. Met een sitemap en de URL-inspectie in Google Search Console help je dat op weg. Of en wanneer de vacature in het blok verschijnt, bepaalt Google.",
+      },
+      {
+        q: "Kan een open sollicitatie ook in het vacatureblok?",
+        a: "Nee. Google wil gegevens voor een echte functie die openstaat. Een open sollicitatie zet je op je werken-bij pagina, zonder de gestructureerde gegevens voor vacatures.",
+      },
+      {
+        q: "Moet je je vacatures dan niet meer op vacaturesites zetten?",
+        a: "Dat hoeft niet. Vacaturesites kunnen je vacature ook in Google brengen. Je eigen pagina zorgt dat een sollicitant ook rechtstreeks bij jou kan uitkomen, met een sollicitatie die direct bij jou binnenkomt.",
+      },
+    ],
+    links: [
+      {
+        to: "/diensten/werken-bij-websites",
+        label: "Werken-bij website laten maken",
+        tekst: "Een eigen pagina per vacature, met de gegevens die Google nodig heeft.",
+      },
+      {
+        to: "/kennisbank/wat-moet-er-op-een-werken-bij-pagina",
+        label: "Wat moet er op een werken-bij pagina staan",
+        tekst: "De vragen die een sollicitant zichzelf stelt voordat hij reageert.",
+      },
+      {
+        to: "/werken-bij",
+        label: "Werken bij MegaOnline",
+        tekst: "De eigen vacaturepagina van MegaOnline, met per rol een eigen pagina.",
+      },
+    ],
+    metaTitle: "Hoe komen je vacatures in Google te staan? | MegaOnline",
+    metaDescription:
+      "Vacatures in Google krijgen werkt met een eigen pagina per vacature en gestructureerde gegevens. Wat Google nodig heeft, wat er misgaat en hoe je het controleert.",
+  },
 ];
 
 /**
