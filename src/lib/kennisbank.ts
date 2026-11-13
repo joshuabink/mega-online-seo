@@ -2385,6 +2385,162 @@ export const ARTIKELEN: Artikel[] = [
     metaDescription:
       "Vacatures in Google krijgen werkt met een eigen pagina per vacature en gestructureerde gegevens. Wat Google nodig heeft, wat er misgaat en hoe je het controleert.",
   },
+  {
+    slug: "doordeweeks-meer-boekingen",
+    naam: "Doordeweeks meer boekingen",
+    vraag: "Hoe krijg je doordeweeks meer boekingen voor je activiteitenbedrijf?",
+    pijler: "Branche",
+    icoon: "users",
+    branche: "Activiteitenbedrijven",
+    teaser:
+      "Doordeweeks komt er geen zaterdagklant met korting. Er komt een andere klant, met andere vragen. Een site die alleen voor het weekend is geschreven, laat die klant zoeken.",
+    antwoord:
+      "Doordeweeks meer boekingen krijg je door je te richten op de klanten die op een dinsdag wel kunnen: scholen, bedrijven, ouders met jonge kinderen en groepen. Die klanten zoeken op andere woorden en willen andere dingen weten dan de zaterdaggast, dus ze hebben een eigen plek op je website nodig waar ze direct kunnen zien wat er kan en kunnen boeken.",
+    leestijd: "6 minuten",
+    gepubliceerd: "2026-11-13",
+    gewijzigd: "2026-11-13",
+    cta: "scan",
+    eindKop: "Wil je zien waar doordeweekse boekingen op jouw site weglekken?",
+    eindLead:
+      "MegaOnline kijkt persoonlijk naar je website en loopt de route na die een school, een bedrijf of een ouder op een doordeweekse dag aflegt. Je krijgt de punten te zien waar die klant nu afhaakt. Wil je eerst weten wat er bij een [website voor activiteitenbedrijven](/branches/activiteitenbedrijven) komt kijken, lees dan daar verder.",
+    secties: [
+      {
+        kop: "Waarom korting alleen de dinsdag niet vult",
+        accent: "korting alleen",
+        alineas: [
+          "Bijna elke escaperoom, klimhal of kartbaan kent het: de zaterdag zit vol, de dinsdagmiddag staat leeg. De eerste reflex is een actie. Tien procent korting op doordeweekse tijdsloten, een banner op de homepage en een bericht op social media.",
+          "Dat werkt maar half. De mensen die op die korting reageren zijn vaak dezelfde mensen die anders op zaterdag waren gekomen en nu een middag vrij nemen of hun bezoek verschuiven. Je verkoopt dan hetzelfde uitje voor minder geld. De zaterdag wordt iets rustiger, de dinsdag iets drukker en de omzet blijft ongeveer gelijk.",
+          "De klant die je doordeweeks echt mist, reageert niet op die korting. Die zoekt iets anders.",
+        ],
+      },
+      {
+        kop: "Doordeweeks komt er een andere klant",
+        accent: "een andere klant",
+        alineas: [
+          "Op een doordeweekse dag kunnen vooral mensen die niet aan een kantoorrooster vastzitten of die juist namens een kantoor boeken. Dat zijn een paar duidelijke groepen. Elk van die groepen beslist op een eigen manier.",
+        ],
+        punten: [
+          {
+            titel: "Scholen en kinderopvang",
+            tekst:
+              "Een leerkracht die een schoolreisje of een uitje voor groep acht plant, wil weten of er begeleiding is, hoe het zit met veiligheid, wat het per leerling kost en of de school achteraf een factuur kan krijgen. Een prijs per tijdslot voor maximaal zes personen zegt hem niets.",
+          },
+          {
+            titel: "Bedrijven en teams",
+            tekst:
+              "Een officemanager die een teamuitje regelt, boekt bijna altijd doordeweeks. Hij zoekt een arrangement met eten erbij, een ruimte voor de groep, een vaste prijs per persoon en een offerte die hij kan doorsturen. Hij boekt zelden op impuls en vergelijkt meestal een paar locaties.",
+          },
+          {
+            titel: "Ouders met jonge kinderen",
+            tekst:
+              "Op woensdagmiddag en tijdens studiedagen zoeken ouders iets om te doen, vaak dezelfde dag nog. Ze willen op hun telefoon zien of er nu plek is, tot welke leeftijd het leuk is en of er iets te eten is. Kinderfeestjes vallen ook vaak op een woensdag.",
+          },
+          {
+            titel: "Groepen en dagjesmensen",
+            tekst:
+              "Verenigingen, vriendengroepen met vrije dagen en toeristen in de vakantie. Ze komen niet per se voor een aanbieding. Ze komen omdat het dan rustiger is en er ruimte is voor een grotere groep.",
+          },
+        ],
+        daarna: [
+          "Geen van deze klanten zoekt op dezelfde woorden als de zaterdaggast. Ze typen schooluitje, teamuitje, kinderfeestje of iets met studiedag erin, meestal met een plaatsnaam erachter. Heeft je site daar geen pagina voor, dan vinden ze een aanbieder die dat wel heeft. Hoe Google bepaalt welke pagina bij zo'n zoekvraag past, lees je in [wat SEO is](/kennisbank/wat-is-seo).",
+        ],
+      },
+      {
+        kop: "Een voorbeeld: de klimhal en de leerkracht",
+        accent: "de leerkracht",
+        alineas: [
+          "Neem een klimhal met een nette site. Bovenaan foto's van de wanden, een knop om een tijdslot te boeken en de prijzen voor een losse klimsessie. Op zaterdag werkt dat prima: een stel of een gezin weet wat het wil en boekt.",
+          "Op maandagavond zoekt een leerkracht naar een sportief uitje voor dertig leerlingen op een dinsdag in de lente. Hij komt op de homepage, ziet tijdsloten voor kleine groepen en prijzen per persoon, maar niets over scholen. Of er instructeurs zijn, of een groep van dertig in één keer kan, of de school op rekening kan betalen: het staat er niet. Hij kan bellen, maar het is avond en de hal is dicht. Dus opent hij het volgende zoekresultaat.",
+          "Aan de klimhal lag het niet. De wanden waren er, de instructeurs ook en op dinsdag was er ruimte genoeg. Alleen de website was geschreven voor de klant die op zaterdag al kwam.",
+        ],
+      },
+      {
+        kop: "Wat je website doordeweeks moet laten zien",
+        accent: "doordeweeks",
+        alineas: [
+          "Het antwoord zit dus niet in een grotere actie, maar in een site die de doordeweekse klant net zo goed bedient als de zaterdaggast. Dat komt neer op vier dingen.",
+        ],
+        punten: [
+          {
+            titel: "Een eigen pagina per doelgroep",
+            tekst:
+              "Een pagina voor scholen, een voor bedrijfsuitjes en een voor kinderfeestjes. Elk met de vragen van die groep beantwoord, in hun woorden en met een eigen knop. Zo'n pagina kan gevonden worden op de zoekvraag van die groep en geeft de bezoeker meteen het gevoel dat hij goed zit.",
+          },
+          {
+            titel: "Beschikbaarheid die je kunt zien",
+            tekst:
+              "Laat zien dat er op dinsdag en woensdag ruimte is. Een agenda met vrije tijdsloten op de telefoon overtuigt een ouder die vandaag nog iets zoekt sneller dan elke actiebanner. Hoe je reserveert zonder dat iemand hoeft te bellen lees je bij [online boeken en reserveren](/diensten/online-boeken).",
+          },
+          {
+            titel: "Prijzen voor groepen, niet alleen per tijdslot",
+            tekst:
+              "Een school en een bedrijf rekenen per persoon of per groep. Noem een vanafprijs voor een groep, zeg wat erbij zit en hoe ze kunnen betalen. Waarom een prijs op de site meer aanvragen oplevert dan een prijs op aanvraag, lees je in het artikel over [prijzen op je website zetten](/kennisbank/prijzen-op-website-verhuurbedrijf).",
+          },
+          {
+            titel: "Een korte aanvraag voor wat niet direct te boeken is",
+            tekst:
+              "Een teamuitje voor veertig mensen met diner boek je niet in een tijdslot. Geef die klant een kort formulier met datum, aantal personen en wat hij wil doen. Meer vragen kunnen later, als hij al contact heeft gezocht.",
+          },
+        ],
+        daarna: [
+          "Een doordeweekse actie mag daarna best. Alleen werkt hij dan als extra reden voor een klant die je site al begrijpt, in plaats van als enige reden om te komen.",
+        ],
+      },
+      {
+        kop: "Hoe MegaOnline dit aanpakt",
+        accent: "aanpakt",
+        alineas: [
+          "MegaOnline begint bij een activiteitenbedrijf met de vraag wie er op welke dag komt. Daaruit volgt de structuur van de site: welke doelgroepen een eigen pagina krijgen, welke vragen daar beantwoord worden en waar iemand direct kan boeken of een aanvraag doet.",
+          "Het boeken zelf wordt ingebouwd op je eigen website. Tijdsloten, arrangementen voor groepen, kinderfeestjes en cadeaubonnen komen in één agenda, met online betalen en een bevestiging. Doordeweekse acties zet je zelf aan en uit. Waar bezoekers daarna nog afhaken, lees je in het artikel over [waar boekingen weglekken op je website](/kennisbank/waar-boekingen-weglekken).",
+        ],
+      },
+    ],
+    doen: [
+      "Kijk in je agenda van de afgelopen maanden welke doordeweekse boekingen er wel waren en van wie ze kwamen.",
+      "Zoek op je telefoon naar schooluitje, teamuitje en kinderfeestje met je plaatsnaam erachter en kijk wie er bovenaan staat.",
+      "Schrijf de vragen op die scholen en bedrijven aan de telefoon stellen en controleer of het antwoord op je site staat.",
+      "Probeer op een woensdagochtend op je telefoon een plek voor diezelfde middag te boeken en tel hoe lang het duurt.",
+      "Zet voor één doelgroep een eigen pagina op je site, met een vanafprijs voor een groep en een knop om te boeken of aan te vragen.",
+    ],
+    faq: [
+      {
+        q: "Werkt een doordeweekse korting om stille dagen te vullen?",
+        a: "Soms, maar vaak verschuif je er vooral bezoekers mee die anders in het weekend waren gekomen. Dan verkoop je hetzelfde uitje voor minder geld. Een korting werkt beter als extra reden voor een klant die doordeweeks toch al kan, zoals een school of een bedrijf.",
+      },
+      {
+        q: "Welke klanten boeken vooral doordeweeks?",
+        a: "Scholen en kinderopvang, bedrijven die een teamuitje plannen, ouders met jonge kinderen op woensdagmiddag en studiedagen. Daarnaast groepen of toeristen in de vakantie. Elk van die groepen heeft eigen vragen over prijs, begeleiding en betalen.",
+      },
+      {
+        q: "Heb je een aparte pagina nodig voor bedrijfsuitjes en schoolreisjes?",
+        a: "Ja, als je die klanten wilt bereiken. Een school en een bedrijf zoeken op hun eigen woorden en willen hun eigen vragen beantwoord zien. Een eigen pagina kan op die zoekvraag gevonden worden en laat de bezoeker direct zien dat hij goed zit.",
+      },
+      {
+        q: "Moet een groep online kunnen boeken of een aanvraag doen?",
+        a: "Dat hangt af van de groep. Een kinderfeestje of een tijdslot voor een klas kan prima direct geboekt worden. Een teamuitje met eten en een aparte ruimte is vaak maatwerk. Daar werkt een kort aanvraagformulier beter.",
+      },
+    ],
+    links: [
+      {
+        to: "/branches/activiteitenbedrijven",
+        label: "Website voor activiteitenbedrijven",
+        tekst: "Wat een site voor een escaperoom, klimhal of kartbaan nodig heeft om stille dagen te vullen.",
+      },
+      {
+        to: "/diensten/online-boeken",
+        label: "Online boeken en reserveren",
+        tekst: "Tijdsloten, arrangementen en cadeaubonnen in één agenda op je eigen site.",
+      },
+      {
+        to: "/kennisbank/waar-boekingen-weglekken",
+        label: "Waar boekingen weglekken op je website",
+        tekst: "De plekken waar een bezoeker die wil boeken toch afhaakt.",
+      },
+    ],
+    metaTitle: "Doordeweeks meer boekingen krijgen | MegaOnline",
+    metaDescription:
+      "Doordeweeks meer boekingen voor je escaperoom, klimhal of kartbaan? Niet met meer korting, maar met een site voor de klanten die op een dinsdag wel kunnen.",
+  },
 ];
 
 /**
