@@ -6,9 +6,11 @@
  * Draaien met de dev-server actief:  node scripts/smoke.mjs
  */
 import { chromium } from 'playwright'
+import { spawnSync } from 'node:child_process'
 import fs from 'node:fs'
 import http from 'node:http'
 import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 
 const BASE = process.env.BASE ?? 'http://localhost:3000'
 const results = []
@@ -440,6 +442,19 @@ for (const pagina of ZOEKTAAL_PAGINAS) {
       : `status=${status} titles=${JSON.stringify(titles)} h1s=${JSON.stringify(h1s)} og=${JSON.stringify(ogTitles)} twitter=${JSON.stringify(twitterTitles)}`,
   )
 }
+
+const leadMeting = spawnSync(
+  process.execPath,
+  ['--test', fileURLToPath(new URL('./lead-meting.test.mjs', import.meta.url))],
+  { encoding: 'utf8' },
+)
+check(
+  'generate_lead alleen na een geslaagde response, zonder persoonsgegevens',
+  leadMeting.status === 0,
+  leadMeting.status === 0
+    ? ''
+    : `${leadMeting.stdout ?? ''}\n${leadMeting.stderr ?? ''}`.slice(-800),
+)
 
 // De vooraf geïnstalleerde Chromium gebruiken i.p.v. een download.
 const EXECUTABLE =
