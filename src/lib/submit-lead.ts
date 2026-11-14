@@ -308,11 +308,9 @@ export type LeadResponse =
       retry: 'client' | 'none'
     }
 
-// `inputValidator` i.p.v. het nieuwere `validator`: die methode bestaat pas
-// vanaf react-start 1.168 en de Lovable-repo draait op 1.167. Deze naam werkt
-// in beide versies (in 1.168 met een deprecation-waarschuwing bij de build).
+// `validator` (vanaf react-start 1.169 bestaat `inputValidator` niet meer).
 export const submitLead = createServerFn({ method: 'POST' })
-  .inputValidator((data: unknown) => {
+  .validator((data: unknown) => {
     if (typeof data !== 'string') throw new Error('Ongeldige inzending.')
     return data
   })
