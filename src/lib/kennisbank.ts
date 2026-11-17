@@ -2541,6 +2541,138 @@ export const ARTIKELEN: Artikel[] = [
     metaDescription:
       "Doordeweeks meer boekingen voor je escaperoom, klimhal of kartbaan? Niet met meer korting, maar met een site voor de klanten die op een dinsdag wel kunnen.",
   },
+  {
+    slug: "wat-moet-er-op-de-website-van-een-verhuurbedrijf",
+    naam: "Website voor een verhuurbedrijf",
+    vraag: "Wat moet er op de website van een verhuurbedrijf staan?",
+    pijler: "Branche",
+    icoon: "truck",
+    branche: "Verhuurbedrijven",
+    teaser:
+      "Een huurder stelt drie vragen in een vaste volgorde. Een verhuursite die ze niet in die volgorde beantwoordt, laat hem bellen of doorklikken naar de concurrent.",
+    antwoord:
+      "Op de website van een verhuurbedrijf horen de antwoorden op de drie vragen die elke huurder in dezelfde volgorde stelt: heb je wat ik nodig heb, is het vrij op mijn datum en wat kost het alles bij elkaar. Pas als die drie beantwoord zijn, heeft een knop om te reserveren of aan te vragen zin.",
+    leestijd: "6 minuten",
+    gepubliceerd: "2026-11-17",
+    gewijzigd: "2026-11-17",
+    cta: "scan",
+    eindKop: "Wil je zien waar huurders op jouw site afhaken?",
+    eindLead:
+      "Beantwoord vier korte vragen. MegaOnline kijkt persoonlijk naar je website en laat zien bij welke van de drie vragen huurders weglekken voordat ze een aanvraag doen. Wil je eerst meer weten over de opzet, lees dan wat er bij een [website voor verhuurbedrijven](/branches/verhuurbedrijven) komt kijken.",
+    secties: [
+      {
+        kop: "De drie vragen van een huurder, in deze volgorde",
+        accent: "in deze volgorde",
+        alineas: [
+          "Wie iets wil huren, zoekt niet naar een bedrijf. Hij zoekt naar een ding op een datum. Een aanhanger voor zaterdag, een hoogwerker voor drie dagen volgende week, een partytent voor een tuinfeest over een maand. Daar volgen altijd dezelfde drie vragen uit.",
+          "Eerst: heb je wat ik nodig heb? Niet alleen het artikel, ook de juiste maat of capaciteit. Daarna: is het vrij op mijn datum? Een tent die er is maar op die zaterdag al weg is, helpt hem niet. Pas als laatste: wat kost het, alles bij elkaar? Dus inclusief bezorging, borg en wat er gebeurt als hij een dag later terugbrengt.",
+          "Die volgorde is geen toeval. Elke vraag is pas interessant als de vorige met ja is beantwoord. Een prijs zegt niets over een artikel dat niet past. Beschikbaarheid zegt niets over iets wat hij niet nodig heeft. Een goede verhuursite loopt met de huurder mee door die drie vragen. Een slechte gooit ze door elkaar of laat er twee weg.",
+        ],
+      },
+      {
+        kop: "Waar de meeste verhuursites stoppen",
+        accent: "stoppen",
+        alineas: [
+          "Neem iemand die een partytent zoekt voor veertig gasten. Hij komt op een verhuursite, klikt op Partytenten en ziet vier foto's met een naam eronder. Hoeveel mensen er in elke tent passen staat er niet. Of de tent op zijn datum vrij is ook niet. Onderaan staat prijs op aanvraag en een knop naar het contactformulier.",
+          "Hij heeft nu drie vragen en nul antwoorden. Het is zaterdagmiddag, dus bellen heeft weinig zin. Het tabblad ernaast is een verhuurder die per tent het aantal gasten noemt, een vanafprijs per weekend laat zien en een datumveld heeft. Daar komt de aanvraag binnen. Niet omdat die verhuurder beter of goedkoper is, maar omdat hij de vragen beantwoordde voordat ze gesteld werden.",
+          "Dit is het patroon dat MegaOnline het vaakst ziet bij verhuurders: de site is een catalogus. Hij laat zien wat er is, maar stopt precies op het punt waar de huurder wil weten of het voor hem werkt. Het gevolg zie je niet in je bezoekersaantallen. Je ziet het aan het aantal telefoontjes met dezelfde vragen en aan de aanvragen die uitblijven.",
+        ],
+      },
+      {
+        kop: "Wat er per vraag op de pagina hoort",
+        accent: "per vraag",
+        alineas: [
+          "Je hoeft geen webshop te worden om deze drie vragen te beantwoorden. Dit is per vraag het minimum dat op een artikelpagina hoort.",
+        ],
+        punten: [
+          {
+            titel: "Heb je wat ik nodig heb",
+            tekst:
+              "Deel je assortiment in naar toepassing en niet alleen naar productnaam. Iemand zoekt een tent voor veertig mensen, geen Tent 6x12. Zet bij elk artikel de twee of drie specificaties die de keuze bepalen: maat, capaciteit, gewicht of welk rijbewijs ervoor nodig is. Dat is genoeg om te weten of het past.",
+          },
+          {
+            titel: "Is het vrij op mijn datum",
+            tekst:
+              "Het mooiste is een beschikbaarheid die direct meeloopt met je planning. Lukt dat niet, laat de huurder dan in elk geval zijn datum invullen in de aanvraag en zeg erbij hoe snel hij antwoord krijgt. Een aanvraag met een datum erin kun je in één keer beantwoorden. Een aanvraag zonder datum begint een mailwisseling.",
+          },
+          {
+            titel: "Wat kost het, alles bij elkaar",
+            tekst:
+              "Een vanafprijs per periode, met borg, bezorging en wat wel en niet is inbegrepen ernaast. Waarom dat bijna altijd beter werkt dan prijs op aanvraag en hoe je het doet zonder je vast te leggen, staat uitgewerkt in het artikel over [prijzen op je website als verhuurbedrijf](/kennisbank/prijzen-op-website-verhuurbedrijf).",
+          },
+        ],
+        daarna: [
+          "Zijn die drie beantwoord, dan pas komt de knop. Of dat een aanvraag is of een directe reservering hangt af van wat je verhuurt. Maar de knop staat bij het artikel, niet alleen op een losse contactpagina.",
+        ],
+      },
+      {
+        kop: "Beschikbaarheid tonen zonder je agenda bloot te geven",
+        accent: "zonder je agenda bloot te geven",
+        alineas: [
+          "De tweede vraag is de lastigste. Veel verhuurders laten hem weg omdat hun planning in een systeem, een spreadsheet of hun hoofd zit. Dat is begrijpelijk. Het is ook de vraag waarop de huurder het vaakst afhaakt, omdat hij zonder antwoord niet weet of hij verder moet zoeken.",
+          "Er zijn drie niveaus. Het eenvoudigste is een datumveld in de aanvraag met een vaste reactietijd erbij. Het tweede is [online boeken en reserveren](/diensten/online-boeken) op je eigen site, waarbij de huurder ziet welke dagen nog vrij zijn en meteen kan vastleggen. Het derde is een [koppeling met je verhuursoftware](/diensten/integraties), zodat de beschikbaarheid op de site gelijk loopt met wat er werkelijk in je loods staat.",
+          "Je hoeft niet te laten zien wie wat huurt. De huurder wil alleen weten of zijn datum kan. Vrij of niet vrij is genoeg.",
+        ],
+      },
+      {
+        kop: "En daarna pas de rest",
+        accent: "daarna pas",
+        alineas: [
+          "Natuurlijk hoort er meer op een verhuursite. Wie je bent, waar je zit, hoe ophalen en terugbrengen werkt en wat andere klanten van je vinden. Dat is het deel dat vertrouwen geeft. Zonder vertrouwen huurt niemand iets van een paar duizend euro. Hoe je dat aanpakt lees je in [vertrouwen wekken op je zakelijke website](/kennisbank/vertrouwen-wekken-zakelijke-website).",
+          "Maar die informatie werkt pas als de drie vragen beantwoord zijn. Een mooie pagina over je bedrijf haalt niemand terug die al is afgehaakt omdat hij niet wist of de tent groot genoeg was. Begin dus bij de drie vragen, op de pagina's van je best verhuurde artikelen. Daar zit de meeste winst, want daar komen de meeste huurders binnen.",
+        ],
+      },
+    ],
+    doen: [
+      "Open de pagina van je best verhuurde artikel op je telefoon en kijk of je binnen tien seconden de drie vragen kunt beantwoorden.",
+      "Zet bij je vijf populairste artikelen de twee specificaties die de keuze bepalen, zoals capaciteit of maat.",
+      "Voeg een datumveld toe aan je aanvraagformulier en zet erbij binnen hoeveel uur iemand antwoord krijgt.",
+      "Zet een knop om aan te vragen of te reserveren op elke artikelpagina, niet alleen op je contactpagina.",
+      "Schrijf een week lang op welke vraag mensen stellen als ze bellen. Dat is de vraag die je site nog niet beantwoordt.",
+    ],
+    faq: [
+      {
+        q: "Heb ik een webshop nodig om online te verhuren?",
+        a: "Nee. Een webshop is gebouwd om iets te verkopen en te verzenden, verhuur draait om periodes, beschikbaarheid en terugbrengen. Een site met duidelijke artikelpagina's, een datumveld en een aanvraag of reservering per artikel past meestal beter dan een webshop die je ombouwt.",
+      },
+      {
+        q: "Kan ik beschikbaarheid laten zien zonder verhuursoftware?",
+        a: "Ja. Een online agenda op je eigen site kan de beschikbaarheid bijhouden, ook zonder apart verhuursysteem. En als ook dat te veel is: een datumveld in de aanvraag plus een vaste reactietijd beantwoordt de vraag al half, omdat de huurder weet wanneer hij het hoort.",
+      },
+      {
+        q: "Wat als een artikel online vrij lijkt maar toch weg is?",
+        a: "Dat gebeurt als de site en je planning los van elkaar lopen. Houd je de beschikbaarheid met de hand bij, laat de huurder dan een aanvraag doen in plaats van direct vast te leggen. Wil je wel direct laten reserveren, dan moet de site gekoppeld zijn aan de plek waar je planning echt staat.",
+      },
+      {
+        q: "Moet ik mijn hele assortiment op de site zetten?",
+        a: "Niet per se. Begin met de artikelen die het meest worden gehuurd en het vaakst worden gezocht. Een goed uitgewerkte pagina voor je tien belangrijkste artikelen levert meer op dan honderd pagina's met alleen een foto en een naam.",
+      },
+      {
+        q: "Helpt dit ook om gevonden te worden in Google?",
+        a: "Indirect wel. Mensen zoeken op het ding dat ze nodig hebben, vaak met een plaats of een maat erbij. Een artikelpagina die precies dat beschrijft past beter bij die zoekvraag dan een algemene categoriepagina. Belangrijker nog is dat wie binnenkomt ook antwoord krijgt en niet meteen terug naar de zoekresultaten gaat.",
+      },
+    ],
+    links: [
+      {
+        to: "/branches/verhuurbedrijven",
+        label: "Website laten maken voor verhuurbedrijven",
+        tekst: "Beschikbaarheid, tarieven en voorwaarden zo neerzetten dat huurders zonder bellen kunnen kiezen.",
+      },
+      {
+        to: "/kennisbank/prijzen-op-website-verhuurbedrijf",
+        label: "Prijzen op je website zetten als verhuurbedrijf",
+        tekst: "Waarom een vanafprijs bijna altijd beter werkt dan prijs op aanvraag.",
+      },
+      {
+        to: "/diensten/online-boeken",
+        label: "Online boeken en reserveren",
+        tekst: "Beschikbaarheid en reserveringen in één agenda op je eigen site.",
+      },
+    ],
+    metaTitle: "Website verhuurbedrijf: wat moet erop? | MegaOnline",
+    metaDescription:
+      "Wat moet er op de website van een verhuurbedrijf? De drie vragen die elke huurder stelt, in welke volgorde ze komen en wat er per vraag op de pagina hoort.",
+  },
 ];
 
 /**
