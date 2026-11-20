@@ -2,6 +2,7 @@ import "./lib/error-capture";
 
 import { consumeLastCapturedError } from "./lib/error-capture";
 import { renderErrorPage } from "./lib/error-page";
+import { leadDryCheck } from "./lib/lead-dry-check.ts";
 
 type ServerEntry = {
   fetch: (request: Request, env: unknown, ctx: unknown) => Promise<Response> | Response;
@@ -121,6 +122,11 @@ export default {
     try {
       const slashRedirect = canonicalRedirect(request);
       if (slashRedirect) return slashRedirect;
+
+      // Leadmonitor: alleen als het pad én het omgevingssegment kloppen.
+      // Verkeerd of ontbrekend segment blijft een 404, vóór de pagina-router.
+      const dryCheck = await leadDryCheck(request, env);
+      if (dryCheck) return dryCheck;
 
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);
