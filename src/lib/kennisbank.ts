@@ -2673,6 +2673,144 @@ export const ARTIKELEN: Artikel[] = [
     metaDescription:
       "Wat moet er op de website van een verhuurbedrijf? De drie vragen die elke huurder stelt, in welke volgorde ze komen en wat er per vraag op de pagina hoort.",
   },
+  {
+    slug: "plan-van-aanpak-nieuwe-website",
+    naam: "Plan van aanpak nieuwe website",
+    vraag: "Hoe maak je een plan van aanpak voor een nieuwe website?",
+    pijler: "Zo werkt het echt",
+    icoon: "list-checks",
+    branche: "Algemeen",
+    teaser:
+      "De meeste plannen beginnen bij pagina's en een ontwerp. Een plan dat werkt begint bij de aanvraag die de site moet opleveren en werkt van daaruit terug.",
+    antwoord:
+      "Een goed plan van aanpak voor een nieuwe website begint bij de aanvraag die de site moet opleveren, niet bij het ontwerp of het aantal pagina's. Leg eerst vast wat je nu binnenkrijgt, welke vragen je klanten stellen voordat ze iets aanvragen en wat er na livegang gebeurt. Pas dan kies je pagina's, teksten en een ontwerp.",
+    leestijd: "6 minuten",
+    gepubliceerd: "2026-11-20",
+    gewijzigd: "2026-11-20",
+    cta: "scan",
+    eindKop: "Wil je weten wat jouw situatie nodig heeft voordat je begint?",
+    eindLead:
+      "Beantwoord vier korte vragen. MegaOnline kijkt persoonlijk naar je huidige website en laat zien wat er volgens die beoordeling in je plan van aanpak hoort. Wil je eerst meer weten over de bouw zelf, lees dan wat er komt kijken bij een [conversiegerichte website](/diensten/conversie-website).",
+    secties: [
+      {
+        kop: "Waarom de meeste plannen bij het verkeerde eind beginnen",
+        accent: "het verkeerde eind",
+        alineas: [
+          "Zoek je naar een plan van aanpak voor een website, dan vind je vooral projectsjablonen. Doel, scope, planning, budget, rollen. Dat is nuttig om een project in goede banen te leiden. Het zegt alleen niets over de vraag of de site straks meer oplevert dan de oude.",
+          "In de praktijk ziet een plan er vaak zo uit: een lijst met pagina's die de oude site ook had, een paar voorbeeldsites die je mooi vindt en een datum voor de livegang. Het ontwerp krijgt de meeste aandacht, omdat dat het zichtbare deel is. De vraag wat een bezoeker moet weten voordat hij contact opneemt, komt pas aan bod als de teksten op het laatste moment geschreven moeten worden.",
+          "Daarom loopt een nieuwe site zo vaak uit op een mooiere versie van dezelfde site. Het is netter, sneller en moderner, maar er komen evenveel aanvragen binnen als daarvoor.",
+        ],
+      },
+      {
+        kop: "Een voorbeeld: het schildersbedrijf met de nieuwe site",
+        accent: "de nieuwe site",
+        alineas: [
+          "Neem een schildersbedrijf in de regio. De eigenaar wil een nieuwe website, omdat de huidige er gedateerd uitziet. Zijn eerste plan is een lijst: home, over het bedrijf, diensten, projecten, contact. Plus de wens dat het er strakker uitziet dan bij de concurrent.",
+          "Wie verder vraagt, hoort iets anders. De meeste telefoontjes gaan over drie dingen: wat kost het ongeveer per kamer of per gevel, wanneer kan hij beginnen en werkt hij ook met particulieren of alleen zakelijk. Geen van die antwoorden staat op de huidige site. De bezoeker moet bellen om iets te weten dat hij eigenlijk al wil weten voordat hij belt.",
+          "Een plan dat daar begint, ziet er anders uit. Een pagina per soort klus met een prijsindicatie en een richtlijn voor de doorlooptijd. Een formulier dat vraagt wat de schilder nodig heeft om een afspraak te maken, niet meer. Foto's van eigen werk bij elke dienst in plaats van één losse projectenpagina. Het ontwerp komt daarna, om die antwoorden goed leesbaar te maken.",
+        ],
+      },
+      {
+        kop: "Vijf onderdelen die in elk plan van aanpak horen",
+        accent: "in elk plan van aanpak",
+        alineas: [
+          "Het formaat maakt weinig uit. Een document van twee pagina's is genoeg, zolang deze vijf onderdelen erin staan.",
+        ],
+        punten: [
+          {
+            titel: "1. Het doel in aanvragen, met een beginpunt",
+            tekst:
+              "Schrijf op wat de site moet opleveren: offerteaanvragen, boekingen, telefoontjes of inschrijvingen. Tel daarna hoeveel er nu per maand binnenkomen via mail, telefoon en formulier. Zonder dat beginpunt kun je na livegang niet zien of de nieuwe site beter werkt dan de oude.",
+          },
+          {
+            titel: "2. De vragen van je klanten",
+            tekst:
+              "Kijk in je mailbox en denk aan de laatste twintig telefoontjes. Welke vragen komen steeds terug? Dat is de inhoud van je site. Waarom een site met de verkeerde inhoud weinig oplevert, lees je in het artikel over [waarom een website geen aanvragen oplevert](/kennisbank/website-levert-geen-aanvragen-op).",
+          },
+          {
+            titel: "3. De structuur, afgeleid van die vragen",
+            tekst:
+              "Pas nu bepaal je welke pagina's er komen. Elke belangrijke vraag krijgt een plek. Elke dienst waar mensen apart naar zoeken krijgt een eigen pagina, zodat Google die pagina ook apart kan tonen. Pagina's die alleen bestaan omdat de oude site ze had, mogen weg.",
+          },
+          {
+            titel: "4. Teksten en beeld vóór het ontwerp",
+            tekst:
+              "Een ontwerp dat gemaakt is voor nepteksten past zelden bij de echte. Leg vast wie de teksten schrijft, wie de foto's aanlevert en wanneer. Dit is het onderdeel waar de meeste projecten op vastlopen, dus zet er een datum bij die vóór de bouw ligt.",
+          },
+          {
+            titel: "5. Wat er na livegang gebeurt",
+            tekst:
+              "Spreek af wie de cijfers bijhoudt, hoe vaak je kijkt en wat je aanpast als een pagina niet doet wat hij moet doen. Een website is na livegang niet af. Het is het eerste moment waarop je kunt zien hoe echte bezoekers hem gebruiken.",
+          },
+        ],
+      },
+      {
+        kop: "Nieuw bouwen of eerst verbeteren?",
+        accent: "eerst verbeteren",
+        alineas: [
+          "Een eerlijk plan van aanpak stelt ook die vraag. Soms blijkt bij het opschrijven van de klantvragen dat de huidige site de goede basis heeft en vooral de verkeerde inhoud. Dan is verbeteren sneller en goedkoper dan opnieuw bouwen. De afweging staat uitgewerkt in het artikel [nieuwe website laten maken of je huidige laten optimaliseren](/kennisbank/nieuwe-website-of-optimaliseren).",
+          "Kies je voor nieuw, dan helpt het plan ook bij het kiezen van de partij die bouwt. Een bouwer die bij het eerste gesprek vooral naar kleuren en voorbeeldsites vraagt, werkt anders dan een bouwer die vraagt hoeveel aanvragen je nu krijgt. Welke vragen je zelf kunt stellen, lees je in [freelance webdesigner of webbureau](/kennisbank/freelance-webdesigner-of-webbureau).",
+        ],
+      },
+      {
+        kop: "Hoe MegaOnline dit aanpakt",
+        accent: "aanpakt",
+        alineas: [
+          "Bij MegaOnline gaat elke [nieuwe website laten maken](/diensten/conversie-website) door dezelfde vier stappen: begrijpen hoe je bedrijf aan klanten komt, de doelgroep en hun vragen in kaart brengen, de structuur bepalen en pas dan ontwikkelen. Strategie eerst, techniek daarna.",
+          "Na livegang stopt het werk niet. Met doorlopende [website-optimalisatie](/diensten/website-optimalisatie) wordt elke maand gekeken waar de grootste groeikans zit, zodat het plan van aanpak geen document blijft dat na de bouw in een la verdwijnt.",
+        ],
+      },
+    ],
+    doen: [
+      "Tel hoeveel aanvragen je de afgelopen maand kreeg via mail, telefoon en formulier. Dat is je beginpunt.",
+      "Schrijf de vijf vragen op die klanten het vaakst stellen voordat ze iets aanvragen.",
+      "Kijk of het antwoord op elk van die vragen nu op je site staat en op welke pagina.",
+      "Streep in je huidige menu de pagina's door die geen van die vragen beantwoorden.",
+      "Zet in je planning een datum voor de teksten die vóór de start van het ontwerp ligt.",
+    ],
+    faq: [
+      {
+        q: "Wat is het verschil tussen een plan van aanpak en een briefing voor een website?",
+        a: "Een briefing is wat je aan de bouwer geeft: wie je bent, wat je wilt en wat je budget is. Een plan van aanpak gaat verder. Het legt ook vast hoe je meet of de site werkt, wie de teksten levert en wat er na livegang gebeurt. Een goede briefing is een deel van het plan.",
+      },
+      {
+        q: "Hoe lang duurt het om een nieuwe website te laten maken?",
+        a: "Dat hangt vooral af van de omvang en van hoe snel teksten en beeld klaar zijn. De bouw zelf is zelden de vertragende factor. Wie de inhoud op tijd aanlevert, haalt de planning meestal wel. Wie dat niet doet, ziet de livegang verschuiven.",
+      },
+      {
+        q: "Moet ik de teksten voor mijn nieuwe website zelf schrijven?",
+        a: "Niet per se, maar de kennis moet van jou komen. Jij weet welke vragen klanten stellen en wat jouw werk anders maakt. Een tekstschrijver of bouwer kan dat goed opschrijven, mits iemand die kennis eerst op tafel legt. Plan daar een gesprek voor in.",
+      },
+      {
+        q: "Wat moet er in een plan van aanpak voor een website staan?",
+        a: "Minstens vijf dingen: het doel in aanvragen met het huidige aantal als beginpunt, de vragen die klanten stellen, de structuur die daaruit volgt, wie wanneer teksten en beeld levert en wat er na livegang gebeurt. Planning en budget komen daar als praktische onderdelen bij.",
+      },
+      {
+        q: "Kan ik mijn oude website als uitgangspunt nemen?",
+        a: "Als bron wel, als blauwdruk liever niet. Kijk welke pagina's in Google Search Console bezoek en aanvragen opleveren en neem die mee. De rest van de opbouw kun je beter opnieuw afleiden van de vragen van je klanten.",
+      },
+    ],
+    links: [
+      {
+        to: "/diensten/conversie-website",
+        label: "Nieuwe website laten maken",
+        tekst: "Een website die vanaf de aanvraag wordt opgebouwd: eerst strategie, dan techniek.",
+      },
+      {
+        to: "/kennisbank/nieuwe-website-of-optimaliseren",
+        label: "Nieuwe website of je huidige optimaliseren",
+        tekst: "Wanneer opnieuw bouwen loont en wanneer verbeteren sneller iets oplevert.",
+      },
+      {
+        to: "/diensten/website-optimalisatie",
+        label: "Website-optimalisatie",
+        tekst: "Na livegang elke maand verder bijsturen op de grootste groeikans.",
+      },
+    ],
+    metaTitle: "Plan van aanpak voor een nieuwe website | MegaOnline",
+    metaDescription:
+      "Een plan van aanpak voor een nieuwe website begint bij de aanvraag, niet bij het ontwerp. Vijf onderdelen die erin horen, met een voorbeeld uit de praktijk.",
+  },
 ];
 
 /**
