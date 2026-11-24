@@ -2811,6 +2811,146 @@ export const ARTIKELEN: Artikel[] = [
     metaDescription:
       "Een plan van aanpak voor een nieuwe website begint bij de aanvraag, niet bij het ontwerp. Vijf onderdelen die erin horen, met een voorbeeld uit de praktijk.",
   },
+  {
+    slug: "cadeaubonnen-online-verkopen",
+    naam: "Cadeaubonnen online verkopen",
+    vraag: "Hoe verkoop je cadeaubonnen online voor je activiteitenbedrijf?",
+    pijler: "Branche",
+    icoon: "gift",
+    branche: "Activiteitenbedrijven",
+    teaser:
+      "Wie een cadeaubon koopt, komt zelf niet. Hij heeft andere vragen dan je gast en koopt vaak op een avond vlak voor een verjaardag of de feestdagen.",
+    antwoord:
+      "Cadeaubonnen verkoop je online door ze te behandelen als een eigen product voor een eigen klant: de gever, niet de gast. Die gever wil binnen een paar minuten op zijn telefoon kunnen kiezen, betalen en een bon in zijn mailbox hebben die hij vanavond nog kan printen of doorsturen.",
+    leestijd: "6 minuten",
+    gepubliceerd: "2026-11-24",
+    gewijzigd: "2026-11-24",
+    cta: "scan",
+    eindKop: "Wil je zien waar kopers van een cadeaubon op jouw site afhaken?",
+    eindLead:
+      "MegaOnline kijkt persoonlijk naar je website en loopt de route na van iemand die op een avond een cadeaubon wil kopen. Je krijgt de punten te zien waar die koper nu blijft hangen. Wil je eerst weten wat er bij een [website voor activiteitenbedrijven](/branches/activiteitenbedrijven) komt kijken, lees dan daar verder.",
+    secties: [
+      {
+        kop: "De koper van een cadeaubon is niet je gast",
+        accent: "niet je gast",
+        alineas: [
+          "Bijna elke website van een escaperoom, klimhal of kartbaan is geschreven voor de gast. Hoe lang duurt het, voor welke leeftijd is het, wanneer is er plek. Dat klopt voor wie zelf komt. Een cadeaubon wordt alleen gekocht door iemand die niet komt.",
+          "Die koper heeft andere vragen. Hij weet niet of de ontvanger liever op zaterdag of op woensdag gaat. Hij wil geen datum kiezen. Hij wil weten wat een bon waard is, of je er met twee of met vier mensen mee kunt, hoe lang hij geldig is en of hij hem vandaag nog kan geven.",
+          "Staat de cadeaubon op je site als een regel onderaan de prijspagina met de tekst \"vraag ernaar aan de balie\", dan beantwoord je geen van die vragen. De koper gaat dan niet naar de balie. Hij koopt een algemene belevenisbon bij een groot platform of een cadeau in een webshop die wel om elf uur 's avonds open is.",
+        ],
+      },
+      {
+        kop: "Een voorbeeld uit de praktijk",
+        accent: "uit de praktijk",
+        alineas: [
+          "Neem een klimhal die cadeaubonnen alleen aan de kassa verkoopt, op een kaartje met een stempel. Op de website staat dat ze bestaan. Bestellen kan per mail, waarna de bon per post komt.",
+          "Een vader zoekt op 22 december om half elf 's avonds op zijn telefoon een cadeau voor zijn zoon van veertien, die wil klimmen. Hij vindt de klimhal, ziet dat er cadeaubonnen zijn en leest dat hij moet mailen. De post komt niet meer voor kerst. Hij sluit het tabblad.",
+          "De klimhal heeft die verkoop nooit gezien. Niet in de omzet, niet in de mail. Dat is het lastige aan een cadeaubon die je niet online verkoopt: je mist hem zonder dat het opvalt. Je ziet alleen dat de decembermaand niet beter loopt dan november.",
+        ],
+      },
+      {
+        kop: "Wat er op je site moet staan",
+        accent: "op je site",
+        alineas: [
+          "Een cadeaubon die online verkoopt, heeft een eigen pagina en een eigen knop. Niet verstopt onder reserveren, want de koper wil juist niet reserveren. Op die pagina horen vijf dingen.",
+        ],
+        punten: [
+          {
+            titel: "Een vaste waarde of een vaste activiteit",
+            tekst:
+              "Een bon voor een bedrag is flexibel. Een bon voor een activiteit, zoals een uur klimmen voor twee, is makkelijker te geven omdat de koper weet wat de ontvanger krijgt. De meeste activiteitenbedrijven bieden beide aan. Zet bij een bon voor een bedrag erbij wat je daar ongeveer voor kunt doen.",
+          },
+          {
+            titel: "Direct betalen en direct ontvangen",
+            tekst:
+              "Na betalen staat de bon binnen een minuut in de mailbox, als pdf om te printen of door te sturen. Een bon die eerst handmatig wordt aangemaakt, komt pas de volgende ochtend. Voor een cadeau van vanavond is dat te laat.",
+          },
+          {
+            titel: "Een bon die er als cadeau uitziet",
+            tekst:
+              "Een bon met je logo, een foto van de activiteit en ruimte voor een naam en een persoonlijke tekst. Een bon die eruitziet als een betaalbewijs voelt niet als iets om te geven.",
+          },
+          {
+            titel: "Geldigheid en voorwaarden in gewone taal",
+            tekst:
+              "Hoe lang de bon geldig is, of hij in delen te gebruiken is en wat er gebeurt met een restbedrag. Volgens Ondernemersplein moet een cadeaubon minimaal 2 jaar geldig zijn, tenzij een kortere termijn redelijk is. De voorwaarden zet je op de bon zelf of je zet er een link naar op. Laat je de voorwaarden juridisch controleren als je twijfelt.",
+          },
+          {
+            titel: "Een duidelijke uitleg voor de ontvanger",
+            tekst:
+              "Eén zin op de bon over hoe je hem verzilvert, met de link naar je reserveringspagina. Zo hoeft de ontvanger niet te bellen en reserveert hij op het moment dat hij er zin in heeft.",
+          },
+        ],
+      },
+      {
+        kop: "Verzilveren hoort in dezelfde agenda",
+        accent: "dezelfde agenda",
+        alineas: [
+          "De verkoop is de helft van het werk. De andere helft is het moment dat iemand de bon gebruikt. Wordt die bon aan de balie met de hand afgestreept terwijl reserveringen online lopen, dan weet je nooit precies hoeveel bonnen er nog openstaan en kan dezelfde code twee keer gebruikt worden.",
+          "Werkt het verzilveren in hetzelfde systeem als het reserveren, dan vult de ontvanger zijn code in bij het boeken. Het bedrag gaat eraf, het restant blijft staan en jij ziet in één overzicht wat er verkocht en gebruikt is. Hoe reserveren, betalen en bonnen in één systeem werken, lees je bij [online boeken en reserveren](/diensten/online-boeken).",
+          "Een bijkomend voordeel: veel bonnen worden pas na weken of maanden verzilverd. Je kunt ontvangers dan wijzen op de rustige uren. Een bon die in december is verkocht en in februari op een dinsdagmiddag wordt gebruikt, vult precies de tijden die je anders leeg ziet. Hoe je die doordeweekse uren verder vult, staat in het artikel over [doordeweeks meer boekingen](/kennisbank/doordeweeks-meer-boekingen).",
+        ],
+      },
+      {
+        kop: "Zorg dat de koper de bon kan vinden",
+        accent: "kan vinden",
+        alineas: [
+          "Een cadeaubonpagina die niemand vindt, verkoopt niets. Mensen zoeken op woorden als \"cadeaubon klimmen\" of \"escaperoom cadeaubon\" met de naam van hun plaats erbij. Geef de pagina een titel en een kop met precies die woorden, zodat Google hem aan die zoekvraag kan koppelen.",
+          "Zet daarnaast een korte verwijzing naar de bon op de plekken waar een twijfelende bezoeker al is: de homepage, de prijspagina en de bevestigingsmail na een reservering. Wie net zelf heeft geboekt, is vaak de beste koper voor een bon voor iemand anders.",
+          "Een [website voor activiteitenbedrijven](/branches/activiteitenbedrijven) bouwt MegaOnline met de cadeaubon als vaste route, naast reserveren, groepen en arrangementen. Of het nu loopt of niet, zie je vooral in de weken voor de feestdagen.",
+        ],
+      },
+    ],
+    doen: [
+      "Koop vanavond op je telefoon een cadeaubon bij je eigen bedrijf en tel de stappen tot de bon in je mailbox staat.",
+      "Geef de cadeaubon een eigen pagina met een eigen knop, los van reserveren.",
+      "Zet de geldigheid en wat er met een restbedrag gebeurt in één zin op de bon en op de pagina.",
+      "Zet een korte verwijzing naar de cadeaubon in de bevestigingsmail na een reservering.",
+      "Tel hoeveel bonnen er in de afgelopen twaalf maanden zijn verkocht en hoeveel er nog openstaan. Dat is je beginpunt.",
+    ],
+    faq: [
+      {
+        q: "Hoe lang moet een cadeaubon geldig zijn?",
+        a: "Volgens Ondernemersplein minimaal 2 jaar, tenzij je kunt uitleggen waarom een kortere termijn redelijk is. Staat er geen uitgiftedatum en geen vervaldatum op de bon, dan is hij volgens dezelfde bron onbeperkt geldig. Zet de geldigheid daarom altijd duidelijk op de bon.",
+      },
+      {
+        q: "Kun je cadeaubonnen verkopen via je reserveringssysteem?",
+        a: "Bij veel systemen wel, al verschilt het hoe goed het werkt. Let erop dat de bon na betalen direct wordt verstuurd en dat de ontvanger zijn code kan invullen bij het reserveren. Anders verkoop je de bon online en verzilver je hem alsnog met de hand.",
+      },
+      {
+        q: "Is een bon voor een bedrag of voor een activiteit beter?",
+        a: "Een bon voor een activiteit is makkelijker te geven, omdat de koper weet wat de ontvanger krijgt. Een bon voor een bedrag is flexibeler als je veel verschillende activiteiten hebt. Veel bedrijven bieden allebei aan en zetten bij het bedrag wat je ermee kunt doen.",
+      },
+      {
+        q: "Moet je je cadeaubonnen ook via grote belevenisplatforms verkopen?",
+        a: "Dat kan extra bereik geven, maar je betaalt er meestal een vergoeding per verkochte bon voor en het contact met de koper loopt via het platform. Een goede bonpagina op je eigen site is daarom de basis. Platforms komen daar hooguit bovenop.",
+      },
+      {
+        q: "Wanneer worden de meeste cadeaubonnen gekocht?",
+        a: "Rond de feestdagen, verjaardagen, Vaderdag en Moederdag. Vaak 's avonds op een telefoon. Daarom moet kopen en ontvangen werken zonder dat er iemand van je bedrijf aan te pas komt.",
+      },
+    ],
+    links: [
+      {
+        to: "/branches/activiteitenbedrijven",
+        label: "Website laten maken voor activiteitenbedrijven",
+        tekst: "Reserveren, arrangementen, groepen en cadeaubonnen als vaste routes op je site.",
+      },
+      {
+        to: "/diensten/online-boeken",
+        label: "Online boeken en reserveren",
+        tekst: "Reserveren, betalen en cadeaubonnen verzilveren in één agenda op je eigen site.",
+      },
+      {
+        to: "/kennisbank/doordeweeks-meer-boekingen",
+        label: "Doordeweeks meer boekingen",
+        tekst: "Hoe je de rustige uren vult met klanten die op een dinsdag wel kunnen.",
+      },
+    ],
+    metaTitle: "Cadeaubonnen online verkopen | MegaOnline",
+    metaDescription:
+      "Cadeaubonnen online verkopen voor je escaperoom, klimhal of kartbaan? Wat de koper wil zien, wat er op de bon hoort en hoe verzilveren in je agenda werkt.",
+  },
 ];
 
 /**
