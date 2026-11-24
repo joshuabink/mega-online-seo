@@ -2,7 +2,9 @@ import { useRef, useState, type ReactNode } from 'react'
 import { useReveal } from './Reveal'
 
 /**
- * FAQ-accordeon. Reproduceert exact het hoogte-patroon uit `assets/app.js`:
+ * FAQ-accordeon. De vraag is een h3 met daarin de knop (W3C-accordeon).
+ * Het antwoord staat altijd in de HTML; dicht is alleen `height: 0`.
+ * Reproduceert exact het hoogte-patroon uit `assets/app.js`:
  * openen zet de expliciete `scrollHeight` in px en schakelt op `transitionend`
  * naar `height: auto`; sluiten zet eerst `scrollHeight` en pas in de volgende
  * frame `0px`. Een naïeve `max-height`-truc geeft een andere timing.
@@ -50,10 +52,12 @@ export function Qa({
       className={`qa ${open ? 'open' : ''} ${reveal.className}`.trim()}
       data-d={delay}
     >
-      <button className="qa__q" type="button" aria-expanded={open} onClick={toggle}>
-        {question}
-        <span className="pm" />
-      </button>{' '}
+      <h3>
+        <button className="qa__q" type="button" aria-expanded={open} onClick={toggle}>
+          {question}
+          <span className="pm" />
+        </button>
+      </h3>{' '}
       <div className="qa__a" ref={panelRef}>
         <div className="qa__a-inner">{children}</div>
       </div>
