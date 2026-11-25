@@ -33,8 +33,14 @@ export const Route = createFileRoute('/$')({
   }),
   staticData: { lightNav: false },
   component: NotFound,
-  notFoundComponent: NotFound,
+  // Eigen functie voor de 404-variant: de code-splitter van de router kan
+  // niet één en dezelfde functie voor component én notFoundComponent splitsen.
+  notFoundComponent: NotFoundRoute,
 })
+
+function NotFoundRoute() {
+  return <NotFound />
+}
 
 function NotFound() {
   return (
