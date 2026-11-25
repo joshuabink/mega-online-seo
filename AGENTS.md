@@ -93,6 +93,8 @@ de navigatie en op `Disallow` in `robots.txt`.
 MegaOnline-chrome en komen uit de uitbreidbare lijst in `src/lib/concepten.ts`, zodat
 ze nooit met de oude `/concept/**`-prototypes of klantcases worden vermengd.
 
+- The catch-all route has only a `notFoundComponent`, not a normal `component`: its `beforeLoad` always redirects or throws `notFound`, and cross-references between split route components break bundling.
+
 Tests: `node scripts/mock-endpoint.mjs` en dan
 `MO_LEAD_MAIL_ENDPOINT=http://localhost:3101/mail` bij de dev-server, gevolgd
 door `node scripts/smoke.mjs`. Draai de smoketest nooit zonder die mock en nooit

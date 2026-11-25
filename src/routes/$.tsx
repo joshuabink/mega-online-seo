@@ -28,19 +28,19 @@ export const Route = createFileRoute('/$')({
   head: () => ({
     meta: [
       { title: 'Pagina niet gevonden | MegaOnline.io' },
+      { name: 'description', content: 'Deze pagina bestaat niet meer. Ga verder naar de homepage van MegaOnline, vraag een gratis websitescan aan of neem contact op.' },
+      { property: 'og:title', content: 'Pagina niet gevonden | MegaOnline.io' },
+      { property: 'og:description', content: 'Deze pagina bestaat niet meer. Ga verder naar de homepage van MegaOnline, vraag een gratis websitescan aan of neem contact op.' },
+      { property: 'og:type', content: 'website' },
+      { name: 'twitter:card', content: 'summary' },
       { name: 'robots', content: 'noindex' },
     ],
   }),
   staticData: { lightNav: false },
-  component: NotFound,
-  // Eigen functie voor de 404-variant: de code-splitter van de router kan
-  // niet één en dezelfde functie voor component én notFoundComponent splitsen.
-  notFoundComponent: NotFoundRoute,
+  // beforeLoad stuurt altijd door of gooit notFound: er is geen gewone pagina.
+  // Alleen de 404-weergave splitsen voorkomt verwijzingen tussen split-chunks.
+  notFoundComponent: NotFound,
 })
-
-function NotFoundRoute() {
-  return <NotFound />
-}
 
 function NotFound() {
   return (
