@@ -2951,6 +2951,143 @@ export const ARTIKELEN: Artikel[] = [
     metaDescription:
       "Cadeaubonnen online verkopen voor je escaperoom, klimhal of kartbaan? Wat de koper wil zien, wat er op de bon hoort en hoe verzilveren in je agenda werkt.",
   },
+  {
+    slug: "wordpress-onderhoud",
+    naam: "WordPress-onderhoud",
+    vraag: "Wat houdt WordPress-onderhoud in en heb je het nodig?",
+    pijler: "Techniek",
+    icoon: "repeat",
+    branche: "Algemeen",
+    teaser:
+      "Updates, back-ups en beveiliging klinken als techniek. Het echte risico is een site die stil kapotgaat terwijl niemand kijkt.",
+    antwoord:
+      "WordPress-onderhoud is het bijhouden van updates, back-ups en beveiliging, plus controleren of alles daarna nog werkt. Heb je een WordPress-site waar aanvragen of boekingen via binnenkomen, dan heb je het nodig: de vraag is alleen of je het zelf doet of uitbesteedt.",
+    leestijd: "6 minuten",
+    gepubliceerd: "2026-11-27",
+    gewijzigd: "2026-11-27",
+    cta: "scan",
+    eindKop: "Wil je weten of jouw WordPress-site ergens stil weglekt?",
+    eindLead:
+      "Beantwoord vier korte vragen. MegaOnline kijkt persoonlijk naar je website, ook naar updates, formulieren en snelheid. Daarna zie je waar aanvragen blijven hangen.",
+    secties: [
+      {
+        kop: "Wat WordPress-onderhoud precies is",
+        accent: "precies is",
+        alineas: [
+          "WordPress is het systeem waarmee je site draait. Daaromheen zitten een thema dat bepaalt hoe de site eruitziet en plugins: losse uitbreidingen voor een formulier, een agenda, de cookiemelding of de snelheid. Al die onderdelen worden door verschillende makers bijgehouden en krijgen elk hun eigen updates.",
+          "Onderhoud betekent dat iemand die updates bijhoudt, zorgt dat er een recente back-up staat en controleert of de site daarna nog doet wat hij moet doen. Dat laatste wordt het vaakst vergeten. Een update installeren is één klik. Weten of je contactformulier daarna nog mail verstuurt, is iets anders.",
+        ],
+        punten: [
+          {
+            titel: "Updates",
+            tekst:
+              "Van WordPress zelf, het thema en elke plugin. Een update dicht vaak een beveiligingslek dat inmiddels openbaar bekend is. Wie hem laat liggen, staat open voor wie dat lek gebruikt.",
+          },
+          {
+            titel: "Back-ups",
+            tekst:
+              "Een kopie van de bestanden en de database, opgeslagen op een andere plek dan de site zelf. Een back-up die op dezelfde server staat als de site is weg als die server problemen heeft.",
+          },
+          {
+            titel: "Beveiliging",
+            tekst:
+              "Sterke wachtwoorden, alleen de gebruikers die er echt moeten zijn en geen plugins die niet meer worden bijgehouden. Een plugin waarvan de maker gestopt is, krijgt geen updates meer, ook niet als er een lek in zit.",
+          },
+          {
+            titel: "Controleren",
+            tekst:
+              "Na elke ronde updates kijken of de belangrijkste dingen nog werken: de pagina's laden, het formulier komt aan, de boekingsknop doet het en de site is nog snel genoeg op een telefoon.",
+          },
+        ],
+      },
+      {
+        kop: "Wat er misgaat als niemand het doet",
+        accent: "als niemand het doet",
+        alineas: [
+          "De meeste sites gaan niet in één keer plat. Ze worden langzaam slechter. Dat valt pas op als het al een tijdje speelt.",
+          "Neem een installatiebedrijf met een nette WordPress-site en een offerteformulier. Na een update van een plugin verstuurt het formulier geen mail meer. Bezoekers zien gewoon een bedankmelding, dus niemand klaagt. De eigenaar merkt alleen dat het rustiger is dan normaal en schuift het op het seizoen. Pas weken later belt een klant die vraagt waarom hij nooit iets terughoorde.",
+          "Dat is het patroon. Een site die niet wordt bijgehouden wordt trager, omdat oude plugins blijven meedraaien. Hij wordt kwetsbaarder, omdat bekende lekken openblijven. En onderdelen vallen stil weg zonder foutmelding. Voor een ondernemer die van aanvragen leeft is dat laatste het duurste, want je ziet het niet in je statistieken. Je ziet het alleen in een lege inbox.",
+          "Een gehackte site is de zichtbare variant. Google kan bezoekers dan waarschuwen voordat ze je site openen en het herstel kost meestal meer dan jaren onderhoud. Wie een recente back-up heeft, is in een paar uur terug. Wie die niet heeft, begint soms opnieuw.",
+        ],
+      },
+      {
+        kop: "Wat je zelf kunt doen",
+        accent: "zelf",
+        alineas: [
+          "Veel onderhoud kun je prima zelf, zeker bij een kleine site met weinig plugins. WordPress kan plugins en thema's automatisch bijwerken. Dat zet je per onderdeel aan. In het dashboard staat ook een scherm Sitestatus dat laat zien wat er volgens WordPress zelf aandacht nodig heeft.",
+          "Zelf doen werkt als je drie dingen vasthoudt: een vast moment in de maand, een back-up vóór je iets bijwerkt en een korte controle daarna. Vul je eigen formulier in, klik op je bel- of WhatsApp-knop en open de site op je telefoon. Dat kost een kwartier en vangt het grootste deel van de problemen af.",
+          "Automatische updates zijn een goede basis, maar geen onderhoud. Ze installeren de update. Ze controleren niet of je formulier het daarna nog doet.",
+        ],
+      },
+      {
+        kop: "Wanneer uitbesteden zin heeft",
+        accent: "uitbesteden",
+        alineas: [
+          "Uitbesteden is geen kwestie van kunnen. Het is een kwestie van wat het kost als het misgaat en of je er echt elke maand tijd voor maakt. De meeste ondernemers beginnen enthousiast en laten het na een paar maanden liggen. Dat is menselijk, alleen werkt onderhoud dan niet meer.",
+          "Uitbesteden heeft zin als aanvragen of boekingen via je site binnenkomen, als de site gekoppeld is aan een agenda of betaalsysteem, als er veel plugins op draaien of als niemand in je bedrijf weet wat er na een mislukte update moet gebeuren. Bij een site die vooral een visitekaartje is, kun je het met een vaste routine prima zelf.",
+          "Vraag bij een onderhoudspartij niet alleen wat er wordt bijgewerkt. Vraag waar de back-ups staan, hoe snel je ze terug kunt zetten, wat er na een update wordt gecontroleerd en of je zelf een overzicht krijgt van wat er is gedaan. Wie bij [wordpress onderhoud](/diensten/wordpress-optimalisatie) alleen updates belooft, doet het makkelijke deel.",
+          "Is je site al traag of rommelig geworden, dan helpt bijhouden alleen niet meer. Dan moet hij eerst worden opgeruimd. Lees bij [website laten optimaliseren](/diensten/website-optimalisatie) wat dat inhoudt. Merk je vooral dat er weinig aanvragen binnenkomen, kijk dan eerst naar [waarom je website geen aanvragen oplevert](/kennisbank/website-levert-geen-aanvragen-op). Twijfel je wie dat werk het beste kan doen, dan helpt de afweging tussen een [freelance webdesigner of webbureau](/kennisbank/freelance-webdesigner-of-webbureau).",
+        ],
+      },
+      {
+        kop: "Hoe MegaOnline dit aanpakt",
+        accent: "aanpakt",
+        alineas: [
+          "MegaOnline houdt WordPress-sites bij vanuit de vraag of ze nog aanvragen opleveren, niet alleen of ze nog online zijn. Voor elke ronde updates staat er een back-up. Daarna worden de formulieren, knoppen en boekingsroutes nagelopen. Plugins die niet meer worden bijgehouden worden vervangen voordat ze een probleem worden.",
+          "Wil je alleen dat de techniek veilig en bijgewerkt blijft, dan is er een onderhoudsabonnement. Wil je dat de site daarnaast elke maand beter wordt, dan past het Groei Partnership.",
+        ],
+      },
+    ],
+    doen: [
+      "Kijk in je dashboard hoeveel updates er openstaan en wanneer de laatste keer was dat iemand ze installeerde.",
+      "Vraag je hostingpartij of je webbouwer waar je back-ups staan en hoe lang het duurt om er een terug te zetten.",
+      "Vul vandaag je eigen contactformulier in en kijk of de mail echt aankomt.",
+      "Loop je plugins na en zoek bij elke plugin op wanneer hij voor het laatst is bijgewerkt door de maker.",
+      "Zet een vast moment in je agenda, één keer per maand, voor updates en een korte controle van formulier en knoppen.",
+    ],
+    faq: [
+      {
+        q: "Hoe vaak moet een WordPress-site worden bijgewerkt?",
+        a: "Beveiligingsupdates zo snel mogelijk, de rest in een vaste ronde. Voor de meeste bedrijfssites is één keer per maand een goed ritme, met een controle na elke ronde. Draait er een webshop of boekingssysteem op, kijk dan vaker.",
+      },
+      {
+        q: "Kun je automatische updates gewoon aanzetten?",
+        a: "Dat kan en voor veel plugins is het verstandig. Het vervangt alleen de controle niet. Een automatische update kan iets breken zonder dat je het merkt, dus kijk daarna nog steeds of je formulier en knoppen werken.",
+      },
+      {
+        q: "Wat is het verschil tussen onderhoud en hosting?",
+        a: "Hosting is de plek waar je site draait: de server. Onderhoud is het bijhouden van WordPress, het thema en de plugins op die server. Sommige hostingpartijen doen een deel van het onderhoud, zoals back-ups of updates van WordPress zelf. Vraag na wat er wel en niet onder valt.",
+      },
+      {
+        q: "Wat doe je als je WordPress-site gehackt is?",
+        a: "Verander eerst alle wachtwoorden en neem contact op met je hostingpartij. Zet daarna een schone back-up terug van vóór de hack en werk meteen alles bij. Heb je geen bruikbare back-up, laat de site dan door iemand opschonen die weet waar hij moet zoeken.",
+      },
+      {
+        q: "Heeft een kleine website ook onderhoud nodig?",
+        a: "Ja, want een kleine site draait op dezelfde software als een grote. Het verschil is de hoeveelheid werk. Met weinig plugins en een vaste maandelijkse routine kun je het vaak prima zelf.",
+      },
+    ],
+    links: [
+      {
+        to: "/diensten/wordpress-optimalisatie",
+        label: "WordPress onderhoud en optimalisatie",
+        tekst: "Een snellere, veilige WordPress-site met een backend die logisch werkt.",
+      },
+      {
+        to: "/diensten/website-optimalisatie",
+        label: "Website laten optimaliseren",
+        tekst: "Wat er nodig is als je site wel draait, maar te weinig aanvragen oplevert.",
+      },
+      {
+        to: "/kennisbank/website-levert-geen-aanvragen-op",
+        label: "Waarom je website geen aanvragen oplevert",
+        tekst: "De meest voorkomende oorzaken, van vertrouwen tot een formulier dat te veel vraagt.",
+      },
+    ],
+    metaTitle: "Wat houdt WordPress-onderhoud in? | MegaOnline",
+    metaDescription:
+      "Wat houdt WordPress onderhoud in: updates, back-ups, beveiliging en controle. Wat er misgaat als niemand het doet, wat je zelf kunt en wanneer uitbesteden zin heeft.",
+  },
 ];
 
 /**
